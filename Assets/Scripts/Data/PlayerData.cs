@@ -49,6 +49,21 @@ public class PlayerData : ScriptableObject
         Star,
     }
 
+    public enum PlayerAttributes
+    {
+        Goalkeeping,
+        Passing,
+        Tackling,
+        Shooting,
+        Speed,
+        Strength,
+        Agility,
+        Stamina,
+        Teamwork,
+        Vision,
+        Stability,
+    }
+
     [Space(10)]
     public PlayerPosition Position;
 
@@ -96,6 +111,9 @@ public class PlayerData : ScriptableObject
 
     [Range(0, 100)]
     public int Vision = 50;
+
+    [Range(0, 100)]
+    public int Stability = 50;
 
     public PlayerPerk Perk;
     public PlayerTactics Tactics;

@@ -40,6 +40,8 @@ public class MatchController : MonoBehaviour
 
     private int totalZones = 17;
     private int currentZone = 8;
+    private TeamData attackingTeam;
+    private TeamData defendingTeam;
 
     private int matchTime = 0;
     private int homeTeamScore = 0;
@@ -53,10 +55,14 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     private GameObject startBtn;
 
+
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
     {
         HomeTeam = _homeTeam;
         AwayTeam = _awayTeam;
+
+        attackingTeam = HomeTeam;
+        defendingTeam = AwayTeam;
 
         HomeTeamSquad.Populate(_homeTeam.Squad);
         AwayTeamSquad.Populate(_awayTeam.Squad);
@@ -175,13 +181,15 @@ public class MatchController : MonoBehaviour
         return zone;
     }
 
-    private List<PlayerData> GetPlayersInZone(FieldZone _zone)
+    private List<PlayerData> GetPlayersInZone(int _zone)
     {
         List<PlayerData> players = new List<PlayerData>();
 
         switch(_zone)
         {
-            case FieldZone.LD :
+            case FieldZone.HomeGoal:
+                break;
+            case FieldZone.LD:
                 //TODO Roll dice for each player
                 break;
 
@@ -240,12 +248,44 @@ public class MatchController : MonoBehaviour
             case FieldZone.RF:
                 //TODO Roll dice for each player
                 break;
+            case FieldZone.AwayGoal:
+                break;
 
         }
 
         return players;
     }
 
+    private List<PlayerData> GetAttackingPlayers(int _zone)
+    {
+        int zone = _zone;
+        if (attackingTeam == AwayTeam) zone = GetAwayZone();
+
+        List<PlayerData> players = new List<PlayerData>();
+
+        foreach (PlayerData player in attackingTeam.Squad)
+        {
+            switch (player.Position)
+            {
+                case PlayerData.PlayerPosition.LD:
+                    if (zone ==(int) FieldZone.LD) players.Add(player);
+                    else
+                    {
+                        // Pos* Tactics Bonus * ((Spd + Vision) / 200) * (Fatigue / 100)
+
+                    }
+                    break;
+            }
+        }
+        return players;
+    }
+
+    private int GetAwayZone()
+    {
+        int zone = (totalZones - 1) -  currentZone;
+
+        return zone;
+    }
    
     private string GetAreaNarration()
     {

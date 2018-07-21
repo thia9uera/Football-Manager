@@ -143,6 +143,7 @@
     <Compile Include="Assets\Scripts\Controllers\Localization.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
+    <Compile Include="Assets\Scripts\Data\PerkData.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Data\TeamData.cs" />
     <Compile Include="Assets\Scripts\MatchFieldView.cs" />
