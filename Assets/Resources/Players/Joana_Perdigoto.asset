@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: Joana_Perdigoto
+  m_EditorClassIdentifier: 
+  FirstName: Joana
+  LastName: Perdigoto
+  Position: 11
+  Goalkeeping: 27
+  Passing: 72
+  Tackling: 64
+  Shooting: 82
+  Speed: 89
+  Strength: 56
+  Agility: 90
+  Stamina: 92
+  Teamwork: 60
+  Vision: 92
+  Fatigue: 0
+  Morale: 50

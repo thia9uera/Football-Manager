@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Comanches
+  m_EditorClassIdentifier: 
+  Name: Comanches
+  Tag: COM
+  PrimaryColor: {r: 0.804, g: 0.57761836, b: 0.11035294, a: 1}
+  SecondaryColor: {r: 0.3490566, g: 0.30771306, b: 0.16629584, a: 1}
+  Squad:
+  - {fileID: 11400000, guid: 5259035e79de7d84a9ac0f732bd5bfa9, type: 2}
+  - {fileID: 11400000, guid: 66846c5d8bc161c47af647f7ff081f24, type: 2}
+  - {fileID: 11400000, guid: f6f57eace4234be48ae46baae54a5bd8, type: 2}
+  - {fileID: 11400000, guid: c0bc0a4fdee885840a57ce4ec09cf9dc, type: 2}
