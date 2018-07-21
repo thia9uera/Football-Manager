@@ -181,7 +181,7 @@ public class MatchController : MonoBehaviour
         return zone;
     }
 
-    private List<PlayerData> GetPlayersInZone(int _zone)
+    private List<PlayerData> GetPlayersInZone(FieldZone _zone)
     {
         List<PlayerData> players = new List<PlayerData>();
 
