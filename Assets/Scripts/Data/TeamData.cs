@@ -13,6 +13,18 @@ public class TeamData : ScriptableObject
     public Color PrimaryColor;
     public Color SecondaryColor;
 
+    public enum TeamFormation
+    {
+        _3_4_3,
+        _3_5_2,
+        _4_3_3,
+        _3_3_4,
+
+    }
+
+    [Space(10)]
+    public TeamFormation Formation;
+
     [Space(10)]
     [Header("Players")]
     public PlayerData[] Squad;

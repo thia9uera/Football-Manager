@@ -96,6 +96,9 @@ public class PlayerData : ScriptableObject
 
     [Range(0, 100)]
     public int Vision = 50;
+
+    public PlayerPerk Perk;
+    public PlayerTactics Tactics;
     
     //Attributes that change during gameplay
     [HideInInspector]
@@ -103,4 +106,8 @@ public class PlayerData : ScriptableObject
 
     [HideInInspector]
     public int Morale = 50;
+
+
+    [HideInInspector]
+    public PlayerPosition AssignedPosition;
 }

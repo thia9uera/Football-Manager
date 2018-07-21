@@ -18,26 +18,28 @@ public class MatchController : MonoBehaviour
 
     //Names given by Home Team perspective
     private enum FieldZone
-    {                              //                       AWAY GOAL 
-        LD = 0,                    //               LF         CF        RF
-        CD = 1,                    //               LAM        CAM       RAM                                                
-        RD = 2,                    //               LM         CM        RM
-        LDM = 3,                   //               LDM        CDM       RDM
-        CDM = 4,                   //               LD         CD        RD
-        RDM = 5,                   //                       HOME GOAL
-        LM = 6,                    
-        CM = 7,
-        RM = 8,
-        LAM = 9,
-        CAM = 10,
-        RAM = 11,
-        LF = 12,
-        CF = 13,
-        RF = 14
+    { 
+        HomeGoal = 0,               //                       AWAY GOAL 
+        LD = 1,                    //               LF         CF        RF
+        CD = 2,                    //               LAM        CAM       RAM                                                
+        RD = 3,                    //               LM         CM        RM
+        LDM = 4,                   //               LDM        CDM       RDM
+        CDM = 5,                   //               LD         CD        RD
+        RDM = 6,                   //                       HOME GOAL
+        LM = 7,                    
+        CM = 8,
+        RM = 9,
+        LAM = 10,
+        CAM = 11,
+        RAM = 12,
+        LF = 13,
+        CF = 14,
+        RF = 15,
+        AwayGoal = 16,
     }
 
-    private int totalZones;
-    private int currentZone = 2;
+    private int totalZones = 17;
+    private int currentZone = 8;
 
     private int matchTime = 0;
     private int homeTeamScore = 0;
