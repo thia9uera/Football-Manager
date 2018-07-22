@@ -17,4 +17,7 @@ public class PerkData : ScriptableObject
         [Tooltip("Attribute X this value")]
         public float Modifier;
     }
+
+    [Tooltip("Leave empty if there are no restrictions")]
+    public MatchController.FieldZone[] ZoneRestriction;
 }

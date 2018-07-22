@@ -17,9 +17,9 @@ public class MatchController : MonoBehaviour
     private int teamWithBall = 0;
 
     //Names given by Home Team perspective
-    private enum FieldZone
+    public enum FieldZone
     { 
-        HomeGoal = 0,               //                       AWAY GOAL 
+        OwnGoal = 0,               //                       AWAY GOAL 
         LD = 1,                    //               LF         CF        RF
         CD = 2,                    //               LAM        CAM       RAM                                                
         RD = 3,                    //               LM         CM        RM
@@ -35,7 +35,7 @@ public class MatchController : MonoBehaviour
         LF = 13,
         CF = 14,
         RF = 15,
-        AwayGoal = 16,
+        Box = 16,
     }
 
     private int totalZones = 17;
@@ -187,7 +187,7 @@ public class MatchController : MonoBehaviour
 
         switch(_zone)
         {
-            case FieldZone.HomeGoal:
+            case FieldZone.OwnGoal:
                 break;
             case FieldZone.LD:
                 //TODO Roll dice for each player
@@ -248,7 +248,7 @@ public class MatchController : MonoBehaviour
             case FieldZone.RF:
                 //TODO Roll dice for each player
                 break;
-            case FieldZone.AwayGoal:
+            case FieldZone.Box:
                 break;
 
         }
@@ -256,35 +256,91 @@ public class MatchController : MonoBehaviour
         return players;
     }
 
-    private List<PlayerData> GetAttackingPlayers(int _zone)
+    private List<PlayerData> GetAttackingPlayers(FieldZone _zone)
     {
-        int zone = _zone;
-        if (attackingTeam == AwayTeam) zone = GetAwayZone();
+        FieldZone zone = _zone;
+        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+        float chance = 0f;
 
         List<PlayerData> players = new List<PlayerData>();
 
         foreach (PlayerData player in attackingTeam.Squad)
         {
-            switch (player.Position)
+            chance = CalculatePresence(player, zone);
+ 
+            if(chance >= 1f) players.Add(player);
+            else 
             {
-                case PlayerData.PlayerPosition.LD:
-                    if (zone ==(int) FieldZone.LD) players.Add(player);
-                    else
-                    {
-                        // Pos* Tactics Bonus * ((Spd + Vision) / 200) * (Fatigue / 100)
-
-                    }
-                    break;
+                if(chance <= Random.Range(0f, 1f)) players.Add(player);
             }
         }
         return players;
     }
 
-    private int GetAwayZone()
+    private List<PlayerData> GetDefendingPlayers(FieldZone _zone)
+    {
+        FieldZone zone = _zone;
+        if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+        float chance = 0f;
+
+        List<PlayerData> players = new List<PlayerData>();
+
+        foreach (PlayerData player in attackingTeam.Squad)
+        {
+            chance = CalculatePresence(player, zone);
+
+            if (chance >= 1f) players.Add(player);
+            else
+            {
+                if (chance <= Random.Range(0f, 1f)) players.Add(player);
+            }
+        }
+        return players;
+    }
+
+    private float CalculatePresence(PlayerData _player, FieldZone _zone)
+    {
+        float chance = 0f;
+        float playerTacticsBonus = 1f;
+        float teamTacticsBonus = 1f;
+
+        if (IsPlayerOwnPosition(_player, _zone)) chance = 1f;
+        else chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
+
+        return chance;
+    }
+
+    private bool IsPlayerOwnPosition(PlayerData _player, FieldZone _zone)
+    {
+        bool isPosition = false;
+
+        if (_player.Position == PlayerData.PlayerPosition.GK && _zone == FieldZone.OwnGoal) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.LD && _zone == FieldZone.LD) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.CD && _zone == FieldZone.CD) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.RD && _zone == FieldZone.RD) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.LDM && _zone == FieldZone.LDM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.CDM && _zone == FieldZone.CDM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.RDM && _zone == FieldZone.RDM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.LM && _zone == FieldZone.LM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.CM && _zone == FieldZone.CM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.RM && _zone == FieldZone.RM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.LAM && _zone == FieldZone.LAM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.CAM && _zone == FieldZone.CAM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.RAM && _zone == FieldZone.RAM) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.LF && _zone == FieldZone.LF) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.CF && _zone == FieldZone.CF) isPosition = true;
+        else if (_player.Position == PlayerData.PlayerPosition.RF && _zone == FieldZone.RF) isPosition = true;
+
+        return isPosition;
+    }
+
+    private FieldZone GetAwayTeamZone()
     {
         int zone = (totalZones - 1) -  currentZone;
 
-        return zone;
+        return (FieldZone)zone;
     }
    
     private string GetAreaNarration()
