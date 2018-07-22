@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Brasil
   m_EditorClassIdentifier: 
   Name: Brasil
-  Tag: COM
+  Tag: BRA
   PrimaryColor: {r: 0.9150943, g: 0.8287998, b: 0.06474723, a: 1}
   SecondaryColor: {r: 0.33577433, g: 0.5660378, b: 0.31238878, a: 1}
   Formation: 2
@@ -33,4 +33,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea199b13b3aa8934bb5d341cbe4c5558, type: 2}
   - {fileID: 11400000, guid: 9d443ba5999716d48a9ac92a41ebdeac, type: 2}
   - {fileID: 11400000, guid: 93bf3b8ec08d4494b92e85122ec9d2e5, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f1302c826d238b94089fd0af5444b7b3, type: 2}
