@@ -93,7 +93,7 @@ public class MatchController : MonoBehaviour
         Reset();
         startBtn.SetActive(false);
         Narration.UpdateNarration("KICK OFF!", Color.gray);
-        InvokeRepeating("UpdateMatch", 1f, 1f);
+        InvokeRepeating("DefineActions", 1f, 1f);
     }
 
     private void UpdateMatch()
@@ -177,10 +177,10 @@ public class MatchController : MonoBehaviour
 
     private void DefineActions()
     {
-        List<PlayerData> attackingTeam = GetAttackingPlayers((FieldZone)currentZone);
-        List<PlayerData> defendingTeam = GetDefendingPlayers((FieldZone)currentZone);
+        PlayerData attacking = GetAttackingPlayer((FieldZone)currentZone);
+        PlayerData defending= GetDefendingPlayer((FieldZone)currentZone);
 
-        
+        print("ATTACKING: " + attacking.FirstName + "   DEFENDING: " + defending.FirstName);
     }
 
     private int GetRandomZone()
@@ -190,7 +190,7 @@ public class MatchController : MonoBehaviour
         return zone;
     }
 
-    private List<PlayerData> GetAttackingPlayers(FieldZone _zone)
+    private PlayerData GetAttackingPlayer(FieldZone _zone)
     {
         FieldZone zone = _zone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -209,10 +209,10 @@ public class MatchController : MonoBehaviour
                 if(chance <= Random.Range(0f, 1f)) players.Add(player);
             }
         }
-        return players;
+        return GetActivePlayer(players);
     }
 
-    private List<PlayerData> GetDefendingPlayers(FieldZone _zone)
+    private PlayerData GetDefendingPlayer(FieldZone _zone)
     {
         FieldZone zone = _zone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -231,7 +231,27 @@ public class MatchController : MonoBehaviour
                 if (chance <= Random.Range(0f, 1f)) players.Add(player);
             }
         }
-        return players;
+        return GetActivePlayer(players);
+    }
+
+    private PlayerData GetActivePlayer(List<PlayerData> list)
+    {
+        PlayerData activePlayer = null;
+        float points = 0f;
+
+        foreach(PlayerData player in list )
+        {
+            float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
+            float p = Random.Range(0f, stats);
+
+            if(p > points)
+            {
+                points = p;
+                activePlayer = player;
+            }
+        }
+
+        return activePlayer;
     }
 
     private float CalculatePresence(PlayerData _player, FieldZone _zone)
