@@ -18,16 +18,16 @@ MonoBehaviour:
   Goalkeeping: 28
   Passing: 84
   Tackling: 82
-  Shooting: 63
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
+  Shooting: 75
+  Heading: 76
+  Freekick: 81
+  Penalty: 83
   Speed: 83
-  Strength: 68
-  Agility: 72
+  Strength: 73
+  Agility: 77
   Stamina: 90
   Teamwork: 80
-  Vision: 52
+  Vision: 76
   Stability: 90
   Tactics: 1
   Fatigue: 100

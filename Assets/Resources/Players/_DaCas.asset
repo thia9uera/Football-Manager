@@ -17,13 +17,13 @@ MonoBehaviour:
   Position: 12
   Goalkeeping: 50
   Passing: 76
-  Tackling: 70
+  Tackling: 60
   Shooting: 77
   Heading: 41
   Freekick: 32
   Penalty: 39
-  Speed: 77
-  Strength: 61
+  Speed: 72
+  Strength: 53
   Agility: 83
   Stamina: 52
   Teamwork: 87

@@ -15,13 +15,13 @@ MonoBehaviour:
   LastName: 
   Perk: {fileID: 11400000, guid: 6a56fdf2cfc8aa2449947f51d19bf41e, type: 2}
   Position: 0
-  Goalkeeping: 98
+  Goalkeeping: 95
   Passing: 48
   Tackling: 30
   Shooting: 78
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
+  Heading: 27
+  Freekick: 23
+  Penalty: 25
   Speed: 67
   Strength: 80
   Agility: 84
