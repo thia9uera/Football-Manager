@@ -222,7 +222,7 @@ public class PlayerData : ScriptableObject
                     case MatchController.FieldZone.CM: pct = medium_chance; break;
                     case MatchController.FieldZone.LDM: pct = medium_chance; break;
                     case MatchController.FieldZone.CAM: pct = low_chance; break;
-                    case MatchController.FieldZone.CD: pct = low_chance; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance; break;
                 }
                 break;
 
@@ -249,7 +249,7 @@ public class PlayerData : ScriptableObject
                     case MatchController.FieldZone.CM: pct = medium_chance; break;
                     case MatchController.FieldZone.RDM: pct = medium_chance; break;
                     case MatchController.FieldZone.CAM: pct = low_chance; break;
-                    case MatchController.FieldZone.CD: pct = low_chance; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance; break;
                 }
                 break;
 
@@ -302,8 +302,8 @@ public class PlayerData : ScriptableObject
                     case MatchController.FieldZone.CF: pct = high_chance; break;
                     case MatchController.FieldZone.Box: pct = high_chance; break;
                     case MatchController.FieldZone.LAM: pct = medium_chance; break;
-                    case MatchController.FieldZone.LDM: pct = low_chance; break;
-                    case MatchController.FieldZone.CM: pct = low_chance; break;
+                    case MatchController.FieldZone.LM: pct = low_chance; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance; break;
                 }
                 break;
 
