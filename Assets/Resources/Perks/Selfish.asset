@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Name: Selfish
   m_EditorClassIdentifier: 
   Name: Selfish
-  Description: increase chance of scoring inside the box and from penalties
+  Description: increase chance of successfully dribbling and decrease chance of successfully
+    passing
   AtributesAffected:
-  - Attribute: 3
+  - Attribute: 10
     Modifier: 1.5
-  - Attribute: 5
+  - Attribute: 8
     Modifier: 1.25
-  ZoneRestriction: 10000000
+  - Attribute: 1
+    Modifier: 0.7
+  ZoneRestriction: 

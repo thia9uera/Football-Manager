@@ -14,8 +14,8 @@ MonoBehaviour:
   Name: Striker
   Description: increase chance of scoring inside the box and from penalties
   AtributesAffected:
-  - Attribute: 3
+  - Attribute: 4
     Modifier: 1.5
-  - Attribute: 5
+  - Attribute: 7
     Modifier: 1.25
   ZoneRestriction: 10000000

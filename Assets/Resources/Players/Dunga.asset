@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: Dunga
+  m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Resources/Players/Pedrinho_Maciota.asset
+  FirstName: Tinoco
+  LastName: Maneta
+  Perk: {fileID: 0}
+  Position: 8
+  Goalkeeping: 83
+  Passing: 69
+  Tackling: 55
+  Shooting: 72
+  Speed: 66
+  Strength: 40
+  Agility: 80
+  Stamina: 56
+  Teamwork: 70
+  Vision: 75
+  Stability: 50
+  Tactics: 0
+  Fatigue: 100
+=======
+  FirstName: Carlos
+  LastName: Canhota
+  Perk: {fileID: 0}
+  Position: 1
+  Goalkeeping: 28
+  Passing: 72
+  Tackling: 82
+  Shooting: 55
+  Speed: 62
+  Strength: 80
+  Agility: 63
+  Stamina: 71
+  Teamwork: 70
+  Vision: 26
+  Stability: 50
+  Tactics: 0
+  Fatigue: 0
+>>>>>>> 263438e53b352fd8f7657beb18a30f6413077e2d:Assets/Resources/Players/Dunga.asset
+  Morale: 50
+  AssignedPosition: 0

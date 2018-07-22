@@ -9,21 +9,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Carlos_Canhota
+  m_Name: Neymar
   m_EditorClassIdentifier: 
-  FirstName: Carlos
-  LastName: Canhota
-  Position: 1
-  Goalkeeping: 28
+  FirstName: Joana
+  LastName: Perdigoto
+  Perk: {fileID: 0}
+  Position: 11
+  Goalkeeping: 27
   Passing: 72
-  Tackling: 82
-  Shooting: 55
-  Speed: 62
-  Strength: 80
-  Agility: 63
-  Stamina: 71
-  Aggression: 84
-  Teamwork: 70
-  Vision: 26
+  Tackling: 64
+  Shooting: 82
+  Speed: 89
+  Strength: 56
+  Agility: 90
+  Stamina: 92
+  Teamwork: 60
+  Vision: 92
+  Stability: 50
+  Tactics: 0
   Fatigue: 0
   Morale: 50
+  AssignedPosition: 0

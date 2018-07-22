@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Hugo_Peleia
+  m_Name: Felipe Coutinho
   m_EditorClassIdentifier: 
   FirstName: Hugo
   LastName: Peleia
+  Perk: {fileID: 0}
   Position: 1
   Goalkeeping: 18
   Passing: 64
@@ -22,8 +23,10 @@ MonoBehaviour:
   Strength: 70
   Agility: 69
   Stamina: 58
-  Aggression: 66
   Teamwork: 56
   Vision: 48
+  Stability: 50
+  Tactics: 0
   Fatigue: 0
   Morale: 50
+  AssignedPosition: 0

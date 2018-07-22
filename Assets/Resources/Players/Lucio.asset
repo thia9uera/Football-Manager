@@ -9,20 +9,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Cati_Pandorga
+  m_Name: Rivelino
   m_EditorClassIdentifier: 
-  FirstName: Cati
-  LastName: Pandorga
-  Position: 14
-  Goalkeeping: 46
-  Passing: 88
-  Tackling: 67
-  Shooting: 72
-  Speed: 81
-  Strength: 48
-  Agility: 61
-  Stamina: 83
-  Teamwork: 58
-  Vision: 40
+  FirstName: Carlos
+  LastName: Canhota
+  Perk: {fileID: 0}
+  Position: 1
+  Goalkeeping: 28
+  Passing: 72
+  Tackling: 82
+  Shooting: 55
+  Speed: 62
+  Strength: 80
+  Agility: 63
+  Stamina: 71
+  Teamwork: 70
+  Vision: 26
+  Stability: 50
+  Tactics: 0
   Fatigue: 0
   Morale: 50
+  AssignedPosition: 0
