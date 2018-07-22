@@ -28,15 +28,8 @@ public class PlayerData : ScriptableObject
         RF,
     }
 
-    public enum PlayerPerk
-    {
-        None,
-        Striker,
-        Selfish,
-        HotHead,
-        Header,
-        Sharpshooter,
-    }
+    public PerkData Perk;
+
 
     public enum PlayerTactics
     {
@@ -53,13 +46,19 @@ public class PlayerData : ScriptableObject
     {
         Goalkeeping,
         Passing,
+        Crossing,
         Tackling,
         Shooting,
+        Header,
+        Freekick,
+        Penalty,
         Speed,
         Strength,
         Agility,
         Stamina,
+        Fatigue,
         Teamwork,
+        Morale,
         Vision,
         Stability,
     }
@@ -115,7 +114,6 @@ public class PlayerData : ScriptableObject
     [Range(0, 100)]
     public int Stability = 50;
 
-    public PlayerPerk Perk;
     public PlayerTactics Tactics;
     
     //Attributes that change during gameplay

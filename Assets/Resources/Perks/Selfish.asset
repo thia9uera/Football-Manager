@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62353f2b1e0681549907d05f9d6d622b, type: 3}
+  m_Name: Selfish
+  m_EditorClassIdentifier: 
+  Name: Selfish
+  Description: increase chance of scoring inside the box and from penalties
+  AtributesAffected:
+  - Attribute: 3
+    Modifier: 1.5
+  - Attribute: 5
+    Modifier: 1.25
+  ZoneRestriction: 10000000
