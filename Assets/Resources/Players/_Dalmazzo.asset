@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Neymar 1
+  m_Name: _Dalmazzo
   m_EditorClassIdentifier: 
-  FirstName: Neymar
-  LastName: 
+  FirstName: Andre
+  LastName: Dalmazzo
   Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Position: 10
   Goalkeeping: 27
@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 94
   Stability: 59
   Tactics: 4
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

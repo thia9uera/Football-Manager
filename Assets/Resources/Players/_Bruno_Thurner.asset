@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Rivaldo 1
+  m_Name: _Bruno_Thurner
   m_EditorClassIdentifier: 
-  FirstName: Rivaldo
-  LastName: 
+  FirstName: Bruno
+  LastName: Thurner
   Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
   Position: 11
   Goalkeeping: 50
@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 90
   Stability: 95
   Tactics: 4
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

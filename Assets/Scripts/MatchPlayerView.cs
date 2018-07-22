@@ -13,7 +13,7 @@ public class MatchPlayerView : MonoBehaviour
     public void Populate(PlayerData _player)
     {
         string name = _player.FirstName + " " + _player.LastName;
-        string pos = MainController.Instance.GetPositionShortString(_player.Position);
+        string pos = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         nameLabel.text = "<color=#999999>"+pos+"</color>  " + name;
     }
 }

@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5d27a541f9e8943823ac9fd75d1a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestPlayer: {fileID: 11400000, guid: 5259035e79de7d84a9ac0f732bd5bfa9, type: 2}
+  TestPlayer: {fileID: 11400000, guid: dd379b7fe5f5ace44a2a291f9c10ddfe, type: 2}
   dropDown: {fileID: 495950378}
 --- !u!1001 &760232916
 Prefab:

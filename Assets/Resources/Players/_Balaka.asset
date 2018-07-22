@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Felipe_Coutinho 1
+  m_Name: _Balaka
   m_EditorClassIdentifier: 
-  FirstName: Hugo
-  LastName: Peleia
+  FirstName: Balaka
+  LastName: 
   Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
-  Position: 1
+  Position: 15
   Goalkeeping: 18
   Passing: 64
   Tackling: 79
@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 48
   Stability: 50
   Tactics: 0
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

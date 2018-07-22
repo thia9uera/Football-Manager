@@ -6,22 +6,21 @@ public class MainController : MonoBehaviour
 {
     public static MainController Instance;
 
-    public Localization Localization;
+    public LocalizationData Localization;
     public MatchController Match;
 
     public void Awake()
     {
         if (Instance == null) Instance = this;
-
-        Localization = GetComponent<Localization>();
     }
 
     public void Start()
     {
-        TeamData home = Resources.Load<TeamData>("Teams/Avalanches");
-        TeamData away = Resources.Load<TeamData>("Teams/Comanches");
+        TeamData home = Resources.Load<TeamData>("Teams/Brasil");
+        TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
         Match.Populate(home, away);
     }
+
     public string GetPositionShortString(PlayerData.PlayerPosition _position)
     {
         string str = "";

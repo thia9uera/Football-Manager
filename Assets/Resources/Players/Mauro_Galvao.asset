@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Mauro_Galvao
   m_EditorClassIdentifier: 
   FirstName: 'Mauro '
-  LastName: "Gauv\xE3o"
+  LastName: "Galv\xE3o"
   Perk: {fileID: 11400000, guid: eb9f362d2dec7274ba4e2354ae23e9bb, type: 2}
   Position: 2
   Goalkeeping: 52
@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 78
   Stability: 82
   Tactics: 2
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

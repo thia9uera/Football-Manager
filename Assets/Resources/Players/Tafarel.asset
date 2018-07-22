@@ -14,7 +14,7 @@ MonoBehaviour:
   FirstName: Tafarel
   LastName: 
   Perk: {fileID: 11400000, guid: 6a56fdf2cfc8aa2449947f51d19bf41e, type: 2}
-  Position: 1
+  Position: 0
   Goalkeeping: 98
   Passing: 48
   Tackling: 30
@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 81
   Stability: 83
   Tactics: 0
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

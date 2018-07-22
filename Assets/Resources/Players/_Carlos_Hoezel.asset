@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Rivelino 1
+  m_Name: _Carlos_Hoezel
   m_EditorClassIdentifier: 
-  FirstName: Rivelino
-  LastName: 
+  FirstName: Carlos
+  LastName: Hoezel
   Perk: {fileID: 0}
   Position: 2
   Goalkeeping: 46
@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 80
   Stability: 76
   Tactics: 0
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

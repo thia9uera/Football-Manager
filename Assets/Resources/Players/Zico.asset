@@ -30,6 +30,6 @@ MonoBehaviour:
   Vision: 89
   Stability: 82
   Tactics: 7
-  Fatigue: 0
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

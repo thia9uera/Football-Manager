@@ -39,7 +39,7 @@ public class MatchController : MonoBehaviour
     }
 
     private int totalZones = 17;
-    private int currentZone = (int)FieldZone.CM;
+    private int currentZone = (int)FieldZone.RD;
     private TeamData attackingTeam;
     private TeamData defendingTeam;
     private PlayerData playerWithBall;
@@ -93,94 +93,18 @@ public class MatchController : MonoBehaviour
         Reset();
         startBtn.SetActive(false);
         Narration.UpdateNarration("KICK OFF!", Color.gray);
-        InvokeRepeating("DefineActions", 1f, 1f);
-    }
-
-    private void UpdateMatch()
-    {
-        //LAST RESOLVE ENDED UP IN A GOAL
-        if (isGoal)
-        {
-            if (isScorerAnnounced)
-            {
-                currentZone = 2;
-                Field.UpdateFieldArea(currentZone);
-                if (teamWithBall == 0) Narration.UpdateNarration(HomeTeam.Name + " kick off again.", HomeTeam.PrimaryColor);
-                else Narration.UpdateNarration(AwayTeam.Name + " kick off again.", AwayTeam.PrimaryColor);
-                isGoal = false;
-                isGoalAnnounced = false;
-                isScorerAnnounced = false;
-                return;
-            }
-            else
-            {
-                if (teamWithBall == 0)
-                {
-                    Narration.UpdateNarration(GetAreaNarration(), HomeTeam.PrimaryColor);
-                    teamWithBall = 1;
-                }
-                else
-                {
-                    Narration.UpdateNarration(GetAreaNarration(), AwayTeam.PrimaryColor);
-                    teamWithBall = 0;
-                }
-                return;
-            }
-        }
-
-        //HALF TIME
-        if(matchTime == 45 && !isHalfTime)
-        {
-            isHalfTime = true;
-            Narration.UpdateNarration("And it's half time.", Color.gray);
-            teamWithBall = 1;
-            currentZone = 2;
-            Field.UpdateFieldArea(currentZone);
-            return;
-        }
-
-        if(matchTime == 90)
-        {
-            CancelInvoke("UpdateMatch");
-            string winner = "No winners today.";
-            if (homeTeamScore > awayTeamScore) winner =  HomeTeam.Name + " won the match";
-            else if (awayTeamScore > homeTeamScore) winner = AwayTeam.Name + " won the match";
-            Narration.UpdateNarration("And it's the final whistle. " + winner, Color.gray);
-            startBtn.SetActive(true);
-            return;
-        }
-
-        matchTime++;
-        Score.UpdateTime(matchTime);
-        Field.UpdateFieldArea(currentZone);
-
-        if (Resolve() == 0)
-        {
-            if (isGoal)
-            {
-                Narration.UpdateNarration(GetAreaNarration(), HomeTeam.PrimaryColor);
-            }
-            else Narration.UpdateNarration(matchTime + "' " + HomeTeam.Name + GetAreaNarration(), HomeTeam.PrimaryColor);
-        }
-        else
-        {
-            if (isGoal)
-            {
-                Narration.UpdateNarration(GetAreaNarration(), AwayTeam.PrimaryColor);
-            }
-            else Narration.UpdateNarration(matchTime + "' " + AwayTeam.Name + GetAreaNarration(), AwayTeam.PrimaryColor);
-        }
-
-        if (teamWithBall == 0) currentZone++;
-        else currentZone--;
+        InvokeRepeating("DefineActions", 0.5f, 0.5f);
     }
 
     private void DefineActions()
     {
         PlayerData attacking = GetAttackingPlayer((FieldZone)currentZone);
-        PlayerData defending= GetDefendingPlayer((FieldZone)currentZone);
+        PlayerData defending = GetDefendingPlayer((FieldZone)currentZone);
 
-        print("ATTACKING: " + attacking.FirstName + "   DEFENDING: " + defending.FirstName);
+        if(attacking == null && defending == null) Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
+        else if(attacking == null) Narration.UpdateNarration(defending.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
+        else if (defending == null) Narration.UpdateNarration(attacking.FirstName + " DE BOAS", attackingTeam.PrimaryColor);
+        else Narration.UpdateNarration(attacking.FirstName + " VS " + defending.FirstName, Color.gray);
     }
 
     private int GetRandomZone()
@@ -202,11 +126,10 @@ public class MatchController : MonoBehaviour
         foreach (PlayerData player in attackingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
- 
             if(chance >= 1f) players.Add(player);
             else 
             {
-                if(chance <= Random.Range(0f, 1f)) players.Add(player);
+                if(chance <= Random.Range(0f, 1f) && chance > 0) players.Add(player);
             }
         }
         return GetActivePlayer(players);
@@ -221,14 +144,13 @@ public class MatchController : MonoBehaviour
 
         List<PlayerData> players = new List<PlayerData>();
 
-        foreach (PlayerData player in attackingTeam.Squad)
+        foreach (PlayerData player in defendingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
-
-            if (chance >= 1f) players.Add(player);
+            if (chance >= 1f ) players.Add(player);
             else
             {
-                if (chance <= Random.Range(0f, 1f)) players.Add(player);
+                if (chance <= Random.Range(0f, 1f) && chance > 0) players.Add(player);
             }
         }
         return GetActivePlayer(players);
@@ -261,7 +183,7 @@ public class MatchController : MonoBehaviour
         float teamTacticsBonus = 0.5f;
 
         chance = _player.GetChancePerZone(_zone);
-        if (chance < 1f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
+        if (chance < 1f && chance > 0f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
 
         return chance;
     }
@@ -318,125 +240,5 @@ public class MatchController : MonoBehaviour
 
         return str;
     }
-
-
-    public int Resolve()
-    {
-        int home = 0;
-        int away = 0;
-            /*
-        if (currentZone == (int)FieldZone.Midfield)
-        {
-            //HOME ATTACKING
-            if (teamWithBall == 0)
-            {
-                home = Random.Range(0, HomeTeamSquad.CenterAtt);
-                away = Random.Range(0, AwayTeamSquad.CenterDef);
-                if (home > away) teamWithBall = 0;
-                else teamWithBall = 1;
-            }
-            //AWAY ATTACKING
-            else
-            {
-                home = Random.Range(0, HomeTeamSquad.CenterDef);
-                away = Random.Range(0, AwayTeamSquad.CenterAtt);
-                if (away > home) teamWithBall = 1;
-                else teamWithBall = 0;
-            }
-        }
-
-        if (currentZone == (int)FieldZone.AwayDefense)
-        {
-            //HOME ATTACKING
-            if (teamWithBall == 0)
-            {
-                home = Random.Range(0, HomeTeamSquad.ForwardAtt);
-                away = Random.Range(0, AwayTeamSquad.BackDef);
-                if (home > away) teamWithBall = 0;
-                else teamWithBall = 1;
-            }
-            //AWAY ATTACKING
-            else
-            {
-                home = Random.Range(0, HomeTeamSquad.BackAtt);
-                away = Random.Range(0, AwayTeamSquad.ForwardDef);
-                if (away > home) teamWithBall = 1;
-                else teamWithBall = 0;
-            }
-        }
-
-        if (currentZone == (int)FieldZone.HomeDefense)
-        {
-            //HOME ATTACKING
-            if (teamWithBall == 0)
-            {
-                home = Random.Range(0, HomeTeamSquad.BackDef);
-                away = Random.Range(0, AwayTeamSquad.ForwardAtt);
-                if (home > away) teamWithBall = 0;
-                else teamWithBall = 1;
-            }
-            //AWAY ATTACKING
-            else
-            {
-                home = Random.Range(0, HomeTeamSquad.BackDef);
-                away = Random.Range(0, AwayTeamSquad.ForwardAtt);
-                if (away > home) teamWithBall = 1;
-                else teamWithBall = 0;
-            }
-        }
-
-        if (currentZone == (int)FieldZone.AwayGoal)
-        {
-            //HOME ATTACKING
-            if (teamWithBall == 0)
-            {
-                home = Random.Range(0, HomeTeamSquad.ForwardAtt);
-                away = Random.Range(0, AwayTeamSquad.Keeper);
-                if (home > away)
-                {
-                    isGoal = true;
-                    homeTeamScore++;
-                    Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
-                }
-                else teamWithBall = 1;
-            }
-            //AWAY ATTACKING
-            else
-            {
-                home = Random.Range(0, HomeTeamSquad.ForwardDef);
-                away = Random.Range(0, AwayTeamSquad.BackAtt + AwayTeamSquad.Keeper);
-                if (away > home) teamWithBall = 1;
-                else teamWithBall = 0;
-            }
-        }
-
-        if (currentZone == (int)FieldZone.HomeGoal)
-        {
-            //HOME ATTACKING
-            if (teamWithBall == 0)
-            {
-                home = Random.Range(0, HomeTeamSquad.BackAtt + HomeTeamSquad.Keeper);
-                away = Random.Range(0, AwayTeamSquad.ForwardDef);
-                if (home > away) teamWithBall = 0;
-                else teamWithBall = 1;
-            }
-            //AWAY ATTACKING
-            else
-            {
-                home = Random.Range(0, HomeTeamSquad.Keeper);
-                away = Random.Range(0, AwayTeamSquad.ForwardAtt);
-                if (away > home)
-                {
-                    isGoal = true;
-                    awayTeamScore++;
-                    Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
-                }
-                else teamWithBall = 0;
-            }
-        }
-        */
-        return teamWithBall;
-           
-}
  
 }

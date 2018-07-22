@@ -63,7 +63,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1532175252955
+  Google_LastUpdatedVersion: 1532287795653
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
@@ -92,6 +92,246 @@ MonoBehaviour:
     Languages:
     - GK
     - GOL
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_LeftDefender
+    TermType: 0
+    Description: 
+    Languages:
+    - Left Defender
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_LeftDefender
+    TermType: 0
+    Description: 
+    Languages:
+    - LD
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_CenterDefender
+    TermType: 0
+    Description: 
+    Languages:
+    - Center Defender
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_CenterDefender
+    TermType: 0
+    Description: 
+    Languages:
+    - CD
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_RightDefender
+    TermType: 0
+    Description: 
+    Languages:
+    - Right Defender
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_RightDefender
+    TermType: 0
+    Description: 
+    Languages:
+    - RD
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_LeftDefMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Left Defending Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_LeftDefMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - LDM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_CenterDefMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Center Defending Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_CenterDefMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - CDM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_RightDefMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Right Defending Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_RightDefMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - RDM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_LeftMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Left Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_LeftMidifielder
+    TermType: 0
+    Description: 
+    Languages:
+    - LM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_CenterMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Center Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_CenterMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - CM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_RightMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Right Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_RightMidifielder
+    TermType: 0
+    Description: 
+    Languages:
+    - RM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_LeftAttMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Left Attacking Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_LeftAttMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - LAM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_CenterAttMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Center Attacking Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_CenterAttMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - CAM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_RightAttMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - Right Attacking Midfielder
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_RightAttMidfielder
+    TermType: 0
+    Description: 
+    Languages:
+    - RAM
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_LeftForward
+    TermType: 0
+    Description: 
+    Languages:
+    - Left Forward
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_LeftForward
+    TermType: 0
+    Description: 
+    Languages:
+    - LF
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_CenterForward
+    TermType: 0
+    Description: 
+    Languages:
+    - Center Forward
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_CenterForward
+    TermType: 0
+    Description: 
+    Languages:
+    - CF
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: pos_RightForward
+    TermType: 0
+    Description: 
+    Languages:
+    - Right Forward
+    - 
+    Flags: 0000
+    Languages_Touch: []
+  - Term: posTag_RightForward
+    TermType: 0
+    Description: 
+    Languages:
+    - RF
+    - 
     Flags: 0000
     Languages_Touch: []
   - Term: btn_Start

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Dunga 1
+  m_Name: _Christian
   m_EditorClassIdentifier: 
-  FirstName: Dunga
-  LastName: "Bund\xE3o"
+  FirstName: Christian
+  LastName: 
   Perk: {fileID: 0}
   Position: 8
   Goalkeeping: 83

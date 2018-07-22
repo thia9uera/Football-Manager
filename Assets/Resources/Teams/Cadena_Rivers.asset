@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Cadena_Rivers
+  m_EditorClassIdentifier: 
+  Name: Cadena Rivers
+  Tag: CAR
+  PrimaryColor: {r: 0.38319752, g: 0.65699995, b: 0.04793563, a: 1}
+  SecondaryColor: {r: 1, g: 0.72749364, b: 0.23113209, a: 1}
+  Formation: 2
+  Squad:
+  - {fileID: 11400000, guid: 6b923120f86d25d4ba7912ade32de1ee, type: 2}
+  - {fileID: 11400000, guid: ee0e46dcb2ba51645852a6b3adf6d6d0, type: 2}
+  - {fileID: 11400000, guid: 6fb5333380137d543947ebe5ea4073aa, type: 2}
+  - {fileID: 11400000, guid: f10b2673e14e177448c614b7bf4943b7, type: 2}
+  - {fileID: 11400000, guid: 1cd9262e641926c4498d2a75a5d5cfa6, type: 2}
+  - {fileID: 11400000, guid: 1a79d37a28df25a439d48f9ac85f892a, type: 2}
+  - {fileID: 11400000, guid: 4cc1eba80f13f0d448d9e5efc595e39c, type: 2}
+  - {fileID: 11400000, guid: e5b8c41b064b71d4fa2220121d80d570, type: 2}
+  - {fileID: 11400000, guid: 537c13b5b6a15b94bbc9e5c88b9a163e, type: 2}
+  - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
+  - {fileID: 11400000, guid: 1ab154db865e3da40837555d8f43962e, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: 02e82dca108757742baf2ac947ba9931, type: 2}
+  - {fileID: 11400000, guid: ea199b13b3aa8934bb5d341cbe4c5558, type: 2}
+  - {fileID: 11400000, guid: 9d443ba5999716d48a9ac92a41ebdeac, type: 2}
+  - {fileID: 11400000, guid: 93bf3b8ec08d4494b92e85122ec9d2e5, type: 2}
+  - {fileID: 11400000, guid: f1302c826d238b94089fd0af5444b7b3, type: 2}
