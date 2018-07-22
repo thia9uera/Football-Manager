@@ -11,12 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
   m_Name: Comanches
   m_EditorClassIdentifier: 
-  Name: Comanches
-  Tag: COM
-  PrimaryColor: {r: 0.804, g: 0.57761836, b: 0.11035294, a: 1}
-  SecondaryColor: {r: 0.3490566, g: 0.30771306, b: 0.16629584, a: 1}
+  Name: Cadena_Rivers
+  Tag: CAD
+  PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
+  SecondaryColor: {r: 0, g: 0.4787453, b: 0.745283, a: 1}
+  Formation: 0
   Squad:
-  - {fileID: 11400000, guid: 5259035e79de7d84a9ac0f732bd5bfa9, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 66846c5d8bc161c47af647f7ff081f24, type: 2}
-  - {fileID: 11400000, guid: f6f57eace4234be48ae46baae54a5bd8, type: 2}
-  - {fileID: 11400000, guid: c0bc0a4fdee885840a57ce4ec09cf9dc, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  Substitutes: []

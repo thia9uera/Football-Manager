@@ -35,11 +35,12 @@ public class PlayerData : ScriptableObject
     {
         None,
         Captain,
-        Offensive,
-        Defensive,
-        Distributor,
-        Faker,
-        Star,
+        Guard,
+        Producer,
+        Infiltrator,
+        FastFurious,
+        WingInfiltrator,
+        Omnipresence,
     }
 
     public enum PlayerAttributes

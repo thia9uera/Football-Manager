@@ -11,21 +11,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: Rivelino
   m_EditorClassIdentifier: 
-  FirstName: Carlos
-  LastName: Canhota
+  FirstName: Rivelino
+  LastName: 
   Perk: {fileID: 0}
-  Position: 1
-  Goalkeeping: 28
+  Position: 2
+  Goalkeeping: 46
   Passing: 72
-  Tackling: 82
+  Tackling: 87
   Shooting: 55
-  Speed: 62
-  Strength: 80
-  Agility: 63
-  Stamina: 71
-  Teamwork: 70
-  Vision: 26
-  Stability: 50
+  Heading: 50
+  Freekick: 50
+  Penalty: 50
+  Speed: 87
+  Strength: 91
+  Agility: 78
+  Stamina: 83
+  Teamwork: 88
+  Vision: 80
+  Stability: 76
   Tactics: 0
   Fatigue: 0
   Morale: 50

@@ -9,27 +9,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Garrincha
+  m_Name: Mauro_Galvao 1
   m_EditorClassIdentifier: 
-  FirstName: Garrincha
-  LastName: 
-  Perk: {fileID: 11400000, guid: 42f91a8293f75dc4595d99b13a5f4665, type: 2}
-  Position: 15
-  Goalkeeping: 28
-  Passing: 81
-  Tackling: 76
-  Shooting: 82
+  FirstName: 'Mauro '
+  LastName: "Gauv\xE3o"
+  Perk: {fileID: 11400000, guid: eb9f362d2dec7274ba4e2354ae23e9bb, type: 2}
+  Position: 2
+  Goalkeeping: 52
+  Passing: 72
+  Tackling: 93
+  Shooting: 81
   Heading: 50
   Freekick: 50
   Penalty: 50
-  Speed: 93
-  Strength: 80
-  Agility: 96
-  Stamina: 72
-  Teamwork: 77
-  Vision: 66
-  Stability: 74
-  Tactics: 6
+  Speed: 80
+  Strength: 86
+  Agility: 77
+  Stamina: 78
+  Teamwork: 86
+  Vision: 78
+  Stability: 82
+  Tactics: 2
   Fatigue: 0
   Morale: 50
   AssignedPosition: 0

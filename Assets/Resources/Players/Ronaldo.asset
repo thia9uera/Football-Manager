@@ -11,22 +11,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: Ronaldo
   m_EditorClassIdentifier: 
-  FirstName: Cati
-  LastName: Pandorga
-  Perk: {fileID: 0}
+  FirstName: Ronaldo
+  LastName: "Fen\xF4meno"
+  Perk: {fileID: 11400000, guid: 564dd68bbf31d5e4ab09d6135f44710f, type: 2}
   Position: 14
   Goalkeeping: 46
-  Passing: 88
-  Tackling: 67
-  Shooting: 72
-  Speed: 81
-  Strength: 48
-  Agility: 61
+  Passing: 79
+  Tackling: 80
+  Shooting: 95
+  Heading: 50
+  Freekick: 50
+  Penalty: 50
+  Speed: 87
+  Strength: 85
+  Agility: 92
   Stamina: 83
-  Teamwork: 58
-  Vision: 40
-  Stability: 50
-  Tactics: 0
+  Teamwork: 87
+  Vision: 86
+  Stability: 65
+  Tactics: 4
   Fatigue: 0
   Morale: 50
   AssignedPosition: 0

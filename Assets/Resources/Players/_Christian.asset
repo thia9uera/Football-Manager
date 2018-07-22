@@ -9,27 +9,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: "Ronaldinho_Ga\xFAcho"
+  m_Name: Dunga 1
   m_EditorClassIdentifier: 
-  FirstName: Carlos
-  LastName: Canhota
+  FirstName: Dunga
+  LastName: "Bund\xE3o"
   Perk: {fileID: 0}
-  Position: 1
-  Goalkeeping: 28
-  Passing: 72
-  Tackling: 82
-  Shooting: 55
+  Position: 8
+  Goalkeeping: 83
+  Passing: 69
+  Tackling: 55
+  Shooting: 72
   Heading: 50
   Freekick: 50
   Penalty: 50
-  Speed: 62
-  Strength: 80
-  Agility: 63
-  Stamina: 71
+  Speed: 66
+  Strength: 40
+  Agility: 80
+  Stamina: 56
   Teamwork: 70
-  Vision: 26
+  Vision: 75
   Stability: 50
-  Tactics: 0
-  Fatigue: 0
+  Tactics: 7
+  Fatigue: 100
   Morale: 50
   AssignedPosition: 0

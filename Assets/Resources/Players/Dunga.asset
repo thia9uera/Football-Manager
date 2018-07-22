@@ -29,7 +29,7 @@ MonoBehaviour:
   Teamwork: 70
   Vision: 75
   Stability: 50
-  Tactics: 0
+  Tactics: 7
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

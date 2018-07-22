@@ -11,22 +11,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: Neymar
   m_EditorClassIdentifier: 
-  FirstName: Joana
-  LastName: Perdigoto
-  Perk: {fileID: 0}
-  Position: 11
+  FirstName: Neymar
+  LastName: 
+  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
+  Position: 10
   Goalkeeping: 27
-  Passing: 72
-  Tackling: 64
-  Shooting: 82
-  Speed: 89
-  Strength: 56
-  Agility: 90
+  Passing: 91
+  Tackling: 72
+  Shooting: 93
+  Heading: 50
+  Freekick: 50
+  Penalty: 50
+  Speed: 93
+  Strength: 60
+  Agility: 92
   Stamina: 92
-  Teamwork: 60
-  Vision: 92
-  Stability: 50
-  Tactics: 0
+  Teamwork: 81
+  Vision: 94
+  Stability: 59
+  Tactics: 4
   Fatigue: 0
   Morale: 50
   AssignedPosition: 0

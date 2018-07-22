@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Hugo
   LastName: Peleia
-  Perk: {fileID: 0}
+  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Position: 1
   Goalkeeping: 18
   Passing: 64

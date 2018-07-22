@@ -9,27 +9,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Garrincha
+  m_Name: Ronaldo 1
   m_EditorClassIdentifier: 
-  FirstName: Garrincha
-  LastName: 
-  Perk: {fileID: 11400000, guid: 42f91a8293f75dc4595d99b13a5f4665, type: 2}
-  Position: 15
-  Goalkeeping: 28
-  Passing: 81
-  Tackling: 76
-  Shooting: 82
+  FirstName: Ronaldo
+  LastName: "Fen\xF4meno"
+  Perk: {fileID: 11400000, guid: 564dd68bbf31d5e4ab09d6135f44710f, type: 2}
+  Position: 14
+  Goalkeeping: 46
+  Passing: 79
+  Tackling: 80
+  Shooting: 95
   Heading: 50
   Freekick: 50
   Penalty: 50
-  Speed: 93
-  Strength: 80
-  Agility: 96
-  Stamina: 72
-  Teamwork: 77
-  Vision: 66
-  Stability: 74
-  Tactics: 6
+  Speed: 87
+  Strength: 85
+  Agility: 92
+  Stamina: 83
+  Teamwork: 87
+  Vision: 86
+  Stability: 65
+  Tactics: 4
   Fatigue: 0
   Morale: 50
   AssignedPosition: 0

@@ -9,23 +9,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: "Rom\xE1rio"
+  m_Name: Tafarel 1
   m_EditorClassIdentifier: 
-  FirstName: Carlos
-  LastName: Canhota
-  Perk: {fileID: 0}
+  FirstName: Tafarel
+  LastName: 
+  Perk: {fileID: 11400000, guid: 6a56fdf2cfc8aa2449947f51d19bf41e, type: 2}
   Position: 1
-  Goalkeeping: 28
-  Passing: 72
-  Tackling: 82
-  Shooting: 55
-  Speed: 62
+  Goalkeeping: 98
+  Passing: 48
+  Tackling: 30
+  Shooting: 78
+  Heading: 50
+  Freekick: 50
+  Penalty: 50
+  Speed: 67
   Strength: 80
-  Agility: 63
-  Stamina: 71
-  Teamwork: 70
-  Vision: 26
-  Stability: 50
+  Agility: 84
+  Stamina: 76
+  Teamwork: 78
+  Vision: 81
+  Stability: 83
   Tactics: 0
   Fatigue: 0
   Morale: 50
