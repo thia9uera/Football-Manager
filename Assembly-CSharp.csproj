@@ -146,6 +146,8 @@
     <Compile Include="Assets\Scripts\Data\PerkData.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Data\TeamData.cs" />
+    <Compile Include="Assets\Scripts\Debug\Debug_FieldView.cs" />
+    <Compile Include="Assets\Scripts\Debug\Debug_ZoneView.cs" />
     <Compile Include="Assets\Scripts\MatchFieldView.cs" />
     <Compile Include="Assets\Scripts\MatchNarration.cs" />
     <Compile Include="Assets\Scripts\MatchNarrationTextView.cs" />
