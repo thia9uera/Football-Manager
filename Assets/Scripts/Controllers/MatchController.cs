@@ -306,8 +306,8 @@ public class MatchController : MonoBehaviour
         float playerTacticsBonus = 1f;
         float teamTacticsBonus = 1f;
 
-        if (IsPlayerOwnPosition(_player, _zone)) chance = 1f;
-        else chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
+        chance = _player.GetChancePerZone(_zone);
+        if(chance < 1f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
 
         return chance;
     }

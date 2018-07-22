@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Tinoco
   LastName: Maneta
-  Position: 0
+  Perk: {fileID: 0}
+  Position: 8
   Goalkeeping: 83
   Passing: 69
   Tackling: 55
@@ -22,8 +23,10 @@ MonoBehaviour:
   Strength: 40
   Agility: 80
   Stamina: 56
-  Aggression: 55
   Teamwork: 70
   Vision: 75
-  Fatigue: 0
+  Stability: 50
+  Tactics: 0
+  Fatigue: 100
   Morale: 50
+  AssignedPosition: 0

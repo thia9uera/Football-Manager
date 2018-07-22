@@ -117,8 +117,7 @@ public class PlayerData : ScriptableObject
     public PlayerTactics Tactics;
     
     //Attributes that change during gameplay
-    [HideInInspector]
-    public int Fatigue = 0;
+    public int Fatigue = 100;
 
     [HideInInspector]
     public int Morale = 50;

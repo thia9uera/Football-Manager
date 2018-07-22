@@ -21,13 +21,11 @@ public class Debug_FieldView : MonoBehaviour
         {
             zone = t.GetComponent<Debug_ZoneView>();
 
-            float chance = TestPlayer.GetChancePerZone(zone.Zone);
+            float chance = CalculatePresence(TestPlayer, zone.Zone);
 
             if (chance == 1f) zone.Populate(0);
-            else if (chance == 0.5f) zone.Populate(1);
-            else if (chance == 0.25f) zone.Populate(2);
-            else if (chance == 0.1f) zone.Populate(3);
-            else if (chance == 0f) zone.Populate(4);
+            else zone.Populate(chance);
+ 
         }
     }
 
@@ -35,5 +33,17 @@ public class Debug_FieldView : MonoBehaviour
     {
         PlayerData.PlayerPosition pos = (PlayerData.PlayerPosition)dropDown.value;
         TestPlayer.Position = pos;
+    }
+
+    private float CalculatePresence(PlayerData _player, MatchController.FieldZone _zone)
+    {
+        float chance = 0f;
+        float playerTacticsBonus = 0f;
+        float teamTacticsBonus = 1f;
+
+        chance = _player.GetChancePerZone(_zone);
+        if(chance < 1f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
+
+        return chance;
     }
 }
