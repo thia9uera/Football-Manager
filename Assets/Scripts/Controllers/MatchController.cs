@@ -39,7 +39,14 @@ public class MatchController : MonoBehaviour
     }
 
     private int totalZones = 17;
-    private int currentZone = (int)FieldZone.RD;
+
+
+    [SerializeField]
+    private GameObject startBtn;
+
+    [SerializeField]
+    private FieldZone currentZone;
+
     private TeamData attackingTeam;
     private TeamData defendingTeam;
     private PlayerData playerWithBall;
@@ -53,8 +60,6 @@ public class MatchController : MonoBehaviour
     private bool isScorerAnnounced = false;
     private bool isHalfTime = false;
 
-    [SerializeField]
-    private GameObject startBtn;
 
 
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
@@ -98,8 +103,8 @@ public class MatchController : MonoBehaviour
 
     private void DefineActions()
     {
-        PlayerData attacking = GetAttackingPlayer((FieldZone)currentZone);
-        PlayerData defending = GetDefendingPlayer((FieldZone)currentZone);
+        PlayerData attacking = GetAttackingPlayer(currentZone);
+        PlayerData defending = GetDefendingPlayer(currentZone);
 
         if(attacking == null && defending == null) Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
         else if(attacking == null) Narration.UpdateNarration(defending.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
@@ -190,55 +195,10 @@ public class MatchController : MonoBehaviour
 
     private FieldZone GetAwayTeamZone()
     {
-        int zone = (totalZones - 1) -  currentZone;
+        int zone = (totalZones - 1) -  (int)currentZone;
 
         return (FieldZone)zone;
     }
    
-    private string GetAreaNarration()
-    {
-        string str = "";
-
-        //HOME TEAM ATTACKING
-        if (teamWithBall == 0)
-        {
-            if (isGoal && !isGoalAnnounced)
-            {
-                str = "<size=60>GOOOOAAAL!!!</size>";
-                isGoalAnnounced = true;
-            }
-            else if (isGoal && isGoalAnnounced)
-            {
-                str = matchTime + "' " + HomeTeam.Squad[3].FirstName + " scored for " + HomeTeam.Name;
-                isScorerAnnounced = true;
-            }
-            else if (currentZone == (int)FieldZone.CM) str = " has the ball in the Midfield.";
-            else if (currentZone == (int)FieldZone.CAM) str = " is pressuring on the attack.";
-            else if (currentZone == (int)FieldZone.CF) str = " is going for the goal...";
-            else if (currentZone == (int)FieldZone.CDM) str = " managed to stop the attack.";
-            else if (currentZone == (int)FieldZone.CD) str = " keeper saved the day.";
-        }
-        //AWAY TEAM ATTACKING
-        else
-        {
-            if (isGoal && !isGoalAnnounced)
-            {
-                str = "<size=60>GOOOOAAAL!!!</size>";
-                isGoalAnnounced = true;
-            }
-            else if (isGoal && isGoalAnnounced)
-            {
-                str = matchTime + "' " + AwayTeam.Squad[3].FirstName + " scored for " + AwayTeam.Name;
-                isScorerAnnounced = true;
-            }
-            else if (currentZone == (int)FieldZone.CM) str = " has the ball in the Midfield.";
-            else if (currentZone == (int)FieldZone.CDM) str = " is pressuring on the attack.";
-            else if (currentZone == (int)FieldZone.CD) str = " is going for the goal...";
-            else if (currentZone == (int)FieldZone.CAM) str = " managed to stop the attack.";
-            else if (currentZone == (int)FieldZone.CF) str = " keeper saved the day.";
-        }
-
-        return str;
-    }
  
 }

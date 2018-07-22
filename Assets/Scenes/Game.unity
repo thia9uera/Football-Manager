@@ -735,6 +735,7 @@ MonoBehaviour:
   AwayTeamSquad: {fileID: 391303382}
   Narration: {fileID: 548477937}
   startBtn: {fileID: 1147745715}
+  currentZone: 8
 --- !u!1 &635863761
 GameObject:
   m_ObjectHideFlags: 0
