@@ -49,7 +49,7 @@ public class PlayerData : ScriptableObject
         Crossing,
         Tackling,
         Shooting,
-        Header,
+        Heading,
         Freekick,
         Penalty,
         Speed,
@@ -82,6 +82,15 @@ public class PlayerData : ScriptableObject
 
     [Range(0, 100)]
     public int Shooting = 50;
+
+    [Range(0, 100)]
+    public int Heading = 50;
+
+    [Range(0, 100)]
+    public int Freekick = 50;
+
+    [Range(0, 100)]
+    public int Penalty = 50;
 
 
     [Space(10)]

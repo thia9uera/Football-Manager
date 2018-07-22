@@ -39,9 +39,10 @@ public class MatchController : MonoBehaviour
     }
 
     private int totalZones = 17;
-    private int currentZone = 8;
+    private int currentZone = (int)FieldZone.CM;
     private TeamData attackingTeam;
     private TeamData defendingTeam;
+    private PlayerData playerWithBall;
 
     private int matchTime = 0;
     private int homeTeamScore = 0;
@@ -174,86 +175,19 @@ public class MatchController : MonoBehaviour
         else currentZone--;
     }
 
+    private void DefineActions()
+    {
+        List<PlayerData> attackingTeam = GetAttackingPlayers((FieldZone)currentZone);
+        List<PlayerData> defendingTeam = GetDefendingPlayers((FieldZone)currentZone);
+
+        
+    }
+
     private int GetRandomZone()
     {
         int zone = Random.Range(0, totalZones);
 
         return zone;
-    }
-
-    private List<PlayerData> GetPlayersInZone(FieldZone _zone)
-    {
-        List<PlayerData> players = new List<PlayerData>();
-
-        switch(_zone)
-        {
-            case FieldZone.OwnGoal:
-                break;
-            case FieldZone.LD:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.CD:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.RD:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.LDM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.CDM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.RDM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.LM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.CM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.RM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.LAM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.CAM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.RAM:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.LF:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.CF:
-                //TODO Roll dice for each player
-                break;
-
-            case FieldZone.RF:
-                //TODO Roll dice for each player
-                break;
-            case FieldZone.Box:
-                break;
-
-        }
-
-        return players;
     }
 
     private List<PlayerData> GetAttackingPlayers(FieldZone _zone)
@@ -303,37 +237,13 @@ public class MatchController : MonoBehaviour
     private float CalculatePresence(PlayerData _player, FieldZone _zone)
     {
         float chance = 0f;
-        float playerTacticsBonus = 1f;
-        float teamTacticsBonus = 1f;
+        float playerTacticsBonus = 0.5f;
+        float teamTacticsBonus = 0.5f;
 
         chance = _player.GetChancePerZone(_zone);
-        if(chance < 1f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
+        if (chance < 1f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
 
         return chance;
-    }
-
-    private bool IsPlayerOwnPosition(PlayerData _player, FieldZone _zone)
-    {
-        bool isPosition = false;
-
-        if (_player.Position == PlayerData.PlayerPosition.GK && _zone == FieldZone.OwnGoal) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.LD && _zone == FieldZone.LD) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.CD && _zone == FieldZone.CD) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.RD && _zone == FieldZone.RD) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.LDM && _zone == FieldZone.LDM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.CDM && _zone == FieldZone.CDM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.RDM && _zone == FieldZone.RDM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.LM && _zone == FieldZone.LM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.CM && _zone == FieldZone.CM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.RM && _zone == FieldZone.RM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.LAM && _zone == FieldZone.LAM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.CAM && _zone == FieldZone.CAM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.RAM && _zone == FieldZone.RAM) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.LF && _zone == FieldZone.LF) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.CF && _zone == FieldZone.CF) isPosition = true;
-        else if (_player.Position == PlayerData.PlayerPosition.RF && _zone == FieldZone.RF) isPosition = true;
-
-        return isPosition;
     }
 
     private FieldZone GetAwayTeamZone()

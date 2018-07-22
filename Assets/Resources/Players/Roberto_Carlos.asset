@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Roberto Carlos
+  m_Name: Roberto_Carlos
   m_EditorClassIdentifier: 
   FirstName: Carlos
   LastName: Canhota
@@ -19,6 +19,9 @@ MonoBehaviour:
   Passing: 72
   Tackling: 82
   Shooting: 55
+  Heading: 50
+  Freekick: 50
+  Penalty: 50
   Speed: 62
   Strength: 80
   Agility: 63
