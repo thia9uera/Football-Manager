@@ -11,11 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62353f2b1e0681549907d05f9d6d622b, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  Name: Striker
-  Description: increase chance of scoring inside the box and from penalties
+  Name: Tank
+  Description: Increase chance of successfully tackling
   AtributesAffected:
   - Attribute: 3
     Modifier: 1.5
-  - Attribute: 5
+  - Attribute: 9
     Modifier: 1.25
-  ZoneRestriction: 10000000
+  - Attribute: 10
+    Modifier: 1.25
+  ZoneRestriction: 

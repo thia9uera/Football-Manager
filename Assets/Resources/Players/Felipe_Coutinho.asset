@@ -9,21 +9,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Pedrinho_Maciota
+  m_Name: Felipe Coutinho
   m_EditorClassIdentifier: 
-  FirstName: Tinoco
-  LastName: Maneta
-  Position: 0
-  Goalkeeping: 83
-  Passing: 69
-  Tackling: 55
-  Shooting: 72
-  Speed: 66
-  Strength: 40
-  Agility: 80
-  Stamina: 56
-  Aggression: 55
-  Teamwork: 70
-  Vision: 75
+  FirstName: Hugo
+  LastName: Peleia
+  Perk: {fileID: 0}
+  Position: 1
+  Goalkeeping: 18
+  Passing: 64
+  Tackling: 79
+  Shooting: 70
+  Speed: 58
+  Strength: 70
+  Agility: 69
+  Stamina: 58
+  Teamwork: 56
+  Vision: 48
+  Stability: 50
+  Tactics: 0
   Fatigue: 0
   Morale: 50
+  AssignedPosition: 0

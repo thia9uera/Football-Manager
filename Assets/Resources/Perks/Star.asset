@@ -11,11 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62353f2b1e0681549907d05f9d6d622b, type: 3}
   m_Name: Star
   m_EditorClassIdentifier: 
-  Name: Striker
-  Description: increase chance of scoring inside the box and from penalties
+  Name: Star
+  Description: morale is heavily affected  by dispute results (specially not scoring)
+    and staying on the bench. Two stars in the same team makes both decrease morale
+    heavily
   AtributesAffected:
-  - Attribute: 3
+  - Attribute: 14
     Modifier: 1.5
-  - Attribute: 5
-    Modifier: 1.25
-  ZoneRestriction: 10000000
+  - Attribute: 13
+    Modifier: 0.9
+  ZoneRestriction: 
