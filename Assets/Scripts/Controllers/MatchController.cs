@@ -169,13 +169,34 @@ public class MatchController : MonoBehaviour
         foreach(PlayerData player in list )
         {
             float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
-            float p = Random.Range(0f, stats);
-
-            if(p > points)
+            int r = Random.Range(1, 20); //D20tão na mente
+            if (r < 3) //se foi mto mal no dado já perde
             {
-                points = p;
+                float p = 0;
+            }
+            else if (r > 18) //o primeiro atleta que for bem ganha 
+            {
                 activePlayer = player;
             }
+            else //se não for nem muito bem nem muito mal, soma o rolar do dado com os stats
+            {
+                float p = stats + r;
+
+                if (p > points)
+                {
+                    points = p;
+                    activePlayer = player;
+                }
+            }
+
+            //float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
+            //float p = Random.Range(0f, stats);
+
+            //if (p > points)
+            //{
+            //points = p;
+            //activePlayer = player;
+            //}
         }
 
         return activePlayer;
@@ -188,8 +209,10 @@ public class MatchController : MonoBehaviour
         float teamTacticsBonus = 0.5f;
 
         chance = _player.GetChancePerZone(_zone);
-        if (chance < 1f && chance > 0f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
-
+        if (chance < 1f && chance > 0f)
+        {
+            chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
+        }
         return chance;
     }
 
