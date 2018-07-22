@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: Felipe Coutinho
+  m_Name: Felipe_Coutinho
   m_EditorClassIdentifier: 
   FirstName: Hugo
   LastName: Peleia
@@ -19,6 +19,9 @@ MonoBehaviour:
   Passing: 64
   Tackling: 79
   Shooting: 70
+  Heading: 50
+  Freekick: 50
+  Penalty: 50
   Speed: 58
   Strength: 70
   Agility: 69
