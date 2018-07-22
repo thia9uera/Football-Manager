@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Christian
   LastName: 
-  Perk: {fileID: 0}
-  Position: 8
-  Goalkeeping: 83
-  Passing: 69
-  Tackling: 55
-  Shooting: 72
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 66
-  Strength: 40
-  Agility: 80
-  Stamina: 56
-  Teamwork: 70
-  Vision: 75
-  Stability: 50
-  Tactics: 7
+  Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
+  Position: 5
+  Goalkeeping: 27
+  Passing: 74
+  Tackling: 50
+  Shooting: 68
+  Heading: 54
+  Freekick: 77
+  Penalty: 77
+  Speed: 50
+  Strength: 65
+  Agility: 82
+  Stamina: 54
+  Teamwork: 91
+  Vision: 79
+  Stability: 80
+  Tactics: 3
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

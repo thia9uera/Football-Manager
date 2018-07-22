@@ -16,19 +16,19 @@ MonoBehaviour:
   Perk: {fileID: 0}
   Position: 1
   Goalkeeping: 28
-  Passing: 72
-  Tackling: 82
-  Shooting: 55
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 62
-  Strength: 80
-  Agility: 63
-  Stamina: 71
-  Teamwork: 70
-  Vision: 26
-  Stability: 50
+  Passing: 58
+  Tackling: 70
+  Shooting: 43
+  Heading: 30
+  Freekick: 28
+  Penalty: 28
+  Speed: 86
+  Strength: 88
+  Agility: 48
+  Stamina: 86
+  Teamwork: 60
+  Vision: 45
+  Stability: 88
   Tactics: 5
   Fatigue: 100
   Morale: 50

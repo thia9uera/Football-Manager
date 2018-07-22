@@ -13,22 +13,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Tiru
   LastName: Lips
-  Perk: {fileID: 11400000, guid: 6a56fdf2cfc8aa2449947f51d19bf41e, type: 2}
-  Position: 1
-  Goalkeeping: 98
+  Perk: {fileID: 0}
+  Position: 12
+  Goalkeeping: 13
   Passing: 48
-  Tackling: 30
-  Shooting: 78
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 67
-  Strength: 80
-  Agility: 84
-  Stamina: 76
-  Teamwork: 78
-  Vision: 81
-  Stability: 83
+  Tackling: 15
+  Shooting: 60
+  Heading: 22
+  Freekick: 39
+  Penalty: 40
+  Speed: 62
+  Strength: 32
+  Agility: 55
+  Stamina: 56
+  Teamwork: 79
+  Vision: 62
+  Stability: 52
   Tactics: 0
   Fatigue: 100
   Morale: 50

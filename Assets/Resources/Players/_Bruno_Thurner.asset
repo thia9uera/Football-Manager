@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Bruno
   LastName: Thurner
-  Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
-  Position: 11
+  Perk: {fileID: 0}
+  Position: 7
   Goalkeeping: 50
-  Passing: 92
-  Tackling: 67
-  Shooting: 96
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 83
-  Strength: 66
-  Agility: 68
-  Stamina: 88
-  Teamwork: 91
-  Vision: 90
-  Stability: 95
-  Tactics: 4
+  Passing: 61
+  Tackling: 35
+  Shooting: 66
+  Heading: 60
+  Freekick: 37
+  Penalty: 44
+  Speed: 56
+  Strength: 60
+  Agility: 38
+  Stamina: 59
+  Teamwork: 61
+  Vision: 56
+  Stability: 50
+  Tactics: 0
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

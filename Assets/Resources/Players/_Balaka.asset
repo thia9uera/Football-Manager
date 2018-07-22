@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Balaka
   LastName: 
-  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
-  Position: 15
+  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
+  Position: 14
   Goalkeeping: 18
-  Passing: 64
-  Tackling: 79
-  Shooting: 70
-  Heading: 50
+  Passing: 54
+  Tackling: 54
+  Shooting: 76
+  Heading: 54
   Freekick: 50
-  Penalty: 50
-  Speed: 58
-  Strength: 70
-  Agility: 69
-  Stamina: 58
-  Teamwork: 56
-  Vision: 48
-  Stability: 50
-  Tactics: 0
+  Penalty: 72
+  Speed: 62
+  Strength: 46
+  Agility: 66
+  Stamina: 52
+  Teamwork: 41
+  Vision: 59
+  Stability: 43
+  Tactics: 4
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

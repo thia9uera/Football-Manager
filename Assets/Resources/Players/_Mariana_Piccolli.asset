@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Mariana
   LastName: Piccolli
-  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
-  Position: 14
-  Goalkeeping: 46
-  Passing: 90
-  Tackling: 67
-  Shooting: 95
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 81
-  Strength: 77
-  Agility: 80
-  Stamina: 85
+  Perk: {fileID: 0}
+  Position: 2
+  Goalkeeping: 48
+  Passing: 24
+  Tackling: 31
+  Shooting: 43
+  Heading: 14
+  Freekick: 16
+  Penalty: 18
+  Speed: 48
+  Strength: 31
+  Agility: 31
+  Stamina: 71
   Teamwork: 95
-  Vision: 89
-  Stability: 82
-  Tactics: 7
+  Vision: 33
+  Stability: 63
+  Tactics: 0
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

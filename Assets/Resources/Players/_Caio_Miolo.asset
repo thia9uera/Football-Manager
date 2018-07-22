@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Caio
   LastName: Miolo
-  Perk: {fileID: 11400000, guid: 564dd68bbf31d5e4ab09d6135f44710f, type: 2}
-  Position: 14
+  Perk: {fileID: 0}
+  Position: 3
   Goalkeeping: 46
-  Passing: 79
-  Tackling: 80
-  Shooting: 95
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 87
-  Strength: 85
-  Agility: 92
-  Stamina: 83
-  Teamwork: 87
-  Vision: 86
-  Stability: 65
-  Tactics: 4
+  Passing: 43
+  Tackling: 35
+  Shooting: 52
+  Heading: 46
+  Freekick: 41
+  Penalty: 44
+  Speed: 58
+  Strength: 49
+  Agility: 30
+  Stamina: 70
+  Teamwork: 46
+  Vision: 36
+  Stability: 76
+  Tactics: 0
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

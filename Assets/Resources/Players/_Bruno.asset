@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Bruno
   LastName: Iuva
-  Perk: {fileID: 11400000, guid: 42f91a8293f75dc4595d99b13a5f4665, type: 2}
+  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Position: 15
   Goalkeeping: 28
-  Passing: 81
-  Tackling: 76
+  Passing: 65
+  Tackling: 53
   Shooting: 82
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 93
-  Strength: 80
-  Agility: 96
-  Stamina: 72
+  Heading: 46
+  Freekick: 77
+  Penalty: 62
+  Speed: 59
+  Strength: 72
+  Agility: 52
+  Stamina: 63
   Teamwork: 77
-  Vision: 66
-  Stability: 74
-  Tactics: 6
+  Vision: 68
+  Stability: 61
+  Tactics: 0
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

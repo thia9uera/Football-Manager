@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: Lucio
   m_EditorClassIdentifier: 
-  FirstName: Carlos
-  LastName: Canhota
+  FirstName: Lucio
+  LastName: 
   Perk: {fileID: 0}
   Position: 1
   Goalkeeping: 28

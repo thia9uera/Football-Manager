@@ -14,21 +14,21 @@ MonoBehaviour:
   FirstName: Guilherme
   LastName: Da Cas
   Perk: {fileID: 0}
-  Position: 11
-  Goalkeeping: 75
-  Passing: 25
-  Tackling: 31
-  Shooting: 47
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 53
-  Strength: 73
-  Agility: 47
-  Stamina: 56
+  Position: 12
+  Goalkeeping: 50
+  Passing: 76
+  Tackling: 70
+  Shooting: 77
+  Heading: 41
+  Freekick: 32
+  Penalty: 39
+  Speed: 77
+  Strength: 61
+  Agility: 83
+  Stamina: 52
   Teamwork: 87
-  Vision: 55
-  Stability: 27
+  Vision: 92
+  Stability: 86
   Tactics: 0
   Fatigue: 100
   Morale: 50

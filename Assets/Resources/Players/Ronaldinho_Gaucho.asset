@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: Ronaldinho_Gaucho
   m_EditorClassIdentifier: 
-  FirstName: Carlos
-  LastName: Canhota
+  FirstName: 'Ronaldinho '
+  LastName: "Ga\xFAcho"
   Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
-  Position: 1
+  Position: 12
   Goalkeeping: 28
   Passing: 72
   Tackling: 82

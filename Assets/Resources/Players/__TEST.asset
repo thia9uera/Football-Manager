@@ -14,7 +14,7 @@ MonoBehaviour:
   FirstName: Amarello
   LastName: 
   Perk: {fileID: 0}
-  Position: 0
+  Position: 8
   Goalkeeping: 28
   Passing: 72
   Tackling: 82

@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Marcus
   LastName: de Moura
-  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
-  Position: 14
+  Perk: {fileID: 0}
+  Position: 10
   Goalkeeping: 28
-  Passing: 71
-  Tackling: 79
-  Shooting: 98
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 95
-  Strength: 78
-  Agility: 95
-  Stamina: 83
-  Teamwork: 70
-  Vision: 91
-  Stability: 79
-  Tactics: 4
+  Passing: 76
+  Tackling: 64
+  Shooting: 68
+  Heading: 68
+  Freekick: 52
+  Penalty: 47
+  Speed: 63
+  Strength: 67
+  Agility: 51
+  Stamina: 62
+  Teamwork: 62
+  Vision: 69
+  Stability: 70
+  Tactics: 0
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

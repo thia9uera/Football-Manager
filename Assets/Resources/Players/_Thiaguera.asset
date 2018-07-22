@@ -14,21 +14,21 @@ MonoBehaviour:
   FirstName: Thiago
   LastName: Rocha
   Perk: {fileID: 11400000, guid: 2f66ad91f2e5f6840a434d7f01707faf, type: 2}
-  Position: 6
+  Position: 9
   Goalkeeping: 28
-  Passing: 84
-  Tackling: 82
+  Passing: 73
+  Tackling: 52
   Shooting: 63
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 83
-  Strength: 68
-  Agility: 72
+  Heading: 43
+  Freekick: 63
+  Penalty: 72
+  Speed: 78
+  Strength: 57
+  Agility: 71
   Stamina: 90
-  Teamwork: 80
+  Teamwork: 86
   Vision: 52
-  Stability: 90
+  Stability: 91
   Tactics: 1
   Fatigue: 100
   Morale: 50

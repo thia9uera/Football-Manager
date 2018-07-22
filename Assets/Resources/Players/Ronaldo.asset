@@ -22,12 +22,12 @@ MonoBehaviour:
   Heading: 50
   Freekick: 50
   Penalty: 50
-  Speed: 87
+  Speed: 84
   Strength: 85
-  Agility: 92
-  Stamina: 83
+  Agility: 0
+  Stamina: 84
   Teamwork: 87
-  Vision: 86
+  Vision: 95
   Stability: 65
   Tactics: 4
   Fatigue: 100

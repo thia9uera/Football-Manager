@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Thiago
   LastName: de Moura
-  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
+  Perk: {fileID: 0}
   Position: 1
   Goalkeeping: 28
-  Passing: 72
-  Tackling: 82
-  Shooting: 55
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 62
-  Strength: 80
-  Agility: 63
-  Stamina: 71
-  Teamwork: 70
-  Vision: 26
-  Stability: 50
-  Tactics: 3
+  Passing: 52
+  Tackling: 65
+  Shooting: 40
+  Heading: 39
+  Freekick: 32
+  Penalty: 63
+  Speed: 65
+  Strength: 58
+  Agility: 39
+  Stamina: 59
+  Teamwork: 82
+  Vision: 70
+  Stability: 71
+  Tactics: 0
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0

@@ -14,22 +14,22 @@ MonoBehaviour:
   FirstName: Andre
   LastName: Dalmazzo
   Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
-  Position: 10
+  Position: 2
   Goalkeeping: 27
-  Passing: 91
-  Tackling: 72
-  Shooting: 93
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 93
-  Strength: 60
-  Agility: 92
-  Stamina: 92
+  Passing: 57
+  Tackling: 75
+  Shooting: 35
+  Heading: 62
+  Freekick: 28
+  Penalty: 27
+  Speed: 56
+  Strength: 94
+  Agility: 53
+  Stamina: 54
   Teamwork: 81
-  Vision: 94
-  Stability: 59
-  Tactics: 4
+  Vision: 56
+  Stability: 44
+  Tactics: 2
   Fatigue: 100
   Morale: 50
   AssignedPosition: 0
