@@ -138,8 +138,6 @@
     <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguage.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguageDropdown.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Utils\StringObfuscator.cs" />
-    <Compile Include="Assets\Scripts\BoardTileView.cs" />
-    <Compile Include="Assets\Scripts\BoardView.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
     <Compile Include="Assets\Scripts\Data\LocalizationData.cs" />
