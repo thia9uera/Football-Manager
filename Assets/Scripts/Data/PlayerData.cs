@@ -222,7 +222,7 @@ public class PlayerData : ScriptableObject
                     case MatchController.FieldZone.CM: pct = medium_chance; break;
                     case MatchController.FieldZone.LDM: pct = medium_chance; break;
                     case MatchController.FieldZone.CAM: pct = low_chance; break;
-                    case MatchController.FieldZone.CD: pct = low_chance; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance; break;
                 }
                 break;
 
@@ -249,7 +249,7 @@ public class PlayerData : ScriptableObject
                     case MatchController.FieldZone.CM: pct = medium_chance; break;
                     case MatchController.FieldZone.RDM: pct = medium_chance; break;
                     case MatchController.FieldZone.CAM: pct = low_chance; break;
-                    case MatchController.FieldZone.CD: pct = low_chance; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance; break;
                 }
                 break;
 
@@ -286,10 +286,10 @@ public class PlayerData : ScriptableObject
                 switch (_zone)
                 {
                     case MatchController.FieldZone.RAM: pct = 1f; break;
-                    case MatchController.FieldZone.CF: pct = medium_chance; break;
-                    case MatchController.FieldZone.RM: pct = medium_chance; break;
                     case MatchController.FieldZone.RF: pct = high_chance; break;
                     case MatchController.FieldZone.CAM: pct = high_chance; break;
+                    case MatchController.FieldZone.CF: pct = medium_chance; break;
+                    case MatchController.FieldZone.RM: pct = medium_chance; break;
                     case MatchController.FieldZone.CM: pct = low_chance; break;
                     case MatchController.FieldZone.Box: pct = low_chance; break;
                 }
@@ -302,8 +302,33 @@ public class PlayerData : ScriptableObject
                     case MatchController.FieldZone.CF: pct = high_chance; break;
                     case MatchController.FieldZone.Box: pct = high_chance; break;
                     case MatchController.FieldZone.LAM: pct = medium_chance; break;
-                    case MatchController.FieldZone.LDM: pct = low_chance; break;
-                    case MatchController.FieldZone.CM: pct = low_chance; break;
+                    case MatchController.FieldZone.LM: pct = low_chance; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance; break;
+                }
+                break;
+
+            case PlayerPosition.CF:
+                switch (_zone)
+                {
+                    case MatchController.FieldZone.CF: pct = 1f; break;
+                    case MatchController.FieldZone.Box: pct = high_chance; break;
+                    case MatchController.FieldZone.CAM: pct = medium_chance; break;
+                    case MatchController.FieldZone.LF: pct = low_chance; break;
+                    case MatchController.FieldZone.RF: pct = low_chance; break;
+                    case MatchController.FieldZone.LAM: pct = low_chance; break;
+                    case MatchController.FieldZone.RAM: pct = low_chance; break;
+                }
+                break;
+
+            case PlayerPosition.RF:
+                switch (_zone)
+                {
+                    case MatchController.FieldZone.RF: pct = 1f; break;
+                    case MatchController.FieldZone.Box: pct = high_chance; break;
+                    case MatchController.FieldZone.CF: pct = high_chance; break;
+                    case MatchController.FieldZone.RAM: pct = medium_chance; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance; break;
+                    case MatchController.FieldZone.RM: pct = low_chance; break;
                 }
                 break;
         }
