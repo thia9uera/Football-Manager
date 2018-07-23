@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cadena Rivers
   Tag: CAR
-  PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
+  PrimaryColor: {r: 0.8773585, g: 0.87717104, b: 0.7407885, a: 1}
   SecondaryColor: {r: 0.23137254, g: 0.6544964, b: 1, a: 1}
   Formation: 2
   Squad:

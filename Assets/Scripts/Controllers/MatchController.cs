@@ -169,34 +169,26 @@ public class MatchController : MonoBehaviour
         foreach(PlayerData player in list )
         {
             float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
-            int r = Random.Range(1, 20); //D20tão na mente
+            int r = 1 + Random.Range(0, 20); //D20tão na mente
             if (r < 3) //se foi mto mal no dado já perde
             {
-                float p = 0;
+                print(player.FirstName + " MOSCOU FORTE!   -   " + r);
             }
             else if (r > 18) //o primeiro atleta que for bem ganha 
             {
                 activePlayer = player;
+                print(player.FirstName + " VINTOU!   -   " + r);
             }
             else //se não for nem muito bem nem muito mal, soma o rolar do dado com os stats
             {
-                float p = stats + r;
-
+                float p = stats + (r/20);
+                print(player.FirstName + " TENTIOU!   -   " + p);
                 if (p > points)
                 {
                     points = p;
                     activePlayer = player;
                 }
             }
-
-            //float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
-            //float p = Random.Range(0f, stats);
-
-            //if (p > points)
-            //{
-            //points = p;
-            //activePlayer = player;
-            //}
         }
 
         return activePlayer;

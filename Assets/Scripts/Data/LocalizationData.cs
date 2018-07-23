@@ -24,7 +24,20 @@ public class LocalizationData : ScriptableObject
         return language;
     }
 
-    public Language CurrentLanguage = Language.English;
+    [SerializeField]
+    private Language currentlanguage;
+    public Language CurrentLanguage
+    {
+        set
+        {
+            currentlanguage = value;
+            LocalizationManager.CurrentLanguage = GetLanguageString(currentlanguage);
+        }
+        get
+        {
+            return currentlanguage;
+        }
+    }
 
     [SerializeField]
     private string[] positionKeys;

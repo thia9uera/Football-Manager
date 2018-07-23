@@ -12,6 +12,7 @@ public class MainController : MonoBehaviour
     public void Awake()
     {
         if (Instance == null) Instance = this;
+        Localization.CurrentLanguage = LocalizationData.Language.English;
     }
 
     public void Start()
