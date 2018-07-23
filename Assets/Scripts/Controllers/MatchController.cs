@@ -38,8 +38,43 @@ public class MatchController : MonoBehaviour
         Box = 16,
     }
 
+    public enum PlayerAction
+    {
+        None,
+        Dribble,
+        Pass,
+        LongPass,
+        Cross,
+        ThroughPass,
+        Shot,
+        LongShot,,
+        Tackle,
+        Block,
+        Save,
+    }
+
+    public enum Consequence
+    {
+        None,
+        Fault,
+        Offside,
+        OutOfBounds,
+    }
+
+    public enum MatchEvent
+    {
+        None,
+        KickOff,
+        Penalty,
+        Freekick,
+    }
+
     private int totalZones = 17;
 
+    private PlayerAction defensiveAction = PlayerAction.None;
+    private PlayerAction offensiveAction = PlayerAction.None;
+    private MatchEvent matchEvent = MatchEvent.None;
+    private Consequence consequence = Consequence.None;
 
     [SerializeField]
     private GameObject startBtn;
@@ -106,10 +141,35 @@ public class MatchController : MonoBehaviour
         PlayerData attacking = GetAttackingPlayer(currentZone);
         PlayerData defending = GetDefendingPlayer(currentZone);
 
+        offensiveAction = GetOffensiveAction();
+        defensiveAction = GetDefensiveAction();
+
+        //TODO aquilo que tu sabe
+
         if(attacking == null && defending == null) Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
         else if(attacking == null) Narration.UpdateNarration(defending.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
         else if (defending == null) Narration.UpdateNarration(attacking.FirstName + " DE BOAS", attackingTeam.PrimaryColor);
         else Narration.UpdateNarration(attacking.FirstName + " VS " + defending.FirstName, Color.gray);
+
+
+    }
+
+    private PlayerAction GetOffensiveAction()
+    {
+        PlayerAction action = PlayerAction.None;
+
+        //TODO decide what is player's action
+
+        return action;
+    }
+
+    private PlayerAction GetDefensiveAction()
+    {
+        PlayerAction action = PlayerAction.None;
+
+        //TODO decide what is player's action
+
+        return action;
     }
 
     private int GetRandomZone()
@@ -169,7 +229,9 @@ public class MatchController : MonoBehaviour
         foreach(PlayerData player in list )
         {
             float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
+
             int r = 1 + Random.Range(0, 20); //D20tão na mente
+
             if (r < 3) //se foi mto mal no dado já perde
             {
                 print(player.FirstName + " MOSCOU FORTE!   -   " + r);
