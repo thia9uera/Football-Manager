@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Striker
   m_EditorClassIdentifier: 
   Name: Striker
-  Description: increase chance of scoring inside the box and from penalties
+  Description: Iincrease chance of scoring inside the box and from penalties
   AtributesAffected:
   - Attribute: 4
     Modifier: 1.5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Header
   m_EditorClassIdentifier: 
   Name: Header
-  Description: increase chance of scoring with header
+  Description: Increase chance of scoring with header
   AtributesAffected:
   - Attribute: 5
     Modifier: 1.5

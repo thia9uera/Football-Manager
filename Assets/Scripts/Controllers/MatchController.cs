@@ -39,35 +39,14 @@ public class MatchController : MonoBehaviour
         Box = 16,
     }
 
-    public enum PlayerAction
-    {
-        None,
-        Dribble,
-        Pass,
-        LongPass,
-        Cross,
-        ThroughPass,
-        Shot,
-        LongShot,
-        Tackle,
-        Block,
-        Save,
-    }
-
-    public enum Consequence
-    {
-        None,
-        Fault,
-        Offside,
-        OutOfBounds,
-    }
-
     public enum MatchEvent
     {
         None,
         KickOff,
         Penalty,
         Freekick,
+        Offside,
+        ThrowIn,
     }
 
     private enum RollType
@@ -79,10 +58,9 @@ public class MatchController : MonoBehaviour
 
     private int totalZones = 17;
 
-    private PlayerAction defensiveAction = PlayerAction.None;
-    private PlayerAction offensiveAction = PlayerAction.None;
+    private PlayerData.PlayerAction defensiveAction = PlayerData.PlayerAction.None;
+    private PlayerData.PlayerAction offensiveAction = PlayerData.PlayerAction.None;
     private MatchEvent matchEvent = MatchEvent.None;
-    private Consequence consequence = Consequence.None;
 
     [SerializeField]
     private GameObject startBtn;
@@ -189,18 +167,18 @@ public class MatchController : MonoBehaviour
         else return rolls.Sum();
     }
 
-    private PlayerAction GetOffensiveAction()
+    private PlayerData.PlayerAction GetOffensiveAction()
     {
-        PlayerAction action = PlayerAction.None;
+        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
 
         //TODO decide what is player's action
 
         return action;
     }
 
-    private PlayerAction GetDefensiveAction()
+    private PlayerData.PlayerAction GetDefensiveAction()
     {
-        PlayerAction action = PlayerAction.None;
+        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
 
         //TODO decide what is player's action
 

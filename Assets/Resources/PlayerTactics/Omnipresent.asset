@@ -8,14 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62353f2b1e0681549907d05f9d6d622b, type: 3}
-  m_Name: Crosser
+  m_Script: {fileID: 11500000, guid: 08963c5a67d16674a9bf889635568ff9, type: 3}
+  m_Name: Omnipresent
   m_EditorClassIdentifier: 
-  Name: Crosser
-  Description: Increase chance of successfully crossing and scoring from free kicks
+  Name: Omnipresent
+  Description: Increase field coverage
   AtributesAffected:
-  - Attribute: 2
-    Modifier: 1.5
-  - Attribute: 6
-    Modifier: 1.5
-  ZoneRestriction: 
+  - Attribute: 17
+    Bonus: 1.3
+  - Attribute: 17
+    Bonus: 1.3
+  ZoneRestriciton: 

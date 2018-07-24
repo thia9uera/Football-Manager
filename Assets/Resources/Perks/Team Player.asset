@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Team Player
   m_EditorClassIdentifier: 
   Name: Team Player
-  Description: increase Positioning and Passing
+  Description: Increase Positioning and Passing
   AtributesAffected:
   - Attribute: 15
     Modifier: 1.5

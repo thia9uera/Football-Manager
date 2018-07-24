@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Star
   m_EditorClassIdentifier: 
   Name: Star
-  Description: morale is heavily affected  by dispute results (specially not scoring)
+  Description: Morale is heavily affected  by dispute results (specially not scoring)
     and staying on the bench. Two stars in the same team makes both decrease morale
     heavily
   AtributesAffected:

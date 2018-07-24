@@ -143,6 +143,7 @@
     <Compile Include="Assets\Scripts\Data\LocalizationData.cs" />
     <Compile Include="Assets\Scripts\Data\PerkData.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\Data\PlayerTacticsData.cs" />
     <Compile Include="Assets\Scripts\Data\TeamData.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug_FieldView.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug_ZoneView.cs" />

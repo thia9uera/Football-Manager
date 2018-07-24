@@ -8,65 +8,12 @@ public class PlayerData : ScriptableObject
     public string FirstName;
     public string LastName;
 
-    public enum PlayerPosition
-    {
-        GK,
-        LD,
-        CD,
-        RD,
-        LDM,
-        CDM,
-        RDM,
-        LM,
-        CM,
-        RM,
-        LAM,
-        CAM,
-        RAM,
-        LF,
-        CF,
-        RF,
-    }
-
-    public PerkData Perk;
-
-
-    public enum PlayerTactics
-    {
-        None,
-        Captain,
-        Guard,
-        Producer,
-        Infiltrator,
-        FastFurious,
-        WingInfiltrator,
-        Omnipresence,
-    }
-
-    public enum PlayerAttributes
-    {
-        Goalkeeping,
-        Passing,
-        Crossing,
-        Tackling,
-        Shooting,
-        Heading,
-        Freekick,
-        Penalty,
-        Speed,
-        Strength,
-        Agility,
-        Stamina,
-        Fatigue,
-        Teamwork,
-        Morale,
-        Vision,
-        Stability,
-    }
-
+    
     [Space(10)]
     public PlayerPosition Position;
 
+    public PerkData Perk;
+    public PlayerTacticsData Tactics;
 
     [Space(10)]
     [Header("Technical Attributes")]
@@ -124,17 +71,90 @@ public class PlayerData : ScriptableObject
     [Range(0, 100)]
     public int Stability = 50;
 
-    public PlayerTactics Tactics;
     
     //Attributes that change during gameplay
+    [HideInInspector]
     public int Fatigue = 100;
 
     [HideInInspector]
     public int Morale = 50;
 
-
     [HideInInspector]
     public PlayerPosition AssignedPosition;
+
+    [HideInInspector]
+    public float DefPosChance, OffPosChance, PassingChance, ShootingChance, FaultChance, CrossingChance = 1f;
+
+    public enum PlayerPosition
+    {
+        GK,
+        LD,
+        CD,
+        RD,
+        LDM,
+        CDM,
+        RDM,
+        LM,
+        CM,
+        RM,
+        LAM,
+        CAM,
+        RAM,
+        LF,
+        CF,
+        RF,
+    }
+
+    public enum PlayerAttributes
+    {
+        Goalkeeping,
+        Passing,
+        Crossing,
+        Tackling,
+        Shooting,
+        Heading,
+        Freekick,
+        Penalty,
+        Speed,
+        Strength,
+        Agility,
+        Stamina,
+        Fatigue,
+        Teamwork,
+        Morale,
+        Vision,
+        Stability,
+        DefPosChance,
+        OffPosChance,
+        PassingChance,
+        ShootingChance,
+        CrossingChance,
+        DribblingChance,
+        FaultChance,
+        FallingChance,
+        TeamMoraleBoost,
+    }
+
+    public enum PlayerAction
+    {
+        None,
+        Dribble,
+        Pass,
+        LongPass,
+        Cross,
+        ThroughPass,
+        Shot,
+        LongShot,
+        Tackle,
+        Fault,
+        Block,
+        Save,
+    }
+
+    public void SetVariables()
+    {
+        
+    }
 
     public float GetChancePerZone(MatchController.FieldZone _zone)
     {

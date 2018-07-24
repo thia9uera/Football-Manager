@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Sharpshooter
   m_EditorClassIdentifier: 
   Name: Sharpshooter
-  Description: increase chance of scoring from afar and from free kicks
+  Description: Increase chance of scoring from afar and from free kicks
   AtributesAffected:
   - Attribute: 4
     Modifier: 1.5
