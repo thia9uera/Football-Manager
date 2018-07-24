@@ -29,4 +29,7 @@ public class TeamData : ScriptableObject
     [Header("Players")]
     public PlayerData[] Squad;
     public PlayerData[] Substitutes;
+
+    [Space(10)]
+    public PlayerData Captain;
 }

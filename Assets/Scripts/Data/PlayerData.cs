@@ -71,7 +71,7 @@ public class PlayerData : ScriptableObject
     [Range(0, 100)]
     public int Stability = 50;
 
-    
+ 
     //Attributes that change during gameplay
     [HideInInspector]
     public int Fatigue = 100;
@@ -84,6 +84,7 @@ public class PlayerData : ScriptableObject
 
     [HideInInspector]
     public float DefPosChance, OffPosChance, PassingChance, ShootingChance, FaultChance, CrossingChance = 1f;
+
 
     public enum PlayerPosition
     {
