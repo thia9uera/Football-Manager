@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MatchController : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class MatchController : MonoBehaviour
         Cross,
         ThroughPass,
         Shot,
-        LongShot,,
+        LongShot,
         Tackle,
         Block,
         Save,
@@ -67,6 +68,13 @@ public class MatchController : MonoBehaviour
         KickOff,
         Penalty,
         Freekick,
+    }
+
+    private enum RollType
+    {
+        None,
+        GetMax,
+        DropMin,
     }
 
     private int totalZones = 17;
@@ -154,6 +162,34 @@ public class MatchController : MonoBehaviour
 
     }
 
+    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 0)
+    {
+        int n = 0;
+        int roll;
+        List<int> rolls = new List<int>();
+
+        while (n < _amount)
+        {
+            roll = 1 + Random.Range(0, _sides);
+            if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
+            rolls.Add(roll);
+        }
+
+        if (_rollType == RollType.GetMax)
+        {
+            return rolls.Max();
+        }
+        else if (_rollType == RollType.DropMin)
+        {
+            rolls.Remove(rolls.Min());
+            roll = 1 + Random.Range(0, _sides);
+            if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
+            rolls.Add(roll);
+            return rolls.Sum();
+        }
+        else return rolls.Sum();
+    }
+
     private PlayerAction GetOffensiveAction()
     {
         PlayerAction action = PlayerAction.None;
@@ -230,7 +266,7 @@ public class MatchController : MonoBehaviour
         {
             float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
 
-            int r = 1 + Random.Range(0, 20); //D20tão na mente
+            int r = RollDice(20);
 
             if (r < 3) //se foi mto mal no dado já perde
             {
