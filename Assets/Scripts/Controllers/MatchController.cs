@@ -149,8 +149,8 @@ public class MatchController : MonoBehaviour
         PlayerData attacking = GetAttackingPlayer(currentZone);
         PlayerData defending = GetDefendingPlayer(currentZone);
 
-        offensiveAction = GetOffensiveAction();
-        defensiveAction = GetDefensiveAction();
+        // offensiveAction = GetOffensiveAction();
+        //defensiveAction = GetDefensiveAction();
 
         //TODO aquilo que tu sabe
 
@@ -158,8 +158,6 @@ public class MatchController : MonoBehaviour
         else if(attacking == null) Narration.UpdateNarration(defending.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
         else if (defending == null) Narration.UpdateNarration(attacking.FirstName + " DE BOAS", attackingTeam.PrimaryColor);
         else Narration.UpdateNarration(attacking.FirstName + " VS " + defending.FirstName, Color.gray);
-
-
     }
 
     private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 0)
@@ -173,6 +171,7 @@ public class MatchController : MonoBehaviour
             roll = 1 + Random.Range(0, _sides);
             if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
             rolls.Add(roll);
+            n++;
         }
 
         if (_rollType == RollType.GetMax)
@@ -230,7 +229,7 @@ public class MatchController : MonoBehaviour
             if(chance >= 1f) players.Add(player);
             else 
             {
-                if(chance <= Random.Range(0f, 1f) && chance > 0) players.Add(player);
+                if(chance <= Random.Range(0.01f, 1f)) players.Add(player);
             }
         }
         return GetActivePlayer(players);
