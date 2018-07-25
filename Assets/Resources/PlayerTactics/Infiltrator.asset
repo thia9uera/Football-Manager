@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Infiltrator
   Description: Increase chance of offensive solo plays and offensive positioning
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 22
     Bonus: 1.5
   - Attribute: 18
-    Bonus: 1.25
+    Bonus: 1.5
   ZoneRestriciton: 0a0000000b0000000c0000000d0000000e0000000f000000

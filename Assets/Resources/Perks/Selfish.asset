@@ -14,11 +14,9 @@ MonoBehaviour:
   Name: Selfish
   Description: increase chance of successfully dribbling and decrease chance of successfully
     passing
-  AtributesAffected:
-  - Attribute: 10
-    Modifier: 1.5
-  - Attribute: 8
-    Modifier: 1.25
+  AttributesAffected:
   - Attribute: 1
-    Modifier: 0.7
+    Modifier: 0.8
+  - Attribute: 0
+    Modifier: 0
   ZoneRestriction: 

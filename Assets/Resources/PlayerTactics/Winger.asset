@@ -13,9 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Producer
   Description: Increase chance of crossing from offensive wings
-  AtributesAffected:
-  - Attribute: 19
-    Bonus: 1.5
+  AttributesAffected:
   - Attribute: 21
     Bonus: 1.5
   ZoneRestriciton: 0a0000000c0000000d0000000f000000

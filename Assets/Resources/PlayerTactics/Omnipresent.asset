@@ -13,9 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Omnipresent
   Description: Increase field coverage
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 17
-    Bonus: 1.3
-  - Attribute: 17
-    Bonus: 1.3
+    Bonus: 1.5
+  - Attribute: 18
+    Bonus: 1.5
+  - Attribute: 26
+    Bonus: 1.5
   ZoneRestriciton: 

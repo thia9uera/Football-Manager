@@ -9,7 +9,7 @@ public class PerkData : ScriptableObject
     public string Description;
 
     [Space(20)]
-    public Effect[] AtributesAffected;
+    public Effect[] AttributesAffected;
 
     [System.Serializable]
     public class Effect

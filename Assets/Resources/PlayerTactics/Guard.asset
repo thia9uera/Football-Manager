@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Guard
   Description: Increase defensive positioning
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 17
     Bonus: 1.5
   ZoneRestriciton: 

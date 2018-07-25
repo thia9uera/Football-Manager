@@ -15,6 +15,10 @@ public class MatchTeamView : MonoBehaviour
         for(int i = 0; i < 11; i++)
         {
             PlayerData player = _squad[i];
+
+            //TODO Remove this when we have team setup
+            player.AssignedPosition = player.Position;
+
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);
             item.Populate(player);      

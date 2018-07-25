@@ -127,8 +127,8 @@ public class MatchController : MonoBehaviour
         PlayerData attacking = GetAttackingPlayer(currentZone);
         PlayerData defending = GetDefendingPlayer(currentZone);
 
-        // offensiveAction = GetOffensiveAction();
-        //defensiveAction = GetDefensiveAction();
+        // offensiveAction = GetOffensiveAction(attacking);
+        //defensiveAction = GetDefensiveAction(defending);
 
         //TODO aquilo que tu sabe
 
@@ -167,16 +167,14 @@ public class MatchController : MonoBehaviour
         else return rolls.Sum();
     }
 
-    private PlayerData.PlayerAction GetOffensiveAction()
+    private PlayerData.PlayerAction GetOffensiveAction(PlayerData _player)
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
-
-        //TODO decide what is player's action
 
         return action;
     }
 
-    private PlayerData.PlayerAction GetDefensiveAction()
+    private PlayerData.PlayerAction GetDefensiveAction(PlayerData _player)
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
 
@@ -283,6 +281,7 @@ public class MatchController : MonoBehaviour
         return chance;
     }
 
+    //Inverts the field for away team perspective
     private FieldZone GetAwayTeamZone()
     {
         int zone = (totalZones - 1) -  (int)currentZone;

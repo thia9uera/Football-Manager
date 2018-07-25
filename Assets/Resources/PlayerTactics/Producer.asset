@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Producer
   Description: Increase chance of passing and crossing
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 19
     Bonus: 1.5
   - Attribute: 21

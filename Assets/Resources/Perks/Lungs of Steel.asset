@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Lungs of Steel
   m_EditorClassIdentifier: 
   Name: Lungs of Steel
-  Description: Very resistant to stamina drops
-  AtributesAffected:
-  - Attribute: 12
-    Modifier: 0.33
+  Description: Very resistant to fatigue
+  AttributesAffected:
+  - Attribute: 11
+    Modifier: 1.2
   ZoneRestriction: 

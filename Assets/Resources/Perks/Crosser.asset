@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Crosser
   Description: Increase chance of successfully crossing and scoring from free kicks
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 2
-    Modifier: 1.5
+    Modifier: 1.15
   - Attribute: 6
-    Modifier: 1.5
+    Modifier: 1.15
   ZoneRestriction: 

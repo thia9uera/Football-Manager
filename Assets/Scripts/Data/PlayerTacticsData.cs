@@ -16,7 +16,7 @@ public class PlayerTacticsData : ScriptableObject
     }
 
     [Space(10)]
-    public Effect[] AtributesAffected;
+    public Effect[] AttributesAffected;
 
     [Space(10)]
     public MatchController.FieldZone[] ZoneRestriciton;
