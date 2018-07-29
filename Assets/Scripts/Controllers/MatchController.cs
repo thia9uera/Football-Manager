@@ -14,9 +14,6 @@ public class MatchController : MonoBehaviour
     public MatchTeamView AwayTeamSquad;
     public MatchNarration Narration;
 
-    //Home = 0, Away = 1
-    private int teamWithBall = 0;
-
     //Names given by Home Team perspective
     public enum FieldZone
     { 
@@ -68,8 +65,13 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     private FieldZone currentZone;
 
+    [SerializeField]
+    private ActionChancePerZoneData actionChancePerZone;
+
     private TeamData attackingTeam;
     private TeamData defendingTeam;
+    private PlayerData attackingPlayer;
+    private PlayerData defendingPlayer;
     private PlayerData playerWithBall;
 
     private int matchTime = 0;
@@ -124,18 +126,18 @@ public class MatchController : MonoBehaviour
 
     private void DefineActions()
     {
-        PlayerData attacking = GetAttackingPlayer(currentZone);
-        PlayerData defending = GetDefendingPlayer(currentZone);
+        attackingPlayer = GetAttackingPlayer(currentZone);
+        defendingPlayer = GetDefendingPlayer(currentZone);
 
         // offensiveAction = GetOffensiveAction(attacking);
         //defensiveAction = GetDefensiveAction(defending);
 
         //TODO aquilo que tu sabe
 
-        if(attacking == null && defending == null) Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
-        else if(attacking == null) Narration.UpdateNarration(defending.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
-        else if (defending == null) Narration.UpdateNarration(attacking.FirstName + " DE BOAS", attackingTeam.PrimaryColor);
-        else Narration.UpdateNarration(attacking.FirstName + " VS " + defending.FirstName, Color.gray);
+        if(attackingPlayer == null && defendingPlayer == null) Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
+        else if(attackingPlayer == null) Narration.UpdateNarration(defendingPlayer.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
+        else if (defendingPlayer == null) Narration.UpdateNarration(attackingPlayer.FirstName + " DE BOAS", attackingTeam.PrimaryColor);
+        else Narration.UpdateNarration(attackingPlayer.FirstName + " VS " + defendingPlayer.FirstName, Color.gray);
     }
 
     private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 0)
@@ -167,9 +169,16 @@ public class MatchController : MonoBehaviour
         else return rolls.Sum();
     }
 
-    private PlayerData.PlayerAction GetOffensiveAction(PlayerData _player)
+    private PlayerData.PlayerAction GetOffensiveAction()
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
+
+        ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)currentZone];
+
+        float pass = zoneChance.Pass + attackingPlayer.PassingChance;
+        float dribble = attackingPlayer.DribblingChance;
+        float crossing = attackingPlayer.CrossingChance * Mathf.Abs(attackingPlayer.Crossing - defendingPlayer.Blocking);
+        //float pass = attackingPlayer.PassingChance * (attackingPlayer.Passing - attackingPlayer.)
 
         return action;
     }

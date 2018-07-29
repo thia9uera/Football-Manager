@@ -26,10 +26,16 @@ public class PlayerData : ScriptableObject
     public int Passing = 50;
 
     [Range(0, 100)]
+    public int Dribbling = 50;
+
+    [Range(0, 100)]
     public int Crossing = 50;
 
     [Range(0, 100)]
     public int Tackling = 50;
+
+    [Range(0, 100)]
+    public int Blocking = 50;
 
     [Range(0, 100)]
     public int Shooting = 50;
@@ -142,6 +148,8 @@ public class PlayerData : ScriptableObject
         TeamMoraleBoost,
         ParPosChance,
         LongShotChance,
+        Blocking,
+        Dribbling,
     }
 
     public enum PlayerAction

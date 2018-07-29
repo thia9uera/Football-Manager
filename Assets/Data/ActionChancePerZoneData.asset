@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd41a0e29ecf624aa4d0ba6371ff575, type: 3}
+  m_Name: ActionChancePerZoneData
+  m_EditorClassIdentifier: 
+  actionChancePerZones:
+  - Zone: OwnGoal
+    Dribble: -200
+    Sprint: 25
+    Pass: 100
+    LongPass: 150
+    Cross: 100
+    Shot: -10000
+    Tackle: 200
+  - Zone: LD
+    Dribble: -100
+    Sprint: -100
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 100
+  - Zone: CD
+    Dribble: -100
+    Sprint: -100
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 100
+  - Zone: RD
+    Dribble: -100
+    Sprint: -100
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 100
+  - Zone: LDM
+    Dribble: 0
+    Sprint: 25
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 100
+  - Zone: CDM
+    Dribble: 0
+    Sprint: 25
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 100
+  - Zone: RDM
+    Dribble: 0
+    Sprint: 25
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 100
+  - Zone: LM
+    Dribble: 50
+    Sprint: 150
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 50
+  - Zone: CM
+    Dribble: 50
+    Sprint: 150
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 50
+  - Zone: RM
+    Dribble: 50
+    Sprint: 150
+    Pass: 100
+    LongPass: 150
+    Cross: 0
+    Shot: -10000
+    Tackle: 50
+  - Zone: LAM
+    Dribble: 100
+    Sprint: 25
+    Pass: 75
+    LongPass: 150
+    Cross: 0
+    Shot: 0
+    Tackle: 0
+  - Zone: CAM
+    Dribble: 100
+    Sprint: 25
+    Pass: 75
+    LongPass: 150
+    Cross: 0
+    Shot: 0
+    Tackle: 0
+  - Zone: RAM
+    Dribble: 100
+    Sprint: 25
+    Pass: 75
+    LongPass: 150
+    Cross: 0
+    Shot: 0
+    Tackle: 0
+  - Zone: LF
+    Dribble: 150
+    Sprint: 20
+    Pass: 75
+    LongPass: 150
+    Cross: 150
+    Shot: 150
+    Tackle: 0
+  - Zone: CF
+    Dribble: 150
+    Sprint: 20
+    Pass: 75
+    LongPass: 150
+    Cross: 50
+    Shot: 200
+    Tackle: 0
+  - Zone: RF
+    Dribble: 150
+    Sprint: 20
+    Pass: 75
+    LongPass: 150
+    Cross: 150
+    Shot: 150
+    Tackle: 0
+  - Zone: Box
+    Dribble: -10000
+    Sprint: -10000
+    Pass: 50
+    LongPass: -10000
+    Cross: -100000
+    Shot: 200
+    Tackle: 0

@@ -88,6 +88,11 @@
     <Compile Include="Assets\I2\Localization\Scripts\Editor\PostProcessBuild_IOS.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\PostProcessBuild_UnloadLanguages.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\UpgradeManager.cs" />
+    <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SAEditorHelper.cs" />
+    <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SAGoogleSpreadsheetLoader.cs" />
+    <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SAGoogleSpreadsheetMenu.cs" />
+    <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SASettings.cs" />
+    <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SASheetDataGenerator.cs" />
     <None Include="Assets\I2\Localization\Scripts\Editor\Unity XCode\Xcode.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
@@ -349,6 +354,9 @@
     </Reference>
     <Reference Include="UnityEditor.iOS_I2Loc.Xcode">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/I2/Localization/Scripts/Editor/Unity XCode/UnityEditor.iOS_I2Loc.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonFx.Json">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/SAGoogleSpreadsheet/JsonFx/JsonFx.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/thia9/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
