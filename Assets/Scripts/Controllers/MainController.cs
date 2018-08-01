@@ -9,6 +9,8 @@ public class MainController : MonoBehaviour
     public LocalizationData Localization;
     public MatchController Match;
 
+    public Team_StrategyData TeamStrategyData;
+
     public void Awake()
     {
         if (Instance == null) Instance = this;

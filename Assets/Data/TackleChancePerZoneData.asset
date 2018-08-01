@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab95a34a0b1ff6049b0ee9af131b79af, type: 3}
+  m_Name: TackleChancePerZoneData
+  m_EditorClassIdentifier: 
+  tackleChancePerZones:
+  - Zone: OwnGoal
+    Chance: 25
+  - Zone: LD
+    Chance: 100
+  - Zone: CD
+    Chance: 100
+  - Zone: RD
+    Chance: 100
+  - Zone: LDM
+    Chance: 100
+  - Zone: CDM
+    Chance: 100
+  - Zone: RDM
+    Chance: 100
+  - Zone: LM
+    Chance: 50
+  - Zone: CM
+    Chance: 50
+  - Zone: RM
+    Chance: 50
+  - Zone: LAM
+    Chance: 50
+  - Zone: CAM
+    Chance: 50
+  - Zone: RAM
+    Chance: 0
+  - Zone: LF
+    Chance: 0
+  - Zone: CF
+    Chance: 0
+  - Zone: RF
+    Chance: 0
+  - Zone: Box
+    Chance: 0

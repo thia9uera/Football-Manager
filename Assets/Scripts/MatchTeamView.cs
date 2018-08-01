@@ -9,13 +9,14 @@ public class MatchTeamView : MonoBehaviour
     [SerializeField]
     private MatchPlayerView playerTemplate;
 
-    public void Populate(PlayerData[] _squad)
+    public void Populate(TeamData _team)
     {
+        PlayerData[] squad = _team.Squad;
         ItemList = new List<MatchPlayerView>();
         for(int i = 0; i < 11; i++)
         {
-            PlayerData player = _squad[i];
-
+            PlayerData player = squad[i];
+            player.ApplyBonus(_team.GetStrategy());
             //TODO Remove this when we have team setup
             player.AssignedPosition = player.Position;
 

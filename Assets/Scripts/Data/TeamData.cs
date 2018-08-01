@@ -22,8 +22,22 @@ public class TeamData : ScriptableObject
 
     }
 
+    public enum TeamStrategy
+    {
+        Neutral,
+        Offensive,
+        Defense,
+        Deadlock,
+        WingsOffensive,
+        CenterOffensive,
+        Crossing,
+        Pressure,
+        ForceOffside  
+    }
+
     [Space(10)]
     public TeamFormation Formation;
+    public TeamStrategy Strategy;
 
     [Space(10)]
     [Header("Players")]
@@ -32,4 +46,13 @@ public class TeamData : ScriptableObject
 
     [Space(10)]
     public PlayerData Captain;
+
+    public Team_Strategy GetStrategy()
+    {
+        Team_StrategyData data = MainController.Instance.TeamStrategyData;
+
+        Team_Strategy strategy = data.team_Strategys[(int)Strategy];
+
+        return strategy;
+    }
 }

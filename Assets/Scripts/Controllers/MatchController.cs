@@ -46,6 +46,14 @@ public class MatchController : MonoBehaviour
         ThrowIn,
     }
 
+    public enum MarkingType
+    {
+        None,
+        Distance,
+        Close,
+        Steal
+    }
+
     private enum RollType
     {
         None,
@@ -68,6 +76,9 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     private ActionChancePerZoneData actionChancePerZone;
 
+    [SerializeField]
+    private TackleChancePerZoneData tackleChancePerZone;
+
     private TeamData attackingTeam;
     private TeamData defendingTeam;
     private PlayerData attackingPlayer;
@@ -83,8 +94,6 @@ public class MatchController : MonoBehaviour
     private bool isScorerAnnounced = false;
     private bool isHalfTime = false;
 
-
-
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
     {
         HomeTeam = _homeTeam;
@@ -93,8 +102,8 @@ public class MatchController : MonoBehaviour
         attackingTeam = HomeTeam;
         defendingTeam = AwayTeam;
 
-        HomeTeamSquad.Populate(_homeTeam.Squad);
-        AwayTeamSquad.Populate(_awayTeam.Squad);
+        HomeTeamSquad.Populate(_homeTeam);
+        AwayTeamSquad.Populate(_awayTeam);
         Score.UpdateTime(matchTime);
         Score.UpdateScore(
             HomeTeam.Name,
@@ -175,12 +184,22 @@ public class MatchController : MonoBehaviour
 
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)currentZone];
 
-        float pass = zoneChance.Pass + attackingPlayer.PassingChance;
-        float dribble = attackingPlayer.DribblingChance;
-        float crossing = attackingPlayer.CrossingChance * Mathf.Abs(attackingPlayer.Crossing - defendingPlayer.Blocking);
+        float pass = zoneChance.Pass + attackingPlayer.Prob_Pass;
+        float dribble = attackingPlayer.Prob_Dribble;
+        float crossing = attackingPlayer.Prob_Crossing * Mathf.Abs(attackingPlayer.Crossing - defendingPlayer.Blocking);
         //float pass = attackingPlayer.PassingChance * (attackingPlayer.Passing - attackingPlayer.)
 
         return action;
+    }
+
+    private MarkingType GetMarkingType()
+    {
+        MarkingType type = MarkingType.None;
+
+        TackleChancePerZone tackleChance = tackleChancePerZone.tackleChancePerZones[(int)currentZone];
+
+
+        return type;
     }
 
     private PlayerData.PlayerAction GetDefensiveAction(PlayerData _player)
