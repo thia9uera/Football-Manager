@@ -138,15 +138,43 @@ public class MatchController : MonoBehaviour
         attackingPlayer = GetAttackingPlayer(currentZone);
         defendingPlayer = GetDefendingPlayer(currentZone);
 
+        if (attackingPlayer == null && defendingPlayer == null)
+        {
+            Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
+        }
+        else if (defendingPlayer == null)
+        {
+            Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
+        }
+        else if(attackingPlayer == null)
+        {
+            Narration.UpdateNarration(defendingTeam.Name + " PERDE A POSSE DE BOLA", defendingTeam.PrimaryColor);
+        }
+        else
+        {
+            Narration.UpdateNarration(attackingPlayer.FirstName + " VS " + defendingPlayer.FirstName, Color.gray);
+
+            MarkingType marking = GetMarkingType();
+            print("MARKING: " + marking.ToString());
+            if (marking == MarkingType.Steal)
+            {
+                Narration.UpdateNarration(defendingPlayer.FirstName + " ROUBA A BOLA DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+
+                SwitchPossesion();
+                return;
+            }
+            else
+            {
+                offensiveAction = GetOffensiveAction();
+            }
+        }
+        
+
         // offensiveAction = GetOffensiveAction(attacking);
         //defensiveAction = GetDefensiveAction(defending);
 
         //TODO aquilo que tu sabe
 
-        if(attackingPlayer == null && defendingPlayer == null) Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
-        else if(attackingPlayer == null) Narration.UpdateNarration(defendingPlayer.FirstName  + " DE BOAS" , defendingTeam.PrimaryColor);
-        else if (defendingPlayer == null) Narration.UpdateNarration(attackingPlayer.FirstName + " DE BOAS", attackingTeam.PrimaryColor);
-        else Narration.UpdateNarration(attackingPlayer.FirstName + " VS " + defendingPlayer.FirstName, Color.gray);
     }
 
     private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 0)
@@ -185,9 +213,9 @@ public class MatchController : MonoBehaviour
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)currentZone];
 
         float pass = zoneChance.Pass + attackingPlayer.Prob_Pass;
-        float dribble = attackingPlayer.Prob_Dribble;
-        float crossing = attackingPlayer.Prob_Crossing * Mathf.Abs(attackingPlayer.Crossing - defendingPlayer.Blocking);
-        //float pass = attackingPlayer.PassingChance * (attackingPlayer.Passing - attackingPlayer.)
+        float dribble = zoneChance.Dribble + attackingPlayer.Prob_Dribble;
+        float crossing = zoneChance.Cross + attackingPlayer.Prob_Crossing;
+        float shoot = zoneChance.Shot + attackingPlayer.Prob_Shoot;
 
         return action;
     }
@@ -195,9 +223,28 @@ public class MatchController : MonoBehaviour
     private MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
+        if (defendingPlayer == null) return type;
 
-        TackleChancePerZone tackleChance = tackleChancePerZone.tackleChancePerZones[(int)currentZone];
+        float totalChance = 0f;
+        totalChance = defendingPlayer.Prob_Marking;
 
+        if (defendingPlayer.Speed > 70) totalChance += (100 - defendingPlayer.Speed) / 100;
+        if (defendingPlayer.Vision > 70) totalChance += (100 - defendingPlayer.Vision) / 100;
+
+        float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
+
+        if(r >= 20)
+        {
+            type = MarkingType.Steal;
+        }
+        else if (r > 15)
+        {
+            type = MarkingType.Close;
+        }
+        else if(r > 3)
+        {
+            type = MarkingType.Distance;
+        }
 
         return type;
     }
@@ -233,7 +280,7 @@ public class MatchController : MonoBehaviour
             if(chance >= 1f) players.Add(player);
             else 
             {
-                if(chance <= Random.Range(0.01f, 1f)) players.Add(player);
+                if(chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
             }
         }
         return GetActivePlayer(players);
@@ -254,7 +301,7 @@ public class MatchController : MonoBehaviour
             if (chance >= 1f ) players.Add(player);
             else
             {
-                if (chance <= Random.Range(0f, 1f) && chance > 0) players.Add(player);
+                if (chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
             }
         }
         return GetActivePlayer(players);
@@ -273,17 +320,15 @@ public class MatchController : MonoBehaviour
 
             if (r < 3) //se foi mto mal no dado já perde
             {
-                print(player.FirstName + " MOSCOU FORTE!   -   " + r);
+                
             }
-            else if (r > 18) //o primeiro atleta que for bem ganha 
+            else if (r == 20) //o primeiro atleta que for bem ganha 
             {
                 activePlayer = player;
-                print(player.FirstName + " VINTOU!   -   " + r);
             }
             else //se não for nem muito bem nem muito mal, soma o rolar do dado com os stats
             {
                 float p = stats + (r/20);
-                print(player.FirstName + " TENTIOU!   -   " + p);
                 if (p > points)
                 {
                     points = p;
@@ -298,13 +343,11 @@ public class MatchController : MonoBehaviour
     private float CalculatePresence(PlayerData _player, FieldZone _zone)
     {
         float chance = 0f;
-        float playerTacticsBonus = 0.5f;
-        float teamTacticsBonus = 0.5f;
 
         chance = _player.GetChancePerZone(_zone);
         if (chance < 1f && chance > 0f)
         {
-            chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
+            chance = _player.GetChancePerZone(_zone)  * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
         }
         return chance;
     }
@@ -317,5 +360,17 @@ public class MatchController : MonoBehaviour
         return (FieldZone)zone;
     }
    
- 
+    private void SwitchPossesion()
+    {
+        if(attackingTeam = HomeTeam)
+        {
+            attackingTeam = AwayTeam;
+            defendingTeam = HomeTeam;
+        }
+        else
+        {
+            defendingTeam = AwayTeam;
+            attackingTeam = HomeTeam;
+        }
+    }
 }

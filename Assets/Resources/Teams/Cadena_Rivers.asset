@@ -16,6 +16,7 @@ MonoBehaviour:
   PrimaryColor: {r: 0.8773585, g: 0.87717104, b: 0.7407885, a: 1}
   SecondaryColor: {r: 0.23137254, g: 0.6544964, b: 1, a: 1}
   Formation: 2
+  Strategy: 3
   Squad:
   - {fileID: 11400000, guid: 6b923120f86d25d4ba7912ade32de1ee, type: 2}
   - {fileID: 11400000, guid: ee0e46dcb2ba51645852a6b3adf6d6d0, type: 2}
@@ -34,3 +35,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1cd9262e641926c4498d2a75a5d5cfa6, type: 2}
   - {fileID: 11400000, guid: 2c856b3fbcba9874f80cfd422c7b5e74, type: 2}
   - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
+  Captain: {fileID: 0}

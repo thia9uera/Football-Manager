@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d384f9de32237754f83b7df51ad0b135, type: 3}
+  m_Name: Player_StrategyData
+  m_EditorClassIdentifier: 
+  player_Strategys:
+  - Name: Neutral
+    Description: No changes
+    DefPosChance: 0
+    OffPosChance: 0
+    ParPosChance: 0
+    PassingChance: 0
+    ShootingChance: 0
+    CrossingChance: 0
+    DribblingChance: 0
+    OffsideTrickChance: 0
+    MarkingChance: 0
+  - Name: Guard
+    Description: Increase defensive positioning
+    DefPosChance: 150
+    OffPosChance: 0
+    ParPosChance: 0
+    PassingChance: 0
+    ShootingChance: 0
+    CrossingChance: 0
+    DribblingChance: 0
+    OffsideTrickChance: 0
+    MarkingChance: 0
+  - Name: Infiltrator
+    Description: Increase chance of offensive solo plays and offensive positioning
+    DefPosChance: 0
+    OffPosChance: 150
+    ParPosChance: 0
+    PassingChance: 0
+    ShootingChance: 0
+    CrossingChance: 0
+    DribblingChance: 150
+    OffsideTrickChance: 0
+    MarkingChance: 0
+  - Name: Omnipresent
+    Description: Increase field coverage
+    DefPosChance: 150
+    OffPosChance: 150
+    ParPosChance: 150
+    PassingChance: 0
+    ShootingChance: 0
+    CrossingChance: 0
+    DribblingChance: 0
+    OffsideTrickChance: 0
+    MarkingChance: 0
+  - Name: Producer
+    Description: Increase chance of passing and crossing
+    DefPosChance: 0
+    OffPosChance: 0
+    ParPosChance: 0
+    PassingChance: 150
+    ShootingChance: 0
+    CrossingChance: 150
+    DribblingChance: 0
+    OffsideTrickChance: 0
+    MarkingChance: 0
+  - Name: Winger
+    Description: Increase chance of crossing from offensive wings
+    DefPosChance: 0
+    OffPosChance: 0
+    ParPosChance: 0
+    PassingChance: 0
+    ShootingChance: 0
+    CrossingChance: 150
+    DribblingChance: 0
+    OffsideTrickChance: 0
+    MarkingChance: 0

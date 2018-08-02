@@ -13,7 +13,7 @@ public class PlayerData : ScriptableObject
     public PlayerPosition Position;
 
     public PerkData Perk;
-    public PlayerTacticsData Tactics;
+    public PlayerStrategy Strategy;
 
     [Space(10)]
     [Header("Technical Attributes")]
@@ -193,21 +193,33 @@ public class PlayerData : ScriptableObject
         Save,
     }
 
+    public enum PlayerStrategy
+    {
+        Neutral,
+        Guard,
+        Infiltrator,
+        Omnipresent,
+        Producer,
+        Winger
+    }
+
     public void ApplyBonus(Team_Strategy _teamStrategy)
     {
+        Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
+
        // Prob_DefPosition = Prob_OffPosition = Prob_ParPosChance = Prob_Pass = Prob_Shoot = Prob_Fault =  Prob_Crossing = Prob_Dribble = Prob_Fall = 0f;
         //Prob_OwnGoal = Prob_LD = Prob_CD = Prob_RD =  Prob_LDM = Prob_CDM = Prob_RDM = Prob_LM = Prob_CM = Prob_RM = Prob_LAM = Prob_CAM = Prob_RAM =  Prob_LF = Prob_CF = Prob_RF = Prob_Box = 0f;
 
-        Prob_DefPosition = _teamStrategy.DefPosChance / 100;
-        Prob_OffPosition = _teamStrategy.OffPosChance / 100;
-        //Prob_ParPosChance = 
-        Prob_Pass = _teamStrategy.PassingChance / 100;
-        Prob_Shoot = _teamStrategy.ShootingChance / 100;
-        // Prob_Fault = 
-        Prob_Crossing = _teamStrategy.CrossingChance / 100;
-        Prob_Dribble = _teamStrategy.DribblingChance / 100;
-        Prob_OffsideLine = _teamStrategy.OffsideTrickChance / 100;
-        Prob_Marking = _teamStrategy.MarkingChance / 100;
+        Prob_DefPosition = (_teamStrategy.DefPosChance + _playerStrategy.DefPosChance) / 100;
+        Prob_OffPosition = (_teamStrategy.OffPosChance + _playerStrategy.OffPosChance) / 100;
+        Prob_ParPosChance =_playerStrategy.ParPosChance / 100;
+        Prob_Pass = (_teamStrategy.PassingChance + _playerStrategy.PassingChance) / 100;
+        Prob_Shoot = ( _teamStrategy.ShootingChance + _playerStrategy.ShootingChance) / 100;
+        //Prob_Fault = 
+        Prob_Crossing = (_teamStrategy.CrossingChance + _playerStrategy.CrossingChance) / 100;
+        Prob_Dribble = (_teamStrategy.DribblingChance + _playerStrategy.DribblingChance) / 100;
+        Prob_OffsideLine = (_teamStrategy.OffsideTrickChance  + _playerStrategy.OffsideTrickChance)/ 100;
+        Prob_Marking = (_teamStrategy.MarkingChance + _playerStrategy.MarkingChance) / 100;
 
         Prob_OwnGoal = _teamStrategy.OwnGoal;
         Prob_LD = _teamStrategy.LD / 100;

@@ -10,6 +10,7 @@ public class MainController : MonoBehaviour
     public MatchController Match;
 
     public Team_StrategyData TeamStrategyData;
+    public Player_StrategyData PlayerStrategyData;
 
     public void Awake()
     {

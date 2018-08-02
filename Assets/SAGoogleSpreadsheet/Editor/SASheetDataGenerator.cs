@@ -79,7 +79,6 @@ namespace SuperAshley.GoogleSpreadSheet
                 dataList.GetType().GetMethod("Clear").Invoke(dataList, null);
                 for (int row = 1; row < cellList.Count; row++)
                 {
-                    Debug.Log("Data Type : " + dataType);
                     var data = Activator.CreateInstance(dataType);
                     for (int col = 0; col < cellList[row].Count; col++)
                     {

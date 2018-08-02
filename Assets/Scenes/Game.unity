@@ -340,7 +340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -175}
+  m_AnchoredPosition: {x: -20, y: -101}
   m_SizeDelta: {x: 500, y: -350}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &391303382
@@ -492,6 +492,7 @@ MonoBehaviour:
   Localization: {fileID: 11400000, guid: 114321360e3484547b55da21fb943845, type: 2}
   Match: {fileID: 623396845}
   TeamStrategyData: {fileID: 11400000, guid: bd993648d80e8b64eb209ac61f2128a4, type: 2}
+  PlayerStrategyData: {fileID: 11400000, guid: d316f164b933c0a4ba7e8d8f8d4b3309, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +737,7 @@ MonoBehaviour:
   AwayTeamSquad: {fileID: 391303382}
   Narration: {fileID: 548477937}
   startBtn: {fileID: 1147745715}
-  currentZone: 8
+  currentZone: 3
   actionChancePerZone: {fileID: 11400000, guid: c94980335907288449467774ff0d5e2b,
     type: 2}
   tackleChancePerZone: {fileID: 11400000, guid: a9113bfdb57b7564987076e718f23323,
@@ -773,7 +774,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00002328904}
+  m_AnchoredPosition: {x: 0, y: -0.000060201324}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &635863763
@@ -1492,7 +1493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -175}
+  m_AnchoredPosition: {x: 20, y: -101}
   m_SizeDelta: {x: 500, y: -350}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1017422097
