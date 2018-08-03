@@ -130,7 +130,7 @@ public class MatchController : MonoBehaviour
         Reset();
         startBtn.SetActive(false);
         Narration.UpdateNarration("KICK OFF!", Color.gray);
-        InvokeRepeating("DefineActions", 0.5f, 0.5f);
+        InvokeRepeating("DefineActions", 1f, 1f);
     }
 
     private void DefineActions()
@@ -152,10 +152,9 @@ public class MatchController : MonoBehaviour
         }
         else
         {
-            Narration.UpdateNarration(attackingPlayer.FirstName + " VS " + defendingPlayer.FirstName, Color.gray);
+            //Narration.UpdateNarration(attackingPlayer.FirstName + " VS " + defendingPlayer.FirstName, Color.gray);
 
             MarkingType marking = GetMarkingType();
-            print("MARKING: " + marking.ToString());
             if (marking == MarkingType.Steal)
             {
                 Narration.UpdateNarration(defendingPlayer.FirstName + " ROUBA A BOLA DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
@@ -165,7 +164,45 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                offensiveAction = GetOffensiveAction();
+                offensiveAction = GetOffensiveAction(marking);
+                if (IsActionSuccessful(marking))
+                {
+                    switch (offensiveAction)
+                    {
+                        case PlayerData.PlayerAction.Pass:
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " PASSA A BOLA", attackingTeam.PrimaryColor);
+                            break;
+                        case PlayerData.PlayerAction.Dribble:
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " DRIBLA " + defendingPlayer.FirstName, attackingTeam.PrimaryColor);
+                            break;
+                        case PlayerData.PlayerAction.Cross:
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
+                            break;
+                        case PlayerData.PlayerAction.Shot:
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O CHUTE...", attackingTeam.PrimaryColor);
+                            break;
+                    }
+                }
+
+                else
+                {
+                    switch (offensiveAction)
+                    {
+                        case PlayerData.PlayerAction.Pass:
+                            Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O PASSE", defendingTeam.PrimaryColor);
+                            break;
+                        case PlayerData.PlayerAction.Dribble:
+                            Narration.UpdateNarration(defendingPlayer.FirstName + " PARA O DRIBLE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+                            break;
+                        case PlayerData.PlayerAction.Cross:
+                            Narration.UpdateNarration(defendingPlayer.FirstName + " IMPEDE O CRUZAMENTO", defendingTeam.PrimaryColor);
+                            break;
+                        case PlayerData.PlayerAction.Shot:
+                            Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O CHUTE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+                            break;
+                    }
+                    SwitchPossesion();
+                }
             }
         }
         
@@ -177,7 +214,7 @@ public class MatchController : MonoBehaviour
 
     }
 
-    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 0)
+    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)
     {
         int n = 0;
         int roll;
@@ -206,16 +243,84 @@ public class MatchController : MonoBehaviour
         else return rolls.Sum();
     }
 
-    private PlayerData.PlayerAction GetOffensiveAction()
+    private bool IsActionSuccessful(MarkingType _marking)
+    {
+        bool success = false;
+        float attacking = 0f;
+        float defending = 0f;
+
+
+        switch(offensiveAction)
+        {
+            case PlayerData.PlayerAction.Pass:
+                attacking = (attackingPlayer.Passing / 100) * (attackingPlayer.Fatigue / 100);
+                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
+                defending = (defendingPlayer.Blocking / 100) * (defendingPlayer.Fatigue / 100);
+                break;
+
+            case PlayerData.PlayerAction.Dribble:
+                attacking = (attackingPlayer.Dribbling / 100) * (attackingPlayer.Fatigue / 100);
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                defending = (defendingPlayer.Tackling / 100) * (defendingPlayer.Fatigue / 100);
+                break;
+
+            case PlayerData.PlayerAction.Cross:
+                attacking = (attackingPlayer.Crossing / 100) * (attackingPlayer.Fatigue / 100);
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                defending = (defendingPlayer.Blocking / 100) * (defendingPlayer.Fatigue / 100);
+                break;
+
+            case PlayerData.PlayerAction.Shot:
+                attacking = (attackingPlayer.Shooting / 100) * (attackingPlayer.Fatigue / 100);
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                defending = (defendingPlayer.Blocking / 100) * (defendingPlayer.Fatigue / 100);
+                break;
+        }
+
+        attacking = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking));
+        defending = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending));
+
+        if (attacking < 3 || attacking <= defending || defending > 20 ) success = false;
+        else success = true;
+
+        return success;
+    }
+
+    private PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
+        FieldZone zone = currentZone;
+        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
 
-        ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)currentZone];
+        float higher = 0f;
+
+        ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
         float pass = zoneChance.Pass + attackingPlayer.Prob_Pass;
+        if (attackingPlayer.Passing > 70) pass += ((100 - attackingPlayer.Passing) / 100) * (attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) pass = pass * 2;
+        pass = RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass));
+        if (pass > higher) action = PlayerData.PlayerAction.Pass;
+
         float dribble = zoneChance.Dribble + attackingPlayer.Prob_Dribble;
+        if (attackingPlayer.Dribbling > 70) dribble += ((100 - attackingPlayer.Dribbling) / 100) * (attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) dribble = dribble * 0.5f;
+        else if (_marking == MarkingType.Distance) dribble = dribble * 2;
+        dribble = RollDice(20, 1, RollType.None, Mathf.FloorToInt(dribble));
+        if (dribble > higher) action = PlayerData.PlayerAction.Dribble;
+
         float crossing = zoneChance.Cross + attackingPlayer.Prob_Crossing;
+        if (attackingPlayer.Crossing > 70) crossing += ((100 - attackingPlayer.Crossing) / 100) * (attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) crossing = crossing * 0.5f;
+        crossing = RollDice(20, 1, RollType.None, Mathf.FloorToInt(crossing));
+        if (crossing > higher) action = PlayerData.PlayerAction.Cross;
+
         float shoot = zoneChance.Shot + attackingPlayer.Prob_Shoot;
+        if (attackingPlayer.Shooting > 70 && zoneChance.Shot > 0) shoot += ((100 - attackingPlayer.Shooting) / 100) * (attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) shoot = shoot * 0.5f;
+        else if (_marking == MarkingType.Distance) shoot = shoot * 1.5f;
+        shoot = RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot));
+        if (shoot > higher) action = PlayerData.PlayerAction.Shot;
 
         return action;
     }
@@ -228,8 +333,8 @@ public class MatchController : MonoBehaviour
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
 
-        if (defendingPlayer.Speed > 70) totalChance += (100 - defendingPlayer.Speed) / 100;
-        if (defendingPlayer.Vision > 70) totalChance += (100 - defendingPlayer.Vision) / 100;
+        if (defendingPlayer.Speed > 70) totalChance += ((100 - defendingPlayer.Speed) / 100) * (defendingPlayer.Fatigue/100);
+        if (defendingPlayer.Vision > 70) totalChance += ((100 - defendingPlayer.Vision) / 100) * (defendingPlayer.Fatigue / 100);
 
         float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
 
@@ -247,15 +352,6 @@ public class MatchController : MonoBehaviour
         }
 
         return type;
-    }
-
-    private PlayerData.PlayerAction GetDefensiveAction(PlayerData _player)
-    {
-        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
-
-        //TODO decide what is player's action
-
-        return action;
     }
 
     private int GetRandomZone()

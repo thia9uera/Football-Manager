@@ -98,9 +98,12 @@ public class PlayerData : ScriptableObject
     public float Prob_DefPosition,
         Prob_OffPosition,
         Prob_ParPosChance, 
-        Prob_Pass, Prob_Shoot,
-        Prob_Fault, Prob_Crossing,
-        Prob_Dribble, Prob_Fall, 
+        Prob_Pass,
+        Prob_Shoot,
+        Prob_Fault,
+        Prob_Crossing,
+        Prob_Dribble,
+        Prob_Fall, 
         Prob_OffsideLine,
         Prob_Marking = 0f;
 
@@ -206,9 +209,6 @@ public class PlayerData : ScriptableObject
     public void ApplyBonus(Team_Strategy _teamStrategy)
     {
         Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
-
-       // Prob_DefPosition = Prob_OffPosition = Prob_ParPosChance = Prob_Pass = Prob_Shoot = Prob_Fault =  Prob_Crossing = Prob_Dribble = Prob_Fall = 0f;
-        //Prob_OwnGoal = Prob_LD = Prob_CD = Prob_RD =  Prob_LDM = Prob_CDM = Prob_RDM = Prob_LM = Prob_CM = Prob_RM = Prob_LAM = Prob_CAM = Prob_RAM =  Prob_LF = Prob_CF = Prob_RF = Prob_Box = 0f;
 
         Prob_DefPosition = (_teamStrategy.DefPosChance + _playerStrategy.DefPosChance) / 100;
         Prob_OffPosition = (_teamStrategy.OffPosChance + _playerStrategy.OffPosChance) / 100;
