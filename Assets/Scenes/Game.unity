@@ -771,7 +771,7 @@ MonoBehaviour:
   AwayTeamSquad: {fileID: 391303382}
   Narration: {fileID: 548477937}
   startBtn: {fileID: 1147745715}
-  currentZone: 3
+  currentZone: 8
   actionChancePerZone: {fileID: 11400000, guid: c94980335907288449467774ff0d5e2b,
     type: 2}
   tackleChancePerZone: {fileID: 11400000, guid: a9113bfdb57b7564987076e718f23323,
@@ -809,7 +809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000012900749}
+  m_AnchoredPosition: {x: 0, y: -0.00004777987}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &635863763
