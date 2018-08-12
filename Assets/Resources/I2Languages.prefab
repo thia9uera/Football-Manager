@@ -63,7 +63,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1532462358722
+  Google_LastUpdatedVersion: 1532462396298
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2

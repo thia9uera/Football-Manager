@@ -38,9 +38,6 @@ public class PlayerData : ScriptableObject
     public int Blocking = 50;
 
     [Range(0, 100)]
-    public int AerialBlocking = 50;
-
-    [Range(0, 100)]
     public int Shooting = 50;
 
     [Range(0, 100)]

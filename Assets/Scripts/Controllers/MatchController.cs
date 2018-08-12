@@ -133,31 +133,20 @@ public class MatchController : MonoBehaviour
         Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
     }
 
-    private bool hasStarted = false;
     public void HandleStartButton()
     {
-        hasStarted = !hasStarted;
-
-        if(hasStarted)
-        {
-            KickOff();
-        }
-        else
-        {
-            CancelInvoke();
-        }
+        Reset();
+        KickOff();
     }
 
     public void KickOff()
     {
-        //Reset();
-        //startBtn.SetActive(false);
-        if (matchTime == 0)
-        {
-            Narration.UpdateNarration("KICK OFF!", Color.gray);
-            DebugString = "KICK OFF! \n \n";
-            currentZone = FieldZone.CM;
-        }
+        startBtn.SetActive(false);
+
+        Narration.UpdateNarration("KICK OFF!", Color.gray);
+        DebugString = "KICK OFF! \n \n";
+        currentZone = FieldZone.CM;
+
 
         InvokeRepeating("DefineActions", 1f, 1f);  
     }
@@ -170,7 +159,7 @@ public class MatchController : MonoBehaviour
             {
                 isGoalAnnounced = true;
                 Narration.UpdateNarration("<size=60>GOOOOOOAAAAALLLL!!!", attackingTeam.PrimaryColor);
-                DebugString += "\n\nGOL de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n ________________________________\n \n";
+                DebugString += "\n\n<size=40>GOL de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n ________________________________\n \n";
                 if (attackingTeam == HomeTeam) homeTeamScore++;
                 else awayTeamScore++;
                 Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
@@ -214,6 +203,7 @@ public class MatchController : MonoBehaviour
         {
             Narration.UpdateNarration("TERMINA A PARTIDA", Color.gray);
             CancelInvoke();
+            startBtn.SetActive(false);
             return;
         }
 
@@ -378,32 +368,42 @@ public class MatchController : MonoBehaviour
         {
             case PlayerData.PlayerAction.Pass:
                 attacking = ((float)attackingPlayer.Passing / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
+                attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 300) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 defending = ((float)defendingPlayer.Blocking / 100) * ((float)defendingPlayer.Fatigue / 100);
+                defending += ((float)(defendingPlayer.Agility + defendingPlayer.Vision) / 200) * ((float)defendingPlayer.Fatigue / 100);
                 break;
 
             case PlayerData.PlayerAction.Dribble:
                 attacking = ((float)attackingPlayer.Dribbling / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
+                attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Speed) / 200) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 defending = ((float)defendingPlayer.Tackling / 100) * ((float)defendingPlayer.Fatigue / 100);
+                defending += ((float)(defendingPlayer.Agility + defendingPlayer.Speed) / 200) * ((float)defendingPlayer.Fatigue / 100);
                 break;
 
             case PlayerData.PlayerAction.Cross:
                 attacking = ((float)attackingPlayer.Crossing / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
+                attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 300) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 defending = ((float)defendingPlayer.Blocking / 100) * ((float)defendingPlayer.Fatigue / 100);
+                defending += ((float)(defendingPlayer.Agility + defendingPlayer.Vision) / 200) * ((float)defendingPlayer.Fatigue / 100);
                 break;
 
             case PlayerData.PlayerAction.Shot:
                 attacking = ((float)attackingPlayer.Shooting / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
+                attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Strength) / 200) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 defending = ((float)defendingPlayer.Blocking / 100) * ((float)defendingPlayer.Fatigue / 100);
+                defending += ((float)(defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 200) * ((float)defendingPlayer.Fatigue / 100);
                 break;
 
             case PlayerData.PlayerAction.Header:
                 attacking = ((float)attackingPlayer.Heading / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
+                attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Strength) / 200) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
-                defending = ((float)defendingPlayer.AerialBlocking / 100) * ((float)defendingPlayer.Fatigue / 100);
+                defending = ((float)(defendingPlayer.Heading + defendingPlayer.Blocking) / 200) * ((float)defendingPlayer.Fatigue / 100);
+                defending += ((float)(defendingPlayer.Agility + defendingPlayer.Vision) / 200) * ((float)defendingPlayer.Fatigue / 100);
                 break;
         }
 
