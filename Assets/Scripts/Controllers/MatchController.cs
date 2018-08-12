@@ -325,6 +325,10 @@ public class MatchController : MonoBehaviour
                             DebugString += "CHUTE BLOQUEADO! \n ________________________________\n";
                             Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O CHUTE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
                             break;
+                        case PlayerData.PlayerAction.Header:
+                            DebugString += "JOGADA AEREA DESARMADA! \n ________________________________\n";
+                            Narration.UpdateNarration(defendingPlayer.FirstName + " PULA MAIS ALTO QUE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+                            break;
                     }
 
                     SwitchPossesion();
@@ -452,6 +456,12 @@ public class MatchController : MonoBehaviour
         }
 
         attacking = ((((float)attackingPlayer.Shooting / 100) + ((float)attackingPlayer.Strength / 100))) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus * distanceModifier;
+
+        if(offensiveAction == PlayerData.PlayerAction.Header)
+        {
+            attacking = ((((float)attackingPlayer.Heading / 100) + ((float)attackingPlayer.Strength / 100))) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus * distanceModifier;
+        }
+
         if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
 
         if (RollDice(20, 1, RollType.None, (int)attacking) > 19)
@@ -467,12 +477,22 @@ public class MatchController : MonoBehaviour
             DebugString += "\n GOLEIRO GANHOU BONUS DE 50%";
         }
 
-        DebugString += "\n\nChute: " + attacking + "  Goleiro: " + defending;
+        DebugString += "\nAtacante: " + attacking + "  Goleiro: " + defending;
         if (attacking <= defending)
         {  
             keepDefender = true;
-            DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
-            Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+           
+            if (offensiveAction == PlayerData.PlayerAction.Header)
+            {
+                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cabecada de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
+                Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cabecada de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+            }
+            else
+            {
+                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
+                Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+            }
+
             SwitchPossesion();
         }
 
@@ -620,6 +640,8 @@ public class MatchController : MonoBehaviour
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
         float chance = 0f;
+        bool forcePlayerOut = false;
+        if (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful) forcePlayerOut = true;
 
         List<PlayerData> players = new List<PlayerData>();
 
@@ -632,6 +654,12 @@ public class MatchController : MonoBehaviour
                 if (chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
             }
         }
+
+        if(forcePlayerOut)
+        {
+            if (players.Contains(defendingPlayer)) players.Remove(defendingPlayer);
+        }
+
         return GetActivePlayer(players);
     }
 

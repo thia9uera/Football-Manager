@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cadena Rivers
   Tag: CAR
-  PrimaryColor: {r: 0.8773585, g: 0.87717104, b: 0.7407885, a: 1}
-  SecondaryColor: {r: 0.23137254, g: 0.6544964, b: 1, a: 1}
+  PrimaryColor: {r: 0.5424528, g: 0.66779965, b: 1, a: 1}
+  SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
   Formation: 2
-  Strategy: 3
+  Strategy: 6
   Squad:
   - {fileID: 11400000, guid: 6b923120f86d25d4ba7912ade32de1ee, type: 2}
   - {fileID: 11400000, guid: ee0e46dcb2ba51645852a6b3adf6d6d0, type: 2}
