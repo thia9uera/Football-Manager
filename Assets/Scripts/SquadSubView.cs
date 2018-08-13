@@ -25,8 +25,6 @@ public class SquadSubView : MonoBehaviour
         Player = _data;
         posLabel.text = MainController.Instance.Localization.GetShortPositionString(Player.Position);
         nameLabel.text = Player.FirstName + " " + Player.LastName;
-
-        
     }
 
     public void OnMousedown()

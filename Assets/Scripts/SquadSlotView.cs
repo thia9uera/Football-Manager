@@ -26,7 +26,7 @@ public class SquadSlotView : MonoBehaviour
     public void Populate(PlayerData  _player)
     {
         Player = _player;
-        nameLabel.text = Player.FirstName + " " + Player.LastName;
+        nameLabel.text = "<color=#999999>" + Player.Position + "</color>  " + Player.FirstName + " " + Player.LastName;
         Player.AssignedPosition = Position;
 
         if (Player.Position != Position) posLabel.color = Color.red;

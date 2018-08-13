@@ -37,7 +37,6 @@ public class SquadSubsView : MonoBehaviour
             item = list[i];
             if (item.Player == _in)
             {
-                print(i);
                 controller.Team.Substitutes.SetValue(_out, i);
             }
         }
