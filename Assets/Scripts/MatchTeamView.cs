@@ -11,6 +11,8 @@ public class MatchTeamView : MonoBehaviour
 
     public void Populate(TeamData _team)
     {
+        if(ItemList != null) foreach (MatchPlayerView item in ItemList) Destroy(item.gameObject);
+
         PlayerData[] squad = _team.Squad;
         ItemList = new List<MatchPlayerView>();
         for(int i = 0; i < 11; i++)
@@ -18,7 +20,7 @@ public class MatchTeamView : MonoBehaviour
             PlayerData player = squad[i];
             player.ApplyBonus(_team.GetStrategy());
             //TODO Remove this when we have team setup
-            player.AssignedPosition = player.Position;
+            //player.AssignedPosition = player.Position;
 
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);

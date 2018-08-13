@@ -121,6 +121,12 @@ public class MatchController : MonoBehaviour
             ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
     }
 
+    public void UpdateTeams()
+    {
+        HomeTeamSquad.Populate(HomeTeam);
+        AwayTeamSquad.Populate(AwayTeam);
+    }
+
     private void Reset()
     {
         matchTime = 0;
@@ -367,6 +373,7 @@ public class MatchController : MonoBehaviour
         switch(offensiveAction)
         {
             case PlayerData.PlayerAction.Pass:
+                defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = ((float)attackingPlayer.Passing / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
                 attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 300) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
@@ -375,6 +382,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case PlayerData.PlayerAction.Dribble:
+                defensiveAction = PlayerData.PlayerAction.Tackle;
                 attacking = ((float)attackingPlayer.Dribbling / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
                 attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Speed) / 200) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
@@ -383,6 +391,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case PlayerData.PlayerAction.Cross:
+                defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = ((float)attackingPlayer.Crossing / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
                 attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 300) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
@@ -391,6 +400,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case PlayerData.PlayerAction.Shot:
+                defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = ((float)attackingPlayer.Shooting / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
                 attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Strength) / 200) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
@@ -399,6 +409,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case PlayerData.PlayerAction.Header:
+                defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = ((float)attackingPlayer.Heading / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
                 attacking += ((float)(attackingPlayer.Agility + attackingPlayer.Strength) / 200) * ((float)attackingPlayer.Fatigue / 100);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
@@ -822,5 +833,15 @@ public class MatchController : MonoBehaviour
             defendingTeam = AwayTeam;
             attackingTeam = HomeTeam;
         }
+    }
+
+    public void EditHomeTeam()
+    {
+        MainController.Instance.EditSquad(HomeTeam);
+    }
+
+    public void EditAwayTeam()
+    {
+        MainController.Instance.EditSquad(AwayTeam);
     }
 }

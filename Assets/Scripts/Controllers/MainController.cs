@@ -8,6 +8,7 @@ public class MainController : MonoBehaviour
 
     public LocalizationData Localization;
     public MatchController Match;
+    public SquadSelectionView SquadSelection;
 
     public Team_StrategyData TeamStrategyData;
     public Player_StrategyData PlayerStrategyData;
@@ -25,28 +26,16 @@ public class MainController : MonoBehaviour
         Match.Populate(home, away);
     }
 
-    public string GetPositionShortString(PlayerData.PlayerPosition _position)
+    public void EditSquad(TeamData _team)
     {
-        string str = "";
-        switch (_position)
-        {
-            case PlayerData.PlayerPosition.GK:
-                str = "GK";
-                break;
+        Match.gameObject.SetActive(false);
+        SquadSelection.Populate(_team);
+    }
 
-            case PlayerData.PlayerPosition.CD:
-                str = "CD";
-                break;
-
-            case PlayerData.PlayerPosition.CM:
-                str = "CM";
-                break;
-
-            case PlayerData.PlayerPosition.CF:
-                str = "CF";
-                break;
-        }
-
-        return str;
+    public void FinishSquadEdit()
+    {
+        SquadSelection.gameObject.SetActive(false);
+        Match.UpdateTeams();
+        Match.gameObject.SetActive(true);
     }
 }

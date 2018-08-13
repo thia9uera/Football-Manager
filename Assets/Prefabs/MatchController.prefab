@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HomeTeam: {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
-  AwayTeam: {fileID: 0}
+  AwayTeam: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
   Score: {fileID: 114483907128942192}
   Field: {fileID: 114439111550873096}
   HomeTeamSquad: {fileID: 114671198647791590}

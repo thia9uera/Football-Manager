@@ -69,7 +69,7 @@ MonoBehaviour:
     Shot: -10000
     Tackle: 100
   - Zone: LM
-    Dribble: 50
+    Dribble: 25
     Sprint: 150
     Pass: 100
     LongPass: 150
@@ -77,7 +77,7 @@ MonoBehaviour:
     Shot: -10000
     Tackle: 50
   - Zone: CM
-    Dribble: 50
+    Dribble: 25
     Sprint: 150
     Pass: 100
     LongPass: 150
@@ -85,7 +85,7 @@ MonoBehaviour:
     Shot: -10000
     Tackle: 50
   - Zone: RM
-    Dribble: 50
+    Dribble: 25
     Sprint: 150
     Pass: 100
     LongPass: 150
@@ -93,7 +93,7 @@ MonoBehaviour:
     Shot: -10000
     Tackle: 50
   - Zone: LAM
-    Dribble: 100
+    Dribble: 50
     Sprint: 25
     Pass: 75
     LongPass: 150
@@ -101,15 +101,15 @@ MonoBehaviour:
     Shot: 0
     Tackle: 0
   - Zone: CAM
-    Dribble: 100
+    Dribble: 50
     Sprint: 25
     Pass: 75
     LongPass: 150
     Cross: 0
-    Shot: 0
+    Shot: 25
     Tackle: 0
   - Zone: RAM
-    Dribble: 100
+    Dribble: 50
     Sprint: 25
     Pass: 75
     LongPass: 150
@@ -117,31 +117,31 @@ MonoBehaviour:
     Shot: 0
     Tackle: 0
   - Zone: LF
-    Dribble: 150
+    Dribble: 75
     Sprint: 20
     Pass: 75
     LongPass: 150
     Cross: 150
-    Shot: 150
+    Shot: 50
     Tackle: 0
   - Zone: CF
-    Dribble: 150
+    Dribble: 75
     Sprint: 20
     Pass: 75
     LongPass: 150
     Cross: 50
-    Shot: 200
+    Shot: 75
     Tackle: 0
   - Zone: RF
-    Dribble: 150
+    Dribble: 75
     Sprint: 20
     Pass: 75
     LongPass: 150
     Cross: 150
-    Shot: 150
+    Shot: 50
     Tackle: 0
   - Zone: Box
-    Dribble: -10000
+    Dribble: 75
     Sprint: -10000
     Pass: 50
     LongPass: -10000

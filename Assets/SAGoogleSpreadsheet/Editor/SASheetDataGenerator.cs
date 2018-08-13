@@ -82,7 +82,6 @@ namespace SuperAshley.GoogleSpreadSheet
                     var data = Activator.CreateInstance(dataType);
                     for (int col = 0; col < cellList[row].Count; col++)
                     {
-                        Debug.Log("col : " + col);
                         if (string.IsNullOrEmpty(cellList[row][col]))
                             continue;
 
