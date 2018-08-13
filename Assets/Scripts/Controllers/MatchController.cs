@@ -159,7 +159,7 @@ public class MatchController : MonoBehaviour
             {
                 isGoalAnnounced = true;
                 Narration.UpdateNarration("<size=60>GOOOOOOAAAAALLLL!!!", attackingTeam.PrimaryColor);
-                DebugString += "\n\n<size=40>GOL de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n ________________________________\n \n";
+                DebugString += "\n\n<size=40>GOL de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "</size>\n ________________________________\n \n";
                 if (attackingTeam == HomeTeam) homeTeamScore++;
                 else awayTeamScore++;
                 Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));

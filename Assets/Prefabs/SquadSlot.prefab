@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position: 0
   Player: {fileID: 0}
+  nameLabel: {fileID: 114576623008843156}
 --- !u!114 &114576623008843156
 MonoBehaviour:
   m_ObjectHideFlags: 1
