@@ -241,6 +241,33 @@ public class PlayerData : ScriptableObject
         Prob_Box = _teamStrategy.Box / 100;
     }
 
+    public int GetOverall()
+    {
+        int total = 0;
+
+        total += Goalkeeping;
+        total += Passing;
+        total += Dribbling;
+        total += Crossing;
+        total += Tackling;
+        total += Blocking;
+        total += Shooting;
+        total += Heading;
+        total += Freekick;
+        total += Penalty;
+        total += Speed;
+        total += Strength;
+        total += Agility;
+        total += Stamina;
+        total += Teamwork;
+        total += Vision;
+        total += Stability;
+
+        total = total / 17;
+
+        return total;
+    }
+
     public float GetChancePerZone(MatchController.FieldZone _zone)
     {
         float pct = 0f;
