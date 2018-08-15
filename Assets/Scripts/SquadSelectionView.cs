@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SquadSelectionView : MonoBehaviour
 {
@@ -16,12 +17,27 @@ public class SquadSelectionView : MonoBehaviour
     public PlayerData selectedPlayer;
     public SquadSlotView selectedSlot;
 
+    [SerializeField]
+    private TextMeshProUGUI overallLabel;
+
     public void Populate(TeamData _team)
     {
         Team = _team;
         MainSquad.Populate(Team.Squad);
         Subs.Populate(Team.Substitutes);
         gameObject.SetActive(true);
+        GetOverall();
+    }
+
+    public void GetOverall()
+    {
+        int total = 0;
+        foreach(PlayerData player in Team.Squad)
+        {
+            total += player.GetOverall();
+        }
+
+        overallLabel.text = "Overall: " + (total / 11);
     }
 
     public void StartDragging(PlayerData _data)

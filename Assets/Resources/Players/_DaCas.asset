@@ -13,30 +13,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Guilherme
   LastName: Da Cas
-  Position: 12
+  Position: 9
   Perk: {fileID: 0}
   Strategy: 0
-  Goalkeeping: 50
-  Passing: 76
-  Dribbling: 50
-  Crossing: 50
-  Tackling: 60
-  Blocking: 65
-  Shooting: 77
-  Heading: 41
-  Freekick: 32
-  Penalty: 39
-  Speed: 72
-  Strength: 53
-  Agility: 83
-  Stamina: 52
+  Goalkeeping: 79
+  Passing: 84
+  Dribbling: 83
+  Crossing: 88
+  Tackling: 89
+  Blocking: 84
+  Shooting: 83
+  Heading: 72
+  Freekick: 86
+  Penalty: 73
+  Speed: 82
+  Strength: 83
+  Agility: 86
+  Stamina: 83
   Teamwork: 87
   Vision: 92
   Stability: 86
   positionDebuf: 0.75
   Fatigue: 100
   Morale: 50
-  AssignedPosition: 12
+  AssignedPosition: 9
   Prob_DefPosition: 2
   Prob_OffPosition: -1
   Prob_ParPosChance: 0

@@ -32,5 +32,7 @@ public class SquadMainView : MonoBehaviour
                 controller.Team.Squad.SetValue(_in, i);
             }
         }
+
+        controller.GetOverall();
     }
 }

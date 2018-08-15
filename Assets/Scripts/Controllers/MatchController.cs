@@ -80,6 +80,9 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     private TackleChancePerZoneData tackleChancePerZone;
 
+    [SerializeField]
+    private DebugController debugController;
+
     private TeamData attackingTeam;
     private TeamData defendingTeam;
     private PlayerData attackingPlayer;
@@ -217,9 +220,9 @@ public class MatchController : MonoBehaviour
         matchTime++;
         Score.UpdateTime(matchTime);
         
-
         Field.UpdateFieldArea((int)currentZone);
 
+        //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(currentZone);
         if (keepDefender) attackingPlayer = defendingPlayer;
         defendingPlayer = GetDefendingPlayer(currentZone);
@@ -227,21 +230,26 @@ public class MatchController : MonoBehaviour
         keepAttacker = false;
         keepDefender = false;
 
+        //No players in the dispute
         if (attackingPlayer == null && defendingPlayer == null)
         {
             Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
         }
+        //No players form team in possesion in the dispute
         else if(attackingPlayer == null)
         {
             Narration.UpdateNarration(attackingTeam.Name + " PERDE A POSSE DE BOLA", attackingTeam.PrimaryColor);
             keepDefender = true;
             SwitchPossesion();
         }
+        //Player from team in possesion in the dispute
         else
         {
+            //No defender in the dispute
             if(defendingPlayer == null) Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
             else DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " VS " + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " (" + currentZone + ")</size> \n";
 
+            //Step 2: Get type of marking
             MarkingType marking = GetMarkingType();
             if (marking == MarkingType.Steal)
             {
@@ -256,12 +264,19 @@ public class MatchController : MonoBehaviour
             }
             else
             {
+                //Defender is marking closely
                 if(marking == MarkingType.Close) DebugString += "\nMARCACAO DE PERTO \n \n";
                 else DebugString += "\nMARCACAO A DISTANCIA \n \n";
+
+                //Step 3: Get type of offensive play
                 offensiveAction = GetOffensiveAction(marking);
+
+                //Step 4: Test action against defender (if there is one)
                 if (IsActionSuccessful(marking))
                 {
                     lastActionSuccessful = true;
+
+                    //Give bonus based on type of marking
                     if (marking == MarkingType.Close) attackingBonus += 0.1f;
                     else if (marking == MarkingType.Distance) attackingBonus += 0.05f;
                     else if (marking == MarkingType.None) attackingBonus += 0.01f;
@@ -273,22 +288,26 @@ public class MatchController : MonoBehaviour
                             Narration.UpdateNarration(attackingPlayer.FirstName + " PASSA A BOLA", attackingTeam.PrimaryColor);
                             currentZone = GetTargetZone();
                             break;
+
                         case PlayerData.PlayerAction.Dribble:
                             DebugString += "DRIBLOU! \n ________________________________\n";
-                            Narration.UpdateNarration(attackingPlayer.FirstName + " DRIBLA " + defendingPlayer.FirstName, attackingTeam.PrimaryColor);
+                            if (defendingPlayer != null) Narration.UpdateNarration(attackingPlayer.FirstName + " DRIBLA " + defendingPlayer.FirstName, attackingTeam.PrimaryColor);
                             currentZone = GetTargetZone();
                             keepAttacker = true;
                             break;
+
                         case PlayerData.PlayerAction.Cross:
                             DebugString += "CRUZOU! \n ________________________________\n";
                             Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
                             currentZone = GetTargetZone();
                             break;
+
                         case PlayerData.PlayerAction.Shot:
                             DebugString += "CHUTOU! \n";
                             Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O CHUTE...", attackingTeam.PrimaryColor);
                             ResolveShot(marking);
                             break;
+
                         case PlayerData.PlayerAction.Header:
                             DebugString += "CABECEOU! \n";
                             Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O LANCE DE CABECA...", attackingTeam.PrimaryColor);
@@ -303,24 +322,33 @@ public class MatchController : MonoBehaviour
 
                     switch (offensiveAction)
                     {
+                        case PlayerData.PlayerAction.None:
+                            DebugString += "RATIOU FEIO E PERDEU A BOLA! \n ________________________________\n";
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " DEU BOBEIRA E PERDEU A BOLA", attackingTeam.PrimaryColor);
+                            break;
+
                         case PlayerData.PlayerAction.Pass:
                             DebugString += "PASSE BLOQUEADO! \n ________________________________\n";
                             Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O PASSE", defendingTeam.PrimaryColor);
                             keepDefender = true;
                             break;
+
                         case PlayerData.PlayerAction.Dribble:
                             DebugString += "DRIBLE DESARMADO! \n ________________________________\n";
                             Narration.UpdateNarration(defendingPlayer.FirstName + " PARA O DRIBLE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
                             keepDefender = true;
                             break;
+
                         case PlayerData.PlayerAction.Cross:
                             DebugString += "CRUZAMENTO BLOQUEADO! \n ________________________________\n";
                             Narration.UpdateNarration(defendingPlayer.FirstName + " IMPEDE O CRUZAMENTO", defendingTeam.PrimaryColor);
                             break;
+
                         case PlayerData.PlayerAction.Shot:
                             DebugString += "CHUTE BLOQUEADO! \n ________________________________\n";
                             Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O CHUTE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
                             break;
+
                         case PlayerData.PlayerAction.Header:
                             DebugString += "JOGADA AEREA DESARMADA! \n ________________________________\n";
                             Narration.UpdateNarration(defendingPlayer.FirstName + " PULA MAIS ALTO QUE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
@@ -331,6 +359,7 @@ public class MatchController : MonoBehaviour
                 }
             }
         }
+        //debugController.UpdateDebug();
     }
 
     private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 101)
@@ -372,6 +401,8 @@ public class MatchController : MonoBehaviour
 
         switch(offensiveAction)
         {
+            case PlayerData.PlayerAction.None: return false;
+ 
             case PlayerData.PlayerAction.Pass:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = ((float)attackingPlayer.Passing / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
@@ -419,12 +450,28 @@ public class MatchController : MonoBehaviour
         }
 
         int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 10));
-        if (attackRoll == 20) attacking = attacking * 2;
-        else if (attackRoll < 3) attacking = attacking / 2;
+        if (attackRoll == 20)
+        {
+            DebugString += "\nAtacante ganhou bonus de 100% \n";
+            attacking = attacking * 2;
+        }
+        else if (attackRoll == 1)
+        {
+            DebugString += "\nAtacante meia-bomba \n";
+            attacking = attacking / 2;
+        }
 
         int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 10));
-        if (defenseRoll == 20) defending = defending * 2;
-        else if (defenseRoll < 3) defending = defending / 2;
+        if (defenseRoll == 20)
+        {
+            DebugString += "\nDefensor ganhou bonus de 100% \n";
+            defending = defending * 2;
+        }
+        else if (defenseRoll == 1)
+        {
+            DebugString += "\nDefensor meia-bomba \n";
+            defending = defending / 2;
+        }
 
         DebugString += "\nAtacante rolou " + attacking;
         DebugString += "\nDefensor rolou " + defending + "\n\n";
@@ -488,7 +535,7 @@ public class MatchController : MonoBehaviour
             DebugString += "\n GOLEIRO GANHOU BONUS DE 50%";
         }
 
-        DebugString += "\nAtacante: " + attacking + "  Goleiro: " + defending;
+        DebugString += "\nAtacante rolou: " + attacking + "\nGoleiro rolou: " + defending;
         if (attacking <= defending)
         {  
             keepDefender = true;
@@ -515,7 +562,7 @@ public class MatchController : MonoBehaviour
         FieldZone zone = currentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
 
-        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box)
+        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
         {
             return PlayerData.PlayerAction.Header;
         }
@@ -614,7 +661,10 @@ public class MatchController : MonoBehaviour
         float chance = 0f;
         float higher = 0f;
         bool forcePlayer = false;
-        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross && lastActionSuccessful) forcePlayer = true;
+        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
+        {
+            if(lastActionSuccessful) forcePlayer = true;
+        }
 
         List<PlayerData> players = new List<PlayerData>();
 
@@ -732,43 +782,63 @@ public class MatchController : MonoBehaviour
         FieldZone target = currentZone;
         FieldZone zone = currentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
-
+        List<int> zones = new List<int>();
         if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Dribble)
         { 
             switch (zone)
             {
                 case FieldZone.OwnGoal:
-                    target = GetRandomZone(1, 4);
+                    zones.InsertRange(0, new int[] { 1, 2, 3 });
                     break;
 
                 case FieldZone.LD:
+                    zones.InsertRange(0, new int[] { 4, 5, 2 });
+                    break;
                 case FieldZone.CD:
+                    zones.InsertRange(0, new int[] { 4, 5, 6 });
+                    break;
                 case FieldZone.RD:
-                    target = GetRandomZone(4, 7);
+                    zones.InsertRange(0, new int[] { 2, 5, 6 });
                     break;
 
                 case FieldZone.LDM:
+                    zones.InsertRange(0, new int[] { 5, 7, 8 });
+                    break;
                 case FieldZone.CDM:
+                    zones.InsertRange(0, new int[] { 7, 8, 9 });
+                    break;
                 case FieldZone.RDM:
-                    target = GetRandomZone(7, 10);
+                    zones.InsertRange(0, new int[] { 5, 8, 9 });
                     break;
 
                 case FieldZone.LM:
+                    zones.InsertRange(0, new int[] { 8, 10, 11 });
+                    break;
                 case FieldZone.CM:
+                    zones.InsertRange(0, new int[] { 10, 11, 12 });
+                    break;
                 case FieldZone.RM:
-                    target = GetRandomZone(10, 13);
+                    zones.InsertRange(0, new int[] { 8, 11, 12 });
                     break;
 
                 case FieldZone.LAM:
+                    zones.InsertRange(0, new int[] { 11, 13, 14 });
+                    break;
                 case FieldZone.CAM:
+                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    break;
                 case FieldZone.RAM:
-                    target = GetRandomZone(13, 16);
+                    zones.InsertRange(0, new int[] { 11, 14, 15 });
                     break;
 
                 case FieldZone.LF:
+                    zones.InsertRange(0, new int[] { 14, 16 });
+                    break;
                 case FieldZone.CF:
+                    zones.InsertRange(0, new int[] { 13, 16, 15 });
+                    break;
                 case FieldZone.RF:
-                    target = FieldZone.Box;
+                    zones.InsertRange(0, new int[] { 14, 16 });
                     break;
             }
         }
@@ -778,25 +848,37 @@ public class MatchController : MonoBehaviour
             switch (zone)
             {
                 case FieldZone.OwnGoal:
-                    target = GetRandomZone(4, 10);
+                    zones.InsertRange(0, new int[] { 4, 5, 6, 7, 8, 9 });
                     break;
 
                 case FieldZone.LD:
+                    zones.InsertRange(0, new int[] { 7, 8, 10 });
+                    break;
                 case FieldZone.CD:
+                    zones.InsertRange(0, new int[] { 7, 8, 9, 11 });
+                    break;
                 case FieldZone.RD:
-                    target = GetRandomZone(7, 13);
+                    zones.InsertRange(0, new int[] { 8, 9, 12 });
                     break;
 
                 case FieldZone.LDM:
+                    zones.InsertRange(0, new int[] { 10, 11, 13 });
+                    break;
                 case FieldZone.CDM:
+                    zones.InsertRange(0, new int[] { 10, 11, 12, 14 });
+                    break;
                 case FieldZone.RDM:
-                    target = GetRandomZone(10, 16);
+                    zones.InsertRange(0, new int[] { 11, 12, 15 });
                     break;
 
                 case FieldZone.LM:
+                    zones.InsertRange(0, new int[] { 13, 14 });
+                    break;
                 case FieldZone.CM:
+                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    break;
                 case FieldZone.RM:
-                    target = GetRandomZone(13, totalZones);
+                    zones.InsertRange(0, new int[] { 14, 15 });
                     break;
 
                 case FieldZone.LAM:
@@ -805,10 +887,13 @@ public class MatchController : MonoBehaviour
                 case FieldZone.LF:
                 case FieldZone.CF:
                 case FieldZone.RF:
-                    target = FieldZone.Box;
+                    zones.InsertRange(0, new int[] { 16 });
                     break;
             }
         }
+
+        int random = Random.Range(0, zones.Count);
+        target = (FieldZone)zones[random];
 
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
         return target;

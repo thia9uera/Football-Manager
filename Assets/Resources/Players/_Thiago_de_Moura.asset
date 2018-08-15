@@ -17,34 +17,34 @@ MonoBehaviour:
   Perk: {fileID: 0}
   Strategy: 0
   Goalkeeping: 28
-  Passing: 52
-  Dribbling: 50
-  Crossing: 50
-  Tackling: 65
-  Blocking: 70
-  Shooting: 40
-  Heading: 39
-  Freekick: 32
+  Passing: 76
+  Dribbling: 75
+  Crossing: 78
+  Tackling: 82
+  Blocking: 76
+  Shooting: 83
+  Heading: 73
+  Freekick: 75
   Penalty: 63
-  Speed: 65
-  Strength: 58
-  Agility: 39
-  Stamina: 59
+  Speed: 84
+  Strength: 84
+  Agility: 82
+  Stamina: 81
   Teamwork: 82
-  Vision: 70
+  Vision: 89
   Stability: 71
   positionDebuf: 0.75
   Fatigue: 100
   Morale: 50
-  AssignedPosition: 0
-  Prob_DefPosition: 0
-  Prob_OffPosition: 0
+  AssignedPosition: 1
+  Prob_DefPosition: 2
+  Prob_OffPosition: -1
   Prob_ParPosChance: 0
-  Prob_Pass: 0
+  Prob_Pass: 1
   Prob_Shoot: 0
   Prob_Fault: 0
   Prob_Crossing: 0
-  Prob_Dribble: 0
+  Prob_Dribble: -1
   Prob_Fall: 0
   Prob_OffsideLine: 0
   Prob_Marking: 0

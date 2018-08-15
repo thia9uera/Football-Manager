@@ -16,13 +16,13 @@ MonoBehaviour:
   Position: 5
   Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
   Strategy: 0
-  Goalkeeping: 27
+  Goalkeeping: 86
   Passing: 74
-  Dribbling: 50
-  Crossing: 50
-  Tackling: 50
-  Blocking: 74
-  Shooting: 68
+  Dribbling: 83
+  Crossing: 80
+  Tackling: 83
+  Blocking: 85
+  Shooting: 88
   Heading: 54
   Freekick: 77
   Penalty: 77
@@ -36,7 +36,7 @@ MonoBehaviour:
   positionDebuf: 0.75
   Fatigue: 100
   Morale: 50
-  AssignedPosition: 5
+  AssignedPosition: 8
   Prob_DefPosition: 2
   Prob_OffPosition: -1
   Prob_ParPosChance: 0
