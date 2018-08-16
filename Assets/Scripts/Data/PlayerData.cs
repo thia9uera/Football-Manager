@@ -521,7 +521,7 @@ public class PlayerData : ScriptableObject
                 break;
         }
 
-        if (AssignedPosition != Position) pct = pct + positionDebuf;
+        if (AssignedPosition != Position) pct = pct * positionDebuf;
 
         return pct;
     }

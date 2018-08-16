@@ -155,7 +155,7 @@ public class MatchController : MonoBehaviour
         Narration.UpdateNarration("KICK OFF!", Color.gray);
         DebugString = "KICK OFF! \n \n";
         currentZone = FieldZone.CM;
-
+        Field.UpdateFieldArea((int)currentZone);
 
         InvokeRepeating("DefineActions", 1f, 1f);  
     }
@@ -190,6 +190,7 @@ public class MatchController : MonoBehaviour
                 SwitchPossesion();
                 currentZone = FieldZone.CM;
                 attackingBonus = 1f;
+                Field.UpdateFieldArea((int)currentZone);
 
                 Narration.UpdateNarration("RECOMECA A PARTIDA", Color.gray);
                 return;
@@ -220,7 +221,7 @@ public class MatchController : MonoBehaviour
         matchTime++;
         Score.UpdateTime(matchTime);
         
-        Field.UpdateFieldArea((int)currentZone);
+        
 
         //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(currentZone);
@@ -314,6 +315,7 @@ public class MatchController : MonoBehaviour
                             ResolveShot(marking);
                             break;
                     }
+                    Field.UpdateFieldArea((int)currentZone);
                 }
                 else
                 {
@@ -705,18 +707,27 @@ public class MatchController : MonoBehaviour
         if (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful) forcePlayerOut = true;
 
         List<PlayerData> players = new List<PlayerData>();
-
+        string debug = zone.ToString() + " - ";
         foreach (PlayerData player in defendingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
-            if (chance >= 1f ) players.Add(player);
+            if (chance >= 1f)
+            {
+                players.Add(player);
+                debug += player.FirstName + " (" + chance + "), ";
+            }
             else
             {
-                if (chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
+                if (chance > 0 && chance <= Random.Range(0f, 1f))
+                {
+                    players.Add(player);
+                    debug += player.FirstName + " (" + chance + "), ";
+                }
             }
+            
         }
-
-        if(forcePlayerOut)
+        print(debug);
+        if (forcePlayerOut)
         {
             if (players.Contains(defendingPlayer)) players.Remove(defendingPlayer);
         }
