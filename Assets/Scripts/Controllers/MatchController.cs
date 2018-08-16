@@ -78,9 +78,6 @@ public class MatchController : MonoBehaviour
     private ActionChancePerZoneData actionChancePerZone;
 
     [SerializeField]
-    private TackleChancePerZoneData tackleChancePerZone;
-
-    [SerializeField]
     private DebugController debugController;
 
     private TeamData attackingTeam;
@@ -372,8 +369,8 @@ public class MatchController : MonoBehaviour
 
         while (n < _amount)
         {
-            roll = 1 + Random.Range(0, _sides);
-            if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
+            roll = 1 + Random.Range(0, _sides+1);
+            if (Random.Range(1, 101) < _bonusChance) roll += _bonus;
             rolls.Add(roll);
             n++;
         }
@@ -385,7 +382,7 @@ public class MatchController : MonoBehaviour
         else if (_rollType == RollType.DropMin)
         {
             rolls.Remove(rolls.Min());
-            roll = 1 + Random.Range(0, _sides);
+            roll = 1 + Random.Range(0, _sides+1);
             if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
             rolls.Add(roll);
             return rolls.Sum();
@@ -401,10 +398,19 @@ public class MatchController : MonoBehaviour
         float attacking = 0f;
         float defending = 0f;
 
-        switch(offensiveAction)
+        FieldZone zone = currentZone;
+        if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+        float tackleChance = (actionChancePerZone.actionChancePerZones[(int)zone].Tackle + defendingPlayer.Prob_Tackling) / 2 ;
+        if(tackleChance < Random.Range(0, 100))
+        {
+
+        }
+
+        switch (offensiveAction)
         {
             case PlayerData.PlayerAction.None: return false;
- 
+            
             case PlayerData.PlayerAction.Pass:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = ((float)attackingPlayer.Passing / 100) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus;
@@ -564,57 +570,64 @@ public class MatchController : MonoBehaviour
         FieldZone zone = currentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
 
-        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
-        {
-            return PlayerData.PlayerAction.Header;
-        }
-
-        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
- 
-        float higher = 0f;
-
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
-        float pass = zoneChance.Pass/100 + attackingPlayer.Prob_Pass;
-        if(RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) pass += 1;
-        if (pass > higher)
+        float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
+        if(RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) pass *= 1.25f;
+
+        float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
+        if (attackingPlayer.Dribbling > 70) dribble *= ((100 - (float)attackingPlayer.Dribbling) / 100) * ((float)attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) dribble *= 0.5f;
+        else if (_marking == MarkingType.Distance) dribble *= 2;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) dribble *= 1.25f;
+
+        float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
+        if (attackingPlayer.Crossing > 70) cross *= ((100 - (float)attackingPlayer.Crossing) / 100) * ((float)attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) cross *= 0.5f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross)) > 18) cross *= 1.25f;
+
+        float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
+        if (attackingPlayer.Shooting > 70 && zoneChance.Shot > 0) shoot  *= ((100 - (float)attackingPlayer.Shooting) / 100) * ((float)attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) shoot *= 0.5f;
+        else if (_marking == MarkingType.Distance) shoot *= 1.5f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) shoot *= 1.25f;
+
+        float header = 0f;
+        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
         {
-            higher = pass;
-            action = PlayerData.PlayerAction.Pass;
+            header = (zoneChance.Shot + attackingPlayer.Prob_Shoot) * 1.5f;
+            if (attackingPlayer.Heading > 70) header *= ((100 - (float)attackingPlayer.Heading) / 100) * ((float)attackingPlayer.Fatigue / 100);
+            if (_marking == MarkingType.Distance) header *= 2f;
+            else if (_marking == MarkingType.None) header *= 3f;
+            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) header *= 1.25f;
         }
 
-        float dribble = zoneChance.Dribble/100 + attackingPlayer.Prob_Dribble;
-        if (attackingPlayer.Dribbling > 70) dribble += ((100 - (float)attackingPlayer.Dribbling) / 100) * ((float)attackingPlayer.Fatigue / 100);
-        if (_marking == MarkingType.Close) dribble = dribble * 0.5f;
-        else if (_marking == MarkingType.Distance) dribble = dribble * 2;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) dribble += 1;
-        if (dribble > higher)
-        {
-            higher = dribble;
-            action = PlayerData.PlayerAction.Dribble;
-        }
+        float total = pass + dribble + cross + shoot + header;
+        pass = pass / total;
+        dribble = dribble / total;
+        cross = cross / total;
+        shoot = shoot / total;
+        header = header / total;
 
-        float cross = zoneChance.Cross/100 + attackingPlayer.Prob_Crossing;
-        if (attackingPlayer.Crossing > 70) cross += ((100 - (float)attackingPlayer.Crossing) / 100) * ((float)attackingPlayer.Fatigue / 100);
-        if (_marking == MarkingType.Close) cross = cross * 0.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross)) > 18) cross += 1;
-        if (cross > higher)
-        {
-            higher = cross;
-            action = PlayerData.PlayerAction.Cross;
-        }
+        List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Dribble, dribble));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Header, header));
 
-        float shoot = zoneChance.Shot/100 + attackingPlayer.Prob_Shoot;
-        if (attackingPlayer.Shooting > 70 && zoneChance.Shot > 0) shoot += ((100 - (float)attackingPlayer.Shooting) / 100) * ((float)attackingPlayer.Fatigue / 100);
-        if (_marking == MarkingType.Close) shoot = shoot * 0.5f;
-        else if (_marking == MarkingType.Distance) shoot = shoot * 1.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) shoot += 1;
-        if (shoot > higher)
+        float random = Random.Range(0f, 1f);
+        float cumulative = 0f;
+        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
+        for (int i = 0; i < list.Count; i++)
         {
-            higher = shoot;
-            action = PlayerData.PlayerAction.Shot;
+            cumulative += list[i].Value;
+            if (random < cumulative)
+            {
+                action = list[i].Key;
+                break;
+            }
         }
-
 
         DebugString += "Pass: " + pass + "\n";
         DebugString += "Dribble: " + dribble + "\n";
@@ -652,8 +665,6 @@ public class MatchController : MonoBehaviour
 
         return type;
     }
-
-
 
     private PlayerData GetAttackingPlayer(FieldZone _zone)
     {
@@ -726,7 +737,7 @@ public class MatchController : MonoBehaviour
             }
             
         }
-        print(debug);
+        //print(debug);
         if (forcePlayerOut)
         {
             if (players.Contains(defendingPlayer)) players.Remove(defendingPlayer);
@@ -750,7 +761,7 @@ public class MatchController : MonoBehaviour
             {
                 
             }
-            else if (r == 20) //o primeiro atleta que for bem ganha 
+            else if (r == 18) //o primeiro atleta que for bem ganha 
             {
                 activePlayer = player;
             }
@@ -905,7 +916,7 @@ public class MatchController : MonoBehaviour
 
         int random = Random.Range(0, zones.Count);
         target = (FieldZone)zones[random];
-
+        
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
         return target;
     }

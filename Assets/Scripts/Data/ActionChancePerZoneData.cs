@@ -4,13 +4,13 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ActionChancePerZone {
 	public string Zone;
-	public int Dribble;
-	public int Sprint;
-	public int Pass;
-	public int LongPass;
-	public int Cross;
-	public int Shot;
-	public int Tackle;
+	public float Dribble;
+	public float Sprint;
+	public float Pass;
+	public float LongPass;
+	public float Cross;
+	public float Shot;
+	public float Tackle;
 }
 
 public class ActionChancePerZoneData : ScriptableObject {

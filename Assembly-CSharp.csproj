@@ -148,7 +148,6 @@
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerTacticsData.cs" />
     <Compile Include="Assets\Scripts\Data\StrategyData.cs" />
-    <Compile Include="Assets\Scripts\Data\TackleChancePerZoneData.cs" />
     <Compile Include="Assets\Scripts\Data\Team_StrategyData.cs" />
     <Compile Include="Assets\Scripts\Data\TeamData.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug_FieldView.cs" />

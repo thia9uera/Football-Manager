@@ -5,15 +5,16 @@ using System.Collections.Generic;
 public class Player_Strategy {
 	public string Name;
 	public string Description;
-	public int DefPosChance;
-	public int OffPosChance;
-	public int ParPosChance;
-	public int PassingChance;
-	public int ShootingChance;
-	public int CrossingChance;
-	public int DribblingChance;
-	public int OffsideTrickChance;
-	public int MarkingChance;
+	public float DefPosChance;
+	public float OffPosChance;
+	public float ParPosChance;
+	public float PassingChance;
+	public float ShootingChance;
+	public float CrossingChance;
+	public float DribblingChance;
+	public float OffsideTrickChance;
+	public float MarkingChance;
+	public float TacklingChance;
 }
 
 public class Player_StrategyData : ScriptableObject {

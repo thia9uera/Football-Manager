@@ -19,8 +19,6 @@ public class MatchTeamView : MonoBehaviour
         {
             PlayerData player = squad[i];
             player.ApplyBonus(_team.GetStrategy());
-            //TODO Remove this when we have team setup
-            //player.AssignedPosition = player.Position;
 
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);
