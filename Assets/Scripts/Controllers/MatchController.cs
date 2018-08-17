@@ -361,33 +361,232 @@ public class MatchController : MonoBehaviour
         //debugController.UpdateDebug();
     }
 
-    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 101)
+    
+
+    private PlayerData GetAttackingPlayer(FieldZone _zone)
     {
-        int n = 0;
-        int roll;
-        List<int> rolls = new List<int>();
+        FieldZone zone = _zone;
+        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
 
-        while (n < _amount)
+        float chance = 0f;
+        float higher = 0f;
+        bool forcePlayer = false;
+        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
         {
-            roll = 1 + Random.Range(0, _sides+1);
-            if (Random.Range(1, 101) < _bonusChance) roll += _bonus;
-            rolls.Add(roll);
-            n++;
+            if (lastActionSuccessful) forcePlayer = true;
         }
 
-        if (_rollType == RollType.GetMax)
+        List<PlayerData> players = new List<PlayerData>();
+
+        foreach (PlayerData player in attackingTeam.Squad)
         {
-            return rolls.Max();
+            chance = CalculatePresence(player, zone);
+            if (forcePlayer)
+            {
+                if (chance > higher && player != attackingPlayer)
+                {
+                    players.Clear();
+                    players.Add(player);
+                }
+            }
+            else
+            {
+                if (chance >= 1f)
+                {
+                    players.Add(player);
+                }
+                else
+                {
+                    if (chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
+                }
+            }
         }
-        else if (_rollType == RollType.DropMin)
+
+        return GetActivePlayer(players);
+    }
+
+    private PlayerData GetDefendingPlayer(FieldZone _zone)
+    {
+        FieldZone zone = _zone;
+        if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+        float chance = 0f;
+        bool forcePlayerOut = false;
+        if (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful) forcePlayerOut = true;
+
+        List<PlayerData> players = new List<PlayerData>();
+        string debug = zone.ToString() + " - ";
+        foreach (PlayerData player in defendingTeam.Squad)
         {
-            rolls.Remove(rolls.Min());
-            roll = 1 + Random.Range(0, _sides+1);
-            if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
-            rolls.Add(roll);
-            return rolls.Sum();
+            chance = CalculatePresence(player, zone);
+            if (chance >= 1f)
+            {
+                players.Add(player);
+                debug += player.FirstName + " (" + chance + "), ";
+            }
+            else
+            {
+                if (chance > 0 && chance <= Random.Range(0f, 1f))
+                {
+                    players.Add(player);
+                    debug += player.FirstName + " (" + chance + "), ";
+                }
+            }
+
         }
-        else return rolls.Sum();
+        //print(debug);
+        if (forcePlayerOut)
+        {
+            if (players.Contains(defendingPlayer)) players.Remove(defendingPlayer);
+        }
+
+        return GetActivePlayer(players);
+    }
+
+    private PlayerData GetActivePlayer(List<PlayerData> list)
+    {
+        PlayerData activePlayer = null;
+        float points = 0f;
+
+        foreach (PlayerData player in list)
+        {
+            float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
+
+            int r = RollDice(20);
+
+            if (r < 3) //se foi mto mal no dado já perde
+            {
+
+            }
+            else if (r == 18) //o primeiro atleta que for bem ganha 
+            {
+                activePlayer = player;
+            }
+            else //se não for nem muito bem nem muito mal, soma o rolar do dado com os stats
+            {
+                float p = stats + (r / 20);
+                if (p > points)
+                {
+                    points = p;
+                    activePlayer = player;
+                }
+            }
+        }
+
+        return activePlayer;
+    }
+
+    private float CalculatePresence(PlayerData _player, FieldZone _zone)
+    {
+        float chance = 0f;
+
+        chance = _player.GetChancePerZone(_zone);
+        if (chance < 1f && chance > 0f)
+        {
+            chance = _player.GetChancePerZone(_zone) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
+        }
+        return chance;
+    }
+
+    private MarkingType GetMarkingType()
+    {
+        MarkingType type = MarkingType.None;
+        if (defendingPlayer == null) return type;
+
+        float totalChance = 0f;
+        totalChance = defendingPlayer.Prob_Marking;
+
+        if (defendingPlayer.Speed > 70) totalChance += ((100 - (float)defendingPlayer.Speed) / 100) * ((float)defendingPlayer.Fatigue / 100);
+        if (defendingPlayer.Vision > 70) totalChance += ((100 - (float)defendingPlayer.Vision) / 100) * (float)(defendingPlayer.Fatigue / 100);
+
+        float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
+
+        if (r >= 20)
+        {
+            type = MarkingType.Steal;
+        }
+        else if (r > 15)
+        {
+            type = MarkingType.Close;
+        }
+        else if (r > 3)
+        {
+            type = MarkingType.Distance;
+        }
+
+        return type;
+    }
+
+    private PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
+    {
+        FieldZone zone = currentZone;
+        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+        ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
+
+        float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) pass *= 1.25f;
+
+        float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
+        if (attackingPlayer.Dribbling > 70) dribble *= ((100 - (float)attackingPlayer.Dribbling) / 100) * ((float)attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) dribble *= 0.5f;
+        else if (_marking == MarkingType.Distance) dribble *= 2;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) dribble *= 1.25f;
+
+        float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
+        if (attackingPlayer.Crossing > 70) cross *= ((100 - (float)attackingPlayer.Crossing) / 100) * ((float)attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) cross *= 0.5f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross)) > 18) cross *= 1.25f;
+
+        float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
+        if (attackingPlayer.Shooting > 70 && zoneChance.Shot > 0) shoot *= ((100 - (float)attackingPlayer.Shooting) / 100) * ((float)attackingPlayer.Fatigue / 100);
+        if (_marking == MarkingType.Close) shoot *= 0.5f;
+        else if (_marking == MarkingType.Distance) shoot *= 1.5f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) shoot *= 1.25f;
+
+        float header = 0f;
+        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
+        {
+            header = (zoneChance.Shot + attackingPlayer.Prob_Shoot) * 1.5f;
+            if (attackingPlayer.Heading > 70) header *= ((100 - (float)attackingPlayer.Heading) / 100) * ((float)attackingPlayer.Fatigue / 100);
+            if (_marking == MarkingType.Distance) header *= 2f;
+            else if (_marking == MarkingType.None) header *= 3f;
+            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) header *= 1.25f;
+        }
+
+        float total = pass + dribble + cross + shoot + header;
+        pass = pass / total;
+        dribble = dribble / total;
+        cross = cross / total;
+        shoot = shoot / total;
+        header = header / total;
+
+        List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Dribble, dribble));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Header, header));
+
+        float random = Random.Range(0f, 1f);
+        float cumulative = 0f;
+        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
+        for (int i = 0; i < list.Count; i++)
+        {
+            cumulative += list[i].Value;
+            if (random < cumulative)
+            {
+                action = list[i].Key;
+                break;
+            }
+        }
+
+        DebugString += "Pass: " + pass + "\n";
+        DebugString += "Dribble: " + dribble + "\n";
+        DebugString += "Cross: " + cross + "\n";
+        DebugString += "Shoot: " + shoot + "\n \n";
+
+        return action;
     }
 
     private bool IsActionSuccessful(MarkingType _marking)
@@ -565,230 +764,33 @@ public class MatchController : MonoBehaviour
         if (attacking > defending) isGoal = true;
     }
 
-    private PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
+    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 101)
     {
-        FieldZone zone = currentZone;
-        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        int n = 0;
+        int roll;
+        List<int> rolls = new List<int>();
 
-        ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
-
-        float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
-        if(RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) pass *= 1.25f;
-
-        float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
-        if (attackingPlayer.Dribbling > 70) dribble *= ((100 - (float)attackingPlayer.Dribbling) / 100) * ((float)attackingPlayer.Fatigue / 100);
-        if (_marking == MarkingType.Close) dribble *= 0.5f;
-        else if (_marking == MarkingType.Distance) dribble *= 2;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass)) > 18) dribble *= 1.25f;
-
-        float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
-        if (attackingPlayer.Crossing > 70) cross *= ((100 - (float)attackingPlayer.Crossing) / 100) * ((float)attackingPlayer.Fatigue / 100);
-        if (_marking == MarkingType.Close) cross *= 0.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross)) > 18) cross *= 1.25f;
-
-        float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
-        if (attackingPlayer.Shooting > 70 && zoneChance.Shot > 0) shoot  *= ((100 - (float)attackingPlayer.Shooting) / 100) * ((float)attackingPlayer.Fatigue / 100);
-        if (_marking == MarkingType.Close) shoot *= 0.5f;
-        else if (_marking == MarkingType.Distance) shoot *= 1.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) shoot *= 1.25f;
-
-        float header = 0f;
-        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
+        while (n < _amount)
         {
-            header = (zoneChance.Shot + attackingPlayer.Prob_Shoot) * 1.5f;
-            if (attackingPlayer.Heading > 70) header *= ((100 - (float)attackingPlayer.Heading) / 100) * ((float)attackingPlayer.Fatigue / 100);
-            if (_marking == MarkingType.Distance) header *= 2f;
-            else if (_marking == MarkingType.None) header *= 3f;
-            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot)) > 18) header *= 1.25f;
+            roll = 1 + Random.Range(0, _sides + 1);
+            if (Random.Range(1, 101) < _bonusChance) roll += _bonus;
+            rolls.Add(roll);
+            n++;
         }
 
-        float total = pass + dribble + cross + shoot + header;
-        pass = pass / total;
-        dribble = dribble / total;
-        cross = cross / total;
-        shoot = shoot / total;
-        header = header / total;
-
-        List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Dribble, dribble));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Header, header));
-
-        float random = Random.Range(0f, 1f);
-        float cumulative = 0f;
-        PlayerData.PlayerAction action = PlayerData.PlayerAction.None;
-        for (int i = 0; i < list.Count; i++)
+        if (_rollType == RollType.GetMax)
         {
-            cumulative += list[i].Value;
-            if (random < cumulative)
-            {
-                action = list[i].Key;
-                break;
-            }
+            return rolls.Max();
         }
-
-        DebugString += "Pass: " + pass + "\n";
-        DebugString += "Dribble: " + dribble + "\n";
-        DebugString += "Cross: " + cross + "\n";
-        DebugString += "Shoot: " + shoot + "\n \n";
-
-        return action;
-    }
-
-    private MarkingType GetMarkingType()
-    {
-        MarkingType type = MarkingType.None;
-        if (defendingPlayer == null) return type;
-
-        float totalChance = 0f;
-        totalChance = defendingPlayer.Prob_Marking;
-
-        if (defendingPlayer.Speed > 70) totalChance += ((100 - (float)defendingPlayer.Speed) / 100) * ((float)defendingPlayer.Fatigue/100);
-        if (defendingPlayer.Vision > 70) totalChance += ((100 - (float)defendingPlayer.Vision) / 100) * (float)(defendingPlayer.Fatigue / 100);
-
-        float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
-
-        if(r >= 20)
+        else if (_rollType == RollType.DropMin)
         {
-            type = MarkingType.Steal;
+            rolls.Remove(rolls.Min());
+            roll = 1 + Random.Range(0, _sides + 1);
+            if (Random.Range(1, 100) < _bonusChance) roll += _bonus;
+            rolls.Add(roll);
+            return rolls.Sum();
         }
-        else if (r > 15)
-        {
-            type = MarkingType.Close;
-        }
-        else if(r > 3)
-        {
-            type = MarkingType.Distance;
-        }
-
-        return type;
-    }
-
-    private PlayerData GetAttackingPlayer(FieldZone _zone)
-    {
-        FieldZone zone = _zone;
-        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
-
-        float chance = 0f;
-        float higher = 0f;
-        bool forcePlayer = false;
-        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
-        {
-            if(lastActionSuccessful) forcePlayer = true;
-        }
-
-        List<PlayerData> players = new List<PlayerData>();
-
-        foreach (PlayerData player in attackingTeam.Squad)
-        {
-            chance = CalculatePresence(player, zone);
-            if (forcePlayer)
-            {
-                if (chance > higher && player != attackingPlayer)
-                {
-                    players.Clear();
-                    players.Add(player);
-                }
-            }
-            else
-            { 
-                if (chance >= 1f)
-                {
-                    players.Add(player);
-                }
-                else
-                {
-                    if (chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
-                }
-            }
-        }
-
-        return GetActivePlayer(players);
-    }
-
-    private PlayerData GetDefendingPlayer(FieldZone _zone)
-    {
-        FieldZone zone = _zone;
-        if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
-
-        float chance = 0f;
-        bool forcePlayerOut = false;
-        if (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful) forcePlayerOut = true;
-
-        List<PlayerData> players = new List<PlayerData>();
-        string debug = zone.ToString() + " - ";
-        foreach (PlayerData player in defendingTeam.Squad)
-        {
-            chance = CalculatePresence(player, zone);
-            if (chance >= 1f)
-            {
-                players.Add(player);
-                debug += player.FirstName + " (" + chance + "), ";
-            }
-            else
-            {
-                if (chance > 0 && chance <= Random.Range(0f, 1f))
-                {
-                    players.Add(player);
-                    debug += player.FirstName + " (" + chance + "), ";
-                }
-            }
-            
-        }
-        //print(debug);
-        if (forcePlayerOut)
-        {
-            if (players.Contains(defendingPlayer)) players.Remove(defendingPlayer);
-        }
-
-        return GetActivePlayer(players);
-    }
-
-    private PlayerData GetActivePlayer(List<PlayerData> list)
-    {
-        PlayerData activePlayer = null;
-        float points = 0f;
-
-        foreach(PlayerData player in list )
-        {
-            float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
-
-            int r = RollDice(20);
-
-            if (r < 3) //se foi mto mal no dado já perde
-            {
-                
-            }
-            else if (r == 18) //o primeiro atleta que for bem ganha 
-            {
-                activePlayer = player;
-            }
-            else //se não for nem muito bem nem muito mal, soma o rolar do dado com os stats
-            {
-                float p = stats + (r/20);
-                if (p > points)
-                {
-                    points = p;
-                    activePlayer = player;
-                }
-            }
-        }
-
-        return activePlayer;
-    }
-
-    private float CalculatePresence(PlayerData _player, FieldZone _zone)
-    {
-        float chance = 0f;
-
-        chance = _player.GetChancePerZone(_zone);
-        if (chance < 1f && chance > 0f)
-        {
-            chance = _player.GetChancePerZone(_zone)  * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
-        }
-        return chance;
+        else return rolls.Sum();
     }
 
     //Inverts the field for away team perspective
@@ -922,18 +924,10 @@ public class MatchController : MonoBehaviour
         }
 
         int random = Random.Range(0, zones.Count);
-        if (zones[random] > 16) print("TUDO CAGADO");
         target = (FieldZone)zones[random];
         
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
         return target;
-    }
-
-    private FieldZone GetRandomZone(int _minZone = 0, int _maxZone = 17)
-    {
-        int zone = Random.Range(_minZone, _maxZone);
-
-        return (FieldZone)zone;
     }
 
     private void SwitchPossesion()
