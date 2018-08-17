@@ -862,7 +862,10 @@ public class MatchController : MonoBehaviour
                 case FieldZone.RF:
                     zones.InsertRange(0, new int[] { 14, 16 });
                     break;
-            }
+                case FieldZone.Box:
+                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    break;
+            } 
         }
 
         if (offensiveAction == PlayerData.PlayerAction.Cross)
@@ -911,10 +914,15 @@ public class MatchController : MonoBehaviour
                 case FieldZone.RF:
                     zones.InsertRange(0, new int[] { 16 });
                     break;
+
+                case FieldZone.Box:
+                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    break;
             }
         }
 
         int random = Random.Range(0, zones.Count);
+        if (zones[random] > 16) print("TUDO CAGADO");
         target = (FieldZone)zones[random];
         
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
