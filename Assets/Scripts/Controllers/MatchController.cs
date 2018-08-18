@@ -157,9 +157,12 @@ public class MatchController : MonoBehaviour
         InvokeRepeating("DefineActions", 1f, 1f);  
     }
 
+    //Main function
     private void DefineActions()
     {
-        if(isGoal)
+        Field.UpdateFieldArea((int)currentZone);
+
+        if (isGoal)
         {
             if (!isGoalAnnounced)
             {
@@ -198,6 +201,9 @@ public class MatchController : MonoBehaviour
         {
             isHalfTime = true;
             Narration.UpdateNarration("FIM DO PRIMEIRO TEMPO", Color.gray);
+            currentZone = FieldZone.CM;
+            attackingTeam = AwayTeam;
+            defendingTeam = HomeTeam;
             return;
         }
         if (isHalfTime && !secondHalfStarted)
@@ -219,7 +225,6 @@ public class MatchController : MonoBehaviour
         matchTime++;
         Score.UpdateTime(matchTime);
 
-        Field.UpdateFieldArea((int)currentZone);
 
         //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(currentZone);
@@ -881,6 +886,9 @@ public class MatchController : MonoBehaviour
 
             SwitchPossesion();
         }
+
+        currentZone = FieldZone.OwnGoal;
+        if (defendingTeam == AwayTeam) GetAwayTeamZone(); 
 
         if (attacking > defending) isGoal = true;
     }
