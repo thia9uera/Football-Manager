@@ -81,8 +81,7 @@ public class PlayerData : ScriptableObject
     public int Stability = 50;
 
 
-    [SerializeField]
-    private float positionDebuf = 0.75f;
+    public float positionDebuf = 0.75f;
  
     //Attributes that change during gameplay
     [HideInInspector]

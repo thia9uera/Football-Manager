@@ -16,16 +16,16 @@ MonoBehaviour:
   Position: 9
   Perk: {fileID: 0}
   Strategy: 0
-  Goalkeeping: 79
-  Passing: 84
-  Dribbling: 83
-  Crossing: 88
-  Tackling: 89
-  Blocking: 84
-  Shooting: 83
-  Heading: 72
-  Freekick: 86
-  Penalty: 73
+  Goalkeeping: 64
+  Passing: 67
+  Dribbling: 65
+  Crossing: 62
+  Tackling: 61
+  Blocking: 61
+  Shooting: 59
+  Heading: 61
+  Freekick: 57
+  Penalty: 61
   Speed: 82
   Strength: 83
   Agility: 86
@@ -37,31 +37,32 @@ MonoBehaviour:
   Fatigue: 100
   Morale: 50
   AssignedPosition: 9
-  Prob_DefPosition: 2
-  Prob_OffPosition: -1
-  Prob_ParPosChance: 0
+  Prob_DefPosition: 0.5
+  Prob_OffPosition: 2
+  Prob_ParPosChance: 1
   Prob_Pass: 1
-  Prob_Shoot: 0
+  Prob_Shoot: 1
   Prob_Fault: 0
-  Prob_Crossing: 0
-  Prob_Dribble: -1
+  Prob_Crossing: 3
+  Prob_Dribble: 1
   Prob_Fall: 0
-  Prob_OffsideLine: 0
-  Prob_Marking: 0
-  Prob_OwnGoal: 0
-  Prob_LD: 0
-  Prob_CD: 0
-  Prob_RD: 0
-  Prob_LDM: 0
-  Prob_CDM: 0
-  Prob_RDM: 0
-  Prob_LM: 0
-  Prob_CM: 0
-  Prob_RM: 0
-  Prob_LAM: 0
-  Prob_CAM: 0
-  Prob_RAM: 0
-  Prob_LF: 0
-  Prob_CF: 0
-  Prob_RF: 0
-  Prob_Box: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_OwnGoal: 1
+  Prob_LD: 1
+  Prob_CD: 1
+  Prob_RD: 1
+  Prob_LDM: 1
+  Prob_CDM: 1
+  Prob_RDM: 1
+  Prob_LM: 1
+  Prob_CM: 1
+  Prob_RM: 1
+  Prob_LAM: 1
+  Prob_CAM: 1
+  Prob_RAM: 1
+  Prob_LF: 1
+  Prob_CF: 1
+  Prob_RF: 1
+  Prob_Box: 1

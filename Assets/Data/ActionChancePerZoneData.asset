@@ -19,7 +19,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 2
     Shot: 0
-    Tackle: 1.25
+    Tackle: 1.1
   - Zone: LD
     Dribble: 0.5
     Sprint: 0.5
@@ -27,7 +27,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 2
+    Tackle: 1.35
   - Zone: CD
     Dribble: 0.5
     Sprint: 0.5
@@ -35,7 +35,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 2
+    Tackle: 1.35
   - Zone: RD
     Dribble: 0.5
     Sprint: 0.5
@@ -43,7 +43,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 2
+    Tackle: 1.35
   - Zone: LDM
     Dribble: 1
     Sprint: 1.25
@@ -51,7 +51,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 2
+    Tackle: 1.35
   - Zone: CDM
     Dribble: 1
     Sprint: 1.25
@@ -59,7 +59,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 2
+    Tackle: 1.35
   - Zone: RDM
     Dribble: 1
     Sprint: 1.25
@@ -67,7 +67,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 2
+    Tackle: 1.35
   - Zone: LM
     Dribble: 1.25
     Sprint: 1.5
@@ -75,7 +75,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 1.5
+    Tackle: 1.2
   - Zone: CM
     Dribble: 1.25
     Sprint: 1.5
@@ -83,7 +83,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 1.5
+    Tackle: 1.2
   - Zone: RM
     Dribble: 1.25
     Sprint: 1.5
@@ -91,7 +91,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 0
-    Tackle: 1.5
+    Tackle: 1.2
   - Zone: LAM
     Dribble: 1.5
     Sprint: 1.25
@@ -99,7 +99,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 1
-    Tackle: 1.5
+    Tackle: 1.2
   - Zone: CAM
     Dribble: 1.5
     Sprint: 1.25
@@ -107,7 +107,7 @@ MonoBehaviour:
     LongPass: 1.5
     Cross: 1
     Shot: 1.25
-    Tackle: 1.5
+    Tackle: 1.2
   - Zone: RAM
     Dribble: 1.5
     Sprint: 1.25

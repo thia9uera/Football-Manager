@@ -21,13 +21,13 @@ MonoBehaviour:
   Dribbling: 50
   Crossing: 50
   Tackling: 58
-  Blocking: 73
+  Blocking: 61
   Shooting: 38
   Heading: 55
   Freekick: 22
   Penalty: 24
   Speed: 35
-  Strength: 74
+  Strength: 54
   Agility: 40
   Stamina: 64
   Teamwork: 87
@@ -48,6 +48,7 @@ MonoBehaviour:
   Prob_Fall: 0
   Prob_OffsideLine: 0
   Prob_Marking: 0
+  Prob_Tackling: 0
   Prob_OwnGoal: 0
   Prob_LD: 0
   Prob_CD: 0

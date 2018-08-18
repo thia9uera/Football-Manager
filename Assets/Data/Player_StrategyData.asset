@@ -35,7 +35,7 @@ MonoBehaviour:
     DribblingChance: 1
     OffsideTrickChance: 1
     MarkingChance: 1.5
-    TacklingChance: 0.5
+    TacklingChance: 1.2
   - Name: Infiltrator
     Description: Increase chance of offensive solo plays and offensive positioning
     DefPosChance: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
     CrossingChance: 1
     DribblingChance: 1
     OffsideTrickChance: 1
-    MarkingChance: 0.5
+    MarkingChance: 1.5
     TacklingChance: 1
   - Name: Producer
     Description: Increase chance of passing and crossing

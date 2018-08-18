@@ -78,7 +78,7 @@ MonoBehaviour:
     DribblingChance: 0.25
     OffsideTrickChance: 1.5
     MarkingChance: 2
-    TacklingChance: 25
+    TacklingChance: 1.1
     OwnGoal: 1
     LD: 1
     CD: 1
@@ -106,7 +106,7 @@ MonoBehaviour:
     DribblingChance: 0.25
     OffsideTrickChance: 1.5
     MarkingChance: 1
-    TacklingChance: 1.5
+    TacklingChance: 1.2
     OwnGoal: 1
     LD: 1
     CD: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
     DribblingChance: 1
     OffsideTrickChance: 1
     MarkingChance: 3
-    TacklingChance: 2
+    TacklingChance: 1.35
     OwnGoal: 1
     LD: 1
     CD: 1

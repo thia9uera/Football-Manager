@@ -21,8 +21,8 @@ MonoBehaviour:
   Dribbling: 50
   Crossing: 50
   Tackling: 69
-  Blocking: 74
-  Shooting: 76
+  Blocking: 61
+  Shooting: 61
   Heading: 66
   Freekick: 41
   Penalty: 44
@@ -48,6 +48,7 @@ MonoBehaviour:
   Prob_Fall: 0
   Prob_OffsideLine: 0
   Prob_Marking: 0
+  Prob_Tackling: 0
   Prob_OwnGoal: 0
   Prob_LD: 0
   Prob_CD: 0
