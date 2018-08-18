@@ -488,33 +488,43 @@ public class MatchController : MonoBehaviour
         return GetActivePlayer(players);
     }
 
-    private PlayerData GetActivePlayer(List<PlayerData> list)
+    private PlayerData GetActivePlayer(List<PlayerData> _list)
     {
         PlayerData activePlayer = null;
-        float points = 0f;
+        List<KeyValuePair<PlayerData, float>> compareList = new List<KeyValuePair<PlayerData, float>>();
+        int bonusChance = 0;
 
-        foreach (PlayerData player in list)
+        foreach (PlayerData player in _list)
         {
-            float stats = ((((float)player.Speed + (float)player.Vision) / 200) * (player.Fatigue / 100));
+            float stats = (float)(player.Speed + player.Vision) / 200;
+            stats *= (float)player.Fatigue / 100;
+            bonusChance = GetBonusChance((player.Vision + player.Speed)/2);
 
-            int r = RollDice(20);
+            int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5));
 
-            if (r < 3) //se foi mto mal no dado já perde
+            if (r > 18)
             {
-
+                stats *= 1.5f;
             }
-            else if (r == 18) //o primeiro atleta que for bem ganha 
+            else if (r < 3)
             {
-                activePlayer = player;
+                stats *= 0.25f;
             }
-            else //se não for nem muito bem nem muito mal, soma o rolar do dado com os stats
+
+            compareList.Add(new KeyValuePair<PlayerData, float>(player, stats));
+        }
+
+        
+
+        float random = Random.Range(0f, 1f);
+        float cumulative = 0f;
+        for (int i = 0; i < compareList.Count; i++)
+        {
+            cumulative += compareList[i].Value;
+            if (random < cumulative)
             {
-                float p = stats + (r / 20);
-                if (p > points)
-                {
-                    points = p;
-                    activePlayer = player;
-                }
+                activePlayer = compareList[i].Key;
+                break;
             }
         }
 
