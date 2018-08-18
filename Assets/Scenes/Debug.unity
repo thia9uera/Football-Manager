@@ -1516,6 +1516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestPlayer: {fileID: 11400000, guid: dd379b7fe5f5ace44a2a291f9c10ddfe, type: 2}
   dropDown: {fileID: 495950378}
+  teamStrategy: {fileID: 11400000, guid: bd993648d80e8b64eb209ac61f2128a4, type: 2}
 --- !u!1001 &760232916
 Prefab:
   m_ObjectHideFlags: 0

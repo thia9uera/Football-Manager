@@ -79,9 +79,6 @@ public class PlayerData : ScriptableObject
 
     [Range(0, 100)]
     public int Stability = 50;
-
-
-    public float positionDebuf = 0.75f;
  
     //Attributes that change during gameplay
     [HideInInspector]
@@ -520,8 +517,6 @@ public class PlayerData : ScriptableObject
                 }
                 break;
         }
-
-        if (AssignedPosition != Position) pct *= positionDebuf;
 
         return pct;
     }

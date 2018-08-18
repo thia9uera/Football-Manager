@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Garrincha
   LastName: 
-  Perk: {fileID: 11400000, guid: 42f91a8293f75dc4595d99b13a5f4665, type: 2}
   Position: 15
+  Perk: {fileID: 11400000, guid: 42f91a8293f75dc4595d99b13a5f4665, type: 2}
+  Strategy: 5
   Goalkeeping: 28
   Passing: 72
+  Dribbling: 50
+  Crossing: 50
   Tackling: 76
+  Blocking: 50
   Shooting: 88
   Heading: 79
   Freekick: 71
@@ -29,7 +33,35 @@ MonoBehaviour:
   Teamwork: 77
   Vision: 66
   Stability: 74
-  Tactics: 6
   Fatigue: 100
   Morale: 50
-  AssignedPosition: 0
+  AssignedPosition: 15
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_ParPosChance: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1.5
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 3
+  Prob_Tackling: 1.35
+  Prob_OwnGoal: 1
+  Prob_LD: 1
+  Prob_CD: 1
+  Prob_RD: 1
+  Prob_LDM: 1
+  Prob_CDM: 1
+  Prob_RDM: 1
+  Prob_LM: 1
+  Prob_CM: 1
+  Prob_RM: 1
+  Prob_LAM: 1
+  Prob_CAM: 1
+  Prob_RAM: 1
+  Prob_LF: 1
+  Prob_CF: 1
+  Prob_RF: 1
+  Prob_Box: 1

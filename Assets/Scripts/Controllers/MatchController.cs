@@ -99,7 +99,11 @@ public class MatchController : MonoBehaviour
     private bool isHalfTime = false;
     private bool secondHalfStarted = false;
 
+    [HideInInspector]
     public string DebugString;
+
+    [SerializeField]
+    private float positionDebuff = 0.85f;
 
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
     {
@@ -249,10 +253,6 @@ public class MatchController : MonoBehaviour
         //Player from team in possesion in the dispute
         else
         {
-            //No defender in the dispute
-            if(defendingPlayer == null) Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
-            else DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " VS " + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " (" + currentZone + ")</size> \n";
-
             //Step 2: Get type of marking
             MarkingType marking = GetMarkingType();
             if (marking == MarkingType.Steal)
@@ -268,10 +268,22 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                //Defender is marking closely
-                if(marking == MarkingType.Close) DebugString += "\nMARCACAO DE PERTO \n \n";
-                else if (marking == MarkingType.Distance) DebugString += "\nMARCACAO A DISTANCIA \n \n";
-                else DebugString += "\nSEM MARCACAO \n\n";
+                if (marking == MarkingType.Close)
+                {
+                    DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " VS " + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " (" + currentZone + ")</size> \n";
+                    DebugString += "\nMARCACAO DE PERTO \n \n";
+                }
+                else if (marking == MarkingType.Distance)
+                {
+                    DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " VS " + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " (" + currentZone + ")</size> \n";
+                    DebugString += "\nMARCACAO A DISTANCIA \n \n";
+                }
+                else
+                {
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
+                    DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " (" + currentZone + ")</size> \n";
+                    DebugString += "\nSEM MARCACAO \n\n";
+                }
 
                 //Step 3: Get type of offensive play
                 offensiveAction = GetOffensiveAction(marking);
@@ -430,6 +442,7 @@ public class MatchController : MonoBehaviour
         foreach (PlayerData player in attackingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
+            if (player.Position != player.AssignedPosition) chance *= positionDebuff;
             if (forcePlayer)
             {
                 if (player != attackingPlayer && chance > 0f)
@@ -467,6 +480,7 @@ public class MatchController : MonoBehaviour
         foreach (PlayerData player in defendingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
+            if (player.Position != player.AssignedPosition) chance *= positionDebuff;
             if (chance >= 1f)
             {
                 players.Add(player);
@@ -535,7 +549,7 @@ public class MatchController : MonoBehaviour
     {
         float chance = _player.GetChancePerZone(_zone);
 
-        if (chance > 0f)
+        if (chance < 1f && chance > 0f)
         {
             chance *= ((float)(_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
         }
@@ -582,24 +596,24 @@ public class MatchController : MonoBehaviour
         float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
         bonusChance =GetBonusChance(attackingPlayer.Passing);
         if (_marking == MarkingType.Close) pass *= 2f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass*5), bonusChance) > 18) pass *= 1.25f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass*5), bonusChance) > 18) pass *= 2f;
 
         float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
         bonusChance = GetBonusChance(attackingPlayer.Dribbling);
         if (_marking == MarkingType.Close) dribble *= 0.5f;
         else if (_marking == MarkingType.Distance) dribble *= 1.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(dribble*5), bonusChance) > 18) dribble *= 1.25f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(dribble*5), bonusChance) > 18) dribble *= 2f;
 
         float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
         bonusChance = GetBonusChance(attackingPlayer.Crossing);
         if (_marking == MarkingType.Close) cross *= 0.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross * 5), bonusChance) > 18) cross *= 1.25f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross * 5), bonusChance) > 18) cross *= 2f;
 
         float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
         bonusChance = GetBonusChance(attackingPlayer.Shooting);
         if (_marking == MarkingType.Close) shoot *= 0.5f;
-        else if (_marking == MarkingType.None) shoot *= 1.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) shoot *= 1.25f;
+        else if (_marking == MarkingType.None) shoot *= 3f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) shoot *= 2f;
 
         float header = 0f;
         if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
@@ -608,7 +622,7 @@ public class MatchController : MonoBehaviour
             bonusChance = GetBonusChance(attackingPlayer.Heading);
             if (_marking == MarkingType.Distance) header *= 2f;
             else if (_marking == MarkingType.None) header *= 3f;
-            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) header *= 1.25f;
+            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) header *= 2f;
         }
 
         float total = pass + dribble + cross + shoot + header;
@@ -641,8 +655,8 @@ public class MatchController : MonoBehaviour
         DebugString += "Pass: " + pass + "\n";
         DebugString += "Dribble: " + dribble + "\n";
         DebugString += "Cross: " + cross + "\n";
-        DebugString += "Shoot: " + shoot + "\n \n";
-        DebugString += "Header: " + header + "\n \n";
+        DebugString += "Shoot: " + shoot + "\n";
+        DebugString += "Header: " + header + "\n\n";
 
         return action;
     }
@@ -738,7 +752,7 @@ public class MatchController : MonoBehaviour
 
         attacking *= ((float)attackingPlayer.Fatigue / 100);
         attacking *= attackingBonus;
-        if (attackingPlayer.Position != attackingPlayer.AssignedPosition) attacking *= attackingPlayer.positionDebuf;
+        if (attackingPlayer.Position != attackingPlayer.AssignedPosition) attacking *= positionDebuff;
 
         int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
         if (attackRoll == 20)

@@ -9,9 +9,12 @@ public class Debug_FieldView : MonoBehaviour
 
     public Dropdown dropDown;
 
+    public Team_StrategyData teamStrategy;
+
     public void Start()
     {
-        TestPlayer.Position = PlayerData.PlayerPosition.GK;
+        TestPlayer.Position = TestPlayer.AssignedPosition = PlayerData.PlayerPosition.GK;
+        TestPlayer.ApplyBonus(teamStrategy.team_Strategys[0]);
     }
 
     public void Test()
@@ -23,27 +26,31 @@ public class Debug_FieldView : MonoBehaviour
 
             float chance = CalculatePresence(TestPlayer, zone.Zone);
 
-            if (chance == 1f) zone.Populate(0);
-            else zone.Populate(chance);
- 
+            if (chance >= 1f)
+            {
+                zone.Populate(1f);
+            }
+            else
+            {
+                zone.Populate(chance);
+            }
         }
     }
 
     public void ValueChange()
     {
         PlayerData.PlayerPosition pos = (PlayerData.PlayerPosition)dropDown.value;
-        TestPlayer.Position = pos;
+        TestPlayer.Position = TestPlayer.AssignedPosition = pos;
     }
 
     private float CalculatePresence(PlayerData _player, MatchController.FieldZone _zone)
     {
-        float chance = 0f;
-        float playerTacticsBonus = 0f;
-        float teamTacticsBonus = 1f;
-
-        chance = _player.GetChancePerZone(_zone);
-        if(chance < 1f) chance = _player.GetChancePerZone(_zone) * (playerTacticsBonus + teamTacticsBonus) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
-
+        float chance = _player.GetChancePerZone(_zone);
+        print(chance);
+        if (chance < 1f && chance > 0f)
+        {
+            chance *= ((float)(_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
+        }
         return chance;
     }
 }
