@@ -328,7 +328,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.LDM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.LDM: pct = 1f * Prob_LDM; break;
+                    case MatchController.FieldZone.LDM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CDM: pct = medium_chance * Prob_ParPosChance * Prob_CDM; break;
                     //Off
@@ -343,7 +343,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.CDM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.CDM: pct = 1f * Prob_CDM; break;
+                    case MatchController.FieldZone.CDM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.LDM: pct = medium_chance * Prob_ParPosChance * Prob_LDM; break;
                     case MatchController.FieldZone.RDM: pct = medium_chance * Prob_ParPosChance * Prob_RDM; break;
@@ -361,7 +361,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.RDM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.RDM: pct = 1f * Prob_RDM; break;
+                    case MatchController.FieldZone.RDM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CDM: pct = medium_chance * Prob_ParPosChance * Prob_CDM; break;
                     //Off
@@ -376,7 +376,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.LM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.LM: pct = 1f * Prob_LM; break;
+                    case MatchController.FieldZone.LM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CM: pct = medium_chance * Prob_ParPosChance * Prob_CM; break;
                     //Off
@@ -391,7 +391,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.CM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.CM: pct = 1f * Prob_CM; break;
+                    case MatchController.FieldZone.CM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.LM: pct = medium_chance * Prob_ParPosChance * Prob_LM; break;
                     case MatchController.FieldZone.RM: pct = medium_chance * Prob_ParPosChance * Prob_RM; break;
@@ -409,7 +409,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.RM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.RM: pct = 1f * Prob_RM; break;
+                    case MatchController.FieldZone.RM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CM: pct = medium_chance * Prob_ParPosChance * Prob_CM; break;
                     //Off
@@ -424,7 +424,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.LAM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.LAM: pct = 1f * Prob_LAM; break;
+                    case MatchController.FieldZone.LAM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CAM: pct = high_chance * Prob_ParPosChance * Prob_CAM; break;
                     //Off
@@ -441,7 +441,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.CAM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.CAM: pct = 1f * Prob_CAM; break;
+                    case MatchController.FieldZone.CAM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.LAM: pct = high_chance * Prob_ParPosChance * Prob_LAM; break;
                     case MatchController.FieldZone.RAM: pct = high_chance * Prob_ParPosChance * Prob_RAM; break;
@@ -460,7 +460,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.RAM:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.RAM: pct = 1f * Prob_RAM; break;
+                    case MatchController.FieldZone.RAM: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CAM: pct = high_chance * Prob_ParPosChance * Prob_CAM; break;
                     //Off
@@ -477,7 +477,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.LF:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.LF: pct = 1f * Prob_LF; break;
+                    case MatchController.FieldZone.LF: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CF: pct = high_chance * Prob_ParPosChance * Prob_CF; break;
                     //Off
@@ -492,7 +492,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.CF:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.CF: pct = 1f * Prob_CF; break;
+                    case MatchController.FieldZone.CF: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.LF: pct = low_chance * Prob_ParPosChance * Prob_LF; break;
                     case MatchController.FieldZone.RF: pct = low_chance * Prob_ParPosChance * Prob_RF; break;
@@ -508,7 +508,7 @@ public class PlayerData : ScriptableObject
             case PlayerPosition.RF:
                 switch (_zone)
                 {
-                    case MatchController.FieldZone.RF: pct = 1f * Prob_RF; break;
+                    case MatchController.FieldZone.RF: pct = 1f; break;
                     //Parallel
                     case MatchController.FieldZone.CF: pct = high_chance * Prob_CF; break;
                     //Off
@@ -521,7 +521,7 @@ public class PlayerData : ScriptableObject
                 break;
         }
 
-        if (AssignedPosition != Position) pct = pct * positionDebuf;
+        if (AssignedPosition != Position) pct *= positionDebuf;
 
         return pct;
     }

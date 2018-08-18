@@ -414,7 +414,6 @@ public class MatchController : MonoBehaviour
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
 
         float chance = 0f;
-        float higher = 0f;
         bool forcePlayer = false;
         if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
         {
@@ -428,7 +427,7 @@ public class MatchController : MonoBehaviour
             chance = CalculatePresence(player, zone);
             if (forcePlayer)
             {
-                if (chance > higher && player != attackingPlayer)
+                if (player != attackingPlayer && chance > 0f)
                 {
                     players.Clear();
                     players.Add(player);
@@ -460,26 +459,22 @@ public class MatchController : MonoBehaviour
         if (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful) forcePlayerOut = true;
 
         List<PlayerData> players = new List<PlayerData>();
-        string debug = zone.ToString() + " - ";
         foreach (PlayerData player in defendingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
             if (chance >= 1f)
             {
                 players.Add(player);
-                debug += player.FirstName + " (" + chance + "), ";
             }
             else
             {
                 if (chance > 0 && chance <= Random.Range(0f, 1f))
                 {
                     players.Add(player);
-                    debug += player.FirstName + " (" + chance + "), ";
                 }
             }
 
         }
-        //print(debug);
         if (forcePlayerOut)
         {
             if (players.Contains(defendingPlayer)) players.Remove(defendingPlayer);
@@ -523,12 +518,11 @@ public class MatchController : MonoBehaviour
 
     private float CalculatePresence(PlayerData _player, FieldZone _zone)
     {
-        float chance = 0f;
+        float chance = _player.GetChancePerZone(_zone);
 
-        chance = _player.GetChancePerZone(_zone);
-        if (chance < 1f && chance > 0f)
+        if (chance > 0f)
         {
-            chance = _player.GetChancePerZone(_zone) * ((((float)_player.Speed + (float)_player.Vision) / 200) * (_player.Fatigue / 100));
+            chance *= ((float)(_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
         }
         return chance;
     }
@@ -571,36 +565,32 @@ public class MatchController : MonoBehaviour
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
         float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
-        if (attackingPlayer.Passing > 70) bonusChance = 100 - attackingPlayer.Dribbling;
+        bonusChance =GetBonusChance(attackingPlayer.Passing);
         if (_marking == MarkingType.Close) pass *= 2f;
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass*5), bonusChance) > 18) pass *= 1.25f;
 
-        bonusChance = 0;
         float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
-        if (attackingPlayer.Dribbling > 70) bonusChance = 100 - attackingPlayer.Dribbling;
+        bonusChance = GetBonusChance(attackingPlayer.Dribbling);
         if (_marking == MarkingType.Close) dribble *= 0.5f;
         else if (_marking == MarkingType.Distance) dribble *= 1.5f;
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(dribble*5), bonusChance) > 18) dribble *= 1.25f;
 
-        bonusChance = 0;
         float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
-        if (attackingPlayer.Crossing > 70) bonusChance = 100 - attackingPlayer.Crossing;
+        bonusChance = GetBonusChance(attackingPlayer.Crossing);
         if (_marking == MarkingType.Close) cross *= 0.5f;
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross * 5), bonusChance) > 18) cross *= 1.25f;
 
-        bonusChance = 0;
         float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
-        if (attackingPlayer.Shooting > 70 && zoneChance.Shot > 0) bonusChance *= 100 - attackingPlayer.Shooting;
+        bonusChance = GetBonusChance(attackingPlayer.Shooting);
         if (_marking == MarkingType.Close) shoot *= 0.5f;
         else if (_marking == MarkingType.None) shoot *= 1.5f;
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) shoot *= 1.25f;
 
-        bonusChance = 0;
         float header = 0f;
         if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
         {
             header = (zoneChance.Shot + attackingPlayer.Prob_Shoot) * 1.5f;
-            if (attackingPlayer.Heading > 70) bonusChance *= 100 - attackingPlayer.Heading;
+            bonusChance = GetBonusChance(attackingPlayer.Heading);
             if (_marking == MarkingType.Distance) header *= 2f;
             else if (_marking == MarkingType.None) header *= 3f;
             if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) header *= 1.25f;
@@ -648,6 +638,8 @@ public class MatchController : MonoBehaviour
         float attacking = 0f;
         float defending = 0f;
         bool isTackling = false;
+        int attackBonusChance = 0;
+        int defenseBonusChance = 0;
 
         FieldZone zone = currentZone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -659,6 +651,7 @@ public class MatchController : MonoBehaviour
             case PlayerData.PlayerAction.Pass:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork)/400;
+                attackBonusChance = GetBonusChance(attackingPlayer.Passing);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.75f;
@@ -666,12 +659,14 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
+                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
                 }
                 break;
 
             case PlayerData.PlayerAction.Dribble:
                 defensiveAction = PlayerData.PlayerAction.Tackle;
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
+                attackBonusChance = GetBonusChance(attackingPlayer.Tackling);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
@@ -679,12 +674,14 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Tackling + defendingPlayer.Agility + defendingPlayer.Speed) / 300;
+                    defenseBonusChance = GetBonusChance(defendingPlayer.Tackling);
                 }
                 break;
 
             case PlayerData.PlayerAction.Cross:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
+                attackBonusChance = GetBonusChance(attackingPlayer.Crossing);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
@@ -692,12 +689,14 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
+                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
                 }
                 break;
 
             case PlayerData.PlayerAction.Shot:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
+                attackBonusChance = GetBonusChance(attackingPlayer.Shooting);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
@@ -705,16 +704,19 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
+                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
                 }
                 break;
 
             case PlayerData.PlayerAction.Header:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Heading + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
+                attackBonusChance = GetBonusChance(attackingPlayer.Heading);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Heading + defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 400;
+                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
                 }
                 break;
         }
@@ -723,7 +725,7 @@ public class MatchController : MonoBehaviour
         attacking *= attackingBonus;
         if (attackingPlayer.Position != attackingPlayer.AssignedPosition) attacking *= attackingPlayer.positionDebuf;
 
-        int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), 50);
+        int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
         if (attackRoll == 20)
         {
             DebugString += "\nAtacante ganhou bonus de 100% \n";
@@ -747,15 +749,12 @@ public class MatchController : MonoBehaviour
             float tackleChance = 0.5f * actionChancePerZone.actionChancePerZones[(int)zone].Tackle * defendingPlayer.Prob_Tackling;
             if (_marking == MarkingType.Close) tackleChance *= 1.25f;
             if (tackleChance > Random.Range(0f, 1f)) isTackling = true;
-            print("Tackle chance: " + tackleChance);
-            print("Is tackling: " + isTackling.ToString());
-            print("\n__________________________\n: ");
         }
 
         if (isTackling)
         {
             defending *= (float)(defendingPlayer.Fatigue / 100);
-            int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), 50);
+            int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
             if (defenseRoll == 20)
             {
                 DebugString += "\nDefensor ganhou bonus de 50% \n";
@@ -782,12 +781,22 @@ public class MatchController : MonoBehaviour
             DebugString += "\nAtacante tem espaco pra jogar\n";
             defensiveAction = PlayerData.PlayerAction.None;
             if (attacking > Random.Range(0f, 1f)) success = true;
-            print("Attack chance: " + attacking);
-            print("Is successful: " + success.ToString());
-            print("\n__________________________\n: " );
         }
 
         return success;
+    }
+
+    //Give bonus if player attribute > 70
+    private int GetBonusChance(int _attribute)
+    {
+        int bonusChance = 0;
+
+        if(_attribute > 70)
+        {
+            bonusChance = _attribute - 70;
+        }
+
+        return bonusChance;
     }
 
     private void ResolveShot(MarkingType _marking)
@@ -795,6 +804,7 @@ public class MatchController : MonoBehaviour
         float attacking = 0f;
         float defending = 0f;
         float distanceModifier = 1f;
+        int bonusChance = 0;
         PlayerData defendingPlayer = defendingTeam.Squad[0];
         FieldZone zone = currentZone;
 
@@ -822,25 +832,34 @@ public class MatchController : MonoBehaviour
                 break;
         }
 
-        attacking = ((((float)attackingPlayer.Shooting / 100) + ((float)attackingPlayer.Strength / 100))) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus * distanceModifier;
-
-        if(offensiveAction == PlayerData.PlayerAction.Header)
+        if (offensiveAction == PlayerData.PlayerAction.Shot)
         {
-            attacking = ((((float)attackingPlayer.Heading / 100) + ((float)attackingPlayer.Strength / 100))) * ((float)attackingPlayer.Fatigue / 100) * attackingBonus * distanceModifier;
+            attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Strength) / 200;
+            bonusChance = GetBonusChance(attackingPlayer.Shooting);
         }
+        else if (offensiveAction == PlayerData.PlayerAction.Header)
+        {
+            attacking = (float)(attackingPlayer.Heading + attackingPlayer.Strength) / 100;
+            bonusChance = GetBonusChance(attackingPlayer.Heading);
+        }
+
+        attacking *= (float)attackingPlayer.Fatigue / 100;
+        attacking *= attackingBonus;
+        attacking *= distanceModifier;
 
         if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
 
-        if (RollDice(20, 1, RollType.None, (int)attacking) > 19)
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking*5), bonusChance) > 19)
         {
             attacking += attacking * 1.25f;
             DebugString += "\n ATACANTE GANHOU BONUS DE 25%";
         }
 
-        defending = ((((float)defendingPlayer.Goalkeeping / 100) + ((float)defendingPlayer.Agility / 100))) * ((float)defendingPlayer.Fatigue / 100);
+        defending = ((float)defendingPlayer.Goalkeeping + defendingPlayer.Agility) / 200;
+        defending *= (float)defendingPlayer.Fatigue / 100;
         if (RollDice(20, 1, RollType.None, (int)defending) > 18)
         {
-            defending += defending * 1.50f;
+            defending *= 1.50f;
             DebugString += "\n GOLEIRO GANHOU BONUS DE 50%";
         }
 
