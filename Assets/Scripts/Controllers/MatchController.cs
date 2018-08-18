@@ -1018,7 +1018,7 @@ public class MatchController : MonoBehaviour
                     zones.InsertRange(0, new int[] { 14, 16 });
                     break;
                 case FieldZone.Box:
-                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    zones.InsertRange(0, new int[] { 13, 14, 15, 16, 16, 16 });
                     break;
             } 
         }
@@ -1064,14 +1064,13 @@ public class MatchController : MonoBehaviour
                 case FieldZone.LAM:
                 case FieldZone.CAM:
                 case FieldZone.RAM:
+                    zones.InsertRange(0, new int[] { 13, 15, 16, 16, 16 });
+                    break;
                 case FieldZone.LF:
                 case FieldZone.CF:
                 case FieldZone.RF:
-                    zones.InsertRange(0, new int[] { 16 });
-                    break;
-
                 case FieldZone.Box:
-                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    zones.InsertRange(0, new int[] { 16 });
                     break;
             }
         }
