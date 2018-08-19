@@ -44,6 +44,7 @@ public class MatchController : MonoBehaviour
         Freekick,
         Offside,
         ThrowIn,
+        Goal,
     }
 
     public enum MarkingType
@@ -93,11 +94,11 @@ public class MatchController : MonoBehaviour
     private int homeTeamScore = 0;
     private int awayTeamScore = 0;
 
-    private bool isGoal = false;
     private bool isGoalAnnounced = false;
     private bool isScorerAnnounced = false;
     private bool isHalfTime = false;
     private bool secondHalfStarted = false;
+    private bool isFreekickTaken = false;
 
     [HideInInspector]
     public string DebugString;
@@ -161,12 +162,13 @@ public class MatchController : MonoBehaviour
         InvokeRepeating("DefineActions", 1f, 1f);  
     }
 
-    //Main function
+    //MAIN CONTROLLING FUNCTION
     private void DefineActions()
     {
         Field.UpdateFieldArea((int)currentZone);
 
-        if (isGoal)
+        //IF LAST ACTION RESULTED IN A GOAL
+        if (matchEvent == MatchEvent.Goal)
         {
             if (!isGoalAnnounced)
             {
@@ -187,7 +189,7 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                isGoal = false;
+                matchEvent = MatchEvent.None;
                 isGoalAnnounced = false;
                 isScorerAnnounced = false;
 
@@ -197,6 +199,23 @@ public class MatchController : MonoBehaviour
                 Field.UpdateFieldArea((int)currentZone);
 
                 Narration.UpdateNarration("RECOMECA A PARTIDA", Color.gray);
+                return;
+            }
+        }
+
+        //IF LAST ACTION RESULTED IN A FREEKICK
+        if (matchEvent == MatchEvent.Freekick)
+        {
+            if(!isFreekickTaken)
+            {
+                Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);    
+                isFreekickTaken = true;
+                return;
+            }
+            else
+            {
+                ResolveFreeKick();
+                isFreekickTaken = false;
                 return;
             }
         }
@@ -280,7 +299,7 @@ public class MatchController : MonoBehaviour
                 }
                 else
                 {
-                    Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
+                    //Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
                     DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " (" + currentZone + ")</size> \n";
                     DebugString += "\nSEM MARCACAO \n\n";
                 }
@@ -337,6 +356,15 @@ public class MatchController : MonoBehaviour
                 {
                     lastActionSuccessful = false;
                     attackingBonus = 1f;
+
+                    if (matchEvent == MatchEvent.Freekick)
+                    {
+                        DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " FAZ FALTA EM " + attackingPlayer.FirstName, Color.gray);
+                        attackingPlayer = GetTopPlayerByAttribute(attackingTeam, PlayerData.PlayerAttributes.Freekick);
+                        defendingPlayer = defendingTeam.Squad[0];
+                        return;
+                    }
 
                     switch (offensiveAction)
                     {
@@ -506,15 +534,15 @@ public class MatchController : MonoBehaviour
     {
         PlayerData activePlayer = null;
         List<KeyValuePair<PlayerData, float>> compareList = new List<KeyValuePair<PlayerData, float>>();
-        int bonusChance = 0;
+        int bonus = 0;
 
         foreach (PlayerData player in _list)
         {
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= (float)player.Fatigue / 100;
-            bonusChance = GetBonusChance((player.Vision + player.Speed)/2);
+            bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
 
-            int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5));
+            int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
             if (r > 18)
             {
@@ -589,40 +617,40 @@ public class MatchController : MonoBehaviour
     {
         FieldZone zone = currentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
-        int bonusChance = 0;
+        int bonus = 0;
 
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
         float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
-        bonusChance =GetBonusChance(attackingPlayer.Passing);
+        bonus = GetAttributeBonus(attackingPlayer.Passing);
         if (_marking == MarkingType.Close) pass *= 2f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass*5), bonusChance) > 18) pass *= 2f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass * 5) + bonus/10) > 18) pass *= 2f;
 
         float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
-        bonusChance = GetBonusChance(attackingPlayer.Dribbling);
+        bonus = GetAttributeBonus(attackingPlayer.Dribbling);
         if (_marking == MarkingType.Close) dribble *= 0.5f;
         else if (_marking == MarkingType.Distance) dribble *= 1.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(dribble*5), bonusChance) > 18) dribble *= 2f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(dribble*5) + bonus / 10) > 18) dribble *= 2f;
 
         float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
-        bonusChance = GetBonusChance(attackingPlayer.Crossing);
+        bonus = GetAttributeBonus(attackingPlayer.Crossing);
         if (_marking == MarkingType.Close) cross *= 0.5f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross * 5), bonusChance) > 18) cross *= 2f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross * 5), bonus) > 18) cross *= 2f;
 
         float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
-        bonusChance = GetBonusChance(attackingPlayer.Shooting);
+        bonus = GetAttributeBonus(attackingPlayer.Shooting);
         if (_marking == MarkingType.Close) shoot *= 0.5f;
         else if (_marking == MarkingType.None) shoot *= 3f;
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) shoot *= 2f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5) + bonus / 10) > 18) shoot *= 2f;
 
         float header = 0f;
         if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
         {
             header = (zoneChance.Shot + attackingPlayer.Prob_Shoot) * 1.5f;
-            bonusChance = GetBonusChance(attackingPlayer.Heading);
+            bonus = GetAttributeBonus(attackingPlayer.Heading);
             if (_marking == MarkingType.Distance) header *= 2f;
             else if (_marking == MarkingType.None) header *= 3f;
-            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5), bonusChance) > 18) header *= 2f;
+            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5) + bonus / 10) > 18) header *= 2f;
         }
 
         float total = pass + dribble + cross + shoot + header;
@@ -669,6 +697,8 @@ public class MatchController : MonoBehaviour
         bool isTackling = false;
         int attackBonusChance = 0;
         int defenseBonusChance = 0;
+        float faultChance = 0f;
+        float agilityBonus;
 
         FieldZone zone = currentZone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -680,7 +710,7 @@ public class MatchController : MonoBehaviour
             case PlayerData.PlayerAction.Pass:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork)/400;
-                attackBonusChance = GetBonusChance(attackingPlayer.Passing);
+                attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.75f;
@@ -688,14 +718,14 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
-                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
                 }
                 break;
 
             case PlayerData.PlayerAction.Dribble:
                 defensiveAction = PlayerData.PlayerAction.Tackle;
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
-                attackBonusChance = GetBonusChance(attackingPlayer.Tackling);
+                attackBonusChance = GetAttributeBonus(attackingPlayer.Tackling);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
@@ -703,14 +733,14 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Tackling + defendingPlayer.Agility + defendingPlayer.Speed) / 300;
-                    defenseBonusChance = GetBonusChance(defendingPlayer.Tackling);
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Tackling);
                 }
                 break;
 
             case PlayerData.PlayerAction.Cross:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
-                attackBonusChance = GetBonusChance(attackingPlayer.Crossing);
+                attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
@@ -718,14 +748,14 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
-                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
                 }
                 break;
 
             case PlayerData.PlayerAction.Shot:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
-                attackBonusChance = GetBonusChance(attackingPlayer.Shooting);
+                attackBonusChance = GetAttributeBonus(attackingPlayer.Shooting);
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
@@ -733,19 +763,19 @@ public class MatchController : MonoBehaviour
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
-                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
                 }
                 break;
 
             case PlayerData.PlayerAction.Header:
                 defensiveAction = PlayerData.PlayerAction.Block;
                 attacking = (float)(attackingPlayer.Heading + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
-                attackBonusChance = GetBonusChance(attackingPlayer.Heading);
+                attackBonusChance = GetAttributeBonus(attackingPlayer.Heading);
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 if (_marking != MarkingType.None)
                 {
                     defending = (float)(defendingPlayer.Heading + defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 400;
-                    defenseBonusChance = GetBonusChance(defendingPlayer.Blocking);
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
                 }
                 break;
         }
@@ -800,10 +830,24 @@ public class MatchController : MonoBehaviour
                 defending = 0.25f;
             }
 
-            DebugString += "\nAtacante rolou " + attacking;
-            DebugString += "\nDefensor rolou " + defending + "\n\n";
 
-            if (attacking > defending) success = true;
+            faultChance = 0.25f;
+            agilityBonus = GetAttributeBonus(defendingPlayer.Agility)/100;
+            agilityBonus *= defendingPlayer.Fatigue / 100;
+            faultChance *= (1f - agilityBonus);
+
+            if(Random.Range(0f, 1f) <  faultChance)
+            {
+                matchEvent = MatchEvent.Freekick;
+                success = false;
+            }
+
+            else if (attacking > defending)
+            {
+                DebugString += "\nAtacante rolou " + attacking;
+                DebugString += "\nDefensor rolou " + defending + "\n\n";
+                success = true;
+            }
         }
         else
         {
@@ -815,8 +859,7 @@ public class MatchController : MonoBehaviour
         return success;
     }
 
-    //Give bonus if player attribute > 70
-    private int GetBonusChance(int _attribute)
+    private int GetAttributeBonus(int _attribute)
     {
         int bonusChance = 0;
 
@@ -864,12 +907,12 @@ public class MatchController : MonoBehaviour
         if (offensiveAction == PlayerData.PlayerAction.Shot)
         {
             attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Strength) / 200;
-            bonusChance = GetBonusChance(attackingPlayer.Shooting);
+            bonusChance = GetAttributeBonus(attackingPlayer.Shooting);
         }
         else if (offensiveAction == PlayerData.PlayerAction.Header)
         {
             attacking = (float)(attackingPlayer.Heading + attackingPlayer.Strength) / 100;
-            bonusChance = GetBonusChance(attackingPlayer.Heading);
+            bonusChance = GetAttributeBonus(attackingPlayer.Heading);
         }
 
         attacking *= (float)attackingPlayer.Fatigue / 100;
@@ -912,12 +955,62 @@ public class MatchController : MonoBehaviour
         }
 
         currentZone = FieldZone.OwnGoal;
-        if (defendingTeam == AwayTeam) GetAwayTeamZone(); 
+        if (defendingTeam == AwayTeam) GetAwayTeamZone();
 
-        if (attacking > defending) isGoal = true;
+        if (attacking > defending) matchEvent = MatchEvent.Goal;
     }
 
-    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 101)
+    private void ResolveFreeKick()
+    {        
+        float attacking = (float)(attackingPlayer.Freekick + attackingPlayer.Strength) / 200;
+        float defending = 0f;
+        int bonusChance = GetAttributeBonus(attackingPlayer.Freekick);
+        int roll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), bonusChance);      
+
+        if (roll > 19)
+        {
+            attacking += attacking * 1.25f;
+            DebugString += "\n ATACANTE GANHOU BONUS DE 25%";
+        }
+        else if(roll < 3)
+        {
+            Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta na barreira",Color.gray);
+            DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
+            SwitchPossesion();
+            keepDefender = true;
+            matchEvent = MatchEvent.None;
+        }
+        else
+        {
+            defending = ((float)defendingPlayer.Goalkeeping + defendingPlayer.Agility) / 200;
+            defending *= (float)defendingPlayer.Fatigue / 100;
+            if (RollDice(20, 1, RollType.None, (int)defending) > 18)
+            {
+                defending *= 1.50f;
+                DebugString += "\n GOLEIRO GANHOU BONUS DE 50%";
+            }
+
+            DebugString += "\nAtacante rolou: " + attacking + "\nGoleiro rolou: " + defending;
+
+            if (attacking <= defending)
+            {
+                keepDefender = true;
+
+                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a crobanca de falta" + "\n\n_____________________________________\n\n";
+                Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a crobanca de falta!", defendingTeam.PrimaryColor);
+                matchEvent = MatchEvent.None;
+                keepDefender = true;
+                SwitchPossesion();
+            }
+
+            if (attacking > defending)
+            {
+                matchEvent = MatchEvent.Goal;
+            }
+        }
+    }
+
+    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)
     {
         int n = 0;
         int roll;
@@ -926,7 +1019,7 @@ public class MatchController : MonoBehaviour
         while (n < _amount)
         {
             roll = 1 + Random.Range(0, _sides);
-            if (1 + Random.Range(0, 101) < _bonusChance) roll += _bonus;
+            if (1 + Random.Range(0, 100) < _bonusChance) roll += _bonus;
             rolls.Add(roll);
             n++;
         }
@@ -1080,6 +1173,18 @@ public class MatchController : MonoBehaviour
         
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
         return target;
+    }
+
+    private PlayerData GetTopPlayerByAttribute(TeamData _team, PlayerData.PlayerAttributes _attribute)
+    {
+        PlayerData best = null;
+        int higher = 0;
+        foreach(PlayerData player in _team.Squad)
+        {
+            if(player.GetPlayerAttribute(_attribute) > higher) best = player;
+        }
+
+        return best;
     }
 
     private void SwitchPossesion()

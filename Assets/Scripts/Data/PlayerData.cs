@@ -212,7 +212,6 @@ public class PlayerData : ScriptableObject
         Prob_ParPosChance = _playerStrategy.ParPosChance;
         Prob_Pass = _teamStrategy.PassingChance * _playerStrategy.PassingChance;
         Prob_Shoot = _teamStrategy.ShootingChance * _playerStrategy.ShootingChance;
-        //Prob_Fault = 
         Prob_Crossing = _teamStrategy.CrossingChance * _playerStrategy.CrossingChance;
         Prob_Dribble = _teamStrategy.DribblingChance * _playerStrategy.DribblingChance;
         Prob_OffsideLine = _teamStrategy.OffsideTrickChance  * _playerStrategy.OffsideTrickChance;
@@ -519,5 +518,33 @@ public class PlayerData : ScriptableObject
         }
 
         return pct;
+    }
+
+    public int GetPlayerAttribute(PlayerAttributes _playerAttributes)
+    {
+        int value = 0;
+
+        switch(_playerAttributes)
+        {
+            case PlayerAttributes.Agility: value = Agility; break;
+            case PlayerAttributes.Blocking: value = Blocking; break;
+            case PlayerAttributes.Crossing: value = Crossing; break;
+            case PlayerAttributes.Dribbling: value = Dribbling; break;
+            case PlayerAttributes.Freekick: value = Freekick; break;
+            case PlayerAttributes.Goalkeeping: value = Goalkeeping; break;
+            case PlayerAttributes.Heading: value = Heading; break;
+            case PlayerAttributes.Passing: value = Passing; break;
+            case PlayerAttributes.Penalty: value = Penalty; break;
+            case PlayerAttributes.Shooting: value = Shooting; break;
+            case PlayerAttributes.Speed: value = Speed; break;
+            case PlayerAttributes.Stability: value = Stability; break;
+            case PlayerAttributes.Stamina: value = Stamina; break;
+            case PlayerAttributes.Strength: value = Strength; break;
+            case PlayerAttributes.Tackling: value = Tackling; break;
+            case PlayerAttributes.Teamwork: value = Teamwork; break;
+            case PlayerAttributes.Vision: value = Vision; break;
+        }
+
+        return value;
     }
 }
