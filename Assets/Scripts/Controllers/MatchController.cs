@@ -89,6 +89,7 @@ public class MatchController : MonoBehaviour
     private float attackingBonus = 1f;
     private bool keepAttacker = false;
     private bool keepDefender= false;
+    private MarkingType marking;
 
     private int matchTime = 0;
     private int homeTeamScore = 0;
@@ -222,9 +223,24 @@ public class MatchController : MonoBehaviour
         {
             if(!isFreekickTaken)
             {
-                Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);    
                 isFreekickTaken = true;
-                return;
+                offensiveAction = GetFreeKickAction();
+
+                if(offensiveAction == PlayerData.PlayerAction.Shot)
+                {      
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
+                    return;
+                }
+                else
+                {
+                    isFreekickTaken = false;
+                    marking = MarkingType.None;
+                    matchEvent = MatchEvent.None;
+                    ResolveAction();
+                    return;
+                }
+                 
+                
             }
             else
             {
@@ -287,7 +303,7 @@ public class MatchController : MonoBehaviour
         else
         {
             //Step 2: Get type of marking
-            MarkingType marking = GetMarkingType();
+            marking = GetMarkingType();
             if (marking == MarkingType.Steal)
             {
                 attackingBonus = 1f;
@@ -322,149 +338,153 @@ public class MatchController : MonoBehaviour
                 offensiveAction = GetOffensiveAction(marking);
 
                 //Step 4: Test action against defender (if there is one)
-                if (IsActionSuccessful(marking))
-                {
-                    lastActionSuccessful = true;
-
-                    //Give bonus based on type of marking
-                    if (marking == MarkingType.Close) attackingBonus *= attackingBonusLow;
-                    else if (marking == MarkingType.Distance) attackingBonus *= attackingBonusMedium;
-                    else if (marking == MarkingType.None) attackingBonus *= attackingBonusHigh;
-
-                    switch (offensiveAction)
-                    {
-                        case PlayerData.PlayerAction.Pass:
-                            DebugString += "PASSOU A BOLA! \n ________________________________\n";
-                            Narration.UpdateNarration(attackingPlayer.FirstName + " PASSA A BOLA", attackingTeam.PrimaryColor);
-                            currentZone = GetTargetZone();
-                            break;
-
-                        case PlayerData.PlayerAction.Dribble:
-                            DebugString += "DRIBLOU! \n ________________________________\n";
-                            if (defendingPlayer != null) Narration.UpdateNarration(attackingPlayer.FirstName + " DRIBLA " + defendingPlayer.FirstName, attackingTeam.PrimaryColor);
-                            currentZone = GetTargetZone();
-                            keepAttacker = true;
-                            break;
-
-                        case PlayerData.PlayerAction.Cross:
-                            DebugString += "CRUZOU! \n ________________________________\n";
-                            Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
-                            currentZone = GetTargetZone();
-                            break;
-
-                        case PlayerData.PlayerAction.Shot:
-                            DebugString += "CHUTOU! \n";
-                            Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O CHUTE...", attackingTeam.PrimaryColor);
-                            ResolveShot(marking);
-                            break;
-
-                        case PlayerData.PlayerAction.Header:
-                            DebugString += "CABECEOU! \n";
-                            Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O LANCE DE CABECA...", attackingTeam.PrimaryColor);
-                            ResolveShot(marking);
-                            break;
-                    }
-                    
-                }
-                else
-                {
-                    lastActionSuccessful = false;
-                    attackingBonus = 1f;
-
-                    if (matchEvent == MatchEvent.Freekick)
-                    {
-                        DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
-                        Narration.UpdateNarration(defendingPlayer.FirstName + " FAZ FALTA EM " + attackingPlayer.FirstName, Color.gray);
-                        attackingPlayer = GetTopPlayerByAttribute(attackingTeam, PlayerData.PlayerAttributes.Freekick);
-                        defendingPlayer = defendingTeam.Squad[0];
-                        return;
-                    }
-
-                    switch (offensiveAction)
-                    {
-                        case PlayerData.PlayerAction.None:
-                            DebugString += "RATIOU FEIO E PERDEU A BOLA! \n ________________________________\n";
-                            Narration.UpdateNarration(attackingPlayer.FirstName + " DEU BOBEIRA E PERDEU A BOLA", attackingTeam.PrimaryColor);
-                            break;
-
-                        case PlayerData.PlayerAction.Pass:
-                            if(defensiveAction == PlayerData.PlayerAction.None)
-                            {
-                                DebugString += "ERROU O PASSE! \n ________________________________\n";
-                                Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O PASSE", Color.gray);
-                                currentZone = GetTargetZone();
-                            }
-                            else
-                            {
-                                DebugString += "PASSE BLOQUEADO! \n ________________________________\n";
-                                Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O PASSE", defendingTeam.PrimaryColor);
-                                keepDefender = true;
-                            }
-                            break;
-
-                        case PlayerData.PlayerAction.Dribble:
-                            if (defensiveAction == PlayerData.PlayerAction.None)
-                            {
-                                DebugString += "ERROU O DRIBLE! \n ________________________________\n";
-                                Narration.UpdateNarration(attackingPlayer.FirstName + " SE ATRAPALHA NO DRIBLE", Color.gray);
-                                currentZone = GetTargetZone();
-                            }
-                            else
-                            {
-                                DebugString += "DRIBLE DESARMADO! \n ________________________________\n";
-                                Narration.UpdateNarration(defendingPlayer.FirstName + " PARA O DRIBLE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
-                                keepDefender = true;
-                            }                            
-                            break;
-
-                        case PlayerData.PlayerAction.Cross:
-                            if (defensiveAction == PlayerData.PlayerAction.None)
-                            {
-                                DebugString += "ERROU O CRUZAMENTO! \n ________________________________\n";
-                                Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O CRUZAMENTO", Color.gray);
-                                currentZone = GetTargetZone();
-                            }
-                            else
-                            {
-                                DebugString += "CRUZAMENTO BLOQUEADO! \n ________________________________\n";
-                                Narration.UpdateNarration(defendingPlayer.FirstName + " IMPEDE O CRUZAMENTO", defendingTeam.PrimaryColor);
-                            }   
-                            break;
-
-                        case PlayerData.PlayerAction.Shot:
-                            if (defensiveAction == PlayerData.PlayerAction.None)
-                            {
-                                DebugString += "ERROU O CHUTE! \n ________________________________\n";
-                                Narration.UpdateNarration(attackingPlayer.FirstName + " TEM QUE BOTAR O PÉ NA FORMA", Color.gray);
-                                currentZone = GetTargetZone();
-                            }
-                            else
-                            {
-                                DebugString += "CHUTE BLOQUEADO! \n ________________________________\n";
-                                Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O CHUTE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
-                            }  
-                            break;
-
-                        case PlayerData.PlayerAction.Header:
-                            if (defensiveAction == PlayerData.PlayerAction.None)
-                            {
-                                DebugString += "ERROU A CABECADA! \n ________________________________\n";
-                                Narration.UpdateNarration(attackingPlayer.FirstName + " CABECEIA O AR", Color.gray);
-                                currentZone = GetTargetZone();
-                            }
-                            else
-                            {
-                                DebugString += "JOGADA AEREA DESARMADA! \n ________________________________\n";
-                                Narration.UpdateNarration(defendingPlayer.FirstName + " PULA MAIS ALTO QUE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
-                            }   
-                            break;
-                    }
-
-                    SwitchPossesion();
-                }
+                ResolveAction();
             }
         }
-        //debugController.UpdateDebug();
+    }
+
+    private void ResolveAction()
+    {
+        if (IsActionSuccessful(marking))
+        {
+            lastActionSuccessful = true;
+
+            //Give bonus based on type of marking
+            if (marking == MarkingType.Close) attackingBonus *= attackingBonusHigh;
+            else if (marking == MarkingType.Distance) attackingBonus *= attackingBonusMedium;
+            else if (marking == MarkingType.None) attackingBonus *= attackingBonusLow;
+
+            switch (offensiveAction)
+            {
+                case PlayerData.PlayerAction.Pass:
+                    DebugString += "PASSOU A BOLA! \n ________________________________\n";
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " PASSA A BOLA", attackingTeam.PrimaryColor);
+                    currentZone = GetTargetZone();
+                    break;
+
+                case PlayerData.PlayerAction.Dribble:
+                    DebugString += "DRIBLOU! \n ________________________________\n";
+                    if (defendingPlayer != null) Narration.UpdateNarration(attackingPlayer.FirstName + " DRIBLA " + defendingPlayer.FirstName, attackingTeam.PrimaryColor);
+                    currentZone = GetTargetZone();
+                    keepAttacker = true;
+                    break;
+
+                case PlayerData.PlayerAction.Cross:
+                    DebugString += "CRUZOU! \n ________________________________\n";
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
+                    currentZone = GetTargetZone();
+                    break;
+
+                case PlayerData.PlayerAction.Shot:
+                    DebugString += "CHUTOU! \n";
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O CHUTE...", attackingTeam.PrimaryColor);
+                    ResolveShot(marking);
+                    break;
+
+                case PlayerData.PlayerAction.Header:
+                    DebugString += "CABECEOU! \n";
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O LANCE DE CABECA...", attackingTeam.PrimaryColor);
+                    ResolveShot(marking);
+                    break;
+            }
+
+        }
+        else
+        {
+            lastActionSuccessful = false;
+            attackingBonus = 1f;
+
+            if (matchEvent == MatchEvent.Freekick)
+            {
+                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
+                Narration.UpdateNarration(defendingPlayer.FirstName + " FAZ FALTA EM " + attackingPlayer.FirstName, Color.gray);
+                attackingPlayer = GetTopPlayerByAttribute(attackingTeam, PlayerData.PlayerAttributes.Freekick);
+                defendingPlayer = defendingTeam.Squad[0];
+                return;
+            }
+
+            switch (offensiveAction)
+            {
+                case PlayerData.PlayerAction.None:
+                    DebugString += "RATIOU FEIO E PERDEU A BOLA! \n ________________________________\n";
+                    Narration.UpdateNarration(attackingPlayer.FirstName + " DEU BOBEIRA E PERDEU A BOLA", attackingTeam.PrimaryColor);
+                    break;
+
+                case PlayerData.PlayerAction.Pass:
+                    if (defensiveAction == PlayerData.PlayerAction.None)
+                    {
+                        DebugString += "ERROU O PASSE! \n ________________________________\n";
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O PASSE", Color.gray);
+                        currentZone = GetTargetZone();
+                    }
+                    else
+                    {
+                        DebugString += "PASSE BLOQUEADO! \n ________________________________\n";
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O PASSE", defendingTeam.PrimaryColor);
+                        keepDefender = true;
+                    }
+                    break;
+
+                case PlayerData.PlayerAction.Dribble:
+                    if (defensiveAction == PlayerData.PlayerAction.None)
+                    {
+                        DebugString += "ERROU O DRIBLE! \n ________________________________\n";
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " SE ATRAPALHA NO DRIBLE", Color.gray);
+                        currentZone = GetTargetZone();
+                    }
+                    else
+                    {
+                        DebugString += "DRIBLE DESARMADO! \n ________________________________\n";
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " PARA O DRIBLE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+                        keepDefender = true;
+                    }
+                    break;
+
+                case PlayerData.PlayerAction.Cross:
+                    if (defensiveAction == PlayerData.PlayerAction.None)
+                    {
+                        DebugString += "ERROU O CRUZAMENTO! \n ________________________________\n";
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O CRUZAMENTO", Color.gray);
+                        currentZone = GetTargetZone();
+                    }
+                    else
+                    {
+                        DebugString += "CRUZAMENTO BLOQUEADO! \n ________________________________\n";
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " IMPEDE O CRUZAMENTO", defendingTeam.PrimaryColor);
+                    }
+                    break;
+
+                case PlayerData.PlayerAction.Shot:
+                    if (defensiveAction == PlayerData.PlayerAction.None)
+                    {
+                        DebugString += "ERROU O CHUTE! \n ________________________________\n";
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " TEM QUE BOTAR O PÉ NA FORMA", Color.gray);
+                        currentZone = GetTargetZone();
+                    }
+                    else
+                    {
+                        DebugString += "CHUTE BLOQUEADO! \n ________________________________\n";
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O CHUTE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+                    }
+                    break;
+
+                case PlayerData.PlayerAction.Header:
+                    if (defensiveAction == PlayerData.PlayerAction.None)
+                    {
+                        DebugString += "ERROU A CABECADA! \n ________________________________\n";
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " CABECEIA O AR", Color.gray);
+                        currentZone = GetTargetZone();
+                    }
+                    else
+                    {
+                        DebugString += "JOGADA AEREA DESARMADA! \n ________________________________\n";
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " PULA MAIS ALTO QUE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
+                    }
+                    break;
+            }
+
+            SwitchPossesion();
+        }
     }
 
     private PlayerData GetAttackingPlayer(FieldZone _zone)
@@ -969,13 +989,63 @@ public class MatchController : MonoBehaviour
         }
 
         currentZone = FieldZone.OwnGoal;
-        if (defendingTeam == AwayTeam) GetAwayTeamZone();
+        if (defendingTeam == AwayTeam) currentZone = GetAwayTeamZone();
 
         if (attacking > defending) matchEvent = MatchEvent.Goal;
     }
 
+    private PlayerData.PlayerAction GetFreeKickAction()
+    {
+        PlayerData.PlayerAction action = PlayerData.PlayerAction.Pass;
+        FieldZone zone = currentZone;
+        if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        int bonus = 0;
+        ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
+
+        float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
+        bonus = GetAttributeBonus(attackingPlayer.Passing);
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(pass * 5) + bonus / 10) > 18) pass *= 2f;
+
+        float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
+        bonus = GetAttributeBonus(attackingPlayer.Crossing);
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(cross * 5), bonus) > 18) cross *= 2f;
+
+        float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
+        bonus = GetAttributeBonus(attackingPlayer.Shooting);
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5) + bonus / 10) > 18) shoot *= 2f;
+
+        float total = pass + cross + shoot;
+        pass = pass / total;
+        cross = cross / total;
+        shoot = shoot / total;
+
+        List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot));
+
+        float random = Random.Range(0f, 1f);
+        float cumulative = 0f;
+        for (int i = 0; i < list.Count; i++)
+        {
+            cumulative += list[i].Value;
+            if (random < cumulative)
+            {
+                action = list[i].Key;
+                break;
+            }
+        }
+
+        DebugString += "Pass: " + pass + "\n";
+        DebugString += "Cross: " + cross + "\n";
+        DebugString += "Shoot: " + shoot + "\n";
+        print(action.ToString());
+
+        return action;
+    }
+
     private void ResolveFreeKick()
-    {        
+    {
         float attacking = (float)(attackingPlayer.Freekick + attackingPlayer.Strength) / 200;
         float defending = 0f;
         int bonusChance = GetAttributeBonus(attackingPlayer.Freekick);
