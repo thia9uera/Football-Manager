@@ -99,13 +99,13 @@ MonoBehaviour:
   - Name: Deadlock
     Description: bla
     DefPosChance: 3
-    OffPosChance: 0.15
-    PassingChance: 2
+    OffPosChance: 0.05
+    PassingChance: 1
     ShootingChance: 1
-    CrossingChance: 1
+    CrossingChance: 2
     DribblingChance: 0.25
     OffsideTrickChance: 1.5
-    MarkingChance: 1
+    MarkingChance: 2
     TacklingChance: 1.2
     OwnGoal: 1
     LD: 1
@@ -156,9 +156,9 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 3
-    PassingChance: 1.5
+    PassingChance: 4
     ShootingChance: 2
-    CrossingChance: 1.5
+    CrossingChance: 1.2
     DribblingChance: 2
     OffsideTrickChance: 1
     MarkingChance: 1
@@ -186,7 +186,7 @@ MonoBehaviour:
     OffPosChance: 2
     PassingChance: 1
     ShootingChance: 1
-    CrossingChance: 3
+    CrossingChance: 6
     DribblingChance: 1
     OffsideTrickChance: 1
     MarkingChance: 1

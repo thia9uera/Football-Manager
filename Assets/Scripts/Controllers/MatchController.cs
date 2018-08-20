@@ -103,8 +103,22 @@ public class MatchController : MonoBehaviour
     [HideInInspector]
     public string DebugString;
 
-    [SerializeField]
-    private float positionDebuff = 0.85f;
+    private float positionDebuff;
+    private float attackingBonusLow;
+    private float attackingBonusMedium;
+    private float attackingBonusHigh;
+    private float faultChance;
+
+    private void Awake()
+    {
+        Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
+
+        positionDebuff = modifiers.PositionDebuff;
+        attackingBonusLow = modifiers.AttackBonusLow;
+        attackingBonusMedium = modifiers.AttackBonusMediun;
+        attackingBonusHigh = modifiers.AttackBonusHigh;
+        faultChance = modifiers.FaultChance;
+    }
 
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
     {
@@ -313,9 +327,9 @@ public class MatchController : MonoBehaviour
                     lastActionSuccessful = true;
 
                     //Give bonus based on type of marking
-                    if (marking == MarkingType.Close) attackingBonus *= 1.3f;
-                    else if (marking == MarkingType.Distance) attackingBonus *= 1.2f;
-                    else if (marking == MarkingType.None) attackingBonus *= 1.1f;
+                    if (marking == MarkingType.Close) attackingBonus *= attackingBonusLow;
+                    else if (marking == MarkingType.Distance) attackingBonus *= attackingBonusMedium;
+                    else if (marking == MarkingType.None) attackingBonus *= attackingBonusHigh;
 
                     switch (offensiveAction)
                     {
@@ -697,7 +711,7 @@ public class MatchController : MonoBehaviour
         bool isTackling = false;
         int attackBonusChance = 0;
         int defenseBonusChance = 0;
-        float faultChance = 0f;
+        float fault = faultChance;
         float agilityBonus;
 
         FieldZone zone = currentZone;
@@ -831,12 +845,12 @@ public class MatchController : MonoBehaviour
             }
 
 
-            faultChance = 0.25f;
+            fault = 0.25f;
             agilityBonus = GetAttributeBonus(defendingPlayer.Agility)/100;
             agilityBonus *= defendingPlayer.Fatigue / 100;
-            faultChance *= (1f - agilityBonus);
+            fault *= (1f - agilityBonus);
 
-            if(Random.Range(0f, 1f) <  faultChance)
+            if(Random.Range(0f, 1f) <  fault)
             {
                 matchEvent = MatchEvent.Freekick;
                 success = false;

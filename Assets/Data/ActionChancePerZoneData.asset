@@ -141,9 +141,9 @@ MonoBehaviour:
     Shot: 1.5
     Tackle: 1
   - Zone: Box
-    Dribble: 1.75
+    Dribble: 1
     Sprint: 0
-    Pass: 1.5
+    Pass: 1
     LongPass: 0
     Cross: 0
     Shot: 3

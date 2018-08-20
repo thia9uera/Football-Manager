@@ -142,6 +142,7 @@
     <Compile Include="Assets\Scripts\Controllers\MainController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
     <Compile Include="Assets\Scripts\Data\ActionChancePerZoneData.cs" />
+    <Compile Include="Assets\Scripts\Data\Game_ModifierData.cs" />
     <Compile Include="Assets\Scripts\Data\LocalizationData.cs" />
     <Compile Include="Assets\Scripts\Data\PerkData.cs" />
     <Compile Include="Assets\Scripts\Data\Player_StrategyData.cs" />
