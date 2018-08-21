@@ -110,6 +110,10 @@ public class MatchController : MonoBehaviour
     private float attackingBonusHigh;
     private float faultChance;
 
+    [SerializeField]
+    [Range(1, 10)]
+    private int matchSpeed = 1;
+
     private void Awake()
     {
         Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
@@ -174,7 +178,7 @@ public class MatchController : MonoBehaviour
         currentZone = FieldZone.CM;
         Field.UpdateFieldArea((int)currentZone);
 
-        InvokeRepeating("DefineActions", 1f, 1f);  
+        InvokeRepeating("DefineActions", 1f, 1f/matchSpeed);  
     }
 
     //MAIN CONTROLLING FUNCTION
@@ -486,7 +490,6 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU O CHUTE! \n ________________________________\n";
                         Narration.UpdateNarration(attackingPlayer.FirstName + " TEM QUE BOTAR O PÉ NA FORMA", Color.gray);
-                        currentZone = GetTargetZone();
                     }
                     else
                     {
@@ -500,7 +503,6 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU A CABECADA! \n ________________________________\n";
                         Narration.UpdateNarration(attackingPlayer.FirstName + " CABECEIA O AR", Color.gray);
-                        currentZone = GetTargetZone();
                     }
                     else
                     {
@@ -1292,7 +1294,13 @@ public class MatchController : MonoBehaviour
         }
 
         int random = Random.Range(0, zones.Count);
-        if (random >= zones.Count) print("MAS QUE CARALHA");
+        if (random >= zones.Count)
+        {
+            print("RANDOM: " + random + "  ZONES: " + zones.Count);
+            print("ACTION: " + offensiveAction.ToString());
+            if (attackingTeam == HomeTeam) print("ZONE: " + currentZone.ToString());
+            else print("ZONE: " + GetAwayTeamZone().ToString());
+        }
         target = (FieldZone)zones[random];
         
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
