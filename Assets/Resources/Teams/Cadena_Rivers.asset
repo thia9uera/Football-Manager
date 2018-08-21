@@ -16,7 +16,7 @@ MonoBehaviour:
   PrimaryColor: {r: 0.5424528, g: 0.66779965, b: 1, a: 1}
   SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
   Formation: 2
-  Strategy: 2
+  Strategy: 1
   Squad:
   - {fileID: 11400000, guid: 6b923120f86d25d4ba7912ade32de1ee, type: 2}
   - {fileID: 11400000, guid: 1cd9262e641926c4498d2a75a5d5cfa6, type: 2}
