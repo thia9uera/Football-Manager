@@ -1292,6 +1292,7 @@ public class MatchController : MonoBehaviour
         }
 
         int random = Random.Range(0, zones.Count);
+        if (random >= zones.Count) print("MAS QUE CARALHA");
         target = (FieldZone)zones[random];
         
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
