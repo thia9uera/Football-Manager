@@ -1073,8 +1073,9 @@ public class MatchController : MonoBehaviour
                     Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
                     keepDefender = true;
                 }
-                SwitchPossesion();
+                
             }
+            SwitchPossesion();
         }
 
         currentZone = FieldZone.OwnGoal;
@@ -1128,7 +1129,6 @@ public class MatchController : MonoBehaviour
         DebugString += "Pass: " + pass + "\n";
         DebugString += "Cross: " + cross + "\n";
         DebugString += "Shoot: " + shoot + "\n";
-        print(action.ToString());
 
         return action;
     }
