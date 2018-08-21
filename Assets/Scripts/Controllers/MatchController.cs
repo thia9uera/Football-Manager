@@ -224,10 +224,13 @@ public class MatchController : MonoBehaviour
             if(!isFreekickTaken)
             {
                 isFreekickTaken = true;
+                
+                attackingPlayer = GetAttackingPlayer(currentZone);
                 offensiveAction = GetFreeKickAction();
 
                 if(offensiveAction == PlayerData.PlayerAction.Shot)
-                {      
+                {
+                    defendingPlayer = defendingTeam.Squad[0];
                     Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
                     return;
                 }
@@ -239,17 +242,35 @@ public class MatchController : MonoBehaviour
                     ResolveAction();
                     return;
                 }
-                 
-                
             }
             else
             {
-                ResolveFreeKick();
                 isFreekickTaken = false;
+                matchEvent = MatchEvent.None;
+                ResolveShot(MarkingType.None);
                 return;
             }
         }
 
+        //IF LAST ACTION RESULTED IN A PENALTY
+        if (matchEvent == MatchEvent.Penalty)
+        {
+            if (!isFreekickTaken)
+            {
+                isFreekickTaken = true;
+                attackingPlayer = GetTopPlayerByAttribute(attackingTeam.Squad, PlayerData.PlayerAttributes.Penalty);
+                defendingPlayer = defendingTeam.Squad[0];
+                offensiveAction = PlayerData.PlayerAction.Shot;
+                Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
+                return;
+            }
+            else
+            {
+                ResolveShot(MarkingType.None);
+                isFreekickTaken = false;
+                return;
+            }
+        }
         if (matchTime >= 45 && !isHalfTime)
         {
             isHalfTime = true;
@@ -398,8 +419,14 @@ public class MatchController : MonoBehaviour
             {
                 DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
                 Narration.UpdateNarration(defendingPlayer.FirstName + " FAZ FALTA EM " + attackingPlayer.FirstName, Color.gray);
-                attackingPlayer = GetTopPlayerByAttribute(attackingTeam, PlayerData.PlayerAttributes.Freekick);
-                defendingPlayer = defendingTeam.Squad[0];
+                
+                return;
+            }
+            else if (matchEvent == MatchEvent.Penalty)
+            {
+                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz penalty.\n\n";
+                Narration.UpdateNarration("PENALIDADE MAXIMA!!!", Color.gray);
+
                 return;
             }
 
@@ -494,9 +521,13 @@ public class MatchController : MonoBehaviour
 
         float chance = 0f;
         bool forcePlayer = false;
-        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
+        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross )
         {
-            if (lastActionSuccessful) forcePlayer = true;
+           if(lastActionSuccessful) forcePlayer = true;
+        }
+        else if (matchEvent == MatchEvent.Freekick)
+        {
+            forcePlayer = true;
         }
 
         List<PlayerData> players = new List<PlayerData>();
@@ -524,6 +555,11 @@ public class MatchController : MonoBehaviour
                     if (chance > 0 && chance <= Random.Range(0f, 1f)) players.Add(player);
                 }
             }
+        }
+
+        if (matchEvent == MatchEvent.Freekick)
+        {
+            return GetTopPlayerByAttribute(players.ToArray(), PlayerData.PlayerAttributes.Freekick);
         }
 
         return GetActivePlayer(players);
@@ -872,7 +908,9 @@ public class MatchController : MonoBehaviour
 
             if(Random.Range(0f, 1f) <  fault)
             {
-                matchEvent = MatchEvent.Freekick;
+                if(attackingTeam == HomeTeam && currentZone == FieldZone.Box) matchEvent = MatchEvent.Penalty;
+                else if (attackingTeam == AwayTeam && currentZone == FieldZone.OwnGoal) matchEvent = MatchEvent.Penalty;
+                else matchEvent = MatchEvent.Freekick;
                 success = false;
             }
 
@@ -940,8 +978,22 @@ public class MatchController : MonoBehaviour
 
         if (offensiveAction == PlayerData.PlayerAction.Shot)
         {
-            attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Strength) / 200;
-            bonusChance = GetAttributeBonus(attackingPlayer.Shooting);
+            
+            if (matchEvent == MatchEvent.Freekick)
+            {
+                attacking = (float)(attackingPlayer.Freekick + attackingPlayer.Strength) / 200;
+                bonusChance = GetAttributeBonus(attackingPlayer.Freekick);
+            }
+            else if (matchEvent == MatchEvent.Penalty)
+            {
+                attacking = (float)(attackingPlayer.Penalty + attackingPlayer.Strength) / 200;
+                bonusChance = GetAttributeBonus(attackingPlayer.Penalty);
+            }
+            else
+            {
+                attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Strength) / 200;
+                bonusChance = GetAttributeBonus(attackingPlayer.Shooting);
+            }
         }
         else if (offensiveAction == PlayerData.PlayerAction.Header)
         {
@@ -955,10 +1007,30 @@ public class MatchController : MonoBehaviour
 
         if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
 
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking*5), bonusChance) > 19)
+        int roll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), bonusChance);
+        if  (roll > 19)
         {
             attacking += attacking * 1.25f;
             DebugString += "\n ATACANTE GANHOU BONUS DE 25%";
+        }
+        else if (roll < 3)
+        {
+            if(matchEvent == MatchEvent.Freekick)
+            {
+                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta na barreira", Color.gray);
+                DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
+                SwitchPossesion();
+                keepDefender = true;
+                return;
+            }
+            else if (matchEvent == MatchEvent.Penalty)
+            {
+                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta pra fora!", Color.gray);
+                DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
+                SwitchPossesion();
+                keepDefender = true;
+                return;
+            }
         }
 
         defending = ((float)defendingPlayer.Goalkeeping + defendingPlayer.Agility) / 200;
@@ -981,11 +1053,28 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
-                Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+                if (matchEvent == MatchEvent.Freekick)
+                {
+                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de falta" + "\n\n_____________________________________\n\n";
+                    Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de falta!", defendingTeam.PrimaryColor);
+                    matchEvent = MatchEvent.None;
+                    keepDefender = true;
+                }
+                else if(matchEvent == MatchEvent.Penalty)
+                {
+                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de penalty" + "\n\n_____________________________________\n\n";
+                    Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de penalty!", defendingTeam.PrimaryColor);
+                    matchEvent = MatchEvent.None;
+                    keepDefender = true;
+                }
+                else
+                {
+                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
+                    Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+                    keepDefender = true;
+                }
+                SwitchPossesion();
             }
-
-            SwitchPossesion();
         }
 
         currentZone = FieldZone.OwnGoal;
@@ -1042,56 +1131,6 @@ public class MatchController : MonoBehaviour
         print(action.ToString());
 
         return action;
-    }
-
-    private void ResolveFreeKick()
-    {
-        float attacking = (float)(attackingPlayer.Freekick + attackingPlayer.Strength) / 200;
-        float defending = 0f;
-        int bonusChance = GetAttributeBonus(attackingPlayer.Freekick);
-        int roll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), bonusChance);      
-
-        if (roll > 19)
-        {
-            attacking += attacking * 1.25f;
-            DebugString += "\n ATACANTE GANHOU BONUS DE 25%";
-        }
-        else if(roll < 3)
-        {
-            Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta na barreira",Color.gray);
-            DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
-            SwitchPossesion();
-            keepDefender = true;
-            matchEvent = MatchEvent.None;
-        }
-        else
-        {
-            defending = ((float)defendingPlayer.Goalkeeping + defendingPlayer.Agility) / 200;
-            defending *= (float)defendingPlayer.Fatigue / 100;
-            if (RollDice(20, 1, RollType.None, (int)defending) > 18)
-            {
-                defending *= 1.50f;
-                DebugString += "\n GOLEIRO GANHOU BONUS DE 50%";
-            }
-
-            DebugString += "\nAtacante rolou: " + attacking + "\nGoleiro rolou: " + defending;
-
-            if (attacking <= defending)
-            {
-                keepDefender = true;
-
-                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a crobanca de falta" + "\n\n_____________________________________\n\n";
-                Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a crobanca de falta!", defendingTeam.PrimaryColor);
-                matchEvent = MatchEvent.None;
-                keepDefender = true;
-                SwitchPossesion();
-            }
-
-            if (attacking > defending)
-            {
-                matchEvent = MatchEvent.Goal;
-            }
-        }
     }
 
     private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)
@@ -1259,11 +1298,11 @@ public class MatchController : MonoBehaviour
         return target;
     }
 
-    private PlayerData GetTopPlayerByAttribute(TeamData _team, PlayerData.PlayerAttributes _attribute)
+    private PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.PlayerAttributes _attribute)
     {
         PlayerData best = null;
         int higher = 0;
-        foreach(PlayerData player in _team.Squad)
+        foreach(PlayerData player in _players)
         {
             if(player.GetPlayerAttribute(_attribute) > higher) best = player;
         }
