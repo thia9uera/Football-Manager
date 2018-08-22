@@ -20,13 +20,22 @@ public class SquadSelectionView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI overallLabel;
 
+    private List<PlayerData> playersIn;
+    private List<PlayerData> playersOut;
+
+    private List<PlayerData> oldSubs;
+
     public void Populate(TeamData _team)
     {
         Team = _team;
+        oldSubs = new List<PlayerData>(Team.Substitutes);
         MainSquad.Populate(Team.Squad);
         Subs.Populate(Team.Substitutes);
         gameObject.SetActive(true);
         GetOverall();
+
+        playersIn = new List<PlayerData>();
+        playersOut = new List<PlayerData>();
     }
 
     public void GetOverall()
@@ -37,7 +46,7 @@ public class SquadSelectionView : MonoBehaviour
             total += player.GetOverall();
         }
 
-        overallLabel.text = "Overall: " + (total / 11);
+        overallLabel.text = "Overall: " + (total / Team.Squad.Length);
     }
 
     public void StartDragging(PlayerData _data)
@@ -63,6 +72,7 @@ public class SquadSelectionView : MonoBehaviour
                 Subs.SwapPlayers(selectedPlayer, selectedSlot.Player);
                 MainSquad.SwapPlayers(selectedPlayer, selectedSlot.Player);
                 selectedSlot.Populate(selectedPlayer);
+                selectedPlayer.ApplyBonus(Team.GetStrategy());
             }
         }
           
@@ -75,6 +85,24 @@ public class SquadSelectionView : MonoBehaviour
 
     public void Close()
     {
-        MainController.Instance.FinishSquadEdit();   
+        List<PlayerData> updated = new List<PlayerData>(Team.Substitutes);
+
+        foreach (PlayerData player in oldSubs)
+        {
+            print(player.FirstName);
+            if (!updated.Contains(player))
+            {
+                playersIn.Add(player);
+            }
+        }
+        foreach (PlayerData player in updated)
+        {
+            print(player.FirstName);
+            if (!oldSubs.Contains(player)) playersOut.Add(player);
+        }
+
+        print("ENTROU: " + playersIn.Count);
+
+        MainController.Instance.FinishSquadEdit(playersIn, playersOut);   
     }
 }

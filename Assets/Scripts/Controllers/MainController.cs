@@ -29,14 +29,16 @@ public class MainController : MonoBehaviour
 
     public void EditSquad(TeamData _team)
     {
+        Match.PauseGame(true);
         Match.gameObject.SetActive(false);
         SquadSelection.Populate(_team);
     }
 
-    public void FinishSquadEdit()
+    public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)
     {
         SquadSelection.gameObject.SetActive(false);
-        Match.UpdateTeams();
+        Match.UpdateTeams(_in, _out);
         Match.gameObject.SetActive(true);
+        Match.PauseGame(false);
     }
 }

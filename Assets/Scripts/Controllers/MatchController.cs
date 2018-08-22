@@ -146,8 +146,32 @@ public class MatchController : MonoBehaviour
             ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
     }
 
-    public void UpdateTeams()
+    public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
     {
+        print(_in.Count);
+        if(_in.Count > 0 && matchTime > 0)
+        {
+            string playersIn = "";
+            string playersOut = "";
+            PlayerData player;
+            for (int i = 0; i < _in.Count; i++)
+            {
+                player = _in[i];
+                if(i == 0) playersIn += player.FirstName + " " + player.LastName;
+                else playersIn += ", " + player.FirstName + " " + player.LastName;
+            }
+
+            for (int i = 0; i < _out.Count; i++)
+            {
+                player = _out[i];
+                if (i == 0) playersOut += player.FirstName + " " + player.LastName;
+                else playersIn += ", " + player.FirstName + " " + player.LastName;
+            }
+
+            Narration.UpdateNarration("SAI: " + playersOut, Color.gray);
+            Narration.UpdateNarration("ENTRA: " + playersIn, Color.gray);
+        }
+
         HomeTeamSquad.Populate(HomeTeam);
         AwayTeamSquad.Populate(AwayTeam);
     }
@@ -164,6 +188,13 @@ public class MatchController : MonoBehaviour
         Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
     }
 
+    public void PauseGame(bool _isPaused)
+    {
+        isGameOn = !_isPaused;
+        if (!_isPaused) StartCoroutine("GameLoop");
+        else StopAllCoroutines();
+    }
+
     public void HandleStartButton()
     {
         Reset();
@@ -178,8 +209,6 @@ public class MatchController : MonoBehaviour
         DebugString = "KICK OFF! \n \n";
         currentZone = FieldZone.CM;
         Field.UpdateFieldArea((int)currentZone);
-
-        //InvokeRepeating("DefineActions", 1f, 1f/matchSpeed);
 
         isGameOn = true;
         StartCoroutine("GameLoop");
