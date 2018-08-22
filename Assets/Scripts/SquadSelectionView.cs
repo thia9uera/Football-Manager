@@ -25,6 +25,20 @@ public class SquadSelectionView : MonoBehaviour
 
     private List<PlayerData> oldSubs;
 
+    [SerializeField]
+    private TMP_Dropdown dropdown;
+
+    private void Awake()
+    {
+        dropdown.ClearOptions();
+        List<string> strategyList = new List<string>();
+        foreach (Team_Strategy strategy in MainController.Instance.TeamStrategyData.team_Strategys)
+        {
+            strategyList.Add(strategy.Name);
+        }
+        dropdown.AddOptions(strategyList);
+    }
+
     public void Populate(TeamData _team)
     {
         Team = _team;
@@ -34,8 +48,15 @@ public class SquadSelectionView : MonoBehaviour
         gameObject.SetActive(true);
         GetOverall();
 
+        dropdown.value = (int)Team.Strategy;
+
         playersIn = new List<PlayerData>();
         playersOut = new List<PlayerData>();
+    }
+
+    public void SetStrategy()
+    {
+        Team.Strategy = (TeamData.TeamStrategy)dropdown.value;
     }
 
     public void GetOverall()
@@ -72,7 +93,6 @@ public class SquadSelectionView : MonoBehaviour
                 Subs.SwapPlayers(selectedPlayer, selectedSlot.Player);
                 MainSquad.SwapPlayers(selectedPlayer, selectedSlot.Player);
                 selectedSlot.Populate(selectedPlayer);
-                selectedPlayer.ApplyBonus(Team.GetStrategy());
             }
         }
           

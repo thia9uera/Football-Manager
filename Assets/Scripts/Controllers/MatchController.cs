@@ -149,7 +149,6 @@ public class MatchController : MonoBehaviour
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
     {
-        print(_in.Count);
         if(_in.Count > 0 && matchTime > 0)
         {
             string playersIn = "";
@@ -171,6 +170,7 @@ public class MatchController : MonoBehaviour
 
             Narration.UpdateNarration("SAI: " + playersOut, Color.gray);
             Narration.UpdateNarration("ENTRA: " + playersIn, Color.gray);
+            PauseGame(false);
         }
 
         HomeTeamSquad.Populate(HomeTeam);

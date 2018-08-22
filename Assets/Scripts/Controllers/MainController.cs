@@ -39,6 +39,5 @@ public class MainController : MonoBehaviour
         SquadSelection.gameObject.SetActive(false);
         Match.UpdateTeams(_in, _out);
         Match.gameObject.SetActive(true);
-        Match.PauseGame(false);
     }
 }
