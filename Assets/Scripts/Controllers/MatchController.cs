@@ -94,6 +94,7 @@ public class MatchController : MonoBehaviour
     private int matchTime = 0;
     private int homeTeamScore = 0;
     private int awayTeamScore = 0;
+    private bool isGameOn = false;
 
     private bool isGoalAnnounced = false;
     private bool isScorerAnnounced = false;
@@ -178,7 +179,20 @@ public class MatchController : MonoBehaviour
         currentZone = FieldZone.CM;
         Field.UpdateFieldArea((int)currentZone);
 
-        InvokeRepeating("DefineActions", 1f, 1f/matchSpeed);  
+        //InvokeRepeating("DefineActions", 1f, 1f/matchSpeed);
+
+        isGameOn = true;
+        StartCoroutine("GameLoop");
+    }
+
+    IEnumerator GameLoop()
+    {
+        if(matchTime == 0) yield return new WaitForSeconds(1f / matchSpeed);
+        while (isGameOn == true)
+        {
+            DefineActions();
+            yield return new WaitForSeconds(1f/matchSpeed);
+        }
     }
 
     //MAIN CONTROLLING FUNCTION
@@ -295,6 +309,7 @@ public class MatchController : MonoBehaviour
         {
             Narration.UpdateNarration("TERMINA A PARTIDA", Color.gray);
             CancelInvoke();
+            isGameOn = false;
             startBtn.SetActive(true);
             return;
         }
