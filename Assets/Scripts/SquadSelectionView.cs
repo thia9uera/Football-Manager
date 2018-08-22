@@ -89,7 +89,6 @@ public class SquadSelectionView : MonoBehaviour
 
         foreach (PlayerData player in oldSubs)
         {
-            print(player.FirstName);
             if (!updated.Contains(player))
             {
                 playersIn.Add(player);
@@ -97,7 +96,6 @@ public class SquadSelectionView : MonoBehaviour
         }
         foreach (PlayerData player in updated)
         {
-            print(player.FirstName);
             if (!oldSubs.Contains(player)) playersOut.Add(player);
         }
 

@@ -45,6 +45,7 @@ public class MatchController : MonoBehaviour
         Offside,
         ThrowIn,
         Goal,
+        Goalkick,
     }
 
     public enum MarkingType
@@ -197,13 +198,21 @@ public class MatchController : MonoBehaviour
 
     public void HandleStartButton()
     {
-        Reset();
-        KickOff();
+        if(matchTime == 0 || matchTime >= 90)
+        {
+            Reset();
+            KickOff();
+        }
+        else
+        {
+            PauseGame(isGameOn);
+        }
+
     }
 
     public void KickOff()
     {
-        startBtn.SetActive(false);
+        //startBtn.SetActive(false);
 
         Narration.UpdateNarration("KICK OFF!", Color.gray);
         DebugString = "KICK OFF! \n \n";
@@ -318,6 +327,17 @@ public class MatchController : MonoBehaviour
                 return;
             }
         }
+
+        //IF LAST ACTION RESULTED IN A GOALKICK
+        if (matchEvent == MatchEvent.Goalkick)
+        {
+            attackingPlayer = attackingTeam.Squad[0];
+            marking = MarkingType.None;
+            offensiveAction = PlayerData.PlayerAction.Cross;
+            ResolveAction();
+        }
+
+        //HALF TIME
         if (matchTime >= 45 && !isHalfTime)
         {
             isHalfTime = true;
@@ -440,7 +460,15 @@ public class MatchController : MonoBehaviour
 
                 case PlayerData.PlayerAction.Cross:
                     DebugString += "CRUZOU! \n ________________________________\n";
-                    Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
+                    if(matchEvent == MatchEvent.Goalkick)
+                    {
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " COBRA O TIRO-DE-META", attackingTeam.PrimaryColor);
+                        matchEvent = MatchEvent.None;
+                    }
+                    else
+                    {
+                        Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
+                    }
                     currentZone = GetTargetZone();
                     break;
 
@@ -518,8 +546,17 @@ public class MatchController : MonoBehaviour
                 case PlayerData.PlayerAction.Cross:
                     if (defensiveAction == PlayerData.PlayerAction.None)
                     {
-                        DebugString += "ERROU O CRUZAMENTO! \n ________________________________\n";
-                        Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O CRUZAMENTO", Color.gray);
+                        if (matchEvent == MatchEvent.Goalkick)
+                        {
+                            DebugString += "CAGOU O TIRO-DE-META! \n ________________________________\n";
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " FURA O TIRO-DE-META", Color.gray);
+                        }
+                        else
+                        {
+                            DebugString += "ERROU O CRUZAMENTO! \n ________________________________\n";
+                            Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O CRUZAMENTO", Color.gray);
+                        }
+
                         currentZone = GetTargetZone();
                     }
                     else
@@ -1059,24 +1096,28 @@ public class MatchController : MonoBehaviour
             attacking += attacking * 1.25f;
             DebugString += "\n ATACANTE GANHOU BONUS DE 25%";
         }
-        else if (roll < 3)
+        else if (roll < 4)
         {
             if(matchEvent == MatchEvent.Freekick)
             {
                 Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta na barreira", Color.gray);
                 DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
-                SwitchPossesion();
-                keepDefender = true;
-                return;
+                
             }
             else if (matchEvent == MatchEvent.Penalty)
             {
                 Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta pra fora!", Color.gray);
                 DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
-                SwitchPossesion();
-                keepDefender = true;
-                return;
             }
+            else
+            {
+                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " manda a bola pra fora do estadio!", Color.gray);
+                DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
+            }
+
+            SwitchPossesion();
+            matchEvent = MatchEvent.Goalkick;
+            return;
         }
 
         defending = ((float)defendingPlayer.Goalkeeping + defendingPlayer.Agility) / 200;
@@ -1121,13 +1162,14 @@ public class MatchController : MonoBehaviour
                 }
                 
             }
+
+            currentZone = FieldZone.OwnGoal;
+            if (defendingTeam == AwayTeam) currentZone = GetAwayTeamZone();
+
             SwitchPossesion();
         }
 
-        currentZone = FieldZone.OwnGoal;
-        if (defendingTeam == AwayTeam) currentZone = GetAwayTeamZone();
-
-        if (attacking > defending) matchEvent = MatchEvent.Goal;
+        else if (attacking > defending) matchEvent = MatchEvent.Goal;
     }
 
     private PlayerData.PlayerAction GetFreeKickAction()
@@ -1335,6 +1377,12 @@ public class MatchController : MonoBehaviour
                     zones.InsertRange(0, new int[] { 16 });
                     break;
             }
+        }
+
+        if(matchEvent == MatchEvent.Goalkick)
+        {
+            zones.Clear();
+            zones.InsertRange(0, new int[] { 10, 11, 12, 13, 14, 15});
         }
 
         int random = Random.Range(0, zones.Count);
