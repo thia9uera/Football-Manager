@@ -1032,7 +1032,7 @@ public class MatchController : MonoBehaviour
             if (attacking > Random.Range(0f, 1f)) success = true;
         }
 
-        attackingPlayer.Fatigue -= (int)(fatigueRate * (defendingPlayer.Stamina / 100));
+        attackingPlayer.Fatigue -= (int)(fatigueRate * (attackingPlayer.Stamina / 100));
 
         return success;
     }
@@ -1055,7 +1055,7 @@ public class MatchController : MonoBehaviour
         float defending = 0f;
         float distanceModifier = 1f;
         int bonusChance = 0;
-        PlayerData defendingPlayer = defendingTeam.Squad[0];
+        defendingPlayer = defendingTeam.Squad[0];
         FieldZone zone = currentZone;
 
         if (attackingPlayer == AwayTeam) currentZone = GetAwayTeamZone();
