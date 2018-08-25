@@ -156,7 +156,7 @@ public class MatchController : MonoBehaviour
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
     {
-        if(_in.Count > 0 && matchTime > 0)
+        if(_in.Count > 0)
         {
             string playersIn = "";
             string playersOut = "";
@@ -172,13 +172,17 @@ public class MatchController : MonoBehaviour
             {
                 player = _out[i];
                 if (i == 0) playersOut += player.FirstName + " " + player.LastName;
-                else playersIn += ", " + player.FirstName + " " + player.LastName;
+                else playersOut += ", " + player.FirstName + " " + player.LastName;
             }
 
-            Narration.UpdateNarration("SAI: " + playersOut, Color.gray);
-            Narration.UpdateNarration("ENTRA: " + playersIn, Color.gray);
-            PauseGame(false);
+            if (matchTime > 0 && matchTime < 90)
+            {
+                Narration.UpdateNarration("SAI: " + playersOut, Color.gray);
+                Narration.UpdateNarration("ENTRA: " + playersIn, Color.gray);
+            }
         }
+
+        if(matchTime > 0 && matchTime < 90) PauseGame(false);
 
         HomeTeamSquad.Populate(HomeTeam);
         AwayTeamSquad.Populate(AwayTeam);
@@ -199,7 +203,10 @@ public class MatchController : MonoBehaviour
     public void PauseGame(bool _isPaused)
     {
         isGameOn = !_isPaused;
-        if (!_isPaused) StartCoroutine("GameLoop");
+        if (!_isPaused)
+        {
+            StartCoroutine("GameLoop");
+        }
         else StopAllCoroutines();
     }
 
@@ -231,7 +238,7 @@ public class MatchController : MonoBehaviour
 
     IEnumerator GameLoop()
     {
-        if(matchTime == 0) yield return new WaitForSeconds(1f / matchSpeed);
+        yield return new WaitForSeconds(1f / matchSpeed);
         while (isGameOn == true)
         {
             DefineActions();
@@ -386,6 +393,7 @@ public class MatchController : MonoBehaviour
         if (attackingPlayer == null && defendingPlayer == null)
         {
             Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
+            DebugString += "\nSOBOUR NA " + currentZone.ToString() + " ! \n ________________________________\n \n";
         }
         //No players form team in possesion in the dispute
         else if(attackingPlayer == null)
@@ -610,7 +618,7 @@ public class MatchController : MonoBehaviour
         {
            if(lastActionSuccessful) forcePlayer = true;
         }
-        else if (matchEvent == MatchEvent.Freekick)
+        if (matchEvent == MatchEvent.Freekick)
         {
             forcePlayer = true;
         }
@@ -620,7 +628,7 @@ public class MatchController : MonoBehaviour
         foreach (PlayerData player in attackingTeam.Squad)
         {
             chance = CalculatePresence(player, zone);
-            if (player.Position != player.AssignedPosition) chance *= positionDebuff;
+            
             if (forcePlayer)
             {
                 if (player != attackingPlayer && chance > 0f)
@@ -696,6 +704,7 @@ public class MatchController : MonoBehaviour
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= (float)player.Fatigue / 100;
             bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
+            if (player.Position != player.AssignedPosition) stats *= positionDebuff;
 
             int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
@@ -707,11 +716,9 @@ public class MatchController : MonoBehaviour
             {
                 stats *= 0.25f;
             }
-
+            
             compareList.Add(new KeyValuePair<PlayerData, float>(player, stats));
         }
-
-        
 
         float random = Random.Range(0f, 1f);
         float cumulative = 0f;
@@ -742,7 +749,7 @@ public class MatchController : MonoBehaviour
     private MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
-        if (defendingPlayer == null) return type;
+        if (defendingPlayer == null || attackingPlayer .AssignedPosition == PlayerData.PlayerPosition.GK) return type;
 
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
@@ -806,6 +813,13 @@ public class MatchController : MonoBehaviour
             if (_marking == MarkingType.Distance) header *= 2f;
             else if (_marking == MarkingType.None) header *= 3f;
             if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5) + bonus / 10) > 18) header *= 2f;
+        }
+
+        if(attackingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK)
+        {
+            dribble = 0;
+            shoot = 0;
+            header = 0;
         }
 
         float total = pass + dribble + cross + shoot + header;
@@ -1424,6 +1438,7 @@ public class MatchController : MonoBehaviour
 
     private PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.PlayerAttributes _attribute)
     {
+        if (_players.Length == 0) print("PALHA");
         PlayerData best = null;
         int higher = 0;
         foreach(PlayerData player in _players)

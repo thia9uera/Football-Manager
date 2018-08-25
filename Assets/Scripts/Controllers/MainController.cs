@@ -37,7 +37,7 @@ public class MainController : MonoBehaviour
     public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)
     {
         SquadSelection.gameObject.SetActive(false);
-        Match.UpdateTeams(_in, _out);
         Match.gameObject.SetActive(true);
+        Match.UpdateTeams(_in, _out);      
     }
 }
