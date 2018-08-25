@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class MatchController : MonoBehaviour
 {
@@ -117,6 +118,9 @@ public class MatchController : MonoBehaviour
     private int fatigueHigh;
 
     [SerializeField]
+    private TextMeshProUGUI version;
+
+    [SerializeField]
     [Range(1, 10)]
     private int matchSpeed = 1;
 
@@ -132,6 +136,8 @@ public class MatchController : MonoBehaviour
         fatigueLow = (int)modifiers.FatigueLow;
         fatigueMedium = (int)modifiers.FatigueMedium;
         fatigueHigh = (int)modifiers.FatigueHigh;
+
+        version.text = "v." + Application.version;
     }
 
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
