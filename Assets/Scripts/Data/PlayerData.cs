@@ -237,9 +237,9 @@ public class PlayerData : ScriptableObject
     public float GetChancePerZone(MatchController.FieldZone _zone)
     {
         float pct = 0f;
-        float high_chance = 0.25f;
-        float medium_chance = 0.15f;
-        float low_chance = 0.05f;
+        float high_chance = 0.5f;
+        float medium_chance = 0.25f;
+        float low_chance = 0.1f;
 
         switch(AssignedPosition)
         {
