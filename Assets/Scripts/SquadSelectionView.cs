@@ -119,8 +119,6 @@ public class SquadSelectionView : MonoBehaviour
             if (!oldSubs.Contains(player)) playersOut.Add(player);
         }
 
-        print("ENTROU: " + playersIn.Count);
-
         MainController.Instance.FinishSquadEdit(playersIn, playersOut);   
     }
 }

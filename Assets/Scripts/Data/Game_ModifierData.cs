@@ -8,9 +8,9 @@ public class Game_Modifier {
 	public float AttackBonusLow;
 	public float AttackBonusMediun;
 	public float AttackBonusHigh;
-	public float FatigueLow;
-	public float FatigueMedium;
-	public float FatigueHigh;
+	public int FatigueLow;
+	public int FatigueMedium;
+	public int FatigueHigh;
 }
 
 public class Game_ModifierData : ScriptableObject {

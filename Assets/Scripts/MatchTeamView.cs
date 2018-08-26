@@ -19,10 +19,19 @@ public class MatchTeamView : MonoBehaviour
         {
             PlayerData player = squad[i];
             player.ApplyBonus(_team.GetStrategy());
+            player.Fatigue = 100;
 
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);
             item.Populate(player);      
+        }
+    }
+
+    public void UpdateFatigue()
+    {
+        foreach (MatchPlayerView player in ItemList)
+        {
+            player.UpdateFatigue();
         }
     }
 }
