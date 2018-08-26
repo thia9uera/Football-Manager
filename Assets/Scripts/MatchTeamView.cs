@@ -9,7 +9,7 @@ public class MatchTeamView : MonoBehaviour
     [SerializeField]
     private MatchPlayerView playerTemplate;
 
-    public void Populate(TeamData _team)
+    public void Populate(TeamData _team, bool _resetFatigue = false)
     {
         if(ItemList != null) foreach (MatchPlayerView item in ItemList) Destroy(item.gameObject);
 
@@ -19,11 +19,11 @@ public class MatchTeamView : MonoBehaviour
         {
             PlayerData player = squad[i];
             player.ApplyBonus(_team.GetStrategy());
-            player.Fatigue = 100;
 
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);
-            item.Populate(player);      
+            item.Populate(player);
+            if (_resetFatigue) player.Fatigue = 100;
         }
     }
 

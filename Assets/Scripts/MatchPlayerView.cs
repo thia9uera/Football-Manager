@@ -20,6 +20,7 @@ public class MatchPlayerView : MonoBehaviour
         string pos = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         Player = _player;
         nameLabel.text = "<color=#999999>"+pos+"</color>  " + name;
+        UpdateFatigue();
     }
 
     public void UpdateFatigue()

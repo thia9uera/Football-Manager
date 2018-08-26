@@ -150,8 +150,8 @@ public class MatchController : MonoBehaviour
         attackingTeam = HomeTeam;
         defendingTeam = AwayTeam;
 
-        HomeTeamSquad.Populate(_homeTeam);
-        AwayTeamSquad.Populate(_awayTeam);
+        HomeTeamSquad.Populate(_homeTeam, true);
+        AwayTeamSquad.Populate(_awayTeam, true);
         Score.UpdateTime(matchTime);
         Score.UpdateScore(
             HomeTeam.Name,
@@ -868,14 +868,17 @@ public class MatchController : MonoBehaviour
         if (r >= 20)
         {
             type = MarkingType.Steal;
+            defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueHigh * ((float)defendingPlayer.Stamina / 100));
         }
         else if (r > 15)
         {
             type = MarkingType.Close;
+            defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueMedium * ((float)defendingPlayer.Stamina / 100));
         }
         else if (r > 3)
         {
             type = MarkingType.Distance;
+            defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueLow * ((float)defendingPlayer.Stamina / 100));
         }
 
         return type;
@@ -929,11 +932,11 @@ public class MatchController : MonoBehaviour
         }
 
         float total = pass + dribble + cross + shoot + header;
-        pass = pass / total;
-        dribble = dribble / total;
-        cross = cross / total;
-        shoot = shoot / total;
-        header = header / total;
+        pass /= total;
+        dribble /= total;
+        cross /= total;
+        shoot /= total;
+        header /= total;
 
         List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
         list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
@@ -1093,11 +1096,6 @@ public class MatchController : MonoBehaviour
             if (_marking == MarkingType.Close)
             {
                 tackleChance *= 1.25f;
-                defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueHigh * ((float)defendingPlayer.Stamina / 100));
-            }
-            else if(_marking == MarkingType.Distance)
-            {
-                defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueMedium * ((float)defendingPlayer.Stamina / 100));
             }
 
             if (tackleChance > Random.Range(0f, 1f)) isTackling = true;
@@ -1106,7 +1104,7 @@ public class MatchController : MonoBehaviour
         if (isTackling)
         {  
             defending *= (float)defendingPlayer.Fatigue / 100;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueHigh * ((float)defendingPlayer.Stamina / 100));
+            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * ((float)defendingPlayer.Stamina / 100));
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
             if (defenseRoll == 20)
             {
@@ -1355,129 +1353,264 @@ public class MatchController : MonoBehaviour
         FieldZone zone = currentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
         List<int> zones = new List<int>();
-        if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Dribble)
+        List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
+
+        float _OwnGoal = 0;
+        float _LD = 0;
+        float _CD = 0;
+        float _RD = 0;
+        float _LDM = 0;
+        float _CDM = 0;
+        float _RDM = 0;
+        float _LM = 0;
+        float _CM = 0;
+        float _RM = 0;
+        float _LAM = 0;
+        float _CAM = 0;
+        float _RAM = 0;
+        float _LF = 0;
+        float _CF = 0;
+        float _RF = 0;
+        float _Box = 0;
+
+        if (matchEvent == MatchEvent.Goalkick)
+        {
+            _LM = 1f;
+            _CM = 1f;
+            _RM = 1f;
+            _LAM = 1.5f;
+            _CAM = 1.5f;
+            _RAM = 1.5f;
+        }
+
+        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Dribble)
         { 
             switch (zone)
             {
                 case FieldZone.OwnGoal:
-                    zones.InsertRange(0, new int[] { 1, 2, 3 });
+                    _LD = 1f;
+                    _CD = 1f;
+                    _RD = 1f;
                     break;
 
                 case FieldZone.LD:
-                    zones.InsertRange(0, new int[] { 4, 5, 2 });
+                    _LDM = 1f;
+                    _CDM = 1f;
+                    _CD = 1f;
                     break;
                 case FieldZone.CD:
-                    zones.InsertRange(0, new int[] { 4, 5, 6 });
+                    _LDM = 1f;
+                    _CDM = 1f;
+                    _RDM = 1f;
                     break;
                 case FieldZone.RD:
-                    zones.InsertRange(0, new int[] { 2, 5, 6 });
+                    _CD = 1f;
+                    _CDM = 1f;
+                    _RDM = 1f;
                     break;
 
                 case FieldZone.LDM:
-                    zones.InsertRange(0, new int[] { 5, 7, 8 });
+                    _CDM = 1f;
+                    _LM = 1f;
+                    _CM = 1f;
                     break;
                 case FieldZone.CDM:
-                    zones.InsertRange(0, new int[] { 7, 8, 9 });
+                    _LM = 1f;
+                    _CM = 1f;
+                    _RM = 1f;
                     break;
                 case FieldZone.RDM:
-                    zones.InsertRange(0, new int[] { 5, 8, 9 });
+                    _CDM = 1f;
+                    _CM = 1f;
+                    _RM = 1f;
                     break;
 
                 case FieldZone.LM:
-                    zones.InsertRange(0, new int[] { 8, 10, 11 });
+                    _CM = 1f;
+                    _LAM = 1f;
+                    _CAM = 1f;
                     break;
                 case FieldZone.CM:
-                    zones.InsertRange(0, new int[] { 10, 11, 12 });
+                    _LAM = 1f;
+                    _CAM = 1f;
+                    _RAM = 1f;
                     break;
                 case FieldZone.RM:
-                    zones.InsertRange(0, new int[] { 8, 11, 12 });
+                    _CM = 1f;
+                    _CAM = 1f;
+                    _RAM = 1f;
                     break;
 
                 case FieldZone.LAM:
-                    zones.InsertRange(0, new int[] { 11, 13, 14 });
+                    _CAM = 1f;
+                    _LF = 1f;
+                    _CF = 1f;
                     break;
                 case FieldZone.CAM:
-                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    _LF = 1f;
+                    _CF = 1f;
+                    _RF = 1f;
                     break;
                 case FieldZone.RAM:
-                    zones.InsertRange(0, new int[] { 11, 14, 15 });
+                    _CAM = 1f;
+                    _CF = 1f;
+                    _RF = 1f;
                     break;
 
                 case FieldZone.LF:
-                    zones.InsertRange(0, new int[] { 14, 16 });
+                    _CF = 1f;
+                    _Box = 2f;
                     break;
                 case FieldZone.CF:
-                    zones.InsertRange(0, new int[] { 13, 16, 15 });
+                    _LF = 1f;
+                    _RF = 1f;
+                    _Box = 2.5f;
                     break;
                 case FieldZone.RF:
-                    zones.InsertRange(0, new int[] { 14, 16 });
+                    _CF = 1f;
+                    _Box = 2f;
                     break;
                 case FieldZone.Box:
                     zones.InsertRange(0, new int[] { 13, 14, 15, 16, 16, 16 });
+                    _LF = 0.5f;
+                    _CF = 1;
+                    _RF = 0.5f;
+                    _Box = 3f;
                     break;
             } 
         }
 
-        if (offensiveAction == PlayerData.PlayerAction.Cross)
+        else if (offensiveAction == PlayerData.PlayerAction.Cross)
         {
             switch (zone)
             {
                 case FieldZone.OwnGoal:
-                    zones.InsertRange(0, new int[] { 4, 5, 6, 7, 8, 9 });
+                    _LDM = 1f;
+                    _CDM = 1f;
+                    _RDM = 1f;
+                    _LM = 1f;
+                    _CM = 1f;
+                    _RM = 1f;
                     break;
 
                 case FieldZone.LD:
-                    zones.InsertRange(0, new int[] { 7, 8, 10 });
+                    _LM = 1f;
+                    _CM = 1f;
+                    _LAM = 1f;
                     break;
                 case FieldZone.CD:
-                    zones.InsertRange(0, new int[] { 7, 8, 9, 11 });
+                    _LM = 1f;
+                    _CM = 1f;
+                    _RM = 1f;
+                    _CAM = 1f;
                     break;
                 case FieldZone.RD:
-                    zones.InsertRange(0, new int[] { 8, 9, 12 });
+                    _RM = 1f;
+                    _CM = 1f;
+                    _RAM = 1f;
                     break;
 
                 case FieldZone.LDM:
-                    zones.InsertRange(0, new int[] { 10, 11, 13 });
+                    _LM = 1f;
+                    _CAM = 1f;
+                    _LF = 1f;
                     break;
                 case FieldZone.CDM:
-                    zones.InsertRange(0, new int[] { 10, 11, 12, 14 });
+                    _LAM = 1f;
+                    _CAM = 1f;
+                    _RAM = 1f;
+                    _CF = 1f;
                     break;
                 case FieldZone.RDM:
-                    zones.InsertRange(0, new int[] { 11, 12, 15 });
+                    _CAM = 1f;
+                    _RAM = 1f;
+                    _RF = 1f;
                     break;
 
                 case FieldZone.LM:
-                    zones.InsertRange(0, new int[] { 13, 14 });
+                    _LF = 1f;
+                    _CF = 1f;
                     break;
                 case FieldZone.CM:
-                    zones.InsertRange(0, new int[] { 13, 14, 15 });
+                    _LF = 1f;
+                    _CF = 1f;
+                    _RF = 1f;
                     break;
                 case FieldZone.RM:
-                    zones.InsertRange(0, new int[] { 14, 15 });
+                    _CF = 1f;
+                    _RF = 1f;
                     break;
 
                 case FieldZone.LAM:
                 case FieldZone.CAM:
                 case FieldZone.RAM:
-                    zones.InsertRange(0, new int[] { 13, 15, 16, 16, 16 });
+                    _LF = 1f;
+                    _RF = 1f;
+                    _Box = 3f;
                     break;
                 case FieldZone.LF:
                 case FieldZone.CF:
                 case FieldZone.RF:
                 case FieldZone.Box:
-                    zones.InsertRange(0, new int[] { 16 });
+                    _Box = 1;
                     break;
             }
         }
 
-        if(matchEvent == MatchEvent.Goalkick)
+
+
+
+        float total = _OwnGoal + _LD + _CD + _RD + _LDM + _CDM + _RDM + _LM + _CM + _RM + _LAM + _CAM + _RAM + _LF + _CF + _RF + _Box;
+        _OwnGoal /= total;
+        _LD /= total;
+        _CD /= total;
+        _RD /= total;
+        _LDM /= total;
+        _CDM /= total;
+        _RDM /= total;
+        _LM /= total;
+        _CM /= total;
+        _RM /= total;
+        _LAM /= total;
+        _CAM /= total;
+        _RAM /= total;
+        _LF /= total;
+        _CF /= total;
+         _RF /= total;
+        _Box /= total;
+
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.OwnGoal, _OwnGoal));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LD, _LD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CD, _CD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RD, _RD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LDM, _LDM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CDM, _CDM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RDM, _RDM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LM, _LM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CM, _CM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RM, _RM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LAM, _LAM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CAM, _CAM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RAM, _RAM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LF, _LF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CF, _CF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RF, _RF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.Box, _Box));
+
+        float random = Random.Range(0.00001f, 1f);
+        float cumulative = 0;
+        for (int i = 0; i < list.Count; i++)
         {
-            zones.Clear();
-            zones.InsertRange(0, new int[] { 10, 11, 12, 13, 14, 15});
+            cumulative += list[i].Value;
+            if (random < cumulative)
+            {
+                target = list[i].Key;
+                break;
+            }
         }
 
-        int random = Random.Range(0, zones.Count);
-        target = (FieldZone)zones[random];
+        //int random = Random.Range(0, zones.Count);
+        //target = (FieldZone)zones[random];
         
         if (attackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
         return target;
