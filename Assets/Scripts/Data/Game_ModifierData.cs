@@ -11,6 +11,7 @@ public class Game_Modifier {
 	public int FatigueLow;
 	public int FatigueMedium;
 	public int FatigueHigh;
+	public float FatigueRecoverHalfTime;
 }
 
 public class Game_ModifierData : ScriptableObject {

@@ -92,7 +92,8 @@ public class PlayerData : ScriptableObject
     [HideInInspector]
     public float Prob_DefPosition,
         Prob_OffPosition,
-        Prob_ParPosChance,
+        Prob_LeftPos,
+        Prob_RightPos,
         Prob_Pass,
         Prob_Shoot,
         Prob_Fault,
@@ -102,25 +103,6 @@ public class PlayerData : ScriptableObject
         Prob_OffsideLine,
         Prob_Marking = 0f,
         Prob_Tackling;
-
-    [HideInInspector]
-    public float Prob_OwnGoal, 
-        Prob_LD,
-        Prob_CD, 
-        Prob_RD,
-        Prob_LDM, 
-        Prob_CDM, 
-        Prob_RDM,
-        Prob_LM, 
-        Prob_CM, 
-        Prob_RM, 
-        Prob_LAM, 
-        Prob_CAM, 
-        Prob_RAM,
-        Prob_LF,
-        Prob_CF,
-        Prob_RF,
-        Prob_Box = 0f;
 
     public enum PlayerPosition
     {
@@ -163,6 +145,8 @@ public class PlayerData : ScriptableObject
         Stability,
         DefPosChance,
         OffPosChance,
+        LefPosChance,
+        RightPosChance,
         PassingChance,
         ShootingChance,
         CrossingChance,
@@ -170,7 +154,6 @@ public class PlayerData : ScriptableObject
         FaultChance,
         FallingChance,
         TeamMoraleBoost,
-        ParPosChance,
         LongShotChance,
         Blocking,
         Dribbling,
@@ -196,11 +179,14 @@ public class PlayerData : ScriptableObject
     public enum PlayerStrategy
     {
         Neutral,
-        Guard,
-        Infiltrator,
-        Omnipresent,
-        Producer,
-        Winger
+        Defensive,
+        Ofensive,
+        Left,
+        Right,
+        LeftDefensive,
+        RightDefensive,
+        LeftOffensive,
+        RightOffensive,
     }
 
     public void ApplyBonus(Team_Strategy _teamStrategy)
@@ -209,7 +195,8 @@ public class PlayerData : ScriptableObject
 
         Prob_DefPosition = _teamStrategy.DefPosChance * _playerStrategy.DefPosChance;
         Prob_OffPosition = _teamStrategy.OffPosChance * _playerStrategy.OffPosChance;
-        Prob_ParPosChance = _playerStrategy.ParPosChance;
+        Prob_LeftPos = _playerStrategy.LeftPosChance;
+        Prob_RightPos = _playerStrategy.RightPosChance;
         Prob_Pass = _teamStrategy.PassingChance * _playerStrategy.PassingChance;
         Prob_Shoot = _teamStrategy.ShootingChance * _playerStrategy.ShootingChance;
         Prob_Crossing = _teamStrategy.CrossingChance * _playerStrategy.CrossingChance;
@@ -218,23 +205,6 @@ public class PlayerData : ScriptableObject
         Prob_Marking = _teamStrategy.MarkingChance * _playerStrategy.MarkingChance;
         Prob_Tackling = _teamStrategy.TacklingChance * _playerStrategy.TacklingChance;
 
-        Prob_OwnGoal = _teamStrategy.OwnGoal;
-        Prob_LD = _teamStrategy.LD;
-        Prob_CD = _teamStrategy.CD;
-        Prob_RD = _teamStrategy.RD;
-        Prob_LDM = _teamStrategy.LDM;
-        Prob_CDM = _teamStrategy.CDM;
-        Prob_RDM = _teamStrategy.RDM;
-        Prob_LM= _teamStrategy.LM;
-        Prob_CM = _teamStrategy.CM;
-        Prob_RM = _teamStrategy.RM;
-        Prob_LAM = _teamStrategy.LAM;
-        Prob_CAM= _teamStrategy.CAM;
-        Prob_RAM = _teamStrategy.RAM;
-        Prob_LF = _teamStrategy.LF;
-        Prob_CF = _teamStrategy.CF;
-        Prob_RF = _teamStrategy.RD;
-        Prob_Box = _teamStrategy.Box;
     }
 
     public int GetOverall()
@@ -282,12 +252,12 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.LD: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CD: pct = high_chance * Prob_ParPosChance * Prob_CD; break;
+                    case MatchController.FieldZone.CD: pct = high_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_OffPosition * Prob_LDM; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * Prob_OffPosition * Prob_CDM; break;
+                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos)/2); break;
                     //Def
-                    case MatchController.FieldZone.OwnGoal: pct = medium_chance * Prob_DefPosition * Prob_OwnGoal; break;
+                    case MatchController.FieldZone.OwnGoal: pct = medium_chance * ((Prob_DefPosition + Prob_RightPos)/2); break;
                 }
                 break;
 
@@ -296,11 +266,11 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.CD: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.LD: pct = medium_chance * Prob_ParPosChance * Prob_LD; break;
-                    case MatchController.FieldZone.RD: pct = medium_chance * Prob_ParPosChance * Prob_RD; break;
+                    case MatchController.FieldZone.LD: pct = medium_chance * Prob_LeftPos; break;
+                    case MatchController.FieldZone.RD: pct = medium_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.LDM: pct = low_chance * Prob_OffPosition * Prob_LDM; break;
-                    case MatchController.FieldZone.RDM: pct = low_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.LDM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RDM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
                     case MatchController.FieldZone.CDM: pct = medium_chance * Prob_OffPosition; break;
                     //Def
                     case MatchController.FieldZone.OwnGoal: pct = high_chance * Prob_DefPosition; break;
@@ -312,12 +282,12 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.RD: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CD: pct = high_chance * Prob_ParPosChance * Prob_CD; break;
+                    case MatchController.FieldZone.CD: pct = high_chance * Prob_LeftPos; break;
                     //Off
-                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_OffPosition * Prob_RDM; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * Prob_OffPosition * Prob_CDM; break;
+                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.OwnGoal: pct = medium_chance * Prob_DefPosition * Prob_OwnGoal; break;
+                    case MatchController.FieldZone.OwnGoal: pct = medium_chance * Prob_DefPosition; break;
                 }
                 break;
 
@@ -326,13 +296,13 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.LDM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_ParPosChance * Prob_CDM; break;
+                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_OffPosition * Prob_LM; break;
-                    case MatchController.FieldZone.CM: pct = low_chance * Prob_OffPosition * Prob_CM; break;
+                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.LD: pct = medium_chance * Prob_DefPosition * Prob_LD; break;
-                    case MatchController.FieldZone.CD: pct = low_chance * Prob_DefPosition * Prob_CD; break;
+                    case MatchController.FieldZone.LD: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CD: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
                 }
                 break;
 
@@ -341,16 +311,16 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.CDM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_ParPosChance * Prob_LDM; break;
-                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_ParPosChance * Prob_RDM; break;
+                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_LeftPos; break;
+                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_OffPosition * Prob_CM; break;
-                    case MatchController.FieldZone.LM: pct = low_chance * Prob_OffPosition * Prob_LM; break;
-                    case MatchController.FieldZone.RM: pct = low_chance * Prob_OffPosition * Prob_RM; break;
+                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.LM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.LD: pct = low_chance * Prob_DefPosition * Prob_LD; break;
-                    case MatchController.FieldZone.RD: pct = low_chance * Prob_DefPosition * Prob_RD; break;
-                    case MatchController.FieldZone.CD: pct = medium_chance * Prob_DefPosition * Prob_CD; break;
+                    case MatchController.FieldZone.LD: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RD: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
+                    case MatchController.FieldZone.CD: pct = medium_chance * Prob_DefPosition; break;
                 }
                 break;
 
@@ -359,13 +329,13 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.RDM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_ParPosChance * Prob_CDM; break;
+                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_LeftPos; break;
                     //Off
-                    case MatchController.FieldZone.CM: pct = low_chance * Prob_OffPosition * Prob_CM; break;
-                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_OffPosition * Prob_RM; break;
+                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_OffPosition; break;
                     //Def
-                    case MatchController.FieldZone.RD: pct = medium_chance * Prob_DefPosition * Prob_RD; break;
-                    case MatchController.FieldZone.CD: pct = low_chance * Prob_DefPosition * Prob_CD; break;
+                    case MatchController.FieldZone.RD: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CD: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
                 }
                 break;
 
@@ -374,13 +344,13 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.LM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_ParPosChance * Prob_CM; break;
+                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.CAM: pct = low_chance * Prob_OffPosition * Prob_CAM; break;
-                    case MatchController.FieldZone.LAM: pct = medium_chance * Prob_OffPosition * Prob_LAM; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
+                    case MatchController.FieldZone.LAM: pct = medium_chance * Prob_OffPosition; break;
                     //Def
-                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_DefPosition * Prob_LDM; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * Prob_DefPosition * Prob_CDM; break;
+                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
                 }
                 break;
 
@@ -389,16 +359,16 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.CM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_ParPosChance * Prob_LM; break;
-                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_ParPosChance * Prob_RM; break;
+                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_LeftPos; break;
+                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.CAM: pct = medium_chance * Prob_OffPosition * Prob_CAM; break;
-                    case MatchController.FieldZone.LAM: pct = low_chance * Prob_OffPosition * Prob_LAM; break;
-                    case MatchController.FieldZone.RAM: pct = low_chance * Prob_OffPosition * Prob_RAM; break;
+                    case MatchController.FieldZone.CAM: pct = medium_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.LAM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RAM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_DefPosition * Prob_CDM; break;
-                    case MatchController.FieldZone.LDM: pct = low_chance * Prob_DefPosition * Prob_LDM; break;
-                    case MatchController.FieldZone.RDM: pct = low_chance * Prob_DefPosition * Prob_RDM; break;
+                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.LDM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RDM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
                 }
                 break;
 
@@ -407,13 +377,13 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.RM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_ParPosChance * Prob_CM; break;
+                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_LeftPos; break;
                     //Off
-                    case MatchController.FieldZone.RAM: pct = medium_chance * Prob_OffPosition * Prob_RAM; break;
-                    case MatchController.FieldZone.CAM: pct = low_chance * Prob_OffPosition * Prob_CAM; break;
+                    case MatchController.FieldZone.RAM: pct = medium_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_DefPosition * Prob_RDM; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * Prob_DefPosition * Prob_CDM; break;
+                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
                 }
                 break;
 
@@ -422,14 +392,14 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.LAM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CAM: pct = high_chance * Prob_ParPosChance * Prob_CAM; break;
+                    case MatchController.FieldZone.CAM: pct = high_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.LF: pct = high_chance * Prob_OffPosition * Prob_LF; break;
-                    case MatchController.FieldZone.CF: pct = medium_chance * Prob_OffPosition * Prob_CF; break;
-                    case MatchController.FieldZone.Box: pct = low_chance * Prob_OffPosition * Prob_Box; break;
+                    case MatchController.FieldZone.LF: pct = high_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.CF: pct = medium_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
+                    case MatchController.FieldZone.Box: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_DefPosition * Prob_LM; break;
-                    case MatchController.FieldZone.CM: pct = low_chance * Prob_DefPosition * Prob_CM; break;
+                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
                     
                 }
                 break;
@@ -439,17 +409,17 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.CAM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.LAM: pct = high_chance * Prob_ParPosChance * Prob_LAM; break;
-                    case MatchController.FieldZone.RAM: pct = high_chance * Prob_ParPosChance * Prob_RAM; break;
-                    case MatchController.FieldZone.Box: pct = medium_chance * Prob_ParPosChance; break;
+                    case MatchController.FieldZone.LAM: pct = high_chance * Prob_LeftPos; break;
+                    case MatchController.FieldZone.RAM: pct = high_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.CF: pct = high_chance * Prob_OffPosition * Prob_CF; break;
-                    case MatchController.FieldZone.RF: pct = low_chance * Prob_OffPosition * Prob_RF; break;
-                    case MatchController.FieldZone.LF: pct = low_chance * Prob_OffPosition * Prob_LF; break;
+                    case MatchController.FieldZone.CF: pct = high_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.RF: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
+                    case MatchController.FieldZone.LF: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.Box: pct = medium_chance * Prob_OffPosition; break;
                     //Def
-                    case MatchController.FieldZone.LM: pct = low_chance * Prob_DefPosition * Prob_LM; break;
-                    case MatchController.FieldZone.RM: pct = low_chance * Prob_DefPosition * Prob_RM; break;
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_DefPosition * Prob_CM; break;
+                    case MatchController.FieldZone.LM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
+                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_DefPosition; break;
                 }
                 break;
 
@@ -458,14 +428,14 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.RAM: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CAM: pct = high_chance * Prob_ParPosChance * Prob_CAM; break;
+                    case MatchController.FieldZone.CAM: pct = high_chance * Prob_LeftPos; break;
                     //Off
-                    case MatchController.FieldZone.RF: pct = high_chance * Prob_OffPosition * Prob_RF; break;
-                    case MatchController.FieldZone.CF: pct = medium_chance * Prob_OffPosition * Prob_CF; break;
-                    case MatchController.FieldZone.Box: pct = low_chance * Prob_OffPosition * Prob_Box; break;
+                    case MatchController.FieldZone.RF: pct = high_chance * Prob_OffPosition; break;
+                    case MatchController.FieldZone.CF: pct = medium_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.Box: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_DefPosition * Prob_RM; break;
-                    case MatchController.FieldZone.CM: pct = low_chance * Prob_DefPosition * Prob_CM; break;
+                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
                     
                 }
                 break;
@@ -475,13 +445,12 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.LF: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CF: pct = high_chance * Prob_ParPosChance * Prob_CF; break;
+                    case MatchController.FieldZone.CF: pct = high_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.Box: pct = high_chance * Prob_OffPosition * Prob_Box; break;
+                    case MatchController.FieldZone.Box: pct = high_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.LAM: pct = medium_chance * Prob_DefPosition * Prob_LAM; break;
-                    case MatchController.FieldZone.LM: pct = low_chance * Prob_DefPosition * Prob_LM; break;
-                    case MatchController.FieldZone.CAM: pct = low_chance * Prob_DefPosition * Prob_CAM; break;
+                    case MatchController.FieldZone.LAM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
                 }
                 break;
 
@@ -490,14 +459,14 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.CF: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.LF: pct = low_chance * Prob_ParPosChance * Prob_LF; break;
-                    case MatchController.FieldZone.RF: pct = low_chance * Prob_ParPosChance * Prob_RF; break;
+                    case MatchController.FieldZone.LF: pct = low_chance * Prob_LeftPos; break;
+                    case MatchController.FieldZone.RF: pct = low_chance * Prob_RightPos; break;
                     //Off
-                    case MatchController.FieldZone.Box: pct = high_chance * Prob_OffPosition * Prob_Box; break;
+                    case MatchController.FieldZone.Box: pct = high_chance * Prob_OffPosition; break;
                     //Def
-                    case MatchController.FieldZone.CAM: pct = medium_chance * Prob_DefPosition * Prob_CAM; break;
-                    case MatchController.FieldZone.LAM: pct = low_chance * Prob_DefPosition * Prob_LAM; break;
-                    case MatchController.FieldZone.RAM: pct = low_chance * Prob_DefPosition * Prob_RAM; break;
+                    case MatchController.FieldZone.CAM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.LAM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
+                    case MatchController.FieldZone.RAM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
                 }
                 break;
 
@@ -506,13 +475,12 @@ public class PlayerData : ScriptableObject
                 {
                     case MatchController.FieldZone.RF: pct = 1f; break;
                     //Parallel
-                    case MatchController.FieldZone.CF: pct = high_chance * Prob_CF; break;
+                    case MatchController.FieldZone.CF: pct = high_chance * Prob_LeftPos; break;
                     //Off
-                    case MatchController.FieldZone.Box: pct = high_chance * Prob_Box; break;
+                    case MatchController.FieldZone.Box: pct = high_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
                     //Def
-                    case MatchController.FieldZone.RAM: pct = medium_chance * Prob_RAM; break;
-                    case MatchController.FieldZone.CAM: pct = low_chance * Prob_CAM; break;
-                    case MatchController.FieldZone.RM: pct = low_chance * Prob_RM; break;
+                    case MatchController.FieldZone.RAM: pct = medium_chance * Prob_DefPosition; break;
+                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
                 }
                 break;
         }

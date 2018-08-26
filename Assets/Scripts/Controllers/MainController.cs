@@ -24,7 +24,7 @@ public class MainController : MonoBehaviour
     {
         TeamData home = Resources.Load<TeamData>("Teams/Brasil");
         TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
-        Match.Populate(home, away);
+        if(Match != null) Match.Populate(home, away);
     }
 
     public void EditSquad(TeamData _team)

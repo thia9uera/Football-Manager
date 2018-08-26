@@ -7,7 +7,9 @@ public class Debug_FieldView : MonoBehaviour
 {
     public PlayerData TestPlayer;
 
-    public Dropdown dropDown;
+    public Dropdown dropDownPlayerPosition;
+
+    public Dropdown dropDownPlayerStrategy;
 
     public Team_StrategyData teamStrategy;
 
@@ -15,11 +17,19 @@ public class Debug_FieldView : MonoBehaviour
     {
         TestPlayer.Position = TestPlayer.AssignedPosition = PlayerData.PlayerPosition.GK;
         TestPlayer.ApplyBonus(teamStrategy.team_Strategys[0]);
+
+        List<string> strategyList = new List<string>();
+        foreach (Player_Strategy strategy in MainController.Instance.PlayerStrategyData.player_Strategys)
+        {
+            strategyList.Add(strategy.Name);
+        }
+        dropDownPlayerStrategy.AddOptions(strategyList);
     }
 
     public void Test()
     {
         Debug_ZoneView zone;
+        TestPlayer.ApplyBonus(MainController.Instance.TeamStrategyData.team_Strategys[0]);
         foreach(Transform t in transform)
         {
             zone = t.GetComponent<Debug_ZoneView>();
@@ -39,8 +49,13 @@ public class Debug_FieldView : MonoBehaviour
 
     public void ValueChange()
     {
-        PlayerData.PlayerPosition pos = (PlayerData.PlayerPosition)dropDown.value;
+        PlayerData.PlayerPosition pos = (PlayerData.PlayerPosition)dropDownPlayerPosition.value;
         TestPlayer.Position = TestPlayer.AssignedPosition = pos;
+    }
+
+    public void SetStrategy()
+    {
+        TestPlayer.Strategy = (PlayerData.PlayerStrategy)dropDownPlayerStrategy.value;
     }
 
     private float CalculatePresence(PlayerData _player, MatchController.FieldZone _zone)

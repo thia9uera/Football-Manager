@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Zico
   LastName: 
-  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Position: 14
+  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
+  Strategy: 0
   Goalkeeping: 46
   Passing: 90
+  Dribbling: 50
+  Crossing: 50
   Tackling: 67
+  Blocking: 50
   Shooting: 95
   Heading: 76
   Freekick: 97
@@ -25,11 +29,22 @@ MonoBehaviour:
   Speed: 81
   Strength: 77
   Agility: 80
-  Stamina: 85
+  Stamina: 22
   Teamwork: 95
   Vision: 89
   Stability: 82
-  Tactics: 7
-  Fatigue: 100
+  Fatigue: 98
   Morale: 50
-  AssignedPosition: 0
+  AssignedPosition: 14
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_ParPosChance: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1

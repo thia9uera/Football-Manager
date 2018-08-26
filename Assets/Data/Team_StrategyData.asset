@@ -23,23 +23,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1
   - Name: Offensive
     Description: bla
     DefPosChance: 0.25
@@ -51,23 +51,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1
   - Name: Defensive
     Description: bla
     DefPosChance: 0.15
@@ -79,23 +79,23 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 2
     TacklingChance: 1.1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1
   - Name: Deadlock
     Description: bla
     DefPosChance: 3
@@ -107,23 +107,23 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 2
     TacklingChance: 1.2
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1
   - Name: WingOffensive
     Description: bla
     DefPosChance: 1
@@ -135,23 +135,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 2
+    Target_CAM: 1
+    Target_RAM: 2
+    Target_LF: 2
+    Target_CF: 1
+    Target_RF: 2
+    Target_Box: 1
   - Name: CenterOffensive
     Description: bla
     DefPosChance: 0.25
@@ -163,23 +163,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 2
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 2
+    Target_RF: 1
+    Target_Box: 1
   - Name: Crossing
     Description: bla
     DefPosChance: 0.5
@@ -191,23 +191,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1
   - Name: Pressure
     Description: bla
     DefPosChance: 1
@@ -219,23 +219,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 3
     TacklingChance: 1.35
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1
   - Name: ForceOffside
     Description: bla
     DefPosChance: 0.5
@@ -247,20 +247,20 @@ MonoBehaviour:
     OffsideTrickChance: 3
     MarkingChance: 1
     TacklingChance: 1
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
-    LDM: 1
-    CDM: 1
-    RDM: 1
-    LM: 1
-    CM: 1
-    RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    Target_OwnGoal: 1
+    Target_LD: 1
+    Target_CD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_CDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_CM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_CAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_CF: 1
+    Target_RF: 1
+    Target_Box: 1

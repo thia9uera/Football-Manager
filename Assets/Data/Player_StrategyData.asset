@@ -16,7 +16,8 @@ MonoBehaviour:
     Description: No changes
     DefPosChance: 1
     OffPosChance: 1
-    ParPosChance: 1
+    LeftPosChance: 1
+    RightPosChance: 1
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1
@@ -24,23 +25,51 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: Guard
+  - Name: Defensive
     Description: Increase defensive positioning
     DefPosChance: 1.5
+    OffPosChance: 0.75
+    LeftPosChance: 1
+    RightPosChance: 1
+    PassingChance: 1.3
+    ShootingChance: 1
+    CrossingChance: 1
+    DribblingChance: 1
+    OffsideTrickChance: 1.2
+    MarkingChance: 1.5
+    TacklingChance: 1.3
+  - Name: Ofensive
+    Description: Increase offensive crossing
+    DefPosChance: 0.75
+    OffPosChance: 1.5
+    LeftPosChance: 1
+    RightPosChance: 1
+    PassingChance: 1
+    ShootingChance: 1.3
+    CrossingChance: 1.5
+    DribblingChance: 1.3
+    OffsideTrickChance: 1
+    MarkingChance: 1
+    TacklingChance: 1
+  - Name: Left
+    Description: Increase left positioning
+    DefPosChance: 1
     OffPosChance: 1
-    ParPosChance: 1
+    LeftPosChance: 1.5
+    RightPosChance: 0.75
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1
     DribblingChance: 1
     OffsideTrickChance: 1
-    MarkingChance: 1.5
-    TacklingChance: 1.2
-  - Name: Infiltrator
-    Description: Increase chance of offensive solo plays and offensive positioning
+    MarkingChance: 1
+    TacklingChance: 1
+  - Name: Right
+    Description: Increase right positioning
     DefPosChance: 1
-    OffPosChance: 1.5
-    ParPosChance: 1
+    OffPosChance: 1
+    LeftPosChance: 0.75
+    RightPosChance: 1.5
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1
@@ -48,39 +77,55 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: Omnipresent
-    Description: Increase field coverage
+  - Name: LeftDefensive
+    Description: Increase left defensive positioning
     DefPosChance: 1.5
-    OffPosChance: 1.5
-    ParPosChance: 1.5
-    PassingChance: 1
+    OffPosChance: 0.75
+    LeftPosChance: 1.5
+    RightPosChance: 0.75
+    PassingChance: 1.3
     ShootingChance: 1
     CrossingChance: 1
     DribblingChance: 1
-    OffsideTrickChance: 1
+    OffsideTrickChance: 1.2
     MarkingChance: 1.5
-    TacklingChance: 1
-  - Name: Producer
-    Description: Increase chance of passing and crossing
-    DefPosChance: 1
-    OffPosChance: 1
-    ParPosChance: 1
-    PassingChance: 1.5
+    TacklingChance: 1.3
+  - Name: RightDefensive
+    Description: Increase right defensive positioning
+    DefPosChance: 1.5
+    OffPosChance: 0.75
+    LeftPosChance: 0.75
+    RightPosChance: 1.5
+    PassingChance: 1.3
     ShootingChance: 1
-    CrossingChance: 1.5
+    CrossingChance: 1
     DribblingChance: 1
+    OffsideTrickChance: 1.2
+    MarkingChance: 1.5
+    TacklingChance: 1.3
+  - Name: LeftOffensive
+    Description: Increase left offensive positioning
+    DefPosChance: 0.75
+    OffPosChance: 1.5
+    LeftPosChance: 1.5
+    RightPosChance: 0.75
+    PassingChance: 1
+    ShootingChance: 1.3
+    CrossingChance: 1.5
+    DribblingChance: 1.3
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: Winger
-    Description: Increase chance of crossing from offensive wings
-    DefPosChance: 1
-    OffPosChance: 1
-    ParPosChance: 1
+  - Name: RightOffensive
+    Description: INcrease right offensive positioning
+    DefPosChance: 0.75
+    OffPosChance: 1.5
+    LeftPosChance: 0.75
+    RightPosChance: 1.5
     PassingChance: 1
-    ShootingChance: 1
+    ShootingChance: 1.3
     CrossingChance: 1.5
-    DribblingChance: 1
+    DribblingChance: 1.3
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1

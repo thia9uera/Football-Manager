@@ -29,39 +29,22 @@ MonoBehaviour:
   Speed: 56
   Strength: 94
   Agility: 53
-  Stamina: 54
+  Stamina: 25
   Teamwork: 81
   Vision: 56
   Stability: 44
-  Fatigue: 100
+  Fatigue: 66
   Morale: 50
   AssignedPosition: 8
-  Prob_DefPosition: 3
-  Prob_OffPosition: 0.05
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
   Prob_ParPosChance: 1
   Prob_Pass: 1
   Prob_Shoot: 1
   Prob_Fault: 0
-  Prob_Crossing: 2
-  Prob_Dribble: 0.25
+  Prob_Crossing: 1
+  Prob_Dribble: 1
   Prob_Fall: 0
-  Prob_OffsideLine: 1.5
-  Prob_Marking: 2
-  Prob_Tackling: 1.2
-  Prob_OwnGoal: 1
-  Prob_LD: 1
-  Prob_CD: 1
-  Prob_RD: 1
-  Prob_LDM: 1
-  Prob_CDM: 1
-  Prob_RDM: 1
-  Prob_LM: 1
-  Prob_CM: 1
-  Prob_RM: 1
-  Prob_LAM: 1
-  Prob_CAM: 1
-  Prob_RAM: 1
-  Prob_LF: 1
-  Prob_CF: 1
-  Prob_RF: 1
-  Prob_Box: 1
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1

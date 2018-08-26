@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Amarello
   LastName: 
-  Perk: {fileID: 0}
   Position: 8
+  Perk: {fileID: 0}
+  Strategy: 6
   Goalkeeping: 28
   Passing: 72
+  Dribbling: 50
+  Crossing: 50
   Tackling: 82
+  Blocking: 50
   Shooting: 55
   Heading: 50
   Freekick: 50
@@ -29,7 +33,19 @@ MonoBehaviour:
   Teamwork: 70
   Vision: 26
   Stability: 50
-  Tactics: 0
   Fatigue: 100
   Morale: 50
-  AssignedPosition: 0
+  AssignedPosition: 8
+  Prob_DefPosition: 1.5
+  Prob_OffPosition: 0.75
+  Prob_LeftPos: 0.75
+  Prob_RightPos: 1.5
+  Prob_Pass: 1.3
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1.2
+  Prob_Marking: 1.5
+  Prob_Tackling: 1.3

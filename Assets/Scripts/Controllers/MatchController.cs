@@ -118,6 +118,7 @@ public class MatchController : MonoBehaviour
     private int fatigueLow;
     private int fatigueMedium;
     private int fatigueHigh;
+    private float fatigueRecoverHalfTime;
 
     [SerializeField]
     private TextMeshProUGUI version;
@@ -138,8 +139,13 @@ public class MatchController : MonoBehaviour
         fatigueLow = (int)modifiers.FatigueLow;
         fatigueMedium = (int)modifiers.FatigueMedium;
         fatigueHigh = (int)modifiers.FatigueHigh;
+        fatigueRecoverHalfTime = modifiers.FatigueRecoverHalfTime;
 
         version.text = "v." + Application.version;
+
+        float v1 = 1.5f;
+        float v2 = 1f;
+        print(new Vector2(v1, v2).normalized);
     }
 
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
@@ -207,6 +213,8 @@ public class MatchController : MonoBehaviour
         keepDefender = false;
         shotMissed = false;
         shotSaved = false;
+        HomeTeamSquad.ResetFatigue();
+        AwayTeamSquad.ResetFatigue();
         matchEvent = MatchEvent.None;
         Narration.Reset();
         Score.UpdateTime(matchTime);
@@ -350,6 +358,7 @@ public class MatchController : MonoBehaviour
             }
             else
             {
+                matchEvent = MatchEvent.None;
                 ResolveShot(MarkingType.None);
                 isFreekickTaken = false;
                 return;
@@ -450,6 +459,8 @@ public class MatchController : MonoBehaviour
             keepDefender = false;
             shotMissed = false;
             shotSaved = false;
+            HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+            AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
             matchEvent = MatchEvent.None;
             return;
         }
@@ -868,17 +879,17 @@ public class MatchController : MonoBehaviour
         if (r >= 20)
         {
             type = MarkingType.Steal;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueHigh * ((float)defendingPlayer.Stamina / 100));
+            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueHigh * (0.5f * ((float)defendingPlayer.Stamina / 100)));
         }
         else if (r > 15)
         {
             type = MarkingType.Close;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueMedium * ((float)defendingPlayer.Stamina / 100));
+            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
         }
         else if (r > 3)
         {
             type = MarkingType.Distance;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt((float)fatigueLow * ((float)defendingPlayer.Stamina / 100));
+            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueLow * (0.5f * ((float)defendingPlayer.Stamina / 100)));
         }
 
         return type;
@@ -1104,7 +1115,7 @@ public class MatchController : MonoBehaviour
         if (isTackling)
         {  
             defending *= (float)defendingPlayer.Fatigue / 100;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * ((float)defendingPlayer.Stamina / 100));
+            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
             if (defenseRoll == 20)
             {
@@ -1150,7 +1161,7 @@ public class MatchController : MonoBehaviour
             if (attacking > Random.Range(0f, 1f)) success = true;
         }
 
-        float fatigueLost = (fatigueRate * ((float)attackingPlayer.Stamina / 100));
+        float fatigueLost = (fatigueRate * (0.5f * ((float)attackingPlayer.Stamina / 100)));
         attackingPlayer.Fatigue -= Mathf.FloorToInt(fatigueLost);
 
         return success;
@@ -1557,6 +1568,25 @@ public class MatchController : MonoBehaviour
             }
         }
 
+
+        Team_Strategy strategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
+        _OwnGoal *= strategy.Target_OwnGoal;
+        _LD *= strategy.Target_LD;
+        _CD *= strategy.Target_CD;
+        _RD *= strategy.Target_RD;
+        _LDM *= strategy.Target_LDM;
+        _CDM *= strategy.Target_CDM;
+        _RDM *= strategy.Target_RDM;
+        _LM *= strategy.Target_LM;
+        _CM *= strategy.Target_CM;
+        _RM *= strategy.Target_RM;
+        _LAM *= strategy.Target_LAM;
+        _CAM *= strategy.Target_CAM;
+        _RAM *= strategy.Target_RAM;
+        _LF *= strategy.Target_LF;
+        _CF *= strategy.Target_CF;
+        _RF *= strategy.Target_RF;
+        _Box *= strategy.Target_Box;
 
 
 

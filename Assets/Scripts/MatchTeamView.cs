@@ -22,8 +22,8 @@ public class MatchTeamView : MonoBehaviour
 
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);
-            item.Populate(player);
             if (_resetFatigue) player.Fatigue = 100;
+            item.Populate(player);        
         }
     }
 
@@ -33,5 +33,26 @@ public class MatchTeamView : MonoBehaviour
         {
             player.UpdateFatigue();
         }
+    }
+
+    public void ResetFatigue()
+    {
+        foreach (MatchPlayerView player in ItemList)
+        {
+            player.Player.Fatigue = 100;
+            player.UpdateFatigue();
+        }
+
+    }
+    public void ModifyFatigue(float _modifier)
+    {
+        foreach (MatchPlayerView player in ItemList)
+        {
+            float newFatigue = player.Player.Fatigue * _modifier;
+            if (newFatigue > 100f) newFatigue = 100f;
+            player.Player.Fatigue = Mathf.RoundToInt(newFatigue);
+            player.UpdateFatigue();
+        }
+
     }
 }

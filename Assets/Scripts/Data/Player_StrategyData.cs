@@ -7,7 +7,8 @@ public class Player_Strategy {
 	public string Description;
 	public float DefPosChance;
 	public float OffPosChance;
-	public float ParPosChance;
+	public float LeftPosChance;
+	public float RightPosChance;
 	public float PassingChance;
 	public float ShootingChance;
 	public float CrossingChance;
