@@ -11,9 +11,9 @@ public class PlayerData : ScriptableObject
     
     [Space(10)]
     public PlayerPosition Position;
-
-    public PerkData Perk;
     public PlayerStrategy Strategy;
+    public PerkData Perk;
+
 
     [Space(10)]
     [Header("Technical Attributes")]
@@ -22,6 +22,7 @@ public class PlayerData : ScriptableObject
     [Range(0, 100)]
     public int Goalkeeping = 50;
 
+    [Space(10)]
     [Range(0, 100)]
     public int Passing = 50;
 
@@ -31,12 +32,14 @@ public class PlayerData : ScriptableObject
     [Range(0, 100)]
     public int Crossing = 50;
 
+    [Space(10)]
     [Range(0, 100)]
     public int Tackling = 50;
 
     [Range(0, 100)]
     public int Blocking = 50;
 
+    [Space(10)]
     [Range(0, 100)]
     public int Shooting = 50;
 
@@ -87,7 +90,21 @@ public class PlayerData : ScriptableObject
     [HideInInspector]
     public int Morale = 50;
 
+    [HideInInspector]
     public PlayerPosition AssignedPosition;
+
+    private enum AltPosition
+    {
+        None,
+        Offensive,
+        Defensive,
+        Left,
+        Right,
+        LeftDefensive,
+        RightDefensive,
+        LeftOffensive,
+        RightOffensive
+    }
 
     [HideInInspector]
     public float Prob_DefPosition,
@@ -237,255 +254,185 @@ public class PlayerData : ScriptableObject
     public float GetChancePerZone(MatchController.FieldZone _zone)
     {
         float pct = 0f;
-        float high_chance = 0.5f;
-        float medium_chance = 0.25f;
-        float low_chance = 0.1f;
 
-        switch(AssignedPosition)
+        PosChancePerZone chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)AssignedPosition];
+
+        switch(_zone)
         {
-            case PlayerPosition.GK:
-                if (_zone == MatchController.FieldZone.OwnGoal) pct = 1f;
+            case MatchController.FieldZone.OwnGoal: pct = chancePerZone.OwnGoal; break;
+            case MatchController.FieldZone.LD: pct = chancePerZone.LD; break;
+            case MatchController.FieldZone.CD: pct = chancePerZone.CD; break;
+            case MatchController.FieldZone.RD: pct = chancePerZone.RD; break;
+            case MatchController.FieldZone.LDM: pct = chancePerZone.LDM; break;
+            case MatchController.FieldZone.CDM: pct = chancePerZone.CDM; break;
+            case MatchController.FieldZone.RDM: pct = chancePerZone.RDM; break;
+            case MatchController.FieldZone.LM: pct = chancePerZone.LM; break;
+            case MatchController.FieldZone.CM: pct = chancePerZone.CM; break;
+            case MatchController.FieldZone.RM: pct = chancePerZone.RM; break;
+            case MatchController.FieldZone.LAM: pct = chancePerZone.LAM; break;
+            case MatchController.FieldZone.CAM: pct = chancePerZone.CAM; break;
+            case MatchController.FieldZone.RAM: pct = chancePerZone.RAM; break;
+            case MatchController.FieldZone.LF: pct = chancePerZone.LF; break;
+            case MatchController.FieldZone.CF: pct = chancePerZone.CF; break;
+            case MatchController.FieldZone.RF: pct = chancePerZone.RF; break;
+            case MatchController.FieldZone.Box: pct = chancePerZone.Box; break;
+        }
+
+        AltPosition altPos = GetAltPosition(_zone);
+
+        if (altPos == AltPosition.Defensive) pct *= Prob_DefPosition;
+        else if (altPos == AltPosition.Offensive) pct *= Prob_OffPosition;
+        else if (altPos == AltPosition.Left) pct *= Prob_LeftPos;
+        else if (altPos == AltPosition.Right) pct *= Prob_RightPos;
+        else if (altPos == AltPosition.LeftDefensive) pct *= (Prob_LeftPos + Prob_DefPosition)/2;
+        else if (altPos == AltPosition.RightDefensive) pct *= (Prob_RightPos + Prob_DefPosition) / 2;
+        else if (altPos == AltPosition.LeftOffensive) pct *= (Prob_LeftPos + Prob_OffPosition) / 2;
+        else if (altPos == AltPosition.RightOffensive) pct *= (Prob_RightPos + Prob_OffPosition) / 2;
+
+        return pct;
+    }
+
+    private AltPosition GetAltPosition(MatchController.FieldZone _zone)
+    {
+        AltPosition pos = AltPosition.None;
+
+        switch(_zone)
+        {
+            case MatchController.FieldZone.OwnGoal:
+                if (AssignedPosition == PlayerPosition.LD) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.CD) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.RD) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.LD:
-                switch(_zone)
-                {
-                    case MatchController.FieldZone.LD: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CD: pct = high_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos)/2); break;
-                    //Def
-                    case MatchController.FieldZone.OwnGoal: pct = medium_chance * ((Prob_DefPosition + Prob_RightPos)/2); break;
-                }
+            case MatchController.FieldZone.LD:
+                if (AssignedPosition == PlayerPosition.CD) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LDM) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.CD:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.CD: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.LD: pct = medium_chance * Prob_LeftPos; break;
-                    case MatchController.FieldZone.RD: pct = medium_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.LDM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RDM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_OffPosition; break;
-                    //Def
-                    case MatchController.FieldZone.OwnGoal: pct = high_chance * Prob_DefPosition; break;
-                }
+            case MatchController.FieldZone.CD:
+                if (AssignedPosition == PlayerPosition.LD) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RD) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LDM) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.RDM) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.RD:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.RD: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CD: pct = high_chance * Prob_LeftPos; break;
-                    //Off
-                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.OwnGoal: pct = medium_chance * Prob_DefPosition; break;
-                }
+            case MatchController.FieldZone.RD:
+                if (AssignedPosition == PlayerPosition.CD) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.RDM) pos = AltPosition.Defensive;
                 break;
 
-            case PlayerPosition.LDM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.LDM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.LD: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CD: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                }
+            case MatchController.FieldZone.LDM:
+                if (AssignedPosition == PlayerPosition.LD) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CD) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.LeftDefensive;
+                else if (AssignedPosition == PlayerPosition.LM) pos = AltPosition.Defensive;
                 break;
 
-            case PlayerPosition.CDM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.CDM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_LeftPos; break;
-                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.LM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.LD: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RD: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    case MatchController.FieldZone.CD: pct = medium_chance * Prob_DefPosition; break;
-                }
+            case MatchController.FieldZone.CDM:
+                if (AssignedPosition == PlayerPosition.LD) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CD) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.RD) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.LDM) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RDM) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LM) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.RM) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.RDM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.RDM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_LeftPos; break;
-                    //Off
-                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_OffPosition; break;
-                    //Def
-                    case MatchController.FieldZone.RD: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CD: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                }
+            case MatchController.FieldZone.RDM:
+                if (AssignedPosition == PlayerPosition.CD) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.RD) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.RM) pos = AltPosition.Defensive;
                 break;
 
-            case PlayerPosition.LM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.LM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    case MatchController.FieldZone.LAM: pct = medium_chance * Prob_OffPosition; break;
-                    //Def
-                    case MatchController.FieldZone.LDM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                }
+            case MatchController.FieldZone.LM:
+                if (AssignedPosition == PlayerPosition.LDM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LAM) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.CM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.CM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_LeftPos; break;
-                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.CAM: pct = medium_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.LAM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RAM: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.CDM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.LDM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RDM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                }
+            case MatchController.FieldZone.CM:
+                if (AssignedPosition == PlayerPosition.LDM) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.RDM) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.LM) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RM) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LAM) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.RAM) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.RM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.RM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_LeftPos; break;
-                    //Off
-                    case MatchController.FieldZone.RAM: pct = medium_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.RDM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CDM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                }
+            case MatchController.FieldZone.RM:
+                if (AssignedPosition == PlayerPosition.RDM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CDM) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RAM) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.RightDefensive;
                 break;
 
-            case PlayerPosition.LAM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.LAM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CAM: pct = high_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.LF: pct = high_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.CF: pct = medium_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    case MatchController.FieldZone.Box: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.LM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                    
-                }
+            case MatchController.FieldZone.LAM:
+                if (AssignedPosition == PlayerPosition.LM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LF) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.CF) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.CAM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.CAM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.LAM: pct = high_chance * Prob_LeftPos; break;
-                    case MatchController.FieldZone.RAM: pct = high_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.CF: pct = high_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.RF: pct = low_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    case MatchController.FieldZone.LF: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.Box: pct = medium_chance * Prob_OffPosition; break;
-                    //Def
-                    case MatchController.FieldZone.LM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                    case MatchController.FieldZone.CM: pct = medium_chance * Prob_DefPosition; break;
-                }
+            case MatchController.FieldZone.CAM:
+                if (AssignedPosition == PlayerPosition.LM) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.RM) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.LAM) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RAM) pos = AltPosition.Left;
+                else if (AssignedPosition == PlayerPosition.LF) pos = AltPosition.RightDefensive;
+                else if (AssignedPosition == PlayerPosition.CF) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.RF) pos = AltPosition.LeftDefensive;
                 break;
 
-            case PlayerPosition.RAM:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.RAM: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CAM: pct = high_chance * Prob_LeftPos; break;
-                    //Off
-                    case MatchController.FieldZone.RF: pct = high_chance * Prob_OffPosition; break;
-                    case MatchController.FieldZone.CF: pct = medium_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.Box: pct = low_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.RM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                    
-                }
+            case MatchController.FieldZone.RAM:
+                if (AssignedPosition == PlayerPosition.RM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CM) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RF) pos = AltPosition.Defensive;
+                else if (AssignedPosition == PlayerPosition.CF) pos = AltPosition.RightDefensive;
                 break;
 
-            case PlayerPosition.LF:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.LF: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CF: pct = high_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.Box: pct = high_chance * ((Prob_OffPosition + Prob_RightPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.LAM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                }
+            case MatchController.FieldZone.LF:
+                if (AssignedPosition == PlayerPosition.LAM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.CF) pos = AltPosition.Left;
                 break;
 
-            case PlayerPosition.CF:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.CF: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.LF: pct = low_chance * Prob_LeftPos; break;
-                    case MatchController.FieldZone.RF: pct = low_chance * Prob_RightPos; break;
-                    //Off
-                    case MatchController.FieldZone.Box: pct = high_chance * Prob_OffPosition; break;
-                    //Def
-                    case MatchController.FieldZone.CAM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.LAM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                    case MatchController.FieldZone.RAM: pct = low_chance * ((Prob_DefPosition + Prob_RightPos) / 2); break;
-                }
+            case MatchController.FieldZone.CF:
+                if (AssignedPosition == PlayerPosition.LAM) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.RAM) pos = AltPosition.LeftOffensive;
+                else if (AssignedPosition == PlayerPosition.LF) pos = AltPosition.Right;
+                else if (AssignedPosition == PlayerPosition.RF) pos = AltPosition.Left;
                 break;
 
-            case PlayerPosition.RF:
-                switch (_zone)
-                {
-                    case MatchController.FieldZone.RF: pct = 1f; break;
-                    //Parallel
-                    case MatchController.FieldZone.CF: pct = high_chance * Prob_LeftPos; break;
-                    //Off
-                    case MatchController.FieldZone.Box: pct = high_chance * ((Prob_OffPosition + Prob_LeftPos) / 2); break;
-                    //Def
-                    case MatchController.FieldZone.RAM: pct = medium_chance * Prob_DefPosition; break;
-                    case MatchController.FieldZone.CAM: pct = low_chance * ((Prob_DefPosition + Prob_LeftPos) / 2); break;
-                }
+            case MatchController.FieldZone.RF:
+                if (AssignedPosition == PlayerPosition.RAM) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.CAM) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CF) pos = AltPosition.Right;
+                break;
+
+            case MatchController.FieldZone.Box:
+                if (AssignedPosition == PlayerPosition.LF) pos = AltPosition.RightOffensive;
+                else if (AssignedPosition == PlayerPosition.CF) pos = AltPosition.Offensive;
+                else if (AssignedPosition == PlayerPosition.RF) pos = AltPosition.LeftOffensive;
                 break;
         }
 
-        return pct;
+        return pos;
     }
 
     public int GetPlayerAttribute(PlayerAttributes _playerAttributes)

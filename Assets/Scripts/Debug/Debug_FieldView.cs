@@ -11,12 +11,11 @@ public class Debug_FieldView : MonoBehaviour
 
     public Dropdown dropDownPlayerStrategy;
 
-    public Team_StrategyData teamStrategy;
+    public Dropdown dropDownTeamStrategy;
 
     public void Start()
     {
-        TestPlayer.Position = TestPlayer.AssignedPosition = PlayerData.PlayerPosition.GK;
-        TestPlayer.ApplyBonus(teamStrategy.team_Strategys[0]);
+        dropDownPlayerPosition.value = (int)TestPlayer.Position;
 
         List<string> strategyList = new List<string>();
         foreach (Player_Strategy strategy in MainController.Instance.PlayerStrategyData.player_Strategys)
@@ -24,13 +23,23 @@ public class Debug_FieldView : MonoBehaviour
             strategyList.Add(strategy.Name);
         }
         dropDownPlayerStrategy.AddOptions(strategyList);
+        dropDownPlayerStrategy.value = (int)TestPlayer.AssignedPosition;
+
+        strategyList.Clear();
+        foreach (Team_Strategy strategy in MainController.Instance.TeamStrategyData.team_Strategys)
+        {
+            strategyList.Add(strategy.Name);
+        }
+        dropDownTeamStrategy.AddOptions(strategyList);
+
+        TestPlayer.Strategy = (PlayerData.PlayerStrategy)dropDownPlayerStrategy.value;
     }
 
     public void Test()
     {
         Debug_ZoneView zone;
-        TestPlayer.ApplyBonus(MainController.Instance.TeamStrategyData.team_Strategys[0]);
-        foreach(Transform t in transform)
+        TestPlayer.ApplyBonus(MainController.Instance.TeamStrategyData.team_Strategys[dropDownTeamStrategy.value]);
+        foreach (Transform t in transform)
         {
             zone = t.GetComponent<Debug_ZoneView>();
 
@@ -53,18 +62,19 @@ public class Debug_FieldView : MonoBehaviour
         TestPlayer.Position = TestPlayer.AssignedPosition = pos;
     }
 
-    public void SetStrategy()
+    public void SetPlayerStrategy()
     {
         TestPlayer.Strategy = (PlayerData.PlayerStrategy)dropDownPlayerStrategy.value;
     }
 
+
     private float CalculatePresence(PlayerData _player, MatchController.FieldZone _zone)
     {
         float chance = _player.GetChancePerZone(_zone);
-        print(chance);
+
         if (chance < 1f && chance > 0f)
         {
-            chance *= ((float)(_player.Speed + _player.Vision) / 200) * (_player.Fatigue / 100);
+            chance *= ((float)(_player.Speed + _player.Vision) / 200) * ((float)_player.Fatigue / 100);
         }
         return chance;
     }

@@ -248,6 +248,7 @@ MonoBehaviour:
   TeamStrategyData: {fileID: 11400000, guid: bd993648d80e8b64eb209ac61f2128a4, type: 2}
   PlayerStrategyData: {fileID: 11400000, guid: d316f164b933c0a4ba7e8d8f8d4b3309, type: 2}
   Modifiers: {fileID: 11400000, guid: 4da60f8ba8ad4844fb3c15bb57acecc5, type: 2}
+  PosChancePerZone: {fileID: 11400000, guid: 6e54f4ca197b6a1459435677e3e0c432, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
