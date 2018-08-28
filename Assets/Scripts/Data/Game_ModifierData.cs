@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Game_Modifier {
 	public float PositionDebuff;
 	public float FaultChance;
+	public float OffsideChance;
 	public float AttackBonusLow;
 	public float AttackBonusMediun;
 	public float AttackBonusHigh;

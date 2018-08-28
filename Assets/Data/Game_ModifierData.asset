@@ -14,6 +14,7 @@ MonoBehaviour:
   game_Modifiers:
   - PositionDebuff: 0.85
     FaultChance: 0.2
+    OffsideChance: 0.05
     AttackBonusLow: 1.1
     AttackBonusMediun: 1.2
     AttackBonusHigh: 1.3

@@ -114,6 +114,7 @@ public class MatchController : MonoBehaviour
     private float attackingBonusMedium;
     private float attackingBonusHigh;
     private float faultChance;
+    private float offsideChance;
 
     private int fatigueLow;
     private int fatigueMedium;
@@ -136,6 +137,7 @@ public class MatchController : MonoBehaviour
         attackingBonusMedium = modifiers.AttackBonusMediun;
         attackingBonusHigh = modifiers.AttackBonusHigh;
         faultChance = modifiers.FaultChance;
+        offsideChance = modifiers.OffsideChance;
         fatigueLow = (int)modifiers.FatigueLow;
         fatigueMedium = (int)modifiers.FatigueMedium;
         fatigueHigh = (int)modifiers.FatigueHigh;
@@ -282,7 +284,7 @@ public class MatchController : MonoBehaviour
                     if (attackingTeam == HomeTeam) homeTeamScore++;
                     else awayTeamScore++;
                     Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
-
+                    attackingPlayer.TotalGoals++;
                     return;
                 }
                 if (!isScorerAnnounced)
@@ -388,6 +390,7 @@ public class MatchController : MonoBehaviour
                 matchEvent = MatchEvent.Goalkick;
             }
 
+            attackingPlayer.TotalShotsMissed++;
             SwitchPossesion();
             shotMissed = false;
             return;
@@ -428,6 +431,7 @@ public class MatchController : MonoBehaviour
             currentZone = FieldZone.OwnGoal;
             if (defendingTeam == AwayTeam) currentZone = GetAwayTeamZone();
 
+            defendingPlayer.TotalSaves++;
             SwitchPossesion();
             keepDefender = true;
             shotSaved = false;
@@ -554,13 +558,15 @@ public class MatchController : MonoBehaviour
                     DebugString += "PASSOU A BOLA! \n ________________________________\n";
                     Narration.UpdateNarration(attackingPlayer.FirstName + " PASSA A BOLA", attackingTeam.PrimaryColor);
                     currentZone = GetTargetZone();
+                    attackingPlayer.TotalPasses++;
                     break;
 
                 case PlayerData.PlayerAction.Dribble:
                     DebugString += "DRIBLOU! \n ________________________________\n";
                     if (defendingPlayer != null) Narration.UpdateNarration(attackingPlayer.FirstName + " DRIBLA " + defendingPlayer.FirstName, attackingTeam.PrimaryColor);
                     currentZone = GetTargetZone();
-                    keepAttacker = true;;
+                    keepAttacker = true;
+                    attackingPlayer.TotalDribbles++;
                     break;
 
                 case PlayerData.PlayerAction.Cross:
@@ -575,18 +581,21 @@ public class MatchController : MonoBehaviour
                         Narration.UpdateNarration(attackingPlayer.FirstName + " CRUZA A BOLA", attackingTeam.PrimaryColor);
                     }
                     currentZone = GetTargetZone();
+                    attackingPlayer.TotalCrosses++;
                     break;
 
                 case PlayerData.PlayerAction.Shot:
                     DebugString += "CHUTOU! \n";
                     Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O CHUTE...", attackingTeam.PrimaryColor);
                     ResolveShot(marking);
+                    attackingPlayer.TotalShots++;
                     break;
 
                 case PlayerData.PlayerAction.Header:
                     DebugString += "CABECEOU! \n";
                     Narration.UpdateNarration(attackingPlayer.FirstName + " TENTA O LANCE DE CABECA...", attackingTeam.PrimaryColor);
                     ResolveShot(marking);
+                    attackingPlayer.TotalHeaders++;
                     break;
             }
         }
@@ -627,6 +636,7 @@ public class MatchController : MonoBehaviour
                         DebugString += "ERROU O PASSE! \n ________________________________\n";
                         Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O PASSE", Color.gray);
                         currentZone = GetTargetZone();
+                        attackingPlayer.TotalPassesMissed++;
                     }
                     else
                     {
@@ -642,6 +652,7 @@ public class MatchController : MonoBehaviour
                         DebugString += "ERROU O DRIBLE! \n ________________________________\n";
                         Narration.UpdateNarration(attackingPlayer.FirstName + " SE ATRAPALHA NO DRIBLE", Color.gray);
                         currentZone = GetTargetZone();
+                        attackingPlayer.TotalDribblesMissed++;
                     }
                     else
                     {
@@ -663,6 +674,7 @@ public class MatchController : MonoBehaviour
                         {
                             DebugString += "ERROU O CRUZAMENTO! \n ________________________________\n";
                             Narration.UpdateNarration(attackingPlayer.FirstName + " ERRA O CRUZAMENTO", Color.gray);
+                            attackingPlayer.TotalCrossesMissed++;
                         }
 
                         currentZone = GetTargetZone();
@@ -679,6 +691,7 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU O CHUTE! \n ________________________________\n";
                         Narration.UpdateNarration(attackingPlayer.FirstName + " TEM QUE BOTAR O PÉ NA FORMA", Color.gray);
+                        attackingPlayer.TotalShotsMissed++;
                     }
                     else
                     {
@@ -692,6 +705,7 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU A CABECADA! \n ________________________________\n";
                         Narration.UpdateNarration(attackingPlayer.FirstName + " CABECEIA O AR", Color.gray);
+                        attackingPlayer.TotalHeadersMissed++;
                     }
                     else
                     {
@@ -988,7 +1002,7 @@ public class MatchController : MonoBehaviour
 
         if ((int)zone > 12)
         {
-            float offside = 0.05f;
+            float offside = offsideChance;
             if (defendingPlayer == null) offside *= MainController.Instance.TeamStrategyData.team_Strategys[(int)defendingTeam.Strategy].OffsideTrickChance;
             else offside *= defendingPlayer.Prob_OffsideLine;
 
@@ -1163,6 +1177,7 @@ public class MatchController : MonoBehaviour
                     matchEvent = MatchEvent.Freekick;
                 }
                 success = false;
+                defendingPlayer.TotalFaults++;
             }
 
             else if (attacking > defending)
@@ -1171,6 +1186,8 @@ public class MatchController : MonoBehaviour
                 DebugString += "\nDefensor rolou " + defending + "\n\n";
                 success = true;
             }
+
+            defendingPlayer.TotalTackles++;
         }
         else
         {

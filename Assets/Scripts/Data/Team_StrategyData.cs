@@ -7,6 +7,8 @@ public class Team_Strategy {
 	public string Description;
 	public float DefPosChance;
 	public float OffPosChance;
+	public float LeftPosChance;
+	public float RighPosChance;
 	public float PassingChance;
 	public float ShootingChance;
 	public float CrossingChance;

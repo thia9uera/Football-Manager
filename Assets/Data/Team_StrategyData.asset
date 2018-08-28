@@ -16,6 +16,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 1
     OffPosChance: 1
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1
@@ -44,6 +46,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 1.5
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 2
     CrossingChance: 1.5
@@ -67,11 +71,13 @@ MonoBehaviour:
     Target_LF: 1
     Target_CF: 1
     Target_RF: 1
-    Target_Box: 1
+    Target_Box: 1.5
   - Name: Defensive
     Description: bla
     DefPosChance: 0.15
     OffPosChance: 0.25
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 0.5
     CrossingChance: 1
@@ -100,6 +106,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 3
     OffPosChance: 0.05
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 2
@@ -128,6 +136,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 1
     OffPosChance: 2
+    LeftPosChance: 2
+    RighPosChance: 2
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1.5
@@ -156,6 +166,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 3
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 4
     ShootingChance: 2
     CrossingChance: 1.2
@@ -184,6 +196,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 0.5
     OffPosChance: 2
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 6
@@ -212,6 +226,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 1
     OffPosChance: 1
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1
@@ -240,6 +256,8 @@ MonoBehaviour:
     Description: bla
     DefPosChance: 0.5
     OffPosChance: 1
+    LeftPosChance: 1
+    RighPosChance: 1
     PassingChance: 1
     ShootingChance: 1
     CrossingChance: 1

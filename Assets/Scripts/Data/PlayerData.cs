@@ -88,9 +88,6 @@ public class PlayerData : ScriptableObject
     public int Fatigue = 100;
 
     [HideInInspector]
-    public int Morale = 50;
-
-    [HideInInspector]
     public PlayerPosition AssignedPosition;
 
     private enum AltPosition
@@ -118,7 +115,7 @@ public class PlayerData : ScriptableObject
         Prob_Dribble,
         Prob_Fall,
         Prob_OffsideLine,
-        Prob_Marking = 0f,
+        Prob_Marking,
         Prob_Tackling;
 
     public enum PlayerPosition
@@ -155,23 +152,9 @@ public class PlayerData : ScriptableObject
         Strength,
         Agility,
         Stamina,
-        Fatigue,
         Teamwork,
-        Morale,
         Vision,
         Stability,
-        DefPosChance,
-        OffPosChance,
-        LefPosChance,
-        RightPosChance,
-        PassingChance,
-        ShootingChance,
-        CrossingChance,
-        DribblingChance,
-        FaultChance,
-        FallingChance,
-        TeamMoraleBoost,
-        LongShotChance,
         Blocking,
         Dribbling,
     }
@@ -206,14 +189,29 @@ public class PlayerData : ScriptableObject
         RightOffensive,
     }
 
+    public int TotalPasses,
+        TotalCrosses,
+        TotalShots,
+        TotalHeaders,
+        TotalFaults,
+        TotalTackles,
+        TotalDribbles,
+        TotalGoals,
+        TotalSaves,
+        TotalPassesMissed,
+        TotalShotsMissed,
+        TotalHeadersMissed,
+        TotalDribblesMissed,
+        TotalCrossesMissed;
+
     public void ApplyBonus(Team_Strategy _teamStrategy)
     {
         Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
 
         Prob_DefPosition = _teamStrategy.DefPosChance * _playerStrategy.DefPosChance;
         Prob_OffPosition = _teamStrategy.OffPosChance * _playerStrategy.OffPosChance;
-        Prob_LeftPos = _playerStrategy.LeftPosChance;
-        Prob_RightPos = _playerStrategy.RightPosChance;
+        Prob_LeftPos = _playerStrategy.LeftPosChance * _playerStrategy.LeftPosChance;
+        Prob_RightPos = _playerStrategy.RightPosChance * _playerStrategy.RightPosChance;
         Prob_Pass = _teamStrategy.PassingChance * _playerStrategy.PassingChance;
         Prob_Shoot = _teamStrategy.ShootingChance * _playerStrategy.ShootingChance;
         Prob_Crossing = _teamStrategy.CrossingChance * _playerStrategy.CrossingChance;
