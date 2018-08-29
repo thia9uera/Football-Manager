@@ -873,7 +873,7 @@ public class MatchController : MonoBehaviour
     private MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
-        if (defendingPlayer == null || attackingPlayer .AssignedPosition == PlayerData.PlayerPosition.GK) return type;
+        if (defendingPlayer == null || attackingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK) return type;
 
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
@@ -1006,7 +1006,7 @@ public class MatchController : MonoBehaviour
             if (defendingPlayer == null) offside *= MainController.Instance.TeamStrategyData.team_Strategys[(int)defendingTeam.Strategy].OffsideTrickChance;
             else offside *= defendingPlayer.Prob_OffsideLine;
 
-            if (offside > Random.Range(0f, 1f))
+            if (offside <= Random.Range(0f, 1f))
             {
                 matchEvent = MatchEvent.Offside;
                 return false;
@@ -1132,7 +1132,7 @@ public class MatchController : MonoBehaviour
                 tackleChance *= 1.25f;
             }
 
-            isTackling |= tackleChance > Random.Range(0f, 1f);
+            isTackling |= tackleChance <= Random.Range(0f, 1f);
         }
 
         if (isTackling)
@@ -1162,7 +1162,7 @@ public class MatchController : MonoBehaviour
             agilityBonus *= (float)defendingPlayer.Fatigue / 100;
             fault *= (1f - agilityBonus);
 
-            if(fault > Random.Range(0f, 1f))
+            if(fault <= Random.Range(0f, 1f))
             {
                 if(attackingTeam == HomeTeam && currentZone == FieldZone.Box)
                 {
@@ -1193,7 +1193,7 @@ public class MatchController : MonoBehaviour
         {
             DebugString += "\nAtacante tem espaco pra jogar\n";
             defensiveAction = PlayerData.PlayerAction.None;
-            success |= attacking > Random.Range(0f, 1f);
+            success |= attacking <= Random.Range(0f, 1f);
         }
 
         float fatigueLost = (fatigueRate * (0.5f * ((float)attackingPlayer.Stamina / 100)));
