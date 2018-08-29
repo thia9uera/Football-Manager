@@ -31,6 +31,5 @@ public class MatchPlayerView : MonoBehaviour
         if(fill < 0.25f) fatigueBar.color = Color.red;
         else if (fill < 0.5f) fatigueBar.color = Color.yellow;
         else fatigueBar.color = Color.green;
-
     }
 }

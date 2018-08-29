@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class SquadMainView : MonoBehaviour
 {
-    [SerializeField]
     private SquadSlotView[] slotList;
 
     private SquadSelectionView controller;
 
-    private void Awake()
+    void Awake()
     {
-        controller = GetComponentInParent<SquadSelectionView>();
+        controller = GetComponentInParent<SquadSelectionView>();        
+        print(slotList.Length);
     }
 
     public void Populate(PlayerData[] _list)
     {
+        slotList = GetComponentsInChildren<SquadSlotView>();
         for (int i = 0; i < 11; i  ++)
         {
             slotList[i].Populate(_list[i]);

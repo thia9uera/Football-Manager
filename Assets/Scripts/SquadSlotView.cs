@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SquadSlotView : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class SquadSlotView : MonoBehaviour
 
     public PlayerData Player;
 
+    public SquadSelectionArrowsView Arrows;
+
     [SerializeField]
     private TextMeshProUGUI nameLabel;
 
     [SerializeField]
     private TextMeshProUGUI posLabel;
+
+    [SerializeField]
+    private Image fatigueBar;
 
     private SquadSelectionView controller;
 
@@ -21,6 +27,8 @@ public class SquadSlotView : MonoBehaviour
     {
         controller = GetComponentInParent<SquadSelectionView>();
         posLabel.text = MainController.Instance.Localization.GetShortPositionString(Position);
+       
+        if (Position == PlayerData.PlayerPosition.GK) Arrows.gameObject.SetActive(false);
     }
 
     public void Populate(PlayerData  _player)
@@ -31,6 +39,21 @@ public class SquadSlotView : MonoBehaviour
 
         if (Player.Position != Position) posLabel.color = Color.red;
         else posLabel.color = Color.gray;
+
+        Arrows = GetComponentInChildren<SquadSelectionArrowsView>();
+        Arrows.UpdateStrategy(Player.Strategy);
+        Arrows.HideArrows(Position);
+        UpdateFatigue();
+    }
+
+    private void UpdateFatigue()
+    {
+        float fill = (float)Player.Fatigue / 100;
+        fatigueBar.fillAmount = fill;
+
+        if (fill < 0.25f) fatigueBar.color = Color.red;
+        else if (fill < 0.5f) fatigueBar.color = Color.yellow;
+        else fatigueBar.color = Color.green;
     }
 
     public void OnMouseEnter()

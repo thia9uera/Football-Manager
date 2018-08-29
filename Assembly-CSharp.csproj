@@ -161,6 +161,8 @@
     <Compile Include="Assets\Scripts\MatchScoreView.cs" />
     <Compile Include="Assets\Scripts\MatchTeamView.cs" />
     <Compile Include="Assets\Scripts\SquadMainView.cs" />
+    <Compile Include="Assets\Scripts\SquadSelectionArrowsView.cs" />
+    <Compile Include="Assets\Scripts\SquadSelectionArrowView.cs" />
     <Compile Include="Assets\Scripts\SquadSelectionView.cs" />
     <Compile Include="Assets\Scripts\SquadSlotView.cs" />
     <Compile Include="Assets\Scripts\SquadSubsView.cs" />
