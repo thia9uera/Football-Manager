@@ -27,7 +27,6 @@ public class SquadSlotView : MonoBehaviour
     {
         controller = GetComponentInParent<SquadSelectionView>();
         posLabel.text = MainController.Instance.Localization.GetShortPositionString(Position);
-       
         if (Position == PlayerData.PlayerPosition.GK) Arrows.gameObject.SetActive(false);
     }
 
@@ -40,10 +39,12 @@ public class SquadSlotView : MonoBehaviour
         if (Player.Position != Position) posLabel.color = Color.red;
         else posLabel.color = Color.gray;
 
-        Arrows = GetComponentInChildren<SquadSelectionArrowsView>();
-        Arrows.UpdateStrategy(Player.Strategy);
-        Arrows.HideArrows(Position);
-        UpdateFatigue();
+        if(Player.Position != PlayerData.PlayerPosition.GK)
+        {
+            Arrows.UpdateStrategy(Player.Strategy);
+            Arrows.HideArrows(Position);
+            UpdateFatigue();
+        }
     }
 
     private void UpdateFatigue()
