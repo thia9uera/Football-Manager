@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Rivaldo
   LastName: 
-  Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
   Position: 11
+  Strategy: 0
+  Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
   Goalkeeping: 50
   Passing: 92
+  Dribbling: 87
+  Crossing: 73
   Tackling: 67
+  Blocking: 50
   Shooting: 96
   Heading: 81
   Freekick: 74
@@ -29,7 +33,32 @@ MonoBehaviour:
   Teamwork: 91
   Vision: 90
   Stability: 95
-  Tactics: 4
-  Fatigue: 100
-  Morale: 50
-  AssignedPosition: 0
+  Fatigue: 72
+  AssignedPosition: 11
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  TotalPasses: 29
+  TotalCrosses: 11
+  TotalShots: 19
+  TotalHeaders: 0
+  TotalFaults: 6
+  TotalTackles: 28
+  TotalDribbles: 18
+  TotalGoals: 4
+  TotalSaves: 0
+  TotalPassesMissed: 10
+  TotalShotsMissed: 7
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 4
+  TotalCrossesMissed: 2

@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Ronaldo
   LastName: "Fen\xF4meno"
-  Perk: {fileID: 11400000, guid: 564dd68bbf31d5e4ab09d6135f44710f, type: 2}
   Position: 14
+  Strategy: 0
+  Perk: {fileID: 11400000, guid: 564dd68bbf31d5e4ab09d6135f44710f, type: 2}
   Goalkeeping: 46
   Passing: 79
-  Tackling: 70
+  Dribbling: 94
+  Crossing: 69
+  Tackling: 65
+  Blocking: 69
   Shooting: 95
   Heading: 75
   Freekick: 58
@@ -29,7 +33,32 @@ MonoBehaviour:
   Teamwork: 87
   Vision: 95
   Stability: 65
-  Tactics: 4
-  Fatigue: 100
-  Morale: 50
-  AssignedPosition: 0
+  Fatigue: 78
+  AssignedPosition: 14
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  TotalPasses: 19
+  TotalCrosses: 10
+  TotalShots: 20
+  TotalHeaders: 0
+  TotalFaults: 1
+  TotalTackles: 14
+  TotalDribbles: 16
+  TotalGoals: 11
+  TotalSaves: 0
+  TotalPassesMissed: 5
+  TotalShotsMissed: 9
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 4
+  TotalCrossesMissed: 0

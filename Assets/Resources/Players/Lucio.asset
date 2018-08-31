@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Lucio
   LastName: 
-  Perk: {fileID: 0}
   Position: 1
+  Strategy: 0
+  Perk: {fileID: 0}
   Goalkeeping: 28
   Passing: 72
+  Dribbling: 46
+  Crossing: 48
   Tackling: 82
+  Blocking: 83
   Shooting: 72
   Heading: 82
   Freekick: 38
@@ -29,7 +33,32 @@ MonoBehaviour:
   Teamwork: 86
   Vision: 83
   Stability: 84
-  Tactics: 0
-  Fatigue: 100
-  Morale: 50
-  AssignedPosition: 0
+  Fatigue: 50
+  AssignedPosition: 15
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  TotalPasses: 0
+  TotalCrosses: 0
+  TotalShots: 0
+  TotalHeaders: 0
+  TotalFaults: 0
+  TotalTackles: 0
+  TotalDribbles: 0
+  TotalGoals: 0
+  TotalSaves: 0
+  TotalPassesMissed: 0
+  TotalShotsMissed: 0
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 0
+  TotalCrossesMissed: 0

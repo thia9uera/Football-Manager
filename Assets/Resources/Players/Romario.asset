@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: "Rom\xE1rio"
   LastName: 
-  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Position: 14
+  Strategy: 0
+  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Goalkeeping: 28
   Passing: 71
+  Dribbling: 92
+  Crossing: 59
   Tackling: 79
+  Blocking: 50
   Shooting: 98
   Heading: 79
   Freekick: 59
@@ -29,7 +33,32 @@ MonoBehaviour:
   Teamwork: 70
   Vision: 91
   Stability: 79
-  Tactics: 4
   Fatigue: 100
-  Morale: 50
   AssignedPosition: 0
+  Prob_DefPosition: 0
+  Prob_OffPosition: 0
+  Prob_LeftPos: 0
+  Prob_RightPos: 0
+  Prob_Pass: 0
+  Prob_Shoot: 0
+  Prob_Fault: 0
+  Prob_Crossing: 0
+  Prob_Dribble: 0
+  Prob_Fall: 0
+  Prob_OffsideLine: 0
+  Prob_Marking: 0
+  Prob_Tackling: 0
+  TotalPasses: 0
+  TotalCrosses: 0
+  TotalShots: 0
+  TotalHeaders: 0
+  TotalFaults: 0
+  TotalTackles: 0
+  TotalDribbles: 0
+  TotalGoals: 0
+  TotalSaves: 0
+  TotalPassesMissed: 0
+  TotalShotsMissed: 0
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 0
+  TotalCrossesMissed: 0

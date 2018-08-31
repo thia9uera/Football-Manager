@@ -14,8 +14,8 @@ MonoBehaviour:
   FirstName: Balaka
   LastName: 
   Position: 14
-  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Strategy: 0
+  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Goalkeeping: 18
   Passing: 54
   Dribbling: 50
@@ -33,36 +33,32 @@ MonoBehaviour:
   Teamwork: 41
   Vision: 59
   Stability: 43
-  positionDebuf: 0.75
   Fatigue: 100
-  Morale: 50
-  AssignedPosition: 14
-  Prob_DefPosition: 0.15
-  Prob_OffPosition: 0.25
-  Prob_ParPosChance: 1
+  AssignedPosition: 15
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
   Prob_Pass: 1
-  Prob_Shoot: 0.5
+  Prob_Shoot: 1
   Prob_Fault: 0
   Prob_Crossing: 1
-  Prob_Dribble: 0.25
+  Prob_Dribble: 1
   Prob_Fall: 0
-  Prob_OffsideLine: 1.5
-  Prob_Marking: 2
-  Prob_Tackling: 1.1
-  Prob_OwnGoal: 1
-  Prob_LD: 1
-  Prob_CD: 1
-  Prob_RD: 1
-  Prob_LDM: 1
-  Prob_CDM: 1
-  Prob_RDM: 1
-  Prob_LM: 1
-  Prob_CM: 1
-  Prob_RM: 1
-  Prob_LAM: 1
-  Prob_CAM: 1
-  Prob_RAM: 1
-  Prob_LF: 1
-  Prob_CF: 1
-  Prob_RF: 1
-  Prob_Box: 1
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  TotalPasses: 0
+  TotalCrosses: 0
+  TotalShots: 0
+  TotalHeaders: 0
+  TotalFaults: 0
+  TotalTackles: 0
+  TotalDribbles: 0
+  TotalGoals: 0
+  TotalSaves: 0
+  TotalPassesMissed: 0
+  TotalShotsMissed: 0
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 0
+  TotalCrossesMissed: 0

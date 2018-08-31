@@ -14,14 +14,14 @@ MonoBehaviour:
   FirstName: 'Mauro '
   LastName: "Galv\xE3o"
   Position: 2
-  Perk: {fileID: 11400000, guid: eb9f362d2dec7274ba4e2354ae23e9bb, type: 2}
   Strategy: 3
+  Perk: {fileID: 11400000, guid: eb9f362d2dec7274ba4e2354ae23e9bb, type: 2}
   Goalkeeping: 52
   Passing: 72
   Dribbling: 50
   Crossing: 50
   Tackling: 93
-  Blocking: 50
+  Blocking: 86
   Shooting: 81
   Heading: 88
   Freekick: 31
@@ -33,35 +33,32 @@ MonoBehaviour:
   Teamwork: 86
   Vision: 78
   Stability: 82
-  positionDebuf: 0.75
-  Fatigue: 100
-  Morale: 50
+  Fatigue: 85
   AssignedPosition: 2
-  Prob_DefPosition: 0
-  Prob_OffPosition: 3
-  Prob_ParPosChance: 1
-  Prob_Pass: 0
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 2.25
+  Prob_RightPos: 0.5625
+  Prob_Pass: 1
   Prob_Shoot: 1
   Prob_Fault: 0
-  Prob_Crossing: 0
+  Prob_Crossing: 1
   Prob_Dribble: 1
   Prob_Fall: 0
-  Prob_OffsideLine: 0
-  Prob_Marking: 0
-  Prob_OwnGoal: 0
-  Prob_LD: 0
-  Prob_CD: 0
-  Prob_RD: 0
-  Prob_LDM: 0
-  Prob_CDM: 0
-  Prob_RDM: 0
-  Prob_LM: 0
-  Prob_CM: 0
-  Prob_RM: 0
-  Prob_LAM: 0
-  Prob_CAM: 0
-  Prob_RAM: 0
-  Prob_LF: 0
-  Prob_CF: 0
-  Prob_RF: 0
-  Prob_Box: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  TotalPasses: 19
+  TotalCrosses: 11
+  TotalShots: 0
+  TotalHeaders: 0
+  TotalFaults: 8
+  TotalTackles: 25
+  TotalDribbles: 10
+  TotalGoals: 0
+  TotalSaves: 0
+  TotalPassesMissed: 4
+  TotalShotsMissed: 0
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 1
+  TotalCrossesMissed: 1

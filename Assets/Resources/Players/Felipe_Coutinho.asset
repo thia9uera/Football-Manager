@@ -13,11 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Felipe
   LastName: Coutinho
-  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Position: 7
+  Strategy: 0
+  Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Goalkeeping: 18
   Passing: 88
+  Dribbling: 82
+  Crossing: 80
   Tackling: 72
+  Blocking: 74
   Shooting: 87
   Heading: 72
   Freekick: 88
@@ -29,7 +33,32 @@ MonoBehaviour:
   Teamwork: 93
   Vision: 95
   Stability: 92
-  Tactics: 3
-  Fatigue: 100
-  Morale: 50
-  AssignedPosition: 0
+  Fatigue: 53
+  AssignedPosition: 8
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  TotalPasses: 35
+  TotalCrosses: 17
+  TotalShots: 3
+  TotalHeaders: 0
+  TotalFaults: 14
+  TotalTackles: 38
+  TotalDribbles: 14
+  TotalGoals: 1
+  TotalSaves: 0
+  TotalPassesMissed: 12
+  TotalShotsMissed: 2
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 9
+  TotalCrossesMissed: 8
