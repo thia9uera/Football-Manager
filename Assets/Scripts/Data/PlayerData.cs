@@ -460,4 +460,21 @@ public class PlayerData : ScriptableObject
 
         return value;
     }
+
+    public void ResetStatistics()
+    {
+        TotalGoals = 0;
+        TotalPasses = 0;
+        TotalCrosses = 0;
+        TotalFaults = 0;
+        TotalTackles = 0;
+        TotalDribbles = 0;
+        TotalHeaders = 0;
+        TotalSaves = 0;
+        TotalCrossesMissed = 0;
+        TotalDribblesMissed = 0;
+        TotalHeadersMissed = 0;
+        TotalPassesMissed = 0;
+        TotalShotsMissed = 0;
+    }
 }

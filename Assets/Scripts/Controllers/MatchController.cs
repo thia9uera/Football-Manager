@@ -749,7 +749,7 @@ public class MatchController : MonoBehaviour
             if (forcePlayer)
             {
                 if (chance > 0f)
-                {
+                { 
                     if (excludeLastPlayer)
                     {
                         if(player != attackingPlayer) players.Add(player);
