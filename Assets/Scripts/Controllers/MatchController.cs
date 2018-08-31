@@ -727,7 +727,7 @@ public class MatchController : MonoBehaviour
         bool forcePlayer = false;
         bool excludeLastPlayer = false;
 
-        if (matchEvent == MatchEvent.Freekick || attackingPlayer == null)
+        if (matchEvent == MatchEvent.Freekick || matchEvent == MatchEvent.Offside || attackingPlayer == null)
         {
             forcePlayer = true;
         }
@@ -750,7 +750,6 @@ public class MatchController : MonoBehaviour
             {
                 if (chance > 0f)
                 {
-                    players.Clear();
                     if (excludeLastPlayer)
                     {
                         if(player != attackingPlayer) players.Add(player);

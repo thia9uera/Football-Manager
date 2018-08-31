@@ -11,7 +11,6 @@ public class SquadMainView : MonoBehaviour
     void Awake()
     {
         controller = GetComponentInParent<SquadSelectionView>();        
-        print(slotList.Length);
     }
 
     public void Populate(PlayerData[] _list)

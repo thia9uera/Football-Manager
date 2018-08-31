@@ -13,6 +13,12 @@ public class Debug_FieldView : MonoBehaviour
 
     public Dropdown dropDownTeamStrategy;
 
+    [SerializeField]
+    private Text fatigueLabel;
+
+    [SerializeField]
+    private Slider slider;
+
     public void Start()
     {
         dropDownPlayerPosition.value = (int)TestPlayer.Position;
@@ -77,5 +83,11 @@ public class Debug_FieldView : MonoBehaviour
             chance *= ((float)(_player.Speed + _player.Vision) / 200) * ((float)_player.Fatigue / 100);
         }
         return chance;
+    }
+
+    public void OnSliderChange()
+    {
+        TestPlayer.Fatigue = (int)slider.value;
+        fatigueLabel.text = "Fatigue: " + TestPlayer.Fatigue;
     }
 }
