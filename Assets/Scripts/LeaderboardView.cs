@@ -50,10 +50,12 @@ public class LeaderboardView : MonoBehaviour
 
     public void ResetStats()
     {
-        foreach(PlayerData _player in list)
+        ClearList();
+        foreach (PlayerData _player in list)
         {
             _player.ResetStatistics();
         }
+        Populate();
     }
 
     public void SortBy(string _stat)

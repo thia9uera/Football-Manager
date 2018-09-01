@@ -125,7 +125,7 @@ public class MatchController : MonoBehaviour
     private TextMeshProUGUI version;
 
     [SerializeField]
-    [Range(1, 10)]
+    [Range(1, 100)]
     private int matchSpeed = 1;
 
     private void Awake()

@@ -471,6 +471,7 @@ public class PlayerData : ScriptableObject
         TotalDribbles = 0;
         TotalHeaders = 0;
         TotalSaves = 0;
+        TotalShots = 0;
         TotalCrossesMissed = 0;
         TotalDribblesMissed = 0;
         TotalHeadersMissed = 0;
