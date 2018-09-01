@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 114676954835181178}
   - component: {fileID: 114954170067448080}
   m_Layer: 0
-  m_Name: LeaderboardItem
+  m_Name: LeaderboardItemPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

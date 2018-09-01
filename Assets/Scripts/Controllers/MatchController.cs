@@ -467,6 +467,29 @@ public class MatchController : MonoBehaviour
             Narration.UpdateNarration("TERMINA A PARTIDA", Color.gray);
             CancelInvoke();
             isGameOn = false;
+
+            HomeTeam.TotalGoals += homeTeamScore;
+            HomeTeam.TotalGoalsAgainst += awayTeamScore;
+
+            AwayTeam.TotalGoals += awayTeamScore;
+            AwayTeam.TotalGoalsAgainst += homeTeamScore;
+
+            if (homeTeamScore > awayTeamScore)
+            {
+                HomeTeam.TotalWins++;
+                AwayTeam.TotalLosts++;
+            }
+            else if (awayTeamScore > homeTeamScore)
+            {
+                AwayTeam.TotalWins++;
+                HomeTeam.TotalLosts++;
+            }
+            else
+            {
+                HomeTeam.TotalDraws++;
+                AwayTeam.TotalDraws++;
+            }
+
             startBtn.SetActive(true);
             return;
         }

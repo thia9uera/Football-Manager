@@ -47,6 +47,12 @@ public class TeamData : ScriptableObject
     [Space(10)]
     public PlayerData Captain;
 
+    public int TotalWins,
+        TotalLosts,
+        TotalDraws,
+        TotalGoals,
+        TotalGoalsAgainst;
+
     public Team_Strategy GetStrategy()
     {
         Team_StrategyData data = MainController.Instance.TeamStrategyData;
@@ -54,5 +60,14 @@ public class TeamData : ScriptableObject
         Team_Strategy strategy = data.team_Strategys[(int)Strategy];
 
         return strategy;
+    }
+
+    public void ResetStatistics()
+    {
+        TotalWins = 0;
+        TotalLosts = 0;
+        TotalDraws = 0;
+        TotalGoals = 0;
+        TotalGoalsAgainst = 0;
     }
 }

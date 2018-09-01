@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class LeaderboardItemView : MonoBehaviour
+public class LeaderboardPlayerView : MonoBehaviour
 {
     [SerializeField]    public TextMeshProUGUI posLabel, nameLabel, goalsLabel, shotsLabel, passesLabel, crossesLabel, faultsLabel, tacklesLabel, dribblesLabel, headersLabel, savesLabel;
 
