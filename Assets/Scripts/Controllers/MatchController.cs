@@ -1179,7 +1179,6 @@ public class MatchController : MonoBehaviour
             }
 
 
-            fault = 0.25f;
             agilityBonus = (float)GetAttributeBonus(defendingPlayer.Agility)/100;
             agilityBonus *= (float)defendingPlayer.Fatigue / 100;
             fault *= (1f - agilityBonus);

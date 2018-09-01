@@ -50,7 +50,8 @@ public class LeaderboardView : MonoBehaviour
     {
         ClearList();
         gameObject.SetActive(false);
-        listPlayers.Clear();
+        if(listPlayers != null) listPlayers.Clear();
+        if (listTeams != null) listTeams.Clear();
     }
 
     public void PopulatePlayers()
