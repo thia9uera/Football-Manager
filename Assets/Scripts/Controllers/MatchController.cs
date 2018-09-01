@@ -280,7 +280,7 @@ public class MatchController : MonoBehaviour
                 {
                     isGoalAnnounced = true;
                     Narration.UpdateNarration("<size=60>GOOOOOOAAAAALLLL!!!", attackingTeam.PrimaryColor);
-                    DebugString += "\n\n<size=40>GOL de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "</size>\n ________________________________\n \n";
+                    DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
                     if (attackingTeam == HomeTeam) homeTeamScore++;
                     else awayTeamScore++;
                     Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
@@ -290,7 +290,7 @@ public class MatchController : MonoBehaviour
                 if (!isScorerAnnounced)
                 {
                     isScorerAnnounced = true;
-                    Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " marca para " + attackingTeam.Name + "!", attackingTeam.PrimaryColor);
+                    Narration.UpdateNarration(attackingPlayer.GetFullName() + " marca para " + attackingTeam.Name + "!", attackingTeam.PrimaryColor);
                     return;
                 }
                 else
@@ -320,7 +320,7 @@ public class MatchController : MonoBehaviour
                     if (offensiveAction == PlayerData.PlayerAction.Shot)
                     {
                         defendingPlayer = defendingTeam.Squad[0];
-                        Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
+                        Narration.UpdateNarration(attackingPlayer.GetFullName() + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
                     }                    
                     else
                     {
@@ -345,7 +345,7 @@ public class MatchController : MonoBehaviour
                     attackingPlayer = GetTopPlayerByAttribute(attackingTeam.Squad, PlayerData.PlayerAttributes.Penalty);
                     defendingPlayer = defendingTeam.Squad[0];
                     offensiveAction = PlayerData.PlayerAction.Shot;
-                    Narration.UpdateNarration(attackingPlayer.FirstName + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
+                    Narration.UpdateNarration(attackingPlayer.GetFullName() + " VAI PARA A COBRANCA...", attackingTeam.PrimaryColor);
                 }
                 else
                 {
@@ -368,24 +368,24 @@ public class MatchController : MonoBehaviour
         {
             if (matchEvent == MatchEvent.Freekick)
             {
-                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta na barreira", Color.gray);
+                Narration.UpdateNarration(attackingPlayer.GetFullName() + " chuta na barreira", Color.gray);
                 DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
             }
             else if (matchEvent == MatchEvent.Penalty)
             {
-                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " manda a bola pra fora do estadio!", Color.gray);
+                Narration.UpdateNarration(attackingPlayer.GetFullName() + " manda a bola pra fora do estadio!", Color.gray);
                 DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
                 matchEvent = MatchEvent.Goalkick;
             }
             else if (offensiveAction == PlayerData.PlayerAction.Shot)
             {
-                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " chuta pra fora!", Color.gray);
+                Narration.UpdateNarration(attackingPlayer.GetFullName() + " chuta pra fora!", Color.gray);
                 DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
                 matchEvent = MatchEvent.Goalkick;
             }
             else if (offensiveAction == PlayerData.PlayerAction.Header)
             {
-                Narration.UpdateNarration(attackingPlayer.FirstName + " " + attackingPlayer.LastName + " cabeceia por cima do gol!", Color.gray);
+                Narration.UpdateNarration(attackingPlayer.GetFullName() + " cabeceia por cima do gol!", Color.gray);
                 DebugString += "\n\nCabeceou pra fora\n\n_____________________________________\n\n";
                 matchEvent = MatchEvent.Goalkick;
             }
@@ -401,29 +401,29 @@ public class MatchController : MonoBehaviour
         {
             if (offensiveAction == PlayerData.PlayerAction.Header)
             {
-                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cabecada de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
-                Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cabecada de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cabecada de " + attackingPlayer.GetFullName() + "\n\n_____________________________________\n\n";
+                Narration.UpdateNarration(defendingPlayer.GetFullName() + " defende a cabecada de " + attackingPlayer.GetFullName(), defendingTeam.PrimaryColor);
             }
             else
             {
                 if (matchEvent == MatchEvent.Freekick)
                 {
-                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de falta" + "\n\n_____________________________________\n\n";
-                    Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de falta!", defendingTeam.PrimaryColor);
+                    DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cobranca de falta" + "\n\n_____________________________________\n\n";
+                    Narration.UpdateNarration(defendingPlayer.GetFullName() + " defende a cobranca de falta!", defendingTeam.PrimaryColor);
                     matchEvent = MatchEvent.None;
                     keepDefender = true;
                 }
                 else if (matchEvent == MatchEvent.Penalty)
                 {
-                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de penalty" + "\n\n_____________________________________\n\n";
-                    Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende a cobranca de penalty!", defendingTeam.PrimaryColor);
+                    DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cobranca de penalty" + "\n\n_____________________________________\n\n";
+                    Narration.UpdateNarration(defendingPlayer.GetFullName() + " defende a cobranca de penalty!", defendingTeam.PrimaryColor);
                     matchEvent = MatchEvent.None;
                     keepDefender = true;
                 }
                 else
                 {
-                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
-                    Narration.UpdateNarration(defendingPlayer.FirstName + " " + defendingPlayer.LastName + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
+                    DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
+                    Narration.UpdateNarration(defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName, defendingTeam.PrimaryColor);
                     keepDefender = true;
                 }
             }
@@ -540,18 +540,18 @@ public class MatchController : MonoBehaviour
             {
                 if (marking == MarkingType.Close)
                 {
-                    DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " VS " + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " (" + currentZone + ")</size> \n";
+                    DebugString += "\n<size=28>" + attackingPlayer.GetFullName() + " VS " + defendingPlayer.GetFullName() + " (" + currentZone + ")</size> \n";
                     DebugString += "\nMARCACAO DE PERTO \n \n";
                 }
                 else if (marking == MarkingType.Distance)
                 {
-                    DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " VS " + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " (" + currentZone + ")</size> \n";
+                    DebugString += "\n<size=28>" + attackingPlayer.GetFullName() + " VS " + defendingPlayer.GetFullName() + " (" + currentZone + ")</size> \n";
                     DebugString += "\nMARCACAO A DISTANCIA \n \n";
                 }
                 else
                 {
                     //Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
-                    DebugString += "\n<size=28>" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " (" + currentZone + ")</size> \n";
+                    DebugString += "\n<size=28>" + attackingPlayer.GetFullName() + " (" + currentZone + ")</size> \n";
                     DebugString += "\nSEM MARCACAO \n\n";
                 }
 

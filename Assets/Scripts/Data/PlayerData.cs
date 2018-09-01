@@ -478,4 +478,9 @@ public class PlayerData : ScriptableObject
         TotalPassesMissed = 0;
         TotalShotsMissed = 0;
     }
+
+    public string GetFullName()
+    {
+        return FirstName + " " + LastName;
+    }
 }
