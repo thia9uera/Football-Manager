@@ -1060,6 +1060,7 @@ public class MatchController : MonoBehaviour
                 if(lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful)
                 {
                     attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork + attackingPlayer.Heading) / 500;
+                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Heading) / 400;
                 }
 
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
