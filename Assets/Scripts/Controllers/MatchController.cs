@@ -64,12 +64,9 @@ public class MatchController : MonoBehaviour
         DropMin,
     }
 
-    private int totalZones = 17;
+    private const int totalZones = 17;
 
-    private PlayerData.PlayerAction defensiveAction = PlayerData.PlayerAction.None;
-    private PlayerData.PlayerAction offensiveAction = PlayerData.PlayerAction.None;
-    private MatchEvent matchEvent = MatchEvent.None;
-    private bool lastActionSuccessful = false;
+
 
     [SerializeField]
     private GameObject startBtn;
@@ -83,28 +80,35 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     private DebugController debugController;
 
+    private PlayerData.PlayerAction defensiveAction = PlayerData.PlayerAction.None;
+    private PlayerData.PlayerAction offensiveAction = PlayerData.PlayerAction.None;
+    private PlayerData.PlayerAction lastAction = PlayerData.PlayerAction.None;
+    private bool lastActionSuccessful;
+    private MatchEvent matchEvent = MatchEvent.None;
+
     private TeamData attackingTeam;
     private TeamData defendingTeam;
     private PlayerData attackingPlayer;
     private PlayerData defendingPlayer;
     private PlayerData playerWithBall;
     private float attackingBonus = 1f;
-    private bool keepAttacker = false;
-    private bool keepDefender= false;
+    private bool keepAttacker;
+    private bool keepDefender;
     private MarkingType marking;
+
 
     private int matchTime = 0;
     private int homeTeamScore = 0;
     private int awayTeamScore = 0;
-    private bool isGameOn = false;
+    private bool isGameOn;
 
-    private bool isGoalAnnounced = false;
-    private bool isScorerAnnounced = false;
-    private bool isHalfTime = false;
-    private bool secondHalfStarted = false;
-    private bool isFreekickTaken = false;
-    private bool shotMissed = false;
-    private bool shotSaved = false;
+    private bool isGoalAnnounced ;
+    private bool isScorerAnnounced;
+    private bool isHalfTime;
+    private bool secondHalfStarted;
+    private bool isFreekickTaken;
+    private bool shotMissed;
+    private bool shotSaved;
 
     [HideInInspector]
     public string DebugString;
@@ -978,12 +982,14 @@ public class MatchController : MonoBehaviour
         shoot /= total;
         header /= total;
 
-        List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Dribble, dribble));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot));
-        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Header, header));
+        List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>
+        {
+            new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass),
+            new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Dribble, dribble),
+            new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross),
+            new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot),
+            new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Header, header)
+        };
 
         float random = Random.Range(0.00001f, 1f);
         float cumulative = 0f;
@@ -1004,6 +1010,8 @@ public class MatchController : MonoBehaviour
         DebugString += "Shoot: " + shoot + "\n";
         DebugString += "Header: " + header + "\n\n";
 
+
+        lastAction = offensiveAction;
         return action;
     }
 
@@ -1033,30 +1041,43 @@ public class MatchController : MonoBehaviour
                 matchEvent = MatchEvent.Offside;
                 return false;
             }
+
         }
 
-            switch (offensiveAction)
+        switch (offensiveAction)
         {
             case PlayerData.PlayerAction.None: return false;
             
             case PlayerData.PlayerAction.Pass:
-                defensiveAction = PlayerData.PlayerAction.Block;
+                if(defendingPlayer != null)
+                {
+                    defensiveAction = PlayerData.PlayerAction.Block;
+                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                }
+
                 attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork)/400;
+                if(lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful)
+                {
+                    attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork + attackingPlayer.Heading) / 500;
+                }
+
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
                 fatigueRate = fatigueLow;
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.75f;
                 }
-                else if (_marking == MarkingType.Distance)
-                {
-                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
-                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
-                }
                 break;
 
             case PlayerData.PlayerAction.Dribble:
-                defensiveAction = PlayerData.PlayerAction.Tackle;
+                if (defendingPlayer != null)
+                {
+                    defensiveAction = PlayerData.PlayerAction.Tackle;
+                    defending = (float)(defendingPlayer.Tackling + defendingPlayer.Agility + defendingPlayer.Speed) / 300;
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Tackling);
+                }
+
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Tackling);
                 fatigueLow = fatigueHigh;
@@ -1064,15 +1085,16 @@ public class MatchController : MonoBehaviour
                 {
                     attacking = attacking * 0.5f;
                 }
-                else if (_marking == MarkingType.Distance)
-                {
-                    defending = (float)(defendingPlayer.Tackling + defendingPlayer.Agility + defendingPlayer.Speed) / 300;
-                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Tackling);
-                }
                 break;
 
             case PlayerData.PlayerAction.Cross:
-                defensiveAction = PlayerData.PlayerAction.Block;
+                if (defendingPlayer != null)
+                {
+                    defensiveAction = PlayerData.PlayerAction.Block;
+                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                }
+
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
                 fatigueRate = fatigueMedium;
@@ -1080,15 +1102,16 @@ public class MatchController : MonoBehaviour
                 {
                     attacking = attacking * 0.5f;
                 }
-                else if (_marking == MarkingType.Distance)
-                {
-                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
-                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
-                }
                 break;
 
             case PlayerData.PlayerAction.Shot:
-                defensiveAction = PlayerData.PlayerAction.Block;
+                if (defendingPlayer != null)
+                {
+                    defensiveAction = PlayerData.PlayerAction.Block;
+                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                }
+
                 attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Shooting);
                 fatigueRate = fatigueMedium;
@@ -1096,26 +1119,22 @@ public class MatchController : MonoBehaviour
                 {
                     attacking = attacking * 0.5f;
                 }
-                else if (_marking == MarkingType.Distance)
-                {
-                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
-                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
-                }
                 break;
 
             case PlayerData.PlayerAction.Header:
-                defensiveAction = PlayerData.PlayerAction.Block;
+                if (defendingPlayer != null)
+                {
+                    defensiveAction = PlayerData.PlayerAction.Block;
+                    defending = (float)(defendingPlayer.Heading + defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 400;
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                }
+
                 attacking = (float)(attackingPlayer.Heading + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Heading);
                 fatigueRate = fatigueMedium;
                 if (_marking == MarkingType.Close)
                 {
                     attacking = attacking * 0.5f;
-                }
-                else if (_marking == MarkingType.Distance)
-                {
-                    defending = (float)(defendingPlayer.Heading + defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 400;
-                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
                 }
                 break;
         }
@@ -1162,30 +1181,29 @@ public class MatchController : MonoBehaviour
             defending *= (float)defendingPlayer.Fatigue / 100;
             defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
-            if (defenseRoll == 20)
+            switch (defenseRoll)
             {
-                DebugString += "\nDefensor ganhou bonus de 50% \n";
-                defending = defending * 1.5f;
-            }
-            else if (defenseRoll == 2)
-            {
-                DebugString += "\nDefensor meia-bomba \n";
-                defending = defending * 0.5f;
-            }
-            else if (defenseRoll == 1)
-            {
-                DebugString += "\nDefensor ratiou \n";
-                defending = 0.25f;
+                case 20:
+                    DebugString += "\nDefensor ganhou bonus de 50% \n";
+                    defending = defending * 1.5f;
+                    break;
+                case 2:
+                    DebugString += "\nDefensor meia-bomba \n";
+                    defending = defending * 0.5f;
+                    break;
+                case 1:
+                    DebugString += "\nDefensor ratiou \n";
+                    defending = 0.25f;
+                    break;
             }
 
-
-            agilityBonus = (float)GetAttributeBonus(defendingPlayer.Agility)/100;
+            agilityBonus = (float)GetAttributeBonus(defendingPlayer.Agility) / 100;
             agilityBonus *= (float)defendingPlayer.Fatigue / 100;
             fault *= (1f - agilityBonus);
 
-            if(fault >= Random.Range(0f, 1f))
+            if (fault >= Random.Range(0f, 1f))
             {
-                if(attackingTeam == HomeTeam && currentZone == FieldZone.Box)
+                if (attackingTeam == HomeTeam && currentZone == FieldZone.Box)
                 {
                     matchEvent = MatchEvent.Penalty;
                 }
@@ -1193,7 +1211,7 @@ public class MatchController : MonoBehaviour
                 {
                     matchEvent = MatchEvent.Penalty;
                 }
-                else 
+                else
                 {
                     matchEvent = MatchEvent.Freekick;
                 }
@@ -1442,6 +1460,9 @@ public class MatchController : MonoBehaviour
 
         if (matchEvent == MatchEvent.Goalkick)
         {
+            _LDM = 0.75f;
+            _CDM = 0.75f;
+            _RDM = 0.75f;
             _LM = 1f;
             _CM = 1f;
             _RM = 1f;

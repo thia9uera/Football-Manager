@@ -63,7 +63,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1532462396298
+  Google_LastUpdatedVersion: 1536929588343
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
@@ -340,6 +340,14 @@ MonoBehaviour:
     Languages:
     - Start
     - "Come\xE7ar"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_Goal
+    TermType: 0
+    Description: 
+    Languages:
+    - Goooaaal!
+    - Goooool!
     Flags: 0000
     Languages_Touch: []
   CaseInsensitiveTerms: 0
