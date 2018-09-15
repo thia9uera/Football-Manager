@@ -384,7 +384,6 @@ public class MatchController : MonoBehaviour
             else if (offensiveAction == PlayerData.PlayerAction.Shot)
             {
                 Narration.UpdateNarration(attackingPlayer.GetFullName() + " chuta pra fora!", Color.gray);
-                DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
                 matchEvent = MatchEvent.Goalkick;
             }
             else if (offensiveAction == PlayerData.PlayerAction.Header)
@@ -758,7 +757,7 @@ public class MatchController : MonoBehaviour
         {
             forcePlayer = true;
         }
-        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
+        else if (offensiveAction == PlayerData.PlayerAction.Pass)
         {
             if (lastActionSuccessful)
             {
