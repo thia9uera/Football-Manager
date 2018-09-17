@@ -585,8 +585,8 @@ public class MatchController : MonoBehaviour
                     currentZone = GetTargetZone();
                     attackingPlayer.TotalPasses++;
                     string passer = attackingPlayer.FirstName;
-                    attackingPlayer = GetAttackingPlayer(currentZone);
                     keepAttacker = true;
+                    attackingPlayer = GetAttackingPlayer(currentZone);
                     Narration.UpdateNarration( passer + " PASSA PARA " + attackingPlayer.FirstName, attackingTeam.PrimaryColor);
                     break;
 
@@ -807,7 +807,7 @@ public class MatchController : MonoBehaviour
             return GetTopPlayerByAttribute(players.ToArray(), PlayerData.PlayerAttributes.Freekick);
         }
 
-        return GetActivePlayer(players);
+        return GetActivePlayer(players); ;
     }
 
     private PlayerData GetDefendingPlayer(FieldZone _zone)
@@ -835,7 +835,6 @@ public class MatchController : MonoBehaviour
                     players.Add(player);
                 }
             }
-
         }
         if (forcePlayerOut)
         {
@@ -850,6 +849,7 @@ public class MatchController : MonoBehaviour
         PlayerData activePlayer = null;
         List<KeyValuePair<PlayerData, float>> compareList = new List<KeyValuePair<PlayerData, float>>();
         int bonus = 0;
+        float total = 0f;
 
         foreach (PlayerData player in _list)
         {
@@ -868,22 +868,25 @@ public class MatchController : MonoBehaviour
             {
                 stats *= 0.25f;
             }
-            
+
+            total += stats;
             compareList.Add(new KeyValuePair<PlayerData, float>(player, stats));
         }
 
         float random = Random.Range(0f, 1f);
         float cumulative = 0f;
+
         for (int i = 0; i < compareList.Count; i++)
         {
-            cumulative += compareList[i].Value;
+            float value = compareList[i].Value/total;
+
+            cumulative += value;
             if (random < cumulative)
             {
                 activePlayer = compareList[i].Key;
                 break;
             }
         }
-
         return activePlayer;
     }
 
@@ -1710,7 +1713,6 @@ public class MatchController : MonoBehaviour
 
     private PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.PlayerAttributes _attribute)
     {
-        if (_players.Length == 0) print("PALHA");
         PlayerData best = null;
         int higher = 0;
         foreach(PlayerData player in _players)
