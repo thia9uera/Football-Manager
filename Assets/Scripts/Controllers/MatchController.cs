@@ -516,14 +516,14 @@ public class MatchController : MonoBehaviour
             Narration.UpdateNarration("BOLA SOBROU!", Color.gray);
             DebugString += "\nSOBROU NA " + currentZone.ToString() + " ! \n ________________________________\n \n";
         }
-        //No players form team in possesion in the dispute
+        //No players from attacking team in the dispute
         else if(attackingPlayer == null)
         {
             Narration.UpdateNarration(attackingTeam.Name + " PERDE A POSSE DE BOLA", attackingTeam.PrimaryColor);
             keepDefender = true;
             SwitchPossesion();
         }
-        //Player from team in possesion in the dispute
+        //Player from attacking team in the dispute
         else
         {
             //Step 2: Get type of marking
@@ -582,9 +582,12 @@ public class MatchController : MonoBehaviour
             {
                 case PlayerData.PlayerAction.Pass:
                     DebugString += "PASSOU A BOLA! \n ________________________________\n";
-                    Narration.UpdateNarration(attackingPlayer.FirstName + " PASSA A BOLA", attackingTeam.PrimaryColor);
                     currentZone = GetTargetZone();
                     attackingPlayer.TotalPasses++;
+                    string passer = attackingPlayer.FirstName;
+                    attackingPlayer = GetAttackingPlayer(currentZone);
+                    keepAttacker = true;
+                    Narration.UpdateNarration( passer + " PASSA PARA " + attackingPlayer.FirstName, attackingTeam.PrimaryColor);
                     break;
 
                 case PlayerData.PlayerAction.Dribble:
@@ -667,7 +670,7 @@ public class MatchController : MonoBehaviour
                     else
                     {
                         DebugString += "PASSE BLOQUEADO! \n ________________________________\n";
-                        Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O PASSE", defendingTeam.PrimaryColor);
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O PASSE DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
                         keepDefender = true;
                     }
                     break;
@@ -708,7 +711,7 @@ public class MatchController : MonoBehaviour
                     else
                     {
                         DebugString += "CRUZAMENTO BLOQUEADO! \n ________________________________\n";
-                        Narration.UpdateNarration(defendingPlayer.FirstName + " IMPEDE O CRUZAMENTO", defendingTeam.PrimaryColor);
+                        Narration.UpdateNarration(defendingPlayer.FirstName + " BLOQUEIA O CRUZAMENTO DE " + attackingPlayer.FirstName, defendingTeam.PrimaryColor);
                     }
                     break;
 
@@ -1059,15 +1062,12 @@ public class MatchController : MonoBehaviour
                 if(lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful)
                 {
                     attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork + attackingPlayer.Heading) / 500;
-                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Heading) / 400;
+                    if (defendingPlayer != null) defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Heading) / 400;
                 }
 
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
                 fatigueRate = fatigueLow;
-                if (_marking == MarkingType.Close)
-                {
-                    attacking = attacking * 0.75f;
-                }
+                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 break;
 
             case PlayerData.PlayerAction.Dribble:
@@ -1081,10 +1081,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Tackling);
                 fatigueLow = fatigueHigh;
-                if (_marking == MarkingType.Close)
-                {
-                    attacking = attacking * 0.5f;
-                }
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
 
             case PlayerData.PlayerAction.Cross:
@@ -1098,10 +1095,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
                 fatigueRate = fatigueMedium;
-                if (_marking == MarkingType.Close)
-                {
-                    attacking = attacking * 0.5f;
-                }
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
 
             case PlayerData.PlayerAction.Shot:
@@ -1115,10 +1109,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Shooting);
                 fatigueRate = fatigueMedium;
-                if (_marking == MarkingType.Close)
-                {
-                    attacking = attacking * 0.5f;
-                }
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
 
             case PlayerData.PlayerAction.Header:
@@ -1132,10 +1123,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Heading + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Heading);
                 fatigueRate = fatigueMedium;
-                if (_marking == MarkingType.Close)
-                {
-                    attacking = attacking * 0.5f;
-                }
+                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
         }
 
@@ -1168,10 +1156,7 @@ public class MatchController : MonoBehaviour
         else
         {     
             float tackleChance = 0.5f * actionChancePerZone.actionChancePerZones[(int)zone].Tackle * defendingPlayer.Prob_Tackling;
-            if (_marking == MarkingType.Close)
-            {
-                tackleChance *= 1.25f;
-            }
+            if (_marking == MarkingType.Close) tackleChance *= 1.25f;
 
             isTackling |= tackleChance >= Random.Range(0f, 1f);
         }
