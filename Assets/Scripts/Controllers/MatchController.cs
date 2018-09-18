@@ -1130,6 +1130,12 @@ public class MatchController : MonoBehaviour
                 break;
         }
 
+        if(defendingPlayer != null && defendingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK)
+        {
+            defending = (float)(defendingPlayer.Goalkeeping + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
+            defenseBonusChance = GetAttributeBonus(defendingPlayer.Goalkeeping);
+        }
+
         attacking *= ((float)attackingPlayer.Fatigue / 100);
         attacking *= attackingBonus;
         if (attackingPlayer.Position != attackingPlayer.AssignedPosition) attacking *= positionDebuff;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posChancePerZones:
   - Position: GK
-    OwnGoal: 1
+    OwnGoal: 0.25
     LD: 0
     CD: 0
     RD: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
     RF: 0
     Box: 0
   - Position: LD
-    OwnGoal: 0.25
+    OwnGoal: 0.5
     LD: 1
     CD: 0.5
     RD: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     RF: 0
     Box: 0
   - Position: CD
-    OwnGoal: 0.5
+    OwnGoal: 1
     LD: 0.25
     CD: 1
     RD: 0.25
@@ -67,7 +67,7 @@ MonoBehaviour:
     RF: 0
     Box: 0
   - Position: RD
-    OwnGoal: 0.25
+    OwnGoal: 0.5
     LD: 0
     CD: 0.5
     RD: 1
