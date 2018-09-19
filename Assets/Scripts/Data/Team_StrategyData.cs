@@ -33,6 +33,7 @@ public class Team_Strategy {
 	public float Target_CF;
 	public float Target_RF;
 	public float Target_Box;
+	public bool OwnGoal;
 }
 
 public class Team_StrategyData : ScriptableObject {
