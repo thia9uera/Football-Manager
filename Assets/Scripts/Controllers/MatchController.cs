@@ -216,6 +216,8 @@ public class MatchController : MonoBehaviour
         shotMissed = false;
         shotSaved = false;
         isFreekickTaken = false;
+        isGoalAnnounced = false;
+        isScorerAnnounced = false;
         HomeTeamSquad.ResetFatigue();
         AwayTeamSquad.ResetFatigue();
         matchEvent = MatchEvent.None;
@@ -762,11 +764,11 @@ public class MatchController : MonoBehaviour
         {
             forcePlayer = true;
         }
-        else if (offensiveAction == PlayerData.PlayerAction.Pass)
+        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
         {
             if (lastActionSuccessful)
             {
-                forcePlayer = true;
+                if(offensiveAction == PlayerData.PlayerAction.Pass) forcePlayer = true;
                 excludeLastPlayer = true;
             }
         }
