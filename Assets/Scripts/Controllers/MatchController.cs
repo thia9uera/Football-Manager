@@ -215,6 +215,7 @@ public class MatchController : MonoBehaviour
         keepDefender = false;
         shotMissed = false;
         shotSaved = false;
+        isFreekickTaken = false;
         HomeTeamSquad.ResetFatigue();
         AwayTeamSquad.ResetFatigue();
         matchEvent = MatchEvent.None;
@@ -316,6 +317,8 @@ public class MatchController : MonoBehaviour
             case MatchEvent.Freekick:
                 if (!isFreekickTaken)
                 {
+                    if (matchEvent == MatchEvent.Offside) SwitchPossesion();
+
                     isFreekickTaken = true;
 
                     attackingPlayer = GetAttackingPlayer(currentZone);
@@ -633,23 +636,22 @@ public class MatchController : MonoBehaviour
             lastActionSuccessful = false;
             attackingBonus = 1f;
 
-            if (matchEvent == MatchEvent.Freekick)
+            switch (matchEvent)
             {
-                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
-                Narration.UpdateNarration(defendingPlayer.FirstName + " FAZ FALTA EM " + attackingPlayer.FirstName, Color.gray);
-                return;
-            }
-            else if (matchEvent == MatchEvent.Penalty)
-            {
-                DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz penalty.\n\n";
-                Narration.UpdateNarration("PENALIDADE MAXIMA!!!", Color.gray);
-                return;
-            }
-            else if (matchEvent == MatchEvent.Offside)
-            {
-                DebugString += "\n\n" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " impedido no lance.\n\n";
-                Narration.UpdateNarration("IMPEDIMENTO MARCADO", Color.gray);
-                return;
+                case MatchEvent.Freekick:
+                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
+                    Narration.UpdateNarration(defendingPlayer.FirstName + " FAZ FALTA EM " + attackingPlayer.FirstName, Color.gray);
+                    return;
+
+                case MatchEvent.Penalty:
+                    DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz penalty.\n\n";
+                    Narration.UpdateNarration("PENALIDADE MAXIMA!!!", Color.gray);
+                    return;
+
+                case MatchEvent.Offside:
+                    DebugString += "\n\n" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " impedido no lance.\n\n";
+                    Narration.UpdateNarration("IMPEDIMENTO MARCADO", Color.gray);
+                    return;
             }
 
             switch (offensiveAction)
@@ -909,8 +911,8 @@ public class MatchController : MonoBehaviour
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
 
-        if (defendingPlayer.Speed > 70) totalChance += (float)GetAttributeBonus(defendingPlayer.Speed)/100;
-        if (defendingPlayer.Vision > 70) totalChance += (float)GetAttributeBonus(defendingPlayer.Vision)/100;
+        totalChance += (float)GetAttributeBonus(defendingPlayer.Speed)/100;
+        totalChance += (float)GetAttributeBonus(defendingPlayer.Vision)/100;
 
         float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
 
@@ -919,7 +921,7 @@ public class MatchController : MonoBehaviour
             type = MarkingType.Steal;
             defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueHigh * (0.5f * ((float)defendingPlayer.Stamina / 100)));
         }
-        else if (r > 15)
+        else if (r > 10)
         {
             type = MarkingType.Close;
             defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
@@ -1035,7 +1037,7 @@ public class MatchController : MonoBehaviour
         FieldZone zone = currentZone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
-        if ((int)zone > 12)
+        if ((int)zone < 4)
         {
             float offside = offsideChance;
             if (defendingPlayer == null) offside *= MainController.Instance.TeamStrategyData.team_Strategys[(int)defendingTeam.Strategy].OffsideTrickChance;
