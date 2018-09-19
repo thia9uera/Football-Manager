@@ -204,21 +204,21 @@ public class PlayerData : ScriptableObject
         TotalDribblesMissed,
         TotalCrossesMissed;
 
-    public void ApplyBonus(Team_Strategy _teamStrategy)
+    public void ApplyBonus()
     {
         Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
 
-        Prob_DefPosition = _teamStrategy.DefPosChance * _playerStrategy.DefPosChance;
-        Prob_OffPosition = _teamStrategy.OffPosChance * _playerStrategy.OffPosChance;
-        Prob_LeftPos = _playerStrategy.LeftPosChance * _playerStrategy.LeftPosChance;
-        Prob_RightPos = _playerStrategy.RightPosChance * _playerStrategy.RightPosChance;
-        Prob_Pass = _teamStrategy.PassingChance * _playerStrategy.PassingChance;
-        Prob_Shoot = _teamStrategy.ShootingChance * _playerStrategy.ShootingChance;
-        Prob_Crossing = _teamStrategy.CrossingChance * _playerStrategy.CrossingChance;
-        Prob_Dribble = _teamStrategy.DribblingChance * _playerStrategy.DribblingChance;
-        Prob_OffsideLine = _teamStrategy.OffsideTrickChance  * _playerStrategy.OffsideTrickChance;
-        Prob_Marking = _teamStrategy.MarkingChance * _playerStrategy.MarkingChance;
-        Prob_Tackling = _teamStrategy.TacklingChance * _playerStrategy.TacklingChance;
+        Prob_DefPosition = _playerStrategy.DefPosChance;
+        Prob_OffPosition = _playerStrategy.OffPosChance;
+        Prob_LeftPos = _playerStrategy.LeftPosChance;
+        Prob_RightPos = _playerStrategy.RightPosChance;
+        Prob_Pass = _playerStrategy.PassingChance;
+        Prob_Shoot = _playerStrategy.ShootingChance;
+        Prob_Crossing = _playerStrategy.CrossingChance;
+        Prob_Dribble = _playerStrategy.DribblingChance;
+        Prob_OffsideLine = _playerStrategy.OffsideTrickChance;
+        Prob_Marking = _playerStrategy.MarkingChance;
+        Prob_Tackling = _playerStrategy.TacklingChance;
 
     }
 
@@ -249,7 +249,7 @@ public class PlayerData : ScriptableObject
         return total;
     }
 
-    public float GetChancePerZone(MatchController.FieldZone _zone)
+    public float GetChancePerZone(MatchController.FieldZone _zone, bool _isTeamStrategyApplicable = false, Team_Strategy _teamStrategy = null)
     {
         float pct = 0f;
 
@@ -278,14 +278,25 @@ public class PlayerData : ScriptableObject
 
         AltPosition altPos = GetAltPosition(_zone);
 
-        if (altPos == AltPosition.Defensive) pct *= Prob_DefPosition;
-        else if (altPos == AltPosition.Offensive) pct *= Prob_OffPosition;
-        else if (altPos == AltPosition.Left) pct *= Prob_LeftPos;
-        else if (altPos == AltPosition.Right) pct *= Prob_RightPos;
-        else if (altPos == AltPosition.LeftDefensive) pct *= (Prob_LeftPos + Prob_DefPosition)/2;
-        else if (altPos == AltPosition.RightDefensive) pct *= (Prob_RightPos + Prob_DefPosition) / 2;
-        else if (altPos == AltPosition.LeftOffensive) pct *= (Prob_LeftPos + Prob_OffPosition) / 2;
-        else if (altPos == AltPosition.RightOffensive) pct *= (Prob_RightPos + Prob_OffPosition) / 2;
+        float teamDefPos = 1f;
+        float teamOffPos = 1f;
+        float teamLeftPos = 1f;
+        float teamRightPos = 1f;
+        if(_isTeamStrategyApplicable)
+        {
+            teamDefPos = _teamStrategy.DefPosChance;
+            teamOffPos = _teamStrategy.OffPosChance;
+            teamLeftPos = _teamStrategy.LeftPosChance;
+            teamRightPos = _teamStrategy.RighPosChance;
+        }
+
+        if (altPos == AltPosition.Defensive) pct *= Prob_DefPosition * teamDefPos;
+        else if (altPos == AltPosition.Offensive) pct *= Prob_OffPosition * teamDefPos;
+        else if (altPos == AltPosition.Left) pct *= Prob_LeftPos * teamLeftPos;
+        else if (altPos == AltPosition.Right) pct *= Prob_RightPos * teamRightPos;
+        else if (altPos == AltPosition.LeftDefensive) pct *= ((Prob_LeftPos + Prob_DefPosition)/2) * ((teamLeftPos + teamDefPos)/2);
+        else if (altPos == AltPosition.RightDefensive) pct *= ((Prob_RightPos + Prob_DefPosition)/2) * ((teamRightPos + teamDefPos)/2);
+        else if (altPos == AltPosition.LeftOffensive) pct *= ((Prob_LeftPos + Prob_OffPosition)/2) * ((teamLeftPos + teamOffPos)/2);
 
         return pct;
     }

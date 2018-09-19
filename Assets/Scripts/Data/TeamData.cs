@@ -55,11 +55,7 @@ public class TeamData : ScriptableObject
 
     public Team_Strategy GetStrategy()
     {
-        Team_StrategyData data = MainController.Instance.TeamStrategyData;
-
-        Team_Strategy strategy = data.team_Strategys[(int)Strategy];
-
-        return strategy;
+        return MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
     }
 
     public void ResetStatistics()

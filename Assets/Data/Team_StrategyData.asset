@@ -42,7 +42,23 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: Offensive
     Description: bla
     DefPosChance: 0.25
@@ -73,7 +89,23 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1.5
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: Defensive
     Description: bla
     DefPosChance: 2
@@ -104,7 +136,23 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: Deadlock
     Description: bla
     DefPosChance: 4
@@ -135,7 +183,23 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: WingOffensive
     Description: bla
     DefPosChance: 1
@@ -166,7 +230,23 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 2
     Target_Box: 1.5
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: CenterOffensive
     Description: bla
     DefPosChance: 0.25
@@ -197,7 +277,23 @@ MonoBehaviour:
     Target_CF: 2
     Target_RF: 1
     Target_Box: 2
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: Crossing
     Description: bla
     DefPosChance: 0.5
@@ -229,6 +325,22 @@ MonoBehaviour:
     Target_RF: 1.5
     Target_Box: 3
     OwnGoal: 0
+    LD: 0
+    CD: 0
+    RD: 0
+    LDM: 0
+    CDM: 0
+    RDM: 0
+    LM: 0
+    CM: 0
+    RM: 0
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: Pressure
     Description: bla
     DefPosChance: 1
@@ -259,7 +371,23 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1
   - Name: ForceOffside
     Description: bla
     DefPosChance: 0.5
@@ -290,4 +418,20 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1
-    OwnGoal: 0
+    OwnGoal: 1
+    LD: 1
+    CD: 1
+    RD: 1
+    LDM: 1
+    CDM: 1
+    RDM: 1
+    LM: 1
+    CM: 1
+    RM: 1
+    LAM: 1
+    CAM: 1
+    RAM: 1
+    LF: 1
+    CF: 1
+    RF: 1
+    Box: 1

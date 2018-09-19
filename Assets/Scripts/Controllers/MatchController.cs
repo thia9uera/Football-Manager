@@ -777,7 +777,7 @@ public class MatchController : MonoBehaviour
 
         foreach (PlayerData player in attackingTeam.Squad)
         {
-            chance = CalculatePresence(player, zone);
+            chance = CalculatePresence(player, zone, attackingTeam.GetStrategy());
             
             if (forcePlayer)
             {
@@ -826,7 +826,7 @@ public class MatchController : MonoBehaviour
         List<PlayerData> players = new List<PlayerData>();
         foreach (PlayerData player in defendingTeam.Squad)
         {
-            chance = CalculatePresence(player, zone);
+            chance = CalculatePresence(player, zone, defendingTeam.GetStrategy());
             if (player.Position != player.AssignedPosition) chance *= positionDebuff;
             if (chance >= 1f)
             {
@@ -894,9 +894,9 @@ public class MatchController : MonoBehaviour
         return activePlayer;
     }
 
-    private float CalculatePresence(PlayerData _player, FieldZone _zone)
+    private float CalculatePresence(PlayerData _player, FieldZone _zone, Team_Strategy _teamStrategy)
     {
-        float chance = _player.GetChancePerZone(_zone);
+        float chance = _player.GetChancePerZone(_zone, IsTeamStrategyApplicable(_zone), _teamStrategy);
 
         if (chance < 1f && chance > 0f)
         {
@@ -944,7 +944,7 @@ public class MatchController : MonoBehaviour
         float bonus = 0;
 
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
-
+       
         float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
         bonus = GetAttributeBonus(attackingPlayer.Passing);
         if (_marking == MarkingType.Close) pass *= 2f;
@@ -975,6 +975,16 @@ public class MatchController : MonoBehaviour
             if (_marking == MarkingType.Distance) header *= 2f;
             else if (_marking == MarkingType.None) header *= 3f;
             if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((pass * 5) + (bonus / 10))) > 18) header *= 2f;
+        }
+
+        if(IsTeamStrategyApplicable(zone))
+        {
+            Team_Strategy teamStrategy = attackingTeam.GetStrategy();
+            pass *= teamStrategy.PassingChance;
+            dribble *= teamStrategy.DribblingChance;
+            cross *= teamStrategy.CrossingChance;
+            shoot *= teamStrategy.ShootingChance;
+            header *= teamStrategy.ShootingChance;
         }
 
         if(attackingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK)
@@ -1018,7 +1028,6 @@ public class MatchController : MonoBehaviour
         DebugString += "Cross: " + cross + "\n";
         DebugString += "Shoot: " + shoot + "\n";
         DebugString += "Header: " + header + "\n\n";
-
 
         lastAction = offensiveAction;
         return action;
@@ -1363,6 +1372,14 @@ public class MatchController : MonoBehaviour
         float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
         bonus = GetAttributeBonus(attackingPlayer.Shooting);
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt(shoot * 5) + bonus / 10) > 18) shoot *= 2f;
+
+        if (IsTeamStrategyApplicable(zone))
+        {
+            Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
+            pass *= teamStrategy.PassingChance;
+            cross *= teamStrategy.CrossingChance;
+            shoot *= teamStrategy.ShootingChance;
+        }
 
         float total = pass + cross + shoot;
         pass = pass / total;
@@ -1731,6 +1748,34 @@ public class MatchController : MonoBehaviour
         }
 
         return best;
+    }
+
+    private bool IsTeamStrategyApplicable(FieldZone _zone)
+    {
+        bool value = false;
+        Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
+
+        switch (_zone)
+        {
+            case FieldZone.OwnGoal: value = teamStrategy.OwnGoal; break;
+            case FieldZone.LD: value = teamStrategy.LD; break;
+            case FieldZone.CD: value = teamStrategy.CD; break;
+            case FieldZone.RD: value = teamStrategy.RD; break;
+            case FieldZone.LDM: value = teamStrategy.LDM; break;
+            case FieldZone.CDM: value = teamStrategy.CDM; break;
+            case FieldZone.RDM: value = teamStrategy.RDM; break;
+            case FieldZone.LM: value = teamStrategy.LM; break;
+            case FieldZone.CM: value = teamStrategy.CM; break;
+            case FieldZone.RM: value = teamStrategy.RM; break;
+            case FieldZone.LAM: value = teamStrategy.LAM; break;
+            case FieldZone.CAM: value = teamStrategy.CAM; break;
+            case FieldZone.RAM: value = teamStrategy.RAM; break;
+            case FieldZone.LF: value = teamStrategy.LF; break;
+            case FieldZone.CF: value = teamStrategy.CF; break;
+            case FieldZone.RF: value = teamStrategy.RF; break;
+            case FieldZone.Box: value = teamStrategy.Box; break;
+        }
+        return value;
     }
 
     private void SwitchPossesion()

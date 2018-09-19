@@ -18,7 +18,7 @@ public class MatchTeamView : MonoBehaviour
         for(int i = 0; i < 11; i++)
         {
             PlayerData player = squad[i];
-            player.ApplyBonus(_team.GetStrategy());
+            player.ApplyBonus();
 
             MatchPlayerView item = Instantiate(playerTemplate, transform);
             ItemList.Add(item);

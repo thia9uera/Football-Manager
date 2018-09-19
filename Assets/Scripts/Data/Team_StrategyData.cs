@@ -34,6 +34,22 @@ public class Team_Strategy {
 	public float Target_RF;
 	public float Target_Box;
 	public bool OwnGoal;
+	public bool LD;
+	public bool CD;
+	public bool RD;
+	public bool LDM;
+	public bool CDM;
+	public bool RDM;
+	public bool LM;
+	public bool CM;
+	public bool RM;
+	public bool LAM;
+	public bool CAM;
+	public bool RAM;
+	public bool LF;
+	public bool CF;
+	public bool RF;
+	public bool Box;
 }
 
 public class Team_StrategyData : ScriptableObject {

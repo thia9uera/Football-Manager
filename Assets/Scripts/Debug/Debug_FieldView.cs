@@ -44,7 +44,7 @@ public class Debug_FieldView : MonoBehaviour
     public void Test()
     {
         Debug_ZoneView zone;
-        TestPlayer.ApplyBonus(MainController.Instance.TeamStrategyData.team_Strategys[dropDownTeamStrategy.value]);
+        TestPlayer.ApplyBonus();
         foreach (Transform t in transform)
         {
             zone = t.GetComponent<Debug_ZoneView>();

@@ -99,6 +99,10 @@ namespace SuperAshley.GoogleSpreadSheet
                         {
                             value = cellList[row][col];
                         }
+                        else if (info.FieldType == typeof(bool))
+                        {
+                            value = bool.Parse(cellList[row][col]);
+                        }
                         info.SetValue(data, value);
                     }
                     dataList.GetType().GetMethod("Add").Invoke(dataList, new object[] { data });
