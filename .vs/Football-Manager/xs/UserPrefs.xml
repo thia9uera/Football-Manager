@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controllers/MatchController.cs">
     <Files>
       <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="754" Column="59" />
-      <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="218" Column="88" />
+      <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="218" Column="56" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -1154,21 +1154,31 @@ public class MatchController : MonoBehaviour
         if (attackingPlayer.Position != attackingPlayer.AssignedPosition) attacking *= positionDebuff;
 
         int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
-        switch (attackRoll)
+
+        if (attackRoll >= 20)
         {
-            case 20:
-                DebugString += "\nAtacante ganhou bonus de 100% \n";
-                attacking = attacking * 2;
-                break;
-            case 2:
-                DebugString += "\nAtacante meia-bomba \n";
-                attacking = attacking * 0.5f;
-                break;
-            case 1:
+            DebugString += "\nAtacante ganhou bonus de 100% \n";
+            attacking *= 2;
+        }
+        else if (attackRoll >= 10)
+        {
+            attacking *= (float)(attackRoll - 9) / 100;
+        }
+        else if (attackRoll <= 1)
+        {
+            if (defendingPlayer == null)
+            {
+                DebugString += "\nAtacante perdeu a bola sozinho\n";
+                success = false;
+            }
+            else
+            {
                 DebugString += "\nAtacante ratiou \n";
                 attacking = attacking * 0.25f;
-                break;
+            }
         }
+          
+
 
         //Check if tackling is really happening  
         if (_marking == MarkingType.None)
@@ -1188,20 +1198,20 @@ public class MatchController : MonoBehaviour
             defending *= (float)defendingPlayer.Fatigue / 100;
             defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
-            switch (defenseRoll)
+
+            if (defenseRoll >= 20)
             {
-                case 20:
-                    DebugString += "\nDefensor ganhou bonus de 50% \n";
-                    defending = defending * 1.5f;
-                    break;
-                case 2:
-                    DebugString += "\nDefensor meia-bomba \n";
-                    defending = defending * 0.5f;
-                    break;
-                case 1:
-                    DebugString += "\nDefensor ratiou \n";
-                    defending = 0.25f;
-                    break;
+                DebugString += "\nDefensor ganhou bonus de 100% \n";
+                defending *= 2f;
+            }
+            else if (defenseRoll >= 10)
+            {
+                defending *= (float)(defenseRoll - 9) / 100;
+            }
+            else if (defenseRoll <= 1)
+            {
+                DebugString += "\nDefensor ratiou \n";
+                defending = 0.5f;
             }
 
             agilityBonus = (float)GetAttributeBonus(defendingPlayer.Agility) / 100;
@@ -1235,15 +1245,11 @@ public class MatchController : MonoBehaviour
 
             defendingPlayer.TotalTackles++;
         }
-        else
-        {
-            DebugString += "\nAtacante tem espaco pra jogar\n";
-            defensiveAction = PlayerData.PlayerAction.None;
-            success |= attacking >= Random.Range(0f, 1f);
-        }
 
         float fatigueLost = (fatigueRate * (0.5f * ((float)attackingPlayer.Stamina / 100)));
         attackingPlayer.Fatigue -= Mathf.FloorToInt(fatigueLost);
+
+        if (defendingPlayer == null) defensiveAction = PlayerData.PlayerAction.None;
 
         return success;
     }
