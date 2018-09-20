@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cfdd1892f3d4240aa21f7d2cbe1824, type: 3}
   m_Name: Localization
   m_EditorClassIdentifier: 
-  CurrentLanguage: 0
+  PLAYER_1: "Ronaldinho  Ga\xFAcho"
+  PLAYER_2: 'Amarello '
+  TEAM_1: Brasil
+  TEAM_2: Cadena Rivers
+  currentlanguage: 1
   positionKeys:
   - Goalkeeper
   - LeftDefender

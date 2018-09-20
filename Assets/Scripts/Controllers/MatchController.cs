@@ -125,6 +125,8 @@ public class MatchController : MonoBehaviour
     private int fatigueHigh;
     private float fatigueRecoverHalfTime;
 
+    private LocalizationData localization;
+
     [SerializeField]
     private TextMeshProUGUI version;
 
@@ -135,6 +137,8 @@ public class MatchController : MonoBehaviour
     private void Awake()
     {
         Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
+
+        localization = MainController.Instance.Localization;
 
         positionDebuff = modifiers.PositionDebuff;
         attackingBonusLow = modifiers.AttackBonusLow;
@@ -154,6 +158,8 @@ public class MatchController : MonoBehaviour
     {
         HomeTeam = _homeTeam;
         AwayTeam = _awayTeam;
+
+        print(localization.Localize("nar_Pass_01"));
 
         attackingTeam = HomeTeam;
         defendingTeam = AwayTeam;
@@ -278,6 +284,11 @@ public class MatchController : MonoBehaviour
         Field.UpdateFieldArea((int)currentZone);
         HomeTeamSquad.UpdateFatigue();
         AwayTeamSquad.UpdateFatigue();
+
+        if(attackingPlayer!= null) localization.PLAYER_1 = attackingPlayer.GetFullName();
+        if (defendingPlayer != null) localization.PLAYER_2 = defendingPlayer.GetFullName();
+        localization.TEAM_1 = attackingTeam.Name;
+        localization.TEAM_2 = defendingTeam.Name;
 
         //IF LAST ACTION RESULTED IN A GOAL
         switch (matchEvent)
@@ -589,10 +600,13 @@ public class MatchController : MonoBehaviour
                     DebugString += "PASSOU A BOLA! \n ________________________________\n";
                     currentZone = GetTargetZone();
                     attackingPlayer.TotalPasses++;
-                    string passer = attackingPlayer.FirstName;
+                    string passer = attackingPlayer.GetFullName();
                     keepAttacker = true;
                     attackingPlayer = GetAttackingPlayer(currentZone);
-                    Narration.UpdateNarration( passer + " PASSA PARA " + attackingPlayer.FirstName, attackingTeam.PrimaryColor);
+
+                    localization.PLAYER_1 = passer;
+                    localization.PLAYER_2 = attackingPlayer.GetFullName();
+                    Narration.UpdateNarration("nar_Pass_01", attackingTeam.PrimaryColor);
                     break;
 
                 case PlayerData.PlayerAction.Dribble:

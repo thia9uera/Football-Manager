@@ -5,6 +5,9 @@ using I2.Loc;
 [CreateAssetMenu(fileName = "Localization", menuName = "Localization Data", order = 1)]
 public class LocalizationData : ScriptableObject
 {
+    [HideInInspector]
+    public string PLAYER_1, PLAYER_2, TEAM_1, TEAM_2;
+
     public enum Language
     {
         English,
@@ -22,6 +25,11 @@ public class LocalizationData : ScriptableObject
         }
 
         return language;
+    }
+
+    public void Initialize()
+    {
+        CurrentLanguage = currentlanguage;
     }
 
     [SerializeField]
@@ -55,4 +63,11 @@ public class LocalizationData : ScriptableObject
 
         return str;
     }
+
+    public string Localize(string _text)
+    {
+        LocalizedString str = _text;
+        return str;
+    }
+
 }
