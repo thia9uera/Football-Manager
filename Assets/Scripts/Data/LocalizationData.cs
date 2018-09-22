@@ -6,8 +6,7 @@ using I2.Loc;
 public class LocalizationData : ScriptableObject
 {
     [HideInInspector]
-    public string PLAYER_1, PLAYER_2, TEAM_1, TEAM_2;
-
+    public string PLAYER_1, PLAYER_2, TEAM_1, TEAM_2, ZONE, EXTRA_1;
     public enum Language
     {
         English,
@@ -60,6 +59,27 @@ public class LocalizationData : ScriptableObject
     public string GetShortPositionString(PlayerData.PlayerPosition _pos)
     {
         LocalizedString str = "posTag_" + positionKeys[(int)_pos];
+
+        return str;
+    }
+
+    public string GetZoneString(MatchController.FieldZone _zone)
+    {
+        int zone = (int)_zone;
+        string str = "";
+
+        if(zone > 12)
+        {
+            str = "zone_Attack";
+        }
+        else if(zone > 3)
+        {
+            str = "zone_Midfield";
+        }
+        else
+        {
+            str = "zone_Defense";
+        }
 
         return str;
     }

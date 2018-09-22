@@ -15,7 +15,7 @@ public class MatchNarrationTextView : MonoBehaviour
 
     public void Populate(string _text, Color _color)
     {
-        label.text = MainController.Instance.Localization.Localize("nar_Pass_01");
+        label.text = _text;
         frame.color = _color;
     }
 }
