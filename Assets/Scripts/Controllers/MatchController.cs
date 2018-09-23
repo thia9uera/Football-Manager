@@ -387,7 +387,7 @@ public class MatchController : MonoBehaviour
         {
             if (matchEvent == MatchEvent.Freekick)
             {
-                Narration.UpdateNarration("nar_WrongFreekick_", Color.gray, 3);
+                Narration.UpdateNarration("nar_WrongFreekick_", Color.gray, 1);
                 DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
             }
             else if (matchEvent == MatchEvent.Penalty)
@@ -672,15 +672,18 @@ public class MatchController : MonoBehaviour
                         {
                             case 0:
                                 narration = "nar_Cross_";
+                                var = 1;
                                 break;
                             case 1:
                                 narration = "nar_BestCross_";
+                                var = 3;
                                 break;
                             case -1:
                                 narration = "nar_WorstCross_";
+                                var = 1;
                                 break;
                         }
-                        Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, 4);
+                        Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     }
                     currentZone = GetTargetZone();
                     attackingPlayer.TotalCrosses++;
@@ -728,14 +731,14 @@ public class MatchController : MonoBehaviour
             {
                 case PlayerData.PlayerAction.None:
                     DebugString += "RATIOU FEIO E PERDEU A BOLA! \n ________________________________\n";
-                    Narration.UpdateNarration("nar_LostPossession_", attackingTeam.PrimaryColor, 5);
+                    Narration.UpdateNarration("nar_LostPossession_", attackingTeam.PrimaryColor, 4);
                     break;
 
                 case PlayerData.PlayerAction.Pass:
                     if (defensiveAction == PlayerData.PlayerAction.None)
                     {
                         DebugString += "ERROU O PASSE! \n ________________________________\n";
-                        Narration.UpdateNarration("nar_WrongPass_", Color.gray, 5);
+                        Narration.UpdateNarration("nar_WrongPass_", Color.gray, 1);
                         currentZone = GetTargetZone();
                         attackingPlayer.TotalPassesMissed++;
                     }
@@ -747,9 +750,11 @@ public class MatchController : MonoBehaviour
                             case -1:
                             case 0:
                                 narration = "nar_BlockPass_";
+                                var = 1;
                                 break;
                             case 1:
                                 narration = "nar_BestBlockPass_";
+                                var = 1;
                                 break;
                         }
                         Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, var);
@@ -798,11 +803,12 @@ public class MatchController : MonoBehaviour
                             case 0:
                             case 1:
                                 narration = "nar_BlockCross_";
+                                var = 1;
                                 break;
 
                             case -1:
                                 narration = "nar_WorstBlockCross_";
-                                var = 2;
+                                var = 1;
                                 break;
                         }
                         Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, var);
