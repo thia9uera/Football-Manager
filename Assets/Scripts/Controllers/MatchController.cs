@@ -594,6 +594,7 @@ public class MatchController : MonoBehaviour
     private void ResolveAction()
     {
         string narration = "";
+        int var = 1;
         if (IsActionSuccessful(marking))
         {
             lastActionSuccessful = true;
@@ -618,32 +619,37 @@ public class MatchController : MonoBehaviour
 
                     switch(attackExcitment)
                     {
-                        case 0 : narration = "nar_Pass_"; break;
-                        case 1: narration = "nar_BestPass_"; break;
-                        case -1: narration = "nar_WorstPass_"; break;
+                        case 0 :
+                            narration = "nar_Pass_";
+                            break;
+                        case 1:
+                            narration = "nar_BestPass_";
+                            var = 2;
+                            break;
+                        case -1:
+                            narration = "nar_WorstPass_";
+                            break;
                     }
                     
-                    Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, 5);
+                    Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     break;
 
                 case PlayerData.PlayerAction.Dribble:
                     DebugString += "DRIBLOU! \n ________________________________\n";
                     if (defendingPlayer != null)
                     {
-                        int var = 1;
                         switch (attackExcitment)
                         {
                             case 0:
                                 narration = "nar_Dribble_";
-                                var = 5;
+                                var = 2;
                                 break;
                             case 1:
                                 narration = "nar_BestDribble_";
-                                var = 4;
+                                var = 3;
                                 break;
                             case -1:
                                 narration = "nar_WorstDribble_";
-                                var = 2;
                                 break;
                         }
                         Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
@@ -664,9 +670,15 @@ public class MatchController : MonoBehaviour
                     {
                         switch (attackExcitment)
                         {
-                            case 0: narration = "nar_Cross_"; break;
-                            case 1: narration = "nar_BestCross_"; break;
-                            case -1: narration = "nar_WorstCross_"; break;
+                            case 0:
+                                narration = "nar_Cross_";
+                                break;
+                            case 1:
+                                narration = "nar_BestCross_";
+                                break;
+                            case -1:
+                                narration = "nar_WorstCross_";
+                                break;
                         }
                         Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, 4);
                     }
@@ -676,7 +688,7 @@ public class MatchController : MonoBehaviour
 
                 case PlayerData.PlayerAction.Shot:
                     DebugString += "CHUTOU! \n";
-                    Narration.UpdateNarration("nar_Shot_", attackingTeam.PrimaryColor, 5);
+                    Narration.UpdateNarration("nar_Shot_", attackingTeam.PrimaryColor, 3);
                     ResolveShot(marking);
                     attackingPlayer.TotalShots++;
                     break;
@@ -730,18 +742,14 @@ public class MatchController : MonoBehaviour
                     else
                     {
                         DebugString += "PASSE BLOQUEADO! \n ________________________________\n";
-                        int var = 4;
                         switch (defenseExcitement)
                         {
+                            case -1:
                             case 0:
                                 narration = "nar_BlockPass_";
                                 break;
                             case 1:
                                 narration = "nar_BestBlockPass_";
-                                break;
-                            case -1:
-                                narration = "nar_WorstBlockPass_";
-                                var = 2;
                                 break;
                         }
                         Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, var);
@@ -785,15 +793,13 @@ public class MatchController : MonoBehaviour
                     else
                     {
                         DebugString += "CRUZAMENTO BLOQUEADO! \n ________________________________\n";
-                        int var = 3;
                         switch (defenseExcitement)
                         {
                             case 0:
+                            case 1:
                                 narration = "nar_BlockCross_";
                                 break;
-                            case 1:
-                                narration = "nar_BestBlockCross_";
-                                break;
+
                             case -1:
                                 narration = "nar_WorstBlockCross_";
                                 var = 2;
