@@ -497,22 +497,22 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 905465068}
-    - target: {fileID: 114934632690598704, guid: 450466c7fca6e454cb96d3aaca810f78,
+    - target: {fileID: 114812578489986146, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114934632690598704, guid: 450466c7fca6e454cb96d3aaca810f78,
+    - target: {fileID: 114812578489986146, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114812578489986146, guid: 450466c7fca6e454cb96d3aaca810f78,
+    - target: {fileID: 114934632690598704, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114812578489986146, guid: 450466c7fca6e454cb96d3aaca810f78,
+    - target: {fileID: 114934632690598704, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -535,16 +535,6 @@ Prefab:
     - target: {fileID: 114423386504340446, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224180770735315258, guid: 450466c7fca6e454cb96d3aaca810f78,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000044163477
-      objectReference: {fileID: 0}
-    - target: {fileID: 114199573927085586, guid: 450466c7fca6e454cb96d3aaca810f78,
-        type: 2}
-      propertyPath: matchSpeed
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -691,11 +681,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -9952,11 +9942,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
