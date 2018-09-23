@@ -63,7 +63,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1537629621072
+  Google_LastUpdatedVersion: 1537702077009
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
@@ -707,14 +707,6 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_2]} interrompe a troca de passes do {[TEAM_1]}'
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_BlockPass_5
-    TermType: 0
-    Description: 
-    Languages:
-    - 
     - '{[PLAYER_2]} corta o passe de {[PLAYER_1]}'
     Flags: 0000
     Languages_Touch: []
@@ -723,7 +715,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_2]} cresceu pra cima de {[PLAYER_2]}'
+    - "{[PLAYER_2]} n\xE3o d\xE1 chance para {[PLAYER_1]} e fica com a bola"
     Flags: 0000
     Languages_Touch: []
   - Term: nar_BestBlockPass_2
@@ -743,14 +735,6 @@ MonoBehaviour:
     Flags: 0000
     Languages_Touch: []
   - Term: nar_BestBlockPass_4
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - "{[PLAYER_2]} n\xE3o d\xE1 chance para {[PLAYER_1]} e fica com a bola"
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_BestBlockPass_5
     TermType: 0
     Description: 
     Languages:
@@ -787,15 +771,6 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - Passe de {[PLAYER_1]} bate nas costas de {[PLAYER_2]} que estava perdido no
-      lance
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_WorstBlockPass_5
-    TermType: 0
-    Description: 
-    Languages:
-    - 
     - Sem querer {[PLAYER_2]} bloqueia o passe de {[PLAYER_1]}
     Flags: 0000
     Languages_Touch: []
@@ -820,18 +795,10 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_1]} levanta a bola'
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_Cross_4
-    TermType: 0
-    Description: 
-    Languages:
-    - 
     - '{[PLAYER_1]} tenta o cruzamento'
     Flags: 0000
     Languages_Touch: []
-  - Term: nar_Cross_5
+  - Term: nar_Cross_4
     TermType: 0
     Description: 
     Languages:
@@ -864,14 +831,6 @@ MonoBehaviour:
     Flags: 0000
     Languages_Touch: []
   - Term: nar_BestCross_4
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - Que lindo cruzamento de {[PLAYER_1]}!
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_BestCross_5
     TermType: 0
     Description: 
     Languages:
@@ -909,14 +868,6 @@ MonoBehaviour:
     Languages:
     - 
     - "P\xE9ssimo cruzamento de {[PLAYER_1]}"
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_WorstCross_5
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - '{[PLAYER_1]} tenta o cruzamento que sai meio errado'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_WrongCross_1
@@ -991,15 +942,6 @@ MonoBehaviour:
     - A bola bate em {[PLAYER_2]} e bloqueia o cruzamento de {[PLAYER_1]}
     Flags: 0000
     Languages_Touch: []
-  - Term: nar_WorstBlockCross_3
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - Cruzamento de {[PLAYER_1]} bate nas costas de {[PLAYER_2]} que estava perdido
-      no lance
-    Flags: 0000
-    Languages_Touch: []
   - Term: nar_Dribble_1
     TermType: 0
     Description: 
@@ -1021,7 +963,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - '{[PLAYER_1]} humiliates {[PLAYER_2]}'
-    - '{[PLAYER_1]} tira {[PLAYER_2]} da jogada com drible'
+    - '{[PLAYER_1]} tira {[PLAYER_2]} da jogada com um drible'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Dribble_4
@@ -1069,14 +1011,6 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_1]} entorta e tonteia {[PLAYER_2]}'
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_BestDribble_5
-    TermType: 0
-    Description: 
-    Languages:
-    - 
     - '{[PLAYER_1]} pedala e passa por {[PLAYER_2]}'
     Flags: 0000
     Languages_Touch: []
@@ -1094,32 +1028,6 @@ MonoBehaviour:
     Languages:
     - 
     - "{[PLAYER_1]} dribla todo estranho e deixa {[PLAYER_2]} para tr\xE1s"
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_WorstDribble_3
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - '{[PLAYER_2]} fica olhando {[PLAYER_1]} se atrapalhar com a bola e acaba o deixando
-      escapar'
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_WorstDribble_4
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - "{[PLAYER_1]} quase cai tentano o drible mas deixa {[PLAYER_2]} pra tr\xE1s
-      rindo"
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_WorstDribble_5
-    TermType: 0
-    Description: 
-    Languages:
-    - 
-    - "Ningu\xE9m entende a jogada de {[PLAYER_1]} mas ele passa por {[PLAYER_2]} "
     Flags: 0000
     Languages_Touch: []
   - Term: nar_WrongDribble_1
@@ -1330,7 +1238,7 @@ MonoBehaviour:
     - '{[PLAYER_1]} chuta por cima do gol'
     Flags: 0000
     Languages_Touch: []
-  - Term: nar_PenalyTake_1
+  - Term: nar_PenaltyTake_1
     TermType: 0
     Description: 
     Languages:
@@ -1399,7 +1307,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - '{[PLAYER_1]} lost the ball'
-    - "Ningu\xE9m aparece na jogada e a bola sobra {[ZONE]} do {[TEAM_1]}"
+    - "Ningu\xE9m aparece na jogada e a bola sobra"
     Flags: 0000
     Languages_Touch: []
   - Term: nar_EmptyPlay_2
@@ -1407,7 +1315,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - '{[PLAYER_1]} lost the ball'
-    - Times se perdem e a bola sobra {[ZONE]} do {[TEAM_1]}
+    - Times se perdem e a bola sobra
     Flags: 0000
     Languages_Touch: []
   - Term: nar_EmptyPlay_3
@@ -1415,15 +1323,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - '{[PLAYER_1]} lost the ball'
-    - Bola perdida {[ZONE]} do {[TEAM_1]}
-    Flags: 0000
-    Languages_Touch: []
-  - Term: nar_EmptyPlay_4
-    TermType: 0
-    Description: 
-    Languages:
-    - '{[PLAYER_1]} lost the ball'
-    - 
+    - Bola perdida
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Steal_1
@@ -1466,6 +1366,22 @@ MonoBehaviour:
     - "{[PLAYER_2]} defende a cabe\xE7ada de {[PLAYER_1]}"
     Flags: 0000
     Languages_Touch: []
+  - Term: nar_BestSaveHeader_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "{[PLAYER_2]} se estica todo e defende a cabe\xE7ada de {[PLAYER_1]}"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_WorstSaveHeader_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "A cabe\xE7ada de {[PLAYER_1]} bate nas costas do goleiro {[PLAYER_2]}"
+    Flags: 0000
+    Languages_Touch: []
   - Term: nar_SaveFreekick_1
     TermType: 0
     Description: 
@@ -1474,12 +1390,44 @@ MonoBehaviour:
     - "{[PLAYER_2]} defende a cobran\xE7a de {[PLAYER_1]}"
     Flags: 0000
     Languages_Touch: []
+  - Term: nar_BestSaveFreekick_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - Defesa impressionante do goleiro {[PLAYER_2]}!
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_WorstSaveFreekick
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "A bola quase escapa da m\xE3os de {[PLAYER_2]} que defende em dois tempos"
+    Flags: 0000
+    Languages_Touch: []
   - Term: nar_SavePenalty_1
     TermType: 0
     Description: 
     Languages:
     - '{[PLAYER_2]} stops the penalty from {[PLAYER_1]}'
     - "{[PLAYER_2]} defende a cobran\xE7a de p\xEAnalti de {[PLAYER_1]}"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_BestSavePenalty_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "O goleiro {[PLAYER_2]} pula no canto certo e defende o p\xEAnalti!"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_WorstSavePenalty_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - '{[PLAYER_2]} sai errado mas consegue defender com a pontinha dos dedos'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Offside_1

@@ -317,7 +317,7 @@ public class MatchController : MonoBehaviour
                     attackingBonus = 1f;
                     Field.UpdateFieldArea((int)currentZone);
 
-                    Narration.UpdateNarration("RECOMECA A PARTIDA", Color.gray);
+                    Narration.UpdateNarration("nar_MatchRestart_", Color.gray);
                     return;
                 }
 
@@ -609,12 +609,12 @@ public class MatchController : MonoBehaviour
                     DebugString += "PASSOU A BOLA! \n ________________________________\n";
                     currentZone = GetTargetZone();
                     attackingPlayer.TotalPasses++;
-                    string passer = attackingPlayer.GetFullName();
+                    string passer = attackingPlayer.FirstName;
                     keepAttacker = true;
                     attackingPlayer = GetAttackingPlayer(currentZone);
 
                     localization.PLAYER_1 = passer;
-                    localization.PLAYER_2 = attackingPlayer.GetFullName();
+                    localization.PLAYER_2 = attackingPlayer.FirstName;
 
                     switch(attackExcitment)
                     {
@@ -630,13 +630,23 @@ public class MatchController : MonoBehaviour
                     DebugString += "DRIBLOU! \n ________________________________\n";
                     if (defendingPlayer != null)
                     {
+                        int var = 1;
                         switch (attackExcitment)
                         {
-                            case 0: narration = "nar_Dribble_"; break;
-                            case 1: narration = "nar_BestDribble_"; break;
-                            case -1: narration = "nar_WorstDribble_"; break;
+                            case 0:
+                                narration = "nar_Dribble_";
+                                var = 5;
+                                break;
+                            case 1:
+                                narration = "nar_BestDribble_";
+                                var = 4;
+                                break;
+                            case -1:
+                                narration = "nar_WorstDribble_";
+                                var = 2;
+                                break;
                         }
-                        Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, 5);
+                        Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     }
                     currentZone = GetTargetZone();
                     keepAttacker = true;
@@ -658,7 +668,7 @@ public class MatchController : MonoBehaviour
                             case 1: narration = "nar_BestCross_"; break;
                             case -1: narration = "nar_WorstCross_"; break;
                         }
-                        Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, 5);
+                        Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, 4);
                     }
                     currentZone = GetTargetZone();
                     attackingPlayer.TotalCrosses++;
@@ -720,13 +730,21 @@ public class MatchController : MonoBehaviour
                     else
                     {
                         DebugString += "PASSE BLOQUEADO! \n ________________________________\n";
+                        int var = 4;
                         switch (defenseExcitement)
                         {
-                            case 0: narration = "nar_BlockPass_"; break;
-                            case 1: narration = "nar_BestBlockPass_"; break;
-                            case -1: narration = "nar_WorstBlockPass_"; break;
+                            case 0:
+                                narration = "nar_BlockPass_";
+                                break;
+                            case 1:
+                                narration = "nar_BestBlockPass_";
+                                break;
+                            case -1:
+                                narration = "nar_WorstBlockPass_";
+                                var = 2;
+                                break;
                         }
-                        Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, 5);
+                        Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, var);
                         keepDefender = true;
                     }
                     break;
@@ -767,13 +785,21 @@ public class MatchController : MonoBehaviour
                     else
                     {
                         DebugString += "CRUZAMENTO BLOQUEADO! \n ________________________________\n";
+                        int var = 3;
                         switch (defenseExcitement)
                         {
-                            case 0: narration = "nar_BlockCross_"; break;
-                            case 1: narration = "nar_BestBlockCross_"; break;
-                            case -1: narration = "nar_WorstBlockCross_"; break;
+                            case 0:
+                                narration = "nar_BlockCross_";
+                                break;
+                            case 1:
+                                narration = "nar_BestBlockCross_";
+                                break;
+                            case -1:
+                                narration = "nar_WorstBlockCross_";
+                                var = 2;
+                                break;
                         }
-                        Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, 3);
+                        Narration.UpdateNarration(narration, defendingTeam.PrimaryColor, var);
                     }
                     break;
 
@@ -822,16 +848,17 @@ public class MatchController : MonoBehaviour
         {
             forcePlayer = true;
         }
-        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Cross)
+        else if (offensiveAction == PlayerData.PlayerAction.Pass && lastActionSuccessful)
         {
-            if (lastActionSuccessful)
-            {
-                if(offensiveAction == PlayerData.PlayerAction.Pass) forcePlayer = true;
-                excludeLastPlayer = true;
-            }
+            forcePlayer = true;
+            excludeLastPlayer = true;
+        }
+        else if (offensiveAction == PlayerData.PlayerAction.Cross && lastActionSuccessful)
+        {
+            excludeLastPlayer = true;
         }
 
-        List<PlayerData> players = new List<PlayerData>();
+            List<PlayerData> players = new List<PlayerData>();
 
         foreach (PlayerData player in attackingTeam.Squad)
         {
@@ -869,7 +896,10 @@ public class MatchController : MonoBehaviour
             return GetTopPlayerByAttribute(players.ToArray(), PlayerData.PlayerAttributes.Freekick);
         }
 
-        return GetActivePlayer(players); ;
+        PlayerData playa = GetActivePlayer(players);
+        if (forcePlayer && playa == null) print("List: " + players.Count);
+
+        return playa;
     }
 
     private PlayerData GetDefendingPlayer(FieldZone _zone)
@@ -918,17 +948,17 @@ public class MatchController : MonoBehaviour
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= (float)player.Fatigue / 100;
             bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
-            if (player.Position != player.AssignedPosition) stats *= positionDebuff;
+            //if (player.Position != player.AssignedPosition) stats *= positionDebuff;
 
             int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
-            if (r > 18)
+            if (r >= 20)
             {
-                stats *= 1.5f;
+                stats *= 1.75f;
             }
-            else if (r < 3)
+            else if (r <= 1)
             {
-                stats *= 0.25f;
+                stats *= 0.5f;
             }
 
             total += stats;
@@ -943,7 +973,7 @@ public class MatchController : MonoBehaviour
             float value = compareList[i].Value/total;
 
             cumulative += value;
-            if (random < cumulative)
+            if (random <= cumulative)
             {
                 activePlayer = compareList[i].Key;
                 break;
@@ -979,17 +1009,15 @@ public class MatchController : MonoBehaviour
         if (r >= 20)
         {
             type = MarkingType.Steal;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueHigh * (0.5f * ((float)defendingPlayer.Stamina / 100)));
+            defendingPlayer.Fatigue -= fatigueHigh * (25 / (float)defendingPlayer.Stamina);
         }
         else if (r > 10)
         {
             type = MarkingType.Close;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
         }
         else if (r > 3)
         {
             type = MarkingType.Distance;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueLow * (0.5f * ((float)defendingPlayer.Stamina / 100)));
         }
 
         return type;
@@ -1101,7 +1129,8 @@ public class MatchController : MonoBehaviour
         int defenseBonusChance = 0;
         float fault = faultChance;
         float agilityBonus;
-        int fatigueRate = 0;
+        int attFatigueRate = fatigueLow;
+        int defFatigueRate = fatigueLow;
 
         FieldZone zone = currentZone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -1140,7 +1169,7 @@ public class MatchController : MonoBehaviour
                 }
 
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
-                fatigueRate = fatigueLow;
+                attFatigueRate = fatigueLow;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 break;
 
@@ -1154,7 +1183,7 @@ public class MatchController : MonoBehaviour
 
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Tackling);
-                fatigueLow = fatigueHigh;
+                attFatigueRate = fatigueHigh;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
 
@@ -1168,7 +1197,7 @@ public class MatchController : MonoBehaviour
 
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
-                fatigueRate = fatigueMedium;
+                attFatigueRate = fatigueMedium;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
 
@@ -1182,7 +1211,7 @@ public class MatchController : MonoBehaviour
 
                 attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Shooting);
-                fatigueRate = fatigueMedium;
+                attFatigueRate = fatigueLow;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
 
@@ -1196,7 +1225,7 @@ public class MatchController : MonoBehaviour
 
                 attacking = (float)(attackingPlayer.Heading + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Heading);
-                fatigueRate = fatigueMedium;
+                attFatigueRate = fatigueMedium;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
                 break;
         }
@@ -1256,7 +1285,7 @@ public class MatchController : MonoBehaviour
         if (isTackling)
         {  
             defending *= (float)defendingPlayer.Fatigue / 100;
-            defendingPlayer.Fatigue -= Mathf.FloorToInt(fatigueMedium * (0.5f * ((float)defendingPlayer.Stamina / 100)));
+            defFatigueRate = fatigueMedium;
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
 
             if (defenseRoll >= 20)
@@ -1309,10 +1338,11 @@ public class MatchController : MonoBehaviour
             defendingPlayer.TotalTackles++;
         }
 
-        float fatigueLost = (fatigueRate * (0.5f * ((float)attackingPlayer.Stamina / 100)));
-        attackingPlayer.Fatigue -= Mathf.FloorToInt(fatigueLost);
+        attackingPlayer.Fatigue -= attFatigueRate * (25 / (float)attackingPlayer.Stamina);
 
         if (defendingPlayer == null) defensiveAction = PlayerData.PlayerAction.None;
+        else defendingPlayer.Fatigue -= defFatigueRate * (25 / (float)defendingPlayer.Stamina);
+
 
         return success;
     }
@@ -1425,17 +1455,20 @@ public class MatchController : MonoBehaviour
             defending *= 1.50f;
             DebugString += "\n GOLEIRO GANHOU BONUS DE 50%";
             defenseExcitement = 1;
+            defendingPlayer.Fatigue -= fatigueLow * (25 / (float)defendingPlayer.Stamina);
         }
         else if(keeperRoll >= 10)
         {
             defending *= (float)(keeperRoll - 9) / 100;
             defenseExcitement = 0;
+            defendingPlayer.Fatigue -= fatigueMedium * (25 / (float)defendingPlayer.Stamina);
         }
         else if(keeperRoll <=1)
         {
             DebugString += "\n GOLEIRO SAIU ERRADO";
             defending *= 0.5f;
             defenseExcitement = -1;
+            defendingPlayer.Fatigue -= fatigueHigh * (25 / (float)defendingPlayer.Stamina);
         }
 
 

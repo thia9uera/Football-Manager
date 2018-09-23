@@ -82,10 +82,22 @@ public class PlayerData : ScriptableObject
 
     [Range(0, 100)]
     public int Stability = 50;
- 
+
     //Attributes that change during gameplay
+    private float fatigue = 100f;
     [HideInInspector]
-    public int Fatigue = 100;
+    public float Fatigue
+    {
+        get
+        {
+            return fatigue;
+        }
+        set
+        {
+            fatigue = value;
+            if (fatigue <= 0) fatigue = 0.01f;
+        }
+    }
 
     [HideInInspector]
     public PlayerPosition AssignedPosition;

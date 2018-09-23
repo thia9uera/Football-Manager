@@ -89,10 +89,10 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 1
     Target_Box: 1.5
-    OwnGoal: 1
-    LD: 1
-    CD: 1
-    RD: 1
+    OwnGoal: 0
+    LD: 0
+    CD: 0
+    RD: 0
     LDM: 1
     CDM: 1
     RDM: 1
@@ -146,13 +146,13 @@ MonoBehaviour:
     LM: 1
     CM: 1
     RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    LAM: 0
+    CAM: 0
+    RAM: 0
+    LF: 0
+    CF: 0
+    RF: 0
+    Box: 0
   - Name: Deadlock
     Description: bla
     DefPosChance: 4
@@ -193,13 +193,13 @@ MonoBehaviour:
     LM: 1
     CM: 1
     RM: 1
-    LAM: 1
-    CAM: 1
-    RAM: 1
-    LF: 1
-    CF: 1
-    RF: 1
-    Box: 1
+    LAM: 0
+    CAM: 0
+    RAM: 0
+    LF: 0
+    CF: 0
+    RF: 0
+    Box: 0
   - Name: WingOffensive
     Description: bla
     DefPosChance: 1
@@ -230,9 +230,9 @@ MonoBehaviour:
     Target_CF: 1
     Target_RF: 2
     Target_Box: 1.5
-    OwnGoal: 1
+    OwnGoal: 0
     LD: 1
-    CD: 1
+    CD: 0
     RD: 1
     LDM: 1
     CDM: 1
@@ -277,9 +277,9 @@ MonoBehaviour:
     Target_CF: 2
     Target_RF: 1
     Target_Box: 2
-    OwnGoal: 1
+    OwnGoal: 0
     LD: 1
-    CD: 1
+    CD: 0
     RD: 1
     LDM: 1
     CDM: 1
