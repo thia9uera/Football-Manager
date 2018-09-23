@@ -24,7 +24,7 @@ public class LeaderboardTeamView : MonoBehaviour
         winsLabel.text = _team.TotalWins.ToString();
         lostsLabel.text = _team.TotalLosts.ToString();
         drawsLabel.text = _team.TotalDraws.ToString();
-        goalslabel.text = _team.TotalGoalsAgainst.ToString();
+        goalslabel.text = _team.TotalGoals.ToString();
         goalsAgainstLabel.text = _team.TotalGoalsAgainst.ToString();
 
         if (_index % 2 != 0) frame.color = Color.gray;
