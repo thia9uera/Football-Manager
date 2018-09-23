@@ -31,18 +31,21 @@ public class LeaderboardView : MonoBehaviour
     public GameObject headerPlayers;
     public GameObject headerTeams;
 
+    private string playerSorting = "Name";
+    private string teamSorting = "Name";
+
     public void Show()
     {
         gameObject.SetActive(true);
         if (type == LeaderboardType.Players)
         {
             PopulatePlayers();
-
+            SortBy(playerSorting);
         }
         else
         {
             PopulateTeams();
-
+            SortBy(teamSorting);
         }
     }
 
@@ -118,6 +121,8 @@ public class LeaderboardView : MonoBehaviour
     public void SortBy(string _stat)
     {
         ClearList();
+        if (type == LeaderboardType.Players) playerSorting = _stat;
+        else teamSorting = _stat;
 
         if (type == LeaderboardType.Players)
         {

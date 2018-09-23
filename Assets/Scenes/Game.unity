@@ -4287,7 +4287,7 @@ MonoBehaviour:
     type: 2}
   teamTeamplate: {fileID: 114329492826220060, guid: 2e49669a105680547acc518a5691a61b,
     type: 2}
-  type: 1
+  type: 0
   btnPlayers: {fileID: 324119964}
   btnTeams: {fileID: 1417460655}
   headerPlayers: {fileID: 1380583845}
