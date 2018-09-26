@@ -1171,10 +1171,12 @@ public class MatchController : MonoBehaviour
                     defensiveAction = PlayerData.PlayerAction.Block;
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
                     defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                    DebugString += defendingPlayer + "\nDefending blocking/Agility/Vision: \n" + defendingPlayer.Blocking + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Vision + "\n" + defending + "\n";
+
                 }
 
                 attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork)/400;
-                if(lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful)
+                if (lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful)
                 {
                     attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork + attackingPlayer.Heading) / 500;
                     if (defendingPlayer != null) defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Heading) / 400;
@@ -1183,6 +1185,8 @@ public class MatchController : MonoBehaviour
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
                 attFatigueRate = fatigueLow;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
+
+                DebugString += attackingPlayer + "\nAttacking Pass/Agility/Vision/Teamwork:\n" + attackingPlayer.Passing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
                 break;
 
             case PlayerData.PlayerAction.Dribble:
@@ -1191,12 +1195,15 @@ public class MatchController : MonoBehaviour
                     defensiveAction = PlayerData.PlayerAction.Tackle;
                     defending = (float)(defendingPlayer.Tackling + defendingPlayer.Agility + defendingPlayer.Speed) / 300;
                     defenseBonusChance = GetAttributeBonus(defendingPlayer.Tackling);
+                    DebugString += defendingPlayer + "\nDefending tackling/Agility/Speed:\n" + defendingPlayer.Tackling + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Speed + "\n" + defending + "\n";
                 }
 
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Tackling);
                 attFatigueRate = fatigueHigh;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                
+                DebugString += attackingPlayer + "\nAttacking dribbling/Agility/Speed:\n" + attackingPlayer.Dribbling + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Speed + "\n" + attacking + "\n";
                 break;
 
             case PlayerData.PlayerAction.Cross:
@@ -1205,12 +1212,15 @@ public class MatchController : MonoBehaviour
                     defensiveAction = PlayerData.PlayerAction.Block;
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
                     defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                    DebugString += defendingPlayer + "\nDefending Blocking/Agility/Vision:\n" + defendingPlayer.Blocking + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Vision + "\n" + defending + "\n";
                 }
 
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
                 attFatigueRate = fatigueMedium;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+
+                DebugString += attackingPlayer + "\nAttacking Crossing/Agility/Vision/Teamwork:\n" + attackingPlayer.Crossing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
                 break;
 
             case PlayerData.PlayerAction.Shot:
@@ -1248,9 +1258,16 @@ public class MatchController : MonoBehaviour
             defenseBonusChance = GetAttributeBonus(defendingPlayer.Goalkeeping);
         }
 
+        DebugString += "\nAttacking:\n" + attacking;
         attacking *= ((float)attackingPlayer.Fatigue / 100);
+        DebugString += "- Fatigue:" + attacking + "\n";
+
         attacking *= attackingBonus;
+        DebugString += "\nAttacking Bonus:\n" + attackingBonus + "\nAttacking:" + attacking +"\n";
+
         if (attackingPlayer.Position != attackingPlayer.AssignedPosition) attacking *= positionDebuff;
+        DebugString += "\nAfter Position Debuff:\n" + attacking + "\n";
+
 
         int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
 
@@ -1339,7 +1356,7 @@ public class MatchController : MonoBehaviour
                 success = false;
                 defendingPlayer.TotalFaults++;
             }
-
+ 
             else if (attacking > defending)
             {
                 DebugString += "\nAtacante rolou " + attacking;
@@ -1348,6 +1365,19 @@ public class MatchController : MonoBehaviour
             }
 
             defendingPlayer.TotalTackles++;
+        }
+
+        //*********************************************************************************************************************
+        //se isTackling é falso (ou seja, SEM MARCACAO segundo a linha 1303)
+        //fazer o attacking disputar contra um numero aleatorio de 0 a 100
+        else
+        {
+            
+            float dificulty = Random.Range(0f, 1f);
+            if (attacking > dificulty) {
+                success = true;
+                DebugString += "\nAttacking / Dificulty: " + attacking + " / " + dificulty + "\n";
+            }
         }
 
         attackingPlayer.Fatigue -= attFatigueRate * (25 / (float)attackingPlayer.Stamina);
