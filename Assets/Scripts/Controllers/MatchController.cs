@@ -966,11 +966,11 @@ public class MatchController : MonoBehaviour
 
             if (r >= 20)
             {
-                stats *= 1.75f;
+                stats *= 1.5f;
             }
             else if (r <= 1)
             {
-                stats *= 0.5f;
+                stats *= 0.75f;
             }
 
             total += stats;
@@ -1184,7 +1184,7 @@ public class MatchController : MonoBehaviour
 
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
                 attFatigueRate = fatigueLow;
-                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
+                if (_marking == MarkingType.Close) attacking = attacking * 0.9f;
 
                 DebugString += attackingPlayer + "\nAttacking Pass/Agility/Vision/Teamwork:\n" + attackingPlayer.Passing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
                 break;
@@ -1201,7 +1201,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Tackling);
                 attFatigueRate = fatigueHigh;
-                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 
                 DebugString += attackingPlayer + "\nAttacking dribbling/Agility/Speed:\n" + attackingPlayer.Dribbling + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Speed + "\n" + attacking + "\n";
                 break;
@@ -1218,7 +1218,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
                 attFatigueRate = fatigueMedium;
-                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
 
                 DebugString += attackingPlayer + "\nAttacking Crossing/Agility/Vision/Teamwork:\n" + attackingPlayer.Crossing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
                 break;
@@ -1234,7 +1234,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Shooting);
                 attFatigueRate = fatigueLow;
-                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 break;
 
             case PlayerData.PlayerAction.Header:
@@ -1248,7 +1248,7 @@ public class MatchController : MonoBehaviour
                 attacking = (float)(attackingPlayer.Heading + attackingPlayer.Agility + attackingPlayer.Strength) / 300;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Heading);
                 attFatigueRate = fatigueMedium;
-                if (_marking == MarkingType.Close) attacking = attacking * 0.5f;
+                if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 break;
         }
 
@@ -1305,7 +1305,7 @@ public class MatchController : MonoBehaviour
         }
         else
         {     
-            float tackleChance = 0.5f * actionChancePerZone.actionChancePerZones[(int)zone].Tackle * defendingPlayer.Prob_Tackling;
+            float tackleChance = 0.75f * actionChancePerZone.actionChancePerZones[(int)zone].Tackle * defendingPlayer.Prob_Tackling;
             if (_marking == MarkingType.Close) tackleChance *= 1.25f;
 
             isTackling |= tackleChance >= Random.Range(0f, 1f);
@@ -1373,10 +1373,11 @@ public class MatchController : MonoBehaviour
         else
         {
             
-            float dificulty = Random.Range(0f, 1f);
-            if (attacking > dificulty) {
+            float difficulty = Random.Range(0f, 1f);
+            if (attacking > difficulty)
+            {
                 success = true;
-                DebugString += "\nAttacking / Dificulty: " + attacking + " / " + dificulty + "\n";
+                DebugString += "\nAttacking / Dificulty: " + attacking + " / " + difficulty + "\n";
             }
         }
 
@@ -1384,7 +1385,6 @@ public class MatchController : MonoBehaviour
 
         if (defendingPlayer == null) defensiveAction = PlayerData.PlayerAction.None;
         else defendingPlayer.Fatigue -= defFatigueRate * (25 / (float)defendingPlayer.Stamina);
-
 
         return success;
     }

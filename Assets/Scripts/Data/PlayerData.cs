@@ -303,7 +303,7 @@ public class PlayerData : ScriptableObject
         }
 
         if (altPos == AltPosition.Defensive) pct *= Prob_DefPosition * teamDefPos;
-        else if (altPos == AltPosition.Offensive) pct *= Prob_OffPosition * teamDefPos;
+        else if (altPos == AltPosition.Offensive) pct *= Prob_OffPosition * teamOffPos;
         else if (altPos == AltPosition.Left) pct *= Prob_LeftPos * teamLeftPos;
         else if (altPos == AltPosition.Right) pct *= Prob_RightPos * teamRightPos;
         else if (altPos == AltPosition.LeftDefensive) pct *= ((Prob_LeftPos + Prob_DefPosition)/2) * ((teamLeftPos + teamDefPos)/2);
