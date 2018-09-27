@@ -911,8 +911,14 @@ public class MatchController : MonoBehaviour
         }
 
         PlayerData playa = GetActivePlayer(players);
-        if (forcePlayer && playa == null) print("List: " + players.Count);
-
+        if (forcePlayer && playa == null)
+        {
+            print("##########################################CARALHA#####################################");
+            print("List: " + players.Count);
+            print("Time: " + attackingTeam.Name);
+            print("Passe de :" + attackingPlayer.GetFullName();)
+            print("ZONA: " + currentZone);
+        }
         return playa;
     }
 
