@@ -916,7 +916,7 @@ public class MatchController : MonoBehaviour
             print("##########################################CARALHA#####################################");
             print("List: " + players.Count);
             print("Time: " + attackingTeam.Name);
-            print("Passe de :" + attackingPlayer.GetFullName();)
+            print("Passe de :" + attackingPlayer.GetFullName());
             print("ZONA: " + currentZone);
         }
         return playa;
