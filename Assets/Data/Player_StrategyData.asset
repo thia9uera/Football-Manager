@@ -117,7 +117,7 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
   - Name: RightOffensive
-    Description: INcrease right offensive positioning
+    Description: Increase right offensive positioning
     DefPosChance: 0.75
     OffPosChance: 1.5
     LeftPosChance: 0.75

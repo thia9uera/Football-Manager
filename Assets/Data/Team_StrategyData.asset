@@ -255,7 +255,7 @@ MonoBehaviour:
     RighPosChance: 1
     PassingChance: 4
     ShootingChance: 2
-    CrossingChance: 1.2
+    CrossingChance: 0.5
     DribblingChance: 2
     OffsideTrickChance: 1
     MarkingChance: 1
@@ -276,11 +276,11 @@ MonoBehaviour:
     Target_LF: 1
     Target_CF: 2
     Target_RF: 1
-    Target_Box: 2
+    Target_Box: 3
     OwnGoal: 0
-    LD: 1
+    LD: 0
     CD: 0
-    RD: 1
+    RD: 0
     LDM: 1
     CDM: 1
     RDM: 1
@@ -331,9 +331,9 @@ MonoBehaviour:
     LDM: 0
     CDM: 0
     RDM: 0
-    LM: 0
-    CM: 0
-    RM: 0
+    LM: 1
+    CM: 1
+    RM: 1
     LAM: 1
     CAM: 1
     RAM: 1
