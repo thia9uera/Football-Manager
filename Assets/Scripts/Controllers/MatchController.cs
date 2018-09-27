@@ -337,6 +337,7 @@ public class MatchController : MonoBehaviour
                     {
                         defendingPlayer = defendingTeam.Squad[0];
                         Narration.UpdateNarration("nar_FreekickTake_", attackingTeam.PrimaryColor);
+                        attackingPlayer.TotalShots++;
                     }                    
                     else
                     {
@@ -364,6 +365,7 @@ public class MatchController : MonoBehaviour
                     localization.PLAYER_2 = defendingPlayer.FirstName;
                     offensiveAction = PlayerData.PlayerAction.Shot;
                     Narration.UpdateNarration("nar_PenaltyTake_", attackingTeam.PrimaryColor);
+                    attackingPlayer.TotalShots++;
                 }
                 else
                 {
