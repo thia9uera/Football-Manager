@@ -917,7 +917,9 @@ public class MatchController : MonoBehaviour
             print("List: " + players.Count);
             print("Time: " + attackingTeam.Name);
             print("Passe de :" + attackingPlayer.GetFullName());
-            print("ZONA: " + currentZone);
+            if (attackingTeam == HomeTeam) print("ZONA: " + currentZone);
+            else print("ZONA: " + GetAwayTeamZone());
+
         }
         return playa;
     }
@@ -1179,7 +1181,7 @@ public class MatchController : MonoBehaviour
                     defensiveAction = PlayerData.PlayerAction.Block;
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
                     defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
-                    DebugString += defendingPlayer + "\nDefending blocking/Agility/Vision: \n" + defendingPlayer.Blocking + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Vision + "\n" + defending + "\n";
+                    DebugString += defendingPlayer.GetFullName() + "\nDefending blocking/Agility/Vision: \n" + defendingPlayer.Blocking + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Vision + "\n" + defending + "\n";
 
                 }
 
@@ -1194,7 +1196,7 @@ public class MatchController : MonoBehaviour
                 attFatigueRate = fatigueLow;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.9f;
 
-                DebugString += attackingPlayer + "\nAttacking Pass/Agility/Vision/Teamwork:\n" + attackingPlayer.Passing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
+                DebugString += attackingPlayer.GetFullName() + "\nAttacking Pass/Agility/Vision/Teamwork:\n" + attackingPlayer.Passing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
                 break;
 
             case PlayerData.PlayerAction.Dribble:
@@ -1203,7 +1205,7 @@ public class MatchController : MonoBehaviour
                     defensiveAction = PlayerData.PlayerAction.Tackle;
                     defending = (float)(defendingPlayer.Tackling + defendingPlayer.Agility + defendingPlayer.Speed) / 300;
                     defenseBonusChance = GetAttributeBonus(defendingPlayer.Tackling);
-                    DebugString += defendingPlayer + "\nDefending tackling/Agility/Speed:\n" + defendingPlayer.Tackling + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Speed + "\n" + defending + "\n";
+                    DebugString += defendingPlayer.GetFullName() + "\nDefending tackling/Agility/Speed:\n" + defendingPlayer.Tackling + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Speed + "\n" + defending + "\n";
                 }
 
                 attacking = (float)(attackingPlayer.Dribbling + attackingPlayer.Agility + attackingPlayer.Speed)/300;
@@ -1211,7 +1213,7 @@ public class MatchController : MonoBehaviour
                 attFatigueRate = fatigueHigh;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
                 
-                DebugString += attackingPlayer + "\nAttacking dribbling/Agility/Speed:\n" + attackingPlayer.Dribbling + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Speed + "\n" + attacking + "\n";
+                DebugString += attackingPlayer.GetFullName() + "\nAttacking dribbling/Agility/Speed:\n" + attackingPlayer.Dribbling + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Speed + "\n" + attacking + "\n";
                 break;
 
             case PlayerData.PlayerAction.Cross:
@@ -1220,7 +1222,7 @@ public class MatchController : MonoBehaviour
                     defensiveAction = PlayerData.PlayerAction.Block;
                     defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
                     defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
-                    DebugString += defendingPlayer + "\nDefending Blocking/Agility/Vision:\n" + defendingPlayer.Blocking + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Vision + "\n" + defending + "\n";
+                    DebugString += defendingPlayer.GetFullName() + "\nDefending Blocking/Agility/Vision:\n" + defendingPlayer.Blocking + " - " + defendingPlayer.Agility + " - " + defendingPlayer.Vision + "\n" + defending + "\n";
                 }
 
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
@@ -1228,7 +1230,7 @@ public class MatchController : MonoBehaviour
                 attFatigueRate = fatigueMedium;
                 if (_marking == MarkingType.Close) attacking = attacking * 0.75f;
 
-                DebugString += attackingPlayer + "\nAttacking Crossing/Agility/Vision/Teamwork:\n" + attackingPlayer.Crossing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
+                DebugString += attackingPlayer.GetFullName() + "\nAttacking Crossing/Agility/Vision/Teamwork:\n" + attackingPlayer.Crossing + " - " + attackingPlayer.Agility + " - " + attackingPlayer.Vision + " - " + attackingPlayer.Teamwork + "\n" + attacking + "\n";
                 break;
 
             case PlayerData.PlayerAction.Shot:
