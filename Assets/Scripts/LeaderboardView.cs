@@ -37,16 +37,7 @@ public class LeaderboardView : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
-        if (type == LeaderboardType.Players)
-        {
-            PopulatePlayers();
-            SortBy(playerSorting);
-        }
-        else
-        {
-            PopulateTeams();
-            SortBy(teamSorting);
-        }
+        SwitchLeaderboard(type);
     }
 
     public void Close()
@@ -154,6 +145,8 @@ public class LeaderboardView : MonoBehaviour
                 case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalGoals).ToList(); break;
                 case "GoalsAgainst": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalGoalsAgainst).ToList(); break;
             }
+
+            PopulateTeams();
         }
     }
 
@@ -168,6 +161,7 @@ public class LeaderboardView : MonoBehaviour
                     headerPlayers.SetActive(true);
                     headerTeams.SetActive(false);
                     PopulatePlayers();
+                    SortBy(playerSorting);
                 }
                 break;
 
@@ -177,6 +171,34 @@ public class LeaderboardView : MonoBehaviour
                     headerPlayers.SetActive(false);
                     headerTeams.SetActive(true);
                     PopulateTeams();
+                    SortBy(teamSorting);
+                }
+                break;
+        }
+    }
+
+    public void SwitchLeaderboard(LeaderboardType _type)
+    {
+        ClearList();
+        switch (_type)
+        {
+            case LeaderboardType.Players:
+                {
+                    type = LeaderboardType.Players;
+                    headerPlayers.SetActive(true);
+                    headerTeams.SetActive(false);
+                    PopulatePlayers();
+                    SortBy(playerSorting);
+                }
+                break;
+
+            case LeaderboardType.Teams:
+                {
+                    type = LeaderboardType.Teams;
+                    headerPlayers.SetActive(false);
+                    headerTeams.SetActive(true);
+                    PopulateTeams();
+                    SortBy(teamSorting);
                 }
                 break;
         }
