@@ -24,9 +24,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c687c8f460915214eab8a2babeccc557, type: 2}
   - {fileID: 11400000, guid: 13012d92098b477408fe3ac5d5b7d395, type: 2}
   - {fileID: 11400000, guid: b5ac1746c83841d408d996be017aaebd, type: 2}
-  - {fileID: 11400000, guid: c34525a122ae54f408308bfa317d55a3, type: 2}
+  - {fileID: 11400000, guid: 9d443ba5999716d48a9ac92a41ebdeac, type: 2}
   - {fileID: 11400000, guid: 02e82dca108757742baf2ac947ba9931, type: 2}
-  - {fileID: 11400000, guid: 1a0cc053c75f0c64fb37485fa5898094, type: 2}
+  - {fileID: 11400000, guid: be631b68798e0144ca5dcc3f89dac744, type: 2}
   - {fileID: 11400000, guid: ea199b13b3aa8934bb5d341cbe4c5558, type: 2}
   - {fileID: 11400000, guid: 508f1790e5ba4e444bb205c6e8bcb8ac, type: 2}
   Substitutes:
@@ -36,3 +36,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0245709de3d473d449b58a018d95fb9a, type: 2}
   - {fileID: 11400000, guid: 93bf3b8ec08d4494b92e85122ec9d2e5, type: 2}
   Captain: {fileID: 0}
+  TotalWins: 0
+  TotalLosts: 0
+  TotalDraws: 0
+  TotalGoals: 0
+  TotalGoalsAgainst: 0

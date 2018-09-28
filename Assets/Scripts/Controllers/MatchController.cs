@@ -1280,16 +1280,17 @@ public class MatchController : MonoBehaviour
 
 
         int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
-
+                                                                                                                                                                                                                                                                            
         if (attackRoll >= 20)
         {
-            DebugString += "\nAtacante ganhou bonus de 100% \n";
             attacking *= 2;
+            DebugString += "\nAtacante ganhou bonus de 100% "  + attacking + "\n";
             attackExcitment = 1;
         }
         else if (attackRoll >= 10)
         {
-            attacking *= (float)(attackRoll - 9) / 100;
+            attacking *= (1 + (float)(attackRoll - 9) / 100);
+            DebugString += "\nAtacante fez jogada normal (attackRoll >=10) " + attacking + "\n";
             attackExcitment = 0;
         }
         else if (attackRoll <= 1)
@@ -1301,8 +1302,8 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                DebugString += "\nAtacante ratiou \n";
                 attacking = attacking * 0.25f;
+                DebugString += "\nAtacante ratiou " + attacking + "\n";
                 attackExcitment = -1;
             }
         }
@@ -1335,7 +1336,7 @@ public class MatchController : MonoBehaviour
             }
             else if (defenseRoll >= 10)
             {
-                defending *= (float)(defenseRoll - 9) / 100;
+                defending *= (1 + (float)(defenseRoll - 9) / 100);
                 defenseExcitement = 0;
             }
             else if (defenseRoll <= 1)
@@ -1384,10 +1385,10 @@ public class MatchController : MonoBehaviour
         {
             
             float difficulty = Random.Range(0f, 1f);
+            DebugString += "\nAttacking / Dificulty: " + attacking + " / " + difficulty + "\n";
             if (attacking > difficulty)
             {
                 success = true;
-                DebugString += "\nAttacking / Dificulty: " + attacking + " / " + difficulty + "\n";
             }
         }
 
@@ -1511,7 +1512,7 @@ public class MatchController : MonoBehaviour
         }
         else if(keeperRoll >= 10)
         {
-            defending *= (float)(keeperRoll - 9) / 100;
+            defending *= (1+ (float)(keeperRoll - 9) / 100);
             defenseExcitement = 0;
             defendingPlayer.Fatigue -= fatigueMedium * (25 / (float)defendingPlayer.Stamina);
         }
