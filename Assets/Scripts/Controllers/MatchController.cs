@@ -1322,8 +1322,9 @@ public class MatchController : MonoBehaviour
         if (isTackling)
         {
             DebugString += "\nDefensor isTackling\n";
+            DebugString += "Defending: " + defending + "\n";
             defending *= (float)defendingPlayer.Fatigue / 100;
-            DebugString += "Defending: " + defending+ "\n";
+            DebugString += "Defending - Fatigue: " + defending+ "\n";
             defFatigueRate = fatigueMedium;
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
 
