@@ -93,6 +93,7 @@ public class MatchController : MonoBehaviour
     private bool keepAttacker;
     private bool keepDefender;
     private MarkingType marking;
+    private string passer;
 
 
     private int matchTime = 0;
@@ -610,11 +611,6 @@ public class MatchController : MonoBehaviour
             {
                 case PlayerData.PlayerAction.Pass:
                     DebugString += "PASSOU A BOLA! \n ________________________________\n";
-                    currentZone = GetTargetZone();
-                    attackingPlayer.TotalPasses++;
-                    string passer = attackingPlayer.FirstName;
-                    keepAttacker = true;
-                    attackingPlayer = GetAttackingPlayer(currentZone);
 
                     localization.PLAYER_1 = passer;
                     localization.PLAYER_2 = attackingPlayer.FirstName;
@@ -1010,7 +1006,8 @@ public class MatchController : MonoBehaviour
 
         if (chance < 1f && chance > 0f)
         {
-            chance *= ((float)(_player.Speed + _player.Vision) / 200) * ((float)_player.Fatigue / 100);
+            chance *= (float)(_player.Speed + _player.Vision) / 200;
+            chance *= _player.Fatigue / 100;
         }
         return chance;
     }
@@ -1396,6 +1393,22 @@ public class MatchController : MonoBehaviour
 
         if (defendingPlayer == null) defensiveAction = PlayerData.PlayerAction.None;
         else defendingPlayer.Fatigue -= defFatigueRate * (25 / (float)defendingPlayer.Stamina);
+
+
+        if(offensiveAction == PlayerData.PlayerAction.Pass && success)
+        {
+            currentZone = GetTargetZone();
+            passer = attackingPlayer.FirstName;
+            PlayerData passerData = attackingPlayer;
+            keepAttacker = true;
+            attackingPlayer = GetAttackingPlayer(currentZone);
+            if(attackingPlayer == null)
+            {
+                success = false;
+                attackingPlayer = passerData;
+            }
+        }
+
 
         return success;
     }
