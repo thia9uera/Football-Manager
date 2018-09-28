@@ -1320,8 +1320,10 @@ public class MatchController : MonoBehaviour
         }
 
         if (isTackling)
-        {  
+        {
+            DebugString += "\nDefensor isTackling\n";
             defending *= (float)defendingPlayer.Fatigue / 100;
+            DebugString += "Defending: " + defending+ "\n";
             defFatigueRate = fatigueMedium;
             int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
 
@@ -1334,6 +1336,7 @@ public class MatchController : MonoBehaviour
             else if (defenseRoll >= 10)
             {
                 defending *= (1 + (float)(defenseRoll - 9) / 100);
+                DebugString += "Defensor faz jogada normal (defenseRoll >= 10): " + defending + "\n";
                 defenseExcitement = 0;
             }
             else if (defenseRoll <= 1)
@@ -1347,8 +1350,13 @@ public class MatchController : MonoBehaviour
             agilityBonus *= (float)defendingPlayer.Fatigue / 100;
             fault *= (1f - agilityBonus);
 
+            DebugString += "Agilidade: " + agilityBonus + "\n";
+            DebugString += "Fault: " + fault + "\n";
+
             if (fault >= Random.Range(0f, 1f))
             {
+                DebugString += "\nÉ Falta!!! \n";
+
                 if (attackingTeam == HomeTeam && currentZone == FieldZone.Box)
                 {
                     matchEvent = MatchEvent.Penalty;
@@ -1484,9 +1492,13 @@ public class MatchController : MonoBehaviour
             bonusChance = GetAttributeBonus(attackingPlayer.Heading);
         }
 
+        DebugString += "\n Resolve Shot:\n Attacking:" + attacking;
         attacking *= (float)attackingPlayer.Fatigue / 100;
+        DebugString += "\n Attacking - Fatigue:" + attacking;
         attacking *= attackingBonus;
+        DebugString += "\n Atatcking Bonus:" + attacking;
         attacking *= distanceModifier;
+        DebugString += "\n Distance modifier:" + attacking;
 
         if (_marking == MarkingType.Close) attacking *= 0.5f;
 
@@ -1499,7 +1511,7 @@ public class MatchController : MonoBehaviour
         }
         else if(attackRoll >= 10)
         {
-            attacking *= (float)(attackRoll - 9) / 100;
+            attacking *= (1 + (float)(attackRoll - 9) / 100);
             attackExcitment = 0;
         }
         else if(attackRoll <= 3)
