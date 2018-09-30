@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Zico
   LastName: 
-  Position: 14
+  Position: 9
   Strategy: 0
   Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Goalkeeping: 46
@@ -33,12 +33,11 @@ MonoBehaviour:
   Teamwork: 95
   Vision: 89
   Stability: 82
-  Fatigue: 98
-  AssignedPosition: 14
+  AssignedPosition: 9
   Prob_DefPosition: 1
   Prob_OffPosition: 1
-  Prob_LeftPos: 0
-  Prob_RightPos: 0
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
   Prob_Pass: 1
   Prob_Shoot: 1
   Prob_Fault: 0
@@ -48,17 +47,18 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  TotalPasses: 0
-  TotalCrosses: 0
-  TotalShots: 0
+  Prob_LongPass: 1
+  TotalPasses: 16
+  TotalCrosses: 2
+  TotalShots: 1
   TotalHeaders: 0
-  TotalFaults: 0
-  TotalTackles: 0
+  TotalFaults: 2
+  TotalTackles: 22
   TotalDribbles: 0
   TotalGoals: 0
   TotalSaves: 0
-  TotalPassesMissed: 0
-  TotalShotsMissed: 0
+  TotalPassesMissed: 1
+  TotalShotsMissed: 1
   TotalHeadersMissed: 0
   TotalDribblesMissed: 0
   TotalCrossesMissed: 0

@@ -19,6 +19,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 1
     DribblingChance: 1
@@ -66,6 +67,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 2
     CrossingChance: 1.5
     DribblingChance: 2
@@ -113,6 +115,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 0.5
     CrossingChance: 1
     DribblingChance: 0.25
@@ -160,6 +163,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 2
     DribblingChance: 0.25
@@ -207,6 +211,7 @@ MonoBehaviour:
     LeftPosChance: 3
     RighPosChance: 3
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 2
     DribblingChance: 2
@@ -254,6 +259,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 4
+    LongPassChance: 1
     ShootingChance: 2
     CrossingChance: 0.5
     DribblingChance: 2
@@ -301,6 +307,7 @@ MonoBehaviour:
     LeftPosChance: 2
     RighPosChance: 2
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 6
     DribblingChance: 1
@@ -348,6 +355,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 1
     DribblingChance: 1
@@ -395,6 +403,7 @@ MonoBehaviour:
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
+    LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 1
     DribblingChance: 1

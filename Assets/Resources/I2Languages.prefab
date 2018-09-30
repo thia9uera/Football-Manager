@@ -63,7 +63,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1538314326249
+  Google_LastUpdatedVersion: 1538332541187
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
@@ -564,6 +564,30 @@ MonoBehaviour:
     Languages:
     - '{[PLAYER_1]} misses the pass'
     - '{[PLAYER_1]} erra o passe'
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_LongPass_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "{[PLAYER_1]} lan\xE7a para {[PLAYER_2]}"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_BestLongPass_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "{[PLAYER_1]} lan\xE7a com perfei\xE7\xE3o para {[PLAYER_2]}"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_WorstLongPass_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "{[PLAYER_1]} lan\xE7a na fogueira para {[PLAYER_2]}"
     Flags: 0000
     Languages_Touch: []
   - Term: nar_BlockPass_1

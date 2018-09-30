@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Andre
   LastName: Dalmazzo
-  Position: 8
-  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
+  Position: 2
   Strategy: 0
+  Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Goalkeeping: 27
   Passing: 57
   Dribbling: 50
@@ -33,12 +33,11 @@ MonoBehaviour:
   Teamwork: 81
   Vision: 56
   Stability: 44
-  Fatigue: 66
-  Morale: 50
-  AssignedPosition: 8
+  AssignedPosition: 2
   Prob_DefPosition: 1
   Prob_OffPosition: 1
-  Prob_ParPosChance: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
   Prob_Pass: 1
   Prob_Shoot: 1
   Prob_Fault: 0
@@ -48,3 +47,18 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
+  Prob_LongPass: 1
+  TotalPasses: 6
+  TotalCrosses: 2
+  TotalShots: 0
+  TotalHeaders: 0
+  TotalFaults: 19
+  TotalTackles: 65
+  TotalDribbles: 0
+  TotalGoals: 0
+  TotalSaves: 0
+  TotalPassesMissed: 1
+  TotalShotsMissed: 0
+  TotalHeadersMissed: 0
+  TotalDribblesMissed: 0
+  TotalCrossesMissed: 0

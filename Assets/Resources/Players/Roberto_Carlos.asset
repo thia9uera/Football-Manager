@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Roberto
   LastName: Carlos
-  Position: 4
+  Position: 1
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 28
@@ -33,7 +33,6 @@ MonoBehaviour:
   Teamwork: 91
   Vision: 82
   Stability: 87
-  Fatigue: 81
   AssignedPosition: 1
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -48,17 +47,18 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  TotalPasses: 17
-  TotalCrosses: 11
+  Prob_LongPass: 1
+  TotalPasses: 11
+  TotalCrosses: 2
   TotalShots: 0
   TotalHeaders: 0
-  TotalFaults: 5
-  TotalTackles: 20
-  TotalDribbles: 2
+  TotalFaults: 7
+  TotalTackles: 23
+  TotalDribbles: 1
   TotalGoals: 0
   TotalSaves: 0
-  TotalPassesMissed: 5
+  TotalPassesMissed: 0
   TotalShotsMissed: 0
   TotalHeadersMissed: 0
-  TotalDribblesMissed: 2
-  TotalCrossesMissed: 4
+  TotalDribblesMissed: 0
+  TotalCrossesMissed: 0

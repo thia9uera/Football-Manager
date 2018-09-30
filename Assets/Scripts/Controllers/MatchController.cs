@@ -634,6 +634,29 @@ public class MatchController : MonoBehaviour
                             break;
                     }
                     
+                    Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);                   
+                    break;
+
+                case PlayerData.PlayerAction.LongPass:
+                    DebugString += "PASSE LONGO! \n ________________________________\n";
+
+                    localization.PLAYER_1 = passer;
+                    localization.PLAYER_2 = attackingPlayer.FirstName;
+
+                    var = 1;
+                    switch (attackExcitment)
+                    {
+                        case 0:
+                            narration = "nar_LongPass_";
+                            break;
+                        case 1:
+                            narration = "nar_BestLongPass_";
+                            break;
+                        case -1:
+                            narration = "nar_WorstLongPass_";
+                            break;
+                    }
+
                     Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     break;
 
@@ -744,6 +767,7 @@ public class MatchController : MonoBehaviour
                     Narration.UpdateNarration("nar_LostPossession_", attackingTeam.PrimaryColor, 4);
                     break;
 
+                case PlayerData.PlayerAction.LongPass:
                 case PlayerData.PlayerAction.Pass:
                     if (defensiveAction == PlayerData.PlayerAction.None)
                     {
@@ -883,8 +907,15 @@ public class MatchController : MonoBehaviour
         if ((int)zone < 4)
         {
             float offside = offsideChance;
-            if (defendingPlayer == null && IsTeamStrategyApplicable(zone)) offside *= MainController.Instance.TeamStrategyData.team_Strategys[(int)defendingTeam.Strategy].OffsideTrickChance;
-            else offside *= defendingPlayer.Prob_OffsideLine;
+            if (defendingPlayer != null)
+            {
+                offside *= defendingPlayer.Prob_OffsideLine;
+               
+            }
+            if(IsTeamStrategyApplicable(zone))
+            {
+                offside *= MainController.Instance.TeamStrategyData.team_Strategys[(int)defendingTeam.Strategy].OffsideTrickChance;
+            }
 
             if (offside >= Random.Range(0f, 1f))
             {
@@ -930,6 +961,40 @@ public class MatchController : MonoBehaviour
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
 
                 attFatigueRate = fatigueLow;
+                if (_marking == MarkingType.Close)
+                {
+                    attacking *= 0.9f;
+                    DebugString += "<color=#ff0000>- Close Marking (-10%): </color>" + attacking + "\n";
+                }
+
+                if (defendingPlayer != null)
+                {
+                    defenseBonusChance = GetAttributeBonus(defendingPlayer.Blocking);
+                    defenseDebug += "BLOCK " + defendingPlayer.Blocking;
+                    defenseDebug += "  |  AGILITY " + defendingPlayer.Agility;
+                    defenseDebug += "  |  VISION " + defendingPlayer.Vision;
+                    defenseDebug += "\nDEFENDING: " + defending + "\n\n";
+                }
+                break;
+
+            case PlayerData.PlayerAction.LongPass:
+                attacking = (float)(attackingPlayer.Passing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork + attackingPlayer.Strength) / 500;
+                if (defendingPlayer != null)
+                {
+                    defensiveAction = PlayerData.PlayerAction.Block;
+                    defending = (float)(defendingPlayer.Blocking + defendingPlayer.Agility + defendingPlayer.Vision) / 300;
+                }
+                
+                DebugString += "PASS " + attackingPlayer.Passing;
+                DebugString += "  |  AGILITY " + attackingPlayer.Agility;
+                DebugString += "  |  VISION " + attackingPlayer.Vision;
+                DebugString += "  |  TEAMWORK " + attackingPlayer.Teamwork;
+                DebugString += "  |  STRENGTH " + attackingPlayer.Strength;
+                DebugString += "\nATTACKING: " + attacking + "\n\n";
+
+                attackBonusChance = GetAttributeBonus(attackingPlayer.Passing);
+
+                attFatigueRate = fatigueMedium;
                 if (_marking == MarkingType.Close)
                 {
                     attacking *= 0.9f;
@@ -999,7 +1064,7 @@ public class MatchController : MonoBehaviour
 
                 attacking = (float)(attackingPlayer.Crossing + attackingPlayer.Agility + attackingPlayer.Vision + attackingPlayer.Teamwork) / 400;
                 attackBonusChance = GetAttributeBonus(attackingPlayer.Crossing);
-                attFatigueRate = fatigueMedium;
+                attFatigueRate = fatigueLow;
 
                 DebugString += "CROSS " + attackingPlayer.Crossing;
                 DebugString += "  |  AGILITY " + attackingPlayer.Agility;
@@ -1243,7 +1308,7 @@ public class MatchController : MonoBehaviour
         else defendingPlayer.Fatigue -= defFatigueRate * (25 / (float)defendingPlayer.Stamina);
 
 
-        if (offensiveAction == PlayerData.PlayerAction.Pass && success)
+        if ((offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.LongPass) && success)
         {
             currentZone = GetTargetZone();
             passer = attackingPlayer.FirstName;
@@ -1260,6 +1325,7 @@ public class MatchController : MonoBehaviour
             {
                 keepAttacker = true;
                 attackingPlayer = receiverData;
+                passerData.TotalPasses++;
             }
         }
 
@@ -1279,7 +1345,7 @@ public class MatchController : MonoBehaviour
         {
             forcePlayer = true;
         }
-        else if (offensiveAction == PlayerData.PlayerAction.Pass)
+        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.LongPass)
         {
             forcePlayer = true;
             excludeLastPlayer = true;
@@ -1493,6 +1559,12 @@ public class MatchController : MonoBehaviour
         if (_marking == MarkingType.Close) pass *= 2f;
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((pass * 5) + (bonus/10))) >= 20) pass *= 2f;
 
+        float longPass = zoneChance.LongPass * attackingPlayer.Prob_LongPass;
+        bonus = GetAttributeBonus(Mathf.FloorToInt((float)(attackingPlayer.Passing + attackingPlayer.Strength)/2));
+        if (_marking == MarkingType.Close) longPass *= 1.75f;
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10))) >= 20) longPass *= 2f;
+        if (lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful) longPass = 0;
+
         float dribble = zoneChance.Dribble * attackingPlayer.Prob_Dribble;
         bonus = GetAttributeBonus(attackingPlayer.Dribbling);
         if (_marking == MarkingType.Close) dribble *= 0.5f;
@@ -1524,6 +1596,7 @@ public class MatchController : MonoBehaviour
         {
             Team_Strategy teamStrategy = attackingTeam.GetStrategy();
             pass *= teamStrategy.PassingChance;
+            longPass *= teamStrategy.LongPassChance;
             dribble *= teamStrategy.DribblingChance;
             cross *= teamStrategy.CrossingChance;
             shoot *= teamStrategy.ShootingChance;
@@ -1547,8 +1620,9 @@ public class MatchController : MonoBehaviour
             if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((sprint * 5) + (bonus / 10))) >= 20) sprint *= 2f;
         }
 
-        float total = pass + dribble + cross + shoot + header + sprint;
+        float total = pass + longPass + dribble + cross + shoot + header + sprint;
         pass /= total;
+        longPass /= total;
         dribble /= total;
         cross /= total;
         shoot /= total;
@@ -1558,6 +1632,7 @@ public class MatchController : MonoBehaviour
         List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>
         {
             new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass),
+            new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.LongPass, longPass),
             new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Dribble, dribble),
             new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross),
             new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot),
@@ -1579,6 +1654,7 @@ public class MatchController : MonoBehaviour
         }
 
         DebugString += "<size=22>Pass: " + (pass * 100).ToString("F2") + "%\n";
+        DebugString += "Long Pass: " + (longPass * 100).ToString("F2") + "%\n";
         DebugString += "Dribble: " + (dribble * 100).ToString("F2") + "%\n";
         DebugString += "Cross: " + (cross * 100).ToString("F2") + "%\n";
         DebugString += "Shoot: " + (shoot * 100).ToString("F2") + "%\n";
@@ -1655,7 +1731,7 @@ public class MatchController : MonoBehaviour
         }
         else if (offensiveAction == PlayerData.PlayerAction.Header)
         {
-            attacking = (float)(attackingPlayer.Heading + attackingPlayer.Strength) / 100;
+            attacking = (float)(attackingPlayer.Heading + attackingPlayer.Strength) / 200;
             bonusChance = GetAttributeBonus(attackingPlayer.Heading);
         }
 
@@ -1668,7 +1744,7 @@ public class MatchController : MonoBehaviour
         if (_marking == MarkingType.Close)
         {
             attacking *= 0.5f;
-            DebugString += "\n<color=#ff00000>- Close Marking (-50%): </color>" + attacking;
+            DebugString += "\n<color=#ff0000>- Close Marking (-50%): </color>" + attacking;
         }
         attacking *= attackingBonus;
         DebugString += "\n<color=#00ff00>+ Attacking Bonus (" + (1-attackingBonus)*100 + "%): </color>" + attacking + "\n";
@@ -1688,7 +1764,7 @@ public class MatchController : MonoBehaviour
             DebugString += "<color=#00ff00>\n+ Bonus " + (float)(attackRoll - 9) + "%: </color>" + attacking + "\n";
             attackExcitment = 0;
         }
-        else if (attackRoll <= 1)
+        else if (attackRoll <= 5)
         {
             shotMissed = true;
             DebugString += "\n\nErrou o chute!\n";
@@ -1702,26 +1778,25 @@ public class MatchController : MonoBehaviour
         DebugString += "\n<color=#ff0000>- Fatigue: </color>" + defending;
         float defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), GetAttributeBonus(defendingPlayer.Goalkeeping));
 
+        defendingPlayer.Fatigue -= fatigueLow * (25 / (float)defendingPlayer.Stamina);
+
         if (defenseRoll >= 20)
         {
             DebugString += "\n <color=#00ff00>+ Bonus 100%: </color>" + defending + "\n";
             defending *= 2f;
-            defenseExcitement = 1;
-            defendingPlayer.Fatigue -= fatigueLow * (25 / (float)defendingPlayer.Stamina);
+            defenseExcitement = 1;            
         }
         else if (defenseRoll >= 10)
         {
             defending *= 1 + (float)(defenseRoll - 9) / 100;
             DebugString += "\n <color=#00ff00>+ Bonus " + ((float)defenseRoll - 9) + "%: </color>" + defending + "\n";
             defenseExcitement = 0;
-            defendingPlayer.Fatigue -= fatigueMedium * (25 / (float)defendingPlayer.Stamina);
         }
         else if (defenseRoll <= 1)
         {
             defending *= 0.5f;
             DebugString += "\n <color=#ff0000>- Debuff 50%: </color>" + defending + "\n";
             defenseExcitement = -1;
-            defendingPlayer.Fatigue -= fatigueHigh * (25 / (float)defendingPlayer.Stamina);
         }
 
         DebugString += "\n\nAtacante: " + attacking;
@@ -1748,6 +1823,10 @@ public class MatchController : MonoBehaviour
         bonus = GetAttributeBonus(attackingPlayer.Passing);
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((pass * 5) + (bonus / 10))) >= 20) pass *= 2f;
 
+        float longPass = zoneChance.LongPass * attackingPlayer.Prob_LongPass;
+        bonus = GetAttributeBonus(Mathf.FloorToInt((float)(attackingPlayer.Passing + attackingPlayer.Strength) / 2));
+        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10))) >= 20) longPass *= 2f;
+
         float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
         bonus = GetAttributeBonus(attackingPlayer.Crossing);
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((cross * 5) + (bonus / 10))) >= 20) cross *= 2f;
@@ -1764,13 +1843,15 @@ public class MatchController : MonoBehaviour
             shoot *= teamStrategy.ShootingChance;
         }
 
-        float total = pass + cross + shoot;
+        float total = pass + longPass + cross + shoot;
         pass = pass / total;
+        longPass /= total;
         cross = cross / total;
         shoot = shoot / total;
 
         List<KeyValuePair<PlayerData.PlayerAction, float>> list = new List<KeyValuePair<PlayerData.PlayerAction, float>>();
         list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Pass, pass));
+        list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.LongPass, longPass));
         list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Cross, cross));
         list.Add(new KeyValuePair<PlayerData.PlayerAction, float>(PlayerData.PlayerAction.Shot, shoot));
 
@@ -1789,6 +1870,7 @@ public class MatchController : MonoBehaviour
         DebugString += "__________________________________________________________________________________________\n\n";
         DebugString += "<size=30>FREE KICK - " + currentZone + " - "  + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n\n";
         DebugString += "<size=22>Pass: " + (pass * 100).ToString("F2") + "%\n";
+        DebugString += "Long Pass: " + (longPass * 100).ToString("F2") + "%\n";
         DebugString += "Cross: " + (cross * 100).ToString("F2") + "%\n";
         DebugString += "Shoot: " + (shoot * 100).ToString("F2") + "%\n";
 
@@ -1966,7 +2048,7 @@ public class MatchController : MonoBehaviour
             } 
         }
 
-        else if (offensiveAction == PlayerData.PlayerAction.Cross)
+        else if (offensiveAction == PlayerData.PlayerAction.Cross || offensiveAction == PlayerData.PlayerAction.LongPass)
         {
             switch (zone)
             {
@@ -2185,7 +2267,7 @@ public class MatchController : MonoBehaviour
     private float FatigueModifier(float _fatigue)
     {
         float value = 0.5f + (0.5f *(_fatigue/100));
-
+        //float value = 1f;
         return value;
     }
 }

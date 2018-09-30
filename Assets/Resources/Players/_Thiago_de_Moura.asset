@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Thiago
   LastName: de Moura
-  Position: 1
+  Position: 13
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 28
@@ -33,8 +33,7 @@ MonoBehaviour:
   Teamwork: 82
   Vision: 89
   Stability: 71
-  Fatigue: 80
-  AssignedPosition: 15
+  AssignedPosition: 13
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -48,17 +47,18 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  TotalPasses: 30
-  TotalCrosses: 17
-  TotalShots: 27
-  TotalHeaders: 2
+  Prob_LongPass: 1
+  TotalPasses: 6
+  TotalCrosses: 3
+  TotalShots: 8
+  TotalHeaders: 1
   TotalFaults: 1
-  TotalTackles: 12
-  TotalDribbles: 30
-  TotalGoals: 26
+  TotalTackles: 16
+  TotalDribbles: 2
+  TotalGoals: 9
   TotalSaves: 0
-  TotalPassesMissed: 12
-  TotalShotsMissed: 8
+  TotalPassesMissed: 0
+  TotalShotsMissed: 0
   TotalHeadersMissed: 0
-  TotalDribblesMissed: 5
-  TotalCrossesMissed: 5
+  TotalDribblesMissed: 0
+  TotalCrossesMissed: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Cafu
   LastName: 
-  Position: 6
-  Strategy: 2
+  Position: 3
+  Strategy: 0
   Perk: {fileID: 11400000, guid: 2f66ad91f2e5f6840a434d7f01707faf, type: 2}
   Goalkeeping: 28
   Passing: 84
@@ -33,32 +33,32 @@ MonoBehaviour:
   Teamwork: 80
   Vision: 76
   Stability: 90
-  Fatigue: 65
   AssignedPosition: 3
-  Prob_DefPosition: 0.75
-  Prob_OffPosition: 1.5
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
   Prob_LeftPos: 1
   Prob_RightPos: 1
   Prob_Pass: 1
-  Prob_Shoot: 1.3
+  Prob_Shoot: 1
   Prob_Fault: 0
-  Prob_Crossing: 1.5
-  Prob_Dribble: 1.3
+  Prob_Crossing: 1
+  Prob_Dribble: 1
   Prob_Fall: 0
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  TotalPasses: 10
-  TotalCrosses: 5
+  Prob_LongPass: 1
+  TotalPasses: 9
+  TotalCrosses: 2
   TotalShots: 0
   TotalHeaders: 0
-  TotalFaults: 2
-  TotalTackles: 21
-  TotalDribbles: 9
+  TotalFaults: 9
+  TotalTackles: 35
+  TotalDribbles: 0
   TotalGoals: 0
   TotalSaves: 0
-  TotalPassesMissed: 5
+  TotalPassesMissed: 2
   TotalShotsMissed: 0
   TotalHeadersMissed: 0
-  TotalDribblesMissed: 2
+  TotalDribblesMissed: 0
   TotalCrossesMissed: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Neymar
   LastName: Jr
-  Position: 10
+  Position: 13
   Strategy: 0
   Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Goalkeeping: 27
@@ -33,8 +33,7 @@ MonoBehaviour:
   Teamwork: 81
   Vision: 94
   Stability: 59
-  Fatigue: 100
-  AssignedPosition: 15
+  AssignedPosition: 13
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -48,17 +47,18 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  TotalPasses: 0
-  TotalCrosses: 0
-  TotalShots: 0
-  TotalHeaders: 0
-  TotalFaults: 0
-  TotalTackles: 0
-  TotalDribbles: 0
-  TotalGoals: 0
+  Prob_LongPass: 1
+  TotalPasses: 13
+  TotalCrosses: 3
+  TotalShots: 11
+  TotalHeaders: 2
+  TotalFaults: 2
+  TotalTackles: 10
+  TotalDribbles: 4
+  TotalGoals: 11
   TotalSaves: 0
   TotalPassesMissed: 0
-  TotalShotsMissed: 0
+  TotalShotsMissed: 1
   TotalHeadersMissed: 0
   TotalDribblesMissed: 0
   TotalCrossesMissed: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Marcus
   LastName: de Moura
-  Position: 10
+  Position: 7
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 28
@@ -33,8 +33,7 @@ MonoBehaviour:
   Teamwork: 62
   Vision: 69
   Stability: 70
-  Fatigue: 100
-  AssignedPosition: 14
+  AssignedPosition: 7
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -48,17 +47,18 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  TotalPasses: 6
-  TotalCrosses: 2
-  TotalShots: 4
+  Prob_LongPass: 1
+  TotalPasses: 5
+  TotalCrosses: 0
+  TotalShots: 2
   TotalHeaders: 0
-  TotalFaults: 4
-  TotalTackles: 11
-  TotalDribbles: 0
+  TotalFaults: 5
+  TotalTackles: 15
+  TotalDribbles: 1
   TotalGoals: 1
   TotalSaves: 0
-  TotalPassesMissed: 5
-  TotalShotsMissed: 7
+  TotalPassesMissed: 1
+  TotalShotsMissed: 0
   TotalHeadersMissed: 0
-  TotalDribblesMissed: 3
+  TotalDribblesMissed: 0
   TotalCrossesMissed: 0

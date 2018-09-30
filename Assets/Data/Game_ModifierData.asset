@@ -15,9 +15,9 @@ MonoBehaviour:
   - PositionDebuff: 0.85
     FaultChance: 0.2
     OffsideChance: 0.05
-    AttackBonusLow: 1.1
-    AttackBonusMediun: 1.2
-    AttackBonusHigh: 1.3
+    AttackBonusLow: 1.05
+    AttackBonusMediun: 1.1
+    AttackBonusHigh: 1.15
     FatigueLow: 8
     FatigueMedium: 12
     FatigueHigh: 15

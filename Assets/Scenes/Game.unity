@@ -542,6 +542,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 0.0000066529465
       objectReference: {fileID: 0}
+    - target: {fileID: 114199573927085586, guid: 450466c7fca6e454cb96d3aaca810f78,
+        type: 2}
+      propertyPath: matchSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450466c7fca6e454cb96d3aaca810f78, type: 2}
   m_IsPrefabAsset: 0
@@ -686,11 +691,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7264,7 +7269,7 @@ Prefab:
     - target: {fileID: 114035060600020586, guid: e8faad9b818c93f48bfc44e74f43ccb4,
         type: 2}
       propertyPath: Position
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114187549019994604, guid: e8faad9b818c93f48bfc44e74f43ccb4,
         type: 2}
@@ -9968,11 +9973,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

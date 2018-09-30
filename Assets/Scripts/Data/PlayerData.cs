@@ -128,7 +128,8 @@ public class PlayerData : ScriptableObject
         Prob_Fall,
         Prob_OffsideLine,
         Prob_Marking,
-        Prob_Tackling;
+        Prob_Tackling,
+        Prob_LongPass;
 
     public enum PlayerPosition
     {
@@ -226,6 +227,7 @@ public class PlayerData : ScriptableObject
         Prob_LeftPos = _playerStrategy.LeftPosChance;
         Prob_RightPos = _playerStrategy.RightPosChance;
         Prob_Pass = _playerStrategy.PassingChance;
+        Prob_LongPass = _playerStrategy.LongPassChance;
         Prob_Shoot = _playerStrategy.ShootingChance;
         Prob_Crossing = _playerStrategy.CrossingChance;
         Prob_Dribble = _playerStrategy.DribblingChance;
