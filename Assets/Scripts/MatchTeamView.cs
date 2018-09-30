@@ -31,7 +31,7 @@ public class MatchTeamView : MonoBehaviour
     {
         foreach (MatchPlayerView player in ItemList)
         {
-            player.Player.Fatigue -= 0.15f * (100 / (float)player.Player.Stability);
+            player.Player.Fatigue -= 0.05f * (100 / (float)player.Player.Stamina);
             player.UpdateFatigue();
         }
     }

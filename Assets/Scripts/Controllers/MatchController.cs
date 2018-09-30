@@ -1778,7 +1778,7 @@ public class MatchController : MonoBehaviour
         DebugString += "\n<color=#ff0000>- Fatigue: </color>" + defending;
         float defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), GetAttributeBonus(defendingPlayer.Goalkeeping));
 
-        defendingPlayer.Fatigue -= fatigueLow * (25 / (float)defendingPlayer.Stamina);
+        //defendingPlayer.Fatigue -= fatigueLow * (25 / (float)defendingPlayer.Stamina);
 
         if (defenseRoll >= 20)
         {

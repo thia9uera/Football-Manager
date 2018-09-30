@@ -29,7 +29,7 @@ MonoBehaviour:
   Speed: 56
   Strength: 94
   Agility: 53
-  Stamina: 25
+  Stamina: 75
   Teamwork: 81
   Vision: 56
   Stability: 44
@@ -48,17 +48,17 @@ MonoBehaviour:
   Prob_Marking: 1
   Prob_Tackling: 1
   Prob_LongPass: 1
-  TotalPasses: 6
-  TotalCrosses: 2
+  TotalPasses: 7
+  TotalCrosses: 1
   TotalShots: 0
   TotalHeaders: 0
-  TotalFaults: 19
-  TotalTackles: 65
+  TotalFaults: 21
+  TotalTackles: 93
   TotalDribbles: 0
   TotalGoals: 0
   TotalSaves: 0
-  TotalPassesMissed: 1
+  TotalPassesMissed: 2
   TotalShotsMissed: 0
   TotalHeadersMissed: 0
   TotalDribblesMissed: 0
-  TotalCrossesMissed: 0
+  TotalCrossesMissed: 2
