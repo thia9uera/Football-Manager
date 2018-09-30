@@ -186,6 +186,7 @@ public class PlayerData : ScriptableObject
         Block,
         Save,
         Header,
+        Sprint,
     }
 
     public enum PlayerStrategy

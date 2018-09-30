@@ -63,7 +63,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1537716312319
+  Google_LastUpdatedVersion: 1538314326249
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
@@ -371,7 +371,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - GOOOOAAAAAL!!!
-    - <size=40>GOOOOOOL!!!
+    - <size=40>GOOOOOOOOOOOOOOL!!!
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Goal_1
@@ -387,7 +387,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_1]} chuta rasteiro no canto e marca para o {[TEAM_1]}'
+    - '{[PLAYER_1]} chuta rasteiro com categoria e marca para o {[TEAM_1]}'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Goal_3
@@ -395,7 +395,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - "{[PLAYER_1]} de lado de p\xE9 marca {[TEAM_1]}"
+    - '{[PLAYER_1]} chuta com firmeza e marca para o {[TEAM_1]}'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Goal_4
@@ -419,7 +419,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_1]} chutou caindo e marcou para o  {[TEAM_1]}'
+    - '{[PLAYER_1]} chutou caindo e marcou para o {[TEAM_1]}'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Goal_7
@@ -710,6 +710,22 @@ MonoBehaviour:
     - "{[PLAYER_2]} p\xE1ra o drible de {[PLAYER_1]}"
     Flags: 0000
     Languages_Touch: []
+  - Term: nar_Sprint_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "{[PLAYER_1]} avan\xE7a sozinho"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_WrongSprint_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - "{[PLAYER_1]} tenta correr e trope\xE7a na bola"
+    Flags: 0000
+    Languages_Touch: []
   - Term: nar_Shot_1
     TermType: 0
     Description: 
@@ -739,7 +755,7 @@ MonoBehaviour:
     Description: 
     Languages:
     - 
-    - '{[PLAYER_1]} chuta pra fora!'
+    - "{[PLAYER_1]} chuta nas pernas do advers\xE1rio"
     Flags: 0000
     Languages_Touch: []
   - Term: nar_WrongShot_2
@@ -780,6 +796,22 @@ MonoBehaviour:
     Languages:
     - 
     - "{[PLAYER_2]} \xE9 o xerife da defesa!"
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_MissedShot_1
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - '{[PLAYER_1]} chuta pra fora!'
+    Flags: 0000
+    Languages_Touch: []
+  - Term: nar_MissedShot_2
+    TermType: 0
+    Description: 
+    Languages:
+    - 
+    - '{[PLAYER_1]} chuta longe do gol!'
     Flags: 0000
     Languages_Touch: []
   - Term: nar_Header_1
