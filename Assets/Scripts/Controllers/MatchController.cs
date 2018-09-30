@@ -1387,7 +1387,7 @@ public class MatchController : MonoBehaviour
         if (attackingPlayer.Position != attackingPlayer.AssignedPosition)
         {
             attacking *= positionDebuff;
-            DebugString += "<color=#ff0000>- Position Debuff(-" + ((1 - positionDebuff) * 100) + "%): </color>" + attacking + "\n";
+            DebugString += "<color=#ff0000>- Position Debuff (-" + ((1 - positionDebuff) * 100) + "%): </color>" + attacking + "\n";
         }
 
         attacking *= attackingBonus;
@@ -1417,7 +1417,7 @@ public class MatchController : MonoBehaviour
             else
             {
                 attacking = attacking * 0.25f;
-                DebugString += "\n<color=#ff0000>- Debuff 75%): </color>" + attacking + "\n";
+                DebugString += "\n<color=#ff0000>- Debuff (75%): </color>" + attacking + "\n";
                 attackExcitment = -1;
             }
         }
@@ -1458,7 +1458,7 @@ public class MatchController : MonoBehaviour
             else if (defenseRoll <= 1)
             {
                 defending *= 0.5f;
-                defenseDebug += "\n <color =#ff0000>- Debuff 50%: </color>" + defending + "\n";
+                defenseDebug += "\n <color =#ff0000>- Debuff (50%): </color>" + defending + "\n";
                 defenseExcitement = -1;
             }
 
@@ -1505,7 +1505,8 @@ public class MatchController : MonoBehaviour
         {
             
             float difficulty = Random.Range(0f, 1f);
-            DebugString += "\n\nDifficulty: " + difficulty + "\n";
+            DebugString += "\n\nAttacking: " + attacking;
+            DebugString += "\nDifficulty: " + difficulty + "\n";
             if (attacking > difficulty)
             {
                 success = true;

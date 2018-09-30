@@ -540,7 +540,7 @@ Prefab:
     - target: {fileID: 224180770735315258, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000022990856
+      value: 0.000002620822
       objectReference: {fileID: 0}
     - target: {fileID: 114727314266088770, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
@@ -5946,11 +5946,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
-  mTarget: {fileID: 1626194720}
-  mAlignment_RTL: 516
-  mAlignment_LTR: 513
-  mAlignmentWasRTL: 0
-  mInitializeAlignment: 1
 --- !u!1 &1153374469
 GameObject:
   m_ObjectHideFlags: 0
@@ -7674,12 +7669,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
     type: 2}
   m_PrefabInternal: {fileID: 985244925}
---- !u!114 &1626194720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1285830656}
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &1636520270
 GameObject:
   m_ObjectHideFlags: 0
