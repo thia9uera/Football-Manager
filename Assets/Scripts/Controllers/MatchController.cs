@@ -564,7 +564,7 @@ public class MatchController : MonoBehaviour
             {
                 attackingBonus = 1f;
 
-                DebugString += "\nROUBADA DE BOLA! \n ________________________________\n \n";
+                DebugString += "\n" + defendingPlayer.FirstName + " ROUBA A BOLA DE " + attackingPlayer.FirstName + "\n ________________________________\n \n";
                 Narration.UpdateNarration("nar_Steal_", defendingTeam.PrimaryColor);
                 keepDefender = true;
 
@@ -980,12 +980,13 @@ public class MatchController : MonoBehaviour
 
             case PlayerData.PlayerAction.Sprint:
                 attacking = (float)(attackingPlayer.Agility + attackingPlayer.Speed) / 200;
-                attackBonusChance = GetAttributeBonus(attackingPlayer.Speed);
+                attackBonusChance = 100;
+                attacking *= 2f;
                 attFatigueRate = fatigueMedium;
 
                 DebugString += "AGILITY " + attackingPlayer.Agility;
                 DebugString += "  |  SPEED " + attackingPlayer.Speed;
-                DebugString += "\nATTACKING: " + attacking + "\n\n";
+                DebugString += "\nATTACKING: " + attacking + "   (2x Bonus Sprint)\n\n";
                 break;
 
             case PlayerData.PlayerAction.Cross:
@@ -1670,7 +1671,7 @@ public class MatchController : MonoBehaviour
             DebugString += "\n<color=#ff00000>- Close Marking (-50%): </color>" + attacking;
         }
         attacking *= attackingBonus;
-        DebugString += "\n<color=#00ff00>+ Attacking Bonus (" + (1-attackingBonus)*100 + "%): </color>" + attacking + "/n";
+        DebugString += "\n<color=#00ff00>+ Attacking Bonus (" + (1-attackingBonus)*100 + "%): </color>" + attacking + "\n";
        
 
         int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), bonusChance);
@@ -1690,7 +1691,7 @@ public class MatchController : MonoBehaviour
         else if (attackRoll <= 1)
         {
             shotMissed = true;
-            DebugString += "Errou o chute!\n";
+            DebugString += "\n\nErrou o chute!\n";
             DebugString += "\n____________________________________________\n\n";
             return;
         }
@@ -1836,7 +1837,6 @@ public class MatchController : MonoBehaviour
         FieldZone target = currentZone;
         FieldZone zone = currentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
-        List<int> zones = new List<int>();
         List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
 
         float _OwnGoal = 0;
