@@ -47,6 +47,7 @@ public class MatchController : MonoBehaviour
         ThrowIn,
         Goal,
         Goalkick,
+        CornerKick,
     }
 
     public enum MarkingType
@@ -420,6 +421,50 @@ public class MatchController : MonoBehaviour
             return;
         }
 
+        //IF KEEPER CONCEDED A CORNER KICK
+        if(matchEvent == MatchEvent.CornerKick)
+        {
+            if (!isFreekickTaken)
+            {
+                shotSaved = false;
+
+                offensiveAction = PlayerData.PlayerAction.Cross;
+                currentZone = FieldZone.LF;
+
+                if (attackingTeam == AwayTeam)
+                {
+                    currentZone = FieldZone.LD;
+                }
+
+                defendingPlayer = null;
+                marking = MarkingType.None;
+                attackingPlayer = GetTopPlayerByAttribute(attackingTeam.Squad, PlayerData.PlayerAttributes.Crossing);
+
+                Narration.UpdateNarration("nar_FreekickTake_", attackingTeam.PrimaryColor, 1);
+
+                isFreekickTaken = true;
+            }
+            else
+            {
+                Narration.UpdateNarration("nar_Cross_", attackingTeam.PrimaryColor, 1);
+
+                currentZone = FieldZone.Box;
+                attackingPlayer = GetDefendingPlayer(FieldZone.Box);
+                defendingPlayer = GetDefendingPlayer(FieldZone.Box);
+                if(attackingTeam == AwayTeam)
+                {
+                    currentZone = FieldZone.OwnGoal;
+                    defendingPlayer = GetDefendingPlayer(FieldZone.OwnGoal);
+                    attackingPlayer = GetDefendingPlayer(FieldZone.OwnGoal);
+                    currentZone = FieldZone.LD;
+                }
+
+                matchEvent = MatchEvent.None;
+                ResolveAction();
+            }
+            return;
+        }
+
         //IF KEEPER SAVED LAST SHOT
         if(shotSaved)
         {
@@ -622,7 +667,7 @@ public class MatchController : MonoBehaviour
 
                     switch(attackExcitment)
                     {
-                        case 0 :
+                                            case 0 :
                             narration = "nar_Pass_";
                             break;
                         case 1:
@@ -1804,6 +1849,7 @@ public class MatchController : MonoBehaviour
         if (attacking <= defending)
         {
             shotSaved = true;
+            if(defenseExcitement == -1) matchEvent = MatchEvent.CornerKick;
         }
         else
         {
