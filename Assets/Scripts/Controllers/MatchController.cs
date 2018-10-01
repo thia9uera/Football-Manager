@@ -374,6 +374,7 @@ public class MatchController : MonoBehaviour
                 }
                 else
                 {
+                    attackingBonus *= attackingBonusHigh;
                     matchEvent = MatchEvent.None;
                     ResolveShot(MarkingType.None);
                     isFreekickTaken = false;
@@ -440,14 +441,13 @@ public class MatchController : MonoBehaviour
                 marking = MarkingType.None;
                 attackingPlayer = GetTopPlayerByAttribute(attackingTeam.Squad, PlayerData.PlayerAttributes.Crossing);
 
-                Narration.UpdateNarration("nar_FreekickTake_", attackingTeam.PrimaryColor, 1);
+                Narration.UpdateNarration("nar_CornerKick_", attackingTeam.PrimaryColor, 1);
 
                 isFreekickTaken = true;
             }
             else
             {
-                Narration.UpdateNarration("nar_Cross_", attackingTeam.PrimaryColor, 1);
-
+                attackingBonus *= attackingBonusMedium;
                 currentZone = FieldZone.Box;
                 attackingPlayer = GetDefendingPlayer(FieldZone.Box);
                 defendingPlayer = GetDefendingPlayer(FieldZone.Box);
@@ -1850,6 +1850,11 @@ public class MatchController : MonoBehaviour
         {
             shotSaved = true;
             if(defenseExcitement == -1) matchEvent = MatchEvent.CornerKick;
+            else if (defenseExcitement == 0)
+            {
+                int roll = RollDice(20);
+                if (roll < 5) matchEvent = MatchEvent.CornerKick;
+            }
         }
         else
         {
