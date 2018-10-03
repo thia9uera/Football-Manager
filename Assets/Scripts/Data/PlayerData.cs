@@ -96,10 +96,6 @@ public class PlayerData : ScriptableObject
         {
             fatigue = value;
             if (fatigue <= 0) fatigue = 0.01f;
-            if (AssignedPosition == PlayerPosition.GK)
-            {
-                Debug.Log(value);
-            }
         }
     }
 

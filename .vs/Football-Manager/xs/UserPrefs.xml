@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="463" Column="17" />
       <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="218" Column="1" />
-      <File FileName="Assets/Scripts/AvatarEditor.cs" Line="38" Column="1" />
+      <File FileName="Assets/Scripts/AvatarEditor.cs" Line="31" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
