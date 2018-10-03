@@ -2004,197 +2004,70 @@ public class MatchController : MonoBehaviour
         }
 
         else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Dribble || offensiveAction == PlayerData.PlayerAction.Sprint)
-        { 
-            switch (zone)
-            {
-                case FieldZone.OwnGoal:
-                    _LD = 1f;
-                    _CD = 1f;
-                    _RD = 1f;
-                    break;
+        {
+            TargetPassPerZone data = MainController.Instance.TargetPassPerZone.targetPassPerZones[(int)zone];
 
-                case FieldZone.LD:
-                    _LDM = 1f;
-                    _CDM = 1f;
-                    _CD = 1f;
-                    break;
-                case FieldZone.CD:
-                    _LDM = 1f;
-                    _CDM = 1f;
-                    _RDM = 1f;
-                    break;
-                case FieldZone.RD:
-                    _CD = 1f;
-                    _CDM = 1f;
-                    _RDM = 1f;
-                    break;
-
-                case FieldZone.LDM:
-                    _CDM = 1f;
-                    _LM = 1f;
-                    _CM = 1f;
-                    break;
-                case FieldZone.CDM:
-                    _LM = 1f;
-                    _CM = 1f;
-                    _RM = 1f;
-                    break;
-                case FieldZone.RDM:
-                    _CDM = 1f;
-                    _CM = 1f;
-                    _RM = 1f;
-                    break;
-
-                case FieldZone.LM:
-                    _CM = 1f;
-                    _LAM = 1f;
-                    _CAM = 1f;
-                    break;
-                case FieldZone.CM:
-                    _LAM = 1f;
-                    _CAM = 1f;
-                    _RAM = 1f;
-                    break;
-                case FieldZone.RM:
-                    _CM = 1f;
-                    _CAM = 1f;
-                    _RAM = 1f;
-                    break;
-
-                case FieldZone.LAM:
-                    _CAM = 1f;
-                    _LF = 1f;
-                    _CF = 1f;
-                    break;
-                case FieldZone.CAM:
-                    _LF = 1f;
-                    _CF = 1f;
-                    _RF = 1f;
-                    break;
-                case FieldZone.RAM:
-                    _CAM = 1f;
-                    _CF = 1f;
-                    _RF = 1f;
-                    break;
-
-                case FieldZone.LF:
-                    _CF = 1f;
-                    _Box = 2f;
-                    break;
-                case FieldZone.CF:
-                    _LF = 1f;
-                    _RF = 1f;
-                    _Box = 2.5f;
-                    break;
-                case FieldZone.RF:
-                    _CF = 1f;
-                    _Box = 2f;
-                    break;
-                case FieldZone.Box:
-                    _LF = 0.5f;
-                    _CF = 1;
-                    _RF = 0.5f;
-                    _Box = 3f;
-                    break;
-            } 
+            _OwnGoal = data.OwnGoal;
+            _LD = data.LD;
+            _CD = data.CD;
+            _RD = data.RD;
+            _LDM = data.LDM;
+            _CDM = data.CDM;
+            _RDM = data.RDM;
+            _LM = data.LM;
+            _CM = data.CM;
+            _RM = data.RM;
+            _LAM = data.LAM;
+            _CAM = data.CAM;
+            _RAM = data.RAM;
+            _LF = data.LF;
+            _CF = data.CF;
+            _RF = data.RF;
+            _Box = data.Box;
         }
 
         else if (offensiveAction == PlayerData.PlayerAction.Cross || offensiveAction == PlayerData.PlayerAction.LongPass)
         {
-            switch (zone)
-            {
-                case FieldZone.OwnGoal:
-                    _LDM = 1f;
-                    _CDM = 1f;
-                    _RDM = 1f;
-                    _LM = 1f;
-                    _CM = 1f;
-                    _RM = 1f;
-                    break;
+            TargetCrossPerZone data = MainController.Instance.TargetCrossPerZone.targetCrossPerZones[(int)zone];
 
-                case FieldZone.LD:
-                    _LM = 1f;
-                    _CM = 1f;
-                    _LAM = 1f;
-                    break;
-                case FieldZone.CD:
-                    _LM = 1f;
-                    _CM = 1f;
-                    _RM = 1f;
-                    _CAM = 1f;
-                    break;
-                case FieldZone.RD:
-                    _RM = 1f;
-                    _CM = 1f;
-                    _RAM = 1f;
-                    break;
-
-                case FieldZone.LDM:
-                    _LM = 1f;
-                    _CAM = 1f;
-                    _LF = 1f;
-                    break;
-                case FieldZone.CDM:
-                    _LAM = 1f;
-                    _CAM = 1f;
-                    _RAM = 1f;
-                    _CF = 1f;
-                    break;
-                case FieldZone.RDM:
-                    _CAM = 1f;
-                    _RAM = 1f;
-                    _RF = 1f;
-                    break;
-
-                case FieldZone.LM:
-                    _LF = 1f;
-                    _CF = 1f;
-                    break;
-                case FieldZone.CM:
-                    _LF = 1f;
-                    _CF = 1f;
-                    _RF = 1f;
-                    break;
-                case FieldZone.RM:
-                    _CF = 1f;
-                    _RF = 1f;
-                    break;
-
-                case FieldZone.LAM:
-                case FieldZone.CAM:
-                case FieldZone.RAM:
-                    _LF = 1f;
-                    _RF = 1f;
-                    _Box = 3f;
-                    break;
-                case FieldZone.LF:
-                case FieldZone.CF:
-                case FieldZone.RF:
-                case FieldZone.Box:
-                    _Box = 1;
-                    break;
-            }
+            _OwnGoal = data.OwnGoal;
+            _LD = data.LD;
+            _CD = data.CD;
+            _RD = data.RD;
+            _LDM = data.LDM;
+            _CDM = data.CDM;
+            _RDM = data.RDM;
+            _LM = data.LM;
+            _CM = data.CM;
+            _RM = data.RM;
+            _LAM = data.LAM;
+            _CAM = data.CAM;
+            _RAM = data.RAM;
+            _LF = data.LF;
+            _CF = data.CF;
+            _RF = data.RF;
+            _Box = data.Box;
         }
 
 
         Team_Strategy strategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
         _OwnGoal *= strategy.Target_OwnGoal;
-        _LD *= strategy.Target_LD;
-        _CD *= strategy.Target_CD;
-        _RD *= strategy.Target_RD;
-        _LDM *= strategy.Target_LDM;
-        _CDM *= strategy.Target_CDM;
-        _RDM *= strategy.Target_RDM;
-        _LM *= strategy.Target_LM;
-        _CM *= strategy.Target_CM;
-        _RM *= strategy.Target_RM;
-        _LAM *= strategy.Target_LAM;
-        _CAM *= strategy.Target_CAM;
-        _RAM *= strategy.Target_RAM;
-        _LF *= strategy.Target_LF;
-        _CF *= strategy.Target_CF;
-        _RF *= strategy.Target_RF;
-        _Box *= strategy.Target_Box;
+        _LD += strategy.Target_LD;
+        _CD += strategy.Target_CD;
+        _RD += strategy.Target_RD;
+        _LDM += strategy.Target_LDM;
+        _CDM += strategy.Target_CDM;
+        _RDM += strategy.Target_RDM;
+        _LM += strategy.Target_LM;
+        _CM += strategy.Target_CM;
+        _RM += strategy.Target_RM;
+        _LAM += strategy.Target_LAM;
+        _CAM += strategy.Target_CAM;
+        _RAM += strategy.Target_RAM;
+        _LF += strategy.Target_LF;
+        _CF += strategy.Target_CF;
+        _RF += strategy.Target_RF;
+        _Box += strategy.Target_Box;
 
 
 

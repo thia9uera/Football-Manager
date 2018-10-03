@@ -540,7 +540,7 @@ Prefab:
     - target: {fileID: 224180770735315258, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030087593
+      value: 0.00005950193
       objectReference: {fileID: 0}
     - target: {fileID: 114199573927085586, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
@@ -2833,6 +2833,8 @@ MonoBehaviour:
   PlayerStrategyData: {fileID: 11400000, guid: d316f164b933c0a4ba7e8d8f8d4b3309, type: 2}
   Modifiers: {fileID: 11400000, guid: 4da60f8ba8ad4844fb3c15bb57acecc5, type: 2}
   PosChancePerZone: {fileID: 11400000, guid: 6e54f4ca197b6a1459435677e3e0c432, type: 2}
+  TargetPassPerZone: {fileID: 11400000, guid: 2a8c624668e0fe54fb5b561f531f7a38, type: 2}
+  TargetCrossPerZone: {fileID: 11400000, guid: d1baa214c129e9b4da3689aa45cb6c30, type: 2}
 --- !u!114 &443455898
 MonoBehaviour:
   m_ObjectHideFlags: 0
