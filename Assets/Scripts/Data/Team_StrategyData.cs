@@ -17,6 +17,7 @@ public class Team_Strategy {
 	public float OffsideTrickChance;
 	public float MarkingChance;
 	public float TacklingChance;
+	public float CounterAttackChance;
 	public float Target_OwnGoal;
 	public float Target_LD;
 	public float Target_CD;

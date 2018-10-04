@@ -399,6 +399,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &15537353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1796690218}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &18857043
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +546,7 @@ Prefab:
     - target: {fileID: 224180770735315258, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00005950193
+      value: 0.00006198042
       objectReference: {fileID: 0}
     - target: {fileID: 114199573927085586, guid: 450466c7fca6e454cb96d3aaca810f78,
         type: 2}
@@ -997,6 +1003,12 @@ MonoBehaviour:
   posLabel: {fileID: 1513692465}
   nameLabel: {fileID: 1153374471}
   Player: {fileID: 0}
+--- !u!114 &80133541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 678643807}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!224 &107897208 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
@@ -1210,6 +1222,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
     type: 2}
   m_PrefabInternal: {fileID: 678643807}
+--- !u!114 &160052487 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 921871607}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &182391926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,6 +1426,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 191018635}
   m_CullTransparentMesh: 0
+--- !u!114 &217876623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1867705345}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &225197890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2148,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 328396179}
   m_CullTransparentMesh: 0
+--- !u!114 &340279759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 406535607}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1001 &360917149
 Prefab:
   m_ObjectHideFlags: 0
@@ -2782,6 +2812,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 426056246}
   m_CullTransparentMesh: 0
+--- !u!114 &442228885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 2048507913}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
+--- !u!114 &442636545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 985244925}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &443455895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,6 +2903,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
     type: 2}
   m_PrefabInternal: {fileID: 53218372}
+--- !u!114 &485018789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1732062466}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &514811572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,6 +3327,22 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 30849764}
   m_Script: {fileID: 11500000, guid: 31522e1a89e46724c996500cd68c2f16, type: 3}
+--- !u!114 &648375758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 340279759}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1001 &678643807
 Prefab:
   m_ObjectHideFlags: 0
@@ -3848,6 +3922,28 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &746754451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 160052487}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
+--- !u!114 &764935398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114423386504340446, guid: 450466c7fca6e454cb96d3aaca810f78,
+    type: 2}
+  m_PrefabInternal: {fileID: 30849764}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &791023523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4044,6 +4140,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 795541283}
   m_CullTransparentMesh: 0
+--- !u!114 &798401678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1285830656}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &822468319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5199,6 +5301,22 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 985675033}
   m_CullTransparentMesh: 0
+--- !u!114 &1012455402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 442636545}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &1015543760
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,6 +5566,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1045808121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 1644892575}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &1052212816
 GameObject:
   m_ObjectHideFlags: 0
@@ -6124,6 +6258,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
     type: 2}
   m_PrefabInternal: {fileID: 360917149}
+--- !u!114 &1206663461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 1358433763}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &1253644907
 GameObject:
   m_ObjectHideFlags: 0
@@ -6706,6 +6856,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1355203119}
   m_CullTransparentMesh: 0
+--- !u!114 &1358433763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 53218372}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+--- !u!114 &1378211570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 80133541}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &1380583845
 GameObject:
   m_ObjectHideFlags: 0
@@ -7530,6 +7702,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
     type: 2}
   m_PrefabInternal: {fileID: 921871607}
+--- !u!114 &1555569015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 217876623}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &1565518487
 GameObject:
   m_ObjectHideFlags: 0
@@ -7700,6 +7888,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &1644892575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 360917149}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &1655767999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7823,6 +8017,38 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1655767999}
   m_CullTransparentMesh: 0
+--- !u!114 &1665103476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 485018789}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
+--- !u!114 &1678644602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 798401678}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!224 &1688757241 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224110339677613824, guid: e8faad9b818c93f48bfc44e74f43ccb4,
@@ -8241,6 +8467,22 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1713666085}
   m_CullTransparentMesh: 0
+--- !u!114 &1723152631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 15537353}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1001 &1732062466
 Prefab:
   m_ObjectHideFlags: 0
@@ -10264,6 +10506,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2021679021}
   m_CullTransparentMesh: 0
+--- !u!114 &2048507913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114906993382402270, guid: e8faad9b818c93f48bfc44e74f43ccb4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1502924199}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 --- !u!1 &2064621796
 GameObject:
   m_ObjectHideFlags: 0
@@ -10387,6 +10635,22 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2064621796}
   m_CullTransparentMesh: 0
+--- !u!114 &2082100057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 764935398}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &2109838283
 GameObject:
   m_ObjectHideFlags: 0

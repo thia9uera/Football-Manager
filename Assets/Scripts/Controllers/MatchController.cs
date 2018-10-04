@@ -95,7 +95,7 @@ public class MatchController : MonoBehaviour
     private bool keepDefender;
     private MarkingType marking;
     private string passer;
-
+    private int counterAttack = 0;
 
     private int matchTime = 0;
     private int homeTeamScore = 0;
@@ -121,6 +121,7 @@ public class MatchController : MonoBehaviour
     private float attackingBonusHigh;
     private float faultChance;
     private float offsideChance;
+    private float counterAttackChance;
 
     private int fatigueLow;
     private int fatigueMedium;
@@ -148,10 +149,11 @@ public class MatchController : MonoBehaviour
         attackingBonusHigh = modifiers.AttackBonusHigh;
         faultChance = modifiers.FaultChance;
         offsideChance = modifiers.OffsideChance;
-        fatigueLow = (int)modifiers.FatigueLow;
-        fatigueMedium = (int)modifiers.FatigueMedium;
-        fatigueHigh = (int)modifiers.FatigueHigh;
+        fatigueLow = modifiers.FatigueLow;
+        fatigueMedium = modifiers.FatigueMedium;
+        fatigueHigh = modifiers.FatigueHigh;
         fatigueRecoverHalfTime = modifiers.FatigueRecoverHalfTime;
+        counterAttackChance = modifiers.CounterAttackChance;
 
         version.text = "v." + Application.version;
     }
@@ -786,22 +788,26 @@ public class MatchController : MonoBehaviour
         {
             lastActionSuccessful = false;
             attackingBonus = 1f;
+            if (counterAttack > 0) counterAttack--;
 
             switch (matchEvent)
             {
                 case MatchEvent.Freekick:
                     DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz falta.\n\n";
                     Narration.UpdateNarration("nar_Fault_", Color.gray, 5);
+                    if (counterAttack > 0) counterAttack = 0;
                     return;
 
                 case MatchEvent.Penalty:
                     DebugString += "\n\n" + defendingPlayer.FirstName + " " + defendingPlayer.LastName + " faz penalty.\n\n";
                     Narration.UpdateNarration("nar_Penalty_", Color.gray);
+                    if (counterAttack > 0) counterAttack = 0;
                     return;
 
                 case MatchEvent.Offside:
                     DebugString += "\n\n" + attackingPlayer.FirstName + " " + attackingPlayer.LastName + " impedido no lance.\n\n";
                     Narration.UpdateNarration("nar_Offside_", Color.gray, 3);
+                    if (counterAttack > 0) counterAttack = 0;
                     return;
             }
 
@@ -810,6 +816,7 @@ public class MatchController : MonoBehaviour
                 case PlayerData.PlayerAction.None:
                     DebugString += "RATIOU FEIO E PERDEU A BOLA! \n ________________________________\n";
                     Narration.UpdateNarration("nar_LostPossession_", attackingTeam.PrimaryColor, 4);
+                    if (counterAttack > 0) counterAttack = 0;
                     break;
 
                 case PlayerData.PlayerAction.LongPass:
@@ -1345,6 +1352,17 @@ public class MatchController : MonoBehaviour
             {
                 success = true;
             }
+            else
+            {
+                if (counterAttack > 0) counterAttack = 0;
+                counterAttackChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)defendingTeam.Strategy].CounterAttackChance;
+                float counterRoll = Random.Range(0, 1f);
+
+                if ((int)zone < 17 && counterAttackChance > counterRoll)
+                {
+                    counterAttack = 4;                   
+                }
+            }
         }
 
         attackingPlayer.Fatigue -= attFatigueRate * (25 / (float)attackingPlayer.Stamina);
@@ -1455,18 +1473,7 @@ public class MatchController : MonoBehaviour
             return GetTopPlayerByAttribute(players.ToArray(), PlayerData.PlayerAttributes.Freekick);
         }
 
-        PlayerData playa = GetActivePlayer(players);
-        if (forcePlayer && playa == null)
-        {
-            print("##########################################CARALHA#####################################");
-            print("List: " + players.Count);
-            print("Time: " + attackingTeam.Name);
-            print("Passe de :" + attackingPlayer.GetFullName());
-            if (attackingTeam == HomeTeam) print("ZONA: " + currentZone);
-            else print("ZONA: " + GetAwayTeamZone());
-
-        }
-        return playa;
+        return GetActivePlayer(players);
     }
 
     private PlayerData GetDefendingPlayer(FieldZone _zone)
@@ -1482,7 +1489,11 @@ public class MatchController : MonoBehaviour
         foreach (PlayerData player in defendingTeam.Squad)
         {
             chance = CalculatePresence(player, zone, defendingTeam.GetStrategy());
-            if (player.Position != player.AssignedPosition) chance *= positionDebuff;
+            if (counterAttack > 0)
+            {
+                chance *= 0.5f;
+                print("NO CONTRA-ATAQUE  -  " + counterAttack);
+            }
             if (chance >= 1f)
             {
                 players.Add(player);
@@ -1515,7 +1526,7 @@ public class MatchController : MonoBehaviour
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= FatigueModifier(player.Fatigue);
             bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
-            //if (player.Position != player.AssignedPosition) stats *= positionDebuff;
+            if (player.Position != player.AssignedPosition) stats *= positionDebuff;
 
             int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 

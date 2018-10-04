@@ -22,4 +22,4 @@ MonoBehaviour:
     FatigueMedium: 12
     FatigueHigh: 15
     FatigueRecoverHalfTime: 1.25
-    CounterAttackChance: 0.1
+    CounterAttackChance: 0.5

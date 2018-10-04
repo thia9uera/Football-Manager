@@ -26,23 +26,24 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
-    Target_CAM: 1
-    Target_RAM: 1
-    Target_LF: 1
-    Target_CF: 1
-    Target_RF: 1
-    Target_Box: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
+    Target_CAM: 0
+    Target_RAM: 0
+    Target_LF: 0
+    Target_CF: 0
+    Target_RF: 0
+    Target_Box: 0
     OwnGoal: 1
     LD: 1
     CD: 1
@@ -74,22 +75,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
-    Target_CAM: 1
-    Target_RAM: 1
-    Target_LF: 1
-    Target_CF: 1
-    Target_RF: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
+    Target_CAM: 0
+    Target_RAM: 0
+    Target_LF: 0
+    Target_CF: 0
+    Target_RF: 0
     Target_Box: 1.5
     OwnGoal: 0
     LD: 0
@@ -122,23 +124,24 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 2
     TacklingChance: 1.1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
-    Target_CAM: 1
-    Target_RAM: 1
-    Target_LF: 1
-    Target_CF: 1
-    Target_RF: 1
-    Target_Box: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
+    Target_CAM: 0
+    Target_RAM: 0
+    Target_LF: 0
+    Target_CF: 0
+    Target_RF: 0
+    Target_Box: 0
     OwnGoal: 1
     LD: 1
     CD: 1
@@ -170,23 +173,24 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 3
     TacklingChance: 1.2
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
-    Target_CAM: 1
-    Target_RAM: 1
-    Target_LF: 1
-    Target_CF: 1
-    Target_RF: 1
-    Target_Box: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
+    Target_CAM: 0
+    Target_RAM: 0
+    Target_LF: 0
+    Target_CF: 0
+    Target_RF: 0
+    Target_Box: 0
     OwnGoal: 1
     LD: 1
     CD: 1
@@ -218,21 +222,22 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
     Target_LAM: 2
-    Target_CAM: 1
+    Target_CAM: 0
     Target_RAM: 2
     Target_LF: 2
-    Target_CF: 1
+    Target_CF: 0
     Target_RF: 2
     Target_Box: 1.5
     OwnGoal: 0
@@ -266,22 +271,23 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
     Target_CAM: 2
-    Target_RAM: 1
-    Target_LF: 1
+    Target_RAM: 0
+    Target_LF: 0
     Target_CF: 2
-    Target_RF: 1
+    Target_RF: 0
     Target_Box: 3
     OwnGoal: 0
     LD: 0
@@ -314,21 +320,22 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
     Target_LAM: 1.5
-    Target_CAM: 1
+    Target_CAM: 0
     Target_RAM: 1.5
     Target_LF: 1.5
-    Target_CF: 1
+    Target_CF: 0
     Target_RF: 1.5
     Target_Box: 3
     OwnGoal: 0
@@ -362,23 +369,24 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 5
     TacklingChance: 1.35
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
-    Target_CAM: 1
-    Target_RAM: 1
-    Target_LF: 1
-    Target_CF: 1
-    Target_RF: 1
-    Target_Box: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
+    Target_CAM: 0
+    Target_RAM: 0
+    Target_LF: 0
+    Target_CF: 0
+    Target_RF: 0
+    Target_Box: 0
     OwnGoal: 1
     LD: 1
     CD: 1
@@ -410,23 +418,24 @@ MonoBehaviour:
     OffsideTrickChance: 3
     MarkingChance: 1
     TacklingChance: 1
-    Target_OwnGoal: 1
-    Target_LD: 1
-    Target_CD: 1
-    Target_RD: 1
-    Target_LDM: 1
-    Target_CDM: 1
-    Target_RDM: 1
-    Target_LM: 1
-    Target_CM: 1
-    Target_RM: 1
-    Target_LAM: 1
-    Target_CAM: 1
-    Target_RAM: 1
-    Target_LF: 1
-    Target_CF: 1
-    Target_RF: 1
-    Target_Box: 1
+    CounterAttackChance: 1
+    Target_OwnGoal: 0
+    Target_LD: 0
+    Target_CD: 0
+    Target_RD: 0
+    Target_LDM: 0
+    Target_CDM: 0
+    Target_RDM: 0
+    Target_LM: 0
+    Target_CM: 0
+    Target_RM: 0
+    Target_LAM: 0
+    Target_CAM: 0
+    Target_RAM: 0
+    Target_LF: 0
+    Target_CF: 0
+    Target_RF: 0
+    Target_Box: 0
     OwnGoal: 1
     LD: 1
     CD: 1
