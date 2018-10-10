@@ -1820,7 +1820,7 @@ public class MatchController : MonoBehaviour
             DebugString += "<color=#00ff00>\n+ Bonus " + (float)(attackRoll - 9) + "%: </color>" + attacking + "\n";
             attackExcitment = 0;
         }
-        else if (attackRoll <= 5)
+        else if (attackRoll <= 4)
         {
             shotMissed = true;
             DebugString += "\n\nErrou o chute!\n";
