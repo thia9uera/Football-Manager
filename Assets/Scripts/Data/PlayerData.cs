@@ -101,8 +101,8 @@ public class PlayerData : ScriptableObject
         }
     }
 
-    [HideInInspector]
-    public MatchController.FieldZone AssignedPosition;
+    //[HideInInspector]
+   // public MatchController.FieldZone Zone;
 
     private enum AltPosition
     {
@@ -229,7 +229,7 @@ public class PlayerData : ScriptableObject
 
     public int GetOverall()
     {
-        int total = 0;
+        int total = 17;
 
         total += Goalkeeping;
         total += Passing;
@@ -249,7 +249,37 @@ public class PlayerData : ScriptableObject
         total += Vision;
         total += Stability;
 
-        total = total / 17;
+        if(Position == PlayerPosition.Goalkeeper)
+        {
+            total += Goalkeeping;
+            total += Agility;
+            total = total / 19;
+        }
+        else if (Position == PlayerPosition.Defender)
+        {
+            total += Tackling;
+            total += Blocking;
+            total = total / 19;
+        }
+        else if(Position == PlayerPosition.Midfielder)
+        {
+            total += Dribbling;
+            total += Passing;
+            total += Crossing;
+            total = total / 20;
+        }
+        else if (Position == PlayerPosition.Forward)
+        {
+            total += Dribbling;
+            total += Passing;
+            total += Shooting;
+            total += Heading;
+            total = total / 21;
+        }
+        else
+        {
+            total = total / 17;
+        }
 
         return total;
     }
@@ -258,7 +288,7 @@ public class PlayerData : ScriptableObject
     {
         float pct = 0f;
 
-        PosChancePerZone chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)AssignedPosition];
+        PosChancePerZone chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Zone];
 
         switch(_zone)
         {
@@ -322,137 +352,149 @@ public class PlayerData : ScriptableObject
         switch(_zone)
         {
             case MatchController.FieldZone.OwnGoal:
-                if (AssignedPosition == MatchController.FieldZone.LD) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCD) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCD) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RD) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LD) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.LCD) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RCD) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RD) pos = AltPosition.LeftDefensive;
+                else if (Zone == MatchController.FieldZone.BLD) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.BRD) pos = AltPosition.Left;
                 break;
 
             case MatchController.FieldZone.LD:
-                if (AssignedPosition == MatchController.FieldZone.LCD) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LDM) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCDM) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LCD) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LDM) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.LCDM) pos = AltPosition.LeftDefensive;
+                else if (Zone == MatchController.FieldZone.BLD) pos = AltPosition.Offensive;
                 break;
 
+            case MatchController.FieldZone.RCD:
             case MatchController.FieldZone.LCD:
-                if (AssignedPosition == MatchController.FieldZone.LD) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RD) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LDM) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCDM) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RDM) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LD) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RCD) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LDM) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.LCDM) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RCDM) pos = AltPosition.LeftDefensive;
                 break;
 
             case MatchController.FieldZone.RD:
-                if (AssignedPosition == MatchController.FieldZone.RCD) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RCDM) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.RDM) pos = AltPosition.Defensive;
+                if (Zone == MatchController.FieldZone.RCD) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RCDM) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.RDM) pos = AltPosition.Defensive;
                 break;
 
             case MatchController.FieldZone.LDM:
-                if (AssignedPosition == MatchController.FieldZone.LD) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCD) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCDM) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LCM) pos = AltPosition.LeftDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.LM) pos = AltPosition.Defensive;
+                if (Zone == MatchController.FieldZone.LD) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.LCD) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LCDM) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LCM) pos = AltPosition.LeftDefensive;
+                else if (Zone == MatchController.FieldZone.LM) pos = AltPosition.Defensive;
                 break;
 
+            case MatchController.FieldZone.RCDM:
             case MatchController.FieldZone.LCDM:
-                if (AssignedPosition == MatchController.FieldZone.LD) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCD) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RD) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LDM) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RDM) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LM) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCM) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RM) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LD) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.LCD) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RD) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LDM) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RDM) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LM) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.LCM) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RM) pos = AltPosition.LeftDefensive;
                 break;
 
             case MatchController.FieldZone.RDM:
-                if (AssignedPosition == MatchController.FieldZone.RCD) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RD) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCDM) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RCM) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.RM) pos = AltPosition.Defensive;
+                if (Zone == MatchController.FieldZone.RCD) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RD) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.LCDM) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RCM) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.RM) pos = AltPosition.Defensive;
                 break;
 
             case MatchController.FieldZone.LM:
-                if (AssignedPosition == MatchController.FieldZone.LDM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCDM) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCM) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.RAM) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCAM) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LDM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.LCDM) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LCM) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.RAM) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RCAM) pos = AltPosition.LeftDefensive;
                 break;
 
+            case MatchController.FieldZone.RCM:
             case MatchController.FieldZone.LCM:
-                if (AssignedPosition == MatchController.FieldZone.LDM) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCDM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RDM) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LM) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RM) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LAM) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCAM) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RAM) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LDM) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.LCDM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RDM) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LM) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RM) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LAM) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.LCAM) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RAM) pos = AltPosition.LeftDefensive;
                 break;
 
             case MatchController.FieldZone.RM:
-                if (AssignedPosition == MatchController.FieldZone.RDM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCDM) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCM) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RAM) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCAM) pos = AltPosition.RightDefensive;
+                if (Zone == MatchController.FieldZone.RDM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RCDM) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RCM) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RAM) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RCAM) pos = AltPosition.RightDefensive;
                 break;
 
             case MatchController.FieldZone.LAM:
-                if (AssignedPosition == MatchController.FieldZone.LM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCM) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCAM) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LF) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCF) pos = AltPosition.LeftDefensive;
+                if (Zone == MatchController.FieldZone.LM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.LCM) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LCAM) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LF) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.LCF) pos = AltPosition.LeftDefensive;
                 break;
 
             case MatchController.FieldZone.RCAM:
-                if (AssignedPosition == MatchController.FieldZone.LM) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RM) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LAM) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RAM) pos = AltPosition.Left;
-                else if (AssignedPosition == MatchController.FieldZone.LF) pos = AltPosition.RightDefensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCF) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RF) pos = AltPosition.LeftDefensive;
+            case MatchController.FieldZone.LCAM:
+                if (Zone == MatchController.FieldZone.LM) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RCM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RM) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LAM) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RAM) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.LF) pos = AltPosition.RightDefensive;
+                else if (Zone == MatchController.FieldZone.RCF) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RF) pos = AltPosition.LeftDefensive;
                 break;
 
             case MatchController.FieldZone.RAM:
-                if (AssignedPosition == MatchController.FieldZone.RM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCM) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCAM) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RF) pos = AltPosition.Defensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCF) pos = AltPosition.RightDefensive;
+                if (Zone == MatchController.FieldZone.RM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RCM) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RCAM) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RF) pos = AltPosition.Defensive;
+                else if (Zone == MatchController.FieldZone.RCF) pos = AltPosition.RightDefensive;
                 break;
 
             case MatchController.FieldZone.LF:
-                if (AssignedPosition == MatchController.FieldZone.LAM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCAM) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LCF) pos = AltPosition.Left;
+                if (Zone == MatchController.FieldZone.LAM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.LCAM) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LCF) pos = AltPosition.Left;
+                else if (Zone == MatchController.FieldZone.ALF) pos = AltPosition.Defensive;
                 break;
 
+            case MatchController.FieldZone.LCF:
             case MatchController.FieldZone.RCF:
-                if (AssignedPosition == MatchController.FieldZone.LAM) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCAM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RAM) pos = AltPosition.LeftOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.LF) pos = AltPosition.Right;
-                else if (AssignedPosition == MatchController.FieldZone.RF) pos = AltPosition.Left;
+                if (Zone == MatchController.FieldZone.LAM) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RCAM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RAM) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.LF) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.RF) pos = AltPosition.Left;
                 break;
 
             case MatchController.FieldZone.RF:
-                if (AssignedPosition == MatchController.FieldZone.RAM) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCAM) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCF) pos = AltPosition.Right;
+                if (Zone == MatchController.FieldZone.RAM) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RCAM) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RCF) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.ARF) pos = AltPosition.Defensive;
                 break;
 
             case MatchController.FieldZone.Box:
-                if (AssignedPosition == MatchController.FieldZone.LF) pos = AltPosition.RightOffensive;
-                else if (AssignedPosition == MatchController.FieldZone.RCF) pos = AltPosition.Offensive;
-                else if (AssignedPosition == MatchController.FieldZone.RF) pos = AltPosition.LeftOffensive;
+                if (Zone == MatchController.FieldZone.LF) pos = AltPosition.RightOffensive;
+                else if (Zone == MatchController.FieldZone.RCF) pos = AltPosition.Offensive;
+                else if (Zone == MatchController.FieldZone.RF) pos = AltPosition.LeftOffensive;
+                else if (Zone == MatchController.FieldZone.ALF) pos = AltPosition.Right;
+                else if (Zone == MatchController.FieldZone.ARF) pos = AltPosition.Left;
                 break;
         }
 

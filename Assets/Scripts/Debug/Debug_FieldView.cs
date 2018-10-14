@@ -29,7 +29,7 @@ public class Debug_FieldView : MonoBehaviour
             strategyList.Add(strategy.Name);
         }
         dropDownPlayerStrategy.AddOptions(strategyList);
-        dropDownPlayerStrategy.value = (int)TestPlayer.AssignedPosition;
+        dropDownPlayerStrategy.value = (int)TestPlayer.Zone;
 
         strategyList.Clear();
         foreach (Team_Strategy strategy in MainController.Instance.TeamStrategyData.team_Strategys)
@@ -65,7 +65,7 @@ public class Debug_FieldView : MonoBehaviour
     public void ValueChange()
     {
         MatchController.FieldZone pos = (MatchController.FieldZone)dropDownPlayerPosition.value;
-        TestPlayer.Zone = TestPlayer.AssignedPosition = pos;
+        TestPlayer.Zone = TestPlayer.Zone = pos;
     }
 
     public void SetPlayerStrategy()

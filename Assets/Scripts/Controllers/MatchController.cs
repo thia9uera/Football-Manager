@@ -1214,7 +1214,7 @@ public class MatchController : MonoBehaviour
                 break;
         }
 
-        if (defendingPlayer != null && defendingPlayer.AssignedPosition == FieldZone.OwnGoal)
+        if (defendingPlayer != null && defendingPlayer.Zone == FieldZone.OwnGoal)
         {
             defending = (float)(defendingPlayer.Goalkeeping + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
             defenseBonusChance = GetAttributeBonus(defendingPlayer.Goalkeeping);
@@ -1230,7 +1230,7 @@ public class MatchController : MonoBehaviour
         attacking *= FatigueModifier(attackingPlayer.Fatigue);
         DebugString += "<color=#ff0000>- Fatigue: </color>" + attacking + "\n";
 
-        if (attackingPlayer.Zone != attackingPlayer.AssignedPosition)
+        if (attackingPlayer.Zone != attackingPlayer.Zone)
         {
             attacking *= positionDebuff;
             DebugString += "<color=#ff0000>- Position Debuff (-" + ((1 - positionDebuff) * 100) + "%): </color>" + attacking + "\n";
@@ -1535,7 +1535,7 @@ public class MatchController : MonoBehaviour
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= FatigueModifier(player.Fatigue);
             bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
-            if (player.Zone != player.AssignedPosition) stats *= positionDebuff;
+            if (player.Zone != player.Zone) stats *= positionDebuff;
 
             int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
@@ -1584,7 +1584,7 @@ public class MatchController : MonoBehaviour
     private MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
-        if (defendingPlayer == null || attackingPlayer.AssignedPosition == FieldZone.OwnGoal) return type;
+        if (defendingPlayer == null || attackingPlayer.Zone == FieldZone.OwnGoal) return type;
 
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
@@ -1668,7 +1668,7 @@ public class MatchController : MonoBehaviour
             header *= teamStrategy.ShootingChance;
         }
 
-        if(attackingPlayer.AssignedPosition == FieldZone.OwnGoal)
+        if(attackingPlayer.Zone == FieldZone.OwnGoal)
         {
             dribble = 0;
             shoot = 0;
