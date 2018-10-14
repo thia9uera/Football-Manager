@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Neymar
   LastName: Jr
-  Position: 13
+  Zone: 0
+  Position: 3
   Strategy: 0
   Perk: {fileID: 11400000, guid: e67b7ad34274ad948a908d3b0ca10996, type: 2}
   Goalkeeping: 27

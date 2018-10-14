@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Thiago
   LastName: de Moura
-  Position: 13
+  Zone: 0
+  Position: 1
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 28

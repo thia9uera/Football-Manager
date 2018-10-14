@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Bruno
   LastName: Iuva
-  Position: 15
+  Zone: 0
+  Position: 2
   Strategy: 0
   Perk: {fileID: 11400000, guid: 2b0c32b772cd07742ba24c10fd3c3b1f, type: 2}
   Goalkeeping: 28
@@ -33,7 +34,6 @@ MonoBehaviour:
   Teamwork: 88
   Vision: 88
   Stability: 84
-  Fatigue: 71
   AssignedPosition: 13
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -48,6 +48,7 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
+  Prob_LongPass: 1
   TotalPasses: 18
   TotalCrosses: 2
   TotalShots: 7

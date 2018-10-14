@@ -15,21 +15,11 @@ MonoBehaviour:
   PLAYER_2: 'Amarello '
   TEAM_1: Brasil
   TEAM_2: Cadena Rivers
+  ZONE: 
+  EXTRA_1: 
   currentlanguage: 1
   positionKeys:
   - Goalkeeper
-  - LeftDefender
-  - CenterDefender
-  - RightDefender
-  - LeftDefMidfielder
-  - CenterDefMidfielder
-  - RightDefMidfielder
-  - LeftMidfielder
-  - CenterMidfielder
-  - RightMidfielder
-  - LeftAttMidfielder
-  - CenterAttMidfielder
-  - RightAttMidfielder
-  - LeftForward
-  - CenterForward
-  - RightForward
+  - Defender
+  - Midfielder
+  - Forward

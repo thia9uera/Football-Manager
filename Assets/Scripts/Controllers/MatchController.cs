@@ -18,23 +18,32 @@ public class MatchController : MonoBehaviour
     //Names given by Home Team perspective
     public enum FieldZone
     { 
-        OwnGoal = 0,               //                       AWAY GOAL 
-        LD = 1,                    //               LF         CF        RF
-        CD = 2,                    //               LAM        CAM       RAM                                                
-        RD = 3,                    //               LM         CM        RM
-        LDM = 4,                   //               LDM        CDM       RDM
-        CDM = 5,                   //               LD         CD        RD
-        RDM = 6,                   //                       HOME GOAL
-        LM = 7,                    
-        CM = 8,
-        RM = 9,
-        LAM = 10,
-        CAM = 11,
-        RAM = 12,
-        LF = 13,
-        CF = 14,
-        RF = 15,
-        Box = 16,
+        OwnGoal = 0, 
+        BLD = 1,
+        BRD = 2,
+        LD = 3,                    
+        LCD = 4,
+        RCD = 5,
+        RD = 6,                   
+        LDM = 7,                  
+        LCDM = 8,
+        RCDM = 9,
+        RDM = 10,                   
+        LM = 11,                    
+        LCM = 12,
+        RCM = 13,
+        RM = 14,
+        LAM = 15,
+        LCAM = 16,
+        RCAM = 17,
+        RAM = 18,
+        LF = 19,
+        LCF = 20,
+        RCF = 21,
+        RF = 22,
+        ALF = 23,
+        ARF = 24,
+        Box = 25,
     }
 
     public enum MatchEvent
@@ -65,7 +74,7 @@ public class MatchController : MonoBehaviour
         DropMin,
     }
 
-    private const int totalZones = 17;
+    private const int totalZones = 26;
 
     [SerializeField]
     private GameObject startBtn;
@@ -265,7 +274,7 @@ public class MatchController : MonoBehaviour
 
         Narration.UpdateNarration("nar_KickOff_", Color.gray);
         DebugString = "KICK OFF! \n \n";
-        currentZone = FieldZone.CM;
+        currentZone = FieldZone.RCM;
         Field.UpdateFieldArea((int)currentZone);
 
         isGameOn = true;
@@ -317,7 +326,7 @@ public class MatchController : MonoBehaviour
                     isScorerAnnounced = false;
 
                     SwitchPossesion();
-                    currentZone = FieldZone.CM;
+                    currentZone = FieldZone.RCM;
                     attackingBonus = 1f;
                     Field.UpdateFieldArea((int)currentZone);
 
@@ -516,7 +525,7 @@ public class MatchController : MonoBehaviour
         {
             isHalfTime = true;
             Narration.UpdateNarration("nar_FirstHalfEnd_", Color.gray);
-            currentZone = FieldZone.CM;
+            currentZone = FieldZone.RCM;
             attackingTeam = AwayTeam;
             defendingTeam = HomeTeam;
             keepAttacker = false;
@@ -1205,7 +1214,7 @@ public class MatchController : MonoBehaviour
                 break;
         }
 
-        if (defendingPlayer != null && defendingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK)
+        if (defendingPlayer != null && defendingPlayer.AssignedPosition == FieldZone.OwnGoal)
         {
             defending = (float)(defendingPlayer.Goalkeeping + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
             defenseBonusChance = GetAttributeBonus(defendingPlayer.Goalkeeping);
@@ -1221,7 +1230,7 @@ public class MatchController : MonoBehaviour
         attacking *= FatigueModifier(attackingPlayer.Fatigue);
         DebugString += "<color=#ff0000>- Fatigue: </color>" + attacking + "\n";
 
-        if (attackingPlayer.Position != attackingPlayer.AssignedPosition)
+        if (attackingPlayer.Zone != attackingPlayer.AssignedPosition)
         {
             attacking *= positionDebuff;
             DebugString += "<color=#ff0000>- Position Debuff (-" + ((1 - positionDebuff) * 100) + "%): </color>" + attacking + "\n";
@@ -1526,7 +1535,7 @@ public class MatchController : MonoBehaviour
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= FatigueModifier(player.Fatigue);
             bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
-            if (player.Position != player.AssignedPosition) stats *= positionDebuff;
+            if (player.Zone != player.AssignedPosition) stats *= positionDebuff;
 
             int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
@@ -1575,7 +1584,7 @@ public class MatchController : MonoBehaviour
     private MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
-        if (defendingPlayer == null || attackingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK) return type;
+        if (defendingPlayer == null || attackingPlayer.AssignedPosition == FieldZone.OwnGoal) return type;
 
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
@@ -1659,7 +1668,7 @@ public class MatchController : MonoBehaviour
             header *= teamStrategy.ShootingChance;
         }
 
-        if(attackingPlayer.AssignedPosition == PlayerData.PlayerPosition.GK)
+        if(attackingPlayer.AssignedPosition == FieldZone.OwnGoal)
         {
             dribble = 0;
             shoot = 0;
@@ -1752,7 +1761,8 @@ public class MatchController : MonoBehaviour
                 distanceModifier = 0.5f;
                 break;
 
-            case FieldZone.CAM:
+            case FieldZone.LCAM:
+            case FieldZone.RCAM:
                 distanceModifier = 0.65f;
                 break;
 
@@ -1761,7 +1771,13 @@ public class MatchController : MonoBehaviour
                 distanceModifier = 0.75f;
                 break;
 
-            case FieldZone.CF:
+            case FieldZone.ALF:
+            case FieldZone.ARF:
+                distanceModifier = 0.35f;
+                break;
+
+            case FieldZone.LCF:
+            case FieldZone.RCF:
                 distanceModifier = 0.8f;
                 break;
         }
@@ -1984,34 +2000,46 @@ public class MatchController : MonoBehaviour
         List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
 
         float _OwnGoal = 0;
+        float _BLD = 0;
+        float _BRD = 0;
         float _LD = 0;
-        float _CD = 0;
+        float _LCD = 0;
+        float _RCD = 0;
         float _RD = 0;
         float _LDM = 0;
-        float _CDM = 0;
+        float _LCDM = 0;
+        float _RCDM = 0;
         float _RDM = 0;
         float _LM = 0;
-        float _CM = 0;
+        float _LCM = 0;
+        float _RCM = 0;
         float _RM = 0;
         float _LAM = 0;
-        float _CAM = 0;
+        float _LCAM = 0;
+        float _RCAM = 0;
         float _RAM = 0;
         float _LF = 0;
-        float _CF = 0;
+        float _LCF = 0;
+        float _RCF = 0;
         float _RF = 0;
+        float _ALF = 0;
+        float _ARF = 0;
         float _Box = 0;
 
         if (matchEvent == MatchEvent.Goalkick)
         {
             _LDM = 0.75f;
-            _CDM = 0.75f;
+            _LCDM = 0.75f;
+            _RCDM = 0.75f;
             _RDM = 0.75f;
             _LM = 1f;
-            _CM = 1f;
+            _LCM = 1f;
+            _RCM = 1f;
             _RM = 1f;
-            _LAM = 1.5f;
-            _CAM = 1.5f;
-            _RAM = 1.5f;
+            _LAM = 0.5f;
+            _LCAM = 0.5f;
+            _RCAM = 0.5f;
+            _RAM = 0.5f;
         }
 
         else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.Dribble || offensiveAction == PlayerData.PlayerAction.Sprint)
@@ -2019,21 +2047,30 @@ public class MatchController : MonoBehaviour
             TargetPassPerZone data = MainController.Instance.TargetPassPerZone.targetPassPerZones[(int)zone];
 
             _OwnGoal = data.OwnGoal;
+            _BLD = data.BLD;
+            _BRD = data.BRD;
             _LD = data.LD;
-            _CD = data.CD;
+            _LCD = data.LCD;
+            _RCD = data.RCD;
             _RD = data.RD;
             _LDM = data.LDM;
-            _CDM = data.CDM;
+            _LCDM = data.LCDM;
+            _RCDM = data.RCDM;
             _RDM = data.RDM;
             _LM = data.LM;
-            _CM = data.CM;
+            _LCM = data.LCM;
+            _RCM = data.RCM;
             _RM = data.RM;
             _LAM = data.LAM;
-            _CAM = data.CAM;
+            _LCAM = data.LCAM;
+            _RCAM = data.RCAM;
             _RAM = data.RAM;
             _LF = data.LF;
-            _CF = data.CF;
+            _LCF = data.LCF;
+            _RCF = data.RCF;
             _RF = data.RF;
+            _ALF = data.ALF;
+            _ARF = data.ARF;
             _Box = data.Box;
         }
 
@@ -2042,21 +2079,30 @@ public class MatchController : MonoBehaviour
             TargetCrossPerZone data = MainController.Instance.TargetCrossPerZone.targetCrossPerZones[(int)zone];
 
             _OwnGoal = data.OwnGoal;
+            _BLD = data.BLD;
+            _BRD = data.BRD;
             _LD = data.LD;
-            _CD = data.CD;
+            _LCD = data.LCD;
+            _RCD = data.RCD;
             _RD = data.RD;
             _LDM = data.LDM;
-            _CDM = data.CDM;
+            _LCDM = data.LCDM;
+            _RCDM = data.RCDM;
             _RDM = data.RDM;
             _LM = data.LM;
-            _CM = data.CM;
+            _LCM = data.LCM;
+            _RCM = data.RCM;
             _RM = data.RM;
             _LAM = data.LAM;
-            _CAM = data.CAM;
+            _LCAM = data.LCAM;
+            _RCAM = data.RCAM;
             _RAM = data.RAM;
             _LF = data.LF;
-            _CF = data.CF;
+            _LCF = data.LCF;
+            _RCF = data.RCF;
             _RF = data.RF;
+            _ALF = data.ALF;
+            _ARF = data.ARF;
             _Box = data.Box;
         }
 
@@ -2064,59 +2110,84 @@ public class MatchController : MonoBehaviour
         Team_Strategy strategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
         _OwnGoal *= strategy.Target_OwnGoal;
         _LD += strategy.Target_LD;
-        _CD += strategy.Target_CD;
+        _LCD += strategy.Target_LCD;
+        _RCD += strategy.Target_RCD;
         _RD += strategy.Target_RD;
         _LDM += strategy.Target_LDM;
-        _CDM += strategy.Target_CDM;
+        _LCDM += strategy.Target_LCDM;
+        _RCDM += strategy.Target_RCDM;
         _RDM += strategy.Target_RDM;
         _LM += strategy.Target_LM;
-        _CM += strategy.Target_CM;
+        _LCM += strategy.Target_LCM;
+        _RCM += strategy.Target_RCM;
         _RM += strategy.Target_RM;
         _LAM += strategy.Target_LAM;
-        _CAM += strategy.Target_CAM;
+        _LCAM += strategy.Target_LCAM;
+        _RCAM += strategy.Target_RCAM;
         _RAM += strategy.Target_RAM;
         _LF += strategy.Target_LF;
-        _CF += strategy.Target_CF;
+        _LCF += strategy.Target_LCF;
+        _RCF += strategy.Target_RCF;
         _RF += strategy.Target_RF;
+        _ALF += strategy.Target_ALF;
+        _ARF += strategy.Target_ARF;
         _Box += strategy.Target_Box;
 
 
 
-        float total = _OwnGoal + _LD + _CD + _RD + _LDM + _CDM + _RDM + _LM + _CM + _RM + _LAM + _CAM + _RAM + _LF + _CF + _RF + _Box;
+        float total = _OwnGoal + _BLD + _BRD + _LD + _LCD + _RCD + _RD + _LDM + _LCDM + _RCDM + _RDM + _LM + _LCM + _RCM + _RM + _LAM + _LCAM + _RCAM + _RAM + _LF + _LCF + _RCF + _RF + + _ALF + _ARF +  _Box;
         _OwnGoal /= total;
+        _BLD /= total;
+        _BRD /= total;
         _LD /= total;
-        _CD /= total;
+        _LCD /= total;
+        _RCD /= total;
         _RD /= total;
         _LDM /= total;
-        _CDM /= total;
+        _LCDM /= total;
+        _RCDM /= total;
         _RDM /= total;
         _LM /= total;
-        _CM /= total;
+        _LCM /= total;
+        _RCM /= total;
         _RM /= total;
         _LAM /= total;
-        _CAM /= total;
+        _LCAM /= total;
+        _RCAM /= total;
         _RAM /= total;
         _LF /= total;
-        _CF /= total;
+        _LCF /= total;
+        _RCF /= total;
          _RF /= total;
+        _ALF /= total;
+        _ARF /= total;
         _Box /= total;
 
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.OwnGoal, _OwnGoal));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.BLD, _BLD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.BRD, _BRD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LD, _LD));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CD, _CD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCD, _LCD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCD, _RCD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RD, _RD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LDM, _LDM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CDM, _CDM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCDM, _LCDM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCDM, _RCDM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RDM, _RDM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LM, _LM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CM, _CM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCM, _LCM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCM, _RCM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RM, _RM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LAM, _LAM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CAM, _CAM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCAM, _LCAM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCAM, _RCAM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RAM, _RAM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LF, _LF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CF, _CF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCF, _LCF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCF, _RCF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RF, _RF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.ALF, _ALF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.ARF, _ARF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.Box, _Box));
 
         float random = Random.Range(0.00001f, 1f);
@@ -2156,20 +2227,27 @@ public class MatchController : MonoBehaviour
         {
             case FieldZone.OwnGoal: value = teamStrategy.OwnGoal; break;
             case FieldZone.LD: value = teamStrategy.LD; break;
-            case FieldZone.CD: value = teamStrategy.CD; break;
+            case FieldZone.LCD: value = teamStrategy.LCD; break;
+            case FieldZone.RCD: value = teamStrategy.RCD; break;
             case FieldZone.RD: value = teamStrategy.RD; break;
             case FieldZone.LDM: value = teamStrategy.LDM; break;
-            case FieldZone.CDM: value = teamStrategy.CDM; break;
+            case FieldZone.LCDM: value = teamStrategy.LCDM; break;
+            case FieldZone.RCDM: value = teamStrategy.RCDM; break;
             case FieldZone.RDM: value = teamStrategy.RDM; break;
             case FieldZone.LM: value = teamStrategy.LM; break;
-            case FieldZone.CM: value = teamStrategy.CM; break;
+            case FieldZone.LCM: value = teamStrategy.LCM; break;
+            case FieldZone.RCM: value = teamStrategy.RCM; break;
             case FieldZone.RM: value = teamStrategy.RM; break;
             case FieldZone.LAM: value = teamStrategy.LAM; break;
-            case FieldZone.CAM: value = teamStrategy.CAM; break;
+            case FieldZone.LCAM: value = teamStrategy.LCAM; break;
+            case FieldZone.RCAM: value = teamStrategy.RCAM; break;
             case FieldZone.RAM: value = teamStrategy.RAM; break;
             case FieldZone.LF: value = teamStrategy.LF; break;
-            case FieldZone.CF: value = teamStrategy.CF; break;
+            case FieldZone.LCF: value = teamStrategy.LCF; break;
+            case FieldZone.RCF: value = teamStrategy.RCF; break;
             case FieldZone.RF: value = teamStrategy.RF; break;
+            case FieldZone.ALF: value = teamStrategy.ALF; break;
+            case FieldZone.ARF: value = teamStrategy.ARF; break;
             case FieldZone.Box: value = teamStrategy.Box; break;
         }
         return value;

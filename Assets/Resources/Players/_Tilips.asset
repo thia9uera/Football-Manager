@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Tiru
   LastName: Lips
-  Position: 11
+  Zone: 0
+  Position: 3
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 80

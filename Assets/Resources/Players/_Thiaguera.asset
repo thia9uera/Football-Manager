@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Thiago
   LastName: Rocha
-  Position: 14
+  Zone: 0
+  Position: 2
   Strategy: 0
   Perk: {fileID: 11400000, guid: 2f66ad91f2e5f6840a434d7f01707faf, type: 2}
   Goalkeeping: 52

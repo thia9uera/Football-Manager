@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SquadSlotView : MonoBehaviour
 {
-    public PlayerData.PlayerPosition Position;
+    public MatchController.FieldZone Zone;
 
     public PlayerData Player;
 
@@ -26,23 +26,23 @@ public class SquadSlotView : MonoBehaviour
     void Start()
     {
         controller = GetComponentInParent<SquadSelectionView>();
-        posLabel.text = MainController.Instance.Localization.GetShortPositionString(Position);
-        if (Position == PlayerData.PlayerPosition.GK) Arrows.gameObject.SetActive(false);
+        posLabel.text = Zone.ToString();
+        if (Zone == MatchController.FieldZone.OwnGoal) Arrows.gameObject.SetActive(false);
     }
 
     public void Populate(PlayerData  _player)
     {
         Player = _player;
-        nameLabel.text = "<color=#999999>" + Player.Position + "</color>  " + Player.FirstName + " " + Player.LastName + " (" + Player.GetOverall() + ")";
-        Player.AssignedPosition = Position;
+        nameLabel.text = "<color=#999999>" + MainController.Instance.Localization.GetShortPositionString(Player.Position) + "</color>  " + Player.FirstName + " " + Player.LastName + " (" + Player.GetOverall() + ")";
+        Player.Zone = Zone;
 
-        if (Player.Position != Position) posLabel.color = Color.red;
+        if (Player.IsWronglyAssigned()) posLabel.color = Color.red;
         else posLabel.color = Color.gray;
 
-        if(Player.Position != PlayerData.PlayerPosition.GK)
+        if(Player.Zone != MatchController.FieldZone.OwnGoal)
         {
             Arrows.UpdateStrategy(Player.Strategy);
-            Arrows.HideArrows(Position);
+            Arrows.HideArrows(Zone);
             UpdateFatigue();
         }
     }

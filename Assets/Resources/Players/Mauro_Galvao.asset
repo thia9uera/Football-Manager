@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: 'Mauro '
   LastName: "Galv\xE3o"
-  Position: 2
+  Zone: 0
+  Position: 1
   Strategy: 0
   Perk: {fileID: 11400000, guid: eb9f362d2dec7274ba4e2354ae23e9bb, type: 2}
   Goalkeeping: 52

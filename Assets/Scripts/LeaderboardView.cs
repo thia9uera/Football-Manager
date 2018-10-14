@@ -119,7 +119,7 @@ public class LeaderboardView : MonoBehaviour
         {
             switch (_stat)
             {
-                case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Position).ToList(); break;
+                case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Zone).ToList(); break;
                 case "Name": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.FirstName).ToList(); break;
                 case "Goals": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalGoals).ToList(); break;
                 case "Shots": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalShots).ToList(); break;

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Marcus
   LastName: de Moura
-  Position: 7
+  Zone: 0
+  Position: 2
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 28

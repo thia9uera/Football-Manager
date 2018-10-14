@@ -13,7 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstName: Christian
   LastName: 
-  Position: 8
+  Zone: 0
+  Position: 2
   Strategy: 0
   Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
   Goalkeeping: 63
