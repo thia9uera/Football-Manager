@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MatchScoreView : MonoBehaviour
 {
@@ -9,7 +10,33 @@ public class MatchScoreView : MonoBehaviour
     private TextMeshProUGUI timeLabel;
 
     [SerializeField]
-    private TextMeshProUGUI scoreLabel;
+    private TextMeshProUGUI homeScoreLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI awayScoreLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI homeNameLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI awayNameLabel;
+
+    [SerializeField]
+    private Image homeFrame;
+
+    [SerializeField]
+    private Image awayFrame;
+
+    public void Populate (string _homeTeamName, int _homeTeamScore, Color _homeTeamColor, string _awayTeamName, int _awayTeamScore, Color _awayTeamColor)
+    {
+        homeNameLabel.text = _homeTeamName.ToUpper();
+        awayNameLabel.text = _awayTeamName.ToUpper();
+        homeFrame.color = _homeTeamColor;
+        awayFrame.color = _awayTeamColor;
+        homeScoreLabel.text = _homeTeamScore.ToString();
+        awayScoreLabel.text = _awayTeamScore.ToString();
+
+    }
 
     public void UpdateTime(int _time)
     {
@@ -18,8 +45,9 @@ public class MatchScoreView : MonoBehaviour
         timeLabel.text = _time.ToString("00") +  "'";
     }
 
-    public void UpdateScore(string _homeTeamName, int _homeTeamScore, string _homeTeamColor, string _awayTeamName, int _awayTeamScore, string _awayTeamColor)
+    public void UpdateScore(int _homeTeamScore, int _awayTeamScore)
     {
-        scoreLabel.text = "<color=#"+_homeTeamColor + ">" + _homeTeamName +"</color>" + "  " + _homeTeamScore.ToString() + "  X  " + _awayTeamScore.ToString() + "  " + "<color=#" + _awayTeamColor + ">" + _awayTeamName + "</color>";
+        homeScoreLabel.text = _homeTeamScore.ToString();
+        awayScoreLabel.text = _awayTeamScore.ToString();
     }
 }

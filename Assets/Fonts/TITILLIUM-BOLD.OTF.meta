@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: e0efca9dcf2a5e24093255879d9835d5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Titillium
+  fontNames:
+  - Titillium
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 97746e60401302d47a4c131f5719636f, type: 3}
+  - {fileID: 12800000, guid: 3d938a520c549624db62f270c89c8b0c, type: 3}
+  - {fileID: 12800000, guid: 1afc0523d9352964cb9335972bd3de14, type: 3}
+  - {fileID: 12800000, guid: 45bba7e3423288642bc9b19c19b58ac3, type: 3}
+  - {fileID: 12800000, guid: cd9f231792892004c8947bd4c83bb397, type: 3}
+  - {fileID: 12800000, guid: 0fb45a177f8779f409a94a9d9c2444eb, type: 3}
+  - {fileID: 12800000, guid: 081af908f2802b942aec64660399b88f, type: 3}
+  - {fileID: 12800000, guid: 8ee3b728b59859543b643a2c6d905995, type: 3}
+  - {fileID: 12800000, guid: 2e6d9819ec8d3154eb690a7353b42d66, type: 3}
+  - {fileID: 12800000, guid: dc4ef50afd27f2345968886d819f92df, type: 3}
+  - {fileID: 12800000, guid: 6a7e777c021abb5418a94bb2159f6d34, type: 3}
+  - {fileID: 12800000, guid: 57aa56ed213591141b83688434777045, type: 3}
+  - {fileID: 12800000, guid: 20654c6fdd9ed664c958e2e4dc89e896, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

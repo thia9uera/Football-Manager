@@ -10,16 +10,27 @@ public class MatchPlayerView : MonoBehaviour
     private TextMeshProUGUI nameLabel;
 
     [SerializeField]
+    private TextMeshProUGUI posLabel;
+
+    [SerializeField]
     private Image fatigueBar;
 
     public PlayerData Player;
 
+    [SerializeField]
+    private Color red;
+
+    [SerializeField]
+    private Color yellow;
+
+    [SerializeField]
+    private Color green;
+
     public void Populate(PlayerData _player)
     {
-        string name = _player.FirstName + " " + _player.LastName;
-        string pos = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         Player = _player;
-        nameLabel.text = "<color=#999999>"+pos+"</color>  " + name;
+        nameLabel.text = _player.FirstName + " " + _player.LastName;
+        posLabel.text = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         UpdateFatigue();
     }
 
@@ -28,8 +39,8 @@ public class MatchPlayerView : MonoBehaviour
         float fill = (float)Player.Fatigue / 100;
         fatigueBar.fillAmount = fill;
 
-        if(fill < 0.25f) fatigueBar.color = Color.red;
-        else if (fill < 0.5f) fatigueBar.color = Color.yellow;
-        else fatigueBar.color = Color.green;
+        if (fill < 0.25f) fatigueBar.color = red;
+        else if (fill < 0.5f) fatigueBar.color = yellow;
+        else fatigueBar.color = green;
     }
 }

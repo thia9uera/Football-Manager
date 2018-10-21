@@ -13,9 +13,11 @@ public class MatchNarrationTextView : MonoBehaviour
     [SerializeField]
     private Image frame;
 
-    public void Populate(string _text, Color _color)
+    public void Populate(string _text, Color _color, Color _textColor)
     {
         label.text = _text;
+        label.color = _textColor;
+
         frame.color = _color;
     }
 }

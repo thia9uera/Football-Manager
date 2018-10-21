@@ -14,15 +14,27 @@ public class MatchNarration : MonoBehaviour
     [SerializeField]
     private ScrollRect scroll;
 
+    [SerializeField]
+    private Color grayFrame;
+
+    [SerializeField]
+    private Color grayText;
+
     public void UpdateNarration(string _text, Color _color, int _variations = 1)
     {
         MatchNarrationTextView text =  Instantiate(narrationText, content);
 
         int r = Random.Range(1, _variations + 1);
         _text += r;
+        Color textColor = Color.white;
 
-        //print(_text + "                                                                                                                                 " + Mathf.Round(Time.deltaTime*1000));
-        text.Populate(MainController.Instance.Localization.Localize(_text), _color);
+        if (_color == Color.gray)
+        {
+            _color = grayFrame;
+            textColor = grayText;
+        }
+ 
+        text.Populate(MainController.Instance.Localization.Localize(_text), _color, textColor);
         Canvas.ForceUpdateCanvases();
         scroll.verticalNormalizedPosition = 0;
         Canvas.ForceUpdateCanvases();

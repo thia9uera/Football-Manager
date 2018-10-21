@@ -10,7 +10,6 @@ public class PlayerData : ScriptableObject
 
     
     [Space(10)]
-    [HideInInspector]
     public MatchController.FieldZone Zone;
     public PlayerPosition Position;
     public PlayerStrategy Strategy;
@@ -85,7 +84,9 @@ public class PlayerData : ScriptableObject
     [Range(0, 100)]
     public int Stability = 50;
 
+    [Space(10)]
     //Attributes that change during gameplay
+    [SerializeField]
     private float fatigue = 100f;
     [HideInInspector]
     public float Fatigue
@@ -100,9 +101,6 @@ public class PlayerData : ScriptableObject
             if (fatigue <= 0) fatigue = 0.01f;
         }
     }
-
-    //[HideInInspector]
-   // public MatchController.FieldZone Zone;
 
     private enum AltPosition
     {
@@ -193,6 +191,7 @@ public class PlayerData : ScriptableObject
         RightOffensive,
     }
 
+    [HideInInspector]
     public int TotalPasses,
         TotalCrosses,
         TotalShots,

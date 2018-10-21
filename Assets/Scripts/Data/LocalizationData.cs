@@ -51,7 +51,17 @@ public class LocalizationData : ScriptableObject
 
     public string GetLongPositionString(PlayerData.PlayerPosition _pos)
     {
-        LocalizedString str = "pos_" + positionKeys[(int)_pos];
+        string color = "#8033cc";
+
+        switch(_pos)
+        {
+            case PlayerData.PlayerPosition.Goalkeeper: color = "#8033cc"; break;
+            case PlayerData.PlayerPosition.Defender: color = "#5299cc"; break;
+            case PlayerData.PlayerPosition.Midfielder: color = "#cc8f14"; break;
+            case PlayerData.PlayerPosition.Forward: color = "#e55c5c"; break;
+        }
+
+        LocalizedString str = "<color=" + color + ">pos_" + positionKeys[(int)_pos] + "</color>";
 
         return  str;
     }

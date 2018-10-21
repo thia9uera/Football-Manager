@@ -178,13 +178,7 @@ public class MatchController : MonoBehaviour
         HomeTeamSquad.Populate(_homeTeam, true);
         AwayTeamSquad.Populate(_awayTeam, true);
         Score.UpdateTime(matchTime);
-        Score.UpdateScore(
-            HomeTeam.Name,
-            homeTeamScore,
-            ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), 
-            AwayTeam.Name, 
-            awayTeamScore, 
-            ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
+        Score.UpdateScore(homeTeamScore, awayTeamScore);
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -242,7 +236,7 @@ public class MatchController : MonoBehaviour
         matchEvent = MatchEvent.None;
         Narration.Reset();
         Score.UpdateTime(matchTime);
-        Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
+        Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
     }
 
     public void PauseGame(bool _isPaused)
@@ -309,7 +303,7 @@ public class MatchController : MonoBehaviour
                     DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
                     if (attackingTeam == HomeTeam) homeTeamScore++;
                     else awayTeamScore++;
-                    Score.UpdateScore(HomeTeam.Name, homeTeamScore, ColorUtility.ToHtmlStringRGB(HomeTeam.PrimaryColor), AwayTeam.Name, awayTeamScore, ColorUtility.ToHtmlStringRGB(AwayTeam.PrimaryColor));
+                    Score.UpdateScore(homeTeamScore, awayTeamScore);
                     attackingPlayer.TotalGoals++;
                     return;
                 }
@@ -1230,7 +1224,7 @@ public class MatchController : MonoBehaviour
         attacking *= FatigueModifier(attackingPlayer.Fatigue);
         DebugString += "<color=#ff0000>- Fatigue: </color>" + attacking + "\n";
 
-        if (attackingPlayer.Zone != attackingPlayer.Zone)
+        if (attackingPlayer.IsWronglyAssigned())
         {
             attacking *= positionDebuff;
             DebugString += "<color=#ff0000>- Position Debuff (-" + ((1 - positionDebuff) * 100) + "%): </color>" + attacking + "\n";
@@ -1535,7 +1529,7 @@ public class MatchController : MonoBehaviour
             float stats = (float)(player.Speed + player.Vision) / 200;
             stats *= FatigueModifier(player.Fatigue);
             bonus = GetAttributeBonus((player.Vision + player.Speed)/2);
-            if (player.Zone != player.Zone) stats *= positionDebuff;
+            if (player.IsWronglyAssigned()) stats *= positionDebuff;
 
             int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
@@ -1578,6 +1572,8 @@ public class MatchController : MonoBehaviour
             chance *= (float)(_player.Speed + _player.Vision) / 200;
             chance *=  FatigueModifier(_player.Fatigue);
         }
+
+        print(chance);
         return chance;
     }
 
