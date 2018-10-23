@@ -1343,7 +1343,7 @@ public class MatchController : MonoBehaviour
         {
 
             float difficulty = Random.Range(0f, 1f);
-            float bonus = (float)GetAttributeBonus(attackingPlayer.GetOverall()) / 100;
+            float bonus = (float)attackingPlayer.GetOverall() / 100;
             if(bonus > 0)
             {
                 difficulty -= bonus;

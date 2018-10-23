@@ -47,12 +47,12 @@ MonoBehaviour:
     LCD: 0.1
     RCD: 0
     RD: 0
-    LDM: 0
-    LCDM: 0
+    LDM: 0.01
+    LCDM: 0.01
     RCDM: 0
     RDM: 0
-    LM: 0
-    LCM: 0
+    LM: 0.01
+    LCM: 0.01
     RCM: 0
     RM: 0
     LAM: 0
@@ -76,12 +76,12 @@ MonoBehaviour:
     RD: 0.5
     LDM: 0
     LCDM: 0
-    RCDM: 0
-    RDM: 0
+    RCDM: 0.01
+    RDM: 0.01
     LM: 0
     LCM: 0
-    RCM: 0
-    RM: 0
+    RCM: 0.01
+    RM: 0.01
     LAM: 0
     LCAM: 0
     RCAM: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
     Box: 0
   - Position: LD
     OwnGoal: 0.5
-    BLD: 0
+    BLD: 0.25
     BRD: 0
     LD: 1
     LCD: 0.5
@@ -105,12 +105,12 @@ MonoBehaviour:
     LCDM: 0.1
     RCDM: 0
     RDM: 0
-    LM: 0
-    LCM: 0
+    LM: 0.01
+    LCM: 0.01
     RCM: 0
     RM: 0
-    LAM: 0
-    LCAM: 0
+    LAM: 0.01
+    LCAM: 0.01
     RCAM: 0
     RAM: 0
     LF: 0
@@ -130,14 +130,14 @@ MonoBehaviour:
     RD: 0.25
     LDM: 0.1
     LCDM: 0.25
-    RCDM: 0
+    RCDM: 0.25
     RDM: 0.1
-    LM: 0
-    LCM: 0
+    LM: 0.01
+    LCM: 0.01
     RCM: 0
     RM: 0
-    LAM: 0
-    LCAM: 0
+    LAM: 0.01
+    LCAM: 0.01
     RCAM: 0
     RAM: 0
     LF: 0
@@ -157,16 +157,16 @@ MonoBehaviour:
     RD: 0.25
     LDM: 0.1
     LCDM: 0.25
-    RCDM: 0
+    RCDM: 0.25
     RDM: 0.1
     LM: 0
     LCM: 0
-    RCM: 0
-    RM: 0
+    RCM: 0.01
+    RM: 0.01
     LAM: 0
     LCAM: 0
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.01
+    RAM: 0.01
     LF: 0
     LCF: 0
     RCF: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   - Position: RD
     OwnGoal: 0.5
     BLD: 0
-    BRD: 0
+    BRD: 0.25
     LD: 0
     LCD: 0
     RCD: 0.5
@@ -188,12 +188,12 @@ MonoBehaviour:
     RDM: 0.25
     LM: 0
     LCM: 0
-    RCM: 0
-    RM: 0
+    RCM: 0.01
+    RM: 0.01
     LAM: 0
     LCAM: 0
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.01
+    RAM: 0.01
     LF: 0
     LCF: 0
     RCF: 0
@@ -206,8 +206,8 @@ MonoBehaviour:
     BLD: 0
     BRD: 0
     LD: 0.25
-    LCD: 0
-    RCD: 0.1
+    LCD: 0.1
+    RCD: 0
     RD: 0
     LDM: 1
     LCDM: 0.25
@@ -217,12 +217,12 @@ MonoBehaviour:
     LCM: 0.1
     RCM: 0
     RM: 0
-    LAM: 0
-    LCAM: 0
+    LAM: 0.01
+    LCAM: 0.01
     RCAM: 0
     RAM: 0
-    LF: 0
-    LCF: 0
+    LF: 0.01
+    LCF: 0.01
     RCF: 0
     RF: 0
     ALF: 0
@@ -233,23 +233,23 @@ MonoBehaviour:
     BLD: 0
     BRD: 0
     LD: 0.1
-    LCD: 0
+    LCD: 0.25
     RCD: 0.25
     RD: 0.1
-    LDM: 0.5
+    LDM: 0.25
     LCDM: 1
     RCDM: 1
-    RDM: 0.5
+    RDM: 0.25
     LM: 0.1
     LCM: 0.25
-    RCM: 0
+    RCM: 0.25
     RM: 0.1
-    LAM: 0
-    LCAM: 0
+    LAM: 0.01
+    LCAM: 0.01
     RCAM: 0
     RAM: 0
-    LF: 0
-    LCF: 0
+    LF: 0.01
+    LCF: 0.01
     RCF: 0
     RF: 0
     ALF: 0
@@ -260,25 +260,25 @@ MonoBehaviour:
     BLD: 0
     BRD: 0
     LD: 0.1
-    LCD: 0
+    LCD: 0.25
     RCD: 0.25
     RD: 0.1
-    LDM: 0.5
+    LDM: 0.25
     LCDM: 1
     RCDM: 1
-    RDM: 0.5
+    RDM: 0.25
     LM: 0.1
     LCM: 0.25
-    RCM: 0
+    RCM: 0.25
     RM: 0.1
     LAM: 0
     LCAM: 0
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.01
+    RAM: 0.01
     LF: 0
     LCF: 0
-    RCF: 0
-    RF: 0
+    RCF: 0.01
+    RF: 0.01
     ALF: 0
     ARF: 0
     Box: 0
@@ -291,21 +291,21 @@ MonoBehaviour:
     RCD: 0.1
     RD: 0.25
     LDM: 0
-    LCDM: 0.25
-    RCDM: 0
+    LCDM: 0
+    RCDM: 0.25
     RDM: 1
     LM: 0
-    LCM: 0.1
-    RCM: 0
+    LCM: 0
+    RCM: 0.1
     RM: 0.25
     LAM: 0
     LCAM: 0
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.01
+    RAM: 0.01
     LF: 0
     LCF: 0
-    RCF: 0
-    RF: 0
+    RCF: 0.01
+    RF: 0.01
     ALF: 0
     ARF: 0
     Box: 0
@@ -313,8 +313,8 @@ MonoBehaviour:
     OwnGoal: 0
     BLD: 0
     BRD: 0
-    LD: 0
-    LCD: 0
+    LD: 0.01
+    LCD: 0.01
     RCD: 0
     RD: 0
     LDM: 0.25
@@ -329,8 +329,8 @@ MonoBehaviour:
     LCAM: 0.1
     RCAM: 0
     RAM: 0
-    LF: 0
-    LCF: 0
+    LF: 0.01
+    LCF: 0.01
     RCF: 0
     RF: 0
     ALF: 0
@@ -340,13 +340,13 @@ MonoBehaviour:
     OwnGoal: 0
     BLD: 0
     BRD: 0
-    LD: 0
-    LCD: 0
+    LD: 0.01
+    LCD: 0.01
     RCD: 0
     RD: 0
     LDM: 0.1
     LCDM: 0.25
-    RCDM: 0
+    RCDM: 0.25
     RDM: 0.1
     LM: 0.25
     LCM: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
     RM: 0.25
     LAM: 0.1
     LCAM: 0.25
-    RCAM: 0
+    RCAM: 0.25
     RAM: 0.1
     LF: 0
     LCF: 0
@@ -369,11 +369,11 @@ MonoBehaviour:
     BRD: 0
     LD: 0
     LCD: 0
-    RCD: 0
-    RD: 0
+    RCD: 0.01
+    RD: 0.01
     LDM: 0.1
     LCDM: 0.25
-    RCDM: 0
+    RCDM: 0.25
     RDM: 0.1
     LM: 0.25
     LCM: 1
@@ -381,7 +381,7 @@ MonoBehaviour:
     RM: 0.25
     LAM: 0.1
     LCAM: 0.25
-    RCAM: 0
+    RCAM: 0.25
     RAM: 0.1
     LF: 0
     LCF: 0
@@ -396,19 +396,19 @@ MonoBehaviour:
     BRD: 0
     LD: 0
     LCD: 0
-    RCD: 0
-    RD: 0
+    RCD: 0.01
+    RD: 0.01
     LDM: 0
-    LCDM: 0.1
-    RCDM: 0
+    LCDM: 0
+    RCDM: 0.1
     RDM: 0.25
     LM: 0
-    LCM: 0.25
-    RCM: 0
+    LCM: 0
+    RCM: 0.25
     RM: 1
     LAM: 0
-    LCAM: 0.1
-    RCAM: 0
+    LCAM: 0
+    RCAM: 0.1
     RAM: 0.25
     LF: 0
     LCF: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
     LCF: 0.25
     RCF: 0
     RF: 0
-    ALF: 0
+    ALF: 0.01
     ARF: 0
     Box: 0.1
   - Position: LCAM
@@ -458,7 +458,7 @@ MonoBehaviour:
     RDM: 0
     LM: 0.1
     LCM: 0.25
-    RCM: 0
+    RCM: 0.25
     RM: 0.1
     LAM: 0.5
     LCAM: 1
@@ -466,7 +466,7 @@ MonoBehaviour:
     RAM: 0.5
     LF: 0.1
     LCF: 0.5
-    RCF: 0
+    RCF: 0.5
     RF: 0.1
     ALF: 0
     ARF: 0
@@ -483,21 +483,21 @@ MonoBehaviour:
     LCDM: 0
     RCDM: 0
     RDM: 0
-    LM: 0
-    LCM: 0
-    RCM: 0
-    RM: 0
-    LAM: 0
+    LM: 0.1
+    LCM: 0.25
+    RCM: 0.25
+    RM: 0.1
+    LAM: 0.5
     LCAM: 1
     RCAM: 1
-    RAM: 0
-    LF: 0
-    LCF: 0
-    RCF: 0
-    RF: 0
+    RAM: 0.5
+    LF: 0.1
+    LCF: 0.5
+    RCF: 0.5
+    RF: 0.1
     ALF: 0
     ARF: 0
-    Box: 0
+    Box: 0.25
   - Position: RAM
     OwnGoal: 0
     BLD: 0
@@ -511,19 +511,19 @@ MonoBehaviour:
     RCDM: 0
     RDM: 0
     LM: 0
-    LCM: 0.1
-    RCM: 0
+    LCM: 0
+    RCM: 0.1
     RM: 0.25
     LAM: 0
-    LCAM: 0.5
-    RCAM: 0
+    LCAM: 0
+    RCAM: 0.5
     RAM: 1
     LF: 0
-    LCF: 0.25
-    RCF: 0
+    LCF: 0
+    RCF: 0.25
     RF: 0.5
     ALF: 0
-    ARF: 0
+    ARF: 0.01
     Box: 0.1
   - Position: LF
     OwnGoal: 0
@@ -538,7 +538,7 @@ MonoBehaviour:
     RCDM: 0
     RDM: 0
     LM: 0.1
-    LCM: 0
+    LCM: 0.01
     RCM: 0
     RM: 0
     LAM: 0.25
@@ -549,7 +549,7 @@ MonoBehaviour:
     LCF: 0.5
     RCF: 0
     RF: 0
-    ALF: 0
+    ALF: 0.5
     ARF: 0
     Box: 0.5
   - Position: LCF
@@ -564,19 +564,19 @@ MonoBehaviour:
     LCDM: 0
     RCDM: 0
     RDM: 0
-    LM: 0
-    LCM: 0
+    LM: 0.01
+    LCM: 0.01
     RCM: 0
     RM: 0
     LAM: 0.1
     LCAM: 0.25
-    RCAM: 0
+    RCAM: 0.25
     RAM: 0.1
     LF: 0.1
     LCF: 1
     RCF: 1
     RF: 0.1
-    ALF: 0
+    ALF: 0.01
     ARF: 0
     Box: 0.5
   - Position: RCF
@@ -593,18 +593,18 @@ MonoBehaviour:
     RDM: 0
     LM: 0
     LCM: 0
-    RCM: 0
-    RM: 0
+    RCM: 0.01
+    RM: 0.01
     LAM: 0.1
     LCAM: 0.25
-    RCAM: 0
+    RCAM: 0.25
     RAM: 0.1
     LF: 0.1
     LCF: 1
     RCF: 1
     RF: 0.1
     ALF: 0
-    ARF: 0
+    ARF: 0.01
     Box: 0.5
   - Position: RF
     OwnGoal: 0
@@ -620,18 +620,18 @@ MonoBehaviour:
     RDM: 0
     LM: 0
     LCM: 0
-    RCM: 0
-    RM: 0
+    RCM: 0.01
+    RM: 0.1
     LAM: 0
     LCAM: 0
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.1
+    RAM: 0.25
     LF: 0
     LCF: 0
-    RCF: 0
+    RCF: 0.5
     RF: 1
     ALF: 0
-    ARF: 0
+    ARF: 0.5
     Box: 0.5
   - Position: ALF
     OwnGoal: 0
@@ -651,8 +651,8 @@ MonoBehaviour:
     RM: 0
     LAM: 0
     LCAM: 0
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.01
+    RAM: 0.01
     LF: 0.25
     LCF: 0.1
     RCF: 0
@@ -680,8 +680,8 @@ MonoBehaviour:
     LCAM: 0
     RCAM: 0
     RAM: 0
-    LF: 0
-    LCF: 0
+    LF: 0.01
+    LCF: 0.01
     RCF: 0.1
     RF: 0.25
     ALF: 0
@@ -707,10 +707,10 @@ MonoBehaviour:
     LCAM: 0
     RCAM: 0
     RAM: 0
-    LF: 0
+    LF: 0.01
     LCF: 0.1
     RCF: 0.1
-    RF: 0
+    RF: 0.01
     ALF: 0.5
     ARF: 0.5
     Box: 1

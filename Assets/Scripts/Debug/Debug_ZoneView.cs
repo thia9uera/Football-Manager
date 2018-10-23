@@ -20,6 +20,11 @@ public class Debug_ZoneView : MonoBehaviour
 
     public MatchController.FieldZone Zone;
 
+    public void Start()
+    {
+        transform.gameObject.name = Zone.ToString();
+    }
+
     public void Populate(int _type)
     {
         image.color = colors[_type];
@@ -34,5 +39,6 @@ public class Debug_ZoneView : MonoBehaviour
         else if (_chance > 0) image.color = colors[4];
         else image.color = Color.gray;
         text.text = Mathf.RoundToInt(_chance*100) + "%";
+        
     }
 }

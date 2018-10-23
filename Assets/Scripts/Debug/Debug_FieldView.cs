@@ -23,20 +23,30 @@ public class Debug_FieldView : MonoBehaviour
     {
         dropDownPlayerPosition.value = (int)TestPlayer.Zone;
 
-        List<string> strategyList = new List<string>();
+        List<string> list = new List<string>();
         foreach (Player_Strategy strategy in MainController.Instance.PlayerStrategyData.player_Strategys)
         {
-            strategyList.Add(strategy.Name);
+            list.Add(strategy.Name);
         }
-        dropDownPlayerStrategy.AddOptions(strategyList);
-        dropDownPlayerStrategy.value = (int)TestPlayer.Zone;
+        dropDownPlayerStrategy.AddOptions(list);
+        dropDownPlayerStrategy.value = (int)TestPlayer.Strategy;
 
-        strategyList.Clear();
+        list.Clear();
         foreach (Team_Strategy strategy in MainController.Instance.TeamStrategyData.team_Strategys)
         {
-            strategyList.Add(strategy.Name);
+            list.Add(strategy.Name);
         }
-        dropDownTeamStrategy.AddOptions(strategyList);
+        dropDownTeamStrategy.AddOptions(list);
+
+        list.Clear();
+        dropDownPlayerPosition.ClearOptions();
+        for(int i = 0; i < 25; i++)
+        {
+            list.Add(((MatchController.FieldZone)i).ToString());
+        }
+        dropDownPlayerPosition.AddOptions(list);
+
+
 
         TestPlayer.Strategy = (PlayerData.PlayerStrategy)dropDownPlayerStrategy.value;
     }

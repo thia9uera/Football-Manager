@@ -320,7 +320,7 @@ public class PlayerData : ScriptableObject
         }
 
         AltPosition altPos = GetAltPosition(_zone);
-
+        
         float teamDefPos = 1f;
         float teamOffPos = 1f;
         float teamLeftPos = 1f;
@@ -333,6 +333,7 @@ public class PlayerData : ScriptableObject
             teamRightPos = _teamStrategy.RighPosChance;
         }
 
+        
         if (altPos == AltPosition.Defensive) pct *= Prob_DefPosition * teamDefPos;
         else if (altPos == AltPosition.Offensive) pct *= Prob_OffPosition * teamOffPos;
         else if (altPos == AltPosition.Left) pct *= Prob_LeftPos * teamLeftPos;
@@ -340,7 +341,7 @@ public class PlayerData : ScriptableObject
         else if (altPos == AltPosition.LeftDefensive) pct *= ((Prob_LeftPos + Prob_DefPosition)/2) * ((teamLeftPos + teamDefPos)/2);
         else if (altPos == AltPosition.RightDefensive) pct *= ((Prob_RightPos + Prob_DefPosition)/2) * ((teamRightPos + teamDefPos)/2);
         else if (altPos == AltPosition.LeftOffensive) pct *= ((Prob_LeftPos + Prob_OffPosition)/2) * ((teamLeftPos + teamOffPos)/2);
-
+        
         return pct;
     }
 
