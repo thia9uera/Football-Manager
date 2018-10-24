@@ -191,21 +191,27 @@ public class PlayerData : ScriptableObject
         RightOffensive,
     }
 
-    [HideInInspector]
-    public int TotalPasses,
-        TotalCrosses,
-        TotalShots,
-        TotalHeaders,
-        TotalFaults,
-        TotalTackles,
-        TotalDribbles,
-        TotalGoals,
-        TotalSaves,
-        TotalPassesMissed,
-        TotalShotsMissed,
-        TotalHeadersMissed,
-        TotalDribblesMissed,
-        TotalCrossesMissed;
+    [System.Serializable]
+    public class Statistics
+    {
+        public int TotalPasses;
+        public int TotalCrosses;
+        public int TotalShots;
+        public int TotalHeaders;
+        public int TotalFaults;
+        public int TotalTackles;
+        public int TotalDribbles;
+        public int TotalGoals;
+        public int TotalSaves;
+        public int TotalPassesMissed;
+        public int TotalShotsMissed;
+        public int TotalHeadersMissed;
+        public int TotalDribblesMissed;
+        public int TotalCrossesMissed;
+    }
+
+    public Statistics LifeTimeStats;
+    public Statistics GameStats;
 
     public void ApplyBonus()
     {
@@ -529,22 +535,24 @@ public class PlayerData : ScriptableObject
         return value;
     }
 
-    public void ResetStatistics()
+
+    public void ResetLifeTimeStatistics()
     {
-        TotalGoals = 0;
-        TotalPasses = 0;
-        TotalCrosses = 0;
-        TotalFaults = 0;
-        TotalTackles = 0;
-        TotalDribbles = 0;
-        TotalHeaders = 0;
-        TotalSaves = 0;
-        TotalShots = 0;
-        TotalCrossesMissed = 0;
-        TotalDribblesMissed = 0;
-        TotalHeadersMissed = 0;
-        TotalPassesMissed = 0;
-        TotalShotsMissed = 0;
+        LifeTimeStats.TotalGoals = 0;
+        LifeTimeStats.TotalGoals = 0;
+        LifeTimeStats.TotalPasses = 0;
+        LifeTimeStats.TotalCrosses = 0;
+        LifeTimeStats. TotalFaults = 0;
+        LifeTimeStats.TotalTackles = 0;
+        LifeTimeStats.TotalDribbles = 0;
+        LifeTimeStats.TotalHeaders = 0;
+        LifeTimeStats.TotalSaves = 0;
+        LifeTimeStats.TotalShots = 0;
+        LifeTimeStats.TotalCrossesMissed = 0;
+        LifeTimeStats.TotalDribblesMissed = 0;
+        LifeTimeStats.TotalHeadersMissed = 0;
+        LifeTimeStats.TotalPassesMissed = 0;
+        LifeTimeStats.TotalShotsMissed = 0;
     }
 
     public string GetFullName()

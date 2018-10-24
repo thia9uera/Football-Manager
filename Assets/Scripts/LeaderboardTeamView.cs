@@ -21,11 +21,11 @@ public class LeaderboardTeamView : MonoBehaviour
         Team = _team;
 
         nameLabel.text = _team.Name.ToString();
-        winsLabel.text = _team.TotalWins.ToString();
-        lostsLabel.text = _team.TotalLosts.ToString();
-        drawsLabel.text = _team.TotalDraws.ToString();
-        goalslabel.text = _team.TotalGoals.ToString();
-        goalsAgainstLabel.text = _team.TotalGoalsAgainst.ToString();
+        winsLabel.text = _team.LifeTimeStats.TotalWins.ToString();
+        lostsLabel.text = _team.LifeTimeStats.TotalLosts.ToString();
+        drawsLabel.text = _team.LifeTimeStats.TotalDraws.ToString();
+        goalslabel.text = _team.LifeTimeStats.TotalGoals.ToString();
+        goalsAgainstLabel.text = _team.LifeTimeStats.TotalGoalsAgainst.ToString();
 
         if (_index % 2 != 0) frame.color = Color.gray;
     }

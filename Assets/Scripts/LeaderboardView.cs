@@ -95,14 +95,14 @@ public class LeaderboardView : MonoBehaviour
         {
             foreach (PlayerData _player in listPlayers)
             {
-                _player.ResetStatistics();
+                _player.ResetLifeTimeStatistics();
             }
         }
         if (listTeams != null)
         {
             foreach (TeamData _player in listTeams)
             {
-                _player.ResetStatistics();
+                _player.ResetLifeTimeStatistics();
             }
         }
         if (type == LeaderboardType.Players) PopulatePlayers();
@@ -121,15 +121,15 @@ public class LeaderboardView : MonoBehaviour
             {
                 case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Zone).ToList(); break;
                 case "Name": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.FirstName).ToList(); break;
-                case "Goals": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalGoals).ToList(); break;
-                case "Shots": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalShots).ToList(); break;
-                case "Passes": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalPasses).ToList(); break;
-                case "Crosses": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalCrosses).ToList(); break;
-                case "Faults": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalFaults).ToList(); break;
-                case "Tackles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalTackles).ToList(); break;
-                case "Dribbles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalDribbles).ToList(); break;
-                case "Headers": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalHeaders).ToList(); break;
-                case "Saves": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.TotalSaves).ToList(); break;
+                case "Goals": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalGoals).ToList(); break;
+                case "Shots": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalShots).ToList(); break;
+                case "Passes": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalPasses).ToList(); break;
+                case "Crosses": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalCrosses).ToList(); break;
+                case "Faults": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalFaults).ToList(); break;
+                case "Tackles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalTackles).ToList(); break;
+                case "Dribbles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalDribbles).ToList(); break;
+                case "Headers": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalHeaders).ToList(); break;
+                case "Saves": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalSaves).ToList(); break;
             }
 
             PopulatePlayers();
@@ -139,11 +139,11 @@ public class LeaderboardView : MonoBehaviour
             switch (_stat)
             {
                 case "Name": listTeams = listTeams.OrderBy(TeamData => TeamData.Name).ToList(); break;
-                case "Wins": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalWins).ToList(); break;
-                case "Losts": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalLosts).ToList(); break;
-                case "Draws": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalDraws).ToList(); break;
-                case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalGoals).ToList(); break;
-                case "GoalsAgainst": listTeams = listTeams.OrderByDescending(TeamData => TeamData.TotalGoalsAgainst).ToList(); break;
+                case "Wins": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalWins).ToList(); break;
+                case "Losts": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalLosts).ToList(); break;
+                case "Draws": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalDraws).ToList(); break;
+                case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalGoals).ToList(); break;
+                case "GoalsAgainst": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalGoalsAgainst).ToList(); break;
             }
 
             PopulateTeams();

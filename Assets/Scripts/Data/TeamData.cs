@@ -47,23 +47,29 @@ public class TeamData : ScriptableObject
     [Space(10)]
     public PlayerData Captain;
 
-    public int TotalWins,
-        TotalLosts,
-        TotalDraws,
-        TotalGoals,
-        TotalGoalsAgainst;
+    public class Statistics
+    {
+        public int TotalWins;
+        public int TotalLosts;
+        public int TotalDraws;
+        public int TotalGoals;
+        public int TotalGoalsAgainst;
+    }
+
+    public Statistics LifeTimeStats;
+    public Statistics GameStats;
 
     public Team_Strategy GetStrategy()
     {
         return MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
     }
 
-    public void ResetStatistics()
+    public void ResetLifeTimeStatistics()
     {
-        TotalWins = 0;
-        TotalLosts = 0;
-        TotalDraws = 0;
-        TotalGoals = 0;
-        TotalGoalsAgainst = 0;
+        LifeTimeStats.TotalWins = 0;
+        LifeTimeStats.TotalLosts = 0;
+        LifeTimeStats.TotalDraws = 0;
+        LifeTimeStats.TotalGoals = 0;
+        LifeTimeStats.TotalGoalsAgainst = 0;
     }
 }

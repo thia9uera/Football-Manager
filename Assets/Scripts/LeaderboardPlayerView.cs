@@ -20,15 +20,15 @@ public class LeaderboardPlayerView : MonoBehaviour
 
         posLabel.text = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         nameLabel.text = _player.FirstName + " " + _player.LastName;
-        goalsLabel.text = _player.TotalGoals.ToString();
-        shotsLabel.text = _player.TotalShots.ToString();
-        passesLabel.text = _player.TotalPasses.ToString();
-        crossesLabel.text = _player.TotalCrosses.ToString();
-        faultsLabel.text = _player.TotalFaults.ToString();
-        tacklesLabel.text = _player.TotalTackles.ToString();
-        dribblesLabel.text = _player.TotalDribbles.ToString();
-        headersLabel.text = _player.TotalHeaders.ToString();
-        savesLabel.text = _player.TotalSaves.ToString();
+        goalsLabel.text = _player.LifeTimeStats.TotalGoals.ToString();
+        shotsLabel.text = _player.LifeTimeStats.TotalShots.ToString();
+        passesLabel.text = _player.LifeTimeStats.TotalPasses.ToString();
+        crossesLabel.text = _player.LifeTimeStats.TotalCrosses.ToString();
+        faultsLabel.text = _player.LifeTimeStats.TotalFaults.ToString();
+        tacklesLabel.text = _player.LifeTimeStats.TotalTackles.ToString();
+        dribblesLabel.text = _player.LifeTimeStats.TotalDribbles.ToString();
+        headersLabel.text = _player.LifeTimeStats.TotalHeaders.ToString();
+        savesLabel.text = _player.LifeTimeStats.TotalSaves.ToString();
 
         if (_index % 2 != 0) frame.color = Color.gray;
     }
