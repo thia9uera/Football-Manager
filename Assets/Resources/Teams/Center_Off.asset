@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Center_Off
+  m_EditorClassIdentifier: 
+  Name: Center Off
+  Tag: CO
+  PrimaryColor: {r: 0.5764706, g: 0.1665392, b: 0.04705884, a: 1}
+  SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+  Formation: 2
+  Strategy: 3
+  Squad:
+  - {fileID: 11400000, guid: 821d2955a3f10ac4781db93151541300, type: 2}
+  - {fileID: 11400000, guid: 575c66cde0a664e41a511bdec27d1717, type: 2}
+  - {fileID: 11400000, guid: 97b284f6a982ba541861073d5de743ab, type: 2}
+  - {fileID: 11400000, guid: 00c547f3378649841b3afdedcf5d8dcc, type: 2}
+  - {fileID: 11400000, guid: 4bdbe27ca5dfde7479d4c222724fb8e9, type: 2}
+  - {fileID: 11400000, guid: a1e2467b1d4fb7745b7098452203f5ab, type: 2}
+  - {fileID: 11400000, guid: fe26fdeb766a865419f435e60fdc7edd, type: 2}
+  - {fileID: 11400000, guid: 577d731da084e5c4bb095e6a7ed0a782, type: 2}
+  - {fileID: 11400000, guid: c024e6aa6adf15448a5115341f3d9884, type: 2}
+  - {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
+  - {fileID: 11400000, guid: 314a892362c9d8f4abed8d4eb2d616f2, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: 1fc187eb3f400314198cf262ebeeba19, type: 2}
+  - {fileID: 11400000, guid: 6a54f9edbb699bd478a1bfe23b580df2, type: 2}
+  - {fileID: 11400000, guid: b90b1213fa50bc2418c3b6b02d100352, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  Captain: {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}

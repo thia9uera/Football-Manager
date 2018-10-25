@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: _Thiaguera
+  m_EditorClassIdentifier: 
+  FirstName: Thiago
+  LastName: Rocha
+  Zone: 16
+  Position: 2
+  Strategy: 0
+  Perk: {fileID: 11400000, guid: 3e73638beac524046bd1174c81cc45ba, type: 2}
+  Goalkeeping: 52
+  Passing: 73
+  Dribbling: 88
+  Crossing: 96
+  Tackling: 93
+  Blocking: 96
+  Shooting: 90
+  Heading: 91
+  Freekick: 91
+  Penalty: 72
+  Speed: 78
+  Strength: 79
+  Agility: 71
+  Stamina: 90
+  Teamwork: 86
+  Vision: 52
+  Stability: 91
+  fatigue: 42.610893
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1
+  LifeTimeStats:
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+  GameStats:
+    TotalPasses: 24
+    TotalCrosses: 24
+    TotalShots: 19
+    TotalHeaders: 1
+    TotalFaults: 17
+    TotalTackles: 79
+    TotalDribbles: 4
+    TotalGoals: 8
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 4
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 1
