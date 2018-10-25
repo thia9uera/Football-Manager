@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Center Off
   Tag: CO
-  PrimaryColor: {r: 0.5764706, g: 0.1665392, b: 0.04705884, a: 1}
+  PrimaryColor: {r: 0.9150943, g: 0.36786026, b: 0.21150766, a: 1}
   SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
   Formation: 2
   Strategy: 3
@@ -33,6 +33,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fc187eb3f400314198cf262ebeeba19, type: 2}
   - {fileID: 11400000, guid: 6a54f9edbb699bd478a1bfe23b580df2, type: 2}
   - {fileID: 11400000, guid: b90b1213fa50bc2418c3b6b02d100352, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
   Captain: {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
+  LifeTimeStats:
+    TotalWins: 1
+    TotalLosts: 3
+    TotalDraws: 2
+    TotalGoals: 3
+    TotalGoalsAgainst: 3
+  MatchStats:
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
