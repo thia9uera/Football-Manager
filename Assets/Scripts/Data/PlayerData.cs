@@ -211,7 +211,7 @@ public class PlayerData : ScriptableObject
     }
 
     public Statistics LifeTimeStats;
-    public Statistics GameStats;
+    public Statistics MatchStats;
 
     public void ApplyBonus()
     {
@@ -536,23 +536,51 @@ public class PlayerData : ScriptableObject
     }
 
 
-    public void ResetLifeTimeStatistics()
+    public void ResetStatistics(string _type)
     {
-        LifeTimeStats.TotalGoals = 0;
-        LifeTimeStats.TotalGoals = 0;
-        LifeTimeStats.TotalPasses = 0;
-        LifeTimeStats.TotalCrosses = 0;
-        LifeTimeStats. TotalFaults = 0;
-        LifeTimeStats.TotalTackles = 0;
-        LifeTimeStats.TotalDribbles = 0;
-        LifeTimeStats.TotalHeaders = 0;
-        LifeTimeStats.TotalSaves = 0;
-        LifeTimeStats.TotalShots = 0;
-        LifeTimeStats.TotalCrossesMissed = 0;
-        LifeTimeStats.TotalDribblesMissed = 0;
-        LifeTimeStats.TotalHeadersMissed = 0;
-        LifeTimeStats.TotalPassesMissed = 0;
-        LifeTimeStats.TotalShotsMissed = 0;
+        Statistics stats;
+
+        switch(_type)
+        {
+            default:
+            case "Match": stats = MatchStats; break;
+            case "LifeTime": stats = LifeTimeStats; break;
+        }
+
+        stats.TotalGoals = 0;
+        stats.TotalPasses = 0;
+        stats.TotalCrosses = 0;
+        stats.TotalFaults = 0;
+        stats.TotalTackles = 0;
+        stats.TotalDribbles = 0;
+        stats.TotalHeaders = 0;
+        stats.TotalSaves = 0;
+        stats.TotalShots = 0;
+        stats.TotalCrossesMissed = 0;
+        stats.TotalDribblesMissed = 0;
+        stats.TotalHeadersMissed = 0;
+        stats.TotalPassesMissed = 0;
+        stats.TotalShotsMissed = 0;
+    }
+
+    public void UpdateLifeTimeStats()
+    {
+        LifeTimeStats.TotalGoals += MatchStats.TotalGoals;
+        LifeTimeStats.TotalPasses += MatchStats.TotalPasses;
+        LifeTimeStats.TotalCrosses += MatchStats.TotalCrosses;
+        LifeTimeStats.TotalFaults += MatchStats.TotalFaults;
+        LifeTimeStats.TotalTackles += MatchStats.TotalTackles;
+        LifeTimeStats.TotalDribbles += MatchStats.TotalDribbles;
+        LifeTimeStats.TotalHeaders += MatchStats.TotalHeaders;
+        LifeTimeStats.TotalSaves += MatchStats.TotalSaves;
+        LifeTimeStats.TotalShots += MatchStats.TotalShots;
+        LifeTimeStats.TotalCrossesMissed +=  MatchStats.TotalCrossesMissed;
+        LifeTimeStats.TotalDribblesMissed += MatchStats.TotalDribblesMissed;
+        LifeTimeStats.TotalHeadersMissed += MatchStats.TotalHeadersMissed;
+        LifeTimeStats.TotalPassesMissed += MatchStats.TotalPassesMissed;
+        LifeTimeStats.TotalShotsMissed += MatchStats.TotalShotsMissed;
+
+        ResetStatistics("Match");
     }
 
     public string GetFullName()

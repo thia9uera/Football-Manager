@@ -178,6 +178,7 @@ public class MatchController : MonoBehaviour
         AwayTeamSquad.Populate(_awayTeam, true);
         Score.UpdateTime(matchTime);
         Score.UpdateScore(homeTeamScore, awayTeamScore);
+        Score.Populate(_homeTeam.Name, homeTeamScore, _homeTeam.PrimaryColor, _awayTeam.Name, awayTeamScore, _awayTeam.PrimaryColor);
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -272,6 +273,9 @@ public class MatchController : MonoBehaviour
 
         isGameOn = true;
         StartCoroutine("GameLoop");
+
+
+        print("W: " + HomeTeam.LifeTimeStats.TotalWins + "  L: " + HomeTeam.LifeTimeStats.TotalLosts);
     }
 
     IEnumerator GameLoop()
@@ -303,7 +307,7 @@ public class MatchController : MonoBehaviour
                     if (attackingTeam == HomeTeam) homeTeamScore++;
                     else awayTeamScore++;
                     Score.UpdateScore(homeTeamScore, awayTeamScore);
-                    attackingPlayer.GameStats.TotalGoals++;
+                    attackingPlayer.MatchStats.TotalGoals++;
                     return;
                 }
                 if (!isScorerAnnounced)
@@ -343,7 +347,7 @@ public class MatchController : MonoBehaviour
                     {
                         defendingPlayer = defendingTeam.Squad[0];
                         Narration.UpdateNarration("nar_FreekickTake_", attackingTeam.PrimaryColor);
-                        attackingPlayer.GameStats.TotalShots++;
+                        attackingPlayer.MatchStats.TotalShots++;
                     }                    
                     else
                     {
@@ -371,7 +375,7 @@ public class MatchController : MonoBehaviour
                     localization.PLAYER_2 = defendingPlayer.FirstName;
                     offensiveAction = PlayerData.PlayerAction.Shot;
                     Narration.UpdateNarration("nar_PenaltyTake_", attackingTeam.PrimaryColor);
-                    attackingPlayer.GameStats.TotalShots++;
+                    attackingPlayer.MatchStats.TotalShots++;
 
                     DebugString += "__________________________________________________________________________________________\n\n";
                     DebugString += "<size=30>PENALTY - " + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n\n";
@@ -420,7 +424,7 @@ public class MatchController : MonoBehaviour
                 matchEvent = MatchEvent.Goalkick;
             }
 
-            attackingPlayer.GameStats.TotalShotsMissed++;
+            attackingPlayer.MatchStats.TotalShotsMissed++;
             SwitchPossesion();
             shotMissed = false;
             return;
@@ -506,7 +510,7 @@ public class MatchController : MonoBehaviour
             currentZone = FieldZone.OwnGoal;
             if (defendingTeam == AwayTeam) currentZone = GetAwayTeamZone();
 
-            defendingPlayer.GameStats.TotalSaves++;
+            defendingPlayer.MatchStats.TotalSaves++;
             SwitchPossesion();
             keepDefender = true;
             shotSaved = false;
@@ -539,31 +543,39 @@ public class MatchController : MonoBehaviour
         }
         else if (matchTime >= 90)
         {
-            Narration.UpdateNarration("nar_TimeUp_", Color.gray);
-            CancelInvoke();
-            isGameOn = false;
+            HomeTeam.MatchStats.TotalGoals += homeTeamScore;
+            HomeTeam.MatchStats.TotalGoalsAgainst += awayTeamScore;
 
-            HomeTeam.GameStats.TotalGoals += homeTeamScore;
-            HomeTeam.GameStats.TotalGoalsAgainst += awayTeamScore;
-
-            AwayTeam.GameStats.TotalGoals += awayTeamScore;
-            AwayTeam.GameStats.TotalGoalsAgainst += homeTeamScore;
+            AwayTeam.MatchStats.TotalGoals += awayTeamScore;
+            AwayTeam.MatchStats.TotalGoalsAgainst += homeTeamScore;
 
             if (homeTeamScore > awayTeamScore)
             {
-                HomeTeam.GameStats.TotalWins++;
-                AwayTeam.GameStats.TotalLosts++;
+                HomeTeam.LifeTimeStats.TotalWins++;
+                AwayTeam.LifeTimeStats.TotalLosts++;
             }
             else if (awayTeamScore > homeTeamScore)
             {
-                AwayTeam.GameStats.TotalWins++;
-                HomeTeam.GameStats.TotalLosts++;
+                AwayTeam.LifeTimeStats.TotalWins++;
+                HomeTeam.LifeTimeStats.TotalLosts++;
             }
             else
             {
-                HomeTeam.GameStats.TotalDraws++;
-                AwayTeam.GameStats.TotalDraws++;
+                HomeTeam.LifeTimeStats.TotalDraws++;
+                AwayTeam.LifeTimeStats.TotalDraws++;
             }
+
+            foreach (PlayerData player in HomeTeam.Squad) player.UpdateLifeTimeStats();
+            foreach (PlayerData player in HomeTeam.Substitutes) player.UpdateLifeTimeStats();
+            foreach (PlayerData player in AwayTeam.Squad) player.UpdateLifeTimeStats();
+            foreach (PlayerData player in AwayTeam.Substitutes) player.UpdateLifeTimeStats();
+
+            HomeTeam.UpdateLifeTimeStats();
+            AwayTeam.UpdateLifeTimeStats();
+
+            Narration.UpdateNarration("nar_TimeUp_", Color.gray);
+            CancelInvoke();
+            isGameOn = false;
 
             startBtn.SetActive(true);
             return;
@@ -731,7 +743,7 @@ public class MatchController : MonoBehaviour
                     }
                     currentZone = GetTargetZone();
                     keepAttacker = true;
-                    attackingPlayer.GameStats.TotalDribbles++;
+                    attackingPlayer.MatchStats.TotalDribbles++;
                     break;
 
                 case PlayerData.PlayerAction.Cross:
@@ -761,21 +773,21 @@ public class MatchController : MonoBehaviour
                         Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     }
                     currentZone = GetTargetZone();
-                    attackingPlayer.GameStats.TotalCrosses++;
+                    attackingPlayer.MatchStats.TotalCrosses++;
                     break;
 
                 case PlayerData.PlayerAction.Shot:
                     DebugString += "CHUTOU! \n";
                     Narration.UpdateNarration("nar_Shot_", attackingTeam.PrimaryColor, 3);
                     ResolveShot(marking);
-                    attackingPlayer.GameStats.TotalShots++;
+                    attackingPlayer.MatchStats.TotalShots++;
                     break;
 
                 case PlayerData.PlayerAction.Header:
                     DebugString += "CABECEOU! \n";
                     Narration.UpdateNarration("nar_Header_", attackingTeam.PrimaryColor);
                     ResolveShot(marking);
-                    attackingPlayer.GameStats.TotalHeaders++;
+                    attackingPlayer.MatchStats.TotalHeaders++;
                     break;
 
                 case PlayerData.PlayerAction.Sprint:
@@ -828,7 +840,7 @@ public class MatchController : MonoBehaviour
                         DebugString += "ERROU O PASSE! \n ________________________________\n";
                         Narration.UpdateNarration("nar_WrongPass_", Color.gray, 1);
                         //currentZone = GetTargetZone();
-                        attackingPlayer.GameStats.TotalPassesMissed++;
+                        attackingPlayer.MatchStats.TotalPassesMissed++;
                     }
                     else
                     {
@@ -856,7 +868,7 @@ public class MatchController : MonoBehaviour
                         DebugString += "ERROU O DRIBLE! \n ________________________________\n";
                         Narration.UpdateNarration("nar_WrongDribble_", Color.gray);
                         currentZone = GetTargetZone();
-                        attackingPlayer.GameStats.TotalDribblesMissed++;
+                        attackingPlayer.MatchStats.TotalDribblesMissed++;
                     }
                     else
                     {
@@ -878,7 +890,7 @@ public class MatchController : MonoBehaviour
                         {
                             DebugString += "ERROU O CRUZAMENTO! \n ________________________________\n";
                             Narration.UpdateNarration("nar_WrongCross_", Color.gray);
-                            attackingPlayer.GameStats.TotalCrossesMissed++;
+                            attackingPlayer.MatchStats.TotalCrossesMissed++;
                         }
 
                         currentZone = GetTargetZone();
@@ -908,7 +920,7 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU O CHUTE! \n ________________________________\n";
                         Narration.UpdateNarration("nar_WrongShot_", Color.gray, 3);
-                        attackingPlayer.GameStats.TotalShotsMissed++;
+                        attackingPlayer.MatchStats.TotalShotsMissed++;
                     }
                     else
                     {
@@ -922,7 +934,7 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU A CABECADA! \n ________________________________\n";
                         Narration.UpdateNarration("nar_WrongHeader_", Color.gray);
-                        attackingPlayer.GameStats.TotalHeadersMissed++;
+                        attackingPlayer.MatchStats.TotalHeadersMissed++;
                     }
                     else
                     {
@@ -1324,7 +1336,7 @@ public class MatchController : MonoBehaviour
                     matchEvent = MatchEvent.Freekick;
                 }
                 success = false;
-                defendingPlayer.GameStats.TotalFaults++;
+                defendingPlayer.MatchStats.TotalFaults++;
             }
 
             else
@@ -1335,7 +1347,7 @@ public class MatchController : MonoBehaviour
                 if (attacking > defending) success = true;
             }
 
-            defendingPlayer.GameStats.TotalTackles++;
+            defendingPlayer.MatchStats.TotalTackles++;
         }
 
         else
@@ -1390,7 +1402,7 @@ public class MatchController : MonoBehaviour
             {
                 keepAttacker = true;
                 attackingPlayer = receiverData;
-                passerData.GameStats.TotalPasses++;
+                passerData.MatchStats.TotalPasses++;
             }
         }
 

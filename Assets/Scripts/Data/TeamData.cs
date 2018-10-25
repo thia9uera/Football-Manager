@@ -47,6 +47,7 @@ public class TeamData : ScriptableObject
     [Space(10)]
     public PlayerData Captain;
 
+    [System.Serializable]
     public class Statistics
     {
         public int TotalWins;
@@ -57,19 +58,36 @@ public class TeamData : ScriptableObject
     }
 
     public Statistics LifeTimeStats;
-    public Statistics GameStats;
+    public Statistics MatchStats;
 
     public Team_Strategy GetStrategy()
     {
         return MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
     }
 
-    public void ResetLifeTimeStatistics()
+    public void ResetStatistics(string _type)
     {
-        LifeTimeStats.TotalWins = 0;
-        LifeTimeStats.TotalLosts = 0;
-        LifeTimeStats.TotalDraws = 0;
-        LifeTimeStats.TotalGoals = 0;
-        LifeTimeStats.TotalGoalsAgainst = 0;
+        Statistics stats;
+
+        switch (_type)
+        {
+            default:
+            case "Match": stats = MatchStats; break;
+            case "LifeTime": stats = LifeTimeStats; break;
+        }
+
+        stats.TotalWins = 0;
+        stats.TotalLosts = 0;
+        stats.TotalDraws = 0;
+        stats.TotalGoals = 0;
+        stats.TotalGoalsAgainst = 0;
+    }
+
+    public void UpdateLifeTimeStats()
+    {
+        LifeTimeStats.TotalGoals += MatchStats.TotalGoals;
+        LifeTimeStats.TotalGoalsAgainst += MatchStats.TotalGoals;
+
+        ResetStatistics("Match");
     }
 }

@@ -95,14 +95,14 @@ public class LeaderboardView : MonoBehaviour
         {
             foreach (PlayerData _player in listPlayers)
             {
-                _player.ResetLifeTimeStatistics();
+                _player.ResetStatistics("LifeTime");
             }
         }
         if (listTeams != null)
         {
             foreach (TeamData _player in listTeams)
             {
-                _player.ResetLifeTimeStatistics();
+                _player.ResetStatistics("LifeTime");
             }
         }
         if (type == LeaderboardType.Players) PopulatePlayers();
