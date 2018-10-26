@@ -80,7 +80,7 @@ public class MatchController : MonoBehaviour
     private GameObject startBtn;
 
     [SerializeField]
-    private FieldZone currentZone;
+    public FieldZone CurrentZone;
 
     [SerializeField]
     private ActionChancePerZoneData actionChancePerZone;
@@ -268,8 +268,8 @@ public class MatchController : MonoBehaviour
 
         Narration.UpdateNarration("nar_KickOff_", Color.gray);
         DebugString = "KICK OFF! \n \n";
-        currentZone = FieldZone.RCM;
-        Field.UpdateFieldArea((int)currentZone);
+        CurrentZone = FieldZone.RCM;
+        Field.UpdateFieldArea((int)CurrentZone);
 
         isGameOn = true;
         StartCoroutine("GameLoop");
@@ -291,7 +291,7 @@ public class MatchController : MonoBehaviour
     //MAIN CONTROLLING FUNCTION
     private void DefineActions()
     {
-        Field.UpdateFieldArea((int)currentZone);
+        Field.UpdateFieldArea((int)CurrentZone);
         HomeTeamSquad.UpdateFatigue();
         AwayTeamSquad.UpdateFatigue();
 
@@ -323,9 +323,9 @@ public class MatchController : MonoBehaviour
                     isScorerAnnounced = false;
 
                     SwitchPossesion();
-                    currentZone = FieldZone.RCM;
+                    CurrentZone = FieldZone.RCM;
                     attackingBonus = 1f;
-                    Field.UpdateFieldArea((int)currentZone);
+                    Field.UpdateFieldArea((int)CurrentZone);
 
                     Narration.UpdateNarration("nar_MatchRestart_", Color.gray);
                     return;
@@ -339,7 +339,7 @@ public class MatchController : MonoBehaviour
 
                     isFreekickTaken = true;
 
-                    attackingPlayer = GetAttackingPlayer(currentZone);
+                    attackingPlayer = GetAttackingPlayer(CurrentZone);
                     localization.PLAYER_1 = attackingPlayer.FirstName;
                     offensiveAction = GetFreeKickAction();
 
@@ -438,11 +438,11 @@ public class MatchController : MonoBehaviour
                 shotSaved = false;
 
                 offensiveAction = PlayerData.PlayerAction.Cross;
-                currentZone = FieldZone.LF;
+                CurrentZone = FieldZone.LF;
 
                 if (attackingTeam == AwayTeam)
                 {
-                    currentZone = FieldZone.LD;
+                    CurrentZone = FieldZone.LD;
                 }
 
                 defendingPlayer = null;
@@ -456,15 +456,15 @@ public class MatchController : MonoBehaviour
             else
             {
                 attackingBonus *= attackingBonusMedium;
-                currentZone = FieldZone.Box;
+                CurrentZone = FieldZone.Box;
                 attackingPlayer = GetDefendingPlayer(FieldZone.Box);
                 defendingPlayer = GetDefendingPlayer(FieldZone.Box);
                 if(attackingTeam == AwayTeam)
                 {
-                    currentZone = FieldZone.OwnGoal;
+                    CurrentZone = FieldZone.OwnGoal;
                     defendingPlayer = GetDefendingPlayer(FieldZone.OwnGoal);
                     attackingPlayer = GetDefendingPlayer(FieldZone.OwnGoal);
-                    currentZone = FieldZone.LD;
+                    CurrentZone = FieldZone.LD;
                 }
 
                 matchEvent = MatchEvent.None;
@@ -507,8 +507,8 @@ public class MatchController : MonoBehaviour
                 }
             }
 
-            currentZone = FieldZone.OwnGoal;
-            if (defendingTeam == AwayTeam) currentZone = GetAwayTeamZone();
+            CurrentZone = FieldZone.OwnGoal;
+            if (defendingTeam == AwayTeam) CurrentZone = GetAwayTeamZone();
 
             defendingPlayer.MatchStats.TotalSaves++;
             SwitchPossesion();
@@ -522,7 +522,7 @@ public class MatchController : MonoBehaviour
         {
             isHalfTime = true;
             Narration.UpdateNarration("nar_FirstHalfEnd_", Color.gray);
-            currentZone = FieldZone.RCM;
+            CurrentZone = FieldZone.RCM;
             attackingTeam = AwayTeam;
             defendingTeam = HomeTeam;
             keepAttacker = false;
@@ -587,9 +587,9 @@ public class MatchController : MonoBehaviour
 
 
         //Step 1: Get players involved in the dispute
-        if (!keepAttacker) attackingPlayer = GetAttackingPlayer(currentZone);
+        if (!keepAttacker) attackingPlayer = GetAttackingPlayer(CurrentZone);
         if (keepDefender) attackingPlayer = defendingPlayer;
-        defendingPlayer = GetDefendingPlayer(currentZone);
+        defendingPlayer = GetDefendingPlayer(CurrentZone);
 
         keepAttacker = false;
         keepDefender = false;
@@ -599,14 +599,14 @@ public class MatchController : MonoBehaviour
         if (defendingPlayer != null) localization.PLAYER_2 = defendingPlayer.FirstName;
         localization.TEAM_1 = attackingTeam.Name;
         localization.TEAM_2 = defendingTeam.Name;
-        localization.ZONE = localization.GetZoneString(currentZone);
+        localization.ZONE = localization.GetZoneString(CurrentZone);
         if (attackingTeam == AwayTeam) localization.ZONE = localization.GetZoneString(GetAwayTeamZone());
 
         //No players in the dispute
         if (attackingPlayer == null && defendingPlayer == null)
         {
             Narration.UpdateNarration("nar_EmptyPlay_", Color.gray, 3);
-            DebugString += "\nSOBROU NA " + currentZone.ToString() + " ! \n ________________________________\n \n";
+            DebugString += "\nSOBROU NA " + CurrentZone.ToString() + " ! \n ________________________________\n \n";
         }
         //No players from attacking team in the dispute
         else if(attackingPlayer == null)
@@ -636,18 +636,18 @@ public class MatchController : MonoBehaviour
             {
                 if (marking == MarkingType.Close)
                 {
-                    DebugString += "\n<size=30>" + attackingPlayer.GetFullName() + " VS " + defendingPlayer.GetFullName() + " (" + currentZone + ")</size> \n";
+                    DebugString += "\n<size=30>" + attackingPlayer.GetFullName() + " VS " + defendingPlayer.GetFullName() + " (" + CurrentZone + ")</size> \n";
                     DebugString += "\nMARCACAO DE PERTO \n \n";
                 }
                 else if (marking == MarkingType.Distance)
                 {
-                    DebugString += "\n<size=30>" + attackingPlayer.GetFullName() + " VS " + defendingPlayer.GetFullName() + " (" + currentZone + ")</size> \n";
+                    DebugString += "\n<size=30>" + attackingPlayer.GetFullName() + " VS " + defendingPlayer.GetFullName() + " (" + CurrentZone + ")</size> \n";
                     DebugString += "\nMARCACAO A DISTANCIA \n \n";
                 }
                 else
                 {
                     //Narration.UpdateNarration(attackingPlayer.FirstName + " SOZINHO NA JOGADA", attackingTeam.PrimaryColor);
-                    DebugString += "\n<size=30>" + attackingPlayer.GetFullName() + " (" + currentZone + ")</size> \n";
+                    DebugString += "\n<size=30>" + attackingPlayer.GetFullName() + " (" + CurrentZone + ")</size> \n";
                     DebugString += "\nSEM MARCACAO \n\n";
                 }
 
@@ -741,7 +741,7 @@ public class MatchController : MonoBehaviour
                         }
                         Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     }
-                    currentZone = GetTargetZone();
+                    CurrentZone = GetTargetZone();
                     keepAttacker = true;
                     attackingPlayer.MatchStats.TotalDribbles++;
                     break;
@@ -772,7 +772,7 @@ public class MatchController : MonoBehaviour
                         }
                         Narration.UpdateNarration(narration, attackingTeam.PrimaryColor, var);
                     }
-                    currentZone = GetTargetZone();
+                    CurrentZone = GetTargetZone();
                     attackingPlayer.MatchStats.TotalCrosses++;
                     break;
 
@@ -794,7 +794,7 @@ public class MatchController : MonoBehaviour
                     DebugString += "SPRINTOU!  \n ________________________________\n";
                     Narration.UpdateNarration("nar_Sprint_", attackingTeam.PrimaryColor);
                     keepAttacker = true;
-                    currentZone = GetTargetZone();
+                    CurrentZone = GetTargetZone();
                     break;
             }
         }
@@ -867,7 +867,7 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU O DRIBLE! \n ________________________________\n";
                         Narration.UpdateNarration("nar_WrongDribble_", Color.gray);
-                        currentZone = GetTargetZone();
+                        CurrentZone = GetTargetZone();
                         attackingPlayer.MatchStats.TotalDribblesMissed++;
                     }
                     else
@@ -893,7 +893,7 @@ public class MatchController : MonoBehaviour
                             attackingPlayer.MatchStats.TotalCrossesMissed++;
                         }
 
-                        currentZone = GetTargetZone();
+                        CurrentZone = GetTargetZone();
                     }
                     else
                     {
@@ -967,7 +967,7 @@ public class MatchController : MonoBehaviour
         attackExcitment = 0;
         defenseExcitement = 0;
 
-        FieldZone zone = currentZone;
+        FieldZone zone = CurrentZone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
         if ((int)zone < 4)
@@ -1323,11 +1323,11 @@ public class MatchController : MonoBehaviour
 
             if (fault >= Random.Range(0f, 1f))
             {
-                if (attackingTeam == HomeTeam && currentZone == FieldZone.Box)
+                if (attackingTeam == HomeTeam && CurrentZone == FieldZone.Box)
                 {
                     matchEvent = MatchEvent.Penalty;
                 }
-                else if (attackingTeam == AwayTeam && currentZone == FieldZone.OwnGoal)
+                else if (attackingTeam == AwayTeam && CurrentZone == FieldZone.OwnGoal)
                 {
                     matchEvent = MatchEvent.Penalty;
                 }
@@ -1387,10 +1387,10 @@ public class MatchController : MonoBehaviour
 
         if ((offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.LongPass) && success)
         {
-            currentZone = GetTargetZone();
+            CurrentZone = GetTargetZone();
             passer = attackingPlayer.FirstName;
             PlayerData passerData = attackingPlayer;
-            PlayerData receiverData = GetAttackingPlayer(currentZone, true);
+            PlayerData receiverData = GetAttackingPlayer(CurrentZone, true);
 
             if (attackingPlayer == null)
             {
@@ -1618,7 +1618,7 @@ public class MatchController : MonoBehaviour
 
     private PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
     {
-        FieldZone zone = currentZone;
+        FieldZone zone = CurrentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
         float bonus = 0;
 
@@ -1754,9 +1754,9 @@ public class MatchController : MonoBehaviour
         int bonusChance = 0;
         defendingPlayer = defendingTeam.Squad[0];
         localization.PLAYER_2 = defendingPlayer.FirstName;
-        FieldZone zone = currentZone;
+        FieldZone zone = CurrentZone;
 
-        if (attackingPlayer == AwayTeam) currentZone = GetAwayTeamZone();
+        if (attackingPlayer == AwayTeam) CurrentZone = GetAwayTeamZone();
 
 
         switch(zone)
@@ -1897,7 +1897,7 @@ public class MatchController : MonoBehaviour
     private PlayerData.PlayerAction GetFreeKickAction()
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.Pass;
-        FieldZone zone = currentZone;
+        FieldZone zone = CurrentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
         int bonus = 0;
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
@@ -1951,7 +1951,7 @@ public class MatchController : MonoBehaviour
         }
 
         DebugString += "__________________________________________________________________________________________\n\n";
-        DebugString += "<size=30>FREE KICK - " + currentZone + " - "  + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n\n";
+        DebugString += "<size=30>FREE KICK - " + CurrentZone + " - "  + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n\n";
         DebugString += "<size=22>Pass: " + (pass * 100).ToString("F2") + "%\n";
         DebugString += "Long Pass: " + (longPass * 100).ToString("F2") + "%\n";
         DebugString += "Cross: " + (cross * 100).ToString("F2") + "%\n";
@@ -1992,15 +1992,15 @@ public class MatchController : MonoBehaviour
     //Inverts the field for away team perspective
     private FieldZone GetAwayTeamZone()
     {
-        int zone = (totalZones - 1) -  (int)currentZone;
+        int zone = (totalZones - 1) -  (int)CurrentZone;
 
         return (FieldZone)zone;
     }
 
     private FieldZone GetTargetZone()
     {
-        FieldZone target = currentZone;
-        FieldZone zone = currentZone;
+        FieldZone target = CurrentZone;
+        FieldZone zone = CurrentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
         List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
 

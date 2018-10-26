@@ -5892,6 +5892,11 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp:I2.Loc:LocalizeTarget_TextMeshPro_UGUI
+  mTarget: {fileID: 0}
+  mAlignment_RTL: 516
+  mAlignment_LTR: 513
+  mAlignmentWasRTL: 0
+  mInitializeAlignment: 1
 --- !u!1 &1153374469
 GameObject:
   m_ObjectHideFlags: 0
@@ -6972,6 +6977,16 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224180770735315258, guid: 450466c7fca6e454cb96d3aaca810f78,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224180770735315258, guid: 450466c7fca6e454cb96d3aaca810f78,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0000253105
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450466c7fca6e454cb96d3aaca810f78, type: 2}

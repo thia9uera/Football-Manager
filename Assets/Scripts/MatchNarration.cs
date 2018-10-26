@@ -33,8 +33,10 @@ public class MatchNarration : MonoBehaviour
             _color = grayFrame;
             textColor = grayText;
         }
- 
-        text.Populate(MainController.Instance.Localization.Localize(_text), _color, textColor);
+
+        string zone = MainController.Instance.Match.CurrentZone.ToString();
+
+        text.Populate(MainController.Instance.Localization.Localize(_text), _color, textColor, zone);
         Canvas.ForceUpdateCanvases();
         scroll.verticalNormalizedPosition = 0;
         Canvas.ForceUpdateCanvases();
