@@ -15,9 +15,7 @@ MonoBehaviour:
   Description: Morale is heavily affected  by dispute results (specially not scoring)
     and staying on the bench. Two stars in the same team makes both decrease morale
     heavily
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 14
-    Modifier: 1.5
-  - Attribute: 13
-    Modifier: 0.9
+    Modifier: 0.75
   ZoneRestriction: 

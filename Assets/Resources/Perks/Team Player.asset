@@ -13,11 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Team Player
   Description: Increase Positioning and Passing
-  AtributesAffected:
-  - Attribute: 15
-    Modifier: 1.5
-  - Attribute: 13
+  AttributesAffected:
+  - Attribute: 12
     Modifier: 1.5
   - Attribute: 1
     Modifier: 1.5
-  ZoneRestriction: 10000000
+  - Attribute: 2
+    Modifier: 1.5
+  - Attribute: 13
+    Modifier: 1.5
+  ZoneRestriction: 

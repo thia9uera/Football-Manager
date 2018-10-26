@@ -18,4 +18,6 @@ MonoBehaviour:
     Modifier: 1.15
   - Attribute: 6
     Modifier: 1.15
+  - Attribute: 13
+    Modifier: 1.15
   ZoneRestriction: 

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tank
   Description: Increase chance of successfully tackling
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 3
     Modifier: 1.5
+  - Attribute: 15
+    Modifier: 1.5
   - Attribute: 9
-    Modifier: 1.25
-  - Attribute: 10
     Modifier: 1.25
   ZoneRestriction: 

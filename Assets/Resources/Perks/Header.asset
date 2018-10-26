@@ -16,4 +16,4 @@ MonoBehaviour:
   AttributesAffected:
   - Attribute: 5
     Modifier: 1.2
-  ZoneRestriction: 10000000
+  ZoneRestriction: 19000000

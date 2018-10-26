@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Wall
   Description: Increase chance of saving
-  AtributesAffected:
+  AttributesAffected:
   - Attribute: 0
     Modifier: 1.5
   ZoneRestriction: 00000000

@@ -524,7 +524,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 1
-    Box: 1
+    Box: 1.5
   - Position: LF
     OwnGoal: 0
     BLD: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 2
   - Position: LCF
     OwnGoal: 0
     BLD: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 2
   - Position: RCF
     OwnGoal: 0
     BLD: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 2
   - Position: RF
     OwnGoal: 0
     BLD: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 2
   - Position: ALF
     OwnGoal: 0
     BLD: 0
@@ -659,7 +659,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 3
   - Position: ARF
     OwnGoal: 0
     BLD: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 3
   - Position: Box
     OwnGoal: 0
     BLD: 0

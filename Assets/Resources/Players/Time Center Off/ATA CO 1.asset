@@ -18,7 +18,7 @@ MonoBehaviour:
   Strategy: 0
   Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
   Goalkeeping: 20
-  Passing: 89
+  Passing: 94
   Dribbling: 63
   Crossing: 61
   Tackling: 44
@@ -34,7 +34,7 @@ MonoBehaviour:
   Teamwork: 79
   Vision: 90
   Stability: 79
-  fatigue: 83.95055
+  fatigue: 96.66661
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -50,6 +50,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
+    TotalPasses: 43
+    TotalCrosses: 2
+    TotalShots: 30
+    TotalHeaders: 2
+    TotalFaults: 7
+    TotalTackles: 39
+    TotalDribbles: 7
+    TotalGoals: 21
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 5
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+  MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
     TotalShots: 0
@@ -61,21 +76,6 @@ MonoBehaviour:
     TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 0
-    TotalHeadersMissed: 0
-    TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-  GameStats:
-    TotalPasses: 117
-    TotalCrosses: 112
-    TotalShots: 31
-    TotalHeaders: 4
-    TotalFaults: 33
-    TotalTackles: 147
-    TotalDribbles: 14
-    TotalGoals: 16
-    TotalSaves: 81
-    TotalPassesMissed: 0
-    TotalShotsMissed: 10
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0

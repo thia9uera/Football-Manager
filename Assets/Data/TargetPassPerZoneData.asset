@@ -653,13 +653,13 @@ MonoBehaviour:
     LCAM: 0
     RCAM: 0
     RAM: 0
-    LF: 0
-    LCF: 0
-    RCF: 0
+    LF: 0.5
+    LCF: 0.25
+    RCF: 0.1
     RF: 0
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 2
   - Position: ARF
     OwnGoal: 0
     BLD: 0
@@ -681,12 +681,12 @@ MonoBehaviour:
     RCAM: 0
     RAM: 0
     LF: 0
-    LCF: 0
-    RCF: 0
-    RF: 0
+    LCF: 0.1
+    RCF: 0.25
+    RF: 0.5
     ALF: 0
     ARF: 0
-    Box: 1
+    Box: 2
   - Position: Box
     OwnGoal: 0
     BLD: 0
