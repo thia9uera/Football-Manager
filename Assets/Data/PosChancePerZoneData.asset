@@ -138,8 +138,8 @@ MonoBehaviour:
     RM: 0.001
     LAM: 0.01
     LCAM: 0.01
-    RCAM: 0
-    RAM: 0
+    RCAM: 0.01
+    RAM: 0.01
     LF: 0
     LCF: 0
     RCF: 0
@@ -190,8 +190,8 @@ MonoBehaviour:
     LCM: 0.001
     RCM: 0.01
     RM: 0.01
-    LAM: 0.001
-    LCAM: 0.001
+    LAM: 0
+    LCAM: 0
     RCAM: 0.01
     RAM: 0.01
     LF: 0
@@ -217,10 +217,10 @@ MonoBehaviour:
     LCM: 0.1
     RCM: 0.001
     RM: 0.001
-    LAM: 0.001
-    LCAM: 0.001
-    RCAM: 0.01
-    RAM: 0.01
+    LAM: 0.01
+    LCAM: 0.01
+    RCAM: 0.001
+    RAM: 0.001
     LF: 0.001
     LCF: 0.001
     RCF: 0.001
@@ -383,10 +383,10 @@ MonoBehaviour:
     LCAM: 0.25
     RCAM: 0.25
     RAM: 0.1
-    LF: 0.01
-    LCF: 0.01
-    RCF: 0.001
-    RF: 0.001
+    LF: 0.001
+    LCF: 0.001
+    RCF: 0.01
+    RF: 0.01
     ALF: 0.001
     ARF: 0.001
     Box: 0.001
@@ -410,10 +410,10 @@ MonoBehaviour:
     LCAM: 0.001
     RCAM: 0.1
     RAM: 0.25
-    LF: 0.01
-    LCF: 0.01
-    RCF: 0.001
-    RF: 0.001
+    LF: 0.001
+    LCF: 0.001
+    RCF: 0.01
+    RF: 0.01
     ALF: 0.001
     ARF: 0.001
     Box: 0.001

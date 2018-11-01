@@ -9,7 +9,7 @@ public class MatchFieldView : MonoBehaviour
 
     public void UpdateFieldArea(int _area)
     {
-        for(int i = 0; i < 17; i++)
+        for(int i = 0; i < 26; i++)
         {
             GameObject obj = fieldAreas[i];
 
