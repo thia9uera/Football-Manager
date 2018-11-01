@@ -46,6 +46,8 @@ public class MatchController : MonoBehaviour
         Box = 25,
     }
 
+    public List<Vector2> FieldMatrix;
+
     public enum MatchEvent
     {
         None,
@@ -429,7 +431,7 @@ public class MatchController : MonoBehaviour
             shotMissed = false;
             return;
         }
-
+        
         //IF KEEPER CONCEDED A CORNER KICK
         if(matchEvent == MatchEvent.CornerKick)
         {
