@@ -972,7 +972,7 @@ public class MatchController : MonoBehaviour
         FieldZone zone = CurrentZone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
-        if ((int)zone < 4)
+        if ((int)zone < 8)
         {
             float offside = offsideChance;
             if (defendingPlayer != null)
