@@ -19,31 +19,36 @@ public class MatchController : MonoBehaviour
     public enum FieldZone
     { 
         OwnGoal = 0, 
-        BLD = 1,
-        BRD = 2,
-        LD = 3,                    
-        LCD = 4,
-        RCD = 5,
-        RD = 6,                   
-        LDM = 7,                  
-        LCDM = 8,
-        RCDM = 9,
-        RDM = 10,                   
-        LM = 11,                    
-        LCM = 12,
-        RCM = 13,
-        RM = 14,
-        LAM = 15,
-        LCAM = 16,
-        RCAM = 17,
-        RAM = 18,
-        LF = 19,
-        LCF = 20,
-        RCF = 21,
-        RF = 22,
-        ALF = 23,
-        ARF = 24,
-        Box = 25,
+        BLD,
+        BRD,
+        LD,                    
+        LCD,
+        CD,
+        RCD,
+        RD,                   
+        LDM,                  
+        LCDM,
+        CDM,
+        RCDM,
+        RDM,                   
+        LM,                    
+        LCM,
+        CM,
+        RCM,
+        RM,
+        LAM,
+        LCAM,
+        CAM,
+        RCAM,
+        RAM,
+        LF,
+        LCF,
+        CF,
+        RCF,
+        RF,
+        ALF,
+        ARF,
+        Box,
     }
 
     public List<Vector2> FieldMatrix;
@@ -69,85 +74,85 @@ public class MatchController : MonoBehaviour
         Steal
     }
 
-    private enum RollType
+    enum RollType
     {
         None,
         GetMax,
         DropMin,
     }
 
-    private const int totalZones = 26;
+    const int totalZones = 26;
 
     [SerializeField]
-    private GameObject startBtn;
+    GameObject startBtn;
 
     [SerializeField]
     public FieldZone CurrentZone;
 
     [SerializeField]
-    private ActionChancePerZoneData actionChancePerZone;
+    ActionChancePerZoneData actionChancePerZone;
 
     [SerializeField]
-    private DebugController debugController;
+    DebugController debugController;
 
-    private PlayerData.PlayerAction defensiveAction = PlayerData.PlayerAction.None;
-    private PlayerData.PlayerAction offensiveAction = PlayerData.PlayerAction.None;
-    private PlayerData.PlayerAction lastAction = PlayerData.PlayerAction.None;
-    private bool lastActionSuccessful;
-    private MatchEvent matchEvent = MatchEvent.None;
+    PlayerData.PlayerAction defensiveAction = PlayerData.PlayerAction.None;
+    PlayerData.PlayerAction offensiveAction = PlayerData.PlayerAction.None;
+    PlayerData.PlayerAction lastAction = PlayerData.PlayerAction.None;
+    bool lastActionSuccessful;
+    MatchEvent matchEvent = MatchEvent.None;
 
-    private TeamData attackingTeam;
-    private TeamData defendingTeam;
-    private PlayerData attackingPlayer;
-    private PlayerData defendingPlayer;
-    private PlayerData playerWithBall;
-    private float attackingBonus = 1f;
-    private bool keepAttacker;
-    private bool keepDefender;
-    private MarkingType marking;
-    private string passer;
-    private int counterAttack = 0;
+    TeamData attackingTeam;
+    TeamData defendingTeam;
+    PlayerData attackingPlayer;
+    PlayerData defendingPlayer;
+    PlayerData playerWithBall;
+    float attackingBonus = 1f;
+    bool keepAttacker;
+    bool keepDefender;
+    MarkingType marking;
+    string passer;
+    int counterAttack = 0;
 
-    private int matchTime = 0;
-    private int homeTeamScore = 0;
-    private int awayTeamScore = 0;
-    private bool isGameOn;
+    int matchTime = 0;
+    int homeTeamScore = 0;
+    int awayTeamScore = 0;
+    bool isGameOn;
 
-    private bool isGoalAnnounced ;
-    private bool isScorerAnnounced;
-    private bool isHalfTime;
-    private bool secondHalfStarted;
-    private bool isFreekickTaken;
-    private bool shotMissed;
-    private bool shotSaved;
-    private int attackExcitment = 0;
-    private int defenseExcitement = 0;
+    bool isGoalAnnounced ;
+    bool isScorerAnnounced;
+    bool isHalfTime;
+    bool secondHalfStarted;
+    bool isFreekickTaken;
+    bool shotMissed;
+    bool shotSaved;
+    int attackExcitment = 0;
+    int defenseExcitement = 0;
 
     [HideInInspector]
     public string DebugString;
 
-    private float positionDebuff;
-    private float attackingBonusLow;
-    private float attackingBonusMedium;
-    private float attackingBonusHigh;
-    private float faultChance;
-    private float offsideChance;
-    private float counterAttackChance;
+    float positionDebuff;
+    float attackingBonusLow;
+    float attackingBonusMedium;
+    float attackingBonusHigh;
+    float faultChance;
+    float offsideChance;
+    float counterAttackChance;
 
-    private int fatigueLow;
-    private int fatigueMedium;
-    private int fatigueHigh;
-    private float fatigueRecoverHalfTime;
+    int fatigueLow;
+    int fatigueMedium;
+    int fatigueHigh;
+    float fatigueRecoverHalfTime;
 
-    private LocalizationData localization;
+    LocalizationData localization;
 
     [SerializeField]
-    private TextMeshProUGUI version;
+    TextMeshProUGUI version;
 
     [Range(1, 100)]
     public int MatchSpeed = 1;
 
-    private void Awake()
+    void Awake()
     {
         Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
 
@@ -219,7 +224,7 @@ public class MatchController : MonoBehaviour
         AwayTeamSquad.Populate(AwayTeam);
     }
 
-    private void Reset()
+    void Reset()
     {
         matchTime = 0;
         homeTeamScore = 0;
@@ -291,7 +296,7 @@ public class MatchController : MonoBehaviour
     }
 
     //MAIN CONTROLLING FUNCTION
-    private void DefineActions()
+    void DefineActions()
     {
         Field.UpdateFieldArea((int)CurrentZone);
         HomeTeamSquad.UpdateFatigue();
@@ -662,7 +667,7 @@ public class MatchController : MonoBehaviour
         }
     }
 
-    private void ResolveAction()
+    void ResolveAction()
     {
         string narration = "";
         int var = 1;
@@ -954,7 +959,7 @@ public class MatchController : MonoBehaviour
         }
     }
 
-    private bool IsActionSuccessful(MarkingType _marking)
+    bool IsActionSuccessful(MarkingType _marking)
     {
         bool success = false;
         float attacking = 0f;
@@ -1411,7 +1416,7 @@ public class MatchController : MonoBehaviour
         return success;
     }
 
-    private PlayerData GetAttackingPlayer(FieldZone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
+    PlayerData GetAttackingPlayer(FieldZone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
     {
         FieldZone zone = _zone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -1492,7 +1497,7 @@ public class MatchController : MonoBehaviour
         return GetActivePlayer(players);
     }
 
-    private PlayerData GetDefendingPlayer(FieldZone _zone)
+    PlayerData GetDefendingPlayer(FieldZone _zone)
     {
         FieldZone zone = _zone;
         if (defendingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -1530,7 +1535,7 @@ public class MatchController : MonoBehaviour
         return GetActivePlayer(players);
     }
 
-    private PlayerData GetActivePlayer(List<PlayerData> _list)
+    PlayerData GetActivePlayer(List<PlayerData> _list)
     {
         PlayerData activePlayer = null;
         List<KeyValuePair<PlayerData, float>> compareList = new List<KeyValuePair<PlayerData, float>>();
@@ -1576,7 +1581,7 @@ public class MatchController : MonoBehaviour
         return activePlayer;
     }
 
-    private float CalculatePresence(PlayerData _player, FieldZone _zone, Team_Strategy _teamStrategy)
+    float CalculatePresence(PlayerData _player, FieldZone _zone, Team_Strategy _teamStrategy)
     {
         float chance = _player.GetChancePerZone(_zone, IsTeamStrategyApplicable(_zone), _teamStrategy);
 
@@ -1588,7 +1593,7 @@ public class MatchController : MonoBehaviour
         return chance;
     }
 
-    private MarkingType GetMarkingType()
+    MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
         if (defendingPlayer == null || attackingPlayer.Zone == FieldZone.OwnGoal) return type;
@@ -1618,7 +1623,7 @@ public class MatchController : MonoBehaviour
         return type;
     }
 
-    private PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
+    PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
     {
         FieldZone zone = CurrentZone;
         if (attackingTeam == AwayTeam) zone = GetAwayTeamZone();
@@ -1737,7 +1742,7 @@ public class MatchController : MonoBehaviour
         return action;
     } 
 
-    private int GetAttributeBonus(int _attribute)
+    int GetAttributeBonus(int _attribute)
     {
         int bonus = 0;
         if(_attribute > 70)
@@ -1748,7 +1753,7 @@ public class MatchController : MonoBehaviour
         return bonus;
     }
 
-    private void ResolveShot(MarkingType _marking)
+    void ResolveShot(MarkingType _marking)
     {
         float attacking = 0f;
         float defending = 0f;
@@ -1896,7 +1901,7 @@ public class MatchController : MonoBehaviour
         }
     }
 
-    private PlayerData.PlayerAction GetFreeKickAction()
+    PlayerData.PlayerAction GetFreeKickAction()
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.Pass;
         FieldZone zone = CurrentZone;
@@ -1962,7 +1967,7 @@ public class MatchController : MonoBehaviour
         return action;
     }
 
-    private int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)
+    int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)
     {
         int n = 0;
         int roll;
@@ -1992,14 +1997,14 @@ public class MatchController : MonoBehaviour
     }
 
     //Inverts the field for away team perspective
-    private FieldZone GetAwayTeamZone()
+    FieldZone GetAwayTeamZone()
     {
         int zone = (totalZones - 1) -  (int)CurrentZone;
 
         return (FieldZone)zone;
     }
 
-    private FieldZone GetTargetZone()
+    FieldZone GetTargetZone()
     {
         FieldZone target = CurrentZone;
         FieldZone zone = CurrentZone;
@@ -2213,7 +2218,7 @@ public class MatchController : MonoBehaviour
         return target;
     }
 
-    private PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.PlayerAttributes _attribute)
+    PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.PlayerAttributes _attribute)
     {
         PlayerData best = null;
         int higher = 0;
@@ -2225,7 +2230,7 @@ public class MatchController : MonoBehaviour
         return best;
     }
 
-    private bool IsTeamStrategyApplicable(FieldZone _zone)
+    bool IsTeamStrategyApplicable(FieldZone _zone)
     {
         bool value = false;
         Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
@@ -2260,7 +2265,7 @@ public class MatchController : MonoBehaviour
         return value;
     }
 
-    private void SwitchPossesion()
+    void SwitchPossesion()
     {
         if(attackingTeam == HomeTeam)
         {
@@ -2284,7 +2289,7 @@ public class MatchController : MonoBehaviour
         MainController.Instance.EditSquad(AwayTeam);
     }
 
-    private float FatigueModifier(float _fatigue)
+    float FatigueModifier(float _fatigue)
     {
         float value = 0.5f + (0.5f *(_fatigue/100));
         //float value = 1f;
