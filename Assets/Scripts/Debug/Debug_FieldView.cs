@@ -49,7 +49,7 @@ public class Debug_FieldView : MonoBehaviour
 
         list.Clear();
         DropDownPlayerPosition.ClearOptions();
-        for(int i = 0; i < 25; i++)
+        for(int i = 0; i < 31; i++)
         {
             list.Add(((MatchController.FieldZone)i).ToString());
         }

@@ -6312,7 +6312,7 @@ MonoBehaviour:
   TeamStrategyData: {fileID: 11400000, guid: bd993648d80e8b64eb209ac61f2128a4, type: 2}
   PlayerStrategyData: {fileID: 11400000, guid: d316f164b933c0a4ba7e8d8f8d4b3309, type: 2}
   Modifiers: {fileID: 11400000, guid: 4da60f8ba8ad4844fb3c15bb57acecc5, type: 2}
-  PosChancePerZone: {fileID: 11400000, guid: 6e54f4ca197b6a1459435677e3e0c432, type: 2}
+  PosChancePerZone: {fileID: 11400000, guid: 7f0cd03b0bed75345a9f52afc2a37c6f, type: 2}
   TargetPassPerZone: {fileID: 11400000, guid: 2a8c624668e0fe54fb5b561f531f7a38, type: 2}
   TargetCrossPerZone: {fileID: 11400000, guid: d1baa214c129e9b4da3689aa45cb6c30, type: 2}
 --- !u!114 &443455898
@@ -19275,7 +19275,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22788,7 +22788,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24502,9 +24502,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 3.9910889}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841633469
 MonoBehaviour:
@@ -27012,7 +27012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000253105}
+  m_AnchoredPosition: {x: 0, y: -0.0000042073298}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1955787701

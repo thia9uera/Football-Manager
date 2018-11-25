@@ -2841,37 +2841,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: GK
-      m_Image: {fileID: 0}
-    - m_Text: LD
-      m_Image: {fileID: 0}
-    - m_Text: CD
-      m_Image: {fileID: 0}
-    - m_Text: RD
-      m_Image: {fileID: 0}
-    - m_Text: LDM
-      m_Image: {fileID: 0}
-    - m_Text: CDM
-      m_Image: {fileID: 0}
-    - m_Text: RDM
-      m_Image: {fileID: 0}
-    - m_Text: LM
-      m_Image: {fileID: 0}
-    - m_Text: CM
-      m_Image: {fileID: 0}
-    - m_Text: RM
-      m_Image: {fileID: 0}
-    - m_Text: LAM
-      m_Image: {fileID: 0}
-    - m_Text: CAM
-      m_Image: {fileID: 0}
-    - m_Text: RAM
-      m_Image: {fileID: 0}
-    - m_Text: LF
-      m_Image: {fileID: 0}
-    - m_Text: CF
-      m_Image: {fileID: 0}
-    - m_Text: RF
+    - m_Text: Position
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4981,7 +4951,7 @@ Prefab:
     - target: {fileID: 114899034278890606, guid: 947e55d55211d4242acca9ffa000300a,
         type: 2}
       propertyPath: Zone
-      value: 19
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 114584389936340638, guid: 947e55d55211d4242acca9ffa000300a,
         type: 2}
@@ -6105,11 +6075,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8129,7 +8099,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GK
+  m_Text: Position
 --- !u!222 &1528232651
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8268,11 +8238,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8642,11 +8612,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -9591,7 +9561,7 @@ Prefab:
     - target: {fileID: 114899034278890606, guid: 947e55d55211d4242acca9ffa000300a,
         type: 2}
       propertyPath: Zone
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114584389936340638, guid: 947e55d55211d4242acca9ffa000300a,
         type: 2}

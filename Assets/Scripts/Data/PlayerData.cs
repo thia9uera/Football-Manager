@@ -312,6 +312,7 @@ public class PlayerData : ScriptableObject
             case MatchController.FieldZone.RDM: pct = chancePerZone.RDM; break;
             case MatchController.FieldZone.LM: pct = chancePerZone.LM; break;
             case MatchController.FieldZone.LCM: pct = chancePerZone.LCM; break;
+            case MatchController.FieldZone.CM: pct = chancePerZone.CM; break;
             case MatchController.FieldZone.RCM: pct = chancePerZone.RCM; break;
             case MatchController.FieldZone.RM: pct = chancePerZone.RM; break;
             case MatchController.FieldZone.LAM: pct = chancePerZone.LAM; break;

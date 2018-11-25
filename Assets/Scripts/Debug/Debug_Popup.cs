@@ -12,10 +12,10 @@ public class Debug_Popup : MonoBehaviour
 	
     public void ShowPopup(float _chance, MatchController.FieldZone _zone)
     {
-        InputField.text = _chance.ToString();
         gameObject.SetActive(true);
         zone = _zone;
         chance = _chance * 100;
+        InputField.text = chance.ToString();
         InputField.Select();
     }
 
@@ -23,6 +23,7 @@ public class Debug_Popup : MonoBehaviour
     {
         Zones data = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Zone];
         chance = float.Parse(InputField.text)/100;
+        data.Position = zone.ToString();
 
         switch (zone)
         {
@@ -41,6 +42,7 @@ public class Debug_Popup : MonoBehaviour
             case MatchController.FieldZone.RDM: data.RDM = chance; break;
             case MatchController.FieldZone.LM: data.LM = chance; break;
             case MatchController.FieldZone.LCM: data.LCM = chance; break;
+            case MatchController.FieldZone.CM: data.CM = chance; break;
             case MatchController.FieldZone.RCM: data.RCM = chance; break;
             case MatchController.FieldZone.RM: data.RM = chance; break;
             case MatchController.FieldZone.LAM: data.LAM = chance; break;
@@ -48,7 +50,7 @@ public class Debug_Popup : MonoBehaviour
             case MatchController.FieldZone.CAM: data.CAM = chance; break;
             case MatchController.FieldZone.RCAM: data.RCAM = chance; break;
             case MatchController.FieldZone.RAM: data.RAM = chance; break;
-            case MatchController.FieldZone.LF: data.LCF = chance; break;
+            case MatchController.FieldZone.LF: data.LF = chance; break;
             case MatchController.FieldZone.LCF: data.LCF = chance; break;
             case MatchController.FieldZone.CF: data.CF = chance; break;
             case MatchController.FieldZone.RCF: data.RCF = chance; break;

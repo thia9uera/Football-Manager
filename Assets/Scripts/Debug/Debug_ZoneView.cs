@@ -39,10 +39,10 @@ public class Debug_ZoneView : MonoBehaviour
 
         if (_chance > 0.5f) image.color = colors[1];
         else if (_chance > 0.25f) image.color = colors[2];
-        else if (_chance > 0.1) image.color = colors[3];
-        else if (_chance > 0) image.color = colors[4];
+        else if (_chance >= 0.15) image.color = colors[3];
+        else if (_chance >= 0.01) image.color = colors[4];
         else image.color = Color.gray;
-        text.text = Mathf.RoundToInt(_chance*100) + "%"; 
+        text.text =_chance*100 + "%"; 
         //text.text = _chance.ToString();
     }
 
