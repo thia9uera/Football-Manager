@@ -13,7 +13,7 @@ public class MainController : MonoBehaviour
     public Team_StrategyData TeamStrategyData;
     public Player_StrategyData PlayerStrategyData;
     public Game_ModifierData Modifiers;
-    public PosChancePerZoneData PosChancePerZone;
+    public PosChanceData PosChancePerZone;
     public TargetPassPerZoneData TargetPassPerZone;
     public TargetCrossPerZoneData TargetCrossPerZone;
 

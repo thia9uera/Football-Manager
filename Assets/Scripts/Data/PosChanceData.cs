@@ -2,37 +2,43 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class PosChancePerZone {
+public class Zones {
 	public string Position;
 	public float OwnGoal;
 	public float BLD;
 	public float BRD;
 	public float LD;
 	public float LCD;
-	public float RCD;
+    public float CD;
+    public float RCD;
 	public float RD;
 	public float LDM;
-	public float LCDM;
-	public float RCDM;
+    public float LCDM;
+    public float CDM;
+    public float RCDM;
 	public float RDM;
 	public float LM;
 	public float LCM;
-	public float RCM;
+    public float CM;
+    public float RCM;
 	public float RM;
 	public float LAM;
 	public float LCAM;
-	public float RCAM;
+    public float CAM;
+    public float RCAM;
 	public float RAM;
 	public float LF;
 	public float LCF;
-	public float RCF;
+    public float CF;
+    public float RCF;
 	public float RF;
 	public float ALF;
 	public float ARF;
 	public float Box;
 }
 
-public class PosChancePerZoneData : ScriptableObject {
-	public List<PosChancePerZone> posChancePerZones = new List<PosChancePerZone>();
+[CreateAssetMenu(fileName = "PosChance", menuName = "Position Chance", order = 1)]
+public class PosChanceData: ScriptableObject {
+	public List<Zones> posChancePerZones = new List<Zones>();
 }
 

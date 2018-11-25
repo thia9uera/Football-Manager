@@ -293,7 +293,7 @@ public class PlayerData : ScriptableObject
     {
         float pct = 0f;
 
-        PosChancePerZone chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Zone];
+        Zones chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Zone];
 
         switch(_zone)
         {
@@ -302,10 +302,12 @@ public class PlayerData : ScriptableObject
             case MatchController.FieldZone.BRD: pct = chancePerZone.BRD; break;
             case MatchController.FieldZone.LD: pct = chancePerZone.LD; break;
             case MatchController.FieldZone.LCD: pct = chancePerZone.LCD; break;
+            case MatchController.FieldZone.CD: pct = chancePerZone.CD; break;
             case MatchController.FieldZone.RCD: pct = chancePerZone.RCD; break;
             case MatchController.FieldZone.RD: pct = chancePerZone.RD; break;
             case MatchController.FieldZone.LDM: pct = chancePerZone.LDM; break;
             case MatchController.FieldZone.LCDM: pct = chancePerZone.LCDM; break;
+            case MatchController.FieldZone.CDM: pct = chancePerZone.CDM; break;
             case MatchController.FieldZone.RCDM: pct = chancePerZone.RCDM; break;
             case MatchController.FieldZone.RDM: pct = chancePerZone.RDM; break;
             case MatchController.FieldZone.LM: pct = chancePerZone.LM; break;
@@ -314,10 +316,12 @@ public class PlayerData : ScriptableObject
             case MatchController.FieldZone.RM: pct = chancePerZone.RM; break;
             case MatchController.FieldZone.LAM: pct = chancePerZone.LAM; break;
             case MatchController.FieldZone.LCAM: pct = chancePerZone.LCAM; break;
+            case MatchController.FieldZone.CAM: pct = chancePerZone.CAM; break;
             case MatchController.FieldZone.RCAM: pct = chancePerZone.RCAM; break;
             case MatchController.FieldZone.RAM: pct = chancePerZone.RAM; break;
             case MatchController.FieldZone.LF: pct = chancePerZone.LF; break;
             case MatchController.FieldZone.LCF: pct = chancePerZone.LCF; break;
+            case MatchController.FieldZone.CF: pct = chancePerZone.CF; break;
             case MatchController.FieldZone.RCF: pct = chancePerZone.RCF; break;
             case MatchController.FieldZone.RF: pct = chancePerZone.RF; break;
             case MatchController.FieldZone.ALF: pct = chancePerZone.ALF; break;

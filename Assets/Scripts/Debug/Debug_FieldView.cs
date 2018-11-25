@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class Debug_FieldView : MonoBehaviour
 {
+    public static Debug_FieldView Instance;
+
     public PlayerData TestPlayer;
 
-    public Dropdown dropDownPlayerPosition;
+    public Dropdown DropDownPlayerPosition;
 
-    public Dropdown dropDownPlayerStrategy;
+    public Dropdown DropDownPlayerStrategy;
 
-    public Dropdown dropDownTeamStrategy;
+    public Dropdown DropDownTeamStrategy;
+
+    public Debug_Popup Popup;
 
     [SerializeField]
     private Text fatigueLabel;
@@ -19,36 +23,41 @@ public class Debug_FieldView : MonoBehaviour
     [SerializeField]
     private Slider slider;
 
+    public void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
     public void Start()
     {
-        dropDownPlayerPosition.value = (int)TestPlayer.Zone;
+        DropDownPlayerPosition.value = (int)TestPlayer.Zone;
 
         List<string> list = new List<string>();
         foreach (Player_Strategy strategy in MainController.Instance.PlayerStrategyData.player_Strategys)
         {
             list.Add(strategy.Name);
         }
-        dropDownPlayerStrategy.AddOptions(list);
-        dropDownPlayerStrategy.value = (int)TestPlayer.Strategy;
+        DropDownPlayerStrategy.AddOptions(list);
+        DropDownPlayerStrategy.value = (int)TestPlayer.Strategy;
 
         list.Clear();
         foreach (Team_Strategy strategy in MainController.Instance.TeamStrategyData.team_Strategys)
         {
             list.Add(strategy.Name);
         }
-        dropDownTeamStrategy.AddOptions(list);
+        DropDownTeamStrategy.AddOptions(list);
 
         list.Clear();
-        dropDownPlayerPosition.ClearOptions();
+        DropDownPlayerPosition.ClearOptions();
         for(int i = 0; i < 25; i++)
         {
             list.Add(((MatchController.FieldZone)i).ToString());
         }
-        dropDownPlayerPosition.AddOptions(list);
+        DropDownPlayerPosition.AddOptions(list);
 
+        TestPlayer.Strategy = (PlayerData.PlayerStrategy)DropDownPlayerStrategy.value;
 
-
-        TestPlayer.Strategy = (PlayerData.PlayerStrategy)dropDownPlayerStrategy.value;
+        Test();
     }
 
     public void Test()
@@ -74,15 +83,18 @@ public class Debug_FieldView : MonoBehaviour
 
     public void ValueChange()
     {
-        MatchController.FieldZone pos = (MatchController.FieldZone)dropDownPlayerPosition.value;
+        MatchController.FieldZone pos = (MatchController.FieldZone)DropDownPlayerPosition.value;
+        SetPlayerStrategy();
+
         TestPlayer.Zone = TestPlayer.Zone = pos;
+
+        Test();
     }
 
     public void SetPlayerStrategy()
     {
-        TestPlayer.Strategy = (PlayerData.PlayerStrategy)dropDownPlayerStrategy.value;
+        TestPlayer.Strategy = (PlayerData.PlayerStrategy)DropDownPlayerStrategy.value;
     }
-
 
     private float CalculatePresence(PlayerData _player, MatchController.FieldZone _zone)
     {
@@ -99,5 +111,6 @@ public class Debug_FieldView : MonoBehaviour
     {
         TestPlayer.Fatigue = (int)slider.value;
         fatigueLabel.text = "Fatigue: " + TestPlayer.Fatigue;
+        Test();
     }
 }
