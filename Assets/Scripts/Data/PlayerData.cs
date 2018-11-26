@@ -234,7 +234,7 @@ public class PlayerData : ScriptableObject
 
     public int GetOverall()
     {
-        int total = 17;
+        int total = 0;
 
         total += Goalkeeping;
         total += Passing;

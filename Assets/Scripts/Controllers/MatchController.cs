@@ -19,38 +19,16 @@ public class MatchController : MonoBehaviour
     public enum FieldZone
     { 
         OwnGoal = 0, 
-        BLD,
-        BRD,
-        LD,                    
-        LCD,
-        CD,
-        RCD,
-        RD,                   
-        LDM,                  
-        LCDM,
-        CDM,
-        RCDM,
-        RDM,                   
-        LM,                    
-        LCM,
-        CM,
-        RCM,
-        RM,
-        LAM,
-        LCAM,
-        CAM,
-        RCAM,
-        RAM,
-        LF,
-        LCF,
-        CF,
-        RCF,
-        RF,
-        ALF,
-        ARF,
+        BLD, BRD,
+        LD, LCD, CD, RCD, RD,                   
+        LDM, LCDM, CDM, RCDM, RDM,                   
+        LM, LCM, CM, RCM,RM,
+        LAM, LCAM, CAM, RCAM, RAM,
+        LF, LCF, CF, RCF, RF,
+        ALF, ARF,
         Box,
     }
-
+    const int totalZones = 31;
     public List<Vector2> FieldMatrix;
 
     public enum MatchEvent
@@ -81,7 +59,7 @@ public class MatchController : MonoBehaviour
         DropMin,
     }
 
-    const int totalZones = 26;
+
 
     [SerializeField]
     GameObject startBtn;

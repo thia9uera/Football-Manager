@@ -32,22 +32,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 0
     Target_ALF: 0
@@ -58,22 +63,27 @@ MonoBehaviour:
     BRD: 1
     LD: 1
     LCD: 1
+    CD: 1
     RCD: 1
     RD: 1
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
@@ -99,22 +109,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 0
     Target_ALF: 0
@@ -125,22 +140,27 @@ MonoBehaviour:
     BRD: 0
     LD: 0
     LCD: 0
+    CD: 0
     RCD: 0
     RD: 0
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
@@ -160,28 +180,33 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 2
     TacklingChance: 1.1
-    CounterAttackChance: 1
+    CounterAttackChance: 3
     Target_OwnGoal: 0
     Target_BLD: 0
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 0
     Target_ALF: 0
@@ -192,22 +217,27 @@ MonoBehaviour:
     BRD: 1
     LD: 1
     LCD: 1
+    CD: 1
     RCD: 1
     RD: 1
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 0
     LCAM: 0
+    CAM: 0
     RCAM: 0
     RAM: 0
     LF: 0
     LCF: 0
+    CF: 0
     RCF: 0
     RF: 0
     ALF: 0
@@ -227,28 +257,33 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 3
     TacklingChance: 1.2
-    CounterAttackChance: 1
+    CounterAttackChance: 6
     Target_OwnGoal: 0
     Target_BLD: 0
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 0
     Target_ALF: 0
@@ -259,22 +294,27 @@ MonoBehaviour:
     BRD: 1
     LD: 1
     LCD: 1
+    CD: 1
     RCD: 1
     RD: 1
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 0
     LCAM: 0
+    CAM: 0
     RCAM: 0
     RAM: 0
     LF: 0
     LCF: 0
+    CF: 0
     RCF: 0
     RF: 0
     ALF: 0
@@ -300,22 +340,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 2
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 2
     Target_LF: 2
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 2
     Target_ALF: 2
@@ -326,22 +371,27 @@ MonoBehaviour:
     BRD: 1
     LD: 1
     LCD: 0
+    CD: 0
     RCD: 0
     RD: 1
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
@@ -367,22 +417,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 2
+    Target_CAM: 2
     Target_RCAM: 2
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 2
+    Target_CF: 2
     Target_RCF: 2
     Target_RF: 0
     Target_ALF: 0
@@ -393,22 +448,27 @@ MonoBehaviour:
     BRD: 0
     LD: 0
     LCD: 0
+    CD: 0
     RCD: 0
     RD: 0
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
@@ -434,22 +494,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 1.5
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 1.5
     Target_LF: 1.5
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 1.5
     Target_ALF: 1.5
@@ -460,22 +525,27 @@ MonoBehaviour:
     BRD: 0
     LD: 0
     LCD: 0
+    CD: 0
     RCD: 0
     RD: 0
     LDM: 0
     LCDM: 0
+    CDM: 0
     RCDM: 0
     RDM: 0
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
@@ -501,22 +571,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 0
     Target_ALF: 0
@@ -527,22 +602,27 @@ MonoBehaviour:
     BRD: 1
     LD: 1
     LCD: 1
+    CD: 1
     RCD: 1
     RD: 1
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
@@ -568,22 +648,27 @@ MonoBehaviour:
     Target_BRD: 0
     Target_LD: 0
     Target_LCD: 0
+    Target_CD: 0
     Target_RCD: 0
     Target_RD: 0
     Target_LDM: 0
     Target_LCDM: 0
+    Target_CDM: 0
     Target_RCDM: 0
     Target_RDM: 0
     Target_LM: 0
     Target_LCM: 0
+    Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
+    Target_CAM: 0
     Target_RCAM: 0
     Target_RAM: 0
     Target_LF: 0
     Target_LCF: 0
+    Target_CF: 0
     Target_RCF: 0
     Target_RF: 0
     Target_ALF: 0
@@ -594,22 +679,27 @@ MonoBehaviour:
     BRD: 1
     LD: 1
     LCD: 1
+    CD: 1
     RCD: 1
     RD: 1
     LDM: 1
     LCDM: 1
+    CDM: 1
     RCDM: 1
     RDM: 1
     LM: 1
     LCM: 1
+    CM: 1
     RCM: 1
     RM: 1
     LAM: 1
     LCAM: 1
+    CAM: 1
     RCAM: 1
     RAM: 1
     LF: 1
     LCF: 1
+    CF: 1
     RCF: 1
     RF: 1
     ALF: 1
