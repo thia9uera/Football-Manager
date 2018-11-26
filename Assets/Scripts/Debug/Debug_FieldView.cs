@@ -48,6 +48,7 @@ public class Debug_FieldView : MonoBehaviour
             list.Add(strategy.Name);
         }
         DropDownTeamStrategy.AddOptions(list);
+        teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[DropDownTeamStrategy.value];
 
         list.Clear();
         DropDownPlayerPosition.ClearOptions();
@@ -88,10 +89,7 @@ public class Debug_FieldView : MonoBehaviour
         MatchController.FieldZone pos = (MatchController.FieldZone)DropDownPlayerPosition.value;
         teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[DropDownTeamStrategy.value];
         SetPlayerStrategy();
-
         TestPlayer.Zone = pos;
-        TestPlayer.ApplyBonus();
-
         Test();
     }
 
