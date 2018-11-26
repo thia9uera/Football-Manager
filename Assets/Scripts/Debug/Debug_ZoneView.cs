@@ -42,7 +42,7 @@ public class Debug_ZoneView : MonoBehaviour
         else if (_chance >= 0.15) image.color = colors[3];
         else if (_chance >= 0.01) image.color = colors[4];
         else image.color = Color.gray;
-        text.text =_chance*100 + "%"; 
+        text.text = System.Math.Round(_chance*100, 2) + "%"; 
         //text.text = _chance.ToString();
     }
 

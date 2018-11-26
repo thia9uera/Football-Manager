@@ -229,7 +229,6 @@ public class PlayerData : ScriptableObject
         Prob_OffsideLine = _playerStrategy.OffsideTrickChance;
         Prob_Marking = _playerStrategy.MarkingChance;
         Prob_Tackling = _playerStrategy.TacklingChance;
-
     }
 
     public int GetOverall()
