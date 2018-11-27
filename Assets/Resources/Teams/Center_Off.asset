@@ -16,13 +16,13 @@ MonoBehaviour:
   PrimaryColor: {r: 0.9150943, g: 0.36786026, b: 0.21150766, a: 1}
   SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
   Formation: 2
-  Strategy: 3
+  Strategy: 5
   Squad:
   - {fileID: 11400000, guid: 821d2955a3f10ac4781db93151541300, type: 2}
   - {fileID: 11400000, guid: 575c66cde0a664e41a511bdec27d1717, type: 2}
   - {fileID: 11400000, guid: 97b284f6a982ba541861073d5de743ab, type: 2}
   - {fileID: 11400000, guid: 00c547f3378649841b3afdedcf5d8dcc, type: 2}
-  - {fileID: 11400000, guid: 4bdbe27ca5dfde7479d4c222724fb8e9, type: 2}
+  - {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
   - {fileID: 11400000, guid: a1e2467b1d4fb7745b7098452203f5ab, type: 2}
   - {fileID: 11400000, guid: fe26fdeb766a865419f435e60fdc7edd, type: 2}
   - {fileID: 11400000, guid: 577d731da084e5c4bb095e6a7ed0a782, type: 2}
@@ -35,11 +35,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b90b1213fa50bc2418c3b6b02d100352, type: 2}
   Captain: {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
   LifeTimeStats:
-    TotalWins: 1
-    TotalLosts: 3
-    TotalDraws: 2
-    TotalGoals: 3
-    TotalGoalsAgainst: 3
+    TotalWins: 23
+    TotalLosts: 0
+    TotalDraws: 7
+    TotalGoals: 78
+    TotalGoalsAgainst: 78
   MatchStats:
     TotalWins: 0
     TotalLosts: 0
