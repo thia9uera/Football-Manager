@@ -92,7 +92,7 @@ MonoBehaviour:
   - Name: Offensive
     Description: bla
     DefPosChance: 0.25
-    OffPosChance: 2.5
+    OffPosChance: 4
     LeftPosChance: 1
     RighPosChance: 1
     PassingChance: 1
@@ -168,7 +168,7 @@ MonoBehaviour:
     Box: 1
   - Name: Defensive
     Description: bla
-    DefPosChance: 2
+    DefPosChance: 4
     OffPosChance: 0.25
     LeftPosChance: 1
     RighPosChance: 1
