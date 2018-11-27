@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487d99180c409334b8dbf91c9d77896d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: 0
+  Zone: 0
   Player: {fileID: 0}
   Arrows: {fileID: 114360996139497110}
   nameLabel: {fileID: 114747483653876304}
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
-  m_inputSource: 3
+  m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
