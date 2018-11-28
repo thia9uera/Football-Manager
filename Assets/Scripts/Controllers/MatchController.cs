@@ -1377,7 +1377,7 @@ public class MatchController : MonoBehaviour
             PlayerData passerData = attackingPlayer;
             PlayerData receiverData = GetAttackingPlayer(CurrentZone, true);
 
-            if (attackingPlayer == null)
+            if (receiverData == null)
             {
                 success = false;
                 keepAttacker = false;
