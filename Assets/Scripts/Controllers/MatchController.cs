@@ -1752,6 +1752,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case FieldZone.LCAM:
+            case FieldZone.CAM:
             case FieldZone.RCAM:
                 distanceModifier = 0.65f;
                 break;
@@ -1767,6 +1768,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case FieldZone.LCF:
+            case FieldZone.CF:
             case FieldZone.RCF:
                 distanceModifier = 0.8f;
                 break;
@@ -1992,26 +1994,37 @@ public class MatchController : MonoBehaviour
         float _OwnGoal = 0;
         float _BLD = 0;
         float _BRD = 0;
+
         float _LD = 0;
         float _LCD = 0;
+        float _CD = 0;
         float _RCD = 0;
         float _RD = 0;
+
         float _LDM = 0;
         float _LCDM = 0;
+        float _CDM = 0;
         float _RCDM = 0;
         float _RDM = 0;
+
         float _LM = 0;
         float _LCM = 0;
+        float _CM = 0;
         float _RCM = 0;
         float _RM = 0;
+
         float _LAM = 0;
         float _LCAM = 0;
+        float _CAM = 0;
         float _RCAM = 0;
         float _RAM = 0;
+
         float _LF = 0;
         float _LCF = 0;
+        float _CF = 0;
         float _RCF = 0;
         float _RF = 0;
+
         float _ALF = 0;
         float _ARF = 0;
         float _Box = 0;
@@ -2020,14 +2033,17 @@ public class MatchController : MonoBehaviour
         {
             _LDM = 0.75f;
             _LCDM = 0.75f;
+            _CDM = 075f;
             _RCDM = 0.75f;
             _RDM = 0.75f;
             _LM = 1f;
             _LCM = 1f;
+            _CM = 1f;
             _RCM = 1f;
             _RM = 1f;
             _LAM = 0.5f;
             _LCAM = 0.5f;
+            _CAM = 0.5f;
             _RCAM = 0.5f;
             _RAM = 0.5f;
         }
@@ -2039,26 +2055,37 @@ public class MatchController : MonoBehaviour
             _OwnGoal = data.OwnGoal;
             _BLD = data.BLD;
             _BRD = data.BRD;
+
             _LD = data.LD;
             _LCD = data.LCD;
+            _CD = data.CD;
             _RCD = data.RCD;
             _RD = data.RD;
+
             _LDM = data.LDM;
             _LCDM = data.LCDM;
+            _CDM = data.CDM;
             _RCDM = data.RCDM;
             _RDM = data.RDM;
+
             _LM = data.LM;
             _LCM = data.LCM;
+            _CM = data.CM;
             _RCM = data.RCM;
             _RM = data.RM;
+
             _LAM = data.LAM;
             _LCAM = data.LCAM;
+            _CAM = data.CAM;
             _RCAM = data.RCAM;
             _RAM = data.RAM;
+
             _LF = data.LF;
             _LCF = data.LCF;
+            _CF = data.CF;
             _RCF = data.RCF;
             _RF = data.RF;
+
             _ALF = data.ALF;
             _ARF = data.ARF;
             _Box = data.Box;
@@ -2071,26 +2098,37 @@ public class MatchController : MonoBehaviour
             _OwnGoal = data.OwnGoal;
             _BLD = data.BLD;
             _BRD = data.BRD;
+
             _LD = data.LD;
             _LCD = data.LCD;
+            _CD = data.CD;
             _RCD = data.RCD;
             _RD = data.RD;
+
             _LDM = data.LDM;
             _LCDM = data.LCDM;
+            _CDM = data.CDM;
             _RCDM = data.RCDM;
             _RDM = data.RDM;
+
             _LM = data.LM;
             _LCM = data.LCM;
+            _CM = data.CM;
             _RCM = data.RCM;
             _RM = data.RM;
+
             _LAM = data.LAM;
             _LCAM = data.LCAM;
+            _CAM = data.CAM;
             _RCAM = data.RCAM;
             _RAM = data.RAM;
+
             _LF = data.LF;
             _LCF = data.LCF;
+            _CF = data.CF;
             _RCF = data.RCF;
             _RF = data.RF;
+
             _ALF = data.ALF;
             _ARF = data.ARF;
             _Box = data.Box;
@@ -2098,57 +2136,89 @@ public class MatchController : MonoBehaviour
 
 
         Team_Strategy strategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)attackingTeam.Strategy];
-        _OwnGoal *= strategy.Target_OwnGoal;
+        _OwnGoal += strategy.Target_OwnGoal;
+        _BLD += strategy.Target_BLD;
+        _BRD += strategy.Target_BRD;
+
         _LD += strategy.Target_LD;
         _LCD += strategy.Target_LCD;
+        _CD += strategy.Target_CD;
         _RCD += strategy.Target_RCD;
         _RD += strategy.Target_RD;
+
         _LDM += strategy.Target_LDM;
         _LCDM += strategy.Target_LCDM;
+        _CDM += strategy.Target_CDM;
         _RCDM += strategy.Target_RCDM;
         _RDM += strategy.Target_RDM;
+
         _LM += strategy.Target_LM;
         _LCM += strategy.Target_LCM;
+        _CM += strategy.Target_CM;
         _RCM += strategy.Target_RCM;
         _RM += strategy.Target_RM;
+
         _LAM += strategy.Target_LAM;
         _LCAM += strategy.Target_LCAM;
+        _CAM += strategy.Target_CAM;
         _RCAM += strategy.Target_RCAM;
         _RAM += strategy.Target_RAM;
+
         _LF += strategy.Target_LF;
         _LCF += strategy.Target_LCF;
+        _CF += strategy.Target_CF;
         _RCF += strategy.Target_RCF;
         _RF += strategy.Target_RF;
+
         _ALF += strategy.Target_ALF;
         _ARF += strategy.Target_ARF;
         _Box += strategy.Target_Box;
 
 
 
-        float total = _OwnGoal + _BLD + _BRD + _LD + _LCD + _RCD + _RD + _LDM + _LCDM + _RCDM + _RDM + _LM + _LCM + _RCM + _RM + _LAM + _LCAM + _RCAM + _RAM + _LF + _LCF + _RCF + _RF + + _ALF + _ARF +  _Box;
+        float total = 
+            _OwnGoal + _BLD + _BRD + 
+            _LD + _LCD + + _CD +_RCD + _RD + 
+            _LDM + _LCDM + + _CDM + _RCDM + _RDM + 
+            _LM + _LCM + _CM +_RCM + _RM + 
+            _LAM + _LCAM + _CAM + _RCAM + _RAM +
+            _LF + _LCF + _CF + _RCF + _RF +
+            _ALF + _ARF +  _Box;
+
         _OwnGoal /= total;
         _BLD /= total;
         _BRD /= total;
+
         _LD /= total;
         _LCD /= total;
+        _CD /= total;
         _RCD /= total;
         _RD /= total;
+
         _LDM /= total;
         _LCDM /= total;
+        _CDM /= total;
         _RCDM /= total;
         _RDM /= total;
+
         _LM /= total;
         _LCM /= total;
+        _CM /= total;
         _RCM /= total;
         _RM /= total;
+
         _LAM /= total;
         _LCAM /= total;
+        _CAM /= total;
         _RCAM /= total;
         _RAM /= total;
+
         _LF /= total;
         _LCF /= total;
+        _CF /= total;
         _RCF /= total;
          _RF /= total;
+
         _ALF /= total;
         _ARF /= total;
         _Box /= total;
@@ -2156,26 +2226,37 @@ public class MatchController : MonoBehaviour
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.OwnGoal, _OwnGoal));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.BLD, _BLD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.BRD, _BRD));
+
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LD, _LD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCD, _LCD));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CD, _CD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCD, _RCD));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RD, _RD));
+
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LDM, _LDM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCDM, _LCDM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CDM, _CDM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCDM, _RCDM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RDM, _RDM));
+
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LM, _LM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCM, _LCM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CM, _CDM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCM, _RCM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RM, _RM));
+
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LAM, _LAM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCAM, _LCAM));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CAM, _CAM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCAM, _RCAM));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RAM, _RAM));
+
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LF, _LF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCF, _LCF));
+        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CF, _CF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCF, _RCF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RF, _RF));
+
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.ALF, _ALF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.ARF, _ARF));
         list.Add(new KeyValuePair<FieldZone, float>(FieldZone.Box, _Box));
@@ -2216,26 +2297,39 @@ public class MatchController : MonoBehaviour
         switch (_zone)
         {
             case FieldZone.OwnGoal: value = teamStrategy.OwnGoal; break;
+            case FieldZone.BLD: value = teamStrategy.BLD; break;
+            case FieldZone.BRD: value = teamStrategy.BRD; break;
+
             case FieldZone.LD: value = teamStrategy.LD; break;
             case FieldZone.LCD: value = teamStrategy.LCD; break;
+            case FieldZone.CD: value = teamStrategy.CD; break;
             case FieldZone.RCD: value = teamStrategy.RCD; break;
             case FieldZone.RD: value = teamStrategy.RD; break;
+
             case FieldZone.LDM: value = teamStrategy.LDM; break;
             case FieldZone.LCDM: value = teamStrategy.LCDM; break;
+            case FieldZone.CDM: value = teamStrategy.CDM; break;
             case FieldZone.RCDM: value = teamStrategy.RCDM; break;
             case FieldZone.RDM: value = teamStrategy.RDM; break;
+
             case FieldZone.LM: value = teamStrategy.LM; break;
             case FieldZone.LCM: value = teamStrategy.LCM; break;
+            case FieldZone.CM: value = teamStrategy.CM; break;
             case FieldZone.RCM: value = teamStrategy.RCM; break;
             case FieldZone.RM: value = teamStrategy.RM; break;
+
             case FieldZone.LAM: value = teamStrategy.LAM; break;
             case FieldZone.LCAM: value = teamStrategy.LCAM; break;
+            case FieldZone.CAM: value = teamStrategy.CAM; break;
             case FieldZone.RCAM: value = teamStrategy.RCAM; break;
             case FieldZone.RAM: value = teamStrategy.RAM; break;
+
             case FieldZone.LF: value = teamStrategy.LF; break;
             case FieldZone.LCF: value = teamStrategy.LCF; break;
+            case FieldZone.CF: value = teamStrategy.CF; break;
             case FieldZone.RCF: value = teamStrategy.RCF; break;
             case FieldZone.RF: value = teamStrategy.RF; break;
+
             case FieldZone.ALF: value = teamStrategy.ALF; break;
             case FieldZone.ARF: value = teamStrategy.ARF; break;
             case FieldZone.Box: value = teamStrategy.Box; break;
