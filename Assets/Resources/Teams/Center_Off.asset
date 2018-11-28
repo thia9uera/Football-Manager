@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 575c66cde0a664e41a511bdec27d1717, type: 2}
   - {fileID: 11400000, guid: 97b284f6a982ba541861073d5de743ab, type: 2}
   - {fileID: 11400000, guid: 00c547f3378649841b3afdedcf5d8dcc, type: 2}
-  - {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
+  - {fileID: 11400000, guid: b90b1213fa50bc2418c3b6b02d100352, type: 2}
   - {fileID: 11400000, guid: a1e2467b1d4fb7745b7098452203f5ab, type: 2}
   - {fileID: 11400000, guid: fe26fdeb766a865419f435e60fdc7edd, type: 2}
   - {fileID: 11400000, guid: 577d731da084e5c4bb095e6a7ed0a782, type: 2}
@@ -30,9 +30,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
   - {fileID: 11400000, guid: 314a892362c9d8f4abed8d4eb2d616f2, type: 2}
   Substitutes:
-  - {fileID: 11400000, guid: 1fc187eb3f400314198cf262ebeeba19, type: 2}
+  - {fileID: 11400000, guid: 4411341612e34b64a9941ca28a34bcdd, type: 2}
   - {fileID: 11400000, guid: 6a54f9edbb699bd478a1bfe23b580df2, type: 2}
-  - {fileID: 11400000, guid: b90b1213fa50bc2418c3b6b02d100352, type: 2}
+  - {fileID: 11400000, guid: 1fc187eb3f400314198cf262ebeeba19, type: 2}
   Captain: {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
   LifeTimeStats:
     TotalWins: 23
