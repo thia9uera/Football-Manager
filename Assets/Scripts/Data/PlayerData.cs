@@ -498,15 +498,15 @@ public class PlayerData : ScriptableObject
                 break;
 
             case PlayerPosition.Defender:
-                if (zone < 1 || zone > 6) value = true;
+                if (zone < 1 || zone > 7) value = true;
                 break;
 
             case PlayerPosition.Midfielder:
-                if (zone < 7 || zone > 18) value = true;
+                if (zone < 8 || zone > 22) value = true;
                 break;
 
             case PlayerPosition.Forward:
-                if (zone < 19) value = true;
+                if (zone < 23) value = true;
                 break;
         }
         return value;
