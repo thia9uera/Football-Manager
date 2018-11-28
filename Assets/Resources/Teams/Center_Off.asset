@@ -35,11 +35,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fc187eb3f400314198cf262ebeeba19, type: 2}
   Captain: {fileID: 11400000, guid: 1e3c41119fbfde84ea3c4de7d115c9dd, type: 2}
   LifeTimeStats:
-    TotalWins: 23
-    TotalLosts: 0
-    TotalDraws: 7
-    TotalGoals: 78
-    TotalGoalsAgainst: 78
+    TotalWins: 7
+    TotalLosts: 3
+    TotalDraws: 3
+    TotalGoals: 26
+    TotalGoalsAgainst: 26
   MatchStats:
     TotalWins: 0
     TotalLosts: 0

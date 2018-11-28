@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC CO 5
   m_EditorClassIdentifier: 
-  FirstName: MC 5
-  LastName: 
+  FirstName: MC
+  LastName: LCAM
   Zone: 19
   Position: 2
   Strategy: 0
@@ -64,18 +64,18 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-  GameStats:
-    TotalPasses: 64
-    TotalCrosses: 111
-    TotalShots: 1
+  MatchStats:
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 26
-    TotalTackles: 106
+    TotalFaults: 0
+    TotalTackles: 0
     TotalDribbles: 0
-    TotalGoals: 1
-    TotalSaves: 81
+    TotalGoals: 0
+    TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 1
+    TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0

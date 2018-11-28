@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA CO 1
   m_EditorClassIdentifier: 
-  FirstName: ATA 1
-  LastName: 
+  FirstName: ATA
+  LastName: LF
   Zone: 23
   Position: 3
   Strategy: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
   Teamwork: 79
   Vision: 90
   Stability: 79
-  fatigue: 83.949814
+  fatigue: 100
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -50,17 +50,17 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 47
-    TotalCrosses: 1
-    TotalShots: 53
-    TotalHeaders: 1
-    TotalFaults: 5
-    TotalTackles: 41
-    TotalDribbles: 4
-    TotalGoals: 39
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 9
+    TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0

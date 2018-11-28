@@ -258,9 +258,6 @@ public class MatchController : MonoBehaviour
 
         isGameOn = true;
         StartCoroutine("GameLoop");
-
-
-        print("W: " + HomeTeam.LifeTimeStats.TotalWins + "  L: " + HomeTeam.LifeTimeStats.TotalLosts);
     }
 
     IEnumerator GameLoop()

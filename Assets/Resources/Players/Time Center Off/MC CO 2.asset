@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC CO 2
   m_EditorClassIdentifier: 
-  FirstName: MC 2
-  LastName: 
-  Zone: 8
+  FirstName: MC
+  LastName: CM
+  Zone: 15
   Position: 2
   Strategy: 0
   Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
@@ -34,7 +34,7 @@ MonoBehaviour:
   Teamwork: 83
   Vision: 69
   Stability: 50
-  fatigue: 72.222145
+  fatigue: 100
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -50,6 +50,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
+    TotalPasses: 36
+    TotalCrosses: 1
+    TotalShots: 8
+    TotalHeaders: 0
+    TotalFaults: 3
+    TotalTackles: 21
+    TotalDribbles: 4
+    TotalGoals: 1
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 2
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+  MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
     TotalShots: 0
@@ -61,21 +76,6 @@ MonoBehaviour:
     TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 0
-    TotalHeadersMissed: 0
-    TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-  GameStats:
-    TotalPasses: 153
-    TotalCrosses: 127
-    TotalShots: 2
-    TotalHeaders: 0
-    TotalFaults: 40
-    TotalTackles: 178
-    TotalDribbles: 8
-    TotalGoals: 2
-    TotalSaves: 81
-    TotalPassesMissed: 2
-    TotalShotsMissed: 1
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
