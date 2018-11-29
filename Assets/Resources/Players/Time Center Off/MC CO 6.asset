@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC CO 6
   m_EditorClassIdentifier: 
-  FirstName: MC
+  FirstName: MC-RCDM
   LastName: RCDM
   Zone: 11
   Position: 2

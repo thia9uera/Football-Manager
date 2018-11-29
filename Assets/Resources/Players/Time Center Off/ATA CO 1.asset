@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA CO 1
   m_EditorClassIdentifier: 
-  FirstName: ATA
+  FirstName: ATA-LF
   LastName: LF
   Zone: 23
   Position: 3
@@ -34,7 +34,7 @@ MonoBehaviour:
   Teamwork: 79
   Vision: 90
   Stability: 79
-  fatigue: 100
+  fatigue: 99.81481
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1

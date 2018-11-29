@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC CO 5
   m_EditorClassIdentifier: 
-  FirstName: MC
+  FirstName: MC-LCAM
   LastName: LCAM
-  Zone: 19
+  Zone: 27
   Position: 2
   Strategy: 0
   Perk: {fileID: 0}

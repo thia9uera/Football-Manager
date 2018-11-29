@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG CO 1
   m_EditorClassIdentifier: 
-  FirstName: ZAG
+  FirstName: ZAG-LD
   LastName: LD
   Zone: 3
   Position: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
   Teamwork: 66
   Vision: 81
   Stability: 74
-  fatigue: 100
+  fatigue: 99.81481
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -50,17 +50,17 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 13
-    TotalCrosses: 1
+    TotalPasses: 0
+    TotalCrosses: 0
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 6
-    TotalTackles: 25
-    TotalDribbles: 2
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
-    TotalPassesMissed: 1
-    TotalShotsMissed: 1
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0

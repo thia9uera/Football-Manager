@@ -31,16 +31,16 @@ MonoBehaviour:
     CM: 1
     RCM: 1
     RM: 1
-    LAM: 0
-    LCAM: 0
-    CAM: 0
-    RCAM: 0
-    RAM: 0
-    LF: 0
-    LCF: 0
-    CF: 0
-    RCF: 0
-    RF: 0
+    LAM: 0.5
+    LCAM: 0.5
+    CAM: 0.5
+    RCAM: 0.5
+    RAM: 0.5
+    LF: 0.1
+    LCF: 0.1
+    CF: 0.1
+    RCF: 0.1
+    RF: 0.1
     ALF: 0
     ARF: 0
     Box: 0
