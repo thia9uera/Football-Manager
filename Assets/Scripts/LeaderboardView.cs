@@ -127,9 +127,9 @@ public class LeaderboardView : MonoBehaviour
                 case "Crosses": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalCrosses).ToList(); break;
                 case "Faults": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalFaults).ToList(); break;
                 case "Tackles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalTackles).ToList(); break;
-                case "Dribbles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalDribbles).ToList(); break;
-                case "Headers": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalHeaders).ToList(); break;
+                case "Dribbles": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalDribbles).ToList(); break;   
                 case "Saves": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalSaves).ToList(); break;
+                case "Presence": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.LifeTimeStats.TotalPresence).ToList(); break;
             }
 
             PopulatePlayers();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LeaderboardPlayerView : MonoBehaviour
 {
-    [SerializeField]    public TextMeshProUGUI posLabel, nameLabel, goalsLabel, shotsLabel, passesLabel, crossesLabel, faultsLabel, tacklesLabel, dribblesLabel, headersLabel, savesLabel;
+    [SerializeField]    public TextMeshProUGUI posLabel, nameLabel, goalsLabel, shotsLabel, passesLabel, crossesLabel, faultsLabel, tacklesLabel, dribblesLabel, presenceLabel, savesLabel;
 
     public PlayerData Player;
 
@@ -27,8 +27,8 @@ public class LeaderboardPlayerView : MonoBehaviour
         faultsLabel.text = _player.LifeTimeStats.TotalFaults.ToString();
         tacklesLabel.text = _player.LifeTimeStats.TotalTackles.ToString();
         dribblesLabel.text = _player.LifeTimeStats.TotalDribbles.ToString();
-        headersLabel.text = _player.LifeTimeStats.TotalHeaders.ToString();
         savesLabel.text = _player.LifeTimeStats.TotalSaves.ToString();
+        presenceLabel.text = _player.LifeTimeStats.TotalPresence.ToString();
 
         if (_index % 2 != 0) frame.color = Color.gray;
     }

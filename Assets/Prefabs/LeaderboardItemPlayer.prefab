@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 222722861278809278}
   - component: {fileID: 114119742001982044}
   m_Layer: 0
-  m_Name: Headers
+  m_Name: Presence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   faultsLabel: {fileID: 114460877406539404}
   tacklesLabel: {fileID: 114693046616680410}
   dribblesLabel: {fileID: 114724098836616000}
-  headersLabel: {fileID: 114119742001982044}
+  presenceLabel: {fileID: 114119742001982044}
   savesLabel: {fileID: 114100723950782524}
   Player: {fileID: 0}
   frame: {fileID: 114689829725310658}
@@ -1703,8 +1703,8 @@ RectTransform:
   - {fileID: 224426003502153126}
   - {fileID: 224354098843989280}
   - {fileID: 224252180177002788}
-  - {fileID: 224824775292164596}
   - {fileID: 224527657326261024}
+  - {fileID: 224824775292164596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1778,11 +1778,11 @@ RectTransform:
   m_LocalScale: {x: 0.99999595, y: 0.99999595, z: 0.99999595}
   m_Children: []
   m_Father: {fileID: 224299376344100746}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 840, y: 0}
+  m_AnchoredPosition: {x: 693, y: 0}
   m_SizeDelta: {x: 80, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224824775292164596
@@ -1796,11 +1796,11 @@ RectTransform:
   m_LocalScale: {x: 0.99999595, y: 0.99999595, z: 0.99999595}
   m_Children: []
   m_Father: {fileID: 224299376344100746}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 692, y: 0}
+  m_AnchoredPosition: {x: 838, y: 0}
   m_SizeDelta: {x: 80, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224864950223711898

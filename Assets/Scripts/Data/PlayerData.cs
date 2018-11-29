@@ -208,6 +208,7 @@ public class PlayerData : ScriptableObject
         public int TotalHeadersMissed;
         public int TotalDribblesMissed;
         public int TotalCrossesMissed;
+        public int TotalPresence;
     }
 
     public Statistics LifeTimeStats;
@@ -459,6 +460,7 @@ public class PlayerData : ScriptableObject
         stats.TotalHeadersMissed = 0;
         stats.TotalPassesMissed = 0;
         stats.TotalShotsMissed = 0;
+        stats.TotalPresence = 0;
     }
 
     public void UpdateLifeTimeStats()
@@ -477,6 +479,7 @@ public class PlayerData : ScriptableObject
         LifeTimeStats.TotalHeadersMissed += MatchStats.TotalHeadersMissed;
         LifeTimeStats.TotalPassesMissed += MatchStats.TotalPassesMissed;
         LifeTimeStats.TotalShotsMissed += MatchStats.TotalShotsMissed;
+        LifeTimeStats.TotalPresence += MatchStats.TotalPresence;
 
         ResetStatistics("Match");
     }
