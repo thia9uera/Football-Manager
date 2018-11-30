@@ -86,7 +86,7 @@ public class TeamData : ScriptableObject
     public void UpdateLifeTimeStats()
     {
         LifeTimeStats.TotalGoals += MatchStats.TotalGoals;
-        LifeTimeStats.TotalGoalsAgainst += MatchStats.TotalGoals;
+        LifeTimeStats.TotalGoalsAgainst += MatchStats.TotalGoalsAgainst;
 
         ResetStatistics("Match");
     }

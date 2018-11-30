@@ -59,11 +59,6 @@ public class MatchController : MonoBehaviour
         DropMin,
     }
 
-
-
-    [SerializeField]
-    GameObject startBtn;
-
     [SerializeField]
     public FieldZone CurrentZone;
 
@@ -129,6 +124,19 @@ public class MatchController : MonoBehaviour
 
     [Range(1, 100)]
     public int MatchSpeed = 1;
+
+    int totalMatches = 1;
+    int matchesPlayed;
+    bool isSimulating;
+
+    [SerializeField]
+    GameObject startBtn;
+
+    [SerializeField]
+    GameObject simulateBtn;
+
+    [SerializeField]
+    TMP_InputField totalMatchesInput;
 
     void Awake()
     {
@@ -204,6 +212,8 @@ public class MatchController : MonoBehaviour
 
     void UpdateNarration(string _text, int _variations = 1, TeamData _team = null)
     {
+        if (isSimulating) return;
+
         if(_team == null) Narration.UpdateNarration(_text, _variations, null, CurrentZone);
         else
         {
@@ -249,6 +259,8 @@ public class MatchController : MonoBehaviour
     {
         if(matchTime == 0 || matchTime >= 90)
         {
+            totalMatches = int.Parse(totalMatchesInput.text);
+            isSimulating = false;
             Reset();
             KickOff();
         }
@@ -258,17 +270,48 @@ public class MatchController : MonoBehaviour
         }
     }
 
+    public void HandleSimulateButton()
+    {
+        totalMatches = int.Parse(totalMatchesInput.text);
+        isSimulating = true;
+
+        startBtn.SetActive(false);
+        simulateBtn.SetActive(false);
+        totalMatchesInput.interactable = false;
+
+        Reset();
+        KickOff();
+    }
+
+    public void EndSimulation()
+    {
+        startBtn.SetActive(true);
+        simulateBtn.SetActive(true);
+        totalMatchesInput.interactable = true;
+        matchesPlayed = 0;
+    }
+
     public void KickOff()
     {
         //startBtn.SetActive(false);
-
-        UpdateNarration("nar_KickOff_");
-        DebugString = "KICK OFF! \n \n";
+        
         CurrentZone = FieldZone.CM;
         Field.UpdateFieldArea((int)CurrentZone);
 
         isGameOn = true;
-        StartCoroutine("GameLoop");
+
+        if (!isSimulating)
+        {
+            UpdateNarration("nar_KickOff_");
+            DebugString = "KICK OFF! \n \n";
+            StartCoroutine("GameLoop");
+        }
+        else
+        {
+            totalMatchesInput.text = totalMatches - matchesPlayed + "";
+            StartCoroutine("SimulateLoop");
+        }
+
     }
 
     IEnumerator GameLoop()
@@ -278,6 +321,15 @@ public class MatchController : MonoBehaviour
         {
             DefineActions();
             yield return new WaitForSeconds(1f/MatchSpeed);
+        }
+    }
+
+    IEnumerator SimulateLoop()
+    {
+        while(isGameOn)
+        {
+            DefineActions();
+            yield return null;
         }
     }
 
@@ -569,14 +621,25 @@ public class MatchController : MonoBehaviour
             CancelInvoke();
             isGameOn = false;
 
-            startBtn.SetActive(true);
+            if(isSimulating)
+            {
+                matchesPlayed++;
+                if (matchesPlayed == totalMatches)
+                {
+                    EndSimulation();
+                }
+                else
+                {
+                    Reset();
+                    KickOff();
+                }
+            }
+             
             return;
         }
 
-
         matchTime++;
         Score.UpdateTime(matchTime);
-
 
         //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(CurrentZone);
@@ -1498,7 +1561,6 @@ public class MatchController : MonoBehaviour
             if (counterAttack > 0)
             {
                 chance *= 0.5f;
-                print("NO CONTRA-ATAQUE  -  " + counterAttack);
             }
             if (chance >= 1f)
             {
