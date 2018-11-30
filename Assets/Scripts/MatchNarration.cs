@@ -20,6 +20,15 @@ public class MatchNarration : MonoBehaviour
     [SerializeField]
     private Color grayText;
 
+    public void UpdateNarration(string _text, Color _frameColor)
+    {
+        MatchNarrationTextView text = Instantiate(narrationText, content);
+        text.Populate(_text, _frameColor, Color.white);
+        Canvas.ForceUpdateCanvases();
+        scroll.verticalNormalizedPosition = 0;
+        Canvas.ForceUpdateCanvases();
+    }
+
     public void UpdateNarration(string _text, int _variations = 1, TeamData _team = null, MatchController.FieldZone _zone = MatchController.FieldZone.OwnGoal)
     {
         MatchNarrationTextView text =  Instantiate(narrationText, content);

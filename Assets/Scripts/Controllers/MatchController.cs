@@ -240,7 +240,7 @@ public class MatchController : MonoBehaviour
         HomeTeamSquad.ResetFatigue();
         AwayTeamSquad.ResetFatigue();
         matchEvent = MatchEvent.None;
-        Narration.Reset();
+        if(!isSimulating) Narration.Reset();
         Score.UpdateTime(matchTime);
         Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
     }
@@ -263,6 +263,8 @@ public class MatchController : MonoBehaviour
             isSimulating = false;
             Reset();
             KickOff();
+
+            simulateBtn.SetActive(false);
         }
         else
         {
@@ -272,6 +274,7 @@ public class MatchController : MonoBehaviour
 
     public void HandleSimulateButton()
     {
+        Narration.Reset();
         totalMatches = int.Parse(totalMatchesInput.text);
         isSimulating = true;
 
@@ -289,6 +292,9 @@ public class MatchController : MonoBehaviour
         simulateBtn.SetActive(true);
         totalMatchesInput.interactable = true;
         matchesPlayed = 0;
+        isSimulating = false;
+
+        Narration.UpdateNarration(totalMatches + " PARTIDAS SIMULADAS.", Color.gray);
     }
 
     public void KickOff()
@@ -314,6 +320,67 @@ public class MatchController : MonoBehaviour
 
     }
 
+    private void EndMatch()
+    {
+        HomeTeam.MatchStats.TotalGoals += homeTeamScore;
+        HomeTeam.MatchStats.TotalGoalsAgainst += awayTeamScore;
+
+        AwayTeam.MatchStats.TotalGoals += awayTeamScore;
+        AwayTeam.MatchStats.TotalGoalsAgainst += homeTeamScore;
+
+        if (homeTeamScore > awayTeamScore)
+        {
+            HomeTeam.LifeTimeStats.TotalWins++;
+            AwayTeam.LifeTimeStats.TotalLosts++;
+        }
+        else if (awayTeamScore > homeTeamScore)
+        {
+            AwayTeam.LifeTimeStats.TotalWins++;
+            HomeTeam.LifeTimeStats.TotalLosts++;
+        }
+        else
+        {
+            HomeTeam.LifeTimeStats.TotalDraws++;
+            AwayTeam.LifeTimeStats.TotalDraws++;
+        }
+
+        foreach (PlayerData player in HomeTeam.Squad) player.UpdateLifeTimeStats();
+        foreach (PlayerData player in HomeTeam.Substitutes) player.UpdateLifeTimeStats();
+        foreach (PlayerData player in AwayTeam.Squad) player.UpdateLifeTimeStats();
+        foreach (PlayerData player in AwayTeam.Substitutes) player.UpdateLifeTimeStats();
+
+        HomeTeam.UpdateLifeTimeStats();
+        AwayTeam.UpdateLifeTimeStats();
+
+        UpdateNarration("nar_TimeUp_");
+        CancelInvoke();
+        isGameOn = false;
+
+        if (isSimulating)
+        {
+            Color color = Color.gray;
+            if (awayTeamScore > homeTeamScore) color = AwayTeam.PrimaryColor;
+            else if (homeTeamScore > awayTeamScore) color = HomeTeam.PrimaryColor;
+
+            Narration.UpdateNarration(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name, color);
+
+            matchesPlayed++;
+            if (matchesPlayed == totalMatches)
+            {
+                EndSimulation();
+            }
+            else
+            {
+                Reset();
+                KickOff();
+            }
+        }
+        else
+        {
+            simulateBtn.SetActive(true);
+        }
+    }
+
     IEnumerator GameLoop()
     {
         yield return new WaitForSeconds(1f / MatchSpeed);
@@ -337,8 +404,13 @@ public class MatchController : MonoBehaviour
     void DefineActions()
     {
         Field.UpdateFieldArea((int)CurrentZone);
-        HomeTeamSquad.UpdateFatigue();
-        AwayTeamSquad.UpdateFatigue();
+
+        if(!isSimulating)
+        {
+            HomeTeamSquad.UpdateFatigue();
+            AwayTeamSquad.UpdateFatigue();
+        }
+
 
         //IF LAST ACTION RESULTED IN A GOAL
         switch (matchEvent)
@@ -351,7 +423,7 @@ public class MatchController : MonoBehaviour
                     DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
                     if (AttackingTeam == HomeTeam) homeTeamScore++;
                     else awayTeamScore++;
-                    Score.UpdateScore(homeTeamScore, awayTeamScore);
+                    if(!isSimulating) Score.UpdateScore(homeTeamScore, awayTeamScore);
                     attackingPlayer.MatchStats.TotalGoals++;
                     return;
                 }
@@ -573,8 +645,11 @@ public class MatchController : MonoBehaviour
             keepDefender = false;
             shotMissed = false;
             shotSaved = false;
-            HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
-            AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+            if (!isSimulating)
+            {
+                HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+                AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+            }
             matchEvent = MatchEvent.None;
             return;
         }
@@ -587,59 +662,13 @@ public class MatchController : MonoBehaviour
         }
         else if (matchTime >= 90)
         {
-            HomeTeam.MatchStats.TotalGoals += homeTeamScore;
-            HomeTeam.MatchStats.TotalGoalsAgainst += awayTeamScore;
-
-            AwayTeam.MatchStats.TotalGoals += awayTeamScore;
-            AwayTeam.MatchStats.TotalGoalsAgainst += homeTeamScore;
-
-            if (homeTeamScore > awayTeamScore)
-            {
-                HomeTeam.LifeTimeStats.TotalWins++;
-                AwayTeam.LifeTimeStats.TotalLosts++;
-            }
-            else if (awayTeamScore > homeTeamScore)
-            {
-                AwayTeam.LifeTimeStats.TotalWins++;
-                HomeTeam.LifeTimeStats.TotalLosts++;
-            }
-            else
-            {
-                HomeTeam.LifeTimeStats.TotalDraws++;
-                AwayTeam.LifeTimeStats.TotalDraws++;
-            }
-
-            foreach (PlayerData player in HomeTeam.Squad) player.UpdateLifeTimeStats();
-            foreach (PlayerData player in HomeTeam.Substitutes) player.UpdateLifeTimeStats();
-            foreach (PlayerData player in AwayTeam.Squad) player.UpdateLifeTimeStats();
-            foreach (PlayerData player in AwayTeam.Substitutes) player.UpdateLifeTimeStats();
-
-            HomeTeam.UpdateLifeTimeStats();
-            AwayTeam.UpdateLifeTimeStats();
-
-            UpdateNarration("nar_TimeUp_");
-            CancelInvoke();
-            isGameOn = false;
-
-            if(isSimulating)
-            {
-                matchesPlayed++;
-                if (matchesPlayed == totalMatches)
-                {
-                    EndSimulation();
-                }
-                else
-                {
-                    Reset();
-                    KickOff();
-                }
-            }
+            EndMatch();
              
             return;
         }
 
         matchTime++;
-        Score.UpdateTime(matchTime);
+        if(!isSimulating) Score.UpdateTime(matchTime);
 
         //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(CurrentZone);
