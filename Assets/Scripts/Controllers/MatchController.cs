@@ -465,6 +465,10 @@ public class MatchController : MonoBehaviour
 
                     isFreekickTaken = true;
 
+                    FieldZone zone = CurrentZone;
+                    if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+                    if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.PlayerAttributes.Freekick);
                     attackingPlayer = GetAttackingPlayer(CurrentZone);
                     localization.PLAYER_1 = attackingPlayer.FirstName;
                     offensiveAction = GetFreeKickAction();
