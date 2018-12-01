@@ -138,6 +138,15 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     TMP_InputField totalMatchesInput;
 
+    [System.Serializable]
+    public class TeamStrategy
+    {
+        public TeamData.TeamStrategy Strategy;
+        public PosChanceData PosChance;
+    }
+
+    public TeamStrategy[] TeamStrategies;
+
     void Awake()
     {
         Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
@@ -1520,7 +1529,7 @@ public class MatchController : MonoBehaviour
 
         foreach (PlayerData player in AttackingTeam.Squad)
         {
-            chance = CalculatePresence(player, zone, AttackingTeam.GetStrategy());
+            chance = CalculatePresence(player, zone, AttackingTeam.Strategy);
             
             if (forcePlayer)
             {
@@ -1586,7 +1595,7 @@ public class MatchController : MonoBehaviour
         List<PlayerData> players = new List<PlayerData>();
         foreach (PlayerData player in DefendingTeam.Squad)
         {
-            chance = CalculatePresence(player, zone, DefendingTeam.GetStrategy());
+            chance = CalculatePresence(player, zone, DefendingTeam.Strategy);
             if (counterAttack > 0)
             {
                 chance *= 0.5f;
@@ -1659,9 +1668,9 @@ public class MatchController : MonoBehaviour
         return activePlayer;
     }
 
-    float CalculatePresence(PlayerData _player, FieldZone _zone, Team_Strategy _teamStrategy)
+    float CalculatePresence(PlayerData _player, FieldZone _zone, TeamData.TeamStrategy _teamStrategy)
     {
-        float chance = _player.GetChancePerZone(_zone, IsTeamStrategyApplicable(_zone), _teamStrategy);
+        float chance = _player.GetChancePerZone(_zone, _teamStrategy);
 
         if (chance < 1f && chance > 0f)
         {

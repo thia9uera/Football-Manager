@@ -26,7 +26,7 @@ public class TeamData : ScriptableObject
     {
         Neutral,
         Offensive,
-        Defense,
+        Defensive,
         Deadlock,
         WingsOffensive,
         CenterOffensive,

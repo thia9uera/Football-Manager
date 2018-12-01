@@ -289,11 +289,12 @@ public class PlayerData : ScriptableObject
         return total;
     }
 
-    public float GetChancePerZone(MatchController.FieldZone _zone, bool _isTeamStrategyApplicable = false, Team_Strategy _teamStrategy = null)
+    public float GetChancePerZone(MatchController.FieldZone _zone, TeamData.TeamStrategy _teamStrategy)
     {
         float pct = 0f;
 
-        Zones chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Zone];
+        //Zones chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Zone];
+        Zones chancePerZone = MainController.Instance.Match.TeamStrategies[(int)_teamStrategy].PosChance.posChancePerZones[(int)Zone];
 
         switch(_zone)
         {
@@ -330,6 +331,7 @@ public class PlayerData : ScriptableObject
             case MatchController.FieldZone.Box: pct = chancePerZone.Box; break;
         }
 
+        /*
         float teamDefPos = 1f;
         float teamOffPos = 1f;
         float teamLeftPos = 1f;
@@ -370,7 +372,7 @@ public class PlayerData : ScriptableObject
                 pct *= ((Prob_RightPos + Prob_OffPosition) / 2) * ((teamRightPos + teamOffPos) / 2);
                 break;
         }
-
+        */
         return pct;
     }
 

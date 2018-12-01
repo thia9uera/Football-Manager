@@ -21,7 +21,7 @@ public class Debug_Popup : MonoBehaviour
 
     public void Confirm()
     {
-        Zones data = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Zone];
+        Zones data = MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Zone];
         chance = float.Parse(InputField.text)/100;
         data.Position = zone.ToString();
 
