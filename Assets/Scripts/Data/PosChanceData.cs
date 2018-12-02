@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 [System.Serializable]
 public class Zones {
@@ -49,5 +50,13 @@ public class Zones {
 [CreateAssetMenu(fileName = "PosChance", menuName = "Position Chance", order = 1)]
 public class PosChanceData: ScriptableObject {
 	public List<Zones> posChancePerZones = new List<Zones>();
+
+    public void SetDirty()
+    {
+        EditorUtility.SetDirty(this);
+    }
 }
+
+
+
 
