@@ -652,7 +652,7 @@ MonoBehaviour:
     ALF: 0.01
     ARF: 0
     Box: 0.001
-  - Position: RCDM
+  - Position: CDM
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -663,13 +663,13 @@ MonoBehaviour:
     RD: 0
     LDM: 0
     LCDM: 0.001
-    CDM: 0.001
+    CDM: 0.1
     RCDM: 0.001
     RDM: 0
     LM: 0.001
-    LCM: 0.1
-    CM: 0.5
-    RCM: 0.1
+    LCM: 0.25
+    CM: 0.75
+    RCM: 0.25
     RM: 0.001
     LAM: 0.001
     LCAM: 0.25
@@ -678,7 +678,7 @@ MonoBehaviour:
     RAM: 0.001
     LF: 0.001
     LCF: 0.1
-    CF: 0.5
+    CF: 0.25
     RCF: 0.1
     RF: 0.001
     ALF: 0
@@ -812,7 +812,7 @@ MonoBehaviour:
     ALF: 0.05
     ARF: 0
     Box: 0.5
-  - Position: RCM
+  - Position: LAM
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -828,23 +828,23 @@ MonoBehaviour:
     RDM: 0
     LM: 0
     LCM: 0.001
-    CM: 0.01
+    CM: 0.5
     RCM: 0.001
     RM: 0
     LAM: 0.001
-    LCAM: 0.1
-    CAM: 0.5
-    RCAM: 0.1
+    LCAM: 0.15
+    CAM: 1
+    RCAM: 0.15
     RAM: 0.001
-    LF: 0.01
-    LCF: 0.25
-    CF: 1
-    RCF: 0.25
-    RF: 0.01
+    LF: 0.001
+    LCF: 0.1
+    CF: 0.5
+    RCF: 0.1
+    RF: 0.001
     ALF: 0.001
     ARF: 0.001
-    Box: 0.5
-  - Position: LCF
+    Box: 0.75
+  - Position: ARF
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -856,27 +856,27 @@ MonoBehaviour:
     LDM: 0
     LCDM: 0
     CDM: 0
-    RCDM: 0
+    RCDM: 0.001
     RDM: 0
     LM: 0
     LCM: 0
-    CM: 0.001
-    RCM: 0.01
-    RM: 0.001
+    CM: 0.05
+    RCM: 0.5
+    RM: 0.05
     LAM: 0
     LCAM: 0.001
     CAM: 0.1
-    RCAM: 0.5
+    RCAM: 1
     RAM: 0.1
     LF: 0
     LCF: 0.001
-    CF: 0.25
-    RCF: 1
-    RF: 0.25
+    CF: 0.1
+    RCF: 0.25
+    RF: 0.1
     ALF: 0
-    ARF: 0.1
-    Box: 0.5
-  - Position: RM
+    ARF: 0.001
+    Box: 0.1
+  - Position: RD
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -889,24 +889,24 @@ MonoBehaviour:
     LCDM: 0
     CDM: 0
     RCDM: 0
-    RDM: 0
+    RDM: 0.1
     LM: 0
     LCM: 0
     CM: 0
-    RCM: 0.001
-    RM: 0.001
+    RCM: 0.1
+    RM: 0.75
     LAM: 0
     LCAM: 0
     CAM: 0.001
     RCAM: 0.1
-    RAM: 0.5
+    RAM: 1
     LF: 0
     LCF: 0
     CF: 0.001
-    RCF: 0.25
-    RF: 1
+    RCF: 0.1
+    RF: 0.25
     ALF: 0
-    ARF: 0.5
+    ARF: 0.1
     Box: 0.1
   - Position: LAM
     OwnGoal: 0
