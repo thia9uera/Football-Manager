@@ -1695,6 +1695,14 @@ public class MatchController : MonoBehaviour
         totalChance += (float)GetAttributeBonus(defendingPlayer.Speed)/100;
         totalChance += (float)GetAttributeBonus(defendingPlayer.Vision)/100;
 
+        FieldZone zone = CurrentZone;
+        if (DefendingTeam == AwayTeam) zone = GetAwayTeamZone();
+
+        if(IsTeamStrategyApplicable(zone))
+        {
+            totalChance *= DefendingTeam.GetStrategy().MarkingChance;
+        }
+
         float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
 
         if (r >= 20)
