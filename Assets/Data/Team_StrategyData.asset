@@ -15,9 +15,9 @@ MonoBehaviour:
   - Name: Neutral
     Description: bla
     DefPosChance: 1
-    OffPosChance: 1
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 1
@@ -92,9 +92,9 @@ MonoBehaviour:
   - Name: Offensive
     Description: bla
     DefPosChance: 0.25
-    OffPosChance: 4
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 2
@@ -169,9 +169,9 @@ MonoBehaviour:
   - Name: Defensive
     Description: bla
     DefPosChance: 4
-    OffPosChance: 0.25
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 0.5
@@ -246,17 +246,17 @@ MonoBehaviour:
   - Name: Deadlock
     Description: bla
     DefPosChance: 4
-    OffPosChance: 0.05
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
-    LongPassChance: 1
+    LongPassChance: 3
     ShootingChance: 1
     CrossingChance: 2
     DribblingChance: 0.25
     OffsideTrickChance: 1.5
-    MarkingChance: 3
-    TacklingChance: 1.2
+    MarkingChance: 10
+    TacklingChance: 4
     CounterAttackChance: 6
     Target_OwnGoal: 0
     Target_BLD: 0
@@ -278,17 +278,17 @@ MonoBehaviour:
     Target_RM: 0
     Target_LAM: 0
     Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 0
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 1
     Target_ALF: 0
     Target_ARF: 0
-    Target_Box: 0
+    Target_Box: 1
     OwnGoal: 1
     BLD: 1
     BRD: 1
@@ -323,9 +323,9 @@ MonoBehaviour:
   - Name: WingOffensive
     Description: bla
     DefPosChance: 1
-    OffPosChance: 1
-    LeftPosChance: 3
-    RighPosChance: 3
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 1
@@ -400,9 +400,9 @@ MonoBehaviour:
   - Name: CenterOffensive
     Description: bla
     DefPosChance: 0.25
-    OffPosChance: 3
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 4
     LongPassChance: 1
     ShootingChance: 2
@@ -477,9 +477,9 @@ MonoBehaviour:
   - Name: Crossing
     Description: bla
     DefPosChance: 0.5
-    OffPosChance: 1
-    LeftPosChance: 2
-    RighPosChance: 2
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 1
@@ -554,9 +554,9 @@ MonoBehaviour:
   - Name: Pressure
     Description: bla
     DefPosChance: 1
-    OffPosChance: 1
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 1
@@ -631,9 +631,9 @@ MonoBehaviour:
   - Name: ForceOffside
     Description: bla
     DefPosChance: 0.5
-    OffPosChance: 1
-    LeftPosChance: 1
-    RighPosChance: 1
+    OffPosChance: 0
+    LeftPosChance: 0
+    RighPosChance: 0
     PassingChance: 1
     LongPassChance: 1
     ShootingChance: 1
