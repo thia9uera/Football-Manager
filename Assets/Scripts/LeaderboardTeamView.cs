@@ -8,7 +8,8 @@ public class LeaderboardTeamView : MonoBehaviour
 {
 
     [SerializeField]
-    public TextMeshProUGUI nameLabel, winsLabel, lostsLabel, drawsLabel, goalslabel, goalsAgainstLabel;
+    public TextMeshProUGUI nameLabel, winsLabel, lostsLabel, drawsLabel, goalslabel, goalsAgainstLabel, shotsLabel, headersLabel,
+        stealsLabel, passesLabel, longPassesLabel, passesMissedLabel, boxCrossesLabel, faultsLabel, counterAttacksLabel;
 
     public TeamData Team;
 
@@ -20,12 +21,24 @@ public class LeaderboardTeamView : MonoBehaviour
     {
         Team = _team;
 
-        nameLabel.text = _team.Name.ToString();
-        winsLabel.text = _team.LifeTimeStats.TotalWins.ToString();
-        lostsLabel.text = _team.LifeTimeStats.TotalLosts.ToString();
-        drawsLabel.text = _team.LifeTimeStats.TotalDraws.ToString();
-        goalslabel.text = _team.LifeTimeStats.TotalGoals.ToString();
-        goalsAgainstLabel.text = _team.LifeTimeStats.TotalGoalsAgainst.ToString();
+        LocalizationData loc = MainController.Instance.Localization;
+
+        nameLabel.text = _team.Name;
+        winsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalWins);
+        lostsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalLosts);
+        drawsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalDraws);
+        goalslabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalGoals);
+        goalsAgainstLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalGoalsAgainst);
+        shotsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalShots);
+        headersLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalHeaders);
+        stealsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalSteals);
+        passesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalPasses);
+        passesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalPasses);
+        longPassesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalLongPasses);
+        passesMissedLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalPassesMissed);
+        boxCrossesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalBoxCrosses);
+        faultsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalFaults);
+        counterAttacksLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalCounterAttacks);
 
         if (_index % 2 != 0) frame.color = Color.gray;
     }

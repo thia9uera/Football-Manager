@@ -226,8 +226,7 @@ public class MatchController : MonoBehaviour
         if(_team == null) Narration.UpdateNarration(_text, _variations, null, CurrentZone);
         else
         {
-            FieldZone zone = CurrentZone;
-            if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+            FieldZone zone = GetAttackingTeamZone();
             Narration.UpdateNarration(_text, _variations,_team, zone);
         }
     }
@@ -465,8 +464,7 @@ public class MatchController : MonoBehaviour
 
                     isFreekickTaken = true;
 
-                    FieldZone zone = CurrentZone;
-                    if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+                    FieldZone zone = GetAttackingTeamZone();
 
                     if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.PlayerAttributes.Freekick);
                     attackingPlayer = GetAttackingPlayer(CurrentZone);
@@ -726,6 +724,8 @@ public class MatchController : MonoBehaviour
                 UpdateNarration("nar_Steal_", 1, DefendingTeam);
                 keepDefender = true;
 
+                DefendingTeam.MatchStats.TotalSteals++;
+
                 SwitchPossesion();
                 return;
             }
@@ -815,6 +815,7 @@ public class MatchController : MonoBehaviour
                             break;
                     }
 
+                    AttackingTeam.MatchStats.TotalLongPasses++;
                     UpdateNarration(narration, var, AttackingTeam);
                     break;
 
@@ -871,6 +872,7 @@ public class MatchController : MonoBehaviour
                     }
                     CurrentZone = GetTargetZone();
                     attackingPlayer.MatchStats.TotalCrosses++;
+                    if (GetAttackingTeamZone() == FieldZone.Box) AttackingTeam.MatchStats.TotalBoxCrosses++;
                     break;
 
                 case PlayerData.PlayerAction.Shot:
@@ -878,13 +880,15 @@ public class MatchController : MonoBehaviour
                     UpdateNarration("nar_Shot_", 3, AttackingTeam);
                     ResolveShot(marking);
                     attackingPlayer.MatchStats.TotalShots++;
+                    AttackingTeam.MatchStats.TotalShots++;
                     break;
 
                 case PlayerData.PlayerAction.Header:
                     DebugString += "CABECEOU! \n";
                     UpdateNarration("nar_Header_", 1, AttackingTeam);
                     ResolveShot(marking);
-                    attackingPlayer.MatchStats.TotalShots++;
+                    attackingPlayer.MatchStats.TotalHeaders++;
+                    AttackingTeam.MatchStats.TotalHeaders++;
                     break;
 
                 case PlayerData.PlayerAction.Sprint:
@@ -938,6 +942,7 @@ public class MatchController : MonoBehaviour
                         UpdateNarration("nar_WrongPass_", 1);
                         //currentZone = GetTargetZone();
                         attackingPlayer.MatchStats.TotalPassesMissed++;
+                        AttackingTeam.MatchStats.TotalPassesMissed++;
                     }
                     else
                     {
@@ -1083,6 +1088,7 @@ public class MatchController : MonoBehaviour
             if (offside >= Random.Range(0f, 1f))
             {
                 matchEvent = MatchEvent.Offside;
+                AttackingTeam.MatchStats.TotalOffsides++;
                 return false;
             }
 
@@ -1434,6 +1440,7 @@ public class MatchController : MonoBehaviour
                 }
                 success = false;
                 defendingPlayer.MatchStats.TotalFaults++;
+                DefendingTeam.MatchStats.TotalFaults++;
             }
 
             else
@@ -1471,7 +1478,8 @@ public class MatchController : MonoBehaviour
 
                 if ((int)zone < 17 && counterAttackChance > counterRoll)
                 {
-                    counterAttack = 4;                   
+                    counterAttack = 4;
+                    DefendingTeam.MatchStats.TotalCounterAttacks++;
                 }
             }
         }
@@ -1500,6 +1508,7 @@ public class MatchController : MonoBehaviour
                 keepAttacker = true;
                 attackingPlayer = receiverData;
                 passerData.MatchStats.TotalPasses++;
+                AttackingTeam.MatchStats.TotalPasses++;
             }
         }
 
@@ -1508,8 +1517,7 @@ public class MatchController : MonoBehaviour
 
     PlayerData GetAttackingPlayer(FieldZone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
     {
-        FieldZone zone = _zone;
-        if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        FieldZone zone = GetAttackingTeamZone();
 
         float chance = 0f;
         bool forcePlayer = _forcePlayer;
@@ -1724,8 +1732,7 @@ public class MatchController : MonoBehaviour
 
     PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
     {
-        FieldZone zone = CurrentZone;
-        if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        FieldZone zone = GetAttackingTeamZone();
         float bonus = 0;
 
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
@@ -2005,8 +2012,7 @@ public class MatchController : MonoBehaviour
     PlayerData.PlayerAction GetFreeKickAction()
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.Pass;
-        FieldZone zone = CurrentZone;
-        if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        FieldZone zone = GetAttackingTeamZone();
         int bonus = 0;
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
@@ -2105,11 +2111,17 @@ public class MatchController : MonoBehaviour
         return (FieldZone)zone;
     }
 
+    FieldZone GetAttackingTeamZone()
+    {
+        FieldZone zone = CurrentZone;
+        if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        return zone;
+    }
+
     FieldZone GetTargetZone()
     {
         FieldZone target = CurrentZone;
-        FieldZone zone = CurrentZone;
-        if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        FieldZone zone = GetAttackingTeamZone();
         List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
 
         float _OwnGoal = 0;

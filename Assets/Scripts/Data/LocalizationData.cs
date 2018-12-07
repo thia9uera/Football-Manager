@@ -100,4 +100,34 @@ public class LocalizationData : ScriptableObject
         return str;
     }
 
+    string[] shortNotation = new string[12] { "", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc" };
+
+    public string FormatBigNumber(float target)
+    {
+        float value = target;
+        int baseValue = 0;
+        string notationValue = "";
+        string toStringValue;
+
+        if (value >= 10000) // I start using the first notation at 10k
+        {
+            value /= 1000;
+            baseValue++;
+            while (Mathf.Round((float)value) >= 1000)
+            {
+                value /= 1000;
+                baseValue++;
+            }
+
+            if (baseValue < 2)
+                toStringValue = "N1"; // display 1 decimal while under 1 million
+            else
+                toStringValue = "N2"; // display 2 decimals for 1 million and higher
+
+            if (baseValue > shortNotation.Length) return null;
+            else notationValue = shortNotation[baseValue];
+        }
+        else toStringValue = "N0"; // string formatting at low numbers
+        return value.ToString(toStringValue) + notationValue;
+    }
 }

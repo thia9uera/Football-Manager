@@ -144,6 +144,17 @@ public class LeaderboardView : MonoBehaviour
                 case "Draws": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalDraws).ToList(); break;
                 case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalGoals).ToList(); break;
                 case "GoalsAgainst": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalGoalsAgainst).ToList(); break;
+
+                case "Shots": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalShots).ToList(); break;
+                case "Headers": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalHeaders).ToList(); break;
+                case "Steals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalSteals).ToList(); break;
+                case "Passes": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalPasses).ToList(); break;
+                case "LongPasses": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalLongPasses).ToList(); break;
+                case "PassesMissed": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalPassesMissed).ToList(); break;
+
+                case "BoxCrosses": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalBoxCrosses).ToList(); break;
+                case "Faults": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalFaults).ToList(); break;
+                case "CounterAttacks": listTeams = listTeams.OrderByDescending(TeamData => TeamData.LifeTimeStats.TotalCounterAttacks).ToList(); break;
             }
 
             PopulateTeams();
