@@ -1,19 +1,16 @@
 ﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LeaderboardPlayerView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Data/PosChanceData.cs">
     <Files>
-      <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="1568" Column="75" />
-      <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="445" Column="22" />
-      <File FileName="Assets/Scripts/SquadSlotView.cs" Line="36" Column="1" />
-      <File FileName="Assets/Scripts/MatchNarration.cs" Line="23" Column="91" />
-      <File FileName="Assets/Scripts/LeaderboardView.cs" Line="130" Column="148" />
-      <File FileName="Assets/Scripts/LeaderboardPlayerView.cs" Line="29" Column="68" />
+      <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="2050" Column="107" />
+      <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="445" Column="10" />
+      <File FileName="Assets/Scripts/Data/PosChanceData.cs" Line="54" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>

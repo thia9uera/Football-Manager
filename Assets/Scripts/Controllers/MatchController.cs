@@ -226,7 +226,7 @@ public class MatchController : MonoBehaviour
         if(_team == null) Narration.UpdateNarration(_text, _variations, null, CurrentZone);
         else
         {
-            FieldZone zone = GetAttackingTeamZone();
+            FieldZone zone = GetTeamZone(AttackingTeam);
             Narration.UpdateNarration(_text, _variations,_team, zone);
         }
     }
@@ -464,7 +464,7 @@ public class MatchController : MonoBehaviour
 
                     isFreekickTaken = true;
 
-                    FieldZone zone = GetAttackingTeamZone();
+                    FieldZone zone = GetTeamZone(AttackingTeam);
 
                     if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.PlayerAttributes.Freekick);
                     attackingPlayer = GetAttackingPlayer(CurrentZone);
@@ -872,7 +872,7 @@ public class MatchController : MonoBehaviour
                     }
                     CurrentZone = GetTargetZone();
                     attackingPlayer.MatchStats.TotalCrosses++;
-                    if (GetAttackingTeamZone() == FieldZone.Box) AttackingTeam.MatchStats.TotalBoxCrosses++;
+                    if (GetTeamZone(AttackingTeam) == FieldZone.Box) AttackingTeam.MatchStats.TotalBoxCrosses++;
                     break;
 
                 case PlayerData.PlayerAction.Shot:
@@ -1080,7 +1080,7 @@ public class MatchController : MonoBehaviour
                 offside *= defendingPlayer.Prob_OffsideLine;
                
             }
-            if(IsTeamStrategyApplicable(zone))
+            if(IsTeamStrategyApplicable(DefendingTeam.Strategy, zone))
             {
                 offside *= MainController.Instance.TeamStrategyData.team_Strategys[(int)DefendingTeam.Strategy].OffsideTrickChance;
             }
@@ -1388,6 +1388,11 @@ public class MatchController : MonoBehaviour
             float tackleChance = 0.75f * actionChancePerZone.actionChancePerZones[(int)zone].Tackle * defendingPlayer.Prob_Tackling;
             if (_marking == MarkingType.Close) tackleChance *= 1.25f;
 
+            if (IsTeamStrategyApplicable(DefendingTeam.Strategy, GetTeamZone(DefendingTeam)))
+            {
+                tackleChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)DefendingTeam.Strategy].TacklingChance;
+            }
+
             isTackling |= tackleChance >= Random.Range(0f, 1f);
         }
 
@@ -1421,9 +1426,6 @@ public class MatchController : MonoBehaviour
             agilityBonus *= FatigueModifier(defendingPlayer.Fatigue);
             fault *= (1f - agilityBonus);
 
-            //defenseDebug += "\nAgility Bonus: " + agilityBonus*100 + "%\n";
-            //defenseDebug += "Fault: " + fault*100 + "%\n";
-
             if (fault >= Random.Range(0f, 1f))
             {
                 if (AttackingTeam == HomeTeam && CurrentZone == FieldZone.Box)
@@ -1448,7 +1450,8 @@ public class MatchController : MonoBehaviour
                 DebugString += "\n\n" + defenseDebug + "\n";
                 DebugString += "\nAtacante: " + attacking;
                 DebugString += "\nDefensor: " + defending + "\n\n";
-                if (attacking > defending) success = true;
+
+                success |= attacking > defending;
             }
 
             defendingPlayer.MatchStats.TotalTackles++;
@@ -1466,22 +1469,8 @@ public class MatchController : MonoBehaviour
             }
             DebugString += "\n\nAttacking: " + attacking;
             DebugString += "\nDifficulty: " + difficulty + "\n\n";
-            if (attacking > difficulty)
-            {
-                success = true;
-            }
-            else
-            {
-                if (counterAttack > 0) counterAttack = 0;
-                counterAttackChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)DefendingTeam.Strategy].CounterAttackChance;
-                float counterRoll = Random.Range(0, 1f);
 
-                if ((int)zone < 17 && counterAttackChance > counterRoll)
-                {
-                    counterAttack = 4;
-                    DefendingTeam.MatchStats.TotalCounterAttacks++;
-                }
-            }
+            success |= attacking > difficulty;
         }
 
         attackingPlayer.Fatigue -= attFatigueRate * (25 / (float)attackingPlayer.Stamina);
@@ -1489,7 +1478,7 @@ public class MatchController : MonoBehaviour
         if (defendingPlayer == null) defensiveAction = PlayerData.PlayerAction.None;
         else defendingPlayer.Fatigue -= defFatigueRate * (25 / (float)defendingPlayer.Stamina);
 
-
+        //RESOLVE PASS
         if ((offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.LongPass) && success)
         {
             CurrentZone = GetTargetZone();
@@ -1512,12 +1501,26 @@ public class MatchController : MonoBehaviour
             }
         }
 
+        //CHECK COUNTER ATTACK
+        if(!success)
+        {
+            if (counterAttack > 0) counterAttack = 0;
+            counterAttackChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)DefendingTeam.Strategy].CounterAttackChance;
+            float counterRoll = Random.Range(0, 1f);
+
+            if ((int)zone < 17 && counterAttackChance > counterRoll)
+            {
+                counterAttack = 4;
+                DefendingTeam.MatchStats.TotalCounterAttacks++;
+            }
+        }
+
         return success;
     }
 
     PlayerData GetAttackingPlayer(FieldZone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
     {
-        FieldZone zone = GetAttackingTeamZone();
+        FieldZone zone = GetTeamZone(AttackingTeam);
 
         float chance = 0f;
         bool forcePlayer = _forcePlayer;
@@ -1601,8 +1604,7 @@ public class MatchController : MonoBehaviour
         if (DefendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
         float chance = 0f;
-        bool forcePlayerOut = false;
-        if (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful) forcePlayerOut = true;
+        bool forcePlayerOut = false || (offensiveAction == PlayerData.PlayerAction.Dribble && lastActionSuccessful);
 
         List<PlayerData> players = new List<PlayerData>();
         foreach (PlayerData player in DefendingTeam.Squad)
@@ -1703,10 +1705,9 @@ public class MatchController : MonoBehaviour
         totalChance += (float)GetAttributeBonus(defendingPlayer.Speed)/100;
         totalChance += (float)GetAttributeBonus(defendingPlayer.Vision)/100;
 
-        FieldZone zone = CurrentZone;
-        if (DefendingTeam == AwayTeam) zone = GetAwayTeamZone();
+        FieldZone zone = GetTeamZone(DefendingTeam);
 
-        if(IsTeamStrategyApplicable(zone))
+        if(IsTeamStrategyApplicable(DefendingTeam.Strategy, zone))
         {
             totalChance *= DefendingTeam.GetStrategy().MarkingChance;
         }
@@ -1732,7 +1733,7 @@ public class MatchController : MonoBehaviour
 
     PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
     {
-        FieldZone zone = GetAttackingTeamZone();
+        FieldZone zone = GetTeamZone(AttackingTeam);
         float bonus = 0;
 
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
@@ -1775,7 +1776,7 @@ public class MatchController : MonoBehaviour
             if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((header * 5) + (bonus / 10))) >= 20) header *= 2f;
         }
 
-        if(IsTeamStrategyApplicable(zone))
+        if(IsTeamStrategyApplicable(AttackingTeam.Strategy, zone))
         {
             Team_Strategy teamStrategy = AttackingTeam.GetStrategy();
             pass *= teamStrategy.PassingChance;
@@ -2012,7 +2013,7 @@ public class MatchController : MonoBehaviour
     PlayerData.PlayerAction GetFreeKickAction()
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.Pass;
-        FieldZone zone = GetAttackingTeamZone();
+        FieldZone zone = GetTeamZone(AttackingTeam);
         int bonus = 0;
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
@@ -2032,7 +2033,7 @@ public class MatchController : MonoBehaviour
         bonus = GetAttributeBonus(attackingPlayer.Shooting);
         if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((shoot * 5) + (bonus / 10))) >= 20) shoot *= 2f;
 
-        if (IsTeamStrategyApplicable(zone))
+        if (IsTeamStrategyApplicable(AttackingTeam.Strategy, zone))
         {
             Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)AttackingTeam.Strategy];
             pass *= teamStrategy.PassingChance;
@@ -2111,17 +2112,17 @@ public class MatchController : MonoBehaviour
         return (FieldZone)zone;
     }
 
-    FieldZone GetAttackingTeamZone()
+    FieldZone GetTeamZone(TeamData _team)
     {
         FieldZone zone = CurrentZone;
-        if (AttackingTeam == AwayTeam) zone = GetAwayTeamZone();
+        if (_team == AwayTeam) zone = GetAwayTeamZone();
         return zone;
     }
 
     FieldZone GetTargetZone()
     {
         FieldZone target = CurrentZone;
-        FieldZone zone = GetAttackingTeamZone();
+        FieldZone zone = GetTeamZone(AttackingTeam);
         List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
 
         float _OwnGoal = 0;
@@ -2422,10 +2423,10 @@ public class MatchController : MonoBehaviour
         return best;
     }
 
-    bool IsTeamStrategyApplicable(FieldZone _zone)
+    bool IsTeamStrategyApplicable(TeamData.TeamStrategy _strategy, FieldZone _zone)
     {
         bool value = false;
-        Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)AttackingTeam.Strategy];
+        Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)_strategy];
 
         switch (_zone)
         {
