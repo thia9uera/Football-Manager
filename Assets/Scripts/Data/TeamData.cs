@@ -92,7 +92,18 @@ public class TeamData : ScriptableObject
         stats.TotalDraws = 0;
         stats.TotalGoals = 0;
         stats.TotalGoalsAgainst = 0;
-    }
+        stats.TotalShots = 0;
+        stats.TotalHeaders = 0;
+        stats.TotalSteals = 0;
+        stats.TotalPasses = 0;
+        stats.TotalLongPasses = 0;
+        stats.TotalPassesMissed = 0;
+        stats.TotalBoxCrosses = 0;
+        stats.TotalFaults = 0;
+        stats.TotalOffsides = 0;
+        stats.TotalCornerKicks = 0;
+        stats.TotalCounterAttacks = 0;
+}
 
     public void UpdateLifeTimeStats()
     {

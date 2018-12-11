@@ -257,7 +257,7 @@ MonoBehaviour:
     OffsideTrickChance: 1.5
     MarkingChance: 10
     TacklingChance: 4
-    CounterAttackChance: 6
+    CounterAttackChance: 30
     Target_OwnGoal: 0
     Target_BLD: 0
     Target_BRD: 0
@@ -276,19 +276,19 @@ MonoBehaviour:
     Target_CM: 0
     Target_RCM: 0
     Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 1
-    Target_RCAM: 1
+    Target_LAM: 1
+    Target_LCAM: 2
+    Target_CAM: 2
+    Target_RCAM: 2
     Target_RAM: 1
     Target_LF: 1
     Target_LCF: 1
-    Target_CF: 1
+    Target_CF: 2
     Target_RCF: 1
     Target_RF: 1
     Target_ALF: 0
     Target_ARF: 0
-    Target_Box: 1
+    Target_Box: 2
     OwnGoal: 1
     BLD: 1
     BRD: 1
