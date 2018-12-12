@@ -404,7 +404,7 @@ public class MatchController : MonoBehaviour
         while(isGameOn)
         {
             DefineActions();
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -585,14 +585,8 @@ public class MatchController : MonoBehaviour
             {
                 attackingBonus *= attackingBonusMedium;
                 CurrentZone = FieldZone.Box;
-                attackingPlayer = GetDefendingPlayer(FieldZone.Box);
-                defendingPlayer = GetDefendingPlayer(FieldZone.Box);
-                if(AttackingTeam == AwayTeam)
-                {
-                    CurrentZone = FieldZone.OwnGoal;
-                    defendingPlayer = GetDefendingPlayer(FieldZone.OwnGoal);
-                    attackingPlayer = GetDefendingPlayer(FieldZone.OwnGoal);
-                }
+                attackingPlayer = GetAttackingPlayer(GetTeamZone(AttackingTeam));
+                defendingPlayer = GetDefendingPlayer(GetTeamZone(DefendingTeam));
 
                 matchEvent = MatchEvent.None;
                 ResolveAction();
@@ -626,6 +620,8 @@ public class MatchController : MonoBehaviour
                 }
                 else
                 {
+                    if(attackingPlayer == null) print("ATTACKER NULL");
+                    if (defendingPlayer == null) print("DEFENDER NULL");
                     DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
                     if(defenseExcitement == -1) UpdateNarration("nar_WorstSaveShot_", 1, DefendingTeam);
                     else if (defenseExcitement == 0) UpdateNarration("nar_SaveShot_", 1, DefendingTeam);
@@ -727,7 +723,6 @@ public class MatchController : MonoBehaviour
                 DefendingTeam.MatchStats.TotalSteals++;
 
                 SwitchPossesion();
-                return;
             }
             else
             {
@@ -752,6 +747,7 @@ public class MatchController : MonoBehaviour
                 offensiveAction = GetOffensiveAction(marking);
 
                 //Step 4: Test action against defender (if there is one)
+                if (attackingPlayer == null) print("NULL ATTACKING PLAYER IMPOSSIBRU");
                 ResolveAction();
             }
         }
@@ -1095,6 +1091,7 @@ public class MatchController : MonoBehaviour
         }
 
         string defenseDebug = "";
+        if (attackingPlayer == null) print("NULL ATTACKING PLAYER.");
         DebugString += "<size=30>" + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n";
         if (defendingPlayer != null) defenseDebug += "<size=30>" + defendingPlayer.GetFullName() + " (" + defendingPlayer.GetOverall() + ")</size>\n";
         switch (offensiveAction)
@@ -1545,7 +1542,7 @@ public class MatchController : MonoBehaviour
         {
             forcePlayer = true;
         }
-        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.LongPass)
+        else if (offensiveAction == PlayerData.PlayerAction.Pass || offensiveAction == PlayerData.PlayerAction.LongPass || matchEvent == MatchEvent.CornerKick)
         {
             forcePlayer = true;
             excludeLastPlayer = true;
@@ -2011,6 +2008,8 @@ public class MatchController : MonoBehaviour
         DebugString += "\nGoleiro: " + defending;
         if (attacking <= defending)
         {
+            //if (attackingPlayer == null) print("ATTACKER NULL DERP DERP DERP");
+            //if (defendingPlayer == null) print("DEFENDER NULL DERP DERP DERP");
             shotSaved = true;
             if(defenseExcitement == -1) matchEvent = MatchEvent.CornerKick;
             else if (defenseExcitement == 0)
