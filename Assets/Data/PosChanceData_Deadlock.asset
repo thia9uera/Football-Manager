@@ -140,7 +140,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Position: RCM
+  - Position: OwnGoal
     OwnGoal: 0.75
     BLD: 0.5
     BRD: 0

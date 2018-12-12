@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posChancePerZones:
   - Position: OwnGoal
-    OwnGoal: 100
+    OwnGoal: 1
     BLD: 0
     BRD: 0
     LD: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Position: LCD
+  - Position: BLD
     OwnGoal: 0.5
     BLD: 1
     BRD: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Position: RCD
+  - Position: BRD
     OwnGoal: 0.5
     BLD: 0
     BRD: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Position: LCDM
+  - Position: LD
     OwnGoal: 0.5
     BLD: 0.5
     BRD: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Position: RCDM
+  - Position: OwnGoal
     OwnGoal: 0.5
     BLD: 0
     BRD: 0.5

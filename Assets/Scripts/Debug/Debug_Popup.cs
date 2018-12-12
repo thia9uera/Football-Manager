@@ -23,7 +23,7 @@ public class Debug_Popup : MonoBehaviour
     {
         Zones data = MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Zone];
         chance = float.Parse(InputField.text)/100;
-        data.Position = zone.ToString();
+        data.Position = ((MatchController.FieldZone)Debug_FieldView.Instance.DropDownPlayerPosition.value).ToString();
 
         switch (zone)
         {
