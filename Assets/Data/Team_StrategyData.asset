@@ -256,8 +256,8 @@ MonoBehaviour:
     DribblingChance: 0.25
     OffsideTrickChance: 1.5
     MarkingChance: 10
-    TacklingChance: 4
-    CounterAttackChance: 30
+    TacklingChance: 1
+    CounterAttackChance: 5
     Target_OwnGoal: 0
     Target_BLD: 0
     Target_BRD: 0

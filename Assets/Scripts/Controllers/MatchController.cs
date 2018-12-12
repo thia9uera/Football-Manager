@@ -1504,14 +1504,29 @@ public class MatchController : MonoBehaviour
         //CHECK COUNTER ATTACK
         if(!success)
         {
+
             if (counterAttack > 0) counterAttack = 0;
+            counterAttackChance = MainController.Instance.Modifiers.game_Modifiers[0].CounterAttackChance;
+
+            DebugString += "\n\n<color=#00ff00>Counter Attack Chance for </color>" + DefendingTeam + ": " + MainController.Instance.TeamStrategyData.team_Strategys[(int)DefendingTeam.Strategy].CounterAttackChance;
+            DebugString += "\n<color=#00ff00>Counter Attack Chance: </color>" + counterAttackChance;
+
             counterAttackChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)DefendingTeam.Strategy].CounterAttackChance;
             float counterRoll = Random.Range(0, 1f);
 
+            DebugString += "\n<color=#00ff00>Counter Attack Chance Final: </color>" + counterAttackChance;
+            DebugString += "\n<color=#00ff00>Counter Roll: </color>" + counterRoll + "\n";
+
+
             if ((int)zone < 17 && counterAttackChance > counterRoll)
             {
+                DebugString += "<color=#00ff00>Counter Attack Chance is ON!</color>\n\n";
                 counterAttack = 4;
                 DefendingTeam.MatchStats.TotalCounterAttacks++;
+            }
+            else
+            {
+                DebugString += "<color=#00ff00>Counter Attack won't happen!</color>\n\n";
             }
         }
 
