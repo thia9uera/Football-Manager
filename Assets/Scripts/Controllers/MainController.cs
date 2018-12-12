@@ -21,6 +21,9 @@ public class MainController : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         Localization.Initialize();
+
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
     }
 
     public void Start()

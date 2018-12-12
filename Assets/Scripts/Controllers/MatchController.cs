@@ -2008,8 +2008,8 @@ public class MatchController : MonoBehaviour
         DebugString += "\nGoleiro: " + defending;
         if (attacking <= defending)
         {
-            //if (attackingPlayer == null) print("ATTACKER NULL DERP DERP DERP");
-            //if (defendingPlayer == null) print("DEFENDER NULL DERP DERP DERP");
+            if (attackingPlayer == null) print("ATTACKER NULL DERP DERP DERP");
+            if (defendingPlayer == null) print("DEFENDER NULL DERP DERP DERP");
             shotSaved = true;
             if(defenseExcitement == -1) matchEvent = MatchEvent.CornerKick;
             else if (defenseExcitement == 0)
@@ -2514,5 +2514,10 @@ public class MatchController : MonoBehaviour
         float value = 0.5f + (0.5f *(_fatigue/100));
         //float value = 1f;
         return value;
+    }
+
+    private void Update()
+    {
+        version.text = "v." + Application.version + "  " + Mathf.FloorToInt(1.0f/Time.smoothDeltaTime) + " FPS";
     }
 }
