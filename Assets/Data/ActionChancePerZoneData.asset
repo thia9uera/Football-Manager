@@ -200,7 +200,7 @@ MonoBehaviour:
     Dribble: 1.75
     Sprint: 1.2
     Pass: 1.75
-    LongPass: 1.5
+    LongPass: 0
     Cross: 1.5
     Shot: 1.25
     Tackle: 1
@@ -253,7 +253,7 @@ MonoBehaviour:
     Shot: 0.5
     Tackle: 1
   - Zone: Box
-    Dribble: 1
+    Dribble: 1.75
     Sprint: 0
     Pass: 1
     LongPass: 0

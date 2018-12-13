@@ -780,7 +780,7 @@ MonoBehaviour:
     ALF: 0.05
     ARF: 0
     Box: 0.001
-  - Position: CM
+  - Position: LCF
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -811,8 +811,8 @@ MonoBehaviour:
     RF: 0
     ALF: 0.001
     ARF: 0
-    Box: 0.5
-  - Position: RCM
+    Box: 0.2
+  - Position: CF
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -843,8 +843,8 @@ MonoBehaviour:
     RF: 0.001
     ALF: 0.001
     ARF: 0.001
-    Box: 0.5
-  - Position: RM
+    Box: 0.2
+  - Position: RCF
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -875,7 +875,7 @@ MonoBehaviour:
     RF: 0.05
     ALF: 0
     ARF: 0.001
-    Box: 0.5
+    Box: 0.2
   - Position: RCM
     OwnGoal: 0
     BLD: 0

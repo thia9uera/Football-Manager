@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: ATA CRO 1
+  m_EditorClassIdentifier: 
+  FirstName: ATA-RF
+  LastName: RF
+  Zone: 27
+  Position: 3
+  Strategy: 0
+  Perk: {fileID: 11400000, guid: ba9038c942d15de4cacd6c72877b68df, type: 2}
+  Goalkeeping: 12
+  Passing: 63
+  Dribbling: 62
+  Crossing: 90
+  Tackling: 50
+  Blocking: 50
+  Shooting: 62
+  Heading: 84
+  Freekick: 45
+  Penalty: 41
+  Speed: 80
+  Strength: 88
+  Agility: 63
+  Stamina: 81
+  Teamwork: 85
+  Vision: 98
+  Stability: 78
+  fatigue: 100
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1
+  LifeTimeStats:
+    TotalPasses: 79
+    TotalCrosses: 194
+    TotalShots: 91
+    TotalHeaders: 3
+    TotalFaults: 16
+    TotalTackles: 107
+    TotalDribbles: 10
+    TotalGoals: 48
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 19
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 5
+    TotalPresence: 607
+  MatchStats:
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+    TotalPresence: 0
