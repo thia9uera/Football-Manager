@@ -250,7 +250,7 @@ MonoBehaviour:
     LeftPosChance: 0
     RighPosChance: 0
     PassingChance: 1
-    LongPassChance: 3
+    LongPassChance: 2
     ShootingChance: 1
     CrossingChance: 2
     DribblingChance: 0.25
