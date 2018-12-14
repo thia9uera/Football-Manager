@@ -27,37 +27,37 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
     CounterAttackChance: 1
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 0
-    Target_ALF: 0
-    Target_ARF: 0
-    Target_Box: 0
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 1
+    Target_ALF: 1
+    Target_ARF: 1
+    Target_Box: 1
     OwnGoal: 1
     BLD: 1
     BRD: 1
@@ -104,37 +104,37 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
     CounterAttackChance: 1
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 0
-    Target_ALF: 0
-    Target_ARF: 0
-    Target_Box: 1.5
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 1
+    Target_ALF: 1
+    Target_ARF: 1
+    Target_Box: 2.5
     OwnGoal: 0
     BLD: 0
     BRD: 0
@@ -181,37 +181,37 @@ MonoBehaviour:
     MarkingChance: 2
     TacklingChance: 1.1
     CounterAttackChance: 3
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 0
-    Target_ALF: 0
-    Target_ARF: 0
-    Target_Box: 0
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 1
+    Target_ALF: 1
+    Target_ARF: 1
+    Target_Box: 1
     OwnGoal: 1
     BLD: 1
     BRD: 1
@@ -258,37 +258,37 @@ MonoBehaviour:
     MarkingChance: 5
     TacklingChance: 1
     CounterAttackChance: 5
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 1
-    Target_LCAM: 2
-    Target_CAM: 2
-    Target_RCAM: 2
-    Target_RAM: 1
-    Target_LF: 1
-    Target_LCF: 1
-    Target_CF: 2
-    Target_RCF: 1
-    Target_RF: 1
-    Target_ALF: 0
-    Target_ARF: 0
-    Target_Box: 2
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 2
+    Target_LCAM: 3
+    Target_CAM: 3
+    Target_RCAM: 3
+    Target_RAM: 2
+    Target_LF: 2
+    Target_LCF: 2
+    Target_CF: 3
+    Target_RCF: 2
+    Target_RF: 2
+    Target_ALF: 1
+    Target_ARF: 1
+    Target_Box: 3
     OwnGoal: 1
     BLD: 1
     BRD: 1
@@ -335,37 +335,37 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
     CounterAttackChance: 1
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 2
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 2
-    Target_LF: 2
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 2
-    Target_ALF: 2
-    Target_ARF: 2
-    Target_Box: 1.5
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 3
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 3
+    Target_LF: 3
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 3
+    Target_ALF: 3
+    Target_ARF: 3
+    Target_Box: 2.5
     OwnGoal: 0
     BLD: 1
     BRD: 1
@@ -412,36 +412,36 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
     CounterAttackChance: 1
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 2
-    Target_CAM: 2
-    Target_RCAM: 2
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 2
-    Target_CF: 2
-    Target_RCF: 2
-    Target_RF: 0
-    Target_ALF: 0
-    Target_ARF: 0
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 3
+    Target_CAM: 3
+    Target_RCAM: 3
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 3
+    Target_CF: 3
+    Target_RCF: 3
+    Target_RF: 1
+    Target_ALF: 1
+    Target_ARF: 1
     Target_Box: 4
     OwnGoal: 0
     BLD: 0
@@ -489,36 +489,36 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
     CounterAttackChance: 2
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 1
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 1
-    Target_ALF: 2.5
-    Target_ARF: 2.5
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 2
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 2
+    Target_ALF: 3.5
+    Target_ARF: 3.5
     Target_Box: 5
     OwnGoal: 1
     BLD: 1
@@ -566,37 +566,37 @@ MonoBehaviour:
     MarkingChance: 5
     TacklingChance: 1.35
     CounterAttackChance: 1
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 0
-    Target_ALF: 0
-    Target_ARF: 0
-    Target_Box: 0
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 1
+    Target_ALF: 1
+    Target_ARF: 1
+    Target_Box: 1
     OwnGoal: 1
     BLD: 1
     BRD: 1
@@ -643,37 +643,37 @@ MonoBehaviour:
     MarkingChance: 1
     TacklingChance: 1
     CounterAttackChance: 1
-    Target_OwnGoal: 0
-    Target_BLD: 0
-    Target_BRD: 0
-    Target_LD: 0
-    Target_LCD: 0
-    Target_CD: 0
-    Target_RCD: 0
-    Target_RD: 0
-    Target_LDM: 0
-    Target_LCDM: 0
-    Target_CDM: 0
-    Target_RCDM: 0
-    Target_RDM: 0
-    Target_LM: 0
-    Target_LCM: 0
-    Target_CM: 0
-    Target_RCM: 0
-    Target_RM: 0
-    Target_LAM: 0
-    Target_LCAM: 0
-    Target_CAM: 0
-    Target_RCAM: 0
-    Target_RAM: 0
-    Target_LF: 0
-    Target_LCF: 0
-    Target_CF: 0
-    Target_RCF: 0
-    Target_RF: 0
-    Target_ALF: 0
-    Target_ARF: 0
-    Target_Box: 0
+    Target_OwnGoal: 1
+    Target_BLD: 1
+    Target_BRD: 1
+    Target_LD: 1
+    Target_LCD: 1
+    Target_CD: 1
+    Target_RCD: 1
+    Target_RD: 1
+    Target_LDM: 1
+    Target_LCDM: 1
+    Target_CDM: 1
+    Target_RCDM: 1
+    Target_RDM: 1
+    Target_LM: 1
+    Target_LCM: 1
+    Target_CM: 1
+    Target_RCM: 1
+    Target_RM: 1
+    Target_LAM: 1
+    Target_LCAM: 1
+    Target_CAM: 1
+    Target_RCAM: 1
+    Target_RAM: 1
+    Target_LF: 1
+    Target_LCF: 1
+    Target_CF: 1
+    Target_RCF: 1
+    Target_RF: 1
+    Target_ALF: 1
+    Target_ARF: 1
+    Target_Box: 1
     OwnGoal: 1
     BLD: 1
     BRD: 1

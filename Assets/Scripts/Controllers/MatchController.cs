@@ -62,6 +62,8 @@ public class MatchController : MonoBehaviour
     [SerializeField]
     public FieldZone CurrentZone;
 
+    FieldZone lastZone;
+
     [SerializeField]
     ActionChancePerZoneData actionChancePerZone;
 
@@ -227,6 +229,7 @@ public class MatchController : MonoBehaviour
         else
         {
             FieldZone zone = GetTeamZone(AttackingTeam);
+            if (!lastActionSuccessful) zone = GetTeamZone(DefendingTeam);
             Narration.UpdateNarration(_text, _variations,_team, zone);
         }
     }
@@ -309,7 +312,7 @@ public class MatchController : MonoBehaviour
     {
         //startBtn.SetActive(false);
         
-        CurrentZone = FieldZone.CM;
+        CurrentZone = lastZone =  FieldZone.CM;
         Field.UpdateFieldArea((int)CurrentZone);
 
         isGameOn = true;
@@ -326,6 +329,22 @@ public class MatchController : MonoBehaviour
             StartCoroutine("SimulateLoop");
         }
 
+    }
+
+    void RestartMatch()
+    { 
+        CurrentZone = lastZone = FieldZone.CM;
+        matchEvent = MatchEvent.None;
+        attackingBonus = 1f;
+        Field.UpdateFieldArea((int)CurrentZone);
+
+        keepAttacker = false;
+        keepDefender = false;
+        shotMissed = false;
+        shotSaved = false;
+        isFreekickTaken = false;
+        isGoalAnnounced = false;
+        isScorerAnnounced = false;
     }
 
     private void EndMatch()
@@ -448,9 +467,7 @@ public class MatchController : MonoBehaviour
                     isScorerAnnounced = false;
 
                     SwitchPossesion();
-                    CurrentZone = FieldZone.CM;
-                    attackingBonus = 1f;
-                    Field.UpdateFieldArea((int)CurrentZone);
+                    RestartMatch();
 
                     UpdateNarration("nar_MatchRestart_");
                     return;
@@ -645,26 +662,24 @@ public class MatchController : MonoBehaviour
         {
             isHalfTime = true;
             UpdateNarration("nar_FirstHalfEnd_");
-            CurrentZone = FieldZone.CM;
             AttackingTeam = AwayTeam;
             DefendingTeam = HomeTeam;
-            keepAttacker = false;
-            keepDefender = false;
-            shotMissed = false;
-            shotSaved = false;
+
             if (!isSimulating)
             {
                 HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
                 AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
-            }
-            matchEvent = MatchEvent.None;
+            }         
+
             return;
         }
         if (isHalfTime && !secondHalfStarted)
         {
             secondHalfStarted = true;
+            RestartMatch();
             UpdateNarration("nar_SecondHalfStart_");
             DebugString = "SEGUNDO TEMPO\n\n";
+
             return;
         }
         else if (matchTime >= 90)
@@ -702,7 +717,7 @@ public class MatchController : MonoBehaviour
         //No players from attacking team in the dispute
         else if(attackingPlayer == null)
         {
-            UpdateNarration("nar_SwitchPossession_", 1, AttackingTeam);
+            UpdateNarration("nar_SwitchPossession_", 1);
             DebugString += "\n________________________________\n" + AttackingTeam.name + " PERDEU A POSSE DE BOLA" + " ! \n ________________________________\n \n";
             keepDefender = true;
             SwitchPossesion();
@@ -1032,7 +1047,7 @@ public class MatchController : MonoBehaviour
                     {
                         DebugString += "ERROU A CABECADA! \n ________________________________\n";
                         UpdateNarration("nar_WrongHeader_");
-                        attackingPlayer.MatchStats.TotalShotsMissed++;
+                        attackingPlayer.MatchStats.TotalHeadersMissed++;
                     }
                     else
                     {
@@ -2136,6 +2151,7 @@ public class MatchController : MonoBehaviour
     FieldZone GetTargetZone()
     {
         FieldZone target = CurrentZone;
+        lastZone = CurrentZone;
         FieldZone zone = GetTeamZone(AttackingTeam);
         List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
 
@@ -2284,43 +2300,43 @@ public class MatchController : MonoBehaviour
 
 
         Team_Strategy strategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)AttackingTeam.Strategy];
-        _OwnGoal += strategy.Target_OwnGoal;
-        _BLD += strategy.Target_BLD;
-        _BRD += strategy.Target_BRD;
+        _OwnGoal *= strategy.Target_OwnGoal;
+        _BLD *= strategy.Target_BLD;
+        _BRD *= strategy.Target_BRD;
 
-        _LD += strategy.Target_LD;
-        _LCD += strategy.Target_LCD;
-        _CD += strategy.Target_CD;
-        _RCD += strategy.Target_RCD;
-        _RD += strategy.Target_RD;
+        _LD *= strategy.Target_LD;
+        _LCD *= strategy.Target_LCD;
+        _CD *= strategy.Target_CD;
+        _RCD *= strategy.Target_RCD;
+        _RD *= strategy.Target_RD;
 
-        _LDM += strategy.Target_LDM;
-        _LCDM += strategy.Target_LCDM;
-        _CDM += strategy.Target_CDM;
-        _RCDM += strategy.Target_RCDM;
-        _RDM += strategy.Target_RDM;
+        _LDM *= strategy.Target_LDM;
+        _LCDM *= strategy.Target_LCDM;
+        _CDM *= strategy.Target_CDM;
+        _RCDM *= strategy.Target_RCDM;
+        _RDM *= strategy.Target_RDM;
 
-        _LM += strategy.Target_LM;
-        _LCM += strategy.Target_LCM;
-        _CM += strategy.Target_CM;
-        _RCM += strategy.Target_RCM;
-        _RM += strategy.Target_RM;
+        _LM *= strategy.Target_LM;
+        _LCM *= strategy.Target_LCM;
+        _CM *= strategy.Target_CM;
+        _RCM *= strategy.Target_RCM;
+        _RM *= strategy.Target_RM;
 
-        _LAM += strategy.Target_LAM;
-        _LCAM += strategy.Target_LCAM;
-        _CAM += strategy.Target_CAM;
-        _RCAM += strategy.Target_RCAM;
-        _RAM += strategy.Target_RAM;
+        _LAM *= strategy.Target_LAM;
+        _LCAM *= strategy.Target_LCAM;
+        _CAM *= strategy.Target_CAM;
+        _RCAM *= strategy.Target_RCAM;
+        _RAM *= strategy.Target_RAM;
 
-        _LF += strategy.Target_LF;
-        _LCF += strategy.Target_LCF;
-        _CF += strategy.Target_CF;
-        _RCF += strategy.Target_RCF;
-        _RF += strategy.Target_RF;
+        _LF *= strategy.Target_LF;
+        _LCF *= strategy.Target_LCF;
+        _CF *= strategy.Target_CF;
+        _RCF *= strategy.Target_RCF;
+        _RF *= strategy.Target_RF;
 
-        _ALF += strategy.Target_ALF;
-        _ARF += strategy.Target_ARF;
-        _Box += strategy.Target_Box;
+        _ALF *= strategy.Target_ALF;
+        _ARF *= strategy.Target_ARF;
+        _Box *= strategy.Target_Box;
 
 
 

@@ -331,48 +331,6 @@ public class PlayerData : ScriptableObject
             case MatchController.FieldZone.Box: pct = chancePerZone.Box; break;
         }
 
-        /*
-        float teamDefPos = 1f;
-        float teamOffPos = 1f;
-        float teamLeftPos = 1f;
-        float teamRightPos = 1f;
-        if(_isTeamStrategyApplicable)
-        {
-            teamDefPos = _teamStrategy.DefPosChance;
-            teamOffPos = _teamStrategy.OffPosChance;
-            teamLeftPos = _teamStrategy.LeftPosChance;
-            teamRightPos = _teamStrategy.RighPosChance;
-        }
-
-        AltPosition altPos = GetAltPosition(_zone);
-        switch (altPos)
-        {
-            case AltPosition.Defensive:
-                pct *= Prob_DefPosition * teamDefPos;
-                break;
-            case AltPosition.Offensive:
-                pct *= Prob_OffPosition * teamOffPos;
-                break;
-            case AltPosition.Left:
-                pct *= Prob_LeftPos * teamLeftPos;
-                break;
-            case AltPosition.Right:
-                pct *= Prob_RightPos * teamRightPos;
-                break;
-            case AltPosition.LeftDefensive:
-                pct *= ((Prob_LeftPos + Prob_DefPosition) / 2) * ((teamLeftPos + teamDefPos) / 2);
-                break;
-            case AltPosition.RightDefensive:
-                pct *= ((Prob_RightPos + Prob_DefPosition) / 2) * ((teamRightPos + teamDefPos) / 2);
-                break;
-            case AltPosition.LeftOffensive:
-                pct *= ((Prob_LeftPos + Prob_OffPosition) / 2) * ((teamLeftPos + teamOffPos) / 2);
-                break;
-            case AltPosition.RightOffensive:
-                pct *= ((Prob_RightPos + Prob_OffPosition) / 2) * ((teamRightPos + teamOffPos) / 2);
-                break;
-        }
-        */
         return pct;
     }
 
