@@ -255,9 +255,9 @@ MonoBehaviour:
     CrossingChance: 2
     DribblingChance: 0.25
     OffsideTrickChance: 1.5
-    MarkingChance: 5
+    MarkingChance: 3
     TacklingChance: 1
-    CounterAttackChance: 5
+    CounterAttackChance: 3
     Target_OwnGoal: 1
     Target_BLD: 1
     Target_BRD: 1
@@ -486,7 +486,7 @@ MonoBehaviour:
     CrossingChance: 5
     DribblingChance: 1
     OffsideTrickChance: 1
-    MarkingChance: 1
+    MarkingChance: 2
     TacklingChance: 1
     CounterAttackChance: 2
     Target_OwnGoal: 1
@@ -521,11 +521,11 @@ MonoBehaviour:
     Target_ARF: 3.5
     Target_Box: 5
     OwnGoal: 1
-    BLD: 1
-    BRD: 1
-    LD: 1
-    LCD: 1
-    CD: 1
+    BLD: 0
+    BRD: 0
+    LD: 0
+    LCD: 0
+    CD: 0
     RCD: 1
     RD: 1
     LDM: 1

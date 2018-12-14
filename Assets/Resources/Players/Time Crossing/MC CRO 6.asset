@@ -18,13 +18,13 @@ MonoBehaviour:
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 24
-  Passing: 92
+  Passing: 50
   Dribbling: 83
-  Crossing: 44
+  Crossing: 92
   Tackling: 69
   Blocking: 74
   Shooting: 55
-  Heading: 50
+  Heading: 87
   Freekick: 50
   Penalty: 50
   Speed: 88

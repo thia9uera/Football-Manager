@@ -23,8 +23,8 @@ MonoBehaviour:
   Crossing: 90
   Tackling: 69
   Blocking: 65
-  Shooting: 55
-  Heading: 50
+  Shooting: 78
+  Heading: 89
   Freekick: 50
   Penalty: 50
   Speed: 77

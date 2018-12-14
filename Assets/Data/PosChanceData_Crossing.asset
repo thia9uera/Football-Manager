@@ -794,14 +794,14 @@ MonoBehaviour:
     CDM: 0
     RCDM: 0
     RDM: 0
-    LM: 0.001
-    LCM: 0.01
-    CM: 0.001
+    LM: 0
+    LCM: 0
+    CM: 0
     RCM: 0
     RM: 0
-    LAM: 0.05
+    LAM: 0.001
     LCAM: 0.05
-    CAM: 0.05
+    CAM: 0.001
     RCAM: 0.001
     RAM: 0
     LF: 0.05
@@ -827,14 +827,14 @@ MonoBehaviour:
     RCDM: 0
     RDM: 0
     LM: 0
-    LCM: 0.001
-    CM: 0.01
-    RCM: 0.001
+    LCM: 0
+    CM: 0
+    RCM: 0
     RM: 0
     LAM: 0.001
-    LCAM: 0.05
-    CAM: 0.05
-    RCAM: 0.05
+    LCAM: 0.001
+    CAM: 0.001
+    RCAM: 0.001
     RAM: 0.001
     LF: 0.001
     LCF: 0.05
@@ -860,9 +860,9 @@ MonoBehaviour:
     RDM: 0
     LM: 0
     LCM: 0
-    CM: 0.001
-    RCM: 0.01
-    RM: 0.001
+    CM: 0
+    RCM: 0
+    RM: 0
     LAM: 0
     LCAM: 0.001
     CAM: 0.001
