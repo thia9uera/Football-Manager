@@ -221,18 +221,7 @@ public class MatchController : MonoBehaviour
         AwayTeamSquad.Populate(AwayTeam);
     }
 
-    void UpdateNarration(string _text, int _variations = 1, TeamData _team = null)
-    {
-        if (isSimulating) return;
 
-        if(_team == null) Narration.UpdateNarration(_text, _variations, null, CurrentZone);
-        else
-        {
-            FieldZone zone = GetTeamZone(AttackingTeam);
-            if (!lastActionSuccessful) zone = GetTeamZone(DefendingTeam);
-            Narration.UpdateNarration(_text, _variations,_team, zone);
-        }
-    }
 
     void Reset()
     {
@@ -430,7 +419,7 @@ public class MatchController : MonoBehaviour
     //MAIN CONTROLLING FUNCTION
     void DefineActions()
     {
-        Field.UpdateFieldArea((int)CurrentZone);
+        if(!isSimulating) Field.UpdateFieldArea((int)CurrentZone);
 
         if(!isSimulating)
         {
@@ -1545,6 +1534,21 @@ public class MatchController : MonoBehaviour
         return success;
     }
 
+    string lastNarration;
+    void UpdateNarration(string _text, int _variations = 1, TeamData _team = null)
+    {
+        if (isSimulating || _text == lastNarration) return;
+
+        lastNarration = _text;
+        if (_team == null) Narration.UpdateNarration(_text, _variations, null, CurrentZone);
+        else
+        {
+            FieldZone zone = GetTeamZone(AttackingTeam);
+            if (!lastActionSuccessful) zone = GetTeamZone(DefendingTeam);
+            Narration.UpdateNarration(_text, _variations, _team, zone);
+        }
+    }
+
     PlayerData GetAttackingPlayer(FieldZone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
     {
         FieldZone zone = GetTeamZone(AttackingTeam);
@@ -2532,8 +2536,9 @@ public class MatchController : MonoBehaviour
         return value;
     }
 
+    float fakeTime = 0;
     private void Update()
     {
-        version.text = "v." + Application.version + "  " + Mathf.FloorToInt(1.0f/Time.smoothDeltaTime) + " FPS";
+        version.text = "v." + Application.version + "  " + Mathf.FloorToInt(1.0f/Time.smoothDeltaTime);
     }
 }
