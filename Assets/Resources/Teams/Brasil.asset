@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,7 +15,7 @@ MonoBehaviour:
   Name: Brasil
   Tag: BRA
   PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
-  SecondaryColor: {r: 0.33577433, g: 0.5660378, b: 0.31238878, a: 1}
+  SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
   Formation: 2
   Strategy: 0
   Squad:
@@ -36,8 +37,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0245709de3d473d449b58a018d95fb9a, type: 2}
   - {fileID: 11400000, guid: 93bf3b8ec08d4494b92e85122ec9d2e5, type: 2}
   Captain: {fileID: 0}
-  TotalWins: 9
-  TotalLosts: 0
-  TotalDraws: 1
-  TotalGoals: 72
-  TotalGoalsAgainst: 18
+  LifeTimeStats:
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  MatchStats:
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0

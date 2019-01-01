@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -18,12 +19,12 @@ MonoBehaviour:
   m_fontInfo:
     Name: Titillium
     PointSize: 40
-    Scale: 0
+    Scale: 1
     CharacterCount: 207
     LineHeight: 48
     Baseline: 0
     Ascender: 30
-    CapHeight: 0
+    CapHeight: 27.25
     Descender: -10
     CenterLine: 0
     SuperscriptOffset: 30
@@ -33,7 +34,7 @@ MonoBehaviour:
     UnderlineThickness: 1.2
     strikethrough: 7.2727275
     strikethroughThickness: 1.2
-    TabWidth: 0
+    TabWidth: 88.125
     Padding: 5
     AtlasWidth: 512
     AtlasHeight: 512
@@ -42,10 +43,10 @@ MonoBehaviour:
   - id: 32
     x: 6
     y: 517
-    width: 0
-    height: 0
+    width: 8.8125
+    height: 40
     xOffset: 0
-    yOffset: 0
+    yOffset: 30
     xAdvance: 8.8125
     scale: 1
   - id: 33
@@ -1968,7 +1969,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Titilium_BoldItalic Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_ShaderKeywords: 
@@ -2066,7 +2068,8 @@ Material:
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Titilium_BoldItalic Atlas
   m_ImageContentsHash:
     serializedVersion: 2

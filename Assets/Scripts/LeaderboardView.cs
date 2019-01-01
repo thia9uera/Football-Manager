@@ -53,7 +53,7 @@ public class LeaderboardView : MonoBehaviour
         btnPlayers.interactable = false;
         btnTeams.interactable = true;
 
-        if (listPlayers == null || listPlayers.Count == 0) listPlayers = new List<PlayerData>( Resources.FindObjectsOfTypeAll<PlayerData>());
+        if (listPlayers == null || listPlayers.Count == 0) listPlayers = new List<PlayerData>(Resources.FindObjectsOfTypeAll<PlayerData>());
 
         int i = 0;
         foreach(PlayerData player in listPlayers)

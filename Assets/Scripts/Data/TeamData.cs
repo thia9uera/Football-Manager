@@ -19,7 +19,6 @@ public class TeamData : ScriptableObject
         _3_5_2,
         _4_3_3,
         _3_3_4,
-
     }
 
     public enum TeamStrategy
@@ -46,6 +45,12 @@ public class TeamData : ScriptableObject
 
     [Space(10)]
     public PlayerData Captain;
+
+    [HideInInspector]
+    public int Stars;
+
+    [HideInInspector]
+    public bool isUserControlled;
 
     [System.Serializable]
     public class Statistics
