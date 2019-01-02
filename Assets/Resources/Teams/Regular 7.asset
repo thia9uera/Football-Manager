@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Regular 7
+  m_EditorClassIdentifier: 
+  Name: Regular 7
+  Tag: REG7
+  PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
+  SecondaryColor: {r: 0, g: 0, b: 0, a: 1}
+  Formation: 2
+  Strategy: 0
+  Squad:
+  - {fileID: 11400000, guid: e32926fc620fe2e418dc6d1806331a58, type: 2}
+  - {fileID: 11400000, guid: d4da84350102a8640b5e4a8590352c38, type: 2}
+  - {fileID: 11400000, guid: 8944c834239300848a7ceee94360a3a3, type: 2}
+  - {fileID: 11400000, guid: 962fb29e005c87f4ea7cecff3ef12944, type: 2}
+  - {fileID: 11400000, guid: a6250564555a7aa46b8ccabe7e73e2dd, type: 2}
+  - {fileID: 11400000, guid: 3d2190e015da21144af73ae94411e437, type: 2}
+  - {fileID: 11400000, guid: b09bbbb1f7d973247a74d9b639616dcc, type: 2}
+  - {fileID: 11400000, guid: 1da4465d1bedaa5489adb5bc5e6a2d57, type: 2}
+  - {fileID: 11400000, guid: 3e00292fc4a4eb24b8f661a28ffb8989, type: 2}
+  - {fileID: 11400000, guid: 28cb92b9a80f7c04097819505118a4f5, type: 2}
+  - {fileID: 11400000, guid: 661371bc0d5275c44a8bdf1f0eed2123, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: cf598ccf8c85108418c1382448e3267c, type: 2}
+  - {fileID: 11400000, guid: a0048d649ddbac44b93f9486700b7c7f, type: 2}
+  - {fileID: 11400000, guid: 4868a5a8b6e08b649a8e25869caf6bdb, type: 2}
+  Captain: {fileID: 11400000, guid: 28cb92b9a80f7c04097819505118a4f5, type: 2}
+  Stars: 0
+  isUserControlled: 0
+  LifeTimeStats:
+    TotalWins: 7
+    TotalLosts: 3
+    TotalDraws: 3
+    TotalGoals: 26
+    TotalGoalsAgainst: 26
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  MatchStats:
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
