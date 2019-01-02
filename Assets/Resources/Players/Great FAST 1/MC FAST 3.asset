@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: MC FAST 3
+  m_EditorClassIdentifier: 
+  FirstName: MC-CAM
+  LastName: CAM
+  Zone: 20
+  Position: 2
+  Strategy: 0
+  Perk: {fileID: 0}
+  Goalkeeping: 16
+  Passing: 70
+  Dribbling: 64
+  Crossing: 68
+  Tackling: 62
+  Blocking: 65
+  Shooting: 55
+  Heading: 50
+  Freekick: 43
+  Penalty: 30
+  Speed: 95
+  Strength: 60
+  Agility: 93
+  Stamina: 79
+  Teamwork: 69
+  Vision: 80
+  Stability: 75
+  fatigue: 97.34567
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1
+  LifeTimeStats:
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+    TotalPresence: 0
+  MatchStats:
+    TotalPasses: 0
+    TotalCrosses: 1
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+    TotalPresence: 0
