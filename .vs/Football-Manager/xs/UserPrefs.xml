@@ -1,18 +1,16 @@
-﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/Game.unity">
     <Files>
       <File FileName="Assets/Scripts/Tournament/TournamentSelection.cs" Line="19" Column="43" />
       <File FileName="Assets/Scripts/Tournament/TournamentCard.cs" Line="34" Column="45" />
       <File FileName="Assets/Scripts/TournamentCreation/TournamentLoad.cs" Line="41" Column="10" />
-      <File FileName="Assets/Scripts/Data/TournamentData.cs" Line="58" Column="45" />
-      <File FileName="Assets/Scripts/Leaderboard/LeaderboardView.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/MainController.cs" Line="36" Column="11" />
-      <File FileName="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs" Line="49" Column="15" />
+      <File FileName="Assets/Scripts/Data/TournamentData.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Data/TeamData.cs" Line="140" Column="26" />
+      <File FileName="Assets/Scenes/Game.unity" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
