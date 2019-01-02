@@ -6,6 +6,7 @@ public class MainController : MonoBehaviour
 {
     public static MainController Instance;
 
+
     public LocalizationData Localization;
     public MatchController Match;
     public SquadSelectionView SquadSelection;
@@ -16,6 +17,8 @@ public class MainController : MonoBehaviour
     public PosChanceData PosChancePerZone;
     public TargetPassPerZoneData TargetPassPerZone;
     public TargetCrossPerZoneData TargetCrossPerZone;
+
+    public TournamentData CurrentTournament;
 
     public void Awake()
     {
@@ -28,9 +31,9 @@ public class MainController : MonoBehaviour
 
     public void Start()
     {
-        TeamData home = Resources.Load<TeamData>("Teams/Crossing");
-        TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
-        if(Match != null) Match.Populate(home, away);
+        //TeamData home = Resources.Load<TeamData>("Teams/Crossing");
+        //TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
+        //if(Match != null) Match.Populate(home, away);
     }
 
     public void EditSquad(TeamData _team)

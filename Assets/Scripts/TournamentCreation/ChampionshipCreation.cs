@@ -13,37 +13,36 @@ public class ChampionshipCreation : MonoBehaviour
     List<TournamentCreationMatch> matchList;
     public List<TournamentData.MatchData> DataList;
 
-    List<TeamData> teamList;
-
     void Awake()
     {
-        teamList = TournamentCreation.Instance.TeamList;
         DataList = new List<TournamentData.MatchData>();
         matchList = new List<TournamentCreationMatch>();
     }
 
     public void AddTeam(TeamData _data)
     {
-        teamList.Add(_data);
+        TournamentCreation.Instance.TeamList.Add(_data);
         DataList.Clear();
         CreateMatchData();
     }
 
     public void RemoveTeam(TeamData _data)
     {
-        teamList.Remove(_data);
+        TournamentCreation.Instance.TeamList.Remove(_data);
         DataList.Clear();
         CreateMatchData();
     }
 
     public void CreateMatchData()
     {
-        List<TeamData> list = teamList;
-        TeamData homeTeam;
-        TeamData awayTeam;
+        List<TeamData> list = TournamentCreation.Instance.TeamList;
+        TeamData homeTeam = null;
+        TeamData awayTeam = null;
         List<TeamData> excludeList = new List<TeamData>();
+        float teams = list.Count;
+        int totalMatches = (int)((teams / 2) * (teams - 1));
 
-        if(list.Count == 1)
+        if (list.Count == 1)
         {
             TournamentData.MatchData match = new TournamentData.MatchData();
             DataList.Add(match);
@@ -52,41 +51,44 @@ public class ChampionshipCreation : MonoBehaviour
             UpdateMatchList();
         }
 
-        for (int i = 0; i < list.Count; i++)
-        {          
-            for(int j = 0; j <list.Count; j++)
+        else
+        {
+            for (int i = 0; i < list.Count; i++)
             {
-                if (excludeList.Contains(list[j]))
+                for (int j = 0; j < list.Count; j++)
                 {
-                    homeTeam = list[i];
-                    awayTeam = list[j];
-                    if ((i - j) % 2 == 0)
+                    if (!excludeList.Contains(list[j]))
                     {
                         homeTeam = list[i];
                         awayTeam = list[j];
-                    }
-                    else
-                    {
-                        homeTeam = list[j];
-                        awayTeam = list[i];
-                    }
+                        if ((i - j) % 2 == 0)
+                        {
+                            homeTeam = list[i];
+                            awayTeam = list[j];
+                        }
+                        else
+                        {
+                            homeTeam = list[j];
+                            awayTeam = list[i];
+                        }
 
-                    if (homeTeam != awayTeam)
-                    {
-                        TournamentData.MatchData data = new TournamentData.MatchData();
-                        data.HomeTeam = new TournamentData.TeamMatchData();
-                        data.HomeTeam.Team = homeTeam;
+                        if (homeTeam != awayTeam)
+                        {
+                            TournamentData.MatchData data = new TournamentData.MatchData();
+                            data.HomeTeam = new TournamentData.TeamMatchData();
+                            data.HomeTeam.Team = homeTeam;
 
-                        data.AwayTeam = new TournamentData.TeamMatchData();
-                        data.AwayTeam.Team = awayTeam;
+                            data.AwayTeam = new TournamentData.TeamMatchData();
+                            data.AwayTeam.Team = awayTeam;
 
-                        if (!DataList.Contains(data)) DataList.Add(data);
+                            if (!DataList.Contains(data)) DataList.Add(data);
+                        }
                     }
+                    excludeList.Add(list[i]);
                 }
             }
-            excludeList.Add(list[i]);
+            UpdateMatchList();
         }
-        UpdateMatchList();
     }
 
     public void UpdateMatchList()

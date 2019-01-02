@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controllers/MatchController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs">
     <Files>
-      <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="2014" Column="13" />
-      <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="296" Column="9" />
-      <File FileName="Assets/Scripts/Data/PosChanceData.cs" Line="54" Column="24" />
-      <File FileName="Assets/Scripts/Debug/Debug_Popup.cs" Line="26" Column="107" />
-      <File FileName="Assets/Scripts/Debug/Debug_FieldView.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/MainController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Tournament/TournamentSelection.cs" Line="19" Column="43" />
+      <File FileName="Assets/Scripts/Tournament/TournamentCard.cs" Line="34" Column="45" />
+      <File FileName="Assets/Scripts/TournamentCreation/TournamentLoad.cs" Line="41" Column="10" />
+      <File FileName="Assets/Scripts/Data/TournamentData.cs" Line="58" Column="45" />
+      <File FileName="Assets/Scripts/Leaderboard/LeaderboardView.cs" Line="4" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/MainController.cs" Line="36" Column="11" />
+      <File FileName="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs" Line="49" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -45,7 +45,8 @@ public class TournamentCreation : MonoBehaviour
     public void CreateTournament()
     {
         TournamentData tournament = ScriptableObject.CreateInstance<TournamentData>();
- 
+        List<TeamData> teams = new List<TeamData>(TeamList);
+        List<TournamentData.MatchData> matches = new List<TournamentData.MatchData>(Championship.DataList);
         tournament.Name = Options.InputName.text;
         tournament.Type = (TournamentData.TournamentType)Options.TypeDropDown.value;
         tournament.StarsRequired = Options.StarsRequired.StarsRequired;
@@ -53,8 +54,15 @@ public class TournamentCreation : MonoBehaviour
         switch((TournamentData.TournamentType)Options.TypeDropDown.value)
         {
             case TournamentData.TournamentType.Championship:
-                tournament.Teams = TeamList;
-                tournament.Matches = Championship.DataList;
+                tournament.Teams = teams;
+                tournament.Matches = matches;
+                tournament.TeamScoreboard = new List<TournamentData.TeamTournamentData>();
+                foreach (TeamData team in TeamList)
+                {
+                    TournamentData.TeamTournamentData tData = new TournamentData.TeamTournamentData();
+                    tData.Team = team;
+                    tournament.TeamScoreboard.Add(tData);
+                }
                 break;
         }
 
@@ -66,6 +74,10 @@ public class TournamentCreation : MonoBehaviour
 
     public void LoadTournaments()
     {
+        Championship.DataList.Clear();
+        Championship.ClearMatchList();
+        TeamList.Clear();
+
         Edit.SetActive(false);
         Load.SetActive(true);
         Load.GetComponent<TournamentLoad>().LoadFiles();
@@ -80,6 +92,7 @@ public class TournamentCreation : MonoBehaviour
 
         Options.InputName.text = _data.Name;
         Options.TypeDropDown.value = (int)_data.Type;
+        Options.StarsRequired.StarsRequired = _data.StarsRequired;
 
         TeamList = new List<TeamData>();
         if(_data.Teams.Count > 0)
@@ -95,7 +108,9 @@ public class TournamentCreation : MonoBehaviour
 
         if((TournamentData.TournamentType)Options.TypeDropDown.value == TournamentData.TournamentType.Championship)
         {
-            Championship.DataList = new List<TournamentData.MatchData>(_data.Matches);
+            Championship.DataList.Clear();
+            Championship.ClearMatchList();
+
             Championship.CreateMatchData();
         }
     }

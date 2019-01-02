@@ -6,7 +6,19 @@ using TMPro;
 
 public class TournamentCreationStars : MonoBehaviour
 {
-    public int StarsRequired;
+    int starsRequired;
+    public int StarsRequired
+    {
+        set
+        {
+            starsRequired = value;
+            UpdateButtons();
+        }
+        get
+        {
+            return starsRequired;
+        }
+    }
 
     public int MaxStars = 6;
 

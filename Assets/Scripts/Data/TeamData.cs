@@ -124,8 +124,21 @@ public class TeamData : ScriptableObject
         LifeTimeStats.TotalFaults += MatchStats.TotalFaults;
         LifeTimeStats.TotalCounterAttacks += MatchStats.TotalCounterAttacks;
 
-
-
         ResetStatistics("Match");
+    }
+
+    public int GetOveralRating()
+    {
+        int overal = 0;
+
+        int total = 0;
+        foreach (PlayerData player in Squad)
+        {
+            total += player.GetOverall();
+        }
+
+        overal = total / Squad.Length;
+
+        return overal;
     }
 }

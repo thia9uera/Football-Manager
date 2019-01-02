@@ -7,12 +7,8 @@ public class TournamentLoadItem : MonoBehaviour
 {
     public TournamentData Data;
 
+    [SerializeField]
     TextMeshProUGUI label;
-
-    private void Awake()
-    {
-        label = GetComponentInChildren<TextMeshProUGUI>();
-    }
 
     public void Populate(TournamentData _data)
     {
