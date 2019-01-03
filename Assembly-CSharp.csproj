@@ -139,6 +139,7 @@
     <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguageDropdown.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Utils\StringObfuscator.cs" />
     <Compile Include="Assets\Scripts\AvatarEditor.cs" />
+    <Compile Include="Assets\Scripts\BaseScreen.cs" />
     <Compile Include="Assets\Scripts\CanvasScreenshot.cs" />
     <Compile Include="Assets\Scripts\Controllers\DebugController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GlobalParameters.cs" />
@@ -168,8 +169,10 @@
     <Compile Include="Assets\Scripts\Match\MatchNarrationTextView.cs" />
     <Compile Include="Assets\Scripts\Match\MatchPlayerView.cs" />
     <Compile Include="Assets\Scripts\Match\MatchScoreView.cs" />
+    <Compile Include="Assets\Scripts\Match\MatchScreen.cs" />
     <Compile Include="Assets\Scripts\Match\MatchSpeedSlider.cs" />
     <Compile Include="Assets\Scripts\Match\MatchTeamView.cs" />
+    <Compile Include="Assets\Scripts\Menu\BackButton.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentCard.cs" />
     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentSelection.cs" />
@@ -191,6 +194,10 @@
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationTeamsAmount.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentLoad.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentLoadItem.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentHubScreen.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentLeaderboard.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentLeaderboardItem.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentNextMatch.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

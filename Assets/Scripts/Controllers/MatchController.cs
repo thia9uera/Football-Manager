@@ -185,6 +185,21 @@ public class MatchController : MonoBehaviour
         Score.Populate(_homeTeam.Name, homeTeamScore, _homeTeam.PrimaryColor, _awayTeam.Name, awayTeamScore, _awayTeam.PrimaryColor);
     }
 
+    public void Populate(TournamentData.MatchData _data)
+    {
+        HomeTeam = _data.HomeTeam.Team;
+        AwayTeam = _data.AwayTeam.Team;
+
+        AttackingTeam = HomeTeam;
+        DefendingTeam = AwayTeam;
+
+        HomeTeamSquad.Populate(HomeTeam, true);
+        AwayTeamSquad.Populate(AwayTeam, true);
+        Score.UpdateTime(matchTime);
+        Score.UpdateScore(homeTeamScore, awayTeamScore);
+        Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
+    }
+
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
     {
         if(_in.Count > 0)

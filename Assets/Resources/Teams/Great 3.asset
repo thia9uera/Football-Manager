@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
   m_Name: Great 3
   m_EditorClassIdentifier: 
-  Name: Great 3
+  Name: Awesomegas
   Tag: GRT3
   PrimaryColor: {r: 0.21176472, g: 0.9137255, b: 0.22013308, a: 1}
   SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
@@ -71,3 +71,4 @@ MonoBehaviour:
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0
+  IsPlaceholder: 0

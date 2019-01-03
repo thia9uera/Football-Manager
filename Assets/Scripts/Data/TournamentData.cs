@@ -20,6 +20,9 @@ public class TournamentData : ScriptableObject
 
     public int StarsRequired = 0;
 
+    [HideInInspector]
+    public int CurrentRound;
+
     [System.Serializable]
     public class TeamMatchData
     {
@@ -66,7 +69,7 @@ public class TournamentData : ScriptableObject
     /// </summary>
     /// <returns>The leaderboard.</returns>
     /// <param name="_param">Parameter.</param>
-    public List<TeamTournamentData> GetLeaderboard(string _param)
+    public List<TeamTournamentData> SortTeamsBy(string _param)
     {
         List<TeamTournamentData> list = TeamScoreboard;
 
@@ -82,6 +85,4 @@ public class TournamentData : ScriptableObject
 
         return list;
     }
-
-
 }

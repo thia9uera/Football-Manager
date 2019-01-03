@@ -17,20 +17,28 @@ public class TournamentCard : MonoBehaviour
         titleLabel.text = Data.Name;
         starsRequiredLabel.text = "Stars Required: " + Data.StarsRequired;
 
-        List<TournamentData.TeamTournamentData> list = Data.GetLeaderboard("Points");
+        List<TournamentData.TeamTournamentData> list;
+        if (Data.CurrentRound == 0)
+        {   
+            list = Data.SortTeamsBy("Name");
+        }
+        else
+        {
+            list = Data.SortTeamsBy("Points");
+        }
 
         TournamentData.TeamTournamentData tData = list[0];
-        team_0.text = tData.Team.name;
+        team_0.text = tData.Team.Name + " (" + tData.Team.GetOveralRating() + ")"; ;
         score_0.text = tData.Points + "pts";
 
         tData = list[1];
-        team_1.text = tData.Team.name;
+        team_1.text = tData.Team.Name + " (" + tData.Team.GetOveralRating() + ")";
         score_1.text = tData.Points + "pts";
 
         if(list.Count > 2)
         {
             tData = list[2];
-            team_2.text = tData.Team.name;
+            team_2.text = tData.Team.Name + " (" + tData.Team.GetOveralRating() + ")"; ;
             score_2.text = tData.Points + " pts";
         }
         else
@@ -38,6 +46,11 @@ public class TournamentCard : MonoBehaviour
             team_2.text = "";
             score_2.text = "";
         }
+    }
 
+    public void ClickHandler()
+    {
+        MainController.Instance.CurrentTournament = Data;
+        MainController.Instance.ShowScreen(MainController.ScreenType.TournamentHub);
     }
 }

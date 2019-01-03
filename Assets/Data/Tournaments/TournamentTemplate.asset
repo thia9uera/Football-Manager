@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tournament Template
   Type: 0
-  Teams: []
+  Teams:
+  - {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
   StarsRequired: 0
+  CurrentRound: 0
   Matches: []
+  TeamScoreboard: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
   m_Name: Bad DEF Great ATA 1
   m_EditorClassIdentifier: 
-  Name: Bad DEF Great ATA 1
+  Name: Defensorry Attackers
   Tag: BD-GA1
   PrimaryColor: {r: 0.9137255, g: 0.60219765, b: 0.21176472, a: 1}
   SecondaryColor: {r: 0.21306516, g: 0.685812, b: 0.7169812, a: 1}
@@ -71,3 +71,4 @@ MonoBehaviour:
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0
+  IsPlaceholder: 0

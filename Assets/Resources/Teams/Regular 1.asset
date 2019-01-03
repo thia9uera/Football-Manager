@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
   m_Name: Regular 1
   m_EditorClassIdentifier: 
-  Name: Regular 1
+  Name: Meia Bocas
   Tag: REG1
   PrimaryColor: {r: 0.21960784, g: 0.78589994, b: 0.8784314, a: 1}
   SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
@@ -71,3 +71,4 @@ MonoBehaviour:
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0
+  IsPlaceholder: 0

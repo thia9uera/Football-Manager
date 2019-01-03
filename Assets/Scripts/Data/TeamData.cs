@@ -49,9 +49,6 @@ public class TeamData : ScriptableObject
     [HideInInspector]
     public int Stars;
 
-    [HideInInspector]
-    public bool isUserControlled;
-
     [System.Serializable]
     public class Statistics
     {
@@ -75,6 +72,8 @@ public class TeamData : ScriptableObject
 
     public Statistics LifeTimeStats;
     public Statistics MatchStats;
+
+    public bool isUserControlled;
 
     [HideInInspector]
     public bool IsPlaceholder;

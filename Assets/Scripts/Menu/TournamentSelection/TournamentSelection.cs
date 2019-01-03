@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class TournamentSelection : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class TournamentSelection : MonoBehaviour
     List<GameObject> itemList;
     List<TournamentData> fileList;
 
-
     private void Start()
     {
         itemList = new List<GameObject>();
@@ -21,6 +21,12 @@ public class TournamentSelection : MonoBehaviour
     }
 
     public void Populate()
+    {
+        fileList = new List<TournamentData>(Resources.LoadAll<TournamentData>("Tournaments"));
+        SortCarousel("StarsRequired");
+    }
+
+    void SortCarousel(string _param)
     {
         if (itemList.Count > 0)
         {
@@ -31,7 +37,11 @@ public class TournamentSelection : MonoBehaviour
             itemList.Clear();
         }
 
-        fileList = new List<TournamentData>(Resources.LoadAll<TournamentData>("Tournaments"));
+        switch (_param)
+        {
+            case "StarsRequired": fileList = fileList.OrderBy(TournamentData => TournamentData.StarsRequired).ToList(); break;
+            case "MostTeams": fileList = fileList.OrderByDescending(TournamentData => TournamentData.Teams.Count).ToList(); break;
+        }
 
         foreach (TournamentData file in fileList)
         {
