@@ -32,8 +32,7 @@ public class TournamentLoad : MonoBehaviour
         }
 
         fileList = new List<TournamentData>(Resources.LoadAll<TournamentData>("Tournaments"));
-
-        foreach(TournamentData file in fileList)
+        foreach (TournamentData file in fileList)
         {
             TournamentLoadItem item = Instantiate(fileTemplate, content);
             item.Populate(file);

@@ -19,6 +19,10 @@ public class TournamentCreationMatchTeam : MonoBehaviour
         data = _data;
         nameLabel.text = data.Team.Name;
         frameImage.color = data.Team.PrimaryColor;
+        if(_data.Team.IsPlaceholder)
+        {
+            nameLabel.color = data.Team.SecondaryColor;
+        }
     }
 
     public void ClickHandler()

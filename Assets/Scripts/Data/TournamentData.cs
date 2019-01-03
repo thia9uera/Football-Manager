@@ -36,6 +36,7 @@ public class TournamentData : ScriptableObject
         public TeamMatchData HomeTeam;
         public TeamMatchData AwayTeam;
         public bool isPlayed;
+        public int Round;
     }
 
     [System.Serializable]

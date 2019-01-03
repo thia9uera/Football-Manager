@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TournamentCreation : MonoBehaviour
 {
@@ -18,9 +19,13 @@ public class TournamentCreation : MonoBehaviour
 
     public List<TeamData> TeamList;
 
+    public Button BtnCreateTournament;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
+        Edit.SetActive(false);
+        Load.SetActive(true);
     }
 
     public void AddTeam(TeamData _team)
@@ -74,8 +79,6 @@ public class TournamentCreation : MonoBehaviour
 
     public void LoadTournaments()
     {
-        Championship.DataList.Clear();
-        Championship.ClearMatchList();
         TeamList.Clear();
 
         Edit.SetActive(false);
@@ -94,12 +97,14 @@ public class TournamentCreation : MonoBehaviour
         Options.TypeDropDown.value = (int)_data.Type;
         Options.StarsRequired.StarsRequired = _data.StarsRequired;
 
+        //if (_data.Teams.Count > 0) Options.TeamsAmount.TeamsAmount = _data.Teams.Count;
+        //else Options.TeamsAmount.TeamsAmount = 2;
+
+        BtnCreateTournament.interactable = false;
         TeamList = new List<TeamData>();
-        if(_data.Teams.Count > 0)
-        {
-            TeamList = new List<TeamData>(_data.Teams);
-        }
-        
+        TeamList = new List<TeamData>(_data.Teams);
+        Championship.CreateRounds();
+
         foreach(TeamData team in TeamList)
         {
             if (AvailableTeams.Contains(team)) AvailableTeams.Remove(team);
@@ -108,10 +113,7 @@ public class TournamentCreation : MonoBehaviour
 
         if((TournamentData.TournamentType)Options.TypeDropDown.value == TournamentData.TournamentType.Championship)
         {
-            Championship.DataList.Clear();
-            Championship.ClearMatchList();
-
-            Championship.CreateMatchData();
+            //TODO show Championship tables
         }
     }
 }

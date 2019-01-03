@@ -9,6 +9,7 @@ public class TournamentCreationOptions : MonoBehaviour
     public TMP_Dropdown TypeDropDown;
     public TournamentCreationTeamList TeamList;
     public TournamentCreationStars StarsRequired;
+    public TournamentCreationTeamsAmount TeamsAmount;
 
     void Start ()
     {

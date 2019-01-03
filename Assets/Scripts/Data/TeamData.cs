@@ -10,8 +10,8 @@ public class TeamData : ScriptableObject
     public string Tag;
 
     [Space(10)]
-    public Color PrimaryColor;
-    public Color SecondaryColor;
+    public Color PrimaryColor = Color.white;
+    public Color SecondaryColor = Color.red;
 
     public enum TeamFormation
     {
@@ -75,6 +75,9 @@ public class TeamData : ScriptableObject
 
     public Statistics LifeTimeStats;
     public Statistics MatchStats;
+
+    [HideInInspector]
+    public bool IsPlaceholder;
 
     public Team_Strategy GetStrategy()
     {

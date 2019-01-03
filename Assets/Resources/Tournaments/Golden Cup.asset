@@ -17,10 +17,54 @@ MonoBehaviour:
   Teams:
   - {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
   - {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
+  - {fileID: 11400000, guid: 2a688c23e8cc9fb43b34394686700b83, type: 2}
+  - {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
   StarsRequired: 3
   Matches:
   - HomeTeam:
       Team: {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
+    Round: 0
+  - HomeTeam:
+      Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 2a688c23e8cc9fb43b34394686700b83, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
+    Round: 0
+  - HomeTeam:
+      Team: {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 2a688c23e8cc9fb43b34394686700b83, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
+    Round: 1
+  - HomeTeam:
+      Team: {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
       Score: 0
       Scorers: []
       YellowCards: []
@@ -32,6 +76,35 @@ MonoBehaviour:
       YellowCards: []
       RedCards: []
     isPlayed: 0
+    Round: 1
+  - HomeTeam:
+      Team: {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 2a688c23e8cc9fb43b34394686700b83, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
+    Round: 2
+  - HomeTeam:
+      Team: {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
+      Score: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
+    Round: 2
   TeamScoreboard:
   - Team: {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
     Points: 0
@@ -42,6 +115,22 @@ MonoBehaviour:
     YellowCardList: []
     RedCarList: []
   - Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
+    Points: 0
+    GoalsScored: 0
+    GoalsAgainst: 0
+    TotalYellowCards: 0
+    TotalRedCards: 0
+    YellowCardList: []
+    RedCarList: []
+  - Team: {fileID: 11400000, guid: 2a688c23e8cc9fb43b34394686700b83, type: 2}
+    Points: 0
+    GoalsScored: 0
+    GoalsAgainst: 0
+    TotalYellowCards: 0
+    TotalRedCards: 0
+    YellowCardList: []
+    RedCarList: []
+  - Team: {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
     Points: 0
     GoalsScored: 0
     GoalsAgainst: 0
