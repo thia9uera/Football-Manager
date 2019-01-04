@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG REG 21
   m_EditorClassIdentifier: 
-  FirstName: ZAG-LD
-  LastName: LD
+  FirstName: Bruninho
+  LastName: Bombinha
   Zone: 3
   Position: 1
   Strategy: 0
@@ -36,6 +36,7 @@ MonoBehaviour:
   Vision: 78
   Stability: 74
   fatigue: 99.81481
+  Team: {fileID: 11400000, guid: a6b678bd5e206e24e94c4b70f01a3ae9, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1

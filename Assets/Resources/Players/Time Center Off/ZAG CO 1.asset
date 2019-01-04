@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -35,6 +36,7 @@ MonoBehaviour:
   Vision: 81
   Stability: 74
   fatigue: 99.81481
+  Team: {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
@@ -64,6 +66,7 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
+    TotalPresence: 0
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -79,3 +82,4 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
+    TotalPresence: 0

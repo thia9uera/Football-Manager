@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "Tournament", menuName = "Tournament Data", order = 2)]
 public class TournamentData : ScriptableObject
@@ -128,7 +129,8 @@ public class TournamentData : ScriptableObject
                 UpdateTeamStats(team, _away, _home);
             }
         }
-        SetDirty();
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
     }
 
     void UpdateTeamStats(TeamTournamentData _data, TeamMatchData _team, TeamMatchData _opponent)

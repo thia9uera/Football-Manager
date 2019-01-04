@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG REG 85
   m_EditorClassIdentifier: 
-  FirstName: ZAG-LCD
-  LastName: LCD
+  FirstName: Berinja
+  LastName: Fettucini
   Zone: 4
   Position: 1
   Strategy: 0
@@ -36,6 +36,7 @@ MonoBehaviour:
   Vision: 83
   Stability: 50
   fatigue: 96.72834
+  Team: {fileID: 0}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1

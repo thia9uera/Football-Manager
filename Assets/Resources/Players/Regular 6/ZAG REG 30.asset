@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG REG 30
   m_EditorClassIdentifier: 
-  FirstName: ZAG-RCDM
-  LastName: RCDM
+  FirstName: Milena
+  LastName: Moura
   Zone: 11
   Position: 1
   Strategy: 0
@@ -36,6 +36,7 @@ MonoBehaviour:
   Vision: 73
   Stability: 70
   fatigue: 96.296234
+  Team: {fileID: 0}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1

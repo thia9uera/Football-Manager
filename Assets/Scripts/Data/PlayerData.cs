@@ -88,7 +88,7 @@ public class PlayerData : ScriptableObject
     //Attributes that change during gameplay
     [SerializeField]
     private float fatigue = 100f;
-    [HideInInspector]
+
     public float Fatigue
     {
         get
@@ -101,6 +101,8 @@ public class PlayerData : ScriptableObject
             if (fatigue <= 0) fatigue = 0.01f;
         }
     }
+
+    public TeamData Team;
 
     private enum AltPosition
     {
@@ -236,7 +238,7 @@ public class PlayerData : ScriptableObject
     {
         int total = 0;
 
-        total += Goalkeeping;
+        //total += Goalkeeping;
         total += Passing;
         total += Dribbling;
         total += Crossing;
@@ -244,8 +246,8 @@ public class PlayerData : ScriptableObject
         total += Blocking;
         total += Shooting;
         total += Heading;
-        total += Freekick;
-        total += Penalty;
+        //total += Freekick;
+        //total += Penalty;
         total += Speed;
         total += Strength;
         total += Agility;
@@ -254,36 +256,34 @@ public class PlayerData : ScriptableObject
         total += Vision;
         total += Stability;
 
-        if(Position == PlayerPosition.Goalkeeper)
+        switch (Position)
         {
-            total += Goalkeeping;
-            total += Agility;
-            total = total / 19;
-        }
-        else if (Position == PlayerPosition.Defender)
-        {
-            total += Tackling;
-            total += Blocking;
-            total = total / 19;
-        }
-        else if(Position == PlayerPosition.Midfielder)
-        {
-            total += Dribbling;
-            total += Passing;
-            total += Crossing;
-            total = total / 20;
-        }
-        else if (Position == PlayerPosition.Forward)
-        {
-            total += Dribbling;
-            total += Passing;
-            total += Shooting;
-            total += Heading;
-            total = total / 21;
-        }
-        else
-        {
-            total = total / 17;
+            case PlayerPosition.Goalkeeper:
+                total += Goalkeeping;
+                total += Agility;
+                total = total / 16;
+                break;
+            case PlayerPosition.Defender:
+                total += Tackling;
+                total += Blocking;
+                total = total / 16;
+                break;
+            case PlayerPosition.Midfielder:
+                total += Dribbling;
+                total += Passing;
+                total += Crossing;
+                total = total / 17;
+                break;
+            case PlayerPosition.Forward:
+                total += Dribbling;
+                total += Passing;
+                total += Shooting;
+                total += Heading;
+                total = total / 18;
+                break;
+            default:
+                total = total / 14;
+                break;
         }
 
         return total;

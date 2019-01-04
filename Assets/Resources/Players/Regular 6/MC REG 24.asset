@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 24
   m_EditorClassIdentifier: 
-  FirstName: MC-CAM
-  LastName: CAM
+  FirstName: Julio
+  LastName: Kamikaze
   Zone: 20
   Position: 2
   Strategy: 0
@@ -36,6 +36,7 @@ MonoBehaviour:
   Vision: 80
   Stability: 75
   fatigue: 97.34567
+  Team: {fileID: 11400000, guid: e586fc56914d3e7439865a2e72177601, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1

@@ -4,15 +4,17 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: __TEST
   m_EditorClassIdentifier: 
-  FirstName: Amarello
-  LastName: 
+  FirstName: Ana
+  LastName: Bob Esponja
+  Zone: 0
   Position: 8
   Strategy: 2
   Perk: {fileID: 0}
@@ -33,9 +35,8 @@ MonoBehaviour:
   Teamwork: 70
   Vision: 100
   Stability: 50
-  Fatigue: 100
-  Morale: 50
-  AssignedPosition: 8
+  fatigue: 100
+  Team: {fileID: 0}
   Prob_DefPosition: 0.75
   Prob_OffPosition: 3
   Prob_LeftPos: 1
@@ -49,3 +50,36 @@ MonoBehaviour:
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
+  Prob_LongPass: 0
+  LifeTimeStats:
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+    TotalPresence: 0
+  MatchStats:
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
+    TotalSaves: 0
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
+    TotalHeadersMissed: 0
+    TotalDribblesMissed: 0
+    TotalCrossesMissed: 0
+    TotalPresence: 0

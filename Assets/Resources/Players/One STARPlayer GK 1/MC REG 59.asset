@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 59
   m_EditorClassIdentifier: 
-  FirstName: MC-CM
-  LastName: CM
+  FirstName: "Andr\xE9"
+  LastName: 3 Filtros
   Zone: 15
   Position: 2
   Strategy: 0
@@ -36,6 +36,7 @@ MonoBehaviour:
   Vision: 69
   Stability: 68
   fatigue: 99.81481
+  Team: {fileID: 11400000, guid: 9e55606eaeaf14141b8df26301938c72, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1

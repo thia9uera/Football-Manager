@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 10
   m_EditorClassIdentifier: 
-  FirstName: MC-RCDM
-  LastName: RCDM
+  FirstName: "Andr\xE9"
+  LastName: Nunes
   Zone: 11
   Position: 2
   Strategy: 0
@@ -36,6 +36,7 @@ MonoBehaviour:
   Vision: 82
   Stability: 79
   fatigue: 96.72834
+  Team: {fileID: 11400000, guid: b765618660aca0341b9350b061322ac0, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
   Prob_LeftPos: 1
