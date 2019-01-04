@@ -9,12 +9,6 @@ public class MatchController : MonoBehaviour
     public TeamData HomeTeam;
     public TeamData AwayTeam;
 
-    public MatchScoreView Score;
-    public MatchFieldView Field;
-    public MatchTeamView HomeTeamSquad;
-    public MatchTeamView AwayTeamSquad;
-    public MatchNarration Narration;
-
     //Names given by Home Team perspective
     public enum FieldZone
     { 
@@ -121,9 +115,6 @@ public class MatchController : MonoBehaviour
 
     LocalizationData localization;
 
-    [SerializeField]
-    TextMeshProUGUI version;
-
     [Range(1, 100)]
     public int MatchSpeed = 1;
 
@@ -170,8 +161,6 @@ public class MatchController : MonoBehaviour
         fatigueHigh = modifiers.FatigueHigh;
         fatigueRecoverHalfTime = modifiers.FatigueRecoverHalfTime;
         counterAttackChance = modifiers.CounterAttackChance;
-
-        version.text = "v." + Application.version;
     }
 
     public void Populate(TeamData _homeTeam, TeamData _awayTeam)
@@ -182,11 +171,11 @@ public class MatchController : MonoBehaviour
         AttackingTeam = HomeTeam;
         DefendingTeam = AwayTeam;
 
-        HomeTeamSquad.Populate(_homeTeam, true);
-        AwayTeamSquad.Populate(_awayTeam, true);
-        Score.UpdateTime(matchTime);
-        Score.UpdateScore(homeTeamScore, awayTeamScore);
-        Score.Populate(_homeTeam.Name, homeTeamScore, _homeTeam.PrimaryColor, _awayTeam.Name, awayTeamScore, _awayTeam.PrimaryColor);
+        screen.HomeTeamSquad.Populate(_homeTeam, true);
+        screen.AwayTeamSquad.Populate(_awayTeam, true);
+        screen.Score.UpdateTime(matchTime);
+        screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
+        screen.Score.Populate(_homeTeam.Name, homeTeamScore, _homeTeam.PrimaryColor, _awayTeam.Name, awayTeamScore, _awayTeam.PrimaryColor);
     }
 
     public void Populate(TournamentData.MatchData _data, bool _simulateTournament = false)
@@ -199,11 +188,11 @@ public class MatchController : MonoBehaviour
         AttackingTeam = HomeTeam;
         DefendingTeam = AwayTeam;
 
-        HomeTeamSquad.Populate(HomeTeam, true);
-        AwayTeamSquad.Populate(AwayTeam, true);
-        Score.UpdateTime(matchTime);
-        Score.UpdateScore(homeTeamScore, awayTeamScore);
-        Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
+        screen.HomeTeamSquad.Populate(HomeTeam, true);
+        screen.AwayTeamSquad.Populate(AwayTeam, true);
+        screen.Score.UpdateTime(matchTime);
+        screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
+        screen.Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
 
         startBtn.SetLabelStart();
 
@@ -244,8 +233,8 @@ public class MatchController : MonoBehaviour
         //if(matchTime > 0 && matchTime < 90) PauseGame(false);
         startBtn.SetLabelStart();
 
-        HomeTeamSquad.Populate(HomeTeam);
-        AwayTeamSquad.Populate(AwayTeam);
+        screen.HomeTeamSquad.Populate(HomeTeam);
+        screen.AwayTeamSquad.Populate(AwayTeam);
     }
 
     void Reset()
@@ -262,16 +251,16 @@ public class MatchController : MonoBehaviour
         isFreekickTaken = false;
         isGoalAnnounced = false;
         isScorerAnnounced = false;
-        if (HomeTeamSquad != null)
+        if (screen.HomeTeamSquad != null)
         {
-            HomeTeamSquad.ResetFatigue();
-            AwayTeamSquad.ResetFatigue();
-            Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
+            screen.HomeTeamSquad.ResetFatigue();
+            screen.AwayTeamSquad.ResetFatigue();
+            screen.Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
         }
 
         matchEvent = MatchEvent.None;
-        if(!isSimulating) Narration.Reset();
-        Score.UpdateTime(matchTime);    
+        if(!isSimulating) screen.Narration.Reset();
+        screen.Score.UpdateTime(matchTime);    
     }
 
     public void PauseGame(bool _isPaused)
@@ -310,7 +299,7 @@ public class MatchController : MonoBehaviour
 
     void StartSimulation(bool _hideMain=false)
     {
-        Narration.Reset();
+        screen.Narration.Reset();
         SetTotalMatches();
         isSimulating = true;
 
@@ -339,8 +328,8 @@ public class MatchController : MonoBehaviour
             Color color = Color.gray;
             if (awayTeamScore > homeTeamScore) color = AwayTeam.PrimaryColor;
             else if (homeTeamScore > awayTeamScore) color = HomeTeam.PrimaryColor;
-            Narration.UpdateNarration(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name, color);
-            Narration.UpdateNarration(totalMatches + " PARTIDAS SIMULADAS.", Color.gray);
+            screen.Narration.UpdateNarration(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name, color);
+            screen.Narration.UpdateNarration(totalMatches + " PARTIDAS SIMULADAS.", Color.gray);
         }
     }
 
@@ -362,7 +351,7 @@ public class MatchController : MonoBehaviour
         //startBtn.SetActive(false);
         
         CurrentZone = lastZone =  FieldZone.CM;
-        Field.UpdateFieldArea((int)CurrentZone);
+        screen.Field.UpdateFieldArea((int)CurrentZone);
 
         isGameOn = true;
 
@@ -388,7 +377,7 @@ public class MatchController : MonoBehaviour
         CurrentZone = lastZone = FieldZone.CM;
         matchEvent = MatchEvent.None;
         attackingBonus = 1f;
-        Field.UpdateFieldArea((int)CurrentZone);
+        screen.Field.UpdateFieldArea((int)CurrentZone);
 
         keepAttacker = false;
         keepDefender = false;
@@ -478,6 +467,7 @@ public class MatchController : MonoBehaviour
             TournamentData.MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
             if(nextMatch != null)
             {
+                screen.Simulation.UpdateFeedback(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name);
                 Populate(nextMatch, isSimulatingTournament);
                 StartSimulation(true);               
             }
@@ -511,12 +501,12 @@ public class MatchController : MonoBehaviour
     //MAIN CONTROLLING FUNCTION
     void DefineActions()
     {
-        if(!isSimulating) Field.UpdateFieldArea((int)CurrentZone);
+        if(!isSimulating) screen.Field.UpdateFieldArea((int)CurrentZone);
 
         if(!isSimulating)
         {
-            HomeTeamSquad.UpdateFatigue();
-            AwayTeamSquad.UpdateFatigue();
+            screen.HomeTeamSquad.UpdateFatigue();
+            screen.AwayTeamSquad.UpdateFatigue();
         }
 
 
@@ -531,7 +521,7 @@ public class MatchController : MonoBehaviour
                     DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
                     if (AttackingTeam == HomeTeam) homeTeamScore++;
                     else awayTeamScore++;
-                    if(!isSimulating) Score.UpdateScore(homeTeamScore, awayTeamScore);
+                    if(!isSimulating) screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
                     attackingPlayer.MatchStats.TotalGoals++;
                     AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
 
@@ -750,8 +740,8 @@ public class MatchController : MonoBehaviour
 
             if (!isSimulating)
             {
-                HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
-                AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+                screen.HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+                screen.AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
             }         
 
             return;
@@ -773,7 +763,7 @@ public class MatchController : MonoBehaviour
         }
 
         matchTime++;
-        if(!isSimulating) Score.UpdateTime(matchTime);
+        if(!isSimulating) screen.Score.UpdateTime(matchTime);
 
         //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(CurrentZone);
@@ -1633,12 +1623,12 @@ public class MatchController : MonoBehaviour
         if (isSimulating || _text == lastNarration) return;
 
         lastNarration = _text;
-        if (_team == null) Narration.UpdateNarration(_text, _variations, null, CurrentZone);
+        if (_team == null) screen.Narration.UpdateNarration(_text, _variations, null, CurrentZone);
         else
         {
             FieldZone zone = GetTeamZone(AttackingTeam);
             if (!lastActionSuccessful) zone = GetTeamZone(DefendingTeam);
-            Narration.UpdateNarration(_text, _variations, _team, zone);
+            screen.Narration.UpdateNarration(_text, _variations, _team, zone);
         }
     }
 
@@ -2627,11 +2617,5 @@ public class MatchController : MonoBehaviour
         float value = 0.5f + (0.5f *(_fatigue/100));
         //float value = 1f;
         return value;
-    }
-
-    float fakeTime = 0;
-    private void Update()
-    {
-        version.text = "v." + Application.version + "  " + Mathf.FloorToInt(1.0f/Time.smoothDeltaTime);
     }
 }

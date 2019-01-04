@@ -172,6 +172,7 @@
     <Compile Include="Assets\Scripts\Match\MatchPlayerView.cs" />
     <Compile Include="Assets\Scripts\Match\MatchScoreView.cs" />
     <Compile Include="Assets\Scripts\Match\MatchScreen.cs" />
+    <Compile Include="Assets\Scripts\Match\MatchSimulationScreen.cs" />
     <Compile Include="Assets\Scripts\Match\MatchSpeedSlider.cs" />
     <Compile Include="Assets\Scripts\Match\MatchStartButton.cs" />
     <Compile Include="Assets\Scripts\Match\MatchTeamView.cs" />
