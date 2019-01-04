@@ -448,7 +448,6 @@ public class MatchController : MonoBehaviour
             if (matchesPlayed == totalMatches)
             {
                 EndSimulation();
-                print(HomeTeam.Name + "  " + homeTeamScore + "  x  " + awayTeamScore +  "  "  + AwayTeam.Name);
             }
             else
             {
