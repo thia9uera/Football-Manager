@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: ATA REG 23
+  m_Name: MC REG 33
   m_EditorClassIdentifier: 
-  FirstName: Beatrize
-  LastName: Zueira
+  FirstName: "Alu\xEDzio"
+  LastName: Pipico
   Zone: 27
-  Position: 3
+  Position: 2
   Strategy: 0
   Perk: {fileID: 0}
   Goalkeeping: 12
-  Passing: 81
-  Dribbling: 70
-  Crossing: 65
-  Tackling: 50
-  Blocking: 50
-  Shooting: 77
-  Heading: 64
-  Freekick: 63
-  Penalty: 59
-  Speed: 72
-  Strength: 71
-  Agility: 70
-  Stamina: 81
-  Teamwork: 85
-  Vision: 81
-  Stability: 78
-  fatigue: 99.81481
+  Passing: 88
+  Dribbling: 77
+  Crossing: 94
+  Tackling: 66
+  Blocking: 69
+  Shooting: 83
+  Heading: 50
+  Freekick: 23
+  Penalty: 45
+  Speed: 75
+  Strength: 68
+  Agility: 83
+  Stamina: 76
+  Teamwork: 76
+  Vision: 89
+  Stability: 74
+  fatigue: 82.89475
   Team: {fileID: 11400000, guid: 222e082c4b3fc074897eba2d3e2390d7, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 0
-    TotalCrosses: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
-    TotalDribbles: 0
-    TotalGoals: 0
+    TotalPasses: 34
+    TotalCrosses: 21
+    TotalShots: 26
+    TotalHeaders: 2
+    TotalFaults: 13
+    TotalTackles: 78
+    TotalDribbles: 10
+    TotalGoals: 10
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 0
+    TotalShotsMissed: 4
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 0
+    TotalPresence: 340
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0

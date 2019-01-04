@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
-  m_Name: Regular 8
+  m_Name: Wing Offensive
   m_EditorClassIdentifier: 
-  Name: Regatanga
-  Tag: REG8
+  Name: Wing Offensive
+  Tag: WNG
   PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
   SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
   Formation: 2
-  Strategy: 0
+  Strategy: 4
   Squad:
   - {fileID: 11400000, guid: 01de6f4d373131143be6ae593de3a071, type: 2}
   - {fileID: 11400000, guid: 5c61a6e34498c2342850b109a197c5a3, type: 2}
@@ -36,24 +36,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89cc1ad71c809fc44be232f8952abff0, type: 2}
   Captain: {fileID: 11400000, guid: cc44b5d6a5c7e804cbbf2f3a04d44f78, type: 2}
   Stars: 0
-  isUserControlled: 0
   LifeTimeStats:
-    TotalWins: 7
-    TotalLosts: 3
-    TotalDraws: 3
-    TotalGoals: 26
-    TotalGoalsAgainst: 26
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalSteals: 0
-    TotalPasses: 0
-    TotalLongPasses: 0
-    TotalPassesMissed: 0
-    TotalBoxCrosses: 0
-    TotalFaults: 0
+    TotalWins: 29
+    TotalLosts: 42
+    TotalDraws: 7
+    TotalGoals: 123
+    TotalGoalsAgainst: 158
+    TotalShots: 238
+    TotalHeaders: 13
+    TotalSteals: 198
+    TotalPasses: 1144
+    TotalLongPasses: 380
+    TotalPassesMissed: 19
+    TotalBoxCrosses: 85
+    TotalFaults: 279
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 0
+    TotalCounterAttacks: 58
   MatchStats:
     TotalWins: 0
     TotalLosts: 0
@@ -71,4 +70,12 @@ MonoBehaviour:
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0
+  isUserControlled: 0
   IsPlaceholder: 0
+  MatchData:
+    Team: {fileID: 11400000}
+    Score: 0
+    Scorers: []
+    YellowCards: []
+    RedCards: []
+    Points: 0

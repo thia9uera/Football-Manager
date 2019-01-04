@@ -17,7 +17,7 @@ MonoBehaviour:
   PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
   SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
   Formation: 2
-  Strategy: 0
+  Strategy: 5
   Squad:
   - {fileID: 11400000, guid: 6b923120f86d25d4ba7912ade32de1ee, type: 2}
   - {fileID: 11400000, guid: 1cd9262e641926c4498d2a75a5d5cfa6, type: 2}
@@ -39,22 +39,22 @@ MonoBehaviour:
   Captain: {fileID: 0}
   Stars: 0
   LifeTimeStats:
-    TotalWins: 18
-    TotalLosts: 25
-    TotalDraws: 7
-    TotalGoals: 110
-    TotalGoalsAgainst: 34
-    TotalShots: 155
-    TotalHeaders: 3
-    TotalSteals: 39
-    TotalPasses: 420
-    TotalLongPasses: 134
-    TotalPassesMissed: 5
-    TotalBoxCrosses: 44
-    TotalFaults: 59
+    TotalWins: 0
+    TotalLosts: 1
+    TotalDraws: 0
+    TotalGoals: 1
+    TotalGoalsAgainst: 3
+    TotalShots: 5
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 12
+    TotalLongPasses: 2
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 10
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 24
+    TotalCounterAttacks: 3
   MatchStats:
     TotalWins: 0
     TotalLosts: 0
@@ -76,15 +76,9 @@ MonoBehaviour:
   IsPlaceholder: 0
   MatchData:
     Team: {fileID: 11400000}
-    Score: 7
+    Score: 1
     Scorers:
-    - {fileID: 11400000, guid: e83eec39b44b21d478b91ede83c1927d, type: 2}
-    - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
-    - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
-    - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
-    - {fileID: 11400000, guid: 1ab154db865e3da40837555d8f43962e, type: 2}
-    - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
-    - {fileID: 11400000, guid: e83eec39b44b21d478b91ede83c1927d, type: 2}
+    - {fileID: 11400000, guid: 1a79d37a28df25a439d48f9ac85f892a, type: 2}
     YellowCards: []
     RedCards: []
-    Points: 3
+    Points: 0

@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: ATA REG 24
+  m_Name: MC REG 9
   m_EditorClassIdentifier: 
-  FirstName: "Livi\xE3o"
-  LastName: Picanha
-  Zone: 25
-  Position: 3
+  FirstName: Roseli
+  LastName: Merda
+  Zone: 13
+  Position: 2
   Strategy: 0
   Perk: {fileID: 0}
-  Goalkeeping: 8
-  Passing: 78
-  Dribbling: 72
-  Crossing: 56
-  Tackling: 40
-  Blocking: 38
-  Shooting: 76
-  Heading: 81
-  Freekick: 77
-  Penalty: 79
-  Speed: 78
-  Strength: 79
-  Agility: 81
-  Stamina: 73
-  Teamwork: 80
-  Vision: 71
-  Stability: 74
-  fatigue: 97.05479
+  Goalkeeping: 20
+  Passing: 79
+  Dribbling: 88
+  Crossing: 93
+  Tackling: 73
+  Blocking: 80
+  Shooting: 80
+  Heading: 60
+  Freekick: 63
+  Penalty: 60
+  Speed: 67
+  Strength: 77
+  Agility: 72
+  Stamina: 81
+  Teamwork: 70
+  Vision: 67
+  Stability: 70
+  fatigue: 100
   Team: {fileID: 11400000, guid: 222e082c4b3fc074897eba2d3e2390d7, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,25 +52,25 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 0
-    TotalCrosses: 0
-    TotalShots: 0
+    TotalPasses: 96
+    TotalCrosses: 46
+    TotalShots: 24
     TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
-    TotalDribbles: 0
-    TotalGoals: 0
+    TotalFaults: 25
+    TotalTackles: 151
+    TotalDribbles: 9
+    TotalGoals: 10
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
+    TotalPassesMissed: 2
+    TotalShotsMissed: 6
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 0
+    TotalPresence: 507
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
-    TotalShots: 1
+    TotalShots: 0
     TotalHeaders: 0
     TotalFaults: 0
     TotalTackles: 0

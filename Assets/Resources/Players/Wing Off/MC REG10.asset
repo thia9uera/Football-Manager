@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
-  m_Name: MC REG 9
+  m_Name: MC REG10
   m_EditorClassIdentifier: 
-  FirstName: Roseli
-  LastName: Merda
-  Zone: 13
+  FirstName: "Fabr\xEDcio"
+  LastName: Portaluppi
+  Zone: 17
   Position: 2
   Strategy: 0
   Perk: {fileID: 0}
-  Goalkeeping: 20
-  Passing: 69
-  Dribbling: 58
-  Crossing: 73
-  Tackling: 73
-  Blocking: 73
-  Shooting: 68
-  Heading: 60
-  Freekick: 63
-  Penalty: 60
-  Speed: 67
-  Strength: 77
-  Agility: 72
+  Goalkeeping: 17
+  Passing: 79
+  Dribbling: 79
+  Crossing: 94
+  Tackling: 69
+  Blocking: 61
+  Shooting: 88
+  Heading: 81
+  Freekick: 29
+  Penalty: 37
+  Speed: 85
+  Strength: 71
+  Agility: 80
   Stamina: 81
-  Teamwork: 70
-  Vision: 67
-  Stability: 70
+  Teamwork: 76
+  Vision: 78
+  Stability: 76
   fatigue: 99.81481
   Team: {fileID: 11400000, guid: 222e082c4b3fc074897eba2d3e2390d7, type: 2}
   Prob_DefPosition: 1
