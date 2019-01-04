@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class TournamentSelection : MonoBehaviour
+public class TournamentSelection : BaseScreen
 {
     [SerializeField]
     TournamentCard cardTemplate;
@@ -14,9 +14,9 @@ public class TournamentSelection : MonoBehaviour
     List<GameObject> itemList;
     List<TournamentData> fileList;
 
-    private void Start()
+    public override void Show()
     {
-        itemList = new List<GameObject>();
+        base.Show();
         Populate();
     }
 
@@ -28,6 +28,7 @@ public class TournamentSelection : MonoBehaviour
 
     void SortCarousel(string _param)
     {
+        if (itemList == null) itemList = new List<GameObject>();
         if (itemList.Count > 0)
         {
             foreach (GameObject go in itemList)
@@ -49,5 +50,10 @@ public class TournamentSelection : MonoBehaviour
             item.Populate(file);
             itemList.Add(item.gameObject);
         }
+    }
+
+    public void CreateNew()
+    {
+        MainController.Instance.Screens.MainMenu.ShowSubmenu(ScreenType.TournamentCreation);
     }
 }

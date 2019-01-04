@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class BaseScreen : MonoBehaviour
 {
-    public MainController.ScreenType Type;
+    public enum ScreenType
+    {
+        None,
+        MainMenu,
+        TournamentHub,
+        Match,
+        EditSquad,
+        TournamentCreation,
+        TournamentSelection,
+    }
+
+    public ScreenType Type;
 
     public virtual void Show()
     {

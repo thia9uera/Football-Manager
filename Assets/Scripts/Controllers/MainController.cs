@@ -9,10 +9,8 @@ public class MainController : MonoBehaviour
     public LocalizationData Localization;
     public MatchController Match;
     public SquadSelectionView SquadSelection;
-    public TournamentHubScreen TournamentHub;
-    public List<BaseScreen> ScreenList;
-    ScreenType prevScreen;
-    ScreenType currentScreen;
+
+    public ScreenController Screens;
 
     public Team_StrategyData TeamStrategyData;
     public Player_StrategyData PlayerStrategyData;
@@ -23,15 +21,6 @@ public class MainController : MonoBehaviour
 
     public TournamentData CurrentTournament;
     public TournamentData.MatchData CurrentMatch;
-
-    public enum ScreenType
-    {
-        None,
-        MainMenu,
-        TournamentHub,
-        Match,
-        EditSquad,
-    }
 
     public void Awake()
     {
@@ -47,7 +36,7 @@ public class MainController : MonoBehaviour
         //TeamData home = Resources.Load<TeamData>("Teams/Crossing");
         //TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
         //if(Match != null) Match.Populate(home, away);
-        ShowScreen(ScreenType.MainMenu);
+        ShowScreen(BaseScreen.ScreenType.MainMenu);
     }
 
     public void EditSquad(TeamData _team)
@@ -64,23 +53,13 @@ public class MainController : MonoBehaviour
         Match.UpdateTeams(_in, _out);      
     }
 
-    public void ShowScreen(ScreenType _type)
+    public void ShowScreen(BaseScreen.ScreenType _type)
     {
-        prevScreen = currentScreen;
-        foreach (BaseScreen screen in ScreenList)
-        {
-            if (screen.Type == _type)
-            {
-                screen.Show();
-                currentScreen = screen.Type;
-            }
-            else screen.Hide();
-        }
-        if (prevScreen == ScreenType.None) prevScreen = currentScreen;
+        Screens.ShowScreen(_type);
     }
 
     public void ShowPreviousScreen()
     {
-        ShowScreen(prevScreen);
+        Screens.ShowPreviousScreen();
     }
 }

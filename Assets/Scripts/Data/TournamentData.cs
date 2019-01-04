@@ -147,20 +147,36 @@ public class TournamentData : ScriptableObject
         team.RedCarList.AddRange(_team.RedCards);
     }
 
-    public MatchData GetNextMatch()
+    public MatchData GetNextMatch(bool _isSimulating)
     {
         MatchData data = null;
-
-        foreach(MatchData match in Matches)
+        foreach (MatchData match in Matches)
         {
-            if(match.Round == CurrentRound && !match.isPlayed)
+            if (_isSimulating)
             {
-                data = match;
-                MainController.Instance.CurrentMatch = match;
+                if (!match.isPlayed)
+                {
+                    data = match;
+                }
+            }
+            else
+            {
+                if (match.Round == CurrentRound && !match.isPlayed)
+                {
+                    data = match;
+                }
             }
         }
 
-        if (data == null) CurrentRound++;
+        if (data == null)
+        {
+            if (!_isSimulating) CurrentRound++;
+            else CurrentRound = TotalRounds;
+        }
+        else
+        {
+            MainController.Instance.CurrentMatch = data;
+        }
 
         return data;
     }

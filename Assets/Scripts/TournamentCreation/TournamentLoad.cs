@@ -15,13 +15,13 @@ public class TournamentLoad : MonoBehaviour
 
     void Start()
     {
-        itemList = new List<GameObject>();
         LoadFiles();
     }
 
 
     public void LoadFiles()
     {
+        if (itemList == null) itemList = new List<GameObject>();
         if(itemList.Count > 0)
         {
             foreach(GameObject go in itemList)

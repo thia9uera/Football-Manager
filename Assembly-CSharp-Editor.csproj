@@ -93,6 +93,14 @@
     <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SAGoogleSpreadsheetMenu.cs" />
     <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SASettings.cs" />
     <Compile Include="Assets\SAGoogleSpreadsheet\Editor\SASheetDataGenerator.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\DeprecatedRemover.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UIDissolveEditor.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UIEffectCapturedImageEditor.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UIEffectEditor.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UIGradientEditor.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UIShadowEditor.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UIShinyEditor.cs" />
+    <Compile Include="Assets\VFX\UIEffect\Scripts\Editor\UITransitionEffectEditor.cs" />
     <None Include="Assets\I2\Localization\Scripts\Editor\Unity XCode\Xcode.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/thiago/Documents/GitHub/Football-Manager/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

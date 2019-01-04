@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class MainMenu : BaseScreen
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    List<BaseScreen> SubmenuList;
+
+    ScreenType prevScreen;
+    ScreenType currentScreen;
+
+    public override void Show()
     {
-        
+        base.Show();
+        ShowSubmenu(ScreenType.TournamentSelection);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowSubmenu(ScreenType _type)
     {
-        
+        print(_type.ToString());
+        prevScreen = currentScreen;
+        foreach (BaseScreen screen in SubmenuList)
+        {
+            if (screen.Type == _type)
+            {
+                screen.Show();
+                currentScreen = screen.Type;
+            }
+            else screen.Hide();
+        }
+        if (prevScreen == ScreenType.None) prevScreen = currentScreen;
+    }
+
+    public void PrevSubmenu()
+    {
+        ShowSubmenu(prevScreen);
     }
 }

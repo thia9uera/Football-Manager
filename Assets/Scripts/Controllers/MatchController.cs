@@ -130,6 +130,7 @@ public class MatchController : MonoBehaviour
     int totalMatches = 1;
     int matchesPlayed;
     bool isSimulating;
+    bool isSimulatingTournament;
 
     [SerializeField]
     MatchStartButton startBtn;
@@ -188,7 +189,7 @@ public class MatchController : MonoBehaviour
         Score.Populate(_homeTeam.Name, homeTeamScore, _homeTeam.PrimaryColor, _awayTeam.Name, awayTeamScore, _awayTeam.PrimaryColor);
     }
 
-    public void Populate(TournamentData.MatchData _data)
+    public void Populate(TournamentData.MatchData _data, bool _simulateTournament = false)
     {
         Reset();
 
@@ -205,6 +206,9 @@ public class MatchController : MonoBehaviour
         Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
 
         startBtn.SetLabelStart();
+
+        isSimulatingTournament = _simulateTournament;
+        if (_simulateTournament) StartSimulation(true);
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -306,11 +310,6 @@ public class MatchController : MonoBehaviour
 
     void StartSimulation(bool _hideMain=false)
     {
-        if(_hideMain)
-        {
-            screen.ShowMain(false);
-        }
-
         Narration.Reset();
         SetTotalMatches();
         isSimulating = true;
@@ -320,6 +319,12 @@ public class MatchController : MonoBehaviour
 
         Reset();
         KickOff();
+
+        if (_hideMain)
+        {
+            if (screen == null) screen = GetComponent<MatchScreen>();
+            screen.ShowMain(false);
+        }
     }
 
     public void EndSimulation()
@@ -468,16 +473,16 @@ public class MatchController : MonoBehaviour
 
             data.isPlayed = true;
 
-            TournamentData.MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch();
+            TournamentData.MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
             if(nextMatch != null)
             {
-                Populate(nextMatch);
+                Populate(nextMatch, isSimulatingTournament);
                 StartSimulation(true);               
             }
             else
             {
                 isSimulating = false;
-                MainController.Instance.ShowScreen(MainController.ScreenType.TournamentHub);
+                MainController.Instance.ShowScreen(BaseScreen.ScreenType.TournamentHub);
             }
         }
     }
@@ -714,7 +719,7 @@ public class MatchController : MonoBehaviour
                 else
                 {
                     if(attackingPlayer == null) print("ATTACKER NULL");
-                    if (defendingPlayer == null) print("DEFENDER NULL");
+                    if (defendingPlayer == null) defendingPlayer = DefendingTeam.Squad[0];
                     DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
                     if(defenseExcitement == -1) UpdateNarration("nar_WorstSaveShot_", 1, DefendingTeam);
                     else if (defenseExcitement == 0) UpdateNarration("nar_SaveShot_", 1, DefendingTeam);

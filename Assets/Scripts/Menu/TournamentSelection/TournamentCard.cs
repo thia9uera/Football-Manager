@@ -51,6 +51,6 @@ public class TournamentCard : MonoBehaviour
     public void ClickHandler()
     {
         MainController.Instance.CurrentTournament = Data;
-        MainController.Instance.ShowScreen(MainController.ScreenType.TournamentHub);
+        MainController.Instance.ShowScreen(BaseScreen.ScreenType.TournamentHub);
     }
 }

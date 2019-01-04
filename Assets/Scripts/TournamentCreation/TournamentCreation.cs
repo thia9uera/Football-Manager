@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TournamentCreation : MonoBehaviour
+public class TournamentCreation : BaseScreen
 {
     public static TournamentCreation Instance;
 
@@ -26,6 +26,14 @@ public class TournamentCreation : MonoBehaviour
         if (Instance == null) Instance = this;
         Edit.SetActive(false);
         Load.SetActive(true);
+    }
+
+    public override void Show()
+    {
+        base.Show();
+        Edit.SetActive(false);
+        Load.SetActive(true);
+        LoadTournaments();
     }
 
     public void AddTeam(TeamData _team)
