@@ -12,10 +12,10 @@ public class TournamentFixturesItem : MonoBehaviour
 
     public void Populate(TournamentData.MatchData _data)
     {
-        home.Populate(_data.HomeTeam);
-        away.Populate(_data.AwayTeam);
+        home.Populate(_data.HomeTeam, _data.isPlayed);
+        away.Populate(_data.AwayTeam, _data.isPlayed);
 
 
-        if (!_data.isPlayed) group.alpha = 0.3f;
+        if (!_data.isPlayed && group != null) group.alpha = 0.3f;
     }
 }

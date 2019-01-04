@@ -8,6 +8,7 @@ using UnityEditor;
 public class TournamentData : ScriptableObject
 {
     public string Name;
+    public string Id;
 
     public enum TournamentType
     {
@@ -81,6 +82,7 @@ public class TournamentData : ScriptableObject
         }
     }
 
+    public PlayerData PlayerStatistics;
     public List<MatchData> Matches;
     public List<TeamTournamentData> TeamScoreboard;
 
@@ -129,8 +131,7 @@ public class TournamentData : ScriptableObject
                 UpdateTeamStats(team, _away, _home);
             }
         }
-        EditorUtility.SetDirty(this);
-        AssetDatabase.SaveAssets();
+        Save();
     }
 
     void UpdateTeamStats(TeamTournamentData _data, TeamMatchData _team, TeamMatchData _opponent)
@@ -174,6 +175,7 @@ public class TournamentData : ScriptableObject
         {
             if (!_isSimulating) CurrentRound++;
             else CurrentRound = TotalRounds;
+            Save();
         }
         else
         {
@@ -188,5 +190,24 @@ public class TournamentData : ScriptableObject
         foreach(MatchData match in Matches) match.Reset();
         foreach (TeamTournamentData data in TeamScoreboard) data.Reset();
         CurrentRound = 0;
+        Save();
+    }
+
+    public List<PlayerData> GetTopScorers()
+    {
+        List<PlayerData> list = new List<PlayerData>();
+
+        foreach(TeamTournamentData data in TeamScoreboard)
+        {
+
+        }
+
+        return list;
+    }
+
+    void Save()
+    {
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
     }
 }

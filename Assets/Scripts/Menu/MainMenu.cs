@@ -18,7 +18,6 @@ public class MainMenu : BaseScreen
 
     public void ShowSubmenu(ScreenType _type)
     {
-        print(_type.ToString());
         prevScreen = currentScreen;
         foreach (BaseScreen screen in SubmenuList)
         {

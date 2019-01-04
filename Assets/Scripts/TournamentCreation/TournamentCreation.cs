@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class TournamentCreation : BaseScreen
     public List<TeamData> TeamList;
 
     public Button BtnCreateTournament;
+
+    public int TotalTournaments;
 
     private void Awake()
     {
@@ -79,7 +82,8 @@ public class TournamentCreation : BaseScreen
                 }
                 break;
         }
-
+        print("Tournament ID: " + tournament.Id);
+        if(string.IsNullOrEmpty(tournament.Id)) tournament.Id = GetUniqueID();
         AssetDatabase.CreateAsset(tournament, "Assets/Resources/Tournaments/" + tournament.Name + ".asset");
         AssetDatabase.SaveAssets();
 
@@ -106,9 +110,6 @@ public class TournamentCreation : BaseScreen
         Options.TypeDropDown.value = (int)_data.Type;
         Options.StarsRequired.StarsRequired = _data.StarsRequired;
 
-        //if (_data.Teams.Count > 0) Options.TeamsAmount.TeamsAmount = _data.Teams.Count;
-        //else Options.TeamsAmount.TeamsAmount = 2;
-
         BtnCreateTournament.interactable = false;
         TeamList = new List<TeamData>();
         TeamList = new List<TeamData>(_data.Teams);
@@ -124,5 +125,20 @@ public class TournamentCreation : BaseScreen
         {
             //TODO show Championship tables
         }
+    }
+
+    string GetUniqueID()
+    {
+        string key = "ID";
+
+        var random = new System.Random();
+        DateTime epochStart = new DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+        double timestamp = (DateTime.UtcNow - epochStart).TotalSeconds;
+
+        string uniqueID = string.Format("{0:X}", Convert.ToInt32(timestamp))                //Time
+                + "-" + string.Format("{0:X}", Convert.ToInt32(Time.time * 1000000))        //Time in game
+                + "-" + string.Format("{0:X}", random.Next(1000000000));                //random number
+                
+        return uniqueID;
     }
 }

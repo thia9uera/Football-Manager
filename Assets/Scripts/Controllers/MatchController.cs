@@ -466,6 +466,9 @@ public class MatchController : MonoBehaviour
         {
             TournamentData.MatchData data = MainController.Instance.CurrentMatch;
 
+            HomeTeam.MatchData.Score = homeTeamScore;
+            AwayTeam.MatchData.Score = awayTeamScore;
+
             data.HomeTeam = HomeTeam.MatchData;
             data.AwayTeam = AwayTeam.MatchData;
 
@@ -532,7 +535,7 @@ public class MatchController : MonoBehaviour
                     if(!isSimulating) Score.UpdateScore(homeTeamScore, awayTeamScore);
                     attackingPlayer.MatchStats.TotalGoals++;
                     AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
-                    AttackingTeam.MatchData.Score++;
+
                     return;
                 }
                 if (!isScorerAnnounced)

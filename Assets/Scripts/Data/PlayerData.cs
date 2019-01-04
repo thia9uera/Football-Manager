@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "Player", menuName = "Player Data", order = 1)]
 public class PlayerData : ScriptableObject
@@ -215,6 +217,7 @@ public class PlayerData : ScriptableObject
 
     public Statistics LifeTimeStats;
     public Statistics MatchStats;
+    public Dictionary<string, Statistics> TournamentStatistics;
 
     public void ApplyBonus()
     {
@@ -441,7 +444,49 @@ public class PlayerData : ScriptableObject
         LifeTimeStats.TotalShotsMissed += MatchStats.TotalShotsMissed;
         LifeTimeStats.TotalPresence += MatchStats.TotalPresence;
 
+        if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics();
+
         ResetStatistics("Match");
+    }
+
+    public Statistics GetTournamentStatistics(string _key)
+    {
+        Statistics stats = null;
+
+        if (TournamentStatistics != null && TournamentStatistics.ContainsKey(_key)) stats = TournamentStatistics[_key];
+
+        return stats;
+    }
+
+    void UpdateTournamentStatistics()
+    {
+        TournamentData currentTournament = MainController.Instance.CurrentTournament;
+        if (TournamentStatistics == null) TournamentStatistics = new Dictionary<string, Statistics>();
+
+        if (!TournamentStatistics.ContainsKey(currentTournament.Id))
+        {
+            TournamentStatistics.Add(currentTournament.Id, new Statistics());
+        }
+
+        Statistics stats = GetTournamentStatistics(currentTournament.Id);
+
+        stats.TotalGoals += MatchStats.TotalGoals;
+        stats.TotalPasses += MatchStats.TotalPasses;
+        stats.TotalCrosses += MatchStats.TotalCrosses;
+        stats.TotalFaults += MatchStats.TotalFaults;
+        stats.TotalTackles += MatchStats.TotalTackles;
+        stats.TotalDribbles += MatchStats.TotalDribbles;
+        stats.TotalHeaders += MatchStats.TotalHeaders;
+        stats.TotalSaves += MatchStats.TotalSaves;
+        stats.TotalShots += MatchStats.TotalShots;
+        stats.TotalCrossesMissed += MatchStats.TotalCrossesMissed;
+        stats.TotalDribblesMissed += MatchStats.TotalDribblesMissed;
+        stats.TotalHeadersMissed += MatchStats.TotalHeadersMissed;
+        stats.TotalPassesMissed += MatchStats.TotalPassesMissed;
+        stats.TotalShotsMissed += MatchStats.TotalShotsMissed;
+        stats.TotalPresence += MatchStats.TotalPresence;
+
+        Save();
     }
 
     public string GetFullName()
@@ -473,5 +518,11 @@ public class PlayerData : ScriptableObject
                 break;
         }
         return value;
+    }
+
+    void Save()
+    {
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TournamentNextMatch : MonoBehaviour
 {
     [SerializeField]
-    TournamentCreationMatch match;
+    TournamentFixturesItem match;
 
     public void Populate(TournamentData.MatchData _data)
     {

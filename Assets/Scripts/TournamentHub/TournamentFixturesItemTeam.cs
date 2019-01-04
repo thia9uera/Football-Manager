@@ -12,10 +12,12 @@ public class TournamentFixturesItemTeam : MonoBehaviour
     [SerializeField]
     Image frame;
 
-    public void Populate(TournamentData.TeamMatchData _data)
+    public void Populate(TournamentData.TeamMatchData _data, bool _isPlayed)
     {
-        nameLabel.text = _data.Team.Name;
+        nameLabel.text = _data.Team.Name + " (" + _data.Team.GetOveralRating() + ")";
         scoreLabel.text = _data.Score.ToString();
         frame.color = _data.Team.PrimaryColor;
+
+        scoreLabel.gameObject.SetActive(_isPlayed);
     }
 }

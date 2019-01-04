@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Golden Cup
   m_EditorClassIdentifier: 
   Name: Golden Cup
+  Id: 5C2F2C2B-48DFF2-7DF2167
   Type: 0
   StarsRequired: 3
   Teams:
@@ -22,6 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7cc583eb102d24744b501113bdd1eed8, type: 2}
   - {fileID: 11400000, guid: 9e55606eaeaf14141b8df26301938c72, type: 2}
   - {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
+  PlayerStatistics: {fileID: 0}
   Matches:
   - HomeTeam:
       Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}

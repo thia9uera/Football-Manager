@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Team", menuName = "Team Data", order = 1)]
@@ -154,5 +155,15 @@ public class TeamData : ScriptableObject
         overal = total / Squad.Length;
 
         return overal;
+    }
+
+    public List<PlayerData> GetAllPlayers()
+    {
+        List<PlayerData> players = new List<PlayerData>();
+
+        players.AddRange(Squad);
+        players.AddRange(Substitutes);
+
+        return players;
     }
 }

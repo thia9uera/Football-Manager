@@ -39,6 +39,19 @@ public class TournamentHubScreen : BaseScreen
             nextMatch.gameObject.SetActive(false);
             resetButton.SetActive(true);
         }
+
+
+        foreach (TeamData team in currentTournament.Teams)
+        {
+            foreach(PlayerData player in team.GetAllPlayers())
+            {
+                if(player.GetTournamentStatistics(currentTournament.Id) != null)
+                {
+                    PlayerData.Statistics stats = player.TournamentStatistics[currentTournament.Id];
+                    if(stats.TotalGoals > 0) print(player.FirstName + " " + player.LastName + "  GOALS: " + stats.TotalGoals);
+                }
+            }
+        }
     }
 
     public void PopulateNextMatch()

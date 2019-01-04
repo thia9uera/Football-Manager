@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Copa do Balacobaco
   m_EditorClassIdentifier: 
   Name: Copa do Balacobaco
+  Id: 5C2F2C2A-2D821D-26C78B22
   Type: 0
   StarsRequired: 1
   Teams:
@@ -20,6 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b431f2afa8608843907dbde08a9b9ad, type: 2}
   - {fileID: 11400000, guid: 7bbf247a184ff0645a2363f46115ca70, type: 2}
   - {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
+  PlayerStatistics: {fileID: 0}
   Matches:
   - HomeTeam:
       Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
