@@ -193,13 +193,13 @@ public class TournamentData : ScriptableObject
         Save();
     }
 
-    public List<PlayerData> GetTopScorers()
+    public List<PlayerData> GetAllPlayers()
     {
         List<PlayerData> list = new List<PlayerData>();
 
-        foreach(TeamTournamentData data in TeamScoreboard)
+        foreach (TeamData team in Teams)
         {
-
+            list.AddRange(team.GetAllPlayers());
         }
 
         return list;

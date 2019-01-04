@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class TournamentHubScreen : BaseScreen
 {
@@ -12,6 +13,9 @@ public class TournamentHubScreen : BaseScreen
 
     [SerializeField]
     TournamentLeaderboard leaderboard;
+
+    [SerializeField]
+    TournamentLeaderboard playersLeaderboard;
 
     [SerializeField]
     TournamentNextMatch nextMatch;
@@ -40,18 +44,7 @@ public class TournamentHubScreen : BaseScreen
             resetButton.SetActive(true);
         }
 
-
-        foreach (TeamData team in currentTournament.Teams)
-        {
-            foreach(PlayerData player in team.GetAllPlayers())
-            {
-                if(player.GetTournamentStatistics(currentTournament.Id) != null)
-                {
-                    PlayerData.Statistics stats = player.TournamentStatistics[currentTournament.Id];
-                    if(stats.TotalGoals > 0) print(player.FirstName + " " + player.LastName + "  GOALS: " + stats.TotalGoals);
-                }
-            }
-        }
+        SortPlayerLeaderboardBy("Goals");
     }
 
     public void PopulateNextMatch()
@@ -93,5 +86,30 @@ public class TournamentHubScreen : BaseScreen
     public void BackToMenu()
     {
         MainController.Instance.ShowScreen(ScreenType.MainMenu);
+    }
+
+    public void SortPlayerLeaderboardBy(string _param)
+    {
+        List<PlayerData> playersList = new List<PlayerData>();
+        foreach (TeamData team in currentTournament.Teams)
+        {
+            foreach (PlayerData player in team.GetAllPlayers())
+            {
+                if (player.GetTournamentStatistics(currentTournament.Id) != null)
+                {
+                    PlayerData.Statistics stats = player.TournamentStatistics[currentTournament.Id];
+
+                    switch(_param)
+                    {
+                        case "Goals":
+                            if (stats.TotalGoals > 0) playersList.Add(player);
+                            playersList = playersList.OrderByDescending(PlayerData => PlayerData.TournamentStatistics[currentTournament.Id].TotalGoals).ToList();
+                            break;
+                    }           
+                }
+            }
+        }
+
+        playersLeaderboard.Populate(playersList, currentTournament.Id, _param);
     }
 }

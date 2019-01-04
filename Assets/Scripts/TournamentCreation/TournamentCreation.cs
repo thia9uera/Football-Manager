@@ -82,7 +82,6 @@ public class TournamentCreation : BaseScreen
                 }
                 break;
         }
-        print("Tournament ID: " + tournament.Id);
         if(string.IsNullOrEmpty(tournament.Id)) tournament.Id = GetUniqueID();
         AssetDatabase.CreateAsset(tournament, "Assets/Resources/Tournaments/" + tournament.Name + ".asset");
         AssetDatabase.SaveAssets();
