@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Team", menuName = "Team Data", order = 1)]
@@ -88,6 +89,8 @@ public class TeamData : ScriptableObject
         MatchData.Scorers = new System.Collections.Generic.List<PlayerData>();
         MatchData.RedCards = new System.Collections.Generic.List<PlayerData>();
         MatchData.YellowCards = new System.Collections.Generic.List<PlayerData>();
+
+        Save();
     }
 
 
@@ -123,6 +126,8 @@ public class TeamData : ScriptableObject
         stats.TotalOffsides = 0;
         stats.TotalCornerKicks = 0;
         stats.TotalCounterAttacks = 0;
+
+        Save();
 }
 
     public void UpdateLifeTimeStats()
@@ -140,6 +145,8 @@ public class TeamData : ScriptableObject
         LifeTimeStats.TotalCounterAttacks += MatchStats.TotalCounterAttacks;
 
         ResetStatistics("Match");
+
+        Save();
     }
 
     public int GetOveralRating()
@@ -165,5 +172,11 @@ public class TeamData : ScriptableObject
         players.AddRange(Substitutes);
 
         return players;
+    }
+
+    void Save()
+    {
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
     }
 }

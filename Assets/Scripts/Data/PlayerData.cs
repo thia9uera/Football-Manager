@@ -424,6 +424,8 @@ public class PlayerData : ScriptableObject
         stats.TotalPassesMissed = 0;
         stats.TotalShotsMissed = 0;
         stats.TotalPresence = 0;
+
+        Save();
     }
 
     public void UpdateLifeTimeStats()
@@ -447,6 +449,8 @@ public class PlayerData : ScriptableObject
         if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics();
 
         ResetStatistics("Match");
+
+        Save();
     }
 
     public Statistics GetTournamentStatistics(string _key)
