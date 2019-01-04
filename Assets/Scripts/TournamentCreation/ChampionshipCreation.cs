@@ -109,6 +109,7 @@ public class ChampionshipCreation : MonoBehaviour
                     listA[k + 1] = listB[k];
                 }
             }
+            listB = new List<TeamData>(listA);
         }
 
         UpdateMatchList();
