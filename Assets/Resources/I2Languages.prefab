@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1077866030746536}
-  m_IsPrefabAsset: 1
 --- !u!1 &1077866030746536
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016452190867510}
@@ -29,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4016452190867510
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077866030746536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -42,9 +33,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114963603834142726
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077866030746536}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -52,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NeverDestroy: 0
-  UserAgreesToHaveItOnTheScene: 0
+  UserAgreesToHaveItOnTheScene: 1
   UserAgreesToHaveItInsideThePluginsFolder: 0
   GoogleLiveSyncIsUptoDate: 1
   Spreadsheet_LocalFileName: 
@@ -63,7 +55,7 @@ MonoBehaviour:
   Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwFdkSCId5GmhTwOQEu_8_U-Bi79V3syLk3e6v_/exec
   Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
   Google_SpreadsheetName: I2Loc Football Manager Localization
-  Google_LastUpdatedVersion: 1543616036934
+  Google_LastUpdatedVersion: 1546545414054
   Google_Password: f00tballzin
   GoogleUpdateFrequency: 3
   GoogleInEditorCheckFrequency: 2
@@ -179,7 +171,15 @@ MonoBehaviour:
     Description: 
     Languages:
     - Simulate
-    - 
+    - Simular
+    Flags: 0000
+    Languages_Touch: []
+  - Term: btn_Pause
+    TermType: 0
+    Description: 
+    Languages:
+    - Pause
+    - Parar
     Flags: 0000
     Languages_Touch: []
   - Term: nar_GoalScream_1

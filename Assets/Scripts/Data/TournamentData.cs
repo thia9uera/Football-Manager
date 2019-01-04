@@ -16,12 +16,9 @@ public class TournamentData : ScriptableObject
 
     public TournamentType Type;
 
-    public List<TeamData> Teams;
-
     public int StarsRequired = 0;
 
-    [HideInInspector]
-    public int CurrentRound;
+    public List<TeamData> Teams;
 
     [System.Serializable]
     public class TeamMatchData
@@ -31,6 +28,16 @@ public class TournamentData : ScriptableObject
         public List<PlayerData> Scorers;
         public List<PlayerData> YellowCards;
         public List<PlayerData> RedCards;
+        public int Points;
+
+        public void Reset()
+        {
+            Score = 0;
+            Scorers = new List<PlayerData>();
+            YellowCards = new List<PlayerData>();
+            RedCards = new List<PlayerData>();
+            Points = 0;
+        }
     }
 
     [System.Serializable]
@@ -40,6 +47,13 @@ public class TournamentData : ScriptableObject
         public TeamMatchData AwayTeam;
         public bool isPlayed;
         public int Round;
+
+        public void Reset()
+        {
+            isPlayed = false;
+            HomeTeam.Reset();
+            AwayTeam.Reset();
+        }
     }
 
     [System.Serializable]
@@ -53,10 +67,25 @@ public class TournamentData : ScriptableObject
         public int TotalRedCards;
         public List<PlayerData> YellowCardList;
         public List<PlayerData> RedCarList;
+
+        public void Reset()
+        {
+            Points = 0;
+            GoalsScored = 0;
+            GoalsAgainst = 0;
+            TotalYellowCards = 0;
+            TotalRedCards = 0;
+            YellowCardList = new List<PlayerData>();
+            RedCarList = new List<PlayerData>();
+        }
     }
 
     public List<MatchData> Matches;
     public List<TeamTournamentData> TeamScoreboard;
+
+    [Space(10)]
+    public int TotalRounds;
+    public int CurrentRound;
 
     /// <summary>
     /// Gets the teams ordered by parameter.
@@ -84,5 +113,62 @@ public class TournamentData : ScriptableObject
         }
 
         return list;
+    }
+
+    public void UpdateTeamScoreboard(TeamMatchData _home, TeamMatchData _away)
+    {
+        foreach(TeamTournamentData team in TeamScoreboard)
+        {
+            if(team.Team == _home.Team)
+            {
+                UpdateTeamStats(team, _home, _away);
+            }
+            else if(team.Team == _away.Team)
+            {
+                UpdateTeamStats(team, _away, _home);
+            }
+        }
+        SetDirty();
+    }
+
+    void UpdateTeamStats(TeamTournamentData _data, TeamMatchData _team, TeamMatchData _opponent)
+    {
+        TeamTournamentData team = _data;
+
+        team.Points += _team.Points;
+        team.GoalsScored += _team.Score;
+        team.GoalsAgainst += _opponent.Score;
+        team.TotalYellowCards += _team.YellowCards.Count();
+        team.TotalRedCards += _team.RedCards.Count();
+        //TODO Add cards logic
+        if (team.YellowCardList == null) team.YellowCardList = new List<PlayerData>();
+        if (team.RedCarList == null) team.RedCarList = new List<PlayerData>();
+        team.YellowCardList.AddRange(_team.YellowCards);
+        team.RedCarList.AddRange(_team.RedCards);
+    }
+
+    public MatchData GetNextMatch()
+    {
+        MatchData data = null;
+
+        foreach(MatchData match in Matches)
+        {
+            if(match.Round == CurrentRound && !match.isPlayed)
+            {
+                data = match;
+                MainController.Instance.CurrentMatch = match;
+            }
+        }
+
+        if (data == null) CurrentRound++;
+
+        return data;
+    }
+
+    public void ResetTournament()
+    {
+        foreach(MatchData match in Matches) match.Reset();
+        foreach (TeamTournamentData data in TeamScoreboard) data.Reset();
+        CurrentRound = 0;
     }
 }

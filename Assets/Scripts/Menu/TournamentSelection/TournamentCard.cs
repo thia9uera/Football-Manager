@@ -29,11 +29,11 @@ public class TournamentCard : MonoBehaviour
 
         TournamentData.TeamTournamentData tData = list[0];
         team_0.text = tData.Team.Name + " (" + tData.Team.GetOveralRating() + ")"; ;
-        score_0.text = tData.Points + "pts";
+        score_0.text = tData.Points + " pts";
 
         tData = list[1];
         team_1.text = tData.Team.Name + " (" + tData.Team.GetOveralRating() + ")";
-        score_1.text = tData.Points + "pts";
+        score_1.text = tData.Points + " pts";
 
         if(list.Count > 2)
         {

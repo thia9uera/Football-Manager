@@ -18,19 +18,30 @@ public class TournamentHubScreen : BaseScreen
 
     TournamentData.MatchData nextMatchData;
 
+    [SerializeField]
+    GameObject resetButton;
+
     public override void Show()
     {
         base.Show();
         currentTournament = MainController.Instance.CurrentTournament;
         titleLabel.text = currentTournament.Name;
 
-        leaderboard.Populate(currentTournament.TeamScoreboard);
-        PopulateNextMatch();
+        leaderboard.Populate(currentTournament.SortTeamsBy("Points"));
+
+        if (currentTournament.CurrentRound < currentTournament.TotalRounds) PopulateNextMatch();
+        else
+        {
+            nextMatch.gameObject.SetActive(false);
+            resetButton.SetActive(true);
+        }
     }
 
     public void PopulateNextMatch()
     {
-        foreach(TournamentData.MatchData match in currentTournament.Matches)
+        nextMatch.gameObject.SetActive(true);
+        resetButton.SetActive(false);
+        foreach (TournamentData.MatchData match in currentTournament.Matches)
         {
             if(match.Round == currentTournament.CurrentRound)
             {
@@ -42,10 +53,16 @@ public class TournamentHubScreen : BaseScreen
             }
         }
     }
-
     public void PlayNextMatch()
     {
+        MainController.Instance.CurrentMatch = nextMatchData;
         MainController.Instance.Match.Populate(nextMatchData);
         MainController.Instance.ShowScreen(MainController.ScreenType.Match);
+    }
+
+    public void ResetTournament()
+    {
+        currentTournament.ResetTournament();
+        Show();
     }
 }

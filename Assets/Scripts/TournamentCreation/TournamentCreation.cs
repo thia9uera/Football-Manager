@@ -67,6 +67,7 @@ public class TournamentCreation : MonoBehaviour
                     TournamentData.TeamTournamentData tData = new TournamentData.TeamTournamentData();
                     tData.Team = team;
                     tournament.TeamScoreboard.Add(tData);
+                    tournament.TotalRounds = teams.Count - 1;
                 }
                 break;
         }

@@ -132,7 +132,7 @@ public class MatchController : MonoBehaviour
     bool isSimulating;
 
     [SerializeField]
-    GameObject startBtn;
+    MatchStartButton startBtn;
 
     [SerializeField]
     GameObject simulateBtn;
@@ -147,6 +147,8 @@ public class MatchController : MonoBehaviour
         public PosChanceData PosChance;
     }
 
+    MatchScreen screen;
+
     public TeamStrategy[] TeamStrategies;
 
     void Awake()
@@ -154,6 +156,7 @@ public class MatchController : MonoBehaviour
         Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
 
         localization = MainController.Instance.Localization;
+        screen = GetComponent<MatchScreen>();
 
         positionDebuff = modifiers.PositionDebuff;
         attackingBonusLow = modifiers.AttackBonusLow;
@@ -187,6 +190,8 @@ public class MatchController : MonoBehaviour
 
     public void Populate(TournamentData.MatchData _data)
     {
+        Reset();
+
         HomeTeam = _data.HomeTeam.Team;
         AwayTeam = _data.AwayTeam.Team;
 
@@ -198,6 +203,8 @@ public class MatchController : MonoBehaviour
         Score.UpdateTime(matchTime);
         Score.UpdateScore(homeTeamScore, awayTeamScore);
         Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
+
+        startBtn.SetLabelStart();
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -230,13 +237,12 @@ public class MatchController : MonoBehaviour
             }
         }
 
-        if(matchTime > 0 && matchTime < 90) PauseGame(false);
+        //if(matchTime > 0 && matchTime < 90) PauseGame(false);
+        startBtn.SetLabelStart();
 
         HomeTeamSquad.Populate(HomeTeam);
         AwayTeamSquad.Populate(AwayTeam);
     }
-
-
 
     void Reset()
     {
@@ -252,12 +258,16 @@ public class MatchController : MonoBehaviour
         isFreekickTaken = false;
         isGoalAnnounced = false;
         isScorerAnnounced = false;
-        HomeTeamSquad.ResetFatigue();
-        AwayTeamSquad.ResetFatigue();
+        if (HomeTeamSquad != null)
+        {
+            HomeTeamSquad.ResetFatigue();
+            AwayTeamSquad.ResetFatigue();
+            Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
+        }
+
         matchEvent = MatchEvent.None;
         if(!isSimulating) Narration.Reset();
-        Score.UpdateTime(matchTime);
-        Score.Populate(HomeTeam.Name, homeTeamScore, HomeTeam.PrimaryColor, AwayTeam.Name, awayTeamScore, AwayTeam.PrimaryColor);
+        Score.UpdateTime(matchTime);    
     }
 
     public void PauseGame(bool _isPaused)
@@ -274,28 +284,39 @@ public class MatchController : MonoBehaviour
     {
         if(matchTime == 0 || matchTime >= 90)
         {
-            totalMatches = int.Parse(totalMatchesInput.text);
+            SetTotalMatches();
             isSimulating = false;
             Reset();
             KickOff();
 
-            simulateBtn.SetActive(false);
+            EnabledSimulateBtn(false);
+            startBtn.Toggle();
         }
         else
         {
             PauseGame(isGameOn);
+            startBtn.Toggle();
         }
     }
 
     public void HandleSimulateButton()
     {
+        StartSimulation();
+    }
+
+    void StartSimulation(bool _hideMain=false)
+    {
+        if(_hideMain)
+        {
+            screen.ShowMain(false);
+        }
+
         Narration.Reset();
-        totalMatches = int.Parse(totalMatchesInput.text);
+        SetTotalMatches();
         isSimulating = true;
 
-        startBtn.SetActive(false);
-        simulateBtn.SetActive(false);
-        totalMatchesInput.interactable = false;
+        startBtn.gameObject.SetActive(false);
+        EnabledSimulateBtn(false);
 
         Reset();
         KickOff();
@@ -303,13 +324,32 @@ public class MatchController : MonoBehaviour
 
     public void EndSimulation()
     {
-        startBtn.SetActive(true);
-        simulateBtn.SetActive(true);
-        totalMatchesInput.interactable = true;
+        startBtn.gameObject.SetActive(true);
+        EnabledSimulateBtn(true);
         matchesPlayed = 0;
         isSimulating = false;
 
-        Narration.UpdateNarration(totalMatches + " PARTIDAS SIMULADAS.", Color.gray);
+        if (MainController.Instance.CurrentTournament == null)
+        {
+            Color color = Color.gray;
+            if (awayTeamScore > homeTeamScore) color = AwayTeam.PrimaryColor;
+            else if (homeTeamScore > awayTeamScore) color = HomeTeam.PrimaryColor;
+            Narration.UpdateNarration(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name, color);
+            Narration.UpdateNarration(totalMatches + " PARTIDAS SIMULADAS.", Color.gray);
+        }
+    }
+
+    void SetTotalMatches()
+    {
+        if (totalMatchesInput == null) return;
+        totalMatches = int.Parse(totalMatchesInput.text);
+    }
+
+    void EnabledSimulateBtn(bool _enable)
+    {
+        if (totalMatchesInput == null) return;
+        simulateBtn.SetActive(_enable);
+        totalMatchesInput.interactable = _enable;
     }
 
     public void KickOff()
@@ -321,6 +361,9 @@ public class MatchController : MonoBehaviour
 
         isGameOn = true;
 
+        HomeTeam.ResetMatchData();
+        AwayTeam.ResetMatchData();
+
         if (!isSimulating)
         {
             UpdateNarration("nar_KickOff_");
@@ -329,7 +372,7 @@ public class MatchController : MonoBehaviour
         }
         else
         {
-            totalMatchesInput.text = totalMatches - matchesPlayed + "";
+            if(totalMatchesInput != null) totalMatchesInput.text = totalMatches - matchesPlayed + "";
             StartCoroutine("SimulateLoop");
         }
 
@@ -363,16 +406,23 @@ public class MatchController : MonoBehaviour
         {
             HomeTeam.LifeTimeStats.TotalWins++;
             AwayTeam.LifeTimeStats.TotalLosts++;
+
+            HomeTeam.MatchData.Points += 3;
         }
         else if (awayTeamScore > homeTeamScore)
         {
             AwayTeam.LifeTimeStats.TotalWins++;
             HomeTeam.LifeTimeStats.TotalLosts++;
+
+            AwayTeam.MatchData.Points += 3;
         }
         else
         {
             HomeTeam.LifeTimeStats.TotalDraws++;
             AwayTeam.LifeTimeStats.TotalDraws++;
+
+            HomeTeam.MatchData.Points++;
+            AwayTeam.MatchData.Points++;
         }
 
         foreach (PlayerData player in HomeTeam.Squad) player.UpdateLifeTimeStats();
@@ -389,16 +439,11 @@ public class MatchController : MonoBehaviour
 
         if (isSimulating)
         {
-            Color color = Color.gray;
-            if (awayTeamScore > homeTeamScore) color = AwayTeam.PrimaryColor;
-            else if (homeTeamScore > awayTeamScore) color = HomeTeam.PrimaryColor;
-
-            Narration.UpdateNarration(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name, color);
-
             matchesPlayed++;
             if (matchesPlayed == totalMatches)
             {
                 EndSimulation();
+                print(HomeTeam.Name + "  " + homeTeamScore + "  x  " + awayTeamScore +  "  "  + AwayTeam.Name);
             }
             else
             {
@@ -408,7 +453,32 @@ public class MatchController : MonoBehaviour
         }
         else
         {
-            simulateBtn.SetActive(true);
+            EnabledSimulateBtn(true);
+        }
+
+        //Save tournament match data
+        if (MainController.Instance.CurrentTournament != null)
+        {
+            TournamentData.MatchData data = MainController.Instance.CurrentMatch;
+
+            data.HomeTeam = HomeTeam.MatchData;
+            data.AwayTeam = AwayTeam.MatchData;
+
+            MainController.Instance.CurrentTournament.UpdateTeamScoreboard(HomeTeam.MatchData, AwayTeam.MatchData);
+
+            data.isPlayed = true;
+
+            TournamentData.MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch();
+            if(nextMatch != null)
+            {
+                Populate(nextMatch);
+                StartSimulation(true);               
+            }
+            else
+            {
+                isSimulating = false;
+                MainController.Instance.ShowScreen(MainController.ScreenType.TournamentHub);
+            }
         }
     }
 
@@ -456,6 +526,8 @@ public class MatchController : MonoBehaviour
                     else awayTeamScore++;
                     if(!isSimulating) Score.UpdateScore(homeTeamScore, awayTeamScore);
                     attackingPlayer.MatchStats.TotalGoals++;
+                    AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
+                    AttackingTeam.MatchData.Score++;
                     return;
                 }
                 if (!isScorerAnnounced)
@@ -1520,7 +1592,6 @@ public class MatchController : MonoBehaviour
         //CHECK COUNTER ATTACK
         if(!success)
         {
-
             if (counterAttack > 0) counterAttack = 0;
             counterAttackChance = MainController.Instance.Modifiers.game_Modifiers[0].CounterAttackChance;
 

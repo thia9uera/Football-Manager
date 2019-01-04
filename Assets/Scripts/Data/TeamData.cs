@@ -78,6 +78,18 @@ public class TeamData : ScriptableObject
     [HideInInspector]
     public bool IsPlaceholder;
 
+    public TournamentData.TeamMatchData MatchData;
+    public void ResetMatchData()
+    {
+        MatchData = new TournamentData.TeamMatchData();
+        MatchData.Team = this;
+        MatchData.Score = 0;
+        MatchData.Scorers = new System.Collections.Generic.List<PlayerData>();
+        MatchData.RedCards = new System.Collections.Generic.List<PlayerData>();
+        MatchData.YellowCards = new System.Collections.Generic.List<PlayerData>();
+    }
+
+
     public Team_Strategy GetStrategy()
     {
         return MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];

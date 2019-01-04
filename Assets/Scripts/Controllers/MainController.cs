@@ -22,6 +22,7 @@ public class MainController : MonoBehaviour
     public TargetCrossPerZoneData TargetCrossPerZone;
 
     public TournamentData CurrentTournament;
+    public TournamentData.MatchData CurrentMatch;
 
     public enum ScreenType
     {
