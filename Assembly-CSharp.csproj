@@ -197,6 +197,9 @@
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationTeamsAmount.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentLoad.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentLoadItem.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentFixtures.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentFixturesItem.cs" />
+    <Compile Include="Assets\Scripts\TournamentHub\TournamentFixturesItemTeam.cs" />
     <Compile Include="Assets\Scripts\TournamentHub\TournamentHubScreen.cs" />
     <Compile Include="Assets\Scripts\TournamentHub\TournamentLeaderboard.cs" />
     <Compile Include="Assets\Scripts\TournamentHub\TournamentLeaderboardItem.cs" />

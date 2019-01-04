@@ -1,15 +1,8 @@
 ﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Data/TournamentData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TournamentHub/TournamentHubScreen.cs">
     <Files>
-      <File FileName="Assets/Scripts/Menu/MainMenu.cs" Line="36" Column="6" />
-      <File FileName="Assets/Scripts/Menu/TournamentSelection/TournamentSelection.cs" Line="57" Column="93" />
-      <File FileName="Assets/Scripts/Controllers/MainController.cs" Line="10" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/ScreenController.cs" Line="8" Column="31" />
-      <File FileName="Assets/Scripts/TournamentHub/TournamentHubScreen.cs" Line="78" Column="63" />
-      <File FileName="Assets/Scripts/Data/TournamentData.cs" Line="178" Column="57" />
-      <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="475" Column="13" />
-      <File FileName="Assets/Scripts/Match/MatchScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Data/MiscData.cs" Line="5" Column="41" />
+      <File FileName="Assets/Scripts/TournamentHub/TournamentFixtures.cs" Line="19" Column="81" />
+      <File FileName="Assets/Scripts/TournamentHub/TournamentHubScreen.cs" Line="34" Column="84" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -16,6 +16,9 @@ public class TournamentHubScreen : BaseScreen
     [SerializeField]
     TournamentNextMatch nextMatch;
 
+    [SerializeField]
+    TournamentFixtures fixtures;
+
     TournamentData.MatchData nextMatchData;
 
     [SerializeField]
@@ -28,6 +31,7 @@ public class TournamentHubScreen : BaseScreen
         titleLabel.text = currentTournament.Name;
 
         leaderboard.Populate(currentTournament.SortTeamsBy("Points"));
+        fixtures.Populate(currentTournament.Matches, currentTournament.CurrentRound);
 
         if (currentTournament.CurrentRound < currentTournament.TotalRounds) PopulateNextMatch();
         else
