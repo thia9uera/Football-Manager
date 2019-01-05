@@ -38,21 +38,21 @@ MonoBehaviour:
   Stars: 0
   LifeTimeStats:
     TotalWins: 1
-    TotalLosts: 2
+    TotalLosts: 3
     TotalDraws: 0
     TotalGoals: 3
-    TotalGoalsAgainst: 8
-    TotalShots: 7
+    TotalGoalsAgainst: 10
+    TotalShots: 11
     TotalHeaders: 0
-    TotalSteals: 7
-    TotalPasses: 42
-    TotalLongPasses: 12
-    TotalPassesMissed: 5
-    TotalBoxCrosses: 0
-    TotalFaults: 10
+    TotalSteals: 11
+    TotalPasses: 53
+    TotalLongPasses: 14
+    TotalPassesMissed: 8
+    TotalBoxCrosses: 1
+    TotalFaults: 11
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 1
+    TotalCounterAttacks: 2
   MatchStats:
     TotalWins: 0
     TotalLosts: 0

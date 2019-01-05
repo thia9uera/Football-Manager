@@ -54,7 +54,7 @@ MonoBehaviour:
   LifeTimeStats:
     TotalPasses: 2
     TotalCrosses: 0
-    TotalShots: 4
+    TotalShots: 5
     TotalHeaders: 0
     TotalFaults: 0
     TotalTackles: 3
@@ -62,11 +62,11 @@ MonoBehaviour:
     TotalGoals: 2
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 1
+    TotalShotsMissed: 2
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 1
-    TotalPresence: 16
+    TotalPresence: 17
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0

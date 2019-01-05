@@ -139,6 +139,7 @@ public class MatchController : MonoBehaviour
         public PosChanceData PosChance;
     }
 
+    [SerializeField]
     MatchScreen screen;
 
     public TeamStrategy[] TeamStrategies;
