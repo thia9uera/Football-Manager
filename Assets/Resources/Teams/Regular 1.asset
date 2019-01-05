@@ -74,14 +74,8 @@ MonoBehaviour:
   IsPlaceholder: 0
   MatchData:
     Team: {fileID: 11400000}
-    Score: 6
-    Scorers:
-    - {fileID: 11400000, guid: 653caf65f0bf9814484803e57e834aa5, type: 2}
-    - {fileID: 11400000, guid: 653caf65f0bf9814484803e57e834aa5, type: 2}
-    - {fileID: 11400000, guid: db23e3b395ee8fd4496ded180fa60463, type: 2}
-    - {fileID: 11400000, guid: 653caf65f0bf9814484803e57e834aa5, type: 2}
-    - {fileID: 11400000, guid: eb6fbddbf78004144922fb01031abd5d, type: 2}
-    - {fileID: 11400000, guid: db23e3b395ee8fd4496ded180fa60463, type: 2}
+    Score: 0
+    Scorers: []
     YellowCards: []
     RedCards: []
-    Points: 3
+    Points: 1

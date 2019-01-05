@@ -37,22 +37,22 @@ MonoBehaviour:
   Captain: {fileID: 11400000, guid: d5ad8fd28014773488530554368aec01, type: 2}
   Stars: 0
   LifeTimeStats:
-    TotalWins: 9
-    TotalLosts: 6
-    TotalDraws: 4
-    TotalGoals: 32
-    TotalGoalsAgainst: 41
-    TotalShots: 17
+    TotalWins: 1
+    TotalLosts: 1
+    TotalDraws: 1
+    TotalGoals: 5
+    TotalGoalsAgainst: 7
+    TotalShots: 11
     TotalHeaders: 0
-    TotalSteals: 18
-    TotalPasses: 91
-    TotalLongPasses: 30
-    TotalPassesMissed: 16
-    TotalBoxCrosses: 1
-    TotalFaults: 19
+    TotalSteals: 6
+    TotalPasses: 35
+    TotalLongPasses: 12
+    TotalPassesMissed: 3
+    TotalBoxCrosses: 3
+    TotalFaults: 7
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 6
+    TotalCounterAttacks: 1
   MatchStats:
     TotalWins: 0
     TotalLosts: 0
@@ -76,9 +76,8 @@ MonoBehaviour:
     Team: {fileID: 11400000}
     Score: 0
     Scorers:
-    - {fileID: 11400000, guid: d2fa612f2446732429e631350dd26eb9, type: 2}
-    - {fileID: 11400000, guid: d5ad8fd28014773488530554368aec01, type: 2}
     - {fileID: 11400000, guid: 8b84e221f4350dc45ba63652a8f16017, type: 2}
+    - {fileID: 11400000, guid: ac86fb60a05c8b048acd7ad8091ca5ee, type: 2}
     - {fileID: 11400000, guid: d5ad8fd28014773488530554368aec01, type: 2}
     YellowCards: []
     RedCards: []

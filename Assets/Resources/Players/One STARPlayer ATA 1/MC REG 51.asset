@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 83
   Vision: 69
   Stability: 68
-  fatigue: 99.81481
+  fatigue: 64.50616
   Team: {fileID: 11400000, guid: 30ff34d54dfa2fd4795ff2ce04d14da7, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1

@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 69
   Vision: 80
   Stability: 75
-  fatigue: 64.556946
+  fatigue: 66.13923
   Team: {fileID: 11400000, guid: 08398978ec95dc74b96d8f4460d37b2f, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,12 +52,12 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 6
-    TotalCrosses: 4
-    TotalShots: 3
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 5
-    TotalTackles: 19
+    TotalFaults: 0
+    TotalTackles: 0
     TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
@@ -66,14 +66,14 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 62
+    TotalPresence: 0
   MatchStats:
-    TotalPasses: 3
-    TotalCrosses: 2
-    TotalShots: 1
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 5
+    TotalFaults: 0
+    TotalTackles: 0
     TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
@@ -82,4 +82,4 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 18
+    TotalPresence: 0

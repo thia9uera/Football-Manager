@@ -69,7 +69,7 @@ MonoBehaviour:
     TotalPresence: 0
   MatchStats:
     TotalPasses: 0
-    TotalCrosses: 1
+    TotalCrosses: 0
     TotalShots: 0
     TotalHeaders: 0
     TotalFaults: 0

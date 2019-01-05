@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 93
   Vision: 95
   Stability: 97
-  fatigue: 97.05479
+  fatigue: 69.89795
   Team: {fileID: 11400000, guid: 30ff34d54dfa2fd4795ff2ce04d14da7, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -70,7 +70,7 @@ MonoBehaviour:
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
-    TotalShots: 1
+    TotalShots: 0
     TotalHeaders: 0
     TotalFaults: 0
     TotalTackles: 0
