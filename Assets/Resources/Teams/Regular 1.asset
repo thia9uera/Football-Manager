@@ -74,8 +74,12 @@ MonoBehaviour:
   IsPlaceholder: 0
   MatchData:
     Team: {fileID: 11400000}
-    Score: 0
-    Scorers: []
+    Score: 4
+    Scorers:
+    - {fileID: 11400000, guid: 2fbfa5948ef3a56489aa63707740acf8, type: 2}
+    - {fileID: 11400000, guid: eb6fbddbf78004144922fb01031abd5d, type: 2}
+    - {fileID: 11400000, guid: db23e3b395ee8fd4496ded180fa60463, type: 2}
+    - {fileID: 11400000, guid: 2fbfa5948ef3a56489aa63707740acf8, type: 2}
     YellowCards: []
     RedCards: []
-    Points: 1
+    Points: 3

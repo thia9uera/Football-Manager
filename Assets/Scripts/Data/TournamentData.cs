@@ -191,6 +191,7 @@ public class TournamentData : ScriptableObject
         foreach (TeamTournamentData data in TeamScoreboard) data.Reset();
         CurrentRound = 0;
         Save();
+        AssetDatabase.SaveAssets();
     }
 
     public List<PlayerData> GetAllPlayers()
@@ -208,6 +209,6 @@ public class TournamentData : ScriptableObject
     void Save()
     {
         EditorUtility.SetDirty(this);
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.SaveAssets();
     }
 }

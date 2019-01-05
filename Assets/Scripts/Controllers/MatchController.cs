@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 
 public class MatchController : MonoBehaviour
 {
@@ -475,6 +476,7 @@ public class MatchController : MonoBehaviour
             else
             {
                 isSimulating = false;
+                AssetDatabase.SaveAssets();
                 MainController.Instance.ShowScreen(BaseScreen.ScreenType.TournamentHub);
             }
         }

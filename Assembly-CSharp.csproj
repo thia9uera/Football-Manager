@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_0;UNITY_2018_3;UNITY_2018;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_2_0_SUBSET;NET_LEGACY;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;TextMeshPro</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_0;UNITY_2018_3;UNITY_2018;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_2_0_SUBSET;NET_LEGACY;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;TextMeshPro;RHSD</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -61,83 +61,113 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\CallbackNotification.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\Example_ChangeLanguage.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\Example_LocalizedString.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\GlobalParametersExample.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\NGUI_LanguagePopup.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\RealTimeTranslation.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\RegisterBundlesManager.cs" />
-    <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\ToggleLanguage.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Configurables\PersistentStorage.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Configurables\SpecializationManager.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\EventCallback.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\GoogleLanguages.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\GoogleTranslation.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\GoogleTranslation_Post.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\GoogleTranslation_Queries.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\SimpleJSON.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\TranslationJob.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\TranslationJob_GET.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\TranslationJob_Main.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\TranslationJob_POST.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Google\TranslationJob_WEB.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageData.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Assets.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Export_CSV.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Export_Google.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Import_CSV.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Import_Google.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Languages.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Misc.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LanguageSource\LanguageSource_Terms.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LocalizationReader.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Localize.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\LocalizeDropdown.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_Language.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_Parameters.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_RTL.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_Sources.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_SystemLanguage.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_Targets.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Manager\LocalizationManager_Translation.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\ILocalizeTarget.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\ILocalizeTargetDesc.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_2DToolKit_Label.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_2DToolKit_Sprite.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_NGUI_Label.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_NGUI_Sprite.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_NGUI_Texture.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_SVGImporter_Image.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_SVGImporter_Renderer.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_TextMeshPro_Label.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_TextMeshPro_UGUI.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_AudioSource.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Child.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_GUIText.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_GUITexture.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Prefab.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_SpriteRenderer.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_TextMesh.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_Image.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_RawImage.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_Text.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\TermData.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\AutoChangeCultureInfo.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\CoroutineManager.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\CustomLocalizeCallback.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\HindiFixer.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\I2Utils.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\LocalizationParamsManager.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\LocalizedString.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\RegisterGlobalParameters.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\ResourceManager.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\RTLFixer.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguage.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguageDropdown.cs" />
-    <Compile Include="Assets\I2\Localization\Scripts\Utils\StringObfuscator.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\CallbackNotification.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\Example_ChangeLanguage.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\Example_LocalizedString.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\GlobalParametersExample.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\NGUI_LanguagePopup.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\RealTimeTranslation.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\RegisterBundlesManager.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\ToggleLanguage.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Configurables\PersistentStorage.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Configurables\SpecializationManager.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\EventCallback.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\GoogleLanguages.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\GoogleTranslation.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\GoogleTranslation_Post.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\GoogleTranslation_Queries.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\SimpleJSON.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\TranslationJob.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\TranslationJob_GET.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\TranslationJob_Main.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\TranslationJob_POST.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Google\TranslationJob_WEB.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageData.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Assets.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Export_CSV.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Export_Google.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Import_CSV.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Import_Google.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Languages.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Misc.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Terms.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LocalizationReader.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Localize.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LocalizeDropdown.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_Language.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_Parameters.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_RTL.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_Sources.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_SystemLanguage.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_Targets.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Manager\LocalizationManager_Translation.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\ILocalizeTarget.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\ILocalizeTargetDesc.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_2DToolKit_Label.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_2DToolKit_Sprite.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_NGUI_Label.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_NGUI_Sprite.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_NGUI_Texture.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_SVGImporter_Image.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_SVGImporter_Renderer.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_TextMeshPro_Label.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_TextMeshPro_UGUI.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_AudioSource.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Child.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_GUIText.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_GUITexture.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Prefab.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_SpriteRenderer.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_TextMesh.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_Image.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_RawImage.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_Text.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\TermData.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\AutoChangeCultureInfo.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\CoroutineManager.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\CustomLocalizeCallback.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\HindiFixer.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\I2Utils.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\LocalizationParamsManager.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\LocalizedString.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\RegisterGlobalParameters.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\ResourceManager.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\RTLFixer.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\SetLanguage.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\SetLanguageDropdown.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\StringObfuscator.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\DrawKeyAsPropertyAttribute.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Example\DataBaseExample.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Example\NestedDB.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\IDAttribute.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\References\RequiredReferences.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\ReorderableList\ReorderableList.cs" />
+    <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\SerializableDictionaryBase.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Demo\UIEffect_Demo.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Demo\UIEffect_Demo_Dialog.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\BlurMode.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\ColorMode.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\EffectArea.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\EffectPlayer.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\MaterialCache.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\MaterialResolver.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\Matrix2x3.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\Packer.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\ParameterTexture.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\ShadowStyle.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\ToneMode.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\Common\UIEffectBase.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIDissolve.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIEffect.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIEffectCapturedImage.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIFlip.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIGradient.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIHsvModifier.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIShadow.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UIShiny.cs" />
+    <Compile Include="Assets\_Tools\UIEffect\Scripts\UITransitionEffect.cs" />
     <Compile Include="Assets\Scripts\Avatars\AvatarEditor.cs" />
     <Compile Include="Assets\Scripts\Avatars\CanvasScreenshot.cs" />
     <Compile Include="Assets\Scripts\Controllers\DebugController.cs" />
@@ -240,56 +270,33 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Demo\UIEffect_Demo.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Demo\UIEffect_Demo_Dialog.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\BlurMode.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\ColorMode.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\EffectArea.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\EffectPlayer.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\MaterialCache.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\MaterialResolver.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\Matrix2x3.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\Packer.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\ParameterTexture.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\ShadowStyle.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\ToneMode.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\Common\UIEffectBase.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIDissolve.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIEffect.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIEffectCapturedImage.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIFlip.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIGradient.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIHsvModifier.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIShadow.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UIShiny.cs" />
-    <Compile Include="Assets\VFX\UIEffect\Scripts\UITransitionEffect.cs" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-Effect-HSV.shader" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-HSV.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\VFX\UIEffect\LICENSE.txt" />
+    <None Include="Assets\_Tools\UIEffect\LICENSE.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\SAGoogleSpreadsheet\ReadMe - 1.1.txt" />
+    <None Include="Assets\_Tools\SAGoogleSpreadsheet\ReadMe - 1.1.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-Effect-Dissolve.shader" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-Dissolve.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-EffectCapture.shader" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-EffectCapture.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\I2\Localization\readme.txt" />
+    <None Include="Assets\_Tools\I2\Localization\readme.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-Effect-Shiny.shader" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-Shiny.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-Effect.shader" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-Effect-Transition.shader" />
-    <None Include="Assets\VFX\UIEffect\Shaders\UI-Effect.cginc" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-Transition.shader" />
+    <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
@@ -510,9 +517,6 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="JsonFx.Json">
-      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/SAGoogleSpreadsheet/JsonFx/JsonFx.Json.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -527,6 +531,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonFx.Json">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/SAGoogleSpreadsheet/JsonFx/JsonFx.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

@@ -8,7 +8,7 @@ public class TournamentCard : MonoBehaviour
     public TournamentData Data;
 
     [SerializeField]
-    TextMeshProUGUI titleLabel, starsRequiredLabel, team_0, team_1, team_2, score_0, score_1, score_2;
+    TextMeshProUGUI titleLabel, starsRequiredLabel, _teamAmountLabel, team_0, team_1, team_2, score_0, score_1, score_2;
 
     public void Populate(TournamentData _data)
     {
@@ -16,7 +16,7 @@ public class TournamentCard : MonoBehaviour
 
         titleLabel.text = Data.Name;
         starsRequiredLabel.text = "Stars Required: " + Data.StarsRequired;
-
+        _teamAmountLabel.text = Data.Teams.Count + " TEAMS";
         List<TournamentData.TeamTournamentData> list;
         if (Data.CurrentRound == 0)
         {   

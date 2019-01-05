@@ -177,6 +177,6 @@ public class TeamData : ScriptableObject
     void Save()
     {
         EditorUtility.SetDirty(this);
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.SaveAssets();
     }
 }

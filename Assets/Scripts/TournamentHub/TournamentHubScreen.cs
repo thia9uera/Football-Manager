@@ -50,7 +50,7 @@ public class TournamentHubScreen : BaseScreen
     public void PopulateNextMatch()
     {
         nextMatch.gameObject.SetActive(true);
-        resetButton.SetActive(false);
+        //resetButton.SetActive(false);
         foreach (TournamentData.MatchData match in currentTournament.Matches)
         {
             if(match.Round == currentTournament.CurrentRound)
