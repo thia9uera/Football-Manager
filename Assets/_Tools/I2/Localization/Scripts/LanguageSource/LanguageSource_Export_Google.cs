@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine.Networking;
 
 namespace I2.Loc
 {
@@ -8,7 +9,7 @@ namespace I2.Loc
 
 	public partial class LanguageSource
 	{
-		public WWW Export_Google_CreateWWWcall( eSpreadsheetUpdateMode UpdateMode = eSpreadsheetUpdateMode.Replace )
+		public UnityWebRequest Export_Google_CreateWWWcall( eSpreadsheetUpdateMode UpdateMode = eSpreadsheetUpdateMode.Replace )
 		{
 			#if UNITY_WEBPLAYER
 			Debug.Log ("Contacting google translation is not yet supported on WebPlayer" );
@@ -27,7 +28,7 @@ namespace I2.Loc
             #endif
 
 
-            WWW www = new WWW(LocalizationManager.GetWebServiceURL(this), form);
+            UnityWebRequest www = new UnityWebRequest(LocalizationManager.GetWebServiceURL(this), form.ToString());
 			return www;
 			#endif
 		}

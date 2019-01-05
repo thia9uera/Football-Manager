@@ -2,6 +2,7 @@
 using UnityEditor;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 namespace I2.Loc
 {
@@ -11,7 +12,7 @@ namespace I2.Loc
 
 		public static Dictionary<string, string> mGoogleSpreadsheets = new Dictionary<string, string>(StringComparer.Ordinal);
 
-		public WWW mConnection_WWW;
+		public UnityWebRequest mConnection_WWW;
 		Action<string, string> mConnection_Callback;
 		//float mConnection_TimeOut;
 
@@ -377,7 +378,7 @@ namespace I2.Loc
 			#else
 			StopConnectionWWW();
 			mWebService_Status = null;	
-			mConnection_WWW = new WWW(WebServiceURL + "?action=Ping");
+			mConnection_WWW = new UnityWebRequest(WebServiceURL + "?action=Ping");
 			mConnection_Callback = OnVerifyGoogleService;
 			EditorApplication.update += CheckForConnection;
 			mConnection_Text = "Verifying Web Service";
@@ -526,7 +527,7 @@ namespace I2.Loc
 
 				if (string.IsNullOrEmpty(Error))
 				{
-					Result = System.Text.Encoding.UTF8.GetString(mConnection_WWW.bytes); //mConnection_WWW.text;
+					Result = System.Text.Encoding.UTF8.GetString(mConnection_WWW.downloadHandler.data); //mConnection_WWW.text;
 				}
 
 				StopConnectionWWW();
@@ -570,7 +571,7 @@ namespace I2.Loc
 
 			string query =  mProp_Google_WebServiceURL.stringValue + "?action=NewSpreadsheet&name=" + Uri.EscapeDataString(SpreadsheetName) + "&password="+ Uri.EscapeDataString(mProp_Google_Password.stringValue);
 
-			mConnection_WWW = new WWW(query);
+			mConnection_WWW = new UnityWebRequest(query);
 			mConnection_Callback = Google_OnNewSpreadsheet;
 			EditorApplication.update += CheckForConnection;
 			mConnection_Text = "Creating Spreadsheet";
@@ -627,7 +628,7 @@ namespace I2.Loc
             ClearErrors();
             EditorApplication.update -= Google_FindSpreadsheets;
             string query =  mProp_Google_WebServiceURL.stringValue + "?action=GetSpreadsheetList&password="+ Uri.EscapeDataString(mProp_Google_Password.stringValue);
-			mConnection_WWW = new WWW(query);
+			mConnection_WWW = new UnityWebRequest(query);
 			mConnection_Callback = Google_OnFindSpreadsheets;
 			EditorApplication.update += CheckForConnection;
 			mConnection_Text = "Accessing google";

@@ -410,8 +410,10 @@ namespace I2.Loc
 				return false;
 			
 			// We are not interested in Prefab, unless they are Prefab Instances
-			PrefabType pfType = PrefabUtility.GetPrefabType(Obj);
-			if(pfType == PrefabType.Prefab || pfType == PrefabType.ModelPrefab)
+			//PrefabType pfType = PrefabUtility.GetPrefabType(Obj);
+
+            if(PrefabUtility.GetPrefabInstanceStatus(Obj) != PrefabInstanceStatus.Connected)
+			//if(pfType == PrefabType.Prefab || pfType == PrefabType.ModelPrefab)
 				return false;
 			
 			// If the database contains the object then its not an scene object, 

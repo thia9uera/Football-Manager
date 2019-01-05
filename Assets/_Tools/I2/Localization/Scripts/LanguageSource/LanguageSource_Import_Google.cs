@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.Networking;
 
 namespace I2.Loc
 {
@@ -184,7 +185,7 @@ namespace I2.Loc
 
 		IEnumerator Import_Google_Coroutine(bool JustCheck)
 		{
-			WWW www = Import_Google_CreateWWWcall(false, JustCheck);
+            UnityWebRequest www = Import_Google_CreateWWWcall(false, JustCheck);
 			if (www==null)
 				yield break;
 
@@ -197,7 +198,7 @@ namespace I2.Loc
 
 			if (notError)
 			{
-				var bytes = www.bytes;
+				var bytes = www.downloadHandler.data;
 				wwwText = System.Text.Encoding.UTF8.GetString(bytes, 0, bytes.Length); //www.text
 
                 bool isEmpty = string.IsNullOrEmpty(wwwText) || wwwText == "\"\"";
@@ -241,7 +242,7 @@ namespace I2.Loc
 			Debug.Log("Language Source was up-to-date with Google Spreadsheet");
 		}
 
-		public WWW Import_Google_CreateWWWcall( bool ForceUpdate, bool justCheck )
+		public UnityWebRequest Import_Google_CreateWWWcall( bool ForceUpdate, bool justCheck )
 		{
 			if (!HasGoogleSpreadsheet())
 				return null;
@@ -265,7 +266,7 @@ namespace I2.Loc
                 query += "&justcheck=true";
             }
 #endif
-            WWW www = new WWW(query);
+            UnityWebRequest www = new UnityWebRequest(query);
 			return www;
 		}
 

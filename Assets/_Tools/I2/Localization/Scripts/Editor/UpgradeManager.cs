@@ -189,7 +189,7 @@ namespace I2.Loc
 			
 			GameObject go = new GameObject(LocalizationManager.GlobalSources[0]);
 			go.AddComponent<LanguageSource>();
-			PrefabUtility.CreatePrefab(ResourcesFolder + "/" + LocalizationManager.GlobalSources[0] + ".prefab", go);
+			PrefabUtility.SaveAsPrefabAsset(go, ResourcesFolder + "/" + LocalizationManager.GlobalSources[0] + ".prefab");
 			Object.DestroyImmediate(go);
 			
 			AssetDatabase.SaveAssets();
