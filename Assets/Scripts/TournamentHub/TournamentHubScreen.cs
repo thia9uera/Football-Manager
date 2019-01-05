@@ -112,4 +112,9 @@ public class TournamentHubScreen : BaseScreen
 
         playersLeaderboard.Populate(playersList, currentTournament.Id, _param);
     }
+
+    public void OpenLeaderboards()
+    {
+        MainController.Instance.Screens.ShowScreen(ScreenType.Leaderboards);
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
-public class LeaderboardView : MonoBehaviour
+public class LeaderboardView : BaseScreen
 {
     public enum LeaderboardType
     {
@@ -34,8 +34,12 @@ public class LeaderboardView : MonoBehaviour
     private string playerSorting = "Name";
     private string teamSorting = "Name";
 
-    public void Show()
+    [SerializeField]
+    int maxRows = 25;
+
+    public override void Show()
     {
+        base.Show();
         gameObject.SetActive(true);
         SwitchLeaderboard(type);
     }
@@ -43,9 +47,9 @@ public class LeaderboardView : MonoBehaviour
     public void Close()
     {
         ClearList();
-        gameObject.SetActive(false);
         if(listPlayers != null) listPlayers.Clear();
         if (listTeams != null) listTeams.Clear();
+        MainController.Instance.Screens.ShowPreviousScreen();
     }
 
     public void PopulatePlayers()
@@ -55,9 +59,9 @@ public class LeaderboardView : MonoBehaviour
 
         if (listPlayers == null || listPlayers.Count == 0) listPlayers = new List<PlayerData>(Resources.FindObjectsOfTypeAll<PlayerData>());
 
-        int i = 0;
-        foreach(PlayerData player in listPlayers)
+        for(int i = 0; i < maxRows; i++)
         {
+            PlayerData player = listPlayers[i];
             LeaderboardPlayerView item = Instantiate(playerTeamplate, content);
             item.Populate(player, i);
             i++;
@@ -71,9 +75,9 @@ public class LeaderboardView : MonoBehaviour
 
         if (listTeams == null || listTeams.Count == 0) listTeams = new List<TeamData>( Resources.FindObjectsOfTypeAll<TeamData>());
 
-        int i = 0;
-        foreach(TeamData team in listTeams)
+        for (int i = 0; i < maxRows; i++)
         {
+            TeamData team = listTeams[i];
             LeaderboardTeamView item = Instantiate(teamTeamplate, content);
             item.Populate(team, i);
             i++;

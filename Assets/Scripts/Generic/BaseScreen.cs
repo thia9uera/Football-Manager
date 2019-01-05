@@ -13,6 +13,7 @@ public class BaseScreen : MonoBehaviour
         EditSquad,
         TournamentCreation,
         TournamentSelection,
+        Leaderboards,
     }
 
     public ScreenType Type;
