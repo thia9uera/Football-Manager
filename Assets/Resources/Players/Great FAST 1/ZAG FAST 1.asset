@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG FAST 1
   m_EditorClassIdentifier: 
-  FirstName: Rogerinho
-  LastName: da Luz
+  FirstName: Vera
+  LastName: da Silva
   Zone: 3
   Position: 1
   Strategy: 0
@@ -52,13 +52,13 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 7
-    TotalCrosses: 0
+    TotalPasses: 36
+    TotalCrosses: 5
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 6
-    TotalDribbles: 1
+    TotalFaults: 5
+    TotalTackles: 47
+    TotalDribbles: 2
     TotalGoals: 0
     TotalSaves: 0
     TotalPassesMissed: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 22
+    TotalPresence: 145
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -142,4 +142,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 1
+      TotalPresence: 0

@@ -37,23 +37,23 @@ MonoBehaviour:
   Captain: {fileID: 11400000, guid: 28cb92b9a80f7c04097819505118a4f5, type: 2}
   Stars: 0
   LifeTimeStats:
-    Points: 5
-    TotalWins: 1
-    TotalLosts: 1
-    TotalDraws: 2
-    TotalGoals: 11
-    TotalGoalsAgainst: 9
-    TotalShots: 11
-    TotalHeaders: 0
-    TotalSteals: 9
-    TotalPasses: 46
-    TotalLongPasses: 13
-    TotalPassesMissed: 1
-    TotalBoxCrosses: 1
-    TotalFaults: 16
+    Points: 31
+    TotalWins: 8
+    TotalLosts: 14
+    TotalDraws: 7
+    TotalGoals: 43
+    TotalGoalsAgainst: 53
+    TotalShots: 88
+    TotalHeaders: 9
+    TotalSteals: 78
+    TotalPasses: 389
+    TotalLongPasses: 115
+    TotalPassesMissed: 7
+    TotalBoxCrosses: 28
+    TotalFaults: 116
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 4
+    TotalCounterAttacks: 28
   MatchStats:
     Points: 0
     TotalWins: 0
@@ -100,29 +100,7 @@ MonoBehaviour:
     _keys:
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - Points: 1
-      TotalWins: 0
-      TotalLosts: 0
-      TotalDraws: 1
-      TotalGoals: 4
-      TotalGoalsAgainst: 4
-      TotalShots: 3
-      TotalHeaders: 0
-      TotalSteals: 2
-      TotalPasses: 8
-      TotalLongPasses: 1
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 0
-      TotalFaults: 2
-      TotalOffsides: 0
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 0
-  isUserControlled: 0
-  IsPlaceholder: 0
-  MatchData:
-    Team: {fileID: 11400000}
-    Statistics:
-      Points: 0
+    - Points: 0
       TotalWins: 0
       TotalLosts: 0
       TotalDraws: 0
@@ -139,10 +117,29 @@ MonoBehaviour:
       TotalOffsides: 0
       TotalCornerKicks: 0
       TotalCounterAttacks: 0
+  isUserControlled: 0
+  IsPlaceholder: 0
+  MatchData:
+    Team: {fileID: 11400000}
+    Statistics:
+      Points: 1
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 1
+      TotalGoals: 1
+      TotalGoalsAgainst: 1
+      TotalShots: 1
+      TotalHeaders: 0
+      TotalSteals: 2
+      TotalPasses: 7
+      TotalLongPasses: 3
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 3
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
     Scorers:
-    - {fileID: 11400000, guid: 28cb92b9a80f7c04097819505118a4f5, type: 2}
-    - {fileID: 11400000, guid: 1da4465d1bedaa5489adb5bc5e6a2d57, type: 2}
-    - {fileID: 11400000, guid: 661371bc0d5275c44a8bdf1f0eed2123, type: 2}
     - {fileID: 11400000, guid: 28cb92b9a80f7c04097819505118a4f5, type: 2}
     YellowCards: []
     RedCards: []

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG REG 51
   m_EditorClassIdentifier: 
-  FirstName: Rebecca
-  LastName: Sinceridade
+  FirstName: "Andr\xE9"
+  LastName: 5 pila
   Zone: 3
   Position: 1
   Strategy: 0
@@ -52,12 +52,12 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 21
-    TotalCrosses: 9
+    TotalPasses: 27
+    TotalCrosses: 11
     TotalShots: 1
     TotalHeaders: 0
-    TotalFaults: 5
-    TotalTackles: 46
+    TotalFaults: 12
+    TotalTackles: 67
     TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 120
+    TotalPresence: 169
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,15 +108,17 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 11
-      TotalCrosses: 2
+    - TotalPasses: 0
+      TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 2
-      TotalTackles: 11
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +127,19 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 45
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

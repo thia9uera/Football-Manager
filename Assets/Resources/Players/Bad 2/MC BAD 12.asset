@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC BAD 12
   m_EditorClassIdentifier: 
-  FirstName: "Am\xE9lia"
-  LastName: "Hern\xE1ndez"
+  FirstName: Denilson
+  LastName: Pereira
   Zone: 17
   Position: 2
   Strategy: 0

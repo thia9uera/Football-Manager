@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG BAD 24
   m_EditorClassIdentifier: 
-  FirstName: Renata
-  LastName: Tarantino
+  FirstName: Alex
+  LastName: Ribeiro
   Zone: 7
   Position: 1
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 32
   Vision: 37
   Stability: 47
-  fatigue: 81.333336
+  fatigue: 93.333336
   Team: {fileID: 11400000, guid: 08398978ec95dc74b96d8f4460d37b2f, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 1
-    TotalCrosses: 0
+    TotalPasses: 5
+    TotalCrosses: 5
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 9
+    TotalFaults: 6
+    TotalTackles: 43
     TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
-    TotalPassesMissed: 0
+    TotalPassesMissed: 2
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 11
+    TotalPresence: 87
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 4
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 4
+      TotalPresence: 0

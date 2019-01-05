@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG BAD 19
   m_EditorClassIdentifier: 
-  FirstName: MC
-  LastName: das Neves
+  FirstName: "In\xE1cio"
+  LastName: Gozado
   Zone: 7
   Position: 1
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 32
   Vision: 37
   Stability: 47
-  fatigue: 82.66667
+  fatigue: 100
   Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 8
-    TotalCrosses: 0
+    TotalPasses: 12
+    TotalCrosses: 2
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 9
+    TotalFaults: 6
+    TotalTackles: 22
     TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
-    TotalPassesMissed: 1
+    TotalPassesMissed: 3
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
-    TotalCrossesMissed: 1
-    TotalPresence: 34
+    TotalCrossesMissed: 2
+    TotalPresence: 72
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -128,12 +128,12 @@ MonoBehaviour:
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
       TotalPresence: 0
-    - TotalPasses: 2
+    - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 3
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -141,5 +141,5 @@ MonoBehaviour:
       TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
-      TotalCrossesMissed: 1
-      TotalPresence: 10
+      TotalCrossesMissed: 0
+      TotalPresence: 0

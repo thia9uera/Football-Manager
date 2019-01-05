@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: GK REG 4
   m_EditorClassIdentifier: 
-  FirstName: Matheus
-  LastName: Sampaio
+  FirstName: Lara
+  LastName: Don Juan
   Zone: 0
   Position: 0
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 45
-    TotalCrosses: 43
+    TotalPasses: 77
+    TotalCrosses: 91
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 3
-    TotalTackles: 27
+    TotalFaults: 7
+    TotalTackles: 46
     TotalDribbles: 0
     TotalGoals: 0
-    TotalSaves: 50
+    TotalSaves: 88
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 88
+    TotalPresence: 164
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -113,22 +113,7 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 13
-      TotalCrosses: 9
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 7
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 15
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 21
-    - TotalPasses: 3
+    - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
@@ -136,10 +121,25 @@ MonoBehaviour:
       TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
-      TotalSaves: 2
+      TotalSaves: 0
       TotalPassesMissed: 0
       TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 3
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

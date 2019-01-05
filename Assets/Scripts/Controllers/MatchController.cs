@@ -75,7 +75,6 @@ public class MatchController : MonoBehaviour
     public TeamData DefendingTeam;
     PlayerData attackingPlayer;
     PlayerData defendingPlayer;
-    PlayerData playerWithBall;
     float attackingBonus = 1f;
     bool keepAttacker;
     bool keepDefender;
@@ -1956,17 +1955,6 @@ public class MatchController : MonoBehaviour
         return action;
     } 
 
-    int GetAttributeBonus(int _attribute)
-    {
-        int bonus = 0;
-        if(_attribute > 70)
-        {
-            bonus = _attribute - 70;
-        }
-
-        return bonus;
-    }
-
     void ResolveShot(MarkingType _marking)
     {
         float attacking = 0f;
@@ -2182,6 +2170,17 @@ public class MatchController : MonoBehaviour
         DebugString += "Shoot: " + (shoot * 100).ToString("F2") + "%\n";
 
         return action;
+    }
+
+    int GetAttributeBonus(int _attribute)
+    {
+        int bonus = 0;
+        if (_attribute > 70)
+        {
+            bonus = _attribute - 70;
+        }
+
+        return bonus;
     }
 
     int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)

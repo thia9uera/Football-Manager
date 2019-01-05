@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC GRT 9
   m_EditorClassIdentifier: 
-  FirstName: Kelyn
-  LastName: Dunga
+  FirstName: "Ver\xF4nica"
+  LastName: Armstrong
   Zone: 20
   Position: 2
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 57
-    TotalCrosses: 18
-    TotalShots: 28
+    TotalPasses: 76
+    TotalCrosses: 22
+    TotalShots: 36
     TotalHeaders: 0
-    TotalFaults: 9
-    TotalTackles: 53
+    TotalFaults: 13
+    TotalTackles: 75
     TotalDribbles: 10
-    TotalGoals: 14
+    TotalGoals: 16
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 9
+    TotalShotsMissed: 10
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 252
+    TotalPresence: 325
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 17
-      TotalCrosses: 6
-      TotalShots: 11
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 2
-      TotalTackles: 18
-      TotalDribbles: 5
-      TotalGoals: 6
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 4
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 76
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 31
   m_EditorClassIdentifier: 
-  FirstName: Rosa
-  LastName: "da Concei\xE7\xE3o"
+  FirstName: "Cl\xE1udia"
+  LastName: Huck
   Zone: 23
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 20
-    TotalCrosses: 5
-    TotalShots: 11
+    TotalPasses: 26
+    TotalCrosses: 6
+    TotalShots: 15
     TotalHeaders: 0
-    TotalFaults: 7
-    TotalTackles: 40
-    TotalDribbles: 4
-    TotalGoals: 5
+    TotalFaults: 8
+    TotalTackles: 46
+    TotalDribbles: 6
+    TotalGoals: 6
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 3
+    TotalPassesMissed: 2
+    TotalShotsMissed: 4
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 126
+    TotalPresence: 161
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 7
-      TotalCrosses: 3
-      TotalShots: 5
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 3
-      TotalTackles: 11
-      TotalDribbles: 1
-      TotalGoals: 1
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 2
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 43
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

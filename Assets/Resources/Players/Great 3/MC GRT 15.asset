@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC GRT 15
   m_EditorClassIdentifier: 
-  FirstName: Haylton
-  LastName: Maya
+  FirstName: Ivanete
+  LastName: Palito
   Zone: 20
   Position: 2
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 96
   Vision: 93
   Stability: 88
-  fatigue: 60.63827
+  fatigue: 100
   Team: {fileID: 11400000, guid: ef0ff61f3f71cec40b899bb069fffb48, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 72
-    TotalCrosses: 17
-    TotalShots: 25
+    TotalPasses: 97
+    TotalCrosses: 25
+    TotalShots: 30
     TotalHeaders: 2
-    TotalFaults: 7
-    TotalTackles: 59
-    TotalDribbles: 16
-    TotalGoals: 10
+    TotalFaults: 10
+    TotalTackles: 84
+    TotalDribbles: 17
+    TotalGoals: 12
     TotalSaves: 0
     TotalPassesMissed: 1
-    TotalShotsMissed: 4
+    TotalShotsMissed: 5
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 1
-    TotalPresence: 252
+    TotalPresence: 347
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 27
-      TotalCrosses: 5
-      TotalShots: 9
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 7
-      TotalTackles: 27
-      TotalDribbles: 4
-      TotalGoals: 3
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 1
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 88
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

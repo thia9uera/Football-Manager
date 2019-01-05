@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 25
   m_EditorClassIdentifier: 
-  FirstName: Pipoca
-  LastName: do Plastico
+  FirstName: "Raf\xE3o"
+  LastName: Pateta
   Zone: 23
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 16
-    TotalCrosses: 11
-    TotalShots: 15
+    TotalPasses: 23
+    TotalCrosses: 12
+    TotalShots: 18
     TotalHeaders: 0
-    TotalFaults: 6
-    TotalTackles: 32
-    TotalDribbles: 2
-    TotalGoals: 4
+    TotalFaults: 8
+    TotalTackles: 48
+    TotalDribbles: 5
+    TotalGoals: 5
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 8
+    TotalShotsMissed: 9
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 121
+    TotalPresence: 164
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 8
-      TotalCrosses: 3
-      TotalShots: 3
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 2
-      TotalTackles: 10
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
-      TotalGoals: 1
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 1
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 33
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

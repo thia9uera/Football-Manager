@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 27
   m_EditorClassIdentifier: 
-  FirstName: Fernando
-  LastName: "Fub\xE1"
+  FirstName: Gerude
+  LastName: do Borel
   Zone: 25
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 40
-    TotalCrosses: 16
-    TotalShots: 18
+    TotalPasses: 55
+    TotalCrosses: 20
+    TotalShots: 24
     TotalHeaders: 5
-    TotalFaults: 5
-    TotalTackles: 33
-    TotalDribbles: 6
+    TotalFaults: 6
+    TotalTackles: 45
+    TotalDribbles: 8
     TotalGoals: 9
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 8
+    TotalShotsMissed: 9
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 1
-    TotalPresence: 183
+    TotalPresence: 244
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 5
-      TotalCrosses: 5
-      TotalShots: 8
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 9
-      TotalDribbles: 1
-      TotalGoals: 4
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 3
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
-      TotalCrossesMissed: 1
-      TotalPresence: 54
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

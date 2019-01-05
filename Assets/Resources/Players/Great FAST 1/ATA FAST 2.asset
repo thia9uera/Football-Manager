@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA FAST 2
   m_EditorClassIdentifier: 
-  FirstName: "Jo\xE3o"
-  LastName: "Alm\xF4ndega"
+  FirstName: Samuel
+  LastName: Ossada
   Zone: 27
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 9
-    TotalCrosses: 4
-    TotalShots: 7
+    TotalPasses: 47
+    TotalCrosses: 22
+    TotalShots: 35
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 7
-    TotalDribbles: 3
-    TotalGoals: 1
+    TotalFaults: 3
+    TotalTackles: 21
+    TotalDribbles: 11
+    TotalGoals: 16
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 1
+    TotalShotsMissed: 9
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-    TotalPresence: 25
+    TotalCrossesMissed: 1
+    TotalPresence: 117
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -128,13 +128,13 @@ MonoBehaviour:
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
       TotalPresence: 0
-    - TotalPasses: 2
-      TotalCrosses: 1
-      TotalShots: 1
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
-      TotalDribbles: 1
+      TotalTackles: 0
+      TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
@@ -142,4 +142,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 4
+      TotalPresence: 0

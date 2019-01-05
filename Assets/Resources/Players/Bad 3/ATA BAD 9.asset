@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA BAD 9
   m_EditorClassIdentifier: 
-  FirstName: Simony
-  LastName: "Gon\xE7a~lves"
+  FirstName: Anna
+  LastName: Costa
   Zone: 25
   Position: 3
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 48
   Vision: 48
   Stability: 52
-  fatigue: 100
+  fatigue: 68.59754
   Team: {fileID: 11400000, guid: 01dc9f40259332841b626886ddfae7ab, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 48
-    TotalCrosses: 22
-    TotalShots: 16
+    TotalPasses: 66
+    TotalCrosses: 25
+    TotalShots: 18
     TotalHeaders: 0
-    TotalFaults: 24
-    TotalTackles: 105
+    TotalFaults: 27
+    TotalTackles: 115
     TotalDribbles: 0
-    TotalGoals: 0
+    TotalGoals: 1
     TotalSaves: 0
-    TotalPassesMissed: 8
+    TotalPassesMissed: 9
     TotalShotsMissed: 3
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
-    TotalCrossesMissed: 3
-    TotalPresence: 284
+    TotalCrossesMissed: 5
+    TotalPresence: 330
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -113,33 +113,33 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F2BBE-7BE0A1-3136F98B
     _values:
-    - TotalPasses: 15
-      TotalCrosses: 6
-      TotalShots: 4
-      TotalHeaders: 0
-      TotalFaults: 8
-      TotalTackles: 33
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 5
-      TotalShotsMissed: 1
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 97
-    - TotalPasses: 6
-      TotalCrosses: 2
-      TotalShots: 2
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 4
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
-      TotalPassesMissed: 1
-      TotalShotsMissed: 1
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 17
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 12
   m_EditorClassIdentifier: 
-  FirstName: Valentina
-  LastName: Bolacha
+  FirstName: Alexandra
+  LastName: Tiririca
   Zone: 25
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 48
-    TotalCrosses: 17
-    TotalShots: 17
-    TotalHeaders: 2
-    TotalFaults: 5
-    TotalTackles: 29
-    TotalDribbles: 12
-    TotalGoals: 8
+    TotalPasses: 81
+    TotalCrosses: 26
+    TotalShots: 48
+    TotalHeaders: 5
+    TotalFaults: 9
+    TotalTackles: 53
+    TotalDribbles: 16
+    TotalGoals: 27
     TotalSaves: 0
     TotalPassesMissed: 1
-    TotalShotsMissed: 8
+    TotalShotsMissed: 13
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 1
-    TotalPresence: 179
+    TotalPresence: 339
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -113,27 +113,12 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 12
-      TotalCrosses: 2
-      TotalShots: 7
-      TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 4
-      TotalDribbles: 3
-      TotalGoals: 1
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 2
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 43
-    - TotalPasses: 4
+    - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -142,4 +127,19 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 8
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

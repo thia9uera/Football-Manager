@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC GRT 14
   m_EditorClassIdentifier: 
-  FirstName: Nicolas
-  LastName: "Guimar\xE3es"
+  FirstName: Alexandre
+  LastName: "Pan\xE7a"
   Zone: 15
   Position: 2
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 83
   Vision: 92
   Stability: 90
-  fatigue: 44.753063
+  fatigue: 100
   Team: {fileID: 11400000, guid: ef0ff61f3f71cec40b899bb069fffb48, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 80
-    TotalCrosses: 24
-    TotalShots: 21
+    TotalPasses: 110
+    TotalCrosses: 29
+    TotalShots: 28
     TotalHeaders: 0
-    TotalFaults: 20
-    TotalTackles: 145
-    TotalDribbles: 15
+    TotalFaults: 31
+    TotalTackles: 193
+    TotalDribbles: 19
     TotalGoals: 8
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 4
+    TotalPassesMissed: 1
+    TotalShotsMissed: 6
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 363
+    TotalPresence: 490
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 17
-      TotalCrosses: 8
-      TotalShots: 8
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 10
-      TotalTackles: 54
-      TotalDribbles: 8
-      TotalGoals: 3
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 1
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 121
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

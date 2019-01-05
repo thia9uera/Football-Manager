@@ -37,23 +37,23 @@ MonoBehaviour:
   Captain: {fileID: 11400000, guid: 70c7726a80bccfb4ebf6a46fc235c2d0, type: 2}
   Stars: 0
   LifeTimeStats:
-    Points: 81
-    TotalWins: 16
-    TotalLosts: 11
-    TotalDraws: 5
-    TotalGoals: 59
-    TotalGoalsAgainst: 48
-    TotalShots: 100
-    TotalHeaders: 8
-    TotalSteals: 70
-    TotalPasses: 472
-    TotalLongPasses: 149
-    TotalPassesMissed: 6
-    TotalBoxCrosses: 35
-    TotalFaults: 92
+    Points: 94
+    TotalWins: 20
+    TotalLosts: 15
+    TotalDraws: 6
+    TotalGoals: 76
+    TotalGoalsAgainst: 68
+    TotalShots: 133
+    TotalHeaders: 10
+    TotalSteals: 90
+    TotalPasses: 608
+    TotalLongPasses: 199
+    TotalPassesMissed: 9
+    TotalBoxCrosses: 46
+    TotalFaults: 134
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 29
+    TotalCounterAttacks: 38
   MatchStats:
     Points: 0
     TotalWins: 0
@@ -102,23 +102,23 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - Points: 29
-      TotalWins: 5
-      TotalLosts: 3
-      TotalDraws: 1
-      TotalGoals: 25
-      TotalGoalsAgainst: 19
-      TotalShots: 30
-      TotalHeaders: 2
-      TotalSteals: 24
-      TotalPasses: 179
-      TotalLongPasses: 56
-      TotalPassesMissed: 1
-      TotalBoxCrosses: 9
-      TotalFaults: 32
+    - Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
       TotalOffsides: 0
       TotalCornerKicks: 0
-      TotalCounterAttacks: 9
+      TotalCounterAttacks: 0
     - Points: 0
       TotalWins: 0
       TotalLosts: 0
@@ -143,23 +143,22 @@ MonoBehaviour:
     Statistics:
       Points: 0
       TotalWins: 0
-      TotalLosts: 0
+      TotalLosts: 1
       TotalDraws: 0
-      TotalGoals: 0
-      TotalGoalsAgainst: 0
-      TotalShots: 0
+      TotalGoals: 1
+      TotalGoalsAgainst: 5
+      TotalShots: 3
       TotalHeaders: 0
       TotalSteals: 0
-      TotalPasses: 0
-      TotalLongPasses: 0
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 0
-      TotalFaults: 0
-      TotalOffsides: 0
+      TotalPasses: 12
+      TotalLongPasses: 3
+      TotalPassesMissed: 2
+      TotalBoxCrosses: 1
+      TotalFaults: 5
+      TotalOffsides: 1
       TotalCornerKicks: 0
       TotalCounterAttacks: 0
     Scorers:
-    - {fileID: 11400000, guid: b3eb058730e078e4bb7e6fee4d7bfd69, type: 2}
-    - {fileID: 11400000, guid: b3eb058730e078e4bb7e6fee4d7bfd69, type: 2}
+    - {fileID: 11400000, guid: 17a020b1bf20c54429aabb4b5526da7b, type: 2}
     YellowCards: []
     RedCards: []

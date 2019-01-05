@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC BAD 4
   m_EditorClassIdentifier: 
-  FirstName: Maumau
-  LastName: Boca de Grilo
+  FirstName: Jozenildo
+  LastName: Girafa
   Zone: 27
   Position: 2
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 35
   Vision: 52
   Stability: 47
-  fatigue: 90.88235
+  fatigue: 92.94118
   Team: {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 0
+    TotalPasses: 2
     TotalCrosses: 0
-    TotalShots: 4
+    TotalShots: 5
     TotalHeaders: 0
     TotalFaults: 0
-    TotalTackles: 2
+    TotalTackles: 6
     TotalDribbles: 1
     TotalGoals: 1
     TotalSaves: 0
-    TotalPassesMissed: 1
-    TotalShotsMissed: 1
+    TotalPassesMissed: 2
+    TotalShotsMissed: 2
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 17
+    TotalPresence: 39
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -130,16 +130,16 @@ MonoBehaviour:
       TotalPresence: 0
     - TotalPasses: 0
       TotalCrosses: 0
-      TotalShots: 1
+      TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
-      TotalPassesMissed: 1
-      TotalShotsMissed: 1
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 7
+      TotalPresence: 0

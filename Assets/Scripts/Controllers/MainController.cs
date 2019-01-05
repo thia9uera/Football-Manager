@@ -36,7 +36,7 @@ public class MainController : MonoBehaviour
         //TeamData home = Resources.Load<TeamData>("Teams/Crossing");
         //TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
         //if(Match != null) Match.Populate(home, away);
-        ShowScreen(BaseScreen.ScreenType.MainMenu);
+        ShowScreen(BaseScreen.ScreenType.Loading);
     }
 
     public void EditSquad(TeamData _team)

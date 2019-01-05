@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 33
   m_EditorClassIdentifier: 
-  FirstName: "Z\xE9"
-  LastName: Dal Molin
+  FirstName: Michele
+  LastName: Everest
   Zone: 25
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 56
-    TotalCrosses: 17
-    TotalShots: 14
-    TotalHeaders: 3
+    TotalPasses: 75
+    TotalCrosses: 19
+    TotalShots: 20
+    TotalHeaders: 4
     TotalFaults: 6
-    TotalTackles: 21
-    TotalDribbles: 9
-    TotalGoals: 10
+    TotalTackles: 27
+    TotalDribbles: 10
+    TotalGoals: 15
     TotalSaves: 0
     TotalPassesMissed: 1
-    TotalShotsMissed: 4
+    TotalShotsMissed: 5
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 158
+    TotalPresence: 204
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 16
-      TotalCrosses: 4
-      TotalShots: 4
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 2
-      TotalTackles: 5
-      TotalDribbles: 3
-      TotalGoals: 3
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
-      TotalPassesMissed: 1
+      TotalPassesMissed: 0
       TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 49
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

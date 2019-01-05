@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 38
   m_EditorClassIdentifier: 
-  FirstName: Ivanete
-  LastName: Iceberg
+  FirstName: Jozeca
+  LastName: Oliva
   Zone: 11
   Position: 2
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 77
   Vision: 82
   Stability: 79
-  fatigue: 87.65431
+  fatigue: 79.01233
   Team: {fileID: 11400000, guid: 08398978ec95dc74b96d8f4460d37b2f, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 8
-    TotalCrosses: 2
-    TotalShots: 1
+    TotalPasses: 61
+    TotalCrosses: 16
+    TotalShots: 3
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 8
-    TotalDribbles: 2
-    TotalGoals: 0
+    TotalFaults: 11
+    TotalTackles: 74
+    TotalDribbles: 5
+    TotalGoals: 1
     TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 25
+    TotalPresence: 208
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -111,12 +111,12 @@ MonoBehaviour:
     _keys:
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 1
+    - TotalPasses: 0
       TotalCrosses: 0
-      TotalShots: 1
+      TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 2
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 4
+      TotalPresence: 0

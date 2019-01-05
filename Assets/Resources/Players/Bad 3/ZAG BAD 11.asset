@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG BAD 11
   m_EditorClassIdentifier: 
-  FirstName: Vinicius
-  LastName: Mayer
+  FirstName: "M\xE1ucio"
+  LastName: Pereba
   Zone: 3
   Position: 1
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 40
   Vision: 53
   Stability: 48
-  fatigue: 100
+  fatigue: 92.53731
   Team: {fileID: 11400000, guid: 01dc9f40259332841b626886ddfae7ab, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,12 +52,12 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 16
-    TotalCrosses: 3
+    TotalPasses: 18
+    TotalCrosses: 4
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 13
-    TotalTackles: 57
+    TotalFaults: 17
+    TotalTackles: 66
     TotalDribbles: 0
     TotalGoals: 0
     TotalSaves: 0
@@ -65,8 +65,8 @@ MonoBehaviour:
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
-    TotalCrossesMissed: 3
-    TotalPresence: 134
+    TotalCrossesMissed: 4
+    TotalPresence: 156
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -113,27 +113,12 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F2BBE-7BE0A1-3136F98B
     _values:
-    - TotalPasses: 5
-      TotalCrosses: 1
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 4
-      TotalTackles: 15
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 1
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 2
-      TotalPresence: 38
-    - TotalPasses: 2
+    - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 3
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -142,4 +127,19 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 6
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

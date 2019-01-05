@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG BAD 18
   m_EditorClassIdentifier: 
-  FirstName: Samuca
-  LastName: Escobar
+  FirstName: Bruno
+  LastName: Urso
   Zone: 5
   Position: 1
   Strategy: 0

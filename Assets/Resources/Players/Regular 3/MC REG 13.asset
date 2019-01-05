@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 13
   m_EditorClassIdentifier: 
-  FirstName: Vaneza
-  LastName: TicTac
+  FirstName: Gigi
+  LastName: "Ouri\xE7o"
   Zone: 27
   Position: 2
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 2
-    TotalCrosses: 2
-    TotalShots: 2
+    TotalPasses: 8
+    TotalCrosses: 4
+    TotalShots: 16
     TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 3
-    TotalDribbles: 1
-    TotalGoals: 2
+    TotalFaults: 3
+    TotalTackles: 17
+    TotalDribbles: 7
+    TotalGoals: 8
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
+    TotalPassesMissed: 1
+    TotalShotsMissed: 1
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 14
+    TotalPresence: 93
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 1
+      TotalPresence: 0

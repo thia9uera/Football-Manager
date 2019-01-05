@@ -312,4 +312,4 @@ MonoBehaviour:
     isPlayed: 0
     Round: 2
   TotalRounds: 3
-  CurrentRound: 2
+  CurrentRound: 0

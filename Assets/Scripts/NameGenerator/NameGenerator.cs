@@ -32,6 +32,7 @@ public class NameGenerator : MonoBehaviour
     private void Start()
     {
         fileList = new List<PlayerData>(Resources.LoadAll<PlayerData>("Players"));
+        print("TOTAL PLAYER: " + fileList.Count);
         Populate();
         //SetPlayersTeam();
     }
@@ -92,13 +93,7 @@ public class NameGenerator : MonoBehaviour
         foreach(TeamData team in teams)
         {
             t++;
-            foreach (PlayerData player in team.Squad)
-            {
-                player.Team = team;
-                EditorUtility.SetDirty(player);
-                p++;
-            }
-            foreach (PlayerData player in team.Substitutes)
+            foreach (PlayerData player in team.GetAllPlayers())
             {
                 player.Team = team;
                 EditorUtility.SetDirty(player);

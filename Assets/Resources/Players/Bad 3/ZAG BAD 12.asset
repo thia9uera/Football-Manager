@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG BAD 12
   m_EditorClassIdentifier: 
-  FirstName: Igor
-  LastName: Samba Enredo
+  FirstName: Nando
+  LastName: "Olho-bi\xF4nico"
   Zone: 4
   Position: 1
   Strategy: 0

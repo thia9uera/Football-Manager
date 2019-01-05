@@ -37,23 +37,25 @@ MonoBehaviour:
   Captain: {fileID: 11400000, guid: 09cbd6eb283399c45b77e61fcb1ad86a, type: 2}
   Stars: 0
   LifeTimeStats:
-    TotalWins: 0
-    TotalLosts: 0
-    TotalDraws: 0
-    TotalGoals: 0
-    TotalGoalsAgainst: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalSteals: 0
-    TotalPasses: 0
-    TotalLongPasses: 0
-    TotalPassesMissed: 0
-    TotalBoxCrosses: 0
-    TotalFaults: 0
+    Points: 19
+    TotalWins: 6
+    TotalLosts: 2
+    TotalDraws: 1
+    TotalGoals: 19
+    TotalGoalsAgainst: 4
+    TotalShots: 30
+    TotalHeaders: 2
+    TotalSteals: 26
+    TotalPasses: 175
+    TotalLongPasses: 56
+    TotalPassesMissed: 2
+    TotalBoxCrosses: 17
+    TotalFaults: 26
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 0
+    TotalCounterAttacks: 6
   MatchStats:
+    Points: 0
     TotalWins: 0
     TotalLosts: 0
     TotalDraws: 0
@@ -70,14 +72,76 @@ MonoBehaviour:
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0
+  TournamentStatistics:
+    reorderableList:
+      canAdd: 0
+      canRemove: 0
+      draggable: 0
+      expandable: 0
+      multipleSelection: 0
+      isExpanded: 0
+      label:
+        m_Text: 
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 0
+      footerHeight: 0
+      slideEasing: 0
+      verticalSpacing: 0
+      showDefaultBackground: 0
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues:
+    - 5C2F6020-13DCDAC-230E82BC
+    _keys:
+    - 5C2F6020-13DCDAC-230E82BC
+    _values:
+    - Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
   isUserControlled: 0
   IsPlaceholder: 0
   MatchData:
     Team: {fileID: 11400000}
-    Score: 2
+    Statistics:
+      Points: 3
+      TotalWins: 1
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 3
+      TotalGoalsAgainst: 0
+      TotalShots: 5
+      TotalHeaders: 0
+      TotalSteals: 3
+      TotalPasses: 22
+      TotalLongPasses: 8
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 1
+      TotalFaults: 2
+      TotalOffsides: 2
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 1
     Scorers:
     - {fileID: 11400000, guid: 93e5fd9c845015a45a54297b7a3bc476, type: 2}
-    - {fileID: 11400000, guid: 6e46ec07d7a40e64f841232d62041fcd, type: 2}
+    - {fileID: 11400000, guid: 93e5fd9c845015a45a54297b7a3bc476, type: 2}
+    - {fileID: 11400000, guid: ac319fbf8e7fe7f4c8ec58dd9c67a9bf, type: 2}
     YellowCards: []
     RedCards: []
-    Points: 3

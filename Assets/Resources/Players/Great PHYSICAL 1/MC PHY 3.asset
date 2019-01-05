@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC PHY 3
   m_EditorClassIdentifier: 
-  FirstName: Ronaldinho
-  LastName: Joelhada
+  FirstName: Berinha
+  LastName: Boquita
   Zone: 20
   Position: 2
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 6
-    TotalCrosses: 2
-    TotalShots: 1
-    TotalHeaders: 1
-    TotalFaults: 1
-    TotalTackles: 7
-    TotalDribbles: 0
-    TotalGoals: 1
+    TotalPasses: 56
+    TotalCrosses: 10
+    TotalShots: 15
+    TotalHeaders: 2
+    TotalFaults: 9
+    TotalTackles: 62
+    TotalDribbles: 8
+    TotalGoals: 6
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 0
+    TotalShotsMissed: 6
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 25
+    TotalPresence: 222
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -111,12 +111,12 @@ MonoBehaviour:
     _keys:
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 3
-      TotalCrosses: 2
+    - TotalPasses: 0
+      TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 3
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 11
+      TotalPresence: 0

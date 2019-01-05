@@ -196,6 +196,7 @@
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardPlayerView.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardTeamView.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardView.cs" />
+    <Compile Include="Assets\Scripts\Loading\LoadingScreen.cs" />
     <Compile Include="Assets\Scripts\Match\MatchFieldView.cs" />
     <Compile Include="Assets\Scripts\Match\MatchNarration.cs" />
     <Compile Include="Assets\Scripts\Match\MatchNarrationTextView.cs" />

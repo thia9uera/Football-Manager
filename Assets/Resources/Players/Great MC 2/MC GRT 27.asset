@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC GRT 27
   m_EditorClassIdentifier: 
-  FirstName: Fernando
-  LastName: Martelo
+  FirstName: Larissa
+  LastName: Maya
   Zone: 20
   Position: 2
   Strategy: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 96
   Vision: 93
   Stability: 88
-  fatigue: 100
+  fatigue: 87.23403
   Team: {fileID: 11400000, guid: 5e3a60bae5dcf0d48a6a91d98e27c8f4, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 73
-    TotalCrosses: 13
-    TotalShots: 18
+    TotalPasses: 96
+    TotalCrosses: 15
+    TotalShots: 25
     TotalHeaders: 1
-    TotalFaults: 14
-    TotalTackles: 71
-    TotalDribbles: 9
-    TotalGoals: 11
+    TotalFaults: 18
+    TotalTackles: 91
+    TotalDribbles: 10
+    TotalGoals: 16
     TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 4
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 259
+    TotalPresence: 334
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 27
-      TotalCrosses: 6
-      TotalShots: 3
-      TotalHeaders: 1
-      TotalFaults: 5
-      TotalTackles: 19
-      TotalDribbles: 2
-      TotalGoals: 3
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
       TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 79
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

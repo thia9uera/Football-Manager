@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 6
   m_EditorClassIdentifier: 
-  FirstName: Gui
-  LastName: "Pan\xE7a"
+  FirstName: Cristiano
+  LastName: Marx
   Zone: 25
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 51
-    TotalCrosses: 18
-    TotalShots: 24
-    TotalHeaders: 3
-    TotalFaults: 3
-    TotalTackles: 41
-    TotalDribbles: 4
-    TotalGoals: 9
+    TotalPasses: 91
+    TotalCrosses: 35
+    TotalShots: 40
+    TotalHeaders: 7
+    TotalFaults: 9
+    TotalTackles: 73
+    TotalDribbles: 13
+    TotalGoals: 18
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 5
+    TotalShotsMissed: 10
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 209
+    TotalPresence: 390
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -113,33 +113,33 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 13
-      TotalCrosses: 7
-      TotalShots: 6
-      TotalHeaders: 2
-      TotalFaults: 0
-      TotalTackles: 9
-      TotalDribbles: 0
-      TotalGoals: 5
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 1
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 65
-    - TotalPasses: 3
-      TotalCrosses: 1
-      TotalShots: 3
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 2
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 1
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 11
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

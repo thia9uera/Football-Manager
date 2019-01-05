@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: GK REG 3
   m_EditorClassIdentifier: 
-  FirstName: Anna
-  LastName: Maritaca
+  FirstName: Rogerinho
+  LastName: da Jumenta
   Zone: 0
   Position: 0
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 3
-    TotalCrosses: 13
+    TotalPasses: 43
+    TotalCrosses: 55
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 2
-    TotalTackles: 3
+    TotalFaults: 9
+    TotalTackles: 25
     TotalDribbles: 0
     TotalGoals: 0
-    TotalSaves: 11
+    TotalSaves: 51
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 8
+    TotalPresence: 87
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -111,18 +111,18 @@ MonoBehaviour:
     _keys:
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 1
-      TotalCrosses: 3
+    - TotalPasses: 0
+      TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 1
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
-      TotalSaves: 1
+      TotalSaves: 0
       TotalPassesMissed: 0
       TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 2
+      TotalPresence: 0

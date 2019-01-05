@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA GRT 14
   m_EditorClassIdentifier: 
-  FirstName: Diego
-  LastName: Castro
+  FirstName: Juliele
+  LastName: "do Sucat\xE3o"
   Zone: 27
   Position: 3
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 34
-    TotalCrosses: 14
-    TotalShots: 28
-    TotalHeaders: 1
-    TotalFaults: 1
-    TotalTackles: 23
-    TotalDribbles: 9
-    TotalGoals: 16
+    TotalPasses: 39
+    TotalCrosses: 16
+    TotalShots: 34
+    TotalHeaders: 2
+    TotalFaults: 2
+    TotalTackles: 29
+    TotalDribbles: 10
+    TotalGoals: 20
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 6
+    TotalPassesMissed: 1
+    TotalShotsMissed: 8
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 103
+    TotalPresence: 129
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _keys:
     - 5C2F2C2D-649471-306EAB65
+    - 5C2F6020-13DCDAC-230E82BC
     _values:
-    - TotalPasses: 12
-      TotalCrosses: 8
-      TotalShots: 10
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 10
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
-      TotalGoals: 6
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 1
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 41
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0

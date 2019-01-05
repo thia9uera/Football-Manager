@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG REG 26
   m_EditorClassIdentifier: 
-  FirstName: Michelly
-  LastName: Raiz
+  FirstName: "Livi\xE3o"
+  LastName: Defunto
   Zone: 3
   Position: 1
   Strategy: 0
@@ -52,13 +52,13 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 0
-    TotalCrosses: 1
+    TotalPasses: 21
+    TotalCrosses: 6
     TotalShots: 1
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 20
-    TotalDribbles: 1
+    TotalFaults: 16
+    TotalTackles: 75
+    TotalDribbles: 2
     TotalGoals: 1
     TotalSaves: 0
     TotalPassesMissed: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 32
+    TotalPresence: 157
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 10
+      TotalFaults: 0
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 15
+      TotalPresence: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 6
   m_EditorClassIdentifier: 
-  FirstName: Julinha
-  LastName: Santana
+  FirstName: "Lev\xED"
+  LastName: Cascata
   Zone: 13
   Position: 2
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 6
-    TotalCrosses: 0
-    TotalShots: 2
+    TotalPasses: 44
+    TotalCrosses: 6
+    TotalShots: 11
     TotalHeaders: 0
-    TotalFaults: 1
-    TotalTackles: 6
+    TotalFaults: 4
+    TotalTackles: 34
     TotalDribbles: 0
-    TotalGoals: 1
+    TotalGoals: 5
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
+    TotalPassesMissed: 1
+    TotalShotsMissed: 3
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 17
+    TotalPresence: 145
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -111,12 +111,12 @@ MonoBehaviour:
     _keys:
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 2
+    - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +125,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 6
+      TotalPresence: 0

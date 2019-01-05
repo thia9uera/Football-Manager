@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC REG 9
   m_EditorClassIdentifier: 
-  FirstName: Kaline
-  LastName: Menders
+  FirstName: "Mar\xE7\xE3o"
+  LastName: Xereca
   Zone: 27
   Position: 2
   Strategy: 0
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 10
-    TotalCrosses: 3
-    TotalShots: 8
+    TotalPasses: 18
+    TotalCrosses: 12
+    TotalShots: 23
     TotalHeaders: 0
     TotalFaults: 6
-    TotalTackles: 26
-    TotalDribbles: 6
-    TotalGoals: 1
+    TotalTackles: 52
+    TotalDribbles: 11
+    TotalGoals: 9
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 2
+    TotalShotsMissed: 5
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 93
+    TotalPresence: 204
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -114,26 +114,11 @@ MonoBehaviour:
     - 5C2F6010-4BDB2F-349195A8
     _values:
     - TotalPasses: 0
-      TotalCrosses: 1
-      TotalShots: 3
-      TotalHeaders: 0
-      TotalFaults: 2
-      TotalTackles: 6
-      TotalDribbles: 1
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 1
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 25
-    - TotalPasses: 0
-      TotalCrosses: 1
+      TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
+      TotalTackles: 0
       TotalDribbles: 0
       TotalGoals: 0
       TotalSaves: 0
@@ -142,4 +127,19 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 4
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
