@@ -15,7 +15,7 @@ public class TournamentFixturesItemTeam : MonoBehaviour
     public void Populate(TournamentData.TeamMatchData _data, bool _isPlayed)
     {
         nameLabel.text = _data.Team.Name + " (" + _data.Team.GetOveralRating() + ")";
-        scoreLabel.text = _data.Score.ToString();
+        scoreLabel.text = _data.Statistics.TotalGoals.ToString();
         frame.color = _data.Team.PrimaryColor;
 
         scoreLabel.gameObject.SetActive(_isPlayed);

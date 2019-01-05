@@ -400,38 +400,41 @@ public class MatchController : MonoBehaviour
 
         if (homeTeamScore > awayTeamScore)
         {
-            HomeTeam.LifeTimeStats.TotalWins++;
-            AwayTeam.LifeTimeStats.TotalLosts++;
+            HomeTeam.MatchStats.TotalWins++;
+            AwayTeam.MatchStats.TotalLosts++;
 
-            HomeTeam.MatchData.Points += 3;
+            HomeTeam.MatchStats.Points += 3;
         }
         else if (awayTeamScore > homeTeamScore)
         {
-            AwayTeam.LifeTimeStats.TotalWins++;
-            HomeTeam.LifeTimeStats.TotalLosts++;
+            AwayTeam.MatchStats.TotalWins++;
+            HomeTeam.MatchStats.TotalLosts++;
 
-            AwayTeam.MatchData.Points += 3;
+            AwayTeam.MatchStats.Points += 3;
         }
         else
         {
-            HomeTeam.LifeTimeStats.TotalDraws++;
-            AwayTeam.LifeTimeStats.TotalDraws++;
+            HomeTeam.MatchStats.TotalDraws++;
+            AwayTeam.MatchStats.TotalDraws++;
 
-            HomeTeam.MatchData.Points++;
-            AwayTeam.MatchData.Points++;
+            HomeTeam.MatchStats.Points++;
+            AwayTeam.MatchStats.Points++;
         }
-
-        foreach (PlayerData player in HomeTeam.Squad) player.UpdateLifeTimeStats();
-        foreach (PlayerData player in HomeTeam.Substitutes) player.UpdateLifeTimeStats();
-        foreach (PlayerData player in AwayTeam.Squad) player.UpdateLifeTimeStats();
-        foreach (PlayerData player in AwayTeam.Substitutes) player.UpdateLifeTimeStats();
-
-        HomeTeam.UpdateLifeTimeStats();
-        AwayTeam.UpdateLifeTimeStats();
 
         UpdateNarration("nar_TimeUp_");
         CancelInvoke();
         isGameOn = false;
+
+        bool updateMatch = false;
+        if(MainController.Instance.CurrentMatch != null)
+        {
+            MainController.Instance.CurrentMatch.isPlayed = true;
+            updateMatch = true;
+        }
+
+        HomeTeam.UpdateLifeTimeStats(updateMatch, true);
+        AwayTeam.UpdateLifeTimeStats(updateMatch, false);
+        MainController.Instance.CurrentMatch = null;
 
         if (isSimulating)
         {
@@ -454,18 +457,6 @@ public class MatchController : MonoBehaviour
         //Save tournament match data
         if (MainController.Instance.CurrentTournament != null)
         {
-            TournamentData.MatchData data = MainController.Instance.CurrentMatch;
-
-            HomeTeam.MatchData.Score = homeTeamScore;
-            AwayTeam.MatchData.Score = awayTeamScore;
-
-            data.HomeTeam = HomeTeam.MatchData;
-            data.AwayTeam = AwayTeam.MatchData;
-
-            MainController.Instance.CurrentTournament.UpdateTeamScoreboard(HomeTeam.MatchData, AwayTeam.MatchData);
-
-            data.isPlayed = true;
-
             TournamentData.MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
             if(nextMatch != null)
             {
@@ -527,7 +518,6 @@ public class MatchController : MonoBehaviour
                     if(!isSimulating) screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
                     attackingPlayer.MatchStats.TotalGoals++;
                     AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
-
                     return;
                 }
                 if (!isScorerAnnounced)

@@ -26,19 +26,17 @@ public class TournamentData : ScriptableObject
     public class TeamMatchData
     {
         public TeamData Team;
-        public int Score;
+        public TeamData.Statistics Statistics;
         public List<PlayerData> Scorers;
         public List<PlayerData> YellowCards;
         public List<PlayerData> RedCards;
-        public int Points;
 
         public void Reset()
         {
-            Score = 0;
+            Statistics = new TeamData.Statistics();
             Scorers = new List<PlayerData>();
             YellowCards = new List<PlayerData>();
             RedCards = new List<PlayerData>();
-            Points = 0;
         }
     }
 
@@ -58,33 +56,8 @@ public class TournamentData : ScriptableObject
         }
     }
 
-    [System.Serializable]
-    public class TeamTournamentData
-    {
-        public TeamData Team;
-        public int Points;
-        public int GoalsScored;
-        public int GoalsAgainst;
-        public int TotalYellowCards;
-        public int TotalRedCards;
-        public List<PlayerData> YellowCardList;
-        public List<PlayerData> RedCarList;
-
-        public void Reset()
-        {
-            Points = 0;
-            GoalsScored = 0;
-            GoalsAgainst = 0;
-            TotalYellowCards = 0;
-            TotalRedCards = 0;
-            YellowCardList = new List<PlayerData>();
-            RedCarList = new List<PlayerData>();
-        }
-    }
-
     public PlayerData PlayerStatistics;
     public List<MatchData> Matches;
-    public List<TeamTournamentData> TeamScoreboard;
 
     [Space(10)]
     public int TotalRounds;
@@ -101,53 +74,18 @@ public class TournamentData : ScriptableObject
     /// </summary>
     /// <returns>The leaderboard.</returns>
     /// <param name="_param">Parameter.</param>
-    public List<TeamTournamentData> SortTeamsBy(string _param)
+    public List<TeamData> SortTeamsBy(string _param)
     {
-        List<TeamTournamentData> list = TeamScoreboard;
+        List<TeamData> list = Teams;
 
         switch(_param)
         {
-            case "Name": list = list.OrderBy(TeamTournamentData => TeamTournamentData.Team.Name).ToList(); break;
-            case "Points": list = list.OrderByDescending(TeamTournamentData => TeamTournamentData.Points).ToList(); break;
-            case "GoalsScored": list = list.OrderByDescending(TeamTournamentData => TeamTournamentData.GoalsScored).ToList(); break;
-            case "GoalsAgainst": list = list.OrderByDescending(TeamTournamentData => TeamTournamentData.GoalsAgainst).ToList(); break;
-            case "YellowCards": list = list.OrderByDescending(TeamTournamentData => TeamTournamentData.TotalYellowCards).ToList(); break;
-            case "RedCards": list = list.OrderByDescending(TeamTournamentData => TeamTournamentData.TotalRedCards).ToList(); break;
+            case "Name": list = list.OrderBy(TeamData => TeamData.Name).ToList(); break;
+            case "Points": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].TotalWins).ToList(); break;
+            case "GoalsScored": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].TotalGoals).ToList(); break;
+            case "GoalsAgainst": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].TotalGoalsAgainst).ToList(); break;
         }
-
         return list;
-    }
-
-    public void UpdateTeamScoreboard(TeamMatchData _home, TeamMatchData _away)
-    {
-        foreach(TeamTournamentData team in TeamScoreboard)
-        {
-            if(team.Team == _home.Team)
-            {
-                UpdateTeamStats(team, _home, _away);
-            }
-            else if(team.Team == _away.Team)
-            {
-                UpdateTeamStats(team, _away, _home);
-            }
-        }
-        Save();
-    }
-
-    void UpdateTeamStats(TeamTournamentData _data, TeamMatchData _team, TeamMatchData _opponent)
-    {
-        TeamTournamentData team = _data;
-
-        team.Points += _team.Points;
-        team.GoalsScored += _team.Score;
-        team.GoalsAgainst += _opponent.Score;
-        team.TotalYellowCards += _team.YellowCards.Count();
-        team.TotalRedCards += _team.RedCards.Count();
-        //TODO Add cards logic
-        if (team.YellowCardList == null) team.YellowCardList = new List<PlayerData>();
-        if (team.RedCarList == null) team.RedCarList = new List<PlayerData>();
-        team.YellowCardList.AddRange(_team.YellowCards);
-        team.RedCarList.AddRange(_team.RedCards);
     }
 
     public MatchData GetNextMatch(bool _isSimulating)
@@ -188,7 +126,7 @@ public class TournamentData : ScriptableObject
     public void ResetTournament()
     {
         foreach(MatchData match in Matches) match.Reset();
-        foreach (TeamTournamentData data in TeamScoreboard) data.Reset();
+        foreach (TeamData data in Teams) data.ResetStatistics("Tournament", Id);
         CurrentRound = 0;
         Save();
         AssetDatabase.SaveAssets();

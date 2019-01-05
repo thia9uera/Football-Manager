@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 79
   Vision: 72
   Stability: 79
-  fatigue: 72.4359
+  fatigue: 100
   Team: {fileID: 11400000, guid: 2b431f2afa8608843907dbde08a9b9ad, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -53,20 +53,20 @@ MonoBehaviour:
   Prob_LongPass: 1
   LifeTimeStats:
     TotalPasses: 1
-    TotalCrosses: 1
-    TotalShots: 1
+    TotalCrosses: 6
+    TotalShots: 3
     TotalHeaders: 0
     TotalFaults: 0
-    TotalTackles: 4
-    TotalDribbles: 4
-    TotalGoals: 0
+    TotalTackles: 9
+    TotalDribbles: 5
+    TotalGoals: 1
     TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 17
+    TotalPresence: 41
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,15 +108,32 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2A-2D821D-26C78B22
+    - 5C2F6010-4BDB2F-349195A8
     _keys:
     - 5C2F2C2A-2D821D-26C78B22
+    - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 1
+    - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0
       TotalHeaders: 0
       TotalFaults: 0
-      TotalTackles: 1
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 3
       TotalDribbles: 1
       TotalGoals: 0
       TotalSaves: 0
@@ -125,4 +142,4 @@ MonoBehaviour:
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 7
+      TotalPresence: 6

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RotaryHeart.Lib.SerializableDictionary;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -54,26 +55,30 @@ public class TeamData : ScriptableObject
     [System.Serializable]
     public class Statistics
     {
-        public int TotalWins;
-        public int TotalLosts;
-        public int TotalDraws;
-        public int TotalGoals;
-        public int TotalGoalsAgainst;
-        public int TotalShots;
-        public int TotalHeaders;
-        public int TotalSteals;
-        public int TotalPasses;
-        public int TotalLongPasses;
-        public int TotalPassesMissed;
-        public int TotalBoxCrosses;
-        public int TotalFaults;
-        public int TotalOffsides;
-        public int TotalCornerKicks;
-        public int TotalCounterAttacks;
+        public int Points = 0;
+        public int TotalWins = 0;
+        public int TotalLosts = 0;
+        public int TotalDraws = 0;
+        public int TotalGoals = 0;
+        public int TotalGoalsAgainst = 0;
+        public int TotalShots = 0;
+        public int TotalHeaders = 0;
+        public int TotalSteals = 0;
+        public int TotalPasses = 0;
+        public int TotalLongPasses = 0;
+        public int TotalPassesMissed = 0;
+        public int TotalBoxCrosses = 0;
+        public int TotalFaults = 0;
+        public int TotalOffsides = 0;
+        public int TotalCornerKicks = 0;
+        public int TotalCounterAttacks = 0;
     }
 
     public Statistics LifeTimeStats;
     public Statistics MatchStats;
+    [System.Serializable]
+    public class TournamentStats : SerializableDictionaryBase<string, Statistics> { }
+    public TournamentStats TournamentStatistics;
 
     public bool isUserControlled;
 
@@ -85,10 +90,10 @@ public class TeamData : ScriptableObject
     {
         MatchData = new TournamentData.TeamMatchData();
         MatchData.Team = this;
-        MatchData.Score = 0;
-        MatchData.Scorers = new System.Collections.Generic.List<PlayerData>();
-        MatchData.RedCards = new System.Collections.Generic.List<PlayerData>();
-        MatchData.YellowCards = new System.Collections.Generic.List<PlayerData>();
+        MatchData.Statistics = new Statistics();
+        MatchData.Scorers = new List<PlayerData>();
+        MatchData.RedCards = new List<PlayerData>();
+        MatchData.YellowCards = new List<PlayerData>();
 
         Save();
     }
@@ -99,52 +104,94 @@ public class TeamData : ScriptableObject
         return MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
     }
 
-    public void ResetStatistics(string _type)
+    public void ResetStatistics(string _type, string _id = "")
     {
-        Statistics stats;
-
         switch (_type)
         {
             default:
-            case "Match": stats = MatchStats; break;
-            case "LifeTime": stats = LifeTimeStats; break;
+            case "Match": MatchStats = new Statistics(); break;
+            case "LifeTime": LifeTimeStats = new Statistics(); break;
+            case "Tournament":
+                TournamentStatistics[_id] = new Statistics();
+                foreach (PlayerData player in GetAllPlayers()) player.ResetStatistics("Tournament", _id);
+                break;
         }
 
-        stats.TotalWins = 0;
-        stats.TotalLosts = 0;
-        stats.TotalDraws = 0;
-        stats.TotalGoals = 0;
-        stats.TotalGoalsAgainst = 0;
-        stats.TotalShots = 0;
-        stats.TotalHeaders = 0;
-        stats.TotalSteals = 0;
-        stats.TotalPasses = 0;
-        stats.TotalLongPasses = 0;
-        stats.TotalPassesMissed = 0;
-        stats.TotalBoxCrosses = 0;
-        stats.TotalFaults = 0;
-        stats.TotalOffsides = 0;
-        stats.TotalCornerKicks = 0;
-        stats.TotalCounterAttacks = 0;
-
         Save();
-}
+    }
 
-    public void UpdateLifeTimeStats()
+    public void UpdateLifeTimeStats(bool _updateMatchData=false, bool _isHomeTeam=false)
     {
-        LifeTimeStats.TotalGoals += MatchStats.TotalGoals;
-        LifeTimeStats.TotalGoalsAgainst += MatchStats.TotalGoalsAgainst;
-        LifeTimeStats.TotalShots += MatchStats.TotalShots;
-        LifeTimeStats.TotalHeaders += MatchStats.TotalHeaders;
-        LifeTimeStats.TotalSteals += MatchStats.TotalSteals;
-        LifeTimeStats.TotalPasses += MatchStats.TotalPasses;
-        LifeTimeStats.TotalLongPasses += MatchStats.TotalLongPasses;
-        LifeTimeStats.TotalPassesMissed += MatchStats.TotalPassesMissed;
-        LifeTimeStats.TotalBoxCrosses += MatchStats.TotalBoxCrosses;
-        LifeTimeStats.TotalFaults += MatchStats.TotalFaults;
-        LifeTimeStats.TotalCounterAttacks += MatchStats.TotalCounterAttacks;
+        Statistics data = MatchStats;
+
+        UpdateStats(LifeTimeStats, data);
+
+        if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics(data);
+
+        //Update players statistics
+        foreach (PlayerData player in GetAllPlayers()) player.UpdateLifeTimeStats();
+
+        if (_updateMatchData)
+        {
+            MatchData.Team = this;
+            MatchData.Statistics = data;
+
+            if(_isHomeTeam) MainController.Instance.CurrentMatch.HomeTeam = MatchData;
+            else MainController.Instance.CurrentMatch.AwayTeam = MatchData;
+        }
+
 
         ResetStatistics("Match");
+    }
+
+    public void UpdateStats(Statistics _stats, Statistics _data)
+    {
+        _stats.Points += _data.Points;
+        _stats.TotalWins += _data.TotalWins;
+        _stats.TotalLosts += _data.TotalLosts;
+        _stats.TotalDraws += _data.TotalDraws;
+        _stats.TotalGoals += _data.TotalGoals;
+        _stats.TotalGoalsAgainst += _data.TotalGoalsAgainst;
+        _stats.TotalShots += _data.TotalShots;
+        _stats.TotalHeaders += _data.TotalHeaders;
+        _stats.TotalSteals += _data.TotalSteals;
+        _stats.TotalPasses += _data.TotalPasses;
+        _stats.TotalLongPasses += _data.TotalLongPasses;
+        _stats.TotalPassesMissed += _data.TotalPassesMissed;
+        _stats.TotalBoxCrosses += _data.TotalBoxCrosses;
+        _stats.TotalFaults += _data.TotalFaults;
+        _stats.TotalCounterAttacks += _data.TotalCounterAttacks;
+    }
+
+    public Statistics GetTournamentStatistics(string _key)
+    {
+        Statistics stats = null;
+
+        stats = TournamentStatistics[_key];
+
+        return stats;
+    }
+
+    public void InitializetournamentData(string _id)
+    {
+        if (TournamentStatistics.ContainsKey(_id)) return;
+
+        TournamentStatistics.Add(_id, new Statistics());
+    }
+
+    void UpdateTournamentStatistics(Statistics _stats)
+    {
+        TournamentData currentTournament = MainController.Instance.CurrentTournament;
+        //if (TournamentStatistics == null) TournamentStatistics = new TournamentStats();
+
+        if (!TournamentStatistics.ContainsKey(currentTournament.Id))
+        {
+            TournamentStatistics.Add(currentTournament.Id, new Statistics());
+        }
+
+        Statistics tStats = GetTournamentStatistics(currentTournament.Id);
+
+        UpdateStats(tStats, _stats);
 
         Save();
     }

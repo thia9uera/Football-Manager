@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 76
   Vision: 89
   Stability: 74
-  fatigue: 96.8421
+  fatigue: 100
   Team: {fileID: 11400000, guid: 66eb3409f6fdccc40a15024c82d08439, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 0
+    TotalPasses: 3
     TotalCrosses: 0
-    TotalShots: 0
+    TotalShots: 1
     TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
+    TotalFaults: 1
+    TotalTackles: 3
     TotalDribbles: 0
-    TotalGoals: 0
+    TotalGoals: 1
     TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 0
+    TotalPresence: 9
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -83,3 +83,46 @@ MonoBehaviour:
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
     TotalPresence: 0
+  TournamentStatistics:
+    reorderableList:
+      canAdd: 0
+      canRemove: 0
+      draggable: 0
+      expandable: 0
+      multipleSelection: 0
+      isExpanded: 0
+      label:
+        m_Text: 
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 0
+      footerHeight: 0
+      slideEasing: 0
+      verticalSpacing: 0
+      showDefaultBackground: 0
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues:
+    - 5C2F6010-4BDB2F-349195A8
+    _keys:
+    - 5C2F6010-4BDB2F-349195A8
+    _values:
+    - TotalPasses: 2
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 1
+      TotalTackles: 2
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 5

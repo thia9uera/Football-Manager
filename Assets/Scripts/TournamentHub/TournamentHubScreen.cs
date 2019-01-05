@@ -34,7 +34,7 @@ public class TournamentHubScreen : BaseScreen
         currentTournament = MainController.Instance.CurrentTournament;
         titleLabel.text = currentTournament.Name;
 
-        leaderboard.Populate(currentTournament.SortTeamsBy("Points"));
+        leaderboard.Populate(currentTournament.SortTeamsBy("Points"), currentTournament.Id);
         fixtures.Populate(currentTournament.Matches, currentTournament.CurrentRound);
 
         if (currentTournament.CurrentRound < currentTournament.TotalRounds) PopulateNextMatch();

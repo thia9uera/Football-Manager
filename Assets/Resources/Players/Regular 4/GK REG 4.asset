@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 0
-    TotalCrosses: 0
+    TotalPasses: 45
+    TotalCrosses: 43
     TotalShots: 0
     TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
+    TotalFaults: 3
+    TotalTackles: 27
     TotalDribbles: 0
     TotalGoals: 0
-    TotalSaves: 0
+    TotalSaves: 50
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 0
+    TotalPresence: 88
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -83,3 +83,63 @@ MonoBehaviour:
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
     TotalPresence: 0
+  TournamentStatistics:
+    reorderableList:
+      canAdd: 0
+      canRemove: 0
+      draggable: 0
+      expandable: 0
+      multipleSelection: 0
+      isExpanded: 0
+      label:
+        m_Text: 
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 0
+      footerHeight: 0
+      slideEasing: 0
+      verticalSpacing: 0
+      showDefaultBackground: 0
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues:
+    - 5C2F2C2D-649471-306EAB65
+    - 5C2F6010-4BDB2F-349195A8
+    _keys:
+    - 5C2F2C2D-649471-306EAB65
+    - 5C2F6010-4BDB2F-349195A8
+    _values:
+    - TotalPasses: 13
+      TotalCrosses: 9
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 7
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 15
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 21
+    - TotalPasses: 3
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 2
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 3

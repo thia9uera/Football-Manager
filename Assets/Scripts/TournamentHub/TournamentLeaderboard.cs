@@ -10,14 +10,14 @@ public class TournamentLeaderboard : MonoBehaviour
     [SerializeField]
     Transform content;
 
-    public void Populate(List<TournamentData.TeamTournamentData> _list)
+    public void Populate(List<TeamData> _list, string _id)
     {
         Clear();
         int index = 1;
-        foreach (TournamentData.TeamTournamentData data in _list)
+        foreach (TeamData data in _list)
         {
             TournamentLeaderboardItem item = Instantiate(itemTemplate, content);
-            item.Populate(index, data.Team.Name, data.Points + " pts", data.Team.isUserControlled);
+            item.Populate(index, data.Name, data.TournamentStatistics[_id].Points + " pts", data.isUserControlled);
             item.gameObject.SetActive(true);
             index++;
         }

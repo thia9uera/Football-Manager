@@ -72,12 +72,8 @@ public class TournamentCreation : BaseScreen
             case TournamentData.TournamentType.Championship:
                 tournament.Teams = teams;
                 tournament.Matches = matches;
-                tournament.TeamScoreboard = new List<TournamentData.TeamTournamentData>();
                 foreach (TeamData team in TeamList)
-                {
-                    TournamentData.TeamTournamentData tData = new TournamentData.TeamTournamentData();
-                    tData.Team = team;
-                    tournament.TeamScoreboard.Add(tData);
+                {;
                     tournament.TotalRounds = teams.Count - 1;
                 }
                 break;

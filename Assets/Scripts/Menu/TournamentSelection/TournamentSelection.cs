@@ -17,6 +17,7 @@ public class TournamentSelection : BaseScreen
     public override void Show()
     {
         base.Show();
+        MainController.Instance.CurrentTournament = null;
         Populate();
     }
 
@@ -46,6 +47,8 @@ public class TournamentSelection : BaseScreen
 
         foreach (TournamentData file in fileList)
         {
+            foreach (TeamData team in file.Teams) team.InitializetournamentData(file.Id);
+
             TournamentCard item = Instantiate(cardTemplate, content);
             item.Populate(file);
             itemList.Add(item.gameObject);

@@ -35,7 +35,7 @@ MonoBehaviour:
   Teamwork: 48
   Vision: 48
   Stability: 52
-  fatigue: 61.280468
+  fatigue: 100
   Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 8
-    TotalCrosses: 3
-    TotalShots: 4
+    TotalPasses: 13
+    TotalCrosses: 5
+    TotalShots: 14
     TotalHeaders: 0
     TotalFaults: 1
-    TotalTackles: 5
-    TotalDribbles: 2
-    TotalGoals: 3
+    TotalTackles: 11
+    TotalDribbles: 3
+    TotalGoals: 11
     TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 1
+    TotalPassesMissed: 2
+    TotalShotsMissed: 2
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 1
-    TotalPresence: 21
+    TotalPresence: 51
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -108,21 +108,38 @@ MonoBehaviour:
     isExpanded: 0
     _keyValues:
     - 5C2F2C2F-7DF8EC-3A767F91
+    - 5C2F2BBE-7BE0A1-3136F98B
     _keys:
     - 5C2F2C2F-7DF8EC-3A767F91
+    - 5C2F2BBE-7BE0A1-3136F98B
     _values:
-    - TotalPasses: 8
-      TotalCrosses: 3
-      TotalShots: 4
+    - TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
       TotalHeaders: 0
-      TotalFaults: 1
-      TotalTackles: 5
-      TotalDribbles: 2
-      TotalGoals: 3
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
       TotalSaves: 0
       TotalPassesMissed: 0
-      TotalShotsMissed: 1
+      TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
-      TotalCrossesMissed: 1
-      TotalPresence: 21
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    - TotalPasses: 1
+      TotalCrosses: 2
+      TotalShots: 4
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 4
+      TotalDribbles: 1
+      TotalGoals: 3
+      TotalSaves: 0
+      TotalPassesMissed: 2
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 14

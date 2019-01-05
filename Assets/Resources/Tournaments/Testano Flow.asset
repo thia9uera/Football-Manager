@@ -25,152 +25,291 @@ MonoBehaviour:
   Matches:
   - HomeTeam:
       Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
-      Score: 2
-      Scorers:
-      - {fileID: 11400000, guid: e83eec39b44b21d478b91ede83c1927d, type: 2}
-      - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
-      YellowCards: []
-      RedCards: []
-      Points: 3
-    AwayTeam:
-      Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
-      Score: 0
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
       Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 0
-    isPlayed: 1
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
     Round: 0
   - HomeTeam:
       Team: {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
-      Score: 1
-      Scorers:
-      - {fileID: 11400000, guid: 808b8f5b77046344c9dc5bd6175913ae, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 0
     AwayTeam:
       Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
-      Score: 2
-      Scorers:
-      - {fileID: 11400000, guid: 8b84e221f4350dc45ba63652a8f16017, type: 2}
-      - {fileID: 11400000, guid: 8b84e221f4350dc45ba63652a8f16017, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 3
-    isPlayed: 1
+    isPlayed: 0
     Round: 0
   - HomeTeam:
       Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
-      Score: 3
-      Scorers:
-      - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
-      - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
-      - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
-      YellowCards: []
-      RedCards: []
-      Points: 3
-    AwayTeam:
-      Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
-      Score: 0
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
       Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 0
-    isPlayed: 1
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
     Round: 1
   - HomeTeam:
       Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
-      Score: 1
-      Scorers:
-      - {fileID: 11400000, guid: 580b0e010bda1d844900cacd5b2d55d1, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 1
     AwayTeam:
       Team: {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
-      Score: 1
-      Scorers:
-      - {fileID: 11400000, guid: d6b1bb9c1d6a5b34eb0bf8be974ed248, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 1
-    isPlayed: 1
+    isPlayed: 0
     Round: 1
   - HomeTeam:
       Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
-      Score: 7
-      Scorers:
-      - {fileID: 11400000, guid: e5b8c41b064b71d4fa2220121d80d570, type: 2}
-      - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
-      - {fileID: 11400000, guid: 1a79d37a28df25a439d48f9ac85f892a, type: 2}
-      - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
-      - {fileID: 11400000, guid: 1a79d37a28df25a439d48f9ac85f892a, type: 2}
-      - {fileID: 11400000, guid: 1a79d37a28df25a439d48f9ac85f892a, type: 2}
-      - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
-      YellowCards: []
-      RedCards: []
-      Points: 3
-    AwayTeam:
-      Team: {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
-      Score: 2
-      Scorers:
-      - {fileID: 11400000, guid: 808b8f5b77046344c9dc5bd6175913ae, type: 2}
-      - {fileID: 11400000, guid: a8bd8321ea8d92e45842830632ed0ba8, type: 2}
-      YellowCards: []
-      RedCards: []
-      Points: 0
-    isPlayed: 1
-    Round: 2
-  - HomeTeam:
-      Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
-      Score: 1
-      Scorers:
-      - {fileID: 11400000, guid: 8b84e221f4350dc45ba63652a8f16017, type: 2}
-      YellowCards: []
-      RedCards: []
-      Points: 3
-    AwayTeam:
-      Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
-      Score: 0
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
       Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 0
-    isPlayed: 1
+    AwayTeam:
+      Team: {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
     Round: 2
-  TeamScoreboard:
-  - Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
-    Points: 9
-    GoalsScored: 12
-    GoalsAgainst: 2
-    TotalYellowCards: 0
-    TotalRedCards: 0
-    YellowCardList: []
-    RedCarList: []
-  - Team: {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
-    Points: 1
-    GoalsScored: 4
-    GoalsAgainst: 10
-    TotalYellowCards: 0
-    TotalRedCards: 0
-    YellowCardList: []
-    RedCarList: []
-  - Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
-    Points: 6
-    GoalsScored: 3
-    GoalsAgainst: 4
-    TotalYellowCards: 0
-    TotalRedCards: 0
-    YellowCardList: []
-    RedCarList: []
-  - Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
-    Points: 1
-    GoalsScored: 1
-    GoalsAgainst: 4
-    TotalYellowCards: 0
-    TotalRedCards: 0
-    YellowCardList: []
-    RedCarList: []
+  - HomeTeam:
+      Team: {fileID: 11400000, guid: 2e9aa0d070e503449b934b25634d8d98, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    AwayTeam:
+      Team: {fileID: 11400000, guid: 1af7a2d9ec54baa418f98849291e524a, type: 2}
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      Scorers: []
+      YellowCards: []
+      RedCards: []
+    isPlayed: 0
+    Round: 2
   TotalRounds: 3
-  CurrentRound: 3
+  CurrentRound: 0
