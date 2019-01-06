@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Star ATA 1
+  m_EditorClassIdentifier: 
+  Name: Master Attackers
+  Tag: SA1
+  PrimaryColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SecondaryColor: {r: 0.93333334, g: 0.07450977, b: 0.13579428, a: 1}
+  Formation: 2
+  Strategy: 0
+  Squad:
+  - {fileID: 11400000, guid: a96211c3b18d71b4481325dea1e2968e, type: 2}
+  - {fileID: 11400000, guid: 1910a896dafd5a642accde7a8b73bcd2, type: 2}
+  - {fileID: 11400000, guid: 3211d8086a9c8c14b9aca0fd886c0862, type: 2}
+  - {fileID: 11400000, guid: fe73c7e0a202dab4aa321e51f9a1631a, type: 2}
+  - {fileID: 11400000, guid: 2200d97aab9d8274b98e6793b750b2c7, type: 2}
+  - {fileID: 11400000, guid: 0c890d0e773543d4e97040c2e22a27f3, type: 2}
+  - {fileID: 11400000, guid: 591ba8800a44d574eb208871ca3d6778, type: 2}
+  - {fileID: 11400000, guid: a4a6c8f120bbba54e8520a537dafef24, type: 2}
+  - {fileID: 11400000, guid: ef5fc4ced5ab57344b0895919a4371f3, type: 2}
+  - {fileID: 11400000, guid: 37813c0d4af1b974eba2b93b0f38608e, type: 2}
+  - {fileID: 11400000, guid: ebe615a0a3da8cf4eb2d1bf7c46b839f, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: ada34fbd912f55b40a3acf1c095b5e82, type: 2}
+  - {fileID: 11400000, guid: d6079839b54243144a11a4d78332b339, type: 2}
+  - {fileID: 11400000, guid: 76cbeb46b9590ec43b3b87d333dc1fc1, type: 2}
+  Captain: {fileID: 11400000, guid: 37813c0d4af1b974eba2b93b0f38608e, type: 2}
+  Stars: 0
+  LifeTimeStats:
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  MatchStats:
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  TournamentStatistics:
+    reorderableList:
+      canAdd: 0
+      canRemove: 0
+      draggable: 0
+      expandable: 0
+      multipleSelection: 0
+      isExpanded: 0
+      label:
+        m_Text: 
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 0
+      footerHeight: 0
+      slideEasing: 0
+      verticalSpacing: 0
+      showDefaultBackground: 0
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues: []
+    _keys:
+    - 5C2F2C2B-48DFF2-7DF2167
+    _values:
+    - Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
+  isUserControlled: 0
+  IsPlaceholder: 0
+  MatchData:
+    Team: {fileID: 11400000}
+    Statistics:
+      Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
+    Scorers: []
+    YellowCards: []
+    RedCards: []

@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Wing Offensive
+  m_EditorClassIdentifier: 
+  Name: Wing Offensive
+  Tag: WNG
+  PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
+  SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+  Formation: 2
+  Strategy: 4
+  Squad:
+  - {fileID: 11400000, guid: 01de6f4d373131143be6ae593de3a071, type: 2}
+  - {fileID: 11400000, guid: 5c61a6e34498c2342850b109a197c5a3, type: 2}
+  - {fileID: 11400000, guid: efa930eb13ab58646bda75ac84a848f3, type: 2}
+  - {fileID: 11400000, guid: bc17ad13ba386894294943e6cc985f78, type: 2}
+  - {fileID: 11400000, guid: a17f465920205ce4f80b301a828149d0, type: 2}
+  - {fileID: 11400000, guid: 0ae15801966cf25468fdbc2a630c0f7c, type: 2}
+  - {fileID: 11400000, guid: ee024bc79be8d564c9eadfefe1d8a942, type: 2}
+  - {fileID: 11400000, guid: 61a3dc5ce3ac2474da11c80bafada96d, type: 2}
+  - {fileID: 11400000, guid: bbba02dccdfe5394f93c4c696ca8d0de, type: 2}
+  - {fileID: 11400000, guid: cc44b5d6a5c7e804cbbf2f3a04d44f78, type: 2}
+  - {fileID: 11400000, guid: ff88a91259466de4398eca30688c88e5, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: 92d19f7c3ede20f4a882edde55137490, type: 2}
+  - {fileID: 11400000, guid: 8db75d0437558664985918447754c7fe, type: 2}
+  - {fileID: 11400000, guid: 89cc1ad71c809fc44be232f8952abff0, type: 2}
+  Captain: {fileID: 11400000, guid: cc44b5d6a5c7e804cbbf2f3a04d44f78, type: 2}
+  Stars: 0
+  LifeTimeStats:
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  MatchStats:
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  TournamentStatistics:
+    reorderableList:
+      canAdd: 0
+      canRemove: 0
+      draggable: 0
+      expandable: 0
+      multipleSelection: 0
+      isExpanded: 0
+      label:
+        m_Text: 
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 0
+      footerHeight: 0
+      slideEasing: 0
+      verticalSpacing: 0
+      showDefaultBackground: 0
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues: []
+    _keys:
+    - 5C2F6010-4BDB2F-349195A8
+    _values:
+    - Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
+  isUserControlled: 0
+  IsPlaceholder: 0
+  MatchData:
+    Team: {fileID: 11400000}
+    Statistics:
+      Points: 3
+      TotalWins: 1
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 2
+      TotalGoalsAgainst: 0
+      TotalShots: 2
+      TotalHeaders: 1
+      TotalSteals: 3
+      TotalPasses: 17
+      TotalLongPasses: 7
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 4
+      TotalFaults: 1
+      TotalOffsides: 2
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 1
+    Scorers:
+    - {fileID: 11400000, guid: 0ae15801966cf25468fdbc2a630c0f7c, type: 2}
+    - {fileID: 11400000, guid: ff88a91259466de4398eca30688c88e5, type: 2}
+    YellowCards: []
+    RedCards: []

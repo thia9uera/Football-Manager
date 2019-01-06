@@ -53,7 +53,7 @@ public class PosChanceData: ScriptableObject {
 
     public void Save()
     {
-        EditorUtility.SetDirty(this);
+        //EditorUtility.SetDirty(this);
     }
 }
 

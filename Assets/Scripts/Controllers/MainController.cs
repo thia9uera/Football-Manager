@@ -6,6 +6,8 @@ public class MainController : MonoBehaviour
 {
     public static MainController Instance;
 
+    public UserData User;
+
     public LocalizationData Localization;
     public MatchController Match;
     public SquadSelectionView SquadSelection;
@@ -24,6 +26,9 @@ public class MainController : MonoBehaviour
 
     public List<PlayerData> AllPlayers;
     public List<TeamData> AllTeams;
+    public List<TournamentData> AllTournaments;
+
+    public DataController Data;
 
     public void Awake()
     {

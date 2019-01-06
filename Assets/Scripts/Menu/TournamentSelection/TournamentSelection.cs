@@ -12,7 +12,7 @@ public class TournamentSelection : BaseScreen
     Transform content;
 
     List<GameObject> itemList;
-    List<TournamentData> fileList;
+    List<TournamentData> tournamentList;
 
     public override void Show()
     {
@@ -23,7 +23,7 @@ public class TournamentSelection : BaseScreen
 
     public void Populate()
     {
-        fileList = new List<TournamentData>(Resources.LoadAll<TournamentData>("Tournaments"));
+        tournamentList = MainController.Instance.AllTournaments;
         SortCarousel("StarsRequired");
     }
 
@@ -41,13 +41,13 @@ public class TournamentSelection : BaseScreen
 
         switch (_param)
         {
-            case "StarsRequired": fileList = fileList.OrderBy(TournamentData => TournamentData.StarsRequired).ToList(); break;
-            case "MostTeams": fileList = fileList.OrderByDescending(TournamentData => TournamentData.Teams.Count).ToList(); break;
+            case "StarsRequired": tournamentList = tournamentList.OrderBy(TournamentData => TournamentData.StarsRequired).ToList(); break;
+            case "MostTeams": tournamentList = tournamentList.OrderByDescending(TournamentData => TournamentData.Teams.Count).ToList(); break;
         }
 
-        foreach (TournamentData file in fileList)
+        foreach (TournamentData file in tournamentList)
         {
-            foreach (TeamData team in file.Teams) team.InitializetournamentData(file.Id);
+            foreach (TeamData team in file.Teams) team.InitializeTournamentData(file.Id);
 
             TournamentCard item = Instantiate(cardTemplate, content);
             item.Populate(file);

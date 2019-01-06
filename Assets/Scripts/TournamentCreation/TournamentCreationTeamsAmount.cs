@@ -24,7 +24,10 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
     int minTeams = 2;
 
     [SerializeField]
-    Button BtnPlus, BtnMinus;
+    Button BtnPlus;
+
+    [SerializeField]
+    Button BtnMinus;
 
     [SerializeField]
     TextMeshProUGUI label;

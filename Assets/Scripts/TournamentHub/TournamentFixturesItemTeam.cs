@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class TournamentFixturesItemTeam : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI nameLabel, scoreLabel;
+    TextMeshProUGUI nameLabel;
+
+    [SerializeField]
+    TextMeshProUGUI scoreLabel;
 
     [SerializeField]
     Image frame;

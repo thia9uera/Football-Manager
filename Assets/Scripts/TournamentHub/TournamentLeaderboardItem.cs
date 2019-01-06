@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public class TournamentLeaderboardItem : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI posLabel, nameLabel, ptsLabel;
+    TextMeshProUGUI posLabel;
+
+    [SerializeField]
+    TextMeshProUGUI nameLabel;
+
+    [SerializeField]
+    TextMeshProUGUI ptsLabel;
 
     [SerializeField]
     Image frameImage;

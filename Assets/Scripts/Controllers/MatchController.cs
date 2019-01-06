@@ -466,7 +466,7 @@ public class MatchController : MonoBehaviour
             else
             {
                 isSimulating = false;
-                AssetDatabase.SaveAssets();
+                //AssetDatabase.SaveAssets();
                 MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
             }
         }
@@ -1613,6 +1613,9 @@ public class MatchController : MonoBehaviour
     void UpdateNarration(string _text, int _variations = 1, TeamData _team = null)
     {
         if (isSimulating || _text == lastNarration) return;
+
+        if (CurrentZone == lastZone)
+        { };
 
         lastNarration = _text;
         if (_team == null) screen.Narration.UpdateNarration(_text, _variations, null, CurrentZone);

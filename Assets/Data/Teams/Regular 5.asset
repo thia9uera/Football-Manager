@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+  m_Name: Regular 5
+  m_EditorClassIdentifier: 
+  Name: Borings
+  Tag: REG5
+  PrimaryColor: {r: 0.21960784, g: 0.8784314, b: 0.52162576, a: 1}
+  SecondaryColor: {r: 0.6698113, g: 0, b: 0.5881558, a: 1}
+  Formation: 2
+  Strategy: 0
+  Squad:
+  - {fileID: 11400000, guid: db5e66e42dbbc274393d47c8ee769646, type: 2}
+  - {fileID: 11400000, guid: 94bacd24494476846a0cb0671f726bea, type: 2}
+  - {fileID: 11400000, guid: 1c6668989d5974e4f8f8c7ac989fb578, type: 2}
+  - {fileID: 11400000, guid: b53ee5482db7464439e9163558b18fba, type: 2}
+  - {fileID: 11400000, guid: 7ba4cc69096739a4ea8bb26ed07c50e1, type: 2}
+  - {fileID: 11400000, guid: 54966c66a75407548a0a6e1e5abd2f4c, type: 2}
+  - {fileID: 11400000, guid: e2a13d79a3d1d1b488a47afa83bc740b, type: 2}
+  - {fileID: 11400000, guid: 3f18607fc5227de49ae40ccd15f361b4, type: 2}
+  - {fileID: 11400000, guid: b13614ccb670f344e96c740c3eb134a2, type: 2}
+  - {fileID: 11400000, guid: 86cb878344f4ef24e9ca41b8396d7973, type: 2}
+  - {fileID: 11400000, guid: f8ce1f1dc3a785944897500005011148, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: 9f0379c4b4042ec4c865b50413e0490d, type: 2}
+  - {fileID: 11400000, guid: d9aa3ce9d12ef5d4489b80e76252a0dd, type: 2}
+  - {fileID: 11400000, guid: 874c81a27fd43b5429002159f363b230, type: 2}
+  Captain: {fileID: 11400000, guid: 86cb878344f4ef24e9ca41b8396d7973, type: 2}
+  Stars: 0
+  LifeTimeStats:
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  MatchStats:
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
+    TotalOffsides: 0
+    TotalCornerKicks: 0
+    TotalCounterAttacks: 0
+  TournamentStatistics:
+    reorderableList:
+      canAdd: 0
+      canRemove: 0
+      draggable: 0
+      expandable: 0
+      multipleSelection: 0
+      isExpanded: 0
+      label:
+        m_Text: 
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 0
+      footerHeight: 0
+      slideEasing: 0
+      verticalSpacing: 0
+      showDefaultBackground: 0
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues: []
+    _keys:
+    - 5C2F6010-4BDB2F-349195A8
+    _values:
+    - Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
+  isUserControlled: 0
+  IsPlaceholder: 0
+  MatchData:
+    Team: {fileID: 11400000}
+    Statistics:
+      Points: 1
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 1
+      TotalGoals: 1
+      TotalGoalsAgainst: 1
+      TotalShots: 2
+      TotalHeaders: 0
+      TotalSteals: 4
+      TotalPasses: 15
+      TotalLongPasses: 9
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 2
+      TotalOffsides: 1
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
+    Scorers:
+    - {fileID: 11400000, guid: b13614ccb670f344e96c740c3eb134a2, type: 2}
+    YellowCards: []
+    RedCards: []

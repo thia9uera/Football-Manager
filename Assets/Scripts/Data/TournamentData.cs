@@ -55,7 +55,6 @@ public class TournamentData : ScriptableObject
         }
     }
 
-    public PlayerData PlayerStatistics;
     public List<MatchData> Matches;
 
     [Space(10)]
@@ -124,11 +123,12 @@ public class TournamentData : ScriptableObject
 
     public void ResetTournament()
     {
+        Debug.Log("RESETED TOURNAMENT");
         foreach(MatchData match in Matches) match.Reset();
         foreach (TeamData data in Teams) data.ResetStatistics("Tournament", Id);
         CurrentRound = 0;
         Save();
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.SaveAssets();
     }
 
     public List<PlayerData> GetAllPlayers()
@@ -145,7 +145,7 @@ public class TournamentData : ScriptableObject
 
     void Save()
     {
-        EditorUtility.SetDirty(this);
+        //EditorUtility.SetDirty(this);
         //AssetDatabase.SaveAssets();
     }
 }

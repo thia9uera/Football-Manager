@@ -5,6 +5,7 @@ using UnityEditor;
 using RotaryHeart.Lib.SerializableDictionary;
 
 [CreateAssetMenu(fileName = "Player", menuName = "Player Data", order = 1)]
+[System.Serializable]
 public class PlayerData : ScriptableObject
 {
     [Header("Personal")]
@@ -16,7 +17,7 @@ public class PlayerData : ScriptableObject
     public MatchController.FieldZone Zone;
     public PlayerPosition Position;
     public PlayerStrategy Strategy;
-    public PerkData Perk;
+    //public PerkData Perk;
 
 
     [Space(10)]
@@ -506,7 +507,14 @@ public class PlayerData : ScriptableObject
 
     void Save()
     {
-        EditorUtility.SetDirty(this);
+       // EditorUtility.SetDirty(this);
         //AssetDatabase.SaveAssets();
+    }
+
+    public void Reset()
+    {
+        ResetStatistics("LifeTime");
+        Team = null;
+        TournamentStatistics = new TournamentStats();
     }
 }

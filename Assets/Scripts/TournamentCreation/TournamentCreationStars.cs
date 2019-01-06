@@ -23,7 +23,10 @@ public class TournamentCreationStars : MonoBehaviour
     public int MaxStars = 6;
 
     [SerializeField]
-    Button BtnPlus, BtnMinus;
+    Button BtnPlus;
+
+    [SerializeField]
+    Button BtnMinus;
 
     [SerializeField]
     TextMeshProUGUI label;

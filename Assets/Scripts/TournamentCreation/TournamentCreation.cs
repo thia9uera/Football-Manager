@@ -79,8 +79,8 @@ public class TournamentCreation : BaseScreen
                 break;
         }
         if(string.IsNullOrEmpty(tournament.Id)) tournament.Id = GetUniqueID();
-        AssetDatabase.CreateAsset(tournament, "Assets/Resources/Tournaments/" + tournament.Name + ".asset");
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.CreateAsset(tournament, "Assets/Resources/Tournaments/" + tournament.Name + ".asset");
+        //AssetDatabase.SaveAssets();
 
         LoadTournaments();
     }

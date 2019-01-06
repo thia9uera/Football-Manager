@@ -172,7 +172,7 @@ public class TeamData : ScriptableObject
         return stats;
     }
 
-    public void InitializetournamentData(string _id)
+    public void InitializeTournamentData(string _id)
     {
         if (TournamentStatistics.ContainsKey(_id)) return;
 
@@ -221,9 +221,20 @@ public class TeamData : ScriptableObject
         return players;
     }
 
+    public void Reset()
+    {
+        TournamentStatistics = new TournamentStats();
+        ResetStatistics("LifeTime");
+    }
+
+    public void Initialize()
+    {
+        foreach (PlayerData player in GetAllPlayers()) player.Team = this; 
+    }
+
     void Save()
     {
-        EditorUtility.SetDirty(this);
+        //EditorUtility.SetDirty(this);
         //AssetDatabase.SaveAssets();
     }
 }

@@ -1,0 +1,542 @@
+ManifestFileVersion: 0
+CRC: 4275811629
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 512aa0f7eb96f10b454a9d3750bce0b5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 80a5ca93574e44a3cab8ac4920ab5772
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a4b1852fbe99fd147a39cee00603b1e5, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Data/Players/One STARPlayer MC 1/MC REG 17.asset
+- Assets/Data/Players/One STARPlayer GK 1/MC REG 62.asset
+- Assets/Data/Players/Regular 6/MC REG8.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ZAG BAD 21.asset
+- Assets/Data/Players/Regular 7/ZAG REG 35.asset
+- Assets/Data/Players/Cadena_Rivers/_Amarello.asset
+- Assets/Data/Players/Wing Off/ZAG REG 40.asset
+- Assets/Data/Players/Crossing/ZAG CRO 4.asset
+- Assets/Data/Teams/Bad 3.asset
+- Assets/Data/Players/Bad 4/GK BAD 4.asset
+- Assets/Data/Tournaments/Testano Flow.asset
+- Assets/Data/Players/Bad 4/ZAG BAD 16.asset
+- Assets/Data/Players/Bad 2/MC BAD 9.asset
+- Assets/Data/Players/One STARPlayer ATA 1/MC REG 52.asset
+- Assets/Data/Players/Bad 1/MC BAD 2.asset
+- Assets/Data/Players/Brasil/Ronaldinho_Gaucho.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ATA REG 41.asset
+- Assets/Data/Players/Regular 6/GK REG 6.asset
+- Assets/Data/Players/Crossing/MC CRO 6.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ATA GRT 12.asset
+- Assets/Data/Teams/Bad 2.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ZAG REG 74.asset
+- Assets/Data/Players/Regular 7/MC REG 27.asset
+- Assets/Data/Players/Regular 6/ATA REG 16.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ZAG REG 69.asset
+- Assets/Data/Players/One STARPlayer MC 1/ZAG REG 84.asset
+- Assets/Data/Players/Great 3/ZAG GRT 11.asset
+- Assets/Data/Players/Wing Off/MC REG 31.asset
+- Assets/Data/Players/Bad 4/ATA BAD 12.asset
+- Assets/Data/Players/Center Off/ATA CO 3.asset
+- Assets/Data/Players/Regular 6/MC REG 23.asset
+- Assets/Data/Players/One STARPlayer GK 1/ZAG REG 79.asset
+- Assets/Data/Players/Great FAST 1/MC FAST 6.asset
+- Assets/Data/Players/Regular 4/MC REG 15.asset
+- Assets/Data/Players/Great ATA 2/ATA GRT 15.asset
+- Assets/Data/Players/Bad 2/ATA BAD 6.asset
+- Assets/Data/Players/Bad 1/ATA BAD 2.asset
+- Assets/Data/Players/Bad 3/MC BAD 18.asset
+- Assets/Data/Players/Bad 1/ATA BAD 1.asset
+- Assets/Data/Players/Bad 1/ZAG BAD 2.asset
+- Assets/Data/Players/Great PHYSICAL 1/ZAG PHY 4.asset
+- Assets/Data/Players/Regular 1/GK REG 1.asset
+- Assets/Data/Players/Great 2/MC GRT 8.asset
+- Assets/Data/Players/Great DF 1/ATA REG 27.asset
+- Assets/Data/Players/Great 3/MC GRT 13.asset
+- Assets/Data/Players/Bad 2/MC BAD 8.asset
+- Assets/Data/Players/Great MC 2/MC GRT 26.asset
+- Assets/Data/Players/Regular 6/ZAG REG 27.asset
+- Assets/Data/Players/Brasil/Dunga.asset
+- Assets/Data/Players/Great ATA 2/ZAG REG 48.asset
+- Assets/Data/Players/Great MC 2/MC GRT 25.asset
+- Assets/Data/Players/Regular 7/MC REG 28.asset
+- Assets/Data/Players/Great ATA 1/ZAG REG 42.asset
+- Assets/Data/Players/Great PHYSICAL 1/MC PHY 3.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ZAG BAD 24.asset
+- Assets/Data/Players/Great MC 2/GK REG 15.asset
+- Assets/Data/Players/Bad 3/ATA BAD 7.asset
+- Assets/Data/Players/One STARPlayer ATA 1/MC REG 53.asset
+- Assets/Data/Players/Great MC 1/GK REG 14.asset
+- Assets/Data/Players/Wing Off/ATA REG 23.asset
+- Assets/Data/Players/Regular 4/MC REG 5.asset
+- Assets/Data/Players/Regular 6/MC REG 25.asset
+- Assets/Data/Players/One STARPlayer GK 1/MC REG 16.asset
+- Assets/Data/Players/Regular 4/ATA REG 11.asset
+- Assets/Data/Players/Great DF 2/ATA REG 29.asset
+- Assets/Data/Players/Regular 2/MC REG 9.asset
+- Assets/Data/Players/Great 2/ZAG GRT 9.asset
+- Assets/Data/Players/Bad 3/MC BAD 16.asset
+- Assets/Data/Players/Bad 2/MC BAD 10.asset
+- Assets/Data/Players/Great MC 1/ZAG REG 55.asset
+- Assets/Data/Players/Bad 4/MC BAD 24.asset
+- Assets/Data/Players/Great ATA 2/MC REG 43.asset
+- Assets/Data/Players/Great 2/GK GRT 2.asset
+- Assets/Data/Players/One STARPlayer GK 1/ZAG REG 76.asset
+- Assets/Data/Players/Great ATA 1/ZAG REG 44.asset
+- Assets/Data/Players/Brasil/Lucio.asset
+- Assets/Data/Players/Great ATA 2/MC REG 44.asset
+- Assets/Data/Players/Great 1/ZAG GRT 4.asset
+- Assets/Data/Players/Bad 3/MC BAD 14.asset
+- Assets/Data/Players/Brasil/Rivelino.asset
+- Assets/Data/Players/Regular 5/ZAG REG 22.asset
+- Assets/Data/Players/Great 1/MC GRT 6.asset
+- Assets/Data/Players/Great FAST 1/MC FAST 1.asset
+- Assets/Data/Players/Regular 2/ZAG REG 8.asset
+- Assets/Data/Players/Great MC 2/ZAG REG 59.asset
+- Assets/Data/Players/Regular 3/MC REG 13.asset
+- Assets/Data/Players/Bad 2/ZAG BAD 9.asset
+- Assets/Data/Players/One STARPlayer GK 1/ZAG REG 77.asset
+- Assets/Data/Players/Bad 1/ZAG BAD 3.asset
+- Assets/Data/Players/Bad 2/ATA BAD 5.asset
+- Assets/Data/Players/Great MC 1/ATA REG 31.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ATA REG 44.asset
+- Assets/Data/Players/Regular 6/MC REG 24.asset
+- Assets/Data/Players/Bad 1/GK BAD 1.asset
+- Assets/Data/Players/Center Off/MC CO 1.asset
+- Assets/Data/Players/Great DF 2/ATA REG 28.asset
+- Assets/Data/Players/Regular 4/ZAG REG 17.asset
+- Assets/Data/Players/Great PHYSICAL 1/ATA PHY 1.asset
+- Assets/Data/Players/Brasil/Ronaldo.asset
+- Assets/Data/Players/Wing Off/ZAG REG 38.asset
+- Assets/Data/Players/Regular 3/ZAG REG 11.asset
+- Assets/Data/Players/Center Off/ATA CO 2.asset
+- Assets/Data/Teams/Crossing.asset
+- Assets/Data/Players/Regular 2/ZAG REG 10.asset
+- Assets/Data/Players/Cadena_Rivers/_Dalmazzo.asset
+- Assets/Data/Players/Great DF 2/MC REG 12.asset
+- Assets/Data/Players/Great PHYSICAL 1/MC PHY 2.asset
+- Assets/Data/Teams/Great ATA 2.asset
+- Assets/Data/Players/Brasil/Garrincha.asset
+- Assets/Data/Players/Regular 4/MC REG 16.asset
+- Assets/Data/Players/Cadena_Rivers/_Mariana_Piccolli.asset
+- Assets/Data/Players/Regular 6/MC REG 26.asset
+- Assets/Data/Players/Great PHYSICAL 1/ZAG PHY 1.asset
+- Assets/Data/Players/Great ATA 2/ZAG REG 49.asset
+- Assets/Data/Players/Great PHYSICAL 1/MC PHY 4.asset
+- Assets/Data/Players/Regular 5/ATA REG 15.asset
+- Assets/Data/Players/Great ATA 1/ATA GRT 10.asset
+- Assets/Data/Players/Crossing/ZAG CRO 1.asset
+- Assets/Data/Players/Great 2/ZAG GRT 6.asset
+- Assets/Data/Players/Great DF 1/MC REG 42.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ATA GRT 11.asset
+- Assets/Data/Players/Crossing/MC CRO 2.asset
+- Assets/Data/Players/Regular 1/ATA REG 3.asset
+- Assets/Data/Players/Great 2/ATA GRT 4.asset
+- Assets/Data/Players/One STARPlayer ATA 1/GK REG 17.asset
+- Assets/Data/Players/Great MC 1/ATA REG 32.asset
+- Assets/Data/Players/Bad 3/ATA BAD 9.asset
+- Assets/Data/Players/Regular 2/ZAG REG 9.asset
+- Assets/Data/Players/Great PHYSICAL 1/MC PHY 5.asset
+- Assets/Data/Players/Wing Off/ZAG REG 36.asset
+- Assets/Data/Players/Great FAST 1/MC FAST 4.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/MC REG 37.asset
+- Assets/Data/Players/Center Off/ZAG CO 4.asset
+- Assets/Data/Players/Great FAST 1/ZAG FAST 5.asset
+- Assets/Data/Teams/Regular 7.asset
+- Assets/Data/Players/Regular 4/ZAG REG 18.asset
+- Assets/Data/Players/Wing Off/MC REG10.asset
+- Assets/Data/Players/Regular 1/ZAG REG 3.asset
+- Assets/Data/Players/Great DF 2/ZAG GRT 22.asset
+- Assets/Data/Players/Crossing/ATA CRO 3.asset
+- Assets/Data/Players/Regular 4/MC REG 18.asset
+- Assets/Data/Players/Regular 5/ZAG REG 21.asset
+- Assets/Data/Players/Regular 7/ZAG REG 32.asset
+- Assets/Data/Players/Regular 3/ZAG REG 12.asset
+- Assets/Data/Players/Great 2/MC GRT 9.asset
+- Assets/Data/Players/Great MC 2/MC GRT 28.asset
+- Assets/Data/Players/Regular 7/MC REG 8.asset
+- Assets/Data/Players/Regular 7/MC REG9.asset
+- Assets/Data/Players/Crossing/ZAG CRO 3.asset
+- Assets/Data/Players/Regular 3/ATA REG 7.asset
+- Assets/Data/Players/Great MC 1/MC GRT 23.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/MC REG 10.asset
+- Assets/Data/Players/Regular 1/ATA REG 2.asset
+- Assets/Data/Players/Regular 1/ZAG REG 1.asset
+- Assets/Data/Tournaments/Golden Cup.asset
+- Assets/Data/Players/Great ATA 2/ATA GRT 13.asset
+- Assets/Data/Players/Great 1/GK GRT 1.asset
+- Assets/Data/Teams/Great ATA 1.asset
+- Assets/Data/Teams/Great 2.asset
+- Assets/Data/Players/Bad 4/ATA BAD 11.asset
+- Assets/Data/Players/One STARPlayer MC 1/MC REG 66.asset
+- Assets/Data/Players/Regular 5/MC REG 22.asset
+- Assets/Data/Players/Great DF 1/MC REG 41.asset
+- Assets/Data/Players/Regular 1/ZAG REG 5.asset
+- Assets/Data/Players/Bad 1/MC BAD 1.asset
+- Assets/Data/Players/Regular 5/GK REG 5.asset
+- Assets/Data/Players/Great MC 1/ZAG REG 53.asset
+- Assets/Data/Players/Regular 1/ZAG REG 2.asset
+- Assets/Data/Players/Great DF 2/MC REG 44.asset
+- Assets/Data/Players/Great ATA 1/ATA GRT 11.asset
+- Assets/Data/Players/Brasil/Cafu.asset
+- Assets/Data/Players/Great ATA 1/MC REG 39.asset
+- Assets/Data/Players/Regular 2/MC REG 7.asset
+- Assets/Data/Players/Great 1/ZAG GRT 2.asset
+- Assets/Data/Players/One STARPlayer GK 1/ZAG REG 80.asset
+- Assets/Data/Players/Regular 3/GK REG 3.asset
+- Assets/Data/Players/Great ATA 1/MC REG12.asset
+- Assets/Data/Players/Bad 2/ZAG BAD 6.asset
+- Assets/Data/Players/Regular 7/ZAG REG 31.asset
+- Assets/Data/Players/One STARPlayer MC 1/ZAG REG 81.asset
+- Assets/Data/Players/Great 1/MC GRT 5.asset
+- Assets/Data/Players/Great DF 1/MC REG 40.asset
+- Assets/Data/Players/Center Off/GK CO.asset
+- Assets/Data/Players/Great ATA 1/ZAG REG 41.asset
+- Assets/Data/Players/Regular 3/MC REG 4.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/MC REG 38.asset
+- Assets/Data/Players/Regular 2/ZAG REG 7.asset
+- Assets/Data/Players/Regular 1/MC REG 4.asset
+- Assets/Data/Players/One STARPlayer MC 1/ATA REG 50.asset
+- Assets/Data/Players/Regular 4/ATA REG 12.asset
+- Assets/Data/Players/One STARPlayer GK 1/MC REG 60.asset
+- Assets/Data/Players/Great 3/ATA GRT 7.asset
+- Assets/Data/Players/Great 2/MC GRT 7.asset
+- Assets/Data/Players/Bad 2/GK BAD 2.asset
+- Assets/Data/Players/Bad 1/MC BAD 5.asset
+- Assets/Data/Players/Brasil/Zico.asset
+- Assets/Data/Players/Cadena_Rivers/_Marcos_de_Moura.asset
+- Assets/Data/Players/One STARPlayer GK 1/GK STAR 1.asset
+- Assets/Data/Teams/Star ATA 1.asset
+- Assets/Data/Players/Great DF 1/MC REG12.asset
+- Assets/Data/Players/Regular 6/MC REG 7.asset
+- Assets/Data/Players/Great ATA 1/ZAG REG 45.asset
+- Assets/Data/Players/Great DF 1/ATA REG 25.asset
+- Assets/Data/Players/Regular 6/ATA REG 18.asset
+- Assets/Data/Players/Center Off/MC CO 5.asset
+- Assets/Data/Teams/Star DEF 1.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/MC REG 36.asset
+- Assets/Data/Players/One STARPlayer GK 1/ZAG REG 78.asset
+- Assets/Data/Players/Great FAST 1/MC FAST 5.asset
+- Assets/Data/Players/Regular 1/ZAG REG 4.asset
+- Assets/Data/Players/Great FAST 1/ZAG FAST 1.asset
+- Assets/Data/Players/Great DF 2/ZAG GRT 23.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ZAG BAD 22.asset
+- Assets/Data/Players/Brasil/Felipe_Coutinho.asset
+- Assets/Data/Players/One STARPlayer GK 1/ATA REG 47.asset
+- Assets/Data/Players/One STARPlayer ATA 1/MC REG15.asset
+- Assets/Data/Players/One STARPlayer GK 1/MC REG 61.asset
+- Assets/Data/Players/One STARPlayer DEF 1/MC REG 56.asset
+- Assets/Data/Teams/Regular 6.asset
+- Assets/Data/Players/Great 3/ZAG GRT 12.asset
+- Assets/Data/Players/Regular 3/ZAG REG 15.asset
+- Assets/Data/Players/Regular 5/MC REG 19.asset
+- Assets/Data/Players/Bad 1/ZAG BAD 1.asset
+- Assets/Data/Players/Bad 3/ZAG BAD 15.asset
+- Assets/Data/Teams/Regular 2.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ZAG REG 72.asset
+- Assets/Data/Players/Bad 3/MC BAD 17.asset
+- Assets/Data/Players/Regular 2/MC REG4.asset
+- Assets/Data/Players/Great DF 1/GK REG 11.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ZAG REG 66.asset
+- Assets/Data/Players/Great FAST 1/ZAG FAST 4.asset
+- Assets/Data/Players/Great DF 2/ATA REG 30.asset
+- Assets/Data/Players/Regular 6/ZAG REG 26.asset
+- Assets/Data/Players/One STARPlayer MC 1/ZAG REG 82.asset
+- Assets/Data/Players/Great 1/MC GRT 3.asset
+- Assets/Data/Players/Great FAST 1/ZAG FAST 3.asset
+- Assets/Data/Players/Regular 4/ZAG REG 16.asset
+- Assets/Data/Players/Great DF 1/ATA REG 26.asset
+- Assets/Data/Players/Wing Off/ATA REG 24.asset
+- Assets/Data/Players/Bad 3/GK BAD 3.asset
+- Assets/Data/Tournaments/Copa do Balacobaco.asset
+- Assets/Data/Players/Center Off/ZAG CO 3.asset
+- Assets/Data/Players/Regular 6/ZAG REG 28.asset
+- Assets/Data/Teams/Brasil.asset
+- Assets/Data/Players/Great ATA 2/MC REG 46.asset
+- Assets/Data/Players/One STARPlayer MC 1/MC REG 64.asset
+- Assets/Data/Players/Great MC 1/MC GRT 21.asset
+- Assets/Data/Players/Great 1/ATA GRT 1.asset
+- Assets/Data/Players/Regular 4/MC REG6.asset
+- Assets/Data/Players/Great MC 1/ZAG REG 51.asset
+- Assets/Data/Players/Great DF 2/MC REG13.asset
+- Assets/Data/Players/Great 1/ZAG GRT 1.asset
+- Assets/Data/Players/Regular 2/ATA REG 6.asset
+- Assets/Data/Players/Bad 3/ZAG BAD 14.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ATA REG 43.asset
+- Assets/Data/Players/Crossing/MC CRO 3.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ZAG REG 73.asset
+- Assets/Data/Players/Great MC 2/ATA REG 35.asset
+- Assets/Data/Players/Great ATA 1/MC REG 42.asset
+- Assets/Data/Teams/Great DEF 1.asset
+- Assets/Data/Players/Great ATA 1/ATA GRT 12.asset
+- Assets/Data/Players/Wing Off/MC REG 32.asset
+- Assets/Data/Players/Wing Off/ZAG REG 39.asset
+- Assets/Data/Players/Bad 4/MC BAD 21.asset
+- Assets/Data/Players/Bad 2/ZAG BAD 8.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ZAG REG 68.asset
+- Assets/Data/Players/Great PHYSICAL 1/ZAG PHY 3.asset
+- Assets/Data/Players/Great MC 2/ATA REG 34.asset
+- Assets/Data/Players/Great ATA 2/ZAG REG 47.asset
+- Assets/Data/Players/Regular 5/ZAG REG 24.asset
+- Assets/Data/Players/Brasil/Neymar.asset
+- Assets/Data/Players/Regular 2/GK REG 2.asset
+- Assets/Data/Teams/Bad DEF Great ATA 1.asset
+- Assets/Data/Players/Great DF 2/ZAG GRT 21.asset
+- Assets/Data/Players/Bad 2/MC BAD 12.asset
+- Assets/Data/Players/Bad 4/MC BAD 22.asset
+- Assets/Data/Players/Great ATA 2/ZAG REG 50.asset
+- Assets/Data/Players/Great FAST 1/ZAG FAST 2.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ZAG REG 75.asset
+- Assets/Data/Players/Great 3/MC GRT 14.asset
+- Assets/Data/Players/Regular 5/ZAG REG 23.asset
+- Assets/Data/Players/One STARPlayer DEF 1/MC REG 58.asset
+- Assets/Data/Players/Crossing/ZAG CRO 5.asset
+- Assets/Data/Players/Regular 7/ZAG REG 34.asset
+- Assets/Data/Players/Bad 1/ZAG BAD 4.asset
+- Assets/Data/Players/Great MC 1/MC GRT 19.asset
+- Assets/Data/Players/Cadena_Rivers/_Christian.asset
+- Assets/Data/Players/Regular 2/MC REG 10.asset
+- Assets/Data/Players/Great DF 2/MC REG 46.asset
+- Assets/Data/Players/Bad 1/MC BAD 4.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/MC REG 35.asset
+- Assets/Data/Players/One STARPlayer GK 1/MC REG17.asset
+- Assets/Data/Teams/Physical 1.asset
+- Assets/Data/Players/Great 2/ZAG GRT 10.asset
+- Assets/Data/Players/Bad 3/ZAG BAD 11.asset
+- Assets/Data/Teams/Regular 4.asset
+- Assets/Data/Players/Great 1/ZAG GRT 3.asset
+- Assets/Data/Players/Bad 2/MC BAD 7.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ZAG REG 67.asset
+- Assets/Data/Players/Cadena_Rivers/_Bruno.asset
+- Assets/Data/Players/Great 2/ATA GRT 6.asset
+- Assets/Data/Players/Cadena_Rivers/_Tilips.asset
+- Assets/Data/Players/Great ATA 2/MC REG 12.asset
+- Assets/Data/Players/Wing Off/MC REG 9.asset
+- Assets/Data/Players/Great ATA 2/ZAG REG 46.asset
+- Assets/Data/Players/Great 3/ZAG GRT 15.asset
+- Assets/Data/Players/Regular 5/MC REG 6.asset
+- Assets/Data/Players/Regular 3/MC REG 11.asset
+- Assets/Data/Players/Regular 5/MC REG 20.asset
+- Assets/Data/Players/Bad 3/MC BAD 13.asset
+- Assets/Data/Players/Bad 1/MC BAD 6.asset
+- Assets/Data/Tournaments/Spaghetti Champhionship.asset
+- Assets/Data/Players/Regular 7/ATA REG 21.asset
+- Assets/Data/Players/Great 3/MC GRT 15.asset
+- Assets/Data/Players/Great DF 1/ZAG GRT 19.asset
+- Assets/Data/Players/Great DF 1/MC REG 39.asset
+- Assets/Data/Players/Great ATA 2/MC REG 45.asset
+- Assets/Data/Players/One STARPlayer MC 1/ATA REG 51.asset
+- Assets/Data/Teams/Bad 4.asset
+- Assets/Data/Teams/Regular 1.asset
+- Assets/Data/Players/Crossing/GK CRO 1.asset
+- Assets/Data/Players/Regular 5/MC REG7.asset
+- Assets/Data/Players/Great 3/ZAG GRT 14.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ZAG STAR 1.asset
+- Assets/Data/Players/Great ATA 1/MC REG 11.asset
+- Assets/Data/Players/Great ATA 1/GK REG 9.asset
+- Assets/Data/Players/Regular 4/MC REG 17.asset
+- Assets/Data/Players/Great 2/MC GRT 10.asset
+- Assets/Data/Players/Crossing/MC CRO 4.asset
+- Assets/Data/Players/Great DF 2/MC REG 43.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/MC REG11.asset
+- Assets/Data/Teams/Fast 1.asset
+- Assets/Data/Players/Great PHYSICAL 1/MC PHY 1.asset
+- Assets/Data/Players/Regular 1/MC REG 5.asset
+- Assets/Data/Players/Great FAST 1/ATA FAST 1.asset
+- Assets/Data/Players/Great DF 2/GK REG 12.asset
+- Assets/Data/Players/Great MC 2/ATA REG 36.asset
+- Assets/Data/Players/Great PHYSICAL 1/GK PHY 1.asset
+- Assets/Data/Players/Cadena_Rivers/_Bruno_Thurner.asset
+- Assets/Data/Teams/Center_Off.asset
+- Assets/Data/Players/Great DF 1/MC REG 11.asset
+- Assets/Data/Players/One STARPlayer ATA 1/MC REG 14.asset
+- Assets/Data/Players/One STARPlayer MC 1/ZAG REG 83.asset
+- Assets/Data/Players/Center Off/ATA CO 1.asset
+- Assets/Data/Teams/Great MC 2.asset
+- Assets/Data/Players/Regular 3/MC REG 14.asset
+- Assets/Data/Players/Great 2/ZAG GRT 7.asset
+- Assets/Data/Players/Brasil/Rivaldo.asset
+- Assets/Data/Players/Great 1/ZAG GRT 5.asset
+- Assets/Data/Teams/Great MC 1.asset
+- Assets/Data/Players/Bad 4/ZAG BAD 17.asset
+- Assets/Data/Players/Regular 3/MC REG 12.asset
+- Assets/Data/Players/Cadena_Rivers/_Thiaguera.asset
+- Assets/Data/Players/Bad 4/MC BAD 20.asset
+- Assets/Data/Players/Great ATA 2/ATA GRT 14.asset
+- Assets/Data/Players/Regular 2/ATA REG 4.asset
+- Assets/Data/Players/Great ATA 2/GK REG 10.asset
+- Assets/Data/Players/One STARPlayer GK 1/ATA REG 46.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ZAG BAD 25.asset
+- Assets/Data/Players/One STARPlayer MC 1/ZAG REG 85.asset
+- Assets/Data/Players/Great DF 1/ZAG GRT 18.asset
+- Assets/Data/Players/Great DF 2/ZAG GRT 24.asset
+- Assets/Data/Players/Cadena_Rivers/_DaCas.asset
+- Assets/Data/Players/One STARPlayer DEF 1/MC REG 57.asset
+- Assets/Data/Players/Brasil/Mauro_Galvao.asset
+- Assets/Data/Players/One STARPlayer DEF 1/GK REG 18.asset
+- Assets/Data/Players/Bad 1/MC BAD 3.asset
+- Assets/Data/Players/Center Off/MC CO 2.asset
+- Assets/Data/Players/Great DF 1/ZAG GRT 16.asset
+- Assets/Data/Players/One STARPlayer DEF 1/MC REG 15.asset
+- Assets/Data/Players/Crossing/ATA CRO 1.asset
+- Assets/Data/Players/One STARPlayer MC 1/MC STAR 1.asset
+- Assets/Data/Teams/Regular 3.asset
+- Assets/Data/Players/Cadena_Rivers/_Balaka.asset
+- Assets/Data/Players/Bad 4/ZAG BAD 18.asset
+- Assets/Data/Players/Regular 1/MC REG 1.asset
+- Assets/Data/Players/Wing Off/ZAG REG 37.asset
+- Assets/Data/Teams/Star MC 1.asset
+- Assets/Data/Players/Great 1/ATA GRT 3.asset
+- Assets/Data/Players/Center Off/MC CO 6.asset
+- Assets/Data/Players/Center Off/MC CO 3.asset
+- Assets/Data/Players/Great DF 1/ZAG GRT 17.asset
+- Assets/Data/Players/Great 3/GK GRT 3.asset
+- Assets/Data/Players/Great FAST 1/MC FAST 3.asset
+- Assets/Data/Players/Regular 6/ZAG REG 29.asset
+- Assets/Data/Players/Regular 2/ATA REG 5.asset
+- Assets/Data/Players/Great MC 2/MC GRT 27.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/GK REG 21.asset
+- Assets/Data/Players/Bad 3/ZAG BAD 12.asset
+- Assets/Data/Players/Great DF 2/MC REG 45.asset
+- Assets/Data/Teams/Wing Offensive.asset
+- Assets/Data/Tournaments/Topzera.asset
+- Assets/Data/Players/Regular 3/ATA REG 8.asset
+- Assets/Data/Players/Bad 2/ZAG BAD 10.asset
+- Assets/Data/Players/Great 2/ZAG GRT 8.asset
+- Assets/Data/Players/Wing Off/MC REG 33.asset
+- Assets/Data/Players/Great MC 2/ZAG REG 60.asset
+- Assets/Data/Players/Crossing/MC CRO 5.asset
+- Assets/Data/Players/Center Off/ZAG CO 5.asset
+- Assets/Data/Players/Great MC 1/MC GRT 24.asset
+- Assets/Data/Players/Great DF 2/ZAG GRT 25.asset
+- Assets/Data/Players/Wing Off/MC REG 34.asset
+- Assets/Data/Players/Bad 1/ATA BAD 3.asset
+- Assets/Data/Players/Great PHYSICAL 1/MC PHY 6.asset
+- Assets/Data/Players/Great 1/ATA GRT 2.asset
+- Assets/Data/Players/Bad 4/ZAG BAD 20.asset
+- Assets/Data/Players/Great 3/ATA GRT 8.asset
+- Assets/Data/Players/Bad 2/MC BAD 11.asset
+- Assets/Data/Players/Bad 3/ZAG BAD 13.asset
+- Assets/Data/Players/Regular 7/ATA REG 20.asset
+- Assets/Data/Players/Regular 5/ATA REG 13.asset
+- Assets/Data/Players/Great MC 2/ZAG REG 58.asset
+- Assets/Data/Players/Wing Off/ATA REG 22.asset
+- Assets/Data/Players/Cadena_Rivers/_Punk.asset
+- Assets/Data/Players/Great PHYSICAL 1/ATA PHY 3.asset
+- Assets/Data/Players/One STARPlayer MC 1/GK REG 20.asset
+- Assets/Data/Players/Regular 7/GK REG 7.asset
+- Assets/Data/Players/One STARPlayer GK 1/ATA REG 48.asset
+- Assets/Data/Players/Great 3/ZAG GRT 13.asset
+- Assets/Data/Players/One STARPlayer MC 1/ATA REG 49.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ATA STAR 1.asset
+- Assets/Data/Players/Great FAST 1/MC FAST 2.asset
+- Assets/Data/Players/Center Off/MC CO 4.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ZAG REG 70.asset
+- Assets/Data/Teams/Great DEF 2.asset
+- Assets/Data/Teams/Great 1.asset
+- Assets/Data/Players/Regular 5/ATA REG 14.asset
+- Assets/Data/Players/Great 1/MC GRT 1.asset
+- Assets/Data/Players/Great ATA 1/MC REG 40.asset
+- Assets/Data/Players/Bad 4/MC BAD 19.asset
+- Assets/Data/Players/Great 3/MC GRT 16.asset
+- Assets/Data/Tournaments/Campeonato dos Perebas.asset
+- Assets/Data/Players/Great MC 1/ZAG REG 54.asset
+- Assets/Data/Players/Regular 4/ZAG REG 19.asset
+- Assets/Data/Players/Regular 2/MC REG 8.asset
+- Assets/Data/Players/Wing Off/GK REG 8.asset
+- Assets/Data/Players/Regular 7/MC REG 29.asset
+- Assets/Data/Players/Brasil/Tafarel.asset
+- Assets/Data/Players/Great MC 2/ZAG REG 57.asset
+- Assets/Data/Players/Bad 1/ZAG BAD 5.asset
+- Assets/Data/Players/Great MC 1/MC GRT 20.asset
+- Assets/Data/Players/Regular 1/MC REG3.asset
+- Assets/Data/Players/Brasil/Romario.asset
+- Assets/Data/Players/Regular 6/ZAG REG 30.asset
+- Assets/Data/Players/Brasil/Roberto_Carlos.asset
+- Assets/Data/Teams/Regular 5.asset
+- Assets/Data/Players/Cadena_Rivers/_Caio_Miolo.asset
+- Assets/Data/Players/One STARPlayer ATA 1/MC REG 54.asset
+- Assets/Data/Players/One STARPlayer DEF 1/MC REG 55.asset
+- Assets/Data/Players/Center Off/ZAG CO 1.asset
+- Assets/Data/Players/Regular 4/ATA REG 10.asset
+- Assets/Data/Players/Great PHYSICAL 1/ATA PHY 2.asset
+- Assets/Data/Players/Center Off/ZAG CO 2.asset
+- Assets/Data/Players/Great FAST 1/GK FAST 1.asset
+- Assets/Data/Players/Crossing/MC CRO 1.asset
+- Assets/Data/Players/One STARPlayer ATA 1/MC REG 51.asset
+- Assets/Data/Players/Regular 4/GK REG 4.asset
+- Assets/Data/Players/Great FAST 1/ATA FAST 2.asset
+- Assets/Data/Players/Regular 1/ATA REG 1.asset
+- Assets/Data/Players/Regular 6/ATA REG 17.asset
+- Assets/Data/Players/Cadena_Rivers/_Marcao.asset
+- Assets/Data/Players/Bad 4/ATA BAD 10.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ATA GRT 10.asset
+- Assets/Data/Players/Great MC 2/MC GRT 29.asset
+- Assets/Data/Players/Bad 3/ATA BAD 8.asset
+- Assets/Data/Teams/Star GK 1.asset
+- Assets/Data/Players/Bad 3/MC BAD 15.asset
+- Assets/Data/Players/Great 2/MC GRT 12.asset
+- Assets/Data/Players/Great MC 1/ZAG REG 52.asset
+- Assets/Data/Players/Brasil/Danrlei.asset
+- Assets/Data/Players/Regular 7/ZAG REG 33.asset
+- Assets/Data/Players/Regular 5/ZAG REG 25.asset
+- Assets/Data/Players/Bad DEF Great ATA 1/ZAG BAD 23.asset
+- Assets/Data/Players/Regular 1/MC REG 2.asset
+- Assets/Data/Players/Great 3/MC GRT 18.asset
+- Assets/Data/Players/Great MC 1/MC GRT 22.asset
+- Assets/Data/Players/One STARPlayer ATA 1/ATA REG 40.asset
+- Assets/Data/Players/Great ATA 1/ZAG REG 43.asset
+- Assets/Data/Players/Bad 2/ZAG BAD 7.asset
+- Assets/Data/Players/One STARPlayer DEF 1/ATA REG 45.asset
+- "Assets/Data/Tournaments/Campeonato da M\xE9dia.asset"
+- Assets/Data/Players/Regular 3/ZAG REG 13.asset
+- Assets/Data/Players/Regular 1/MC REG 6.asset
+- Assets/Data/Players/Regular 3/ATA REG 9.asset
+- Assets/Data/Teams/Great 3.asset
+- Assets/Data/Players/Bad 2/ATA BAD 4.asset
+- Assets/Data/Players/Regular 4/ZAG REG 20.asset
+- Assets/Data/Players/Regular 7/ATA REG 19.asset
+- Assets/Data/Players/One STARPlayer MC 1/MC REG 65.asset
+- Assets/Data/Teams/_UserTeam.asset
+- Assets/Data/Players/Cadena_Rivers/_Thiago_de_Moura.asset
+- Assets/Data/Players/One STARPlayer GK 1/MC REG 59.asset
+- Assets/Data/Players/One STARPlayer MC 1/MC REG18.asset
+- Assets/Data/Players/Great ATA 2/MC REG13.asset
+- Assets/Data/Players/Great FAST 1/ATA FAST 3.asset
+- Assets/Data/Players/Crossing/ZAG CRO 2.asset
+- Assets/Data/Players/Crossing/ATA CRO 2.asset
+- Assets/Data/Players/Regular 5/MC REG 21.asset
+- Assets/Data/Players/Great 3/MC GRT 17.asset
+- Assets/Data/Players/Great 3/ATA GRT 9.asset
+- Assets/Data/Players/Great MC 1/ATA REG 33.asset
+- Assets/Data/Players/Great 2/MC GRT 11.asset
+- Assets/Data/Players/Great 1/MC GRT 2.asset
+- Assets/Data/Players/Great 2/ATA GRT 5.asset
+- Assets/Data/Players/Regular 2/MC REG 3.asset
+- Assets/Data/Players/Regular 2/ZAG REG 6.asset
+- Assets/Data/Teams/Bad 1.asset
+- Assets/Data/Players/Great 1/MC GRT 4.asset
+- Assets/Data/Players/Bad 4/MC BAD 23.asset
+- Assets/Data/Players/Great ATA 1/MC REG 41.asset
+- Assets/Data/Players/Regular 7/MC REG 30.asset
+- Assets/Data/Players/Bad 4/ZAG BAD 19.asset
+- Assets/Data/Players/Great MC 2/ZAG REG 56.asset
+- Assets/Data/Players/Great MC 2/MC GRT 30.asset
+- Assets/Data/Players/Great DF 1/ZAG GRT 20.asset
+- Assets/Data/Players/Great PHYSICAL 1/ZAG PHY 2.asset
+- Assets/Data/Players/Cadena_Rivers/_Carlos_Hoezel.asset
+- Assets/Data/Players/Regular 3/MC REG5.asset
+- Assets/Data/Players/Regular 3/ZAG REG 14.asset
+- Assets/Data/Players/One STARPlayer DEF 1/MC REG16.asset
+- Assets/Data/Players/Great PHYSICAL 1/ZAG PHY 5.asset
+Dependencies: []
