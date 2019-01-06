@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -45,6 +44,6 @@ public class TournamentCard : MonoBehaviour
     public void ClickHandler()
     {
         MainController.Instance.CurrentTournament = Data;
-        MainController.Instance.ShowScreen(BaseScreen.ScreenType.TournamentHub);
+        MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
-
+using UnityEngine.Networking;
 
 namespace I2.Loc
 {
@@ -41,14 +41,14 @@ namespace I2.Loc
             mQueries.RemoveAt(lastQuery);
 
             string url = string.Format("{0}?action=Translate&list={1}", LocalizationManager.GetWebServiceURL(), query);
-            www = new WWW(url);
+            www = new UnityWebRequest(url);
         }
 
         public override eJobState GetState()
         {
             if (www != null && www.isDone)
             {
-                ProcessResult(www.bytes, www.error);
+                ProcessResult(www.downloadHandler.data, www.error);
                 www.Dispose();
                 www = null;
             }

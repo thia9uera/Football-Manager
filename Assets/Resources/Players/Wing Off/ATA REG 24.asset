@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 39
-    TotalCrosses: 25
-    TotalShots: 7
-    TotalHeaders: 12
-    TotalFaults: 7
-    TotalTackles: 29
-    TotalDribbles: 12
-    TotalGoals: 6
+    TotalPasses: 0
+    TotalCrosses: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalFaults: 0
+    TotalTackles: 0
+    TotalDribbles: 0
+    TotalGoals: 0
     TotalSaves: 0
     TotalPassesMissed: 0
-    TotalShotsMissed: 6
+    TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
-    TotalPresence: 173
+    TotalPresence: 0
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0

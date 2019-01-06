@@ -51,7 +51,7 @@ public class Zones {
 public class PosChanceData: ScriptableObject {
 	public List<Zones> posChancePerZones = new List<Zones>();
 
-    public void SetDirty()
+    public void Save()
     {
         EditorUtility.SetDirty(this);
     }

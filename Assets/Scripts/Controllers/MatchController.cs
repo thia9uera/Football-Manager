@@ -467,7 +467,7 @@ public class MatchController : MonoBehaviour
             {
                 isSimulating = false;
                 AssetDatabase.SaveAssets();
-                MainController.Instance.ShowScreen(BaseScreen.ScreenType.TournamentHub);
+                MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
             }
         }
     }

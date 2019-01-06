@@ -22,9 +22,11 @@ public class LoadingScreen : BaseScreen
         int p = 0;
         foreach (TeamData team in teams)
         {
+            MainController.Instance.AllTeams.Add(team);
             t++;
             foreach (PlayerData player in team.GetAllPlayers())
             {
+                MainController.Instance.AllPlayers.Add(player);
                 player.Team = team;
                 EditorUtility.SetDirty(player);
                 p++;

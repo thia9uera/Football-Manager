@@ -62,7 +62,7 @@ public class Debug_Popup : MonoBehaviour
 
         gameObject.SetActive(false);
         Debug_FieldView.Instance.Test();
-        MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.SetDirty();
+        MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.Save();
     }
 
     void Update()

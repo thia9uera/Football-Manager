@@ -40,17 +40,17 @@ MonoBehaviour:
     Points: 0
     TotalWins: 0
     TotalLosts: 0
-    TotalDraws: 1
+    TotalDraws: 0
     TotalGoals: 0
     TotalGoalsAgainst: 0
-    TotalShots: 3
+    TotalShots: 0
     TotalHeaders: 0
-    TotalSteals: 4
-    TotalPasses: 24
-    TotalLongPasses: 5
-    TotalPassesMissed: 1
-    TotalBoxCrosses: 1
-    TotalFaults: 2
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0

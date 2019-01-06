@@ -39,21 +39,21 @@ MonoBehaviour:
   LifeTimeStats:
     Points: 0
     TotalWins: 0
-    TotalLosts: 1
+    TotalLosts: 0
     TotalDraws: 0
     TotalGoals: 0
-    TotalGoalsAgainst: 1
+    TotalGoalsAgainst: 0
     TotalShots: 0
     TotalHeaders: 0
     TotalSteals: 0
-    TotalPasses: 18
-    TotalLongPasses: 9
+    TotalPasses: 0
+    TotalLongPasses: 0
     TotalPassesMissed: 0
-    TotalBoxCrosses: 1
-    TotalFaults: 3
+    TotalBoxCrosses: 0
+    TotalFaults: 0
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 1
+    TotalCounterAttacks: 0
   MatchStats:
     Points: 0
     TotalWins: 0

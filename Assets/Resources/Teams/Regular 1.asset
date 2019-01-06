@@ -37,23 +37,23 @@ MonoBehaviour:
   Captain: {fileID: 11400000, guid: db23e3b395ee8fd4496ded180fa60463, type: 2}
   Stars: 0
   LifeTimeStats:
-    Points: 65
-    TotalWins: 19
-    TotalLosts: 9
-    TotalDraws: 8
-    TotalGoals: 74
-    TotalGoalsAgainst: 30
-    TotalShots: 142
-    TotalHeaders: 2
-    TotalSteals: 166
-    TotalPasses: 543
-    TotalLongPasses: 225
-    TotalPassesMissed: 3
-    TotalBoxCrosses: 44
-    TotalFaults: 139
+    Points: 0
+    TotalWins: 0
+    TotalLosts: 0
+    TotalDraws: 0
+    TotalGoals: 0
+    TotalGoalsAgainst: 0
+    TotalShots: 0
+    TotalHeaders: 0
+    TotalSteals: 0
+    TotalPasses: 0
+    TotalLongPasses: 0
+    TotalPassesMissed: 0
+    TotalBoxCrosses: 0
+    TotalFaults: 0
     TotalOffsides: 0
     TotalCornerKicks: 0
-    TotalCounterAttacks: 90
+    TotalCounterAttacks: 0
   MatchStats:
     Points: 0
     TotalWins: 0

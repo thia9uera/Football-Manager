@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using UnityEngine.Networking;
 
 namespace I2.Loc
 {
@@ -12,7 +13,7 @@ namespace I2.Loc
 
 	public static partial class GoogleTranslation
 	{
-		static List<WWW> mCurrentTranslations = new List<WWW>();
+		static List<UnityWebRequest> mCurrentTranslations = new List<UnityWebRequest>();
         static List<TranslationJob> mTranslationJobs = new List<TranslationJob>();
 
 #region Multiple Translations

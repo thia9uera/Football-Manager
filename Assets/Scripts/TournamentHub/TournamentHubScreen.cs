@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Linq;
 
 public class TournamentHubScreen : BaseScreen
 {
@@ -67,7 +65,7 @@ public class TournamentHubScreen : BaseScreen
     {
         MainController.Instance.CurrentMatch = nextMatchData;
         MainController.Instance.Match.Populate(nextMatchData);
-        MainController.Instance.ShowScreen(ScreenType.Match);
+        MainController.Instance.Screens.ShowScreen(ScreenType.Match);
     }
 
     public void ResetTournament()
@@ -78,37 +76,36 @@ public class TournamentHubScreen : BaseScreen
 
     public void SimulateTournament()
     {
-        MainController.Instance.ShowScreen(ScreenType.Match);
+        MainController.Instance.Screens.ShowScreen(ScreenType.Match);
         MainController.Instance.CurrentMatch = nextMatchData;
         MainController.Instance.Match.Populate(nextMatchData, true);
     }
 
     public void BackToMenu()
     {
-        MainController.Instance.ShowScreen(ScreenType.MainMenu);
+        MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
     }
 
     public void SortPlayerLeaderboardBy(string _param)
     {
         List<PlayerData> playersList = new List<PlayerData>();
-        foreach (TeamData team in currentTournament.Teams)
+ 
+        foreach (PlayerData player in currentTournament.GetAllPlayers())
         {
-            foreach (PlayerData player in team.GetAllPlayers())
+            if (player.GetTournamentStatistics(currentTournament.Id) != null)
             {
-                if (player.GetTournamentStatistics(currentTournament.Id) != null)
-                {
-                    PlayerData.Statistics stats = player.TournamentStatistics[currentTournament.Id];
+                PlayerData.Statistics stats = player.TournamentStatistics[currentTournament.Id];
 
-                    switch(_param)
-                    {
-                        case "Goals":
-                            if (stats.TotalGoals > 0) playersList.Add(player);
-                            playersList = playersList.OrderByDescending(PlayerData => PlayerData.TournamentStatistics[currentTournament.Id].TotalGoals).ToList();
-                            break;
-                    }           
-                }
+                switch(_param)
+                {
+                    case "Goals":
+                        if (stats.TotalGoals > 0) playersList.Add(player);
+                        playersList = MainController.Instance.SortPlayersBy(playersList, _param, currentTournament.Id);
+                        break;
+                }           
             }
         }
+
 
         playersLeaderboard.Populate(playersList, currentTournament.Id, _param);
     }

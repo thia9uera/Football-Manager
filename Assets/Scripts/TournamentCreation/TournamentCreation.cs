@@ -96,7 +96,7 @@ public class TournamentCreation : BaseScreen
 
     public void EditTournament(TournamentData _data)
     {
-        AvailableTeams = new List<TeamData>(Resources.LoadAll<TeamData>("Teams"));
+        AvailableTeams = new List<TeamData>(MainController.Instance.AllTeams);
 
         Edit.SetActive(true);
         Load.SetActive(false);
@@ -124,8 +124,6 @@ public class TournamentCreation : BaseScreen
 
     string GetUniqueID()
     {
-        string key = "ID";
-
         var random = new System.Random();
         DateTime epochStart = new DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
         double timestamp = (DateTime.UtcNow - epochStart).TotalSeconds;

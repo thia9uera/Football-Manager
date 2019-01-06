@@ -53,14 +53,14 @@ MonoBehaviour:
   Prob_LongPass: 1
   LifeTimeStats:
     TotalPasses: 0
-    TotalCrosses: 3
+    TotalCrosses: 0
     TotalShots: 0
     TotalHeaders: 0
     TotalFaults: 0
     TotalTackles: 0
     TotalDribbles: 0
     TotalGoals: 0
-    TotalSaves: 1
+    TotalSaves: 0
     TotalPassesMissed: 0
     TotalShotsMissed: 0
     TotalHeadersMissed: 0

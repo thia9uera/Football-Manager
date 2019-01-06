@@ -5528,6 +5528,8 @@ MonoBehaviour:
       RedCards: []
     isPlayed: 0
     Round: 0
+  AllPlayers: []
+  AllTeams: []
 --- !u!114 &443455898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9501,7 +9503,7 @@ MonoBehaviour:
   btnTeams: {fileID: 1417460655}
   headerPlayers: {fileID: 1380583845}
   headerTeams: {fileID: 570956032}
-  maxRows: 25
+  maxRows: 5
 --- !u!1 &907781286
 GameObject:
   m_ObjectHideFlags: 0

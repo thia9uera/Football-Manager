@@ -52,21 +52,21 @@ MonoBehaviour:
   Prob_Tackling: 1
   Prob_LongPass: 1
   LifeTimeStats:
-    TotalPasses: 81
-    TotalCrosses: 26
-    TotalShots: 48
-    TotalHeaders: 5
-    TotalFaults: 9
-    TotalTackles: 53
-    TotalDribbles: 16
-    TotalGoals: 27
+    TotalPasses: 11
+    TotalCrosses: 3
+    TotalShots: 4
+    TotalHeaders: 1
+    TotalFaults: 0
+    TotalTackles: 5
+    TotalDribbles: 2
+    TotalGoals: 4
     TotalSaves: 0
-    TotalPassesMissed: 1
-    TotalShotsMissed: 13
+    TotalPassesMissed: 0
+    TotalShotsMissed: 0
     TotalHeadersMissed: 0
     TotalDribblesMissed: 0
-    TotalCrossesMissed: 1
-    TotalPresence: 339
+    TotalCrossesMissed: 0
+    TotalPresence: 53
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -113,21 +113,21 @@ MonoBehaviour:
     - 5C2F2C2D-649471-306EAB65
     - 5C2F6010-4BDB2F-349195A8
     _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
+    - TotalPasses: 11
+      TotalCrosses: 3
+      TotalShots: 4
+      TotalHeaders: 1
       TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
+      TotalTackles: 5
+      TotalDribbles: 2
+      TotalGoals: 4
       TotalSaves: 0
       TotalPassesMissed: 0
       TotalShotsMissed: 0
       TotalHeadersMissed: 0
       TotalDribblesMissed: 0
       TotalCrossesMissed: 0
-      TotalPresence: 0
+      TotalPresence: 53
     - TotalPasses: 0
       TotalCrosses: 0
       TotalShots: 0

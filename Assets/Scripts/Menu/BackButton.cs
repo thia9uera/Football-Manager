@@ -6,7 +6,7 @@ public class BackButton : MonoBehaviour
 {
     public void ClickHandler()
     {
-        MainController.Instance.ShowPreviousScreen();
+        MainController.Instance.Screens.ShowPreviousScreen();
     }
 
 }
