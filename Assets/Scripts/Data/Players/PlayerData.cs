@@ -124,6 +124,12 @@ public class PlayerData : ScriptableObject
         Header,
         Sprint,
     }
+
+    private void Awake()
+    {
+        MatchStats = new PlayerStatistics();
+    }
+
     public void ApplyBonus()
     {
         Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
@@ -140,6 +146,8 @@ public class PlayerData : ScriptableObject
         Prob_OffsideLine = _playerStrategy.OffsideTrickChance;
         Prob_Marking = _playerStrategy.MarkingChance;
         Prob_Tackling = _playerStrategy.TacklingChance;
+
+        MatchStats = new PlayerStatistics();
     }
 
     public int GetOverall()
@@ -318,12 +326,11 @@ public class PlayerData : ScriptableObject
     public void UpdateLifeTimeStats()
     {
         PlayerStatistics stats = MatchStats;
-
+        if (Attributes.LifeTimeStats == null) Attributes.LifeTimeStats = new PlayerStatistics();
         UpdateStats(Attributes.LifeTimeStats, stats);
-
         if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics(stats);
 
-       ResetStatistics("Match");
+        ResetStatistics("Match");
     }
 
     void UpdateStats(PlayerStatistics _stats, PlayerStatistics _data)
@@ -357,7 +364,7 @@ public class PlayerData : ScriptableObject
     void UpdateTournamentStatistics(PlayerStatistics _stats)
     {
         TournamentData currentTournament = MainController.Instance.CurrentTournament;
-        if (Attributes.TournamentStatistics == null) Attributes.TournamentStatistics = new TournamentStats();
+        if (Attributes.TournamentStatistics == null) Attributes.TournamentStatistics = new PlayerTournamentStats();
 
         if (!Attributes.TournamentStatistics.ContainsKey(currentTournament.Id))
         {
@@ -404,6 +411,6 @@ public class PlayerData : ScriptableObject
     {
         ResetStatistics("LifeTime");
         Team = null;
-        Attributes.TournamentStatistics = new TournamentStats();
+        Attributes.TournamentStatistics = new PlayerTournamentStats();
     }
 }

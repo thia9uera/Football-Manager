@@ -20,8 +20,22 @@ MonoBehaviour:
     SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
     Formation: 0
     Strategy: 3
-    SquadIds: []
-    SubstitutesIds: []
+    SquadIds:
+    - b0ebc273-b28d-4b30-a447-4b8b437464b9
+    - 63ad15ca-2509-47e7-920b-ae364508fb9b
+    - 9c9031a9-10c5-41ce-950e-cb270d540f66
+    - 7d3f6e76-bb8b-46a6-85fc-2112d874ddac
+    - 03cc15ff-6b40-4833-946a-ae09af1c9806
+    - 35288f06-94cb-4d68-b2ee-5c18abf4e2ff
+    - 03a65b6b-4f6a-43ce-a657-3c2f6bbdfc58
+    - 73791ebb-9fed-43fa-a205-5b872c7b4260
+    - 1bb70f0b-2a00-41fc-9477-5677056f2d01
+    - d9ee3219-888f-41e3-86a4-a83c4905ce85
+    - 64bee153-d99f-470d-8233-b56fa4add763
+    SubstitutesIds:
+    - b7084f72-47c8-4370-8ab7-d1f3cd8e3bfb
+    - 6fd723c4-fdba-49c1-a83e-ab52b55d8eef
+    - 4935e1ea-f8ee-4f3f-8c07-588d7cfd539d
     LifeTimeStats:
       Points: 0
       TotalWins: 0

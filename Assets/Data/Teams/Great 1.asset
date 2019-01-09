@@ -20,8 +20,22 @@ MonoBehaviour:
     SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
     Formation: 0
     Strategy: 0
-    SquadIds: []
-    SubstitutesIds: []
+    SquadIds:
+    - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+    - c11fdd1d-0bef-4cef-871c-990ce854da15
+    - 00428931-4cf4-42e5-b230-652cad4e22e3
+    - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+    - a07cd4cf-b486-405b-8373-328d804ea658
+    - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+    - d8cd582a-9aa4-429f-8750-57558a836863
+    - e086cad7-543a-4165-a316-ad08e63dcc38
+    - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+    - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+    - 03b5b089-876a-4583-8d31-052cc0481f15
+    SubstitutesIds:
+    - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+    - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+    - 6f721830-d655-4977-9df5-ece89b644acf
     LifeTimeStats:
       Points: 0
       TotalWins: 0
@@ -64,8 +78,26 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 0
       _keyValues: []
-      _keys: []
-      _values: []
+      _keys:
+      - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+      _values:
+      - Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
     IsUserControlled: 0
     IsPlaceholder: 0
   Squad:

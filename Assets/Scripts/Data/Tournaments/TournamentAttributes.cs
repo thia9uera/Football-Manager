@@ -13,4 +13,6 @@ public struct TournamentAttributes
     public int StarsRequired;
     public string[] TeamIds;
     public MatchData[] Matches;
+    public int TotalRounds;
+    public int CurrentRound;
 }

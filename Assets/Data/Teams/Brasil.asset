@@ -80,8 +80,26 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 0
       _keyValues: []
-      _keys: []
-      _values: []
+      _keys:
+      - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+      _values:
+      - Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
     IsUserControlled: 0
     IsPlaceholder: 0
   Squad:
@@ -124,33 +142,49 @@ MonoBehaviour:
     TotalCounterAttacks: 0
   MatchData:
     TeamAttributes:
-      Id: 
-      Name: 
-      Tag: 
-      PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
-      SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
+      Id: e4570048-7c33-467f-b178-605edf19adb9
+      Name: Brasil
+      Tag: BRA
+      PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
+      SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
       Formation: 0
       Strategy: 0
-      SquadIds: []
-      SubstitutesIds: []
+      SquadIds:
+      - 97dbaa64-77da-4562-9aab-2be31d547bad
+      - c7c20f6c-26ec-4c16-ab9b-8bc235831571
+      - e7b7375b-7af8-4494-85db-b822e790a103
+      - 8f8b1aca-fbde-481f-b857-0a0b4c30abd5
+      - b1a5206b-a6dd-41e6-81ec-990e44cddff5
+      - a0010738-9159-4c80-bde6-c25acf755ae5
+      - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+      - c4b71c22-b2d4-4c65-b5e7-0ce9f26e3f7a
+      - 8cbce9ac-9c3e-4a83-b635-ec0fb7470ba6
+      - db2f2ab8-82f4-45e2-8829-f1e62336d78e
+      - b2bcea07-dbcc-418e-b749-999ab80e763f
+      SubstitutesIds:
+      - c3f33bce-ab21-484d-b9b9-3c7cf65c36e1
+      - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+      - 5dd65e86-8fb9-4693-a018-aeff16b0e8a6
+      - 20506774-44d7-42bc-a3fc-f43cc749e9f9
+      - 2f248a35-3089-440f-8d57-b5f15beef069
       LifeTimeStats:
-        Points: 0
-        TotalWins: 0
-        TotalLosts: 0
+        Points: 9
+        TotalWins: 3
+        TotalLosts: 1
         TotalDraws: 0
-        TotalGoals: 0
-        TotalGoalsAgainst: 0
-        TotalShots: 0
-        TotalHeaders: 0
-        TotalSteals: 0
-        TotalPasses: 0
-        TotalLongPasses: 0
+        TotalGoals: 17
+        TotalGoalsAgainst: 1
+        TotalShots: 26
+        TotalHeaders: 2
+        TotalSteals: 8
+        TotalPasses: 89
+        TotalLongPasses: 32
         TotalPassesMissed: 0
-        TotalBoxCrosses: 0
-        TotalFaults: 0
+        TotalBoxCrosses: 6
+        TotalFaults: 10
         TotalOffsides: 0
         TotalCornerKicks: 0
-        TotalCounterAttacks: 0
+        TotalCounterAttacks: 4
       TournamentStatistics:
         reorderableList:
           canAdd: 0
@@ -175,8 +209,26 @@ MonoBehaviour:
         reqReferences: {fileID: 0}
         isExpanded: 0
         _keyValues: []
-        _keys: []
-        _values: []
+        _keys:
+        - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+        _values:
+        - Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
       IsUserControlled: 0
       IsPlaceholder: 0
     Statistics:
@@ -185,23 +237,23 @@ MonoBehaviour:
       TotalLosts: 0
       TotalDraws: 0
       TotalGoals: 5
-      TotalGoalsAgainst: 1
-      TotalShots: 7
-      TotalHeaders: 1
-      TotalSteals: 4
-      TotalPasses: 8
-      TotalLongPasses: 3
+      TotalGoalsAgainst: 0
+      TotalShots: 5
+      TotalHeaders: 2
+      TotalSteals: 0
+      TotalPasses: 32
+      TotalLongPasses: 12
       TotalPassesMissed: 0
-      TotalBoxCrosses: 2
+      TotalBoxCrosses: 5
       TotalFaults: 2
-      TotalOffsides: 0
+      TotalOffsides: 1
       TotalCornerKicks: 0
-      TotalCounterAttacks: 0
+      TotalCounterAttacks: 2
     Scorers:
-    - {fileID: 11400000, guid: be631b68798e0144ca5dcc3f89dac744, type: 2}
+    - {fileID: 11400000, guid: ea199b13b3aa8934bb5d341cbe4c5558, type: 2}
+    - {fileID: 11400000, guid: ea199b13b3aa8934bb5d341cbe4c5558, type: 2}
     - {fileID: 11400000, guid: 508f1790e5ba4e444bb205c6e8bcb8ac, type: 2}
-    - {fileID: 11400000, guid: c687c8f460915214eab8a2babeccc557, type: 2}
-    - {fileID: 11400000, guid: be631b68798e0144ca5dcc3f89dac744, type: 2}
-    - {fileID: 11400000, guid: 9d443ba5999716d48a9ac92a41ebdeac, type: 2}
+    - {fileID: 11400000, guid: 508f1790e5ba4e444bb205c6e8bcb8ac, type: 2}
+    - {fileID: 11400000, guid: ea199b13b3aa8934bb5d341cbe4c5558, type: 2}
     YellowCards: []
     RedCards: []

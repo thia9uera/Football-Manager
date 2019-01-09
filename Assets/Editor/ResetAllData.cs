@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
 
 public class ResetAllData
 {
@@ -14,16 +13,19 @@ public class ResetAllData
         foreach (PlayerData player in players)
         {
             player.Reset();
+            if(string.IsNullOrEmpty(player.Id)) player.Id = System.Guid.NewGuid().ToString();
             EditorUtility.SetDirty(player);
         }
         foreach (TeamData team in teams)
         {
             team.Reset();
+            if (string.IsNullOrEmpty(team.Id)) team.Id = System.Guid.NewGuid().ToString();
             EditorUtility.SetDirty(team);
         }
         foreach (TournamentData tournament in tournaments)
         {
             tournament.ResetTournament();
+            if (string.IsNullOrEmpty(tournament.Id)) tournament.Id = System.Guid.NewGuid().ToString();
             EditorUtility.SetDirty(tournament);
         }
 

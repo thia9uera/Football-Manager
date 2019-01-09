@@ -20,9 +20,8 @@ public class TournamentData : ScriptableObject
     public List<TeamData> Teams;
     public List<MatchData> Matches { get { return new List<MatchData>(Attributes.Matches); } set { Attributes.Matches = value.ToArray(); } }
 
-    [Space(10)]
-    public int TotalRounds;
-    public int CurrentRound;
+    public int TotalRounds { get { return Attributes.TotalRounds; } set { Attributes.TotalRounds = value; } }
+    public int CurrentRound { get { return Attributes.CurrentRound; } set { Attributes.CurrentRound = value; } }
 
     /// <summary>
     /// Gets the teams ordered by parameter.

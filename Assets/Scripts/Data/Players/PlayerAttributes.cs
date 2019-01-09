@@ -109,8 +109,8 @@ public struct PlayerAttributes
 
     public PlayerStatistics LifeTimeStats;
 
-    public TournamentStats TournamentStatistics;
+    public PlayerTournamentStats TournamentStatistics;
 }
 
 [System.Serializable]
-public class TournamentStats : SerializableDictionaryBase<string, PlayerStatistics> { }
+public class PlayerTournamentStats : SerializableDictionaryBase<string, PlayerStatistics> { }

@@ -75,26 +75,9 @@ MonoBehaviour:
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
       isExpanded: 0
-      _keyValues:
-      - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-      _keys:
-      - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-      _values:
-      - TotalPasses: 0
-        TotalCrosses: 0
-        TotalShots: 0
-        TotalHeaders: 0
-        TotalFaults: 0
-        TotalTackles: 0
-        TotalDribbles: 0
-        TotalGoals: 0
-        TotalSaves: 0
-        TotalPassesMissed: 0
-        TotalShotsMissed: 0
-        TotalHeadersMissed: 0
-        TotalDribblesMissed: 0
-        TotalCrossesMissed: 0
-        TotalPresence: 0
+      _keyValues: []
+      _keys: []
+      _values: []
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4b1852fbe99fd147a39cee00603b1e5, type: 3}
-  m_Name: Torneio da Baixada
+  m_Name: Torneio Baladeiro
   m_EditorClassIdentifier: 
   Attributes:
-    Id: 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-    Name: Torneio da Baixada
+    Id: 25e4dad0-15fc-432e-9fbb-934f73921ef2
+    Name: Torneio Baladeiro
     Type: 0
     StarsRequired: 0
     TeamIds:
     - 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
     - d4cd6049-fa68-42f2-a9fd-d30cd56a8283
-    - 649f7ea6-0487-4b02-b0a9-63dd6795531f
-    - 65b5ae67-dcf8-4cc5-8ce9-51dd01ee74a1
+    - e4570048-7c33-467f-b178-605edf19adb9
+    - 04382309-bf84-4cd2-b662-c14fc0fae78c
     Matches:
     - HomeTeam:
         TeamAttributes:
@@ -32,8 +32,24 @@ MonoBehaviour:
           SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
           Formation: 0
           Strategy: 5
-          SquadIds: []
-          SubstitutesIds: []
+          SquadIds:
+          - d39d5566-b548-4f99-8c03-7f1f858f2dfe
+          - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+          - d602daf3-09ad-49e4-a928-fc53bbc23cf3
+          - 86b26191-3901-4d08-8be1-846a9dd77b41
+          - 3ed54838-1b27-4421-b98f-dac73a6578fc
+          - 9dc3c417-b197-43f2-af84-7c28af83ca34
+          - db639446-ff90-4253-8da2-998d4a27e231
+          - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
+          - 4c57c1a6-f14e-41b0-9842-2502667eeab4
+          - 208149e6-bad1-4f23-be7c-99a6aa317f32
+          - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+          SubstitutesIds:
+          - 10c9d827-60d9-4569-af79-ccf910bb3909
+          - c8f220fd-69de-4b3f-a996-f0c41b005c6d
+          - b8bdf88e-f30d-4993-a567-bfb085f270fb
+          - 7817cfcd-0833-4811-b2df-8711a90e184c
+          - 6a800c4b-5745-4c3c-910d-f93cd2395505
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -69,394 +85,6 @@ MonoBehaviour:
               slideEasing: 0
               verticalSpacing: 0
               showDefaultBackground: 0
-              elementDisplayType: 0
-              elementNameProperty: 
-              elementNameOverride: 
-              elementIcon: {fileID: 0}
-            reqReferences: {fileID: 0}
-            isExpanded: 0
-            _keyValues: []
-            _keys:
-            - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-            _values:
-            - Points: 0
-              TotalWins: 0
-              TotalLosts: 0
-              TotalDraws: 0
-              TotalGoals: 0
-              TotalGoalsAgainst: 0
-              TotalShots: 0
-              TotalHeaders: 0
-              TotalSteals: 0
-              TotalPasses: 0
-              TotalLongPasses: 0
-              TotalPassesMissed: 0
-              TotalBoxCrosses: 0
-              TotalFaults: 0
-              TotalOffsides: 0
-              TotalCornerKicks: 0
-              TotalCounterAttacks: 0
-          IsUserControlled: 1
-          IsPlaceholder: 0
-        Statistics:
-          Points: 0
-          TotalWins: 0
-          TotalLosts: 0
-          TotalDraws: 0
-          TotalGoals: 0
-          TotalGoalsAgainst: 0
-          TotalShots: 0
-          TotalHeaders: 0
-          TotalSteals: 0
-          TotalPasses: 0
-          TotalLongPasses: 0
-          TotalPassesMissed: 0
-          TotalBoxCrosses: 0
-          TotalFaults: 0
-          TotalOffsides: 0
-          TotalCornerKicks: 0
-          TotalCounterAttacks: 0
-        Scorers: []
-        YellowCards: []
-        RedCards: []
-      AwayTeam:
-        TeamAttributes:
-          Id: 65b5ae67-dcf8-4cc5-8ce9-51dd01ee74a1
-          Name: Master Attackers
-          Tag: SA1
-          PrimaryColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-          SecondaryColor: {r: 0.93333334, g: 0.07450977, b: 0.13579428, a: 1}
-          Formation: 0
-          Strategy: 0
-          SquadIds: []
-          SubstitutesIds: []
-          LifeTimeStats:
-            Points: 0
-            TotalWins: 0
-            TotalLosts: 0
-            TotalDraws: 0
-            TotalGoals: 0
-            TotalGoalsAgainst: 0
-            TotalShots: 0
-            TotalHeaders: 0
-            TotalSteals: 0
-            TotalPasses: 0
-            TotalLongPasses: 0
-            TotalPassesMissed: 0
-            TotalBoxCrosses: 0
-            TotalFaults: 0
-            TotalOffsides: 0
-            TotalCornerKicks: 0
-            TotalCounterAttacks: 0
-          TournamentStatistics:
-            reorderableList:
-              canAdd: 0
-              canRemove: 0
-              draggable: 0
-              expandable: 0
-              multipleSelection: 0
-              isExpanded: 0
-              label:
-                m_Text: 
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              headerHeight: 0
-              footerHeight: 0
-              slideEasing: 0
-              verticalSpacing: 0
-              showDefaultBackground: 0
-              elementDisplayType: 0
-              elementNameProperty: 
-              elementNameOverride: 
-              elementIcon: {fileID: 0}
-            reqReferences: {fileID: 0}
-            isExpanded: 0
-            _keyValues: []
-            _keys:
-            - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-            _values:
-            - Points: 0
-              TotalWins: 0
-              TotalLosts: 0
-              TotalDraws: 0
-              TotalGoals: 0
-              TotalGoalsAgainst: 0
-              TotalShots: 0
-              TotalHeaders: 0
-              TotalSteals: 0
-              TotalPasses: 0
-              TotalLongPasses: 0
-              TotalPassesMissed: 0
-              TotalBoxCrosses: 0
-              TotalFaults: 0
-              TotalOffsides: 0
-              TotalCornerKicks: 0
-              TotalCounterAttacks: 0
-          IsUserControlled: 0
-          IsPlaceholder: 0
-        Statistics:
-          Points: 0
-          TotalWins: 0
-          TotalLosts: 0
-          TotalDraws: 0
-          TotalGoals: 0
-          TotalGoalsAgainst: 0
-          TotalShots: 0
-          TotalHeaders: 0
-          TotalSteals: 0
-          TotalPasses: 0
-          TotalLongPasses: 0
-          TotalPassesMissed: 0
-          TotalBoxCrosses: 0
-          TotalFaults: 0
-          TotalOffsides: 0
-          TotalCornerKicks: 0
-          TotalCounterAttacks: 0
-        Scorers: []
-        YellowCards: []
-        RedCards: []
-      isPlayed: 0
-      Round: 0
-    - HomeTeam:
-        TeamAttributes:
-          Id: d4cd6049-fa68-42f2-a9fd-d30cd56a8283
-          Name: Pernetas FC
-          Tag: BAD1
-          PrimaryColor: {r: 0.9150943, g: 0.36786026, b: 0.21150766, a: 1}
-          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-          Formation: 0
-          Strategy: 0
-          SquadIds: []
-          SubstitutesIds: []
-          LifeTimeStats:
-            Points: 0
-            TotalWins: 0
-            TotalLosts: 0
-            TotalDraws: 0
-            TotalGoals: 0
-            TotalGoalsAgainst: 0
-            TotalShots: 0
-            TotalHeaders: 0
-            TotalSteals: 0
-            TotalPasses: 0
-            TotalLongPasses: 0
-            TotalPassesMissed: 0
-            TotalBoxCrosses: 0
-            TotalFaults: 0
-            TotalOffsides: 0
-            TotalCornerKicks: 0
-            TotalCounterAttacks: 0
-          TournamentStatistics:
-            reorderableList:
-              canAdd: 0
-              canRemove: 0
-              draggable: 0
-              expandable: 0
-              multipleSelection: 0
-              isExpanded: 0
-              label:
-                m_Text: 
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              headerHeight: 0
-              footerHeight: 0
-              slideEasing: 0
-              verticalSpacing: 0
-              showDefaultBackground: 0
-              elementDisplayType: 0
-              elementNameProperty: 
-              elementNameOverride: 
-              elementIcon: {fileID: 0}
-            reqReferences: {fileID: 0}
-            isExpanded: 0
-            _keyValues: []
-            _keys:
-            - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-            _values:
-            - Points: 0
-              TotalWins: 0
-              TotalLosts: 0
-              TotalDraws: 0
-              TotalGoals: 0
-              TotalGoalsAgainst: 0
-              TotalShots: 0
-              TotalHeaders: 0
-              TotalSteals: 0
-              TotalPasses: 0
-              TotalLongPasses: 0
-              TotalPassesMissed: 0
-              TotalBoxCrosses: 0
-              TotalFaults: 0
-              TotalOffsides: 0
-              TotalCornerKicks: 0
-              TotalCounterAttacks: 0
-          IsUserControlled: 0
-          IsPlaceholder: 0
-        Statistics:
-          Points: 0
-          TotalWins: 0
-          TotalLosts: 0
-          TotalDraws: 0
-          TotalGoals: 0
-          TotalGoalsAgainst: 0
-          TotalShots: 0
-          TotalHeaders: 0
-          TotalSteals: 0
-          TotalPasses: 0
-          TotalLongPasses: 0
-          TotalPassesMissed: 0
-          TotalBoxCrosses: 0
-          TotalFaults: 0
-          TotalOffsides: 0
-          TotalCornerKicks: 0
-          TotalCounterAttacks: 0
-        Scorers: []
-        YellowCards: []
-        RedCards: []
-      AwayTeam:
-        TeamAttributes:
-          Id: 649f7ea6-0487-4b02-b0a9-63dd6795531f
-          Name: Wing Offensive
-          Tag: WNG
-          PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
-          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-          Formation: 0
-          Strategy: 4
-          SquadIds: []
-          SubstitutesIds: []
-          LifeTimeStats:
-            Points: 0
-            TotalWins: 0
-            TotalLosts: 0
-            TotalDraws: 0
-            TotalGoals: 0
-            TotalGoalsAgainst: 0
-            TotalShots: 0
-            TotalHeaders: 0
-            TotalSteals: 0
-            TotalPasses: 0
-            TotalLongPasses: 0
-            TotalPassesMissed: 0
-            TotalBoxCrosses: 0
-            TotalFaults: 0
-            TotalOffsides: 0
-            TotalCornerKicks: 0
-            TotalCounterAttacks: 0
-          TournamentStatistics:
-            reorderableList:
-              canAdd: 0
-              canRemove: 0
-              draggable: 0
-              expandable: 0
-              multipleSelection: 0
-              isExpanded: 0
-              label:
-                m_Text: 
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              headerHeight: 0
-              footerHeight: 0
-              slideEasing: 0
-              verticalSpacing: 0
-              showDefaultBackground: 0
-              elementDisplayType: 0
-              elementNameProperty: 
-              elementNameOverride: 
-              elementIcon: {fileID: 0}
-            reqReferences: {fileID: 0}
-            isExpanded: 0
-            _keyValues: []
-            _keys:
-            - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-            _values:
-            - Points: 0
-              TotalWins: 0
-              TotalLosts: 0
-              TotalDraws: 0
-              TotalGoals: 0
-              TotalGoalsAgainst: 0
-              TotalShots: 0
-              TotalHeaders: 0
-              TotalSteals: 0
-              TotalPasses: 0
-              TotalLongPasses: 0
-              TotalPassesMissed: 0
-              TotalBoxCrosses: 0
-              TotalFaults: 0
-              TotalOffsides: 0
-              TotalCornerKicks: 0
-              TotalCounterAttacks: 0
-          IsUserControlled: 0
-          IsPlaceholder: 0
-        Statistics:
-          Points: 0
-          TotalWins: 0
-          TotalLosts: 0
-          TotalDraws: 0
-          TotalGoals: 0
-          TotalGoalsAgainst: 0
-          TotalShots: 0
-          TotalHeaders: 0
-          TotalSteals: 0
-          TotalPasses: 0
-          TotalLongPasses: 0
-          TotalPassesMissed: 0
-          TotalBoxCrosses: 0
-          TotalFaults: 0
-          TotalOffsides: 0
-          TotalCornerKicks: 0
-          TotalCounterAttacks: 0
-        Scorers: []
-        YellowCards: []
-        RedCards: []
-      isPlayed: 0
-      Round: 0
-    - HomeTeam:
-        TeamAttributes:
-          Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
-          Name: Cadena Rivers
-          Tag: CAR
-          PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
-          SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
-          Formation: 2
-          Strategy: 5
-          SquadIds: []
-          SubstitutesIds: []
-          LifeTimeStats:
-            Points: 0
-            TotalWins: 0
-            TotalLosts: 0
-            TotalDraws: 0
-            TotalGoals: 0
-            TotalGoalsAgainst: 0
-            TotalShots: 0
-            TotalHeaders: 0
-            TotalSteals: 0
-            TotalPasses: 0
-            TotalLongPasses: 0
-            TotalPassesMissed: 0
-            TotalBoxCrosses: 0
-            TotalFaults: 0
-            TotalOffsides: 0
-            TotalCornerKicks: 0
-            TotalCounterAttacks: 0
-          TournamentStatistics:
-            reorderableList:
-              canAdd: 1
-              canRemove: 1
-              draggable: 1
-              expandable: 1
-              multipleSelection: 1
-              isExpanded: 0
-              label:
-                m_Text: Keys
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              headerHeight: 18
-              footerHeight: 13
-              slideEasing: 0.15
-              verticalSpacing: 2
-              showDefaultBackground: 1
               elementDisplayType: 0
               elementNameProperty: 
               elementNameOverride: 
@@ -491,15 +119,407 @@ MonoBehaviour:
         RedCards: []
       AwayTeam:
         TeamAttributes:
-          Id: 649f7ea6-0487-4b02-b0a9-63dd6795531f
-          Name: Wing Offensive
-          Tag: WNG
-          PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
+          Id: 04382309-bf84-4cd2-b662-c14fc0fae78c
+          Name: Supimpa FC
+          Tag: GRT1
+          PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
           SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-          Formation: 2
-          Strategy: 4
-          SquadIds: []
-          SubstitutesIds: []
+          Formation: 0
+          Strategy: 0
+          SquadIds:
+          - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+          - c11fdd1d-0bef-4cef-871c-990ce854da15
+          - 00428931-4cf4-42e5-b230-652cad4e22e3
+          - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+          - a07cd4cf-b486-405b-8373-328d804ea658
+          - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+          - d8cd582a-9aa4-429f-8750-57558a836863
+          - e086cad7-543a-4165-a316-ad08e63dcc38
+          - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+          - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+          - 03b5b089-876a-4583-8d31-052cc0481f15
+          SubstitutesIds:
+          - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+          - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+          - 6f721830-d655-4977-9df5-ece89b644acf
+          LifeTimeStats:
+            Points: 0
+            TotalWins: 0
+            TotalLosts: 0
+            TotalDraws: 0
+            TotalGoals: 0
+            TotalGoalsAgainst: 0
+            TotalShots: 0
+            TotalHeaders: 0
+            TotalSteals: 0
+            TotalPasses: 0
+            TotalLongPasses: 0
+            TotalPassesMissed: 0
+            TotalBoxCrosses: 0
+            TotalFaults: 0
+            TotalOffsides: 0
+            TotalCornerKicks: 0
+            TotalCounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 0
+    - HomeTeam:
+        TeamAttributes:
+          Id: d4cd6049-fa68-42f2-a9fd-d30cd56a8283
+          Name: Pernetas FC
+          Tag: BAD1
+          PrimaryColor: {r: 0.9150943, g: 0.36786026, b: 0.21150766, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: 0
+          Strategy: 0
+          SquadIds:
+          - c5f3107f-b72c-45fd-9d0c-4772d689c1fe
+          - ae9e04ee-f9bb-40e3-8742-d0f36630d666
+          - 4b34f4d3-de4b-4927-9426-9e6e6dfc02e9
+          - 274cc88a-6d69-4437-a821-3780e1dd92fa
+          - d1d3b75d-3406-4e5a-abcc-9b5bc638b74a
+          - 03a19cc9-d360-455f-b2f4-c92a5d239aaa
+          - 689d1648-ce83-4df6-8bf0-64610a978025
+          - 3fe4628f-7599-49d5-8aad-3e705976c7fc
+          - d9234d3f-eb1d-4761-9fee-c09fa4341538
+          - c1778c9a-4ef8-4f90-8931-6bee589b7097
+          - 9dd65fb7-df33-4673-82ac-696be2cf5cfe
+          SubstitutesIds:
+          - e3f1b2a3-999a-4d3f-9abe-ffa5596f6478
+          - adb19eb4-89ea-4dab-aedf-bf2c3ccb82cb
+          - e0611215-112c-4335-bc81-d8c99e1a8bbe
+          LifeTimeStats:
+            Points: 0
+            TotalWins: 0
+            TotalLosts: 0
+            TotalDraws: 0
+            TotalGoals: 0
+            TotalGoalsAgainst: 0
+            TotalShots: 0
+            TotalHeaders: 0
+            TotalSteals: 0
+            TotalPasses: 0
+            TotalLongPasses: 0
+            TotalPassesMissed: 0
+            TotalBoxCrosses: 0
+            TotalFaults: 0
+            TotalOffsides: 0
+            TotalCornerKicks: 0
+            TotalCounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: e4570048-7c33-467f-b178-605edf19adb9
+          Name: Brasil
+          Tag: BRA
+          PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
+          SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
+          Formation: 0
+          Strategy: 0
+          SquadIds:
+          - 97dbaa64-77da-4562-9aab-2be31d547bad
+          - c7c20f6c-26ec-4c16-ab9b-8bc235831571
+          - e7b7375b-7af8-4494-85db-b822e790a103
+          - 8f8b1aca-fbde-481f-b857-0a0b4c30abd5
+          - b1a5206b-a6dd-41e6-81ec-990e44cddff5
+          - a0010738-9159-4c80-bde6-c25acf755ae5
+          - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+          - c4b71c22-b2d4-4c65-b5e7-0ce9f26e3f7a
+          - 8cbce9ac-9c3e-4a83-b635-ec0fb7470ba6
+          - db2f2ab8-82f4-45e2-8829-f1e62336d78e
+          - b2bcea07-dbcc-418e-b749-999ab80e763f
+          SubstitutesIds:
+          - c3f33bce-ab21-484d-b9b9-3c7cf65c36e1
+          - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+          - 5dd65e86-8fb9-4693-a018-aeff16b0e8a6
+          - 20506774-44d7-42bc-a3fc-f43cc749e9f9
+          - 2f248a35-3089-440f-8d57-b5f15beef069
+          LifeTimeStats:
+            Points: 0
+            TotalWins: 0
+            TotalLosts: 0
+            TotalDraws: 0
+            TotalGoals: 0
+            TotalGoalsAgainst: 0
+            TotalShots: 0
+            TotalHeaders: 0
+            TotalSteals: 0
+            TotalPasses: 0
+            TotalLongPasses: 0
+            TotalPassesMissed: 0
+            TotalBoxCrosses: 0
+            TotalFaults: 0
+            TotalOffsides: 0
+            TotalCornerKicks: 0
+            TotalCounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 0
+    - HomeTeam:
+        TeamAttributes:
+          Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+          Name: Cadena Rivers
+          Tag: CAR
+          PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
+          SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
+          Formation: 0
+          Strategy: 5
+          SquadIds:
+          - d39d5566-b548-4f99-8c03-7f1f858f2dfe
+          - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+          - d602daf3-09ad-49e4-a928-fc53bbc23cf3
+          - 86b26191-3901-4d08-8be1-846a9dd77b41
+          - 3ed54838-1b27-4421-b98f-dac73a6578fc
+          - 9dc3c417-b197-43f2-af84-7c28af83ca34
+          - db639446-ff90-4253-8da2-998d4a27e231
+          - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
+          - 4c57c1a6-f14e-41b0-9842-2502667eeab4
+          - 208149e6-bad1-4f23-be7c-99a6aa317f32
+          - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+          SubstitutesIds:
+          - 10c9d827-60d9-4569-af79-ccf910bb3909
+          - c8f220fd-69de-4b3f-a996-f0c41b005c6d
+          - b8bdf88e-f30d-4993-a567-bfb085f270fb
+          - 7817cfcd-0833-4811-b2df-8711a90e184c
+          - 6a800c4b-5745-4c3c-910d-f93cd2395505
+          LifeTimeStats:
+            Points: 0
+            TotalWins: 0
+            TotalLosts: 0
+            TotalDraws: 0
+            TotalGoals: 0
+            TotalGoalsAgainst: 0
+            TotalShots: 0
+            TotalHeaders: 0
+            TotalSteals: 0
+            TotalPasses: 0
+            TotalLongPasses: 0
+            TotalPassesMissed: 0
+            TotalBoxCrosses: 0
+            TotalFaults: 0
+            TotalOffsides: 0
+            TotalCornerKicks: 0
+            TotalCounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 1
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: e4570048-7c33-467f-b178-605edf19adb9
+          Name: Brasil
+          Tag: BRA
+          PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
+          SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
+          Formation: 0
+          Strategy: 0
+          SquadIds:
+          - 97dbaa64-77da-4562-9aab-2be31d547bad
+          - c7c20f6c-26ec-4c16-ab9b-8bc235831571
+          - e7b7375b-7af8-4494-85db-b822e790a103
+          - 8f8b1aca-fbde-481f-b857-0a0b4c30abd5
+          - b1a5206b-a6dd-41e6-81ec-990e44cddff5
+          - a0010738-9159-4c80-bde6-c25acf755ae5
+          - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+          - c4b71c22-b2d4-4c65-b5e7-0ce9f26e3f7a
+          - 8cbce9ac-9c3e-4a83-b635-ec0fb7470ba6
+          - db2f2ab8-82f4-45e2-8829-f1e62336d78e
+          - b2bcea07-dbcc-418e-b749-999ab80e763f
+          SubstitutesIds:
+          - c3f33bce-ab21-484d-b9b9-3c7cf65c36e1
+          - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+          - 5dd65e86-8fb9-4693-a018-aeff16b0e8a6
+          - 20506774-44d7-42bc-a3fc-f43cc749e9f9
+          - 2f248a35-3089-440f-8d57-b5f15beef069
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -571,15 +591,29 @@ MonoBehaviour:
       Round: 1
     - HomeTeam:
         TeamAttributes:
-          Id: 65b5ae67-dcf8-4cc5-8ce9-51dd01ee74a1
-          Name: Master Attackers
-          Tag: SA1
-          PrimaryColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-          SecondaryColor: {r: 0.93333334, g: 0.07450977, b: 0.13579428, a: 1}
-          Formation: 2
+          Id: 04382309-bf84-4cd2-b662-c14fc0fae78c
+          Name: Supimpa FC
+          Tag: GRT1
+          PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: 0
           Strategy: 0
-          SquadIds: []
-          SubstitutesIds: []
+          SquadIds:
+          - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+          - c11fdd1d-0bef-4cef-871c-990ce854da15
+          - 00428931-4cf4-42e5-b230-652cad4e22e3
+          - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+          - a07cd4cf-b486-405b-8373-328d804ea658
+          - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+          - d8cd582a-9aa4-429f-8750-57558a836863
+          - e086cad7-543a-4165-a316-ad08e63dcc38
+          - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+          - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+          - 03b5b089-876a-4583-8d31-052cc0481f15
+          SubstitutesIds:
+          - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+          - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+          - 6f721830-d655-4977-9df5-ece89b644acf
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -654,10 +688,24 @@ MonoBehaviour:
           Tag: BAD1
           PrimaryColor: {r: 0.9150943, g: 0.36786026, b: 0.21150766, a: 1}
           SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-          Formation: 2
+          Formation: 0
           Strategy: 0
-          SquadIds: []
-          SubstitutesIds: []
+          SquadIds:
+          - c5f3107f-b72c-45fd-9d0c-4772d689c1fe
+          - ae9e04ee-f9bb-40e3-8742-d0f36630d666
+          - 4b34f4d3-de4b-4927-9426-9e6e6dfc02e9
+          - 274cc88a-6d69-4437-a821-3780e1dd92fa
+          - d1d3b75d-3406-4e5a-abcc-9b5bc638b74a
+          - 03a19cc9-d360-455f-b2f4-c92a5d239aaa
+          - 689d1648-ce83-4df6-8bf0-64610a978025
+          - 3fe4628f-7599-49d5-8aad-3e705976c7fc
+          - d9234d3f-eb1d-4761-9fee-c09fa4341538
+          - c1778c9a-4ef8-4f90-8931-6bee589b7097
+          - 9dd65fb7-df33-4673-82ac-696be2cf5cfe
+          SubstitutesIds:
+          - e3f1b2a3-999a-4d3f-9abe-ffa5596f6478
+          - adb19eb4-89ea-4dab-aedf-bf2c3ccb82cb
+          - e0611215-112c-4335-bc81-d8c99e1a8bbe
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -678,21 +726,21 @@ MonoBehaviour:
             TotalCounterAttacks: 0
           TournamentStatistics:
             reorderableList:
-              canAdd: 1
-              canRemove: 1
-              draggable: 1
-              expandable: 1
-              multipleSelection: 1
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
               isExpanded: 0
               label:
-                m_Text: Keys
+                m_Text: 
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-              headerHeight: 18
-              footerHeight: 13
-              slideEasing: 0.15
-              verticalSpacing: 2
-              showDefaultBackground: 1
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
               elementDisplayType: 0
               elementNameProperty: 
               elementNameOverride: 
@@ -734,10 +782,26 @@ MonoBehaviour:
           Tag: CAR
           PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
           SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
-          Formation: 2
+          Formation: 0
           Strategy: 5
-          SquadIds: []
-          SubstitutesIds: []
+          SquadIds:
+          - d39d5566-b548-4f99-8c03-7f1f858f2dfe
+          - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+          - d602daf3-09ad-49e4-a928-fc53bbc23cf3
+          - 86b26191-3901-4d08-8be1-846a9dd77b41
+          - 3ed54838-1b27-4421-b98f-dac73a6578fc
+          - 9dc3c417-b197-43f2-af84-7c28af83ca34
+          - db639446-ff90-4253-8da2-998d4a27e231
+          - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
+          - 4c57c1a6-f14e-41b0-9842-2502667eeab4
+          - 208149e6-bad1-4f23-be7c-99a6aa317f32
+          - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+          SubstitutesIds:
+          - 10c9d827-60d9-4569-af79-ccf910bb3909
+          - c8f220fd-69de-4b3f-a996-f0c41b005c6d
+          - b8bdf88e-f30d-4993-a567-bfb085f270fb
+          - 7817cfcd-0833-4811-b2df-8711a90e184c
+          - 6a800c4b-5745-4c3c-910d-f93cd2395505
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -758,21 +822,21 @@ MonoBehaviour:
             TotalCounterAttacks: 0
           TournamentStatistics:
             reorderableList:
-              canAdd: 1
-              canRemove: 1
-              draggable: 1
-              expandable: 1
-              multipleSelection: 1
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
               isExpanded: 0
               label:
-                m_Text: Keys
+                m_Text: 
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-              headerHeight: 18
-              footerHeight: 13
-              slideEasing: 0.15
-              verticalSpacing: 2
-              showDefaultBackground: 1
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
               elementDisplayType: 0
               elementNameProperty: 
               elementNameOverride: 
@@ -812,10 +876,24 @@ MonoBehaviour:
           Tag: BAD1
           PrimaryColor: {r: 0.9150943, g: 0.36786026, b: 0.21150766, a: 1}
           SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-          Formation: 2
+          Formation: 0
           Strategy: 0
-          SquadIds: []
-          SubstitutesIds: []
+          SquadIds:
+          - c5f3107f-b72c-45fd-9d0c-4772d689c1fe
+          - ae9e04ee-f9bb-40e3-8742-d0f36630d666
+          - 4b34f4d3-de4b-4927-9426-9e6e6dfc02e9
+          - 274cc88a-6d69-4437-a821-3780e1dd92fa
+          - d1d3b75d-3406-4e5a-abcc-9b5bc638b74a
+          - 03a19cc9-d360-455f-b2f4-c92a5d239aaa
+          - 689d1648-ce83-4df6-8bf0-64610a978025
+          - 3fe4628f-7599-49d5-8aad-3e705976c7fc
+          - d9234d3f-eb1d-4761-9fee-c09fa4341538
+          - c1778c9a-4ef8-4f90-8931-6bee589b7097
+          - 9dd65fb7-df33-4673-82ac-696be2cf5cfe
+          SubstitutesIds:
+          - e3f1b2a3-999a-4d3f-9abe-ffa5596f6478
+          - adb19eb4-89ea-4dab-aedf-bf2c3ccb82cb
+          - e0611215-112c-4335-bc81-d8c99e1a8bbe
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -836,21 +914,21 @@ MonoBehaviour:
             TotalCounterAttacks: 0
           TournamentStatistics:
             reorderableList:
-              canAdd: 1
-              canRemove: 1
-              draggable: 1
-              expandable: 1
-              multipleSelection: 1
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
               isExpanded: 0
               label:
-                m_Text: Keys
+                m_Text: 
                 m_Image: {fileID: 0}
                 m_Tooltip: 
-              headerHeight: 18
-              footerHeight: 13
-              slideEasing: 0.15
-              verticalSpacing: 2
-              showDefaultBackground: 1
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
               elementDisplayType: 0
               elementNameProperty: 
               elementNameOverride: 
@@ -887,15 +965,31 @@ MonoBehaviour:
       Round: 2
     - HomeTeam:
         TeamAttributes:
-          Id: 649f7ea6-0487-4b02-b0a9-63dd6795531f
-          Name: Wing Offensive
-          Tag: WNG
-          PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
-          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-          Formation: 2
-          Strategy: 4
-          SquadIds: []
-          SubstitutesIds: []
+          Id: e4570048-7c33-467f-b178-605edf19adb9
+          Name: Brasil
+          Tag: BRA
+          PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
+          SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
+          Formation: 0
+          Strategy: 0
+          SquadIds:
+          - 97dbaa64-77da-4562-9aab-2be31d547bad
+          - c7c20f6c-26ec-4c16-ab9b-8bc235831571
+          - e7b7375b-7af8-4494-85db-b822e790a103
+          - 8f8b1aca-fbde-481f-b857-0a0b4c30abd5
+          - b1a5206b-a6dd-41e6-81ec-990e44cddff5
+          - a0010738-9159-4c80-bde6-c25acf755ae5
+          - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+          - c4b71c22-b2d4-4c65-b5e7-0ce9f26e3f7a
+          - 8cbce9ac-9c3e-4a83-b635-ec0fb7470ba6
+          - db2f2ab8-82f4-45e2-8829-f1e62336d78e
+          - b2bcea07-dbcc-418e-b749-999ab80e763f
+          SubstitutesIds:
+          - c3f33bce-ab21-484d-b9b9-3c7cf65c36e1
+          - 3c4252d7-0364-4a6d-81dd-c88995c20c27
+          - 5dd65e86-8fb9-4693-a018-aeff16b0e8a6
+          - 20506774-44d7-42bc-a3fc-f43cc749e9f9
+          - 2f248a35-3089-440f-8d57-b5f15beef069
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -965,15 +1059,29 @@ MonoBehaviour:
         RedCards: []
       AwayTeam:
         TeamAttributes:
-          Id: 65b5ae67-dcf8-4cc5-8ce9-51dd01ee74a1
-          Name: Master Attackers
-          Tag: SA1
-          PrimaryColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-          SecondaryColor: {r: 0.93333334, g: 0.07450977, b: 0.13579428, a: 1}
-          Formation: 2
+          Id: 04382309-bf84-4cd2-b662-c14fc0fae78c
+          Name: Supimpa FC
+          Tag: GRT1
+          PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: 0
           Strategy: 0
-          SquadIds: []
-          SubstitutesIds: []
+          SquadIds:
+          - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+          - c11fdd1d-0bef-4cef-871c-990ce854da15
+          - 00428931-4cf4-42e5-b230-652cad4e22e3
+          - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+          - a07cd4cf-b486-405b-8373-328d804ea658
+          - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+          - d8cd582a-9aa4-429f-8750-57558a836863
+          - e086cad7-543a-4165-a316-ad08e63dcc38
+          - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+          - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+          - 03b5b089-876a-4583-8d31-052cc0481f15
+          SubstitutesIds:
+          - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+          - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+          - 6f721830-d655-4977-9df5-ece89b644acf
           LifeTimeStats:
             Points: 0
             TotalWins: 0
@@ -1043,10 +1151,10 @@ MonoBehaviour:
         RedCards: []
       isPlayed: 0
       Round: 2
+    TotalRounds: 3
+    CurrentRound: 0
   Teams:
   - {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
   - {fileID: 11400000, guid: ef3542bfaadb05d4a9219f1c88f2358c, type: 2}
-  - {fileID: 11400000, guid: 222e082c4b3fc074897eba2d3e2390d7, type: 2}
-  - {fileID: 11400000, guid: 30ff34d54dfa2fd4795ff2ce04d14da7, type: 2}
-  TotalRounds: 3
-  CurrentRound: 0
+  - {fileID: 11400000, guid: 3f310af6f042cc647aacbf81f5ed9bc9, type: 2}
+  - {fileID: 11400000, guid: fb3c2c1dbee40f643a840d281950583c, type: 2}

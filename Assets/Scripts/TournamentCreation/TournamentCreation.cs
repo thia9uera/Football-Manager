@@ -84,7 +84,7 @@ public class TournamentCreation : BaseScreen
         if (string.IsNullOrEmpty(tournament.Id)) tournament.Id = Guid.NewGuid().ToString();
         AssetDatabase.CreateAsset(tournament, "Assets/Data/Tournaments/" + tournament.Name + ".asset");
         AssetDatabase.SaveAssets();
-
+        MainController.Instance.AllTournaments.Add(tournament);
         LoadTournaments();
     }
 

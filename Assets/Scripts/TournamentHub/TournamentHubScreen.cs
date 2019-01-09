@@ -92,7 +92,10 @@ public class TournamentHubScreen : BaseScreen
  
         foreach (PlayerData player in currentTournament.GetAllPlayers())
         {
-
+            if(!player.Attributes.TournamentStatistics.ContainsKey(currentTournament.Id))
+            {
+                player.Attributes.TournamentStatistics.Add(currentTournament.Id, new PlayerStatistics());
+            }
             PlayerStatistics stats = player.Attributes.TournamentStatistics[currentTournament.Id];
 
             switch(_param)

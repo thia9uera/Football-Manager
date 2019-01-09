@@ -31,13 +31,18 @@ public class TeamData : ScriptableObject
     public int Stars;
 
     public TeamStatistics LifeTimeStats { get { return Attributes.LifeTimeStats; } set { Attributes.LifeTimeStats = value; } }
-    public TeamAttributes.TournamentStats TournamentStatistics { get { return Attributes.TournamentStatistics; } set { Attributes.TournamentStatistics = value; } }
+    public TeamTournamentStats TournamentStatistics { get { return Attributes.TournamentStatistics; } set { Attributes.TournamentStatistics = value; } }
 
     public TeamStatistics MatchStats;
 
     public bool IsUserControlled { get { return Attributes.IsUserControlled; } set { Attributes.IsUserControlled = value; } }
 
     public bool IsPlaceholder { get { return Attributes.IsPlaceholder; } set { Attributes.IsPlaceholder = value; } }
+
+    private void Awake()
+    {
+        MatchStats = new TeamStatistics();
+    }
 
     public TeamMatchData MatchData;
     public void ResetMatchData()
@@ -131,7 +136,7 @@ public class TeamData : ScriptableObject
     void UpdateTournamentStatistics(TeamStatistics _stats)
     {
         TournamentData currentTournament = MainController.Instance.CurrentTournament;
-        //if (TournamentStatistics == null) TournamentStatistics = new TournamentStats();
+        if (TournamentStatistics == null) Attributes.TournamentStatistics = new TeamTournamentStats();
 
         if (!TournamentStatistics.ContainsKey(currentTournament.Id))
         {
@@ -170,7 +175,7 @@ public class TeamData : ScriptableObject
 
     public void Reset()
     {
-        TournamentStatistics = new TeamAttributes.TournamentStats();
+        TournamentStatistics = new TeamTournamentStats();
         ResetStatistics("LifeTime");
     }
 
@@ -185,7 +190,6 @@ public class TeamData : ScriptableObject
 
         SetSquad(Squad);
         SetSubstitutes(Substitutes);
-
     }
 
     public void SetSquad(PlayerData[] _players)

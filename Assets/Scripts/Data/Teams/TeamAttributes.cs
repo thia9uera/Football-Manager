@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RotaryHeart.Lib.SerializableDictionary;
+using UnityEngine;
 
 [System.Serializable]
 public class TeamAttributes
@@ -36,12 +37,13 @@ public class TeamAttributes
     public string[] SquadIds, SubstitutesIds;
 
     public TeamStatistics LifeTimeStats;
-    [System.Serializable]
-    public class TournamentStats : RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase<string, TeamStatistics> { }
-    public TournamentStats TournamentStatistics;
+    public TeamTournamentStats TournamentStatistics;
 
     public bool IsUserControlled;
 
     [HideInInspector]
     public bool IsPlaceholder;
 }
+
+[System.Serializable]
+public class TeamTournamentStats : SerializableDictionaryBase<string, TeamStatistics> { }

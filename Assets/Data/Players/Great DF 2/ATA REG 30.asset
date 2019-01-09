@@ -81,7 +81,7 @@ MonoBehaviour:
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
-    TotalShots: 1
+    TotalShots: 0
     TotalHeaders: 0
     TotalFaults: 0
     TotalTackles: 0
