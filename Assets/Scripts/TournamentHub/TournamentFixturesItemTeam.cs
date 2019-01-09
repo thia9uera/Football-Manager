@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -15,11 +13,11 @@ public class TournamentFixturesItemTeam : MonoBehaviour
     [SerializeField]
     Image frame;
 
-    public void Populate(TournamentData.TeamMatchData _data, bool _isPlayed)
+    public void Populate(string _name, string _rating, string _score, Color _color, bool _isPlayed)
     {
-        nameLabel.text = _data.Team.Name + " (" + _data.Team.GetOveralRating() + ")";
-        scoreLabel.text = _data.Statistics.TotalGoals.ToString();
-        frame.color = _data.Team.PrimaryColor;
+        nameLabel.text = _name + " (" +_rating + ")";
+        scoreLabel.text = _score;
+        frame.color = _color;
 
         scoreLabel.gameObject.SetActive(_isPlayed);
     }

@@ -15,14 +15,14 @@ public class ChampionshipCreation : MonoBehaviour
     Transform content;
 
     List<GameObject> matchList;
-    public List<TournamentData.MatchData> DataList;
+    public List<MatchData> DataList;
 
     List<TeamData> placeholderList;
     int totalTeams;
 
     void Awake()
     {
-        DataList = new List<TournamentData.MatchData>();
+        DataList = new List<MatchData>();
         matchList = new List<GameObject>();
     }
 
@@ -64,6 +64,7 @@ public class ChampionshipCreation : MonoBehaviour
             for (int t = i; t < totalTeams; t++)
             {
                 TeamData team = new TeamData();
+                team.Attributes = new TeamAttributes();
                 placeholderList.Add(team);
                 teams.Add(team);
                 team.Name = "MISSING TEAM " + (t + 1);
@@ -85,12 +86,12 @@ public class ChampionshipCreation : MonoBehaviour
                 homeTeam = listA[t];
                 awayTeam = listA[rounds - t];
 
-                TournamentData.MatchData data = new TournamentData.MatchData();
-                data.HomeTeam = new TournamentData.TeamMatchData();
-                data.HomeTeam.Team = homeTeam;
+                MatchData data = new MatchData();
+                data.HomeTeam = new TeamMatchData();
+                data.HomeTeam.TeamAttributes = homeTeam.Attributes;
 
-                data.AwayTeam = new TournamentData.TeamMatchData();
-                data.AwayTeam.Team = awayTeam;
+                data.AwayTeam = new TeamMatchData();
+                data.AwayTeam.TeamAttributes = awayTeam.Attributes;
 
                 data.Round = r;
                 DataList.Add(data);
@@ -119,7 +120,7 @@ public class ChampionshipCreation : MonoBehaviour
     {
         if(matchList.Count > 0) ClearMatchList();
         int round = -1;
-        foreach(TournamentData.MatchData data in DataList)
+        foreach(MatchData data in DataList)
         {
             if(data.Round > round)
             {

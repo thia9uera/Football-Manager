@@ -14,7 +14,7 @@ public class PerkData : ScriptableObject
     [System.Serializable]
     public class Effect
     {
-        public PlayerData.PlayerAttributes Attribute;
+        public PlayerData.AttributeType Attribute;
         [Tooltip("Attribute X this value")]
         public float Modifier;
     }

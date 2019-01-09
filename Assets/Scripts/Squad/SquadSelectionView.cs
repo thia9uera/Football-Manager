@@ -56,7 +56,7 @@ public class SquadSelectionView : MonoBehaviour
 
     public void SetStrategy()
     {
-        Team.Strategy = (TeamData.TeamStrategy)dropdown.value;
+        Team.Strategy = (TeamAttributes.TeamStrategy)dropdown.value;
     }
 
     public void GetOverall()

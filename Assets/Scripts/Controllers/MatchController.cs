@@ -135,7 +135,7 @@ public class MatchController : MonoBehaviour
     [System.Serializable]
     public class TeamStrategy
     {
-        public TeamData.TeamStrategy Strategy;
+        public TeamAttributes.TeamStrategy Strategy;
         public PosChanceData PosChance;
     }
 
@@ -143,6 +143,7 @@ public class MatchController : MonoBehaviour
     MatchScreen screen;
 
     public TeamStrategy[] TeamStrategies;
+    public FormationData[] TeamFormations;
 
     void Awake()
     {
@@ -179,12 +180,12 @@ public class MatchController : MonoBehaviour
         screen.Score.Populate(_homeTeam.Name, homeTeamScore, _homeTeam.PrimaryColor, _awayTeam.Name, awayTeamScore, _awayTeam.PrimaryColor);
     }
 
-    public void Populate(TournamentData.MatchData _data, bool _simulateTournament = false)
+    public void Populate(MatchData _data, bool _simulateTournament = false)
     {
         Reset();
 
-        HomeTeam = _data.HomeTeam.Team;
-        AwayTeam = _data.AwayTeam.Team;
+        HomeTeam = MainController.Instance.GetTeamById(_data.HomeTeam.TeamAttributes.Id);
+        AwayTeam = MainController.Instance.GetTeamById(_data.AwayTeam.TeamAttributes.Id);
 
         AttackingTeam = HomeTeam;
         DefendingTeam = AwayTeam;
@@ -456,7 +457,7 @@ public class MatchController : MonoBehaviour
         //Save tournament match data
         if (MainController.Instance.CurrentTournament != null)
         {
-            TournamentData.MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
+            MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
             if(nextMatch != null)
             {
                 screen.Simulation.UpdateFeedback(HomeTeam.Name + "  " + homeTeamScore + "  X  " + awayTeamScore + "  " + AwayTeam.Name);
@@ -548,7 +549,7 @@ public class MatchController : MonoBehaviour
 
                     FieldZone zone = GetTeamZone(AttackingTeam);
 
-                    if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.PlayerAttributes.Freekick);
+                    if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Freekick);
                     attackingPlayer = GetAttackingPlayer(CurrentZone);
                     localization.PLAYER_1 = attackingPlayer.FirstName;
                     offensiveAction = GetFreeKickAction();
@@ -579,7 +580,7 @@ public class MatchController : MonoBehaviour
                 if (!isFreekickTaken)
                 {
                     isFreekickTaken = true;
-                    attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.PlayerAttributes.Penalty);
+                    attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Penalty);
                     localization.PLAYER_1 = attackingPlayer.FirstName;
                     defendingPlayer = DefendingTeam.Squad[0];
                     localization.PLAYER_2 = defendingPlayer.FirstName;
@@ -657,7 +658,7 @@ public class MatchController : MonoBehaviour
 
                 defendingPlayer = null;
                 marking = MarkingType.None;
-                attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.PlayerAttributes.Crossing);
+                attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Crossing);
 
                 UpdateNarration("nar_CornerKick_", 1, AttackingTeam);
 
@@ -1654,7 +1655,7 @@ public class MatchController : MonoBehaviour
         foreach (PlayerData player in AttackingTeam.Squad)
         {
             chance = CalculatePresence(player, zone, AttackingTeam.Strategy);
-            
+
             if (forcePlayer)
             {
                 if (chance > 0f)
@@ -1701,7 +1702,7 @@ public class MatchController : MonoBehaviour
 
         if (matchEvent == MatchEvent.Freekick)
         {
-            return GetTopPlayerByAttribute(players.ToArray(), PlayerData.PlayerAttributes.Freekick);
+            return GetTopPlayerByAttribute(players.ToArray(), PlayerData.AttributeType.Freekick);
         }
 
         return GetActivePlayer(players);
@@ -1791,7 +1792,7 @@ public class MatchController : MonoBehaviour
         return activePlayer;
     }
 
-    float CalculatePresence(PlayerData _player, FieldZone _zone, TeamData.TeamStrategy _teamStrategy)
+    float CalculatePresence(PlayerData _player, FieldZone _zone, TeamAttributes.TeamStrategy _teamStrategy)
     {
         float chance = _player.GetChancePerZone(_zone, _teamStrategy);
 
@@ -2523,7 +2524,7 @@ public class MatchController : MonoBehaviour
         return target;
     }
 
-    PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.PlayerAttributes _attribute)
+    PlayerData GetTopPlayerByAttribute(PlayerData[] _players, PlayerData.AttributeType _attribute)
     {
         PlayerData best = null;
         int higher = 0;
@@ -2535,7 +2536,7 @@ public class MatchController : MonoBehaviour
         return best;
     }
 
-    bool IsTeamStrategyApplicable(TeamData.TeamStrategy _strategy, FieldZone _zone)
+    bool IsTeamStrategyApplicable(TeamAttributes.TeamStrategy _strategy, FieldZone _zone)
     {
         bool value = false;
         Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)_strategy];

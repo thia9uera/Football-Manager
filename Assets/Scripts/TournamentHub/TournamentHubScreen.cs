@@ -21,7 +21,7 @@ public class TournamentHubScreen : BaseScreen
     [SerializeField]
     TournamentFixtures fixtures;
 
-    TournamentData.MatchData nextMatchData;
+    MatchData nextMatchData;
 
     [SerializeField]
     GameObject resetButton;
@@ -49,11 +49,11 @@ public class TournamentHubScreen : BaseScreen
     {
         nextMatch.gameObject.SetActive(true);
         //resetButton.SetActive(false);
-        foreach (TournamentData.MatchData match in currentTournament.Matches)
+        foreach (MatchData match in currentTournament.Matches)
         {
             if(match.Round == currentTournament.CurrentRound)
             {
-                if(match.HomeTeam.Team.isUserControlled || match.AwayTeam.Team.isUserControlled)
+                if(match.HomeTeam.TeamAttributes.IsUserControlled || match.AwayTeam.TeamAttributes.IsUserControlled)
                 {
                     nextMatch.Populate(match);
                     nextMatchData = match;
@@ -92,18 +92,17 @@ public class TournamentHubScreen : BaseScreen
  
         foreach (PlayerData player in currentTournament.GetAllPlayers())
         {
-            if (player.GetTournamentStatistics(currentTournament.Id) != null)
-            {
-                PlayerData.Statistics stats = player.TournamentStatistics[currentTournament.Id];
 
-                switch(_param)
-                {
-                    case "Goals":
-                        if (stats.TotalGoals > 0) playersList.Add(player);
-                        playersList = MainController.Instance.SortPlayersBy(playersList, _param, currentTournament.Id);
-                        break;
-                }           
-            }
+            PlayerStatistics stats = player.Attributes.TournamentStatistics[currentTournament.Id];
+
+            switch(_param)
+            {
+                case "Goals":
+                    if (stats.TotalGoals > 0) playersList.Add(player);
+                    playersList = MainController.Instance.SortPlayersBy(playersList, _param, currentTournament.Id);
+                    break;
+            }           
+
         }
 
 

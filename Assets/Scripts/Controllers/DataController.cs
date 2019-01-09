@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DataController : MonoBehaviour
 {
-    string[] saveFolders = new string[3]{"save_0", "save_1", "save_2"};
     string saveFolder;
     string userFolder;
 
@@ -18,8 +17,10 @@ public class DataController : MonoBehaviour
     {
         UserData userData = new UserData();
         userData.Name = _name;
+        userData.Id = System.Guid.NewGuid().ToString();
         MainController.Instance.User = userData;
-        userFolder = CombinePaths(saveFolder, _name);
+        if(saveFolder == null) saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
+        userFolder = CombinePaths(saveFolder, userData.Id);
         if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
         if (Directory.Exists(userFolder))
         {
@@ -50,7 +51,7 @@ public class DataController : MonoBehaviour
     {
         foreach (PlayerData player in MainController.Instance.AllPlayers)
         {
-            SaveData(player, RemoveSpaces(player.FirstName + player.LastName));
+            SaveData(player.Attributes, player.Id, "/Players/");
         }
     }
 
@@ -58,7 +59,7 @@ public class DataController : MonoBehaviour
     {
         foreach (TeamData team in MainController.Instance.AllTeams)
         {
-            SaveData(team, RemoveSpaces(team.Name));
+            SaveData(team.Attributes, team.Id, "/Teams/");
         }
     }
 
@@ -66,7 +67,7 @@ public class DataController : MonoBehaviour
     {
         foreach (TournamentData tournament in MainController.Instance.AllTournaments)
         {
-            SaveData(tournament, RemoveSpaces(tournament.Name));
+            SaveData(tournament.Attributes, tournament.Id, "/Tournaments/");
         }
     }
     #endregion
@@ -113,41 +114,31 @@ public class DataController : MonoBehaviour
         }
     }
 
-    public List<string> GetSaveFiles()
+    public UserData[] GetSaveFiles()
     {
-        List<string> strs = new List<string>();
-
-        if (!Directory.Exists(saveFolder)) return strs;
+        Debug.Log("GET FILES");
+        List<UserData> datas = new List<UserData>();
+        if (!Directory.Exists(saveFolder)) return datas.ToArray();
 
         string[] dirs = Directory.GetDirectories(saveFolder);
-        foreach (string dir in dirs)
+        for (int i= 0; i < dirs.Length; i++)
         {
-            UserData data = LoadFile<UserData>(CombinePaths(dir, "UserData.txt"));
-            
-            strs.Add(data.Name);
+            UserData data = LoadFile<UserData>(CombinePaths(dirs[i], "UserData.txt"));
+
+            datas.Add(data);
         }
 
-        return strs;
+        return datas.ToArray();
     }
     #endregion
 
     #region GENERICS
-    public void SaveData<T>(T _data, string _name)
+    public void SaveData<T>(T _data, string _name, string _subfolder = "")
     {
         string path = "";
         string subfolder = "";
 
-        if (typeof(T) == typeof(PlayerData))
-        {
-            subfolder = "/Players/";
-        }
-        else if (typeof(T) == typeof(TeamData))
-        {
-            subfolder = "/Teams/";
-        }
-        else if (typeof(T) == typeof(TournamentData)) subfolder = "/Tournaments/";
-
-        string folder = CombinePaths(userFolder, subfolder);
+        string folder = CombinePaths(userFolder, _subfolder);
 
         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 

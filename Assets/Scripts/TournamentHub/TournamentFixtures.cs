@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -16,11 +15,11 @@ public class TournamentFixtures : MonoBehaviour
 
     List<GameObject> itemList;
 
-    public void Populate(List<TournamentData.MatchData> _list, int _currentRound)
+    public void Populate(List<MatchData> _list, int _currentRound)
     {
         Clear();
         int round = -1;
-        foreach (TournamentData.MatchData data in _list)
+        foreach (MatchData data in _list)
         {
             if (data.Round > round)
             {

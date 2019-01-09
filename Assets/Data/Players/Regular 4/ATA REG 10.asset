@@ -12,44 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 10
   m_EditorClassIdentifier: 
-  FirstName: Joezildo
-  LastName: Vista-grosa
-  Zone: 23
-  Position: 3
-  Strategy: 0
-  Goalkeeping: 20
-  Passing: 74
-  Dribbling: 73
-  Crossing: 71
-  Tackling: 44
-  Blocking: 50
-  Shooting: 70
-  Heading: 62
-  Freekick: 58
-  Penalty: 63
-  Speed: 77
-  Strength: 75
-  Agility: 73
-  Stamina: 78
-  Teamwork: 79
-  Vision: 72
-  Stability: 79
-  fatigue: 100
-  Team: {fileID: 0}
-  Prob_DefPosition: 1
-  Prob_OffPosition: 1
-  Prob_LeftPos: 1
-  Prob_RightPos: 1
-  Prob_Pass: 1
-  Prob_Shoot: 1
-  Prob_Fault: 0
-  Prob_Crossing: 1
-  Prob_Dribble: 1
-  Prob_Fall: 0
-  Prob_OffsideLine: 1
-  Prob_Marking: 1
-  Prob_Tackling: 1
-  Prob_LongPass: 1
+  Attributes:
+    Id: 2eb81837-91ed-46ca-b818-a4148b8f9464
+    FirstName: Joezildo
+    LastName: Vista-grosa
+    Zone: 23
+    Position: 3
+    Strategy: 0
+    Goalkeeping: 20
+    Passing: 74
+    Dribbling: 73
+    Crossing: 71
+    Tackling: 44
+    Blocking: 50
+    Shooting: 70
+    Heading: 62
+    Freekick: 58
+    Penalty: 63
+    Speed: 77
+    Strength: 75
+    Agility: 73
+    Stamina: 78
+    Teamwork: 79
+    Vision: 72
+    Stability: 79
+    LifeTimeStats:
+      TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 0
+        canRemove: 0
+        draggable: 0
+        expandable: 0
+        multipleSelection: 0
+        isExpanded: 0
+        label:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 0
+        footerHeight: 0
+        slideEasing: 0
+        verticalSpacing: 0
+        showDefaultBackground: 0
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
   LifeTimeStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -105,40 +133,21 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 0
-    _keyValues:
-    - 5C2F6010-4BDB2F-349195A8
-    - 5C2F2C2D-649471-306EAB65
-    _keys:
-    - 5C2F6010-4BDB2F-349195A8
-    - 5C2F2C2D-649471-306EAB65
-    _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+    _keyValues: []
+    _keys: []
+    _values: []
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

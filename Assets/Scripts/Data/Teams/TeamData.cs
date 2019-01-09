@@ -1,48 +1,26 @@
-﻿using RotaryHeart.Lib.SerializableDictionary;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Team", menuName = "Team Data", order = 1)]
 public class TeamData : ScriptableObject
 {
-    [Header("Details")]
-    public string Name;
-    [Tooltip("Max 3 characters")]
-    public string Tag;
-
     [Space(10)]
-    public Color PrimaryColor = Color.white;
-    public Color SecondaryColor = Color.red;
+    public TeamAttributes Attributes;
 
-    public enum TeamFormation
-    {
-        _3_4_3,
-        _3_5_2,
-        _4_3_3,
-        _3_3_4,
-    }
+    public string Id { get { return Attributes.Id; } set { Attributes.Id = value; } }
 
-    public enum TeamStrategy
-    {
-        Neutral,
-        Offensive,
-        Defensive,
-        Deadlock,
-        WingsOffensive,
-        CenterOffensive,
-        Crossing,
-        Pressure,
-        ForceOffside  
-    }
+    public string Name { get { return Attributes.Name; } set { Attributes.Name = value; } }
+    public string Tag { get { return Attributes.Tag; } set { Attributes.Tag = value; } }
 
-    [Space(10)]
-    public TeamFormation Formation;
-    public TeamStrategy Strategy;
+    public Color PrimaryColor { get { return Attributes.PrimaryColor; } set { Attributes.PrimaryColor = value; } }
+    public Color SecondaryColor { get { return Attributes.SecondaryColor; } set { Attributes.SecondaryColor = value; } }
+
+    public FormationData.TeamFormation Formation { get { return Attributes.Formation; } set { Attributes.Formation = value; } }
+    public TeamAttributes.TeamStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
 
     [Space(10)]
     [Header("Players")]
+    [Space(10)]
     public PlayerData[] Squad;
     public PlayerData[] Substitutes;
 
@@ -52,50 +30,24 @@ public class TeamData : ScriptableObject
     [HideInInspector]
     public int Stars;
 
-    [System.Serializable]
-    public class Statistics
-    {
-        public int Points = 0;
-        public int TotalWins = 0;
-        public int TotalLosts = 0;
-        public int TotalDraws = 0;
-        public int TotalGoals = 0;
-        public int TotalGoalsAgainst = 0;
-        public int TotalShots = 0;
-        public int TotalHeaders = 0;
-        public int TotalSteals = 0;
-        public int TotalPasses = 0;
-        public int TotalLongPasses = 0;
-        public int TotalPassesMissed = 0;
-        public int TotalBoxCrosses = 0;
-        public int TotalFaults = 0;
-        public int TotalOffsides = 0;
-        public int TotalCornerKicks = 0;
-        public int TotalCounterAttacks = 0;
-    }
+    public TeamStatistics LifeTimeStats { get { return Attributes.LifeTimeStats; } set { Attributes.LifeTimeStats = value; } }
+    public TeamAttributes.TournamentStats TournamentStatistics { get { return Attributes.TournamentStatistics; } set { Attributes.TournamentStatistics = value; } }
 
-    public Statistics LifeTimeStats;
-    public Statistics MatchStats;
-    [System.Serializable]
-    public class TournamentStats : SerializableDictionaryBase<string, Statistics> { }
-    public TournamentStats TournamentStatistics;
+    public TeamStatistics MatchStats;
 
-    public bool isUserControlled;
+    public bool IsUserControlled { get { return Attributes.IsUserControlled; } set { Attributes.IsUserControlled = value; } }
 
-    [HideInInspector]
-    public bool IsPlaceholder;
+    public bool IsPlaceholder { get { return Attributes.IsPlaceholder; } set { Attributes.IsPlaceholder = value; } }
 
-    public TournamentData.TeamMatchData MatchData;
+    public TeamMatchData MatchData;
     public void ResetMatchData()
     {
-        MatchData = new TournamentData.TeamMatchData();
-        MatchData.Team = this;
-        MatchData.Statistics = new Statistics();
+        MatchData = new TeamMatchData();
+        MatchData.TeamAttributes = Attributes;
+        MatchData.Statistics = new TeamStatistics();
         MatchData.Scorers = new List<PlayerData>();
         MatchData.RedCards = new List<PlayerData>();
         MatchData.YellowCards = new List<PlayerData>();
-
-        Save();
     }
 
 
@@ -109,20 +61,18 @@ public class TeamData : ScriptableObject
         switch (_type)
         {
             default:
-            case "Match": MatchStats = new Statistics(); break;
-            case "LifeTime": LifeTimeStats = new Statistics(); break;
+            case "Match": MatchStats = new TeamStatistics(); break;
+            case "LifeTime": LifeTimeStats = new TeamStatistics(); break;
             case "Tournament":
-                TournamentStatistics[_id] = new Statistics();
+                TournamentStatistics[_id] = new TeamStatistics();
                 foreach (PlayerData player in GetAllPlayers()) player.ResetStatistics("Tournament", _id);
                 break;
         }
-
-        Save();
     }
 
     public void UpdateLifeTimeStats(bool _updateMatchData=false, bool _isHomeTeam=false)
     {
-        Statistics data = MatchStats;
+        TeamStatistics data = MatchStats;
 
         UpdateStats(LifeTimeStats, data);
 
@@ -133,18 +83,17 @@ public class TeamData : ScriptableObject
 
         if (_updateMatchData)
         {
-            MatchData.Team = this;
+            MatchData.TeamAttributes = Attributes;
             MatchData.Statistics = data;
 
             if(_isHomeTeam) MainController.Instance.CurrentMatch.HomeTeam = MatchData;
             else MainController.Instance.CurrentMatch.AwayTeam = MatchData;
         }
 
-
         ResetStatistics("Match");
     }
 
-    public void UpdateStats(Statistics _stats, Statistics _data)
+    public void UpdateStats(TeamStatistics _stats, TeamStatistics _data)
     {
         _stats.Points += _data.Points;
         _stats.TotalWins += _data.TotalWins;
@@ -163,9 +112,9 @@ public class TeamData : ScriptableObject
         _stats.TotalCounterAttacks += _data.TotalCounterAttacks;
     }
 
-    public Statistics GetTournamentStatistics(string _key)
+    public TeamStatistics GetTournamentStatistics(string _key)
     {
-        Statistics stats = null;
+        TeamStatistics stats = new TeamStatistics();
 
         stats = TournamentStatistics[_key];
 
@@ -176,24 +125,22 @@ public class TeamData : ScriptableObject
     {
         if (TournamentStatistics.ContainsKey(_id)) return;
 
-        TournamentStatistics.Add(_id, new Statistics());
+        TournamentStatistics.Add(_id, new TeamStatistics());
     }
 
-    void UpdateTournamentStatistics(Statistics _stats)
+    void UpdateTournamentStatistics(TeamStatistics _stats)
     {
         TournamentData currentTournament = MainController.Instance.CurrentTournament;
         //if (TournamentStatistics == null) TournamentStatistics = new TournamentStats();
 
         if (!TournamentStatistics.ContainsKey(currentTournament.Id))
         {
-            TournamentStatistics.Add(currentTournament.Id, new Statistics());
+            TournamentStatistics.Add(currentTournament.Id, new TeamStatistics());
         }
 
-        Statistics tStats = GetTournamentStatistics(currentTournament.Id);
+        TeamStatistics tStats = GetTournamentStatistics(currentTournament.Id);
 
         UpdateStats(tStats, _stats);
-
-        Save();
     }
 
     public int GetOveralRating()
@@ -223,7 +170,7 @@ public class TeamData : ScriptableObject
 
     public void Reset()
     {
-        TournamentStatistics = new TournamentStats();
+        TournamentStatistics = new TeamAttributes.TournamentStats();
         ResetStatistics("LifeTime");
     }
 
@@ -232,9 +179,22 @@ public class TeamData : ScriptableObject
         foreach (PlayerData player in GetAllPlayers()) player.Team = this; 
     }
 
-    void Save()
+    public void SetSquad(List<PlayerData> _players)
     {
-        //EditorUtility.SetDirty(this);
-        //AssetDatabase.SaveAssets();
+        for(int i = 0; i < _players.Count; i++)
+        {
+            Squad[i] = _players[i];
+        }
+    }
+
+    public void SetSubstitutes(List<PlayerData> _players)
+    {
+        List<PlayerData> list = new List<PlayerData>();
+        for (int i = 0; i < _players.Count; i++)
+        {
+            list.Add(_players[i]);
+        }
+
+        Substitutes = list.ToArray();
     }
 }

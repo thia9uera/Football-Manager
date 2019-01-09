@@ -17,7 +17,7 @@ public class TournamentLeaderboard : MonoBehaviour
         foreach (TeamData data in _list)
         {
             TournamentLeaderboardItem item = Instantiate(itemTemplate, content);
-            item.Populate(index, data.Name, data.TournamentStatistics[_id].Points + " pts", data.isUserControlled);
+            item.Populate(index, data.Name, data.TournamentStatistics[_id].Points + " pts", data.IsUserControlled);
             item.gameObject.SetActive(true);
             index++;
         }
@@ -33,10 +33,10 @@ public class TournamentLeaderboard : MonoBehaviour
             string param = "";
             switch(_param)
             {
-                case "Goals" :  param = data.TournamentStatistics[_tournamentId].TotalGoals.ToString(); break;
+                case "Goals" :  param = data.Attributes.TournamentStatistics[_tournamentId].TotalGoals.ToString(); break;
             }
 
-            item.Populate(index, data.FirstName + " " + data.LastName, param, data.Team.isUserControlled);
+            item.Populate(index, data.GetFullName(), param, data.Team.IsUserControlled);
             item.gameObject.SetActive(true);
             index++;
         }

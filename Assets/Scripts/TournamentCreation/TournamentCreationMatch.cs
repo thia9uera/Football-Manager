@@ -7,12 +7,9 @@ public class TournamentCreationMatch : MonoBehaviour
     [SerializeField]
     TournamentCreationMatchTeam homeTeam, awayTeam;
 
-    public void Populate(TournamentData.MatchData _data)
+    public void Populate(MatchData _data)
     {
         homeTeam.Populate(_data.HomeTeam);
-        if (_data.AwayTeam != null)
-        {
-            awayTeam.Populate(_data.AwayTeam);
-        }
+        awayTeam.Populate(_data.AwayTeam);
     }
 }

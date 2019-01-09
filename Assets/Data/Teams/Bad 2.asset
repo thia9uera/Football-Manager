@@ -12,12 +12,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b852ee6c43d7394e872958f462078de, type: 3}
   m_Name: Bad 2
   m_EditorClassIdentifier: 
-  Name: Clube Mixaria
-  Tag: BAD2
-  PrimaryColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-  SecondaryColor: {r: 0.745283, g: 0.2214756, b: 0.2214756, a: 1}
-  Formation: 2
-  Strategy: 0
+  Attributes:
+    Id: b847b2bf-48d1-4f19-8951-9f3bba73a393
+    Name: Clube Mixaria
+    Tag: BAD2
+    PrimaryColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+    SecondaryColor: {r: 0.745283, g: 0.2214756, b: 0.2214756, a: 1}
+    Formation: 0
+    Strategy: 0
+    SquadIds: []
+    SubstitutesIds: []
+    LifeTimeStats:
+      Points: 0
+      TotalWins: 0
+      TotalLosts: 0
+      TotalDraws: 0
+      TotalGoals: 0
+      TotalGoalsAgainst: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalSteals: 0
+      TotalPasses: 0
+      TotalLongPasses: 0
+      TotalPassesMissed: 0
+      TotalBoxCrosses: 0
+      TotalFaults: 0
+      TotalOffsides: 0
+      TotalCornerKicks: 0
+      TotalCounterAttacks: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 0
+        canRemove: 0
+        draggable: 0
+        expandable: 0
+        multipleSelection: 0
+        isExpanded: 0
+        label:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 0
+        footerHeight: 0
+        slideEasing: 0
+        verticalSpacing: 0
+        showDefaultBackground: 0
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
+    IsUserControlled: 0
+    IsPlaceholder: 0
   Squad:
   - {fileID: 11400000, guid: 58caf5855be9a3b40b110abd7d8a842d, type: 2}
   - {fileID: 11400000, guid: 39f070350441a854a9c0a0fb10ecb98f, type: 2}
@@ -36,24 +86,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a5f599887cd42e543b5209827e953486, type: 2}
   Captain: {fileID: 11400000, guid: d5ad8fd28014773488530554368aec01, type: 2}
   Stars: 0
-  LifeTimeStats:
-    Points: 0
-    TotalWins: 0
-    TotalLosts: 0
-    TotalDraws: 0
-    TotalGoals: 0
-    TotalGoalsAgainst: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalSteals: 0
-    TotalPasses: 0
-    TotalLongPasses: 0
-    TotalPassesMissed: 0
-    TotalBoxCrosses: 0
-    TotalFaults: 0
-    TotalOffsides: 0
-    TotalCornerKicks: 0
-    TotalCounterAttacks: 0
   MatchStats:
     Points: 0
     TotalWins: 0
@@ -72,72 +104,63 @@ MonoBehaviour:
     TotalOffsides: 0
     TotalCornerKicks: 0
     TotalCounterAttacks: 0
-  TournamentStatistics:
-    reorderableList:
-      canAdd: 0
-      canRemove: 0
-      draggable: 0
-      expandable: 0
-      multipleSelection: 0
-      isExpanded: 0
-      label:
-        m_Text: 
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 0
-      footerHeight: 0
-      slideEasing: 0
-      verticalSpacing: 0
-      showDefaultBackground: 0
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: []
-    _keys:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2F-7DF8EC-3A767F91
-    _values:
-    - Points: 0
-      TotalWins: 0
-      TotalLosts: 0
-      TotalDraws: 0
-      TotalGoals: 0
-      TotalGoalsAgainst: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalSteals: 0
-      TotalPasses: 0
-      TotalLongPasses: 0
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 0
-      TotalFaults: 0
-      TotalOffsides: 0
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 0
-    - Points: 0
-      TotalWins: 0
-      TotalLosts: 0
-      TotalDraws: 0
-      TotalGoals: 0
-      TotalGoalsAgainst: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalSteals: 0
-      TotalPasses: 0
-      TotalLongPasses: 0
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 0
-      TotalFaults: 0
-      TotalOffsides: 0
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 0
-  isUserControlled: 0
-  IsPlaceholder: 0
   MatchData:
-    Team: {fileID: 11400000}
+    TeamAttributes:
+      Id: 
+      Name: 
+      Tag: 
+      PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
+      SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
+      Formation: 0
+      Strategy: 0
+      SquadIds: []
+      SubstitutesIds: []
+      LifeTimeStats:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
+      TournamentStatistics:
+        reorderableList:
+          canAdd: 0
+          canRemove: 0
+          draggable: 0
+          expandable: 0
+          multipleSelection: 0
+          isExpanded: 0
+          label:
+            m_Text: 
+            m_Image: {fileID: 0}
+            m_Tooltip: 
+          headerHeight: 0
+          footerHeight: 0
+          slideEasing: 0
+          verticalSpacing: 0
+          showDefaultBackground: 0
+          elementDisplayType: 0
+          elementNameProperty: 
+          elementNameOverride: 
+          elementIcon: {fileID: 0}
+        reqReferences: {fileID: 0}
+        isExpanded: 0
+        _keyValues: []
+        _keys: []
+        _values: []
+      IsUserControlled: 0
+      IsPlaceholder: 0
     Statistics:
       Points: 0
       TotalWins: 0

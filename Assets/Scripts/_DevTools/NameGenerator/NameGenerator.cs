@@ -34,12 +34,67 @@ public class NameGenerator : MonoBehaviour
     private void Start()
     {
         //fileList = new List<PlayerData>(Resources.LoadAll<PlayerData>("Players"));
-        playerList = new List<PlayerData>(GetAtPath<PlayerData>("Data/Teams"));
-        foreach (PlayerData player in playerList) print(player.FirstName);
-        print(playerList.Count);
-        
+        playerList = new List<PlayerData>(Tools.GetAtSubfolders<PlayerData>("Data/Players"));
+        foreach (PlayerData player in playerList)
+        {
+            if(string.IsNullOrEmpty(player.Id))player.Id = System.Guid.NewGuid().ToString();
+            EditorUtility.SetDirty(player);
+        }
+        AssetDatabase.SaveAssets();
+        //UpdateTeamAttributes();
+
+
+
         //Populate();
         //SetPlayersTeam();
+    }
+
+    void UpdateTeamAttributes()
+    {
+        List<TeamData> list = new List<TeamData>(Tools.GetAtFolder<TeamData>("Data/Teams"));
+
+        foreach(TeamData team in list)
+        {
+            team.Attributes.Name = team.Name;
+            team.Attributes.PrimaryColor = team.PrimaryColor;
+            team.Attributes.SecondaryColor = team.SecondaryColor;
+            team.Attributes.Strategy = (TeamAttributes.TeamStrategy)team.Strategy;
+            team.Attributes.Formation = (FormationData.TeamFormation)team.Formation;
+            team.Attributes.Tag = team.Tag;
+            team.Attributes.Id = System.Guid.NewGuid().ToString();
+            EditorUtility.SetDirty(team);
+        }
+        AssetDatabase.SaveAssets();
+    }
+
+    void UpdatePlayerAttributes()
+    {
+        foreach (PlayerData player in playerList)
+        {
+            player.Attributes.FirstName = player.FirstName;
+            player.Attributes.LastName = player.LastName;
+            player.Attributes.Position = player.Position;
+            player.Attributes.Strategy = player.Strategy;
+            player.Attributes.Goalkeeping = player.Goalkeeping;
+            player.Attributes.Passing = player.Passing;
+            player.Attributes.Dribbling = player.Dribbling;
+            player.Attributes.Crossing = player.Crossing;
+            player.Attributes.Tackling = player.Tackling;
+            player.Attributes.Blocking = player.Blocking;
+            player.Attributes.Shooting = player.Shooting;
+            player.Attributes.Heading = player.Heading;
+            player.Attributes.Freekick = player.Freekick;
+            player.Attributes.Penalty = player.Penalty;
+            player.Attributes.Speed = player.Speed;
+            player.Attributes.Strength = player.Strength;
+            player.Attributes.Agility = player.Agility;
+            player.Attributes.Stamina = player.Stamina;
+            player.Attributes.Teamwork = player.Teamwork;
+            player.Attributes.Vision = player.Vision;
+            player.Attributes.Stability = player.Stability;
+            EditorUtility.SetDirty(player);
+        }
+        AssetDatabase.SaveAssets();
     }
 
     public void Populate()

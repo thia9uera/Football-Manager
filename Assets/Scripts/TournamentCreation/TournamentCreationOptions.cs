@@ -17,7 +17,7 @@ public class TournamentCreationOptions : MonoBehaviour
         List<string> list = new List<string>();
         for(int i = 0; i < 2; i++)
         {
-            list.Add(((TournamentData.TournamentType)i).ToString());
+            list.Add(((TournamentAttributes.TournamentType)i).ToString());
         }
         TypeDropDown.AddOptions(list);
 	}

@@ -18,18 +18,18 @@ public class LeaderboardPlayerView : MonoBehaviour
 
         posLabel.text = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         nameLabel.text = _player.FirstName + " " + _player.LastName;
-        goalsLabel.text = _player.LifeTimeStats.TotalGoals.ToString();
-        shotsLabel.text = _player.LifeTimeStats.TotalShots.ToString();
-        shotsMissedLabel.text = _player.LifeTimeStats.TotalShotsMissed.ToString();
-        headersLabel.text = _player.LifeTimeStats.TotalHeaders.ToString();
-        headersMissedLabel.text = _player.LifeTimeStats.TotalHeadersMissed.ToString();
-        passesLabel.text = _player.LifeTimeStats.TotalPasses.ToString();
-        crossesLabel.text = _player.LifeTimeStats.TotalCrosses.ToString();
-        faultsLabel.text = _player.LifeTimeStats.TotalFaults.ToString();
-        tacklesLabel.text = _player.LifeTimeStats.TotalTackles.ToString();
-        dribblesLabel.text = _player.LifeTimeStats.TotalDribbles.ToString();
-        savesLabel.text = _player.LifeTimeStats.TotalSaves.ToString();
-        presenceLabel.text = _player.LifeTimeStats.TotalPresence.ToString();
+        goalsLabel.text = _player.Attributes.LifeTimeStats.TotalGoals.ToString();
+        shotsLabel.text = _player.Attributes.LifeTimeStats.TotalShots.ToString();
+        shotsMissedLabel.text = _player.Attributes.LifeTimeStats.TotalShotsMissed.ToString();
+        headersLabel.text = _player.Attributes.LifeTimeStats.TotalHeaders.ToString();
+        headersMissedLabel.text = _player.Attributes.LifeTimeStats.TotalHeadersMissed.ToString();
+        passesLabel.text = _player.Attributes.LifeTimeStats.TotalPasses.ToString();
+        crossesLabel.text = _player.Attributes.LifeTimeStats.TotalCrosses.ToString();
+        faultsLabel.text = _player.Attributes.LifeTimeStats.TotalFaults.ToString();
+        tacklesLabel.text = _player.Attributes.LifeTimeStats.TotalTackles.ToString();
+        dribblesLabel.text = _player.Attributes.LifeTimeStats.TotalDribbles.ToString();
+        savesLabel.text = _player.Attributes.LifeTimeStats.TotalSaves.ToString();
+        presenceLabel.text = _player.Attributes.LifeTimeStats.TotalPresence.ToString();
 
         if (_index % 2 != 0) frame.color = Color.gray;
     }

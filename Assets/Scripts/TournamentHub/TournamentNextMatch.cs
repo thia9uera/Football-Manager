@@ -7,7 +7,7 @@ public class TournamentNextMatch : MonoBehaviour
     [SerializeField]
     TournamentFixturesItem match;
 
-    public void Populate(TournamentData.MatchData _data)
+    public void Populate(MatchData _data)
     {
         match.Populate(_data);
     }

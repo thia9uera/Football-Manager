@@ -16,9 +16,10 @@ public class LoadingScreen : BaseScreen
     Transform content;
 
     [SerializeField]
-    ButtonDefault btnTemplate;
+    LoadingFileButton btnTemplate;
 
     List<GameObject> buttons;
+    UserData[] saves;
 
     float time;
     bool isLoaded;
@@ -26,12 +27,18 @@ public class LoadingScreen : BaseScreen
     public override void Show()
     {
         base.Show();
-        LoadBundles();
 
-        List<string> saves = MainController.Instance.Data.GetSaveFiles();
-        if (saves.Count > 0) PopulateLoadFiles(saves);
+        saves = MainController.Instance.Data.GetSaveFiles();
+        if (saves.Length > 0)
+        {
+            PopulateLoadFiles(saves);
+        }
+        else
+        {
+            LoadBundles();
+        }
 
-        inputField.text = "Save " + (saves.Count + 1);
+        //inputField.text = "Save " + (saves.Count + 1);
     }
 
     void LoadBundles()
@@ -50,9 +57,9 @@ public class LoadingScreen : BaseScreen
         MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
 
         foreach (TeamData team in teams) team.Initialize();
-
-        //isLoaded = true;
-        print("LOADED FROM FILES");
+        print("FILES LOADED");
+        Debug.Log(saves);
+        CreateNewFile();
 
         return;
 #endif
@@ -77,19 +84,20 @@ public class LoadingScreen : BaseScreen
 
     }
 
-    void PopulateLoadFiles(List<string> _files)
+    void PopulateLoadFiles(UserData[] _users)
     {
         if (buttons != null) foreach (GameObject go in buttons) Destroy(go);
         buttons = new List<GameObject>();
 
-        foreach (string str in _files)
+        foreach (UserData user in _users)
         {
-            ButtonDefault btn = Instantiate(btnTemplate, content);
-            btn.Label = str;
+            LoadingFileButton btn = Instantiate(btnTemplate, content);
+            btn.Label = user.Name;
+            btn.gameObject.SetActive(true);
             buttons.Add(btn.gameObject);
             btn.GetComponent<Button>().onClick.AddListener(delegate 
             {
-                LoadFile(str);
+                LoadFile(user.Id);
                 
             });
         }
@@ -109,11 +117,18 @@ public class LoadingScreen : BaseScreen
         }
     }
 
-
     public void CreateNewFile()
     {
-        MainController.Instance.Data.CreateUserData(inputField.text);
+        string name = "SAVE " + (saves.Length + 1);
+        MainController.Instance.Data.CreateUserData(name);
+
+        print("NEW SAVE FILE '" + name + "' CREATED");
 
         MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
+    }
+
+    void PopulateData()
+    {
+
     }
 }

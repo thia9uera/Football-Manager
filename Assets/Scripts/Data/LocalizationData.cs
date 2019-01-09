@@ -49,16 +49,16 @@ public class LocalizationData : ScriptableObject
     [SerializeField]
     private string[] positionKeys;
 
-    public string GetLongPositionString(PlayerData.PlayerPosition _pos)
+    public string GetLongPositionString(PlayerAttributes.PlayerPosition _pos)
     {
         string color = "#8033cc";
 
         switch(_pos)
         {
-            case PlayerData.PlayerPosition.Goalkeeper: color = "#8033cc"; break;
-            case PlayerData.PlayerPosition.Defender: color = "#5299cc"; break;
-            case PlayerData.PlayerPosition.Midfielder: color = "#cc8f14"; break;
-            case PlayerData.PlayerPosition.Forward: color = "#e55c5c"; break;
+            case PlayerAttributes.PlayerPosition.Goalkeeper: color = "#8033cc"; break;
+            case PlayerAttributes.PlayerPosition.Defender: color = "#5299cc"; break;
+            case PlayerAttributes.PlayerPosition.Midfielder: color = "#cc8f14"; break;
+            case PlayerAttributes.PlayerPosition.Forward: color = "#e55c5c"; break;
         }
 
         LocalizedString str = "<color=" + color + ">pos_" + positionKeys[(int)_pos] + "</color>";
@@ -66,7 +66,7 @@ public class LocalizationData : ScriptableObject
         return  str;
     }
 
-    public string GetShortPositionString(PlayerData.PlayerPosition _pos)
+    public string GetShortPositionString(PlayerAttributes.PlayerPosition _pos)
     {
         LocalizedString str = "posTag_" + positionKeys[(int)_pos];
 

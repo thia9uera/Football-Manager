@@ -12,60 +12,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: _DaCas
   m_EditorClassIdentifier: 
-  FirstName: Guilherme
-  LastName: Da Cas
-  Zone: 20
-  Position: 3
-  Strategy: 2
-  Goalkeeping: 64
-  Passing: 67
-  Dribbling: 65
-  Crossing: 62
-  Tackling: 61
-  Blocking: 61
-  Shooting: 59
-  Heading: 96
-  Freekick: 57
-  Penalty: 61
-  Speed: 82
-  Strength: 83
-  Agility: 86
-  Stamina: 83
-  Teamwork: 87
-  Vision: 92
-  Stability: 86
-  fatigue: 100
-  Team: {fileID: 0}
-  Prob_DefPosition: 0.25
-  Prob_OffPosition: 4
-  Prob_LeftPos: 1
-  Prob_RightPos: 1
-  Prob_Pass: 1
-  Prob_Shoot: 1.3
-  Prob_Fault: 0
-  Prob_Crossing: 1.5
-  Prob_Dribble: 1.3
-  Prob_Fall: 0
-  Prob_OffsideLine: 1
-  Prob_Marking: 1
-  Prob_Tackling: 1
-  Prob_LongPass: 1
-  LifeTimeStats:
-    TotalPasses: 0
-    TotalCrosses: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
-    TotalDribbles: 0
-    TotalGoals: 0
-    TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
-    TotalHeadersMissed: 0
-    TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-    TotalPresence: 0
+  Attributes:
+    Id: 208149e6-bad1-4f23-be7c-99a6aa317f32
+    FirstName: Guilherme
+    LastName: Da Cas
+    Zone: 25
+    Position: 3
+    Strategy: 2
+    Goalkeeping: 64
+    Passing: 67
+    Dribbling: 65
+    Crossing: 62
+    Tackling: 61
+    Blocking: 61
+    Shooting: 59
+    Heading: 96
+    Freekick: 57
+    Penalty: 61
+    Speed: 82
+    Strength: 83
+    Agility: 86
+    Stamina: 83
+    Teamwork: 87
+    Vision: 92
+    Stability: 86
+    LifeTimeStats:
+      TotalPasses: 8
+      TotalCrosses: 1
+      TotalShots: 7
+      TotalHeaders: 0
+      TotalFaults: 1
+      TotalTackles: 6
+      TotalDribbles: 3
+      TotalGoals: 3
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 28
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 1
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 1
+      _keyValues:
+      - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
+      _keys:
+      - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
+      _values:
+      - TotalPasses: 8
+        TotalCrosses: 1
+        TotalShots: 7
+        TotalHeaders: 0
+        TotalFaults: 1
+        TotalTackles: 6
+        TotalDribbles: 3
+        TotalGoals: 3
+        TotalSaves: 0
+        TotalPassesMissed: 0
+        TotalShotsMissed: 0
+        TotalHeadersMissed: 0
+        TotalDribblesMissed: 0
+        TotalCrossesMissed: 0
+        TotalPresence: 28
   MatchStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -82,148 +111,18 @@ MonoBehaviour:
     TotalDribblesMissed: 0
     TotalCrossesMissed: 0
     TotalPresence: 0
-  TournamentStatistics:
-    reorderableList:
-      canAdd: 0
-      canRemove: 0
-      draggable: 0
-      expandable: 0
-      multipleSelection: 0
-      isExpanded: 0
-      label:
-        m_Text: 
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 0
-      footerHeight: 0
-      slideEasing: 0
-      verticalSpacing: 0
-      showDefaultBackground: 0
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues:
-    - 5C2F6010-4BDB2F-349195A8
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2A-2D821D-26C78B22
-    - 5C2F2C2B-48DFF2-7DF2167
-    - 5C2F2C2D-649471-306EAB65
-    - 5C2F2C2F-7DF8EC-3A767F91
-    - 5C2F6020-13DCDAC-230E82BC
-    _keys:
-    - 5C2F6010-4BDB2F-349195A8
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2A-2D821D-26C78B22
-    - 5C2F2C2B-48DFF2-7DF2167
-    - 5C2F2C2D-649471-306EAB65
-    - 5C2F2C2F-7DF8EC-3A767F91
-    - 5C2F6020-13DCDAC-230E82BC
-    _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+  Team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
+  Prob_DefPosition: 0.25
+  Prob_OffPosition: 4
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1.3
+  Prob_Fault: 0
+  Prob_Crossing: 1.5
+  Prob_Dribble: 1.3
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

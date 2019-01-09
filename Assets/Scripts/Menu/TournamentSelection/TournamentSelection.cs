@@ -47,6 +47,7 @@ public class TournamentSelection : BaseScreen
 
         foreach (TournamentData file in tournamentList)
         {
+            file.LoadTeams();
             foreach (TeamData team in file.Teams) team.InitializeTournamentData(file.Id);
 
             TournamentCard item = Instantiate(cardTemplate, content);

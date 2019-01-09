@@ -9,7 +9,7 @@ public class SquadSelectionArrowsView : MonoBehaviour
     private SquadSelectionArrowView[] arrows;
 
 
-    public void UpdateStrategy(PlayerData.PlayerStrategy _strategy)
+    public void UpdateStrategy(PlayerAttributes.PlayerStrategy _strategy)
     {
         Transform slot = transform.parent;
         slot.GetComponent<SquadSlotView>().Player.Strategy = _strategy;
@@ -34,7 +34,7 @@ public class SquadSelectionArrowsView : MonoBehaviour
                 case MatchController.FieldZone.LAM:
                 case MatchController.FieldZone.LF:
                 case MatchController.FieldZone.ALF:
-                    if(arrow.Strategy == PlayerData.PlayerStrategy.Left || arrow.Strategy == PlayerData.PlayerStrategy.LeftDefensive || arrow.Strategy == PlayerData.PlayerStrategy.LeftOffensive)
+                    if(arrow.Strategy == PlayerAttributes.PlayerStrategy.Left || arrow.Strategy == PlayerAttributes.PlayerStrategy.LeftDefensive || arrow.Strategy == PlayerAttributes.PlayerStrategy.LeftOffensive)
                     {
                         arrow.gameObject.SetActive(false);
                     }
@@ -47,7 +47,7 @@ public class SquadSelectionArrowsView : MonoBehaviour
                 case MatchController.FieldZone.RAM:
                 case MatchController.FieldZone.RF:
                 case MatchController.FieldZone.ARF:
-                    if (arrow.Strategy == PlayerData.PlayerStrategy.Right || arrow.Strategy == PlayerData.PlayerStrategy.RightDefensive || arrow.Strategy == PlayerData.PlayerStrategy.RightOffensive)
+                    if (arrow.Strategy == PlayerAttributes.PlayerStrategy.Right || arrow.Strategy == PlayerAttributes.PlayerStrategy.RightDefensive || arrow.Strategy == PlayerAttributes.PlayerStrategy.RightOffensive)
                     {
                         arrow.gameObject.SetActive(false);
                     }

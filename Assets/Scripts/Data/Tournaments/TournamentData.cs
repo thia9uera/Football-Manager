@@ -6,56 +6,19 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "Tournament", menuName = "Tournament Data", order = 2)]
 public class TournamentData : ScriptableObject
 {
-    public string Name;
-    public string Id;
+    public TournamentAttributes Attributes;
 
-    public enum TournamentType
-    {
-        Championship,
-        Cup,
-    }
+    public string Id { get { return Attributes.Id; } set { Attributes.Id = value; } }
+    public string Name { get { return Attributes.Name; } set { Attributes.Name = value; } }
 
-    public TournamentType Type;
 
-    public int StarsRequired = 0;
+    public TournamentAttributes.TournamentType Type { get { return Attributes.Type; } set { Attributes.Type = value; } }
 
+    public int StarsRequired { get { return Attributes.StarsRequired; } set { Attributes.StarsRequired = value; } }
+
+    public string[] TeamIds { get { return Attributes.TeamIds; } set { Attributes.TeamIds = value; } }
     public List<TeamData> Teams;
-
-    [System.Serializable]
-    public class TeamMatchData
-    {
-        public TeamData Team;
-        public TeamData.Statistics Statistics;
-        public List<PlayerData> Scorers;
-        public List<PlayerData> YellowCards;
-        public List<PlayerData> RedCards;
-
-        public void Reset()
-        {
-            Statistics = new TeamData.Statistics();
-            Scorers = new List<PlayerData>();
-            YellowCards = new List<PlayerData>();
-            RedCards = new List<PlayerData>();
-        }
-    }
-
-    [System.Serializable]
-    public class MatchData
-    {
-        public TeamMatchData HomeTeam;
-        public TeamMatchData AwayTeam;
-        public bool isPlayed;
-        public int Round;
-
-        public void Reset()
-        {
-            isPlayed = false;
-            HomeTeam.Reset();
-            AwayTeam.Reset();
-        }
-    }
-
-    public List<MatchData> Matches;
+    public List<MatchData> Matches { get { return new List<MatchData>(Attributes.Matches); } set { Attributes.Matches = value.ToArray(); } }
 
     [Space(10)]
     public int TotalRounds;
@@ -111,7 +74,6 @@ public class TournamentData : ScriptableObject
         {
             if (!_isSimulating) CurrentRound++;
             else CurrentRound = TotalRounds;
-            Save();
         }
         else
         {
@@ -127,8 +89,6 @@ public class TournamentData : ScriptableObject
         foreach(MatchData match in Matches) match.Reset();
         foreach (TeamData data in Teams) data.ResetStatistics("Tournament", Id);
         CurrentRound = 0;
-        Save();
-        //AssetDatabase.SaveAssets();
     }
 
     public List<PlayerData> GetAllPlayers()
@@ -143,9 +103,13 @@ public class TournamentData : ScriptableObject
         return list;
     }
 
-    void Save()
+    public void LoadTeams()
     {
-        //EditorUtility.SetDirty(this);
-        //AssetDatabase.SaveAssets();
+        Teams = new List<TeamData>();
+        foreach(string id in TeamIds)
+        {
+            TeamData team = MainController.Instance.GetTeamById(id);
+            Teams.Add(team);
+        }
     }
 }

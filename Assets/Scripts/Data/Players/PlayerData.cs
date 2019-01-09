@@ -8,91 +8,38 @@ using RotaryHeart.Lib.SerializableDictionary;
 [System.Serializable]
 public class PlayerData : ScriptableObject
 {
-    [Header("Personal")]
-    public string FirstName;
-    public string LastName;
+    public PlayerAttributes Attributes;
 
-    
-    [Space(10)]
-    public MatchController.FieldZone Zone;
-    public PlayerPosition Position;
-    public PlayerStrategy Strategy;
-    //public PerkData Perk;
+    public string Id { get { return Attributes.Id; } set { Attributes.Id = value; } }
 
+    public string FirstName { get { return Attributes.FirstName; } set { Attributes.FirstName = value; } }
+    public string LastName { get { return Attributes.LastName; } set { Attributes.LastName = value; } }
 
-    [Space(10)]
-    [Header("Technical Attributes")]
-    [Space(5)]
+    public MatchController.FieldZone Zone { get { return Attributes.Zone; } set { Attributes.Zone = value; } }
+    public PlayerAttributes.PlayerPosition Position { get { return Attributes.Position; } set { Attributes.Position = value; } }
+    public PlayerAttributes. PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
 
-    [Range(0, 100)]
-    public int Goalkeeping = 50;
+    public int Goalkeeping { get { return Attributes.Goalkeeping; } set { Attributes.Goalkeeping = value; } } 
+    public int Passing { get { return Attributes.Passing; } set { Attributes.Passing = value; } }
+    public int Dribbling { get { return Attributes.Dribbling; } set { Attributes.Dribbling = value; } }
+    public int Crossing { get { return Attributes.Crossing; } set { Attributes.Crossing = value; } }
+    public int Tackling { get { return Attributes.Tackling; } set { Attributes.Tackling = value; } }
+    public int Blocking { get { return Attributes.Blocking; } set { Attributes.Blocking = value; } }
+    public int Shooting { get { return Attributes.Shooting; } set { Attributes.Shooting = value; } }
+    public int Heading { get { return Attributes.Heading; } set { Attributes.Heading = value; } }
+    public int Freekick { get { return Attributes.Freekick; } set { Attributes.Freekick = value; } }
+    public int Penalty { get { return Attributes.Penalty; } set { Attributes.Penalty = value; } }
 
-    [Space(10)]
-    [Range(0, 100)]
-    public int Passing = 50;
+    public int Speed { get { return Attributes.Speed; } set { Attributes.Speed = value; } }
+    public int Strength { get { return Attributes.Strength; } set { Attributes.Strength = value; } }
+    public int Agility { get { return Attributes.Agility; } set { Attributes.Agility = value; } }
+    public int Stamina { get { return Attributes.Stamina; } set { Attributes.Stamina = value; } }
 
-    [Range(0, 100)]
-    public int Dribbling = 50;
+    public int Teamwork { get { return Attributes.Teamwork; } set { Attributes.Teamwork = value; } }
+    public int Vision { get { return Attributes.Vision; } set { Attributes.Vision = value; } }
+    public int Stability { get { return Attributes.Stability; } set { Attributes.Stability = value; } }
 
-    [Range(0, 100)]
-    public int Crossing = 50;
-
-    [Space(10)]
-    [Range(0, 100)]
-    public int Tackling = 50;
-
-    [Range(0, 100)]
-    public int Blocking = 50;
-
-    [Space(10)]
-    [Range(0, 100)]
-    public int Shooting = 50;
-
-    [Range(0, 100)]
-    public int Heading = 50;
-
-    [Range(0, 100)]
-    public int Freekick = 50;
-
-    [Range(0, 100)]
-    public int Penalty = 50;
-
-
-    [Space(10)]
-    [Header("Physical Attributes")]
-    [Space(5)]
-
-    [Range(0, 100)]
-    public int Speed = 50;
-
-    [Range(0, 100)]
-    public int Strength = 50;
-
-    [Range(0, 100)]
-    public int Agility = 50;
-
-    [Range(0, 100)]
-    public int Stamina = 50;
-
-
-    [Space(10)]
-    [Header("Mental Attributes")]
-    [Space(5)]
-
-    [Range(0, 100)]
-    public int Teamwork = 50;
-
-    [Range(0, 100)]
-    public int Vision = 50;
-
-    [Range(0, 100)]
-    public int Stability = 50;
-
-    [Space(10)]
-    //Attributes that change during gameplay
-    [SerializeField]
-    private float fatigue = 100f;
-
+    float fatigue;
     public float Fatigue
     {
         get
@@ -105,6 +52,8 @@ public class PlayerData : ScriptableObject
             if (fatigue <= 0) fatigue = 0.01f;
         }
     }
+
+    public PlayerStatistics MatchStats;
 
     public TeamData Team;
 
@@ -137,15 +86,7 @@ public class PlayerData : ScriptableObject
         Prob_Tackling,
         Prob_LongPass;
 
-    public enum PlayerPosition
-    {
-        Goalkeeper,
-        Defender,
-        Midfielder,
-        Forward,
-    }
-
-    public enum PlayerAttributes
+    public enum AttributeType
     {
         Goalkeeping,
         Passing,
@@ -183,47 +124,6 @@ public class PlayerData : ScriptableObject
         Header,
         Sprint,
     }
-
-    public enum PlayerStrategy
-    {
-        Neutral,
-        Defensive,
-        Ofensive,
-        Left,
-        Right,
-        LeftDefensive,
-        RightDefensive,
-        LeftOffensive,
-        RightOffensive,
-    }
-
-    [System.Serializable]
-    public class Statistics
-    {
-        public int TotalPasses = 0;
-        public int TotalCrosses = 0;
-        public int TotalShots = 0;
-        public int TotalHeaders = 0;
-        public int TotalFaults = 0;
-        public int TotalTackles = 0;
-        public int TotalDribbles = 0;
-        public int TotalGoals = 0;
-        public int TotalSaves = 0;
-        public int TotalPassesMissed = 0;
-        public int TotalShotsMissed = 0;
-        public int TotalHeadersMissed = 0;
-        public int TotalDribblesMissed = 0;
-        public int TotalCrossesMissed  =0;
-        public int TotalPresence = 0;
-    }
-
-    public Statistics LifeTimeStats;
-    public Statistics MatchStats;
-
-    [System.Serializable]
-    public class TournamentStats : SerializableDictionaryBase<string, Statistics> { }
-    public TournamentStats TournamentStatistics;
-
     public void ApplyBonus()
     {
         Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
@@ -266,23 +166,23 @@ public class PlayerData : ScriptableObject
 
         switch (Position)
         {
-            case PlayerPosition.Goalkeeper:
+            case PlayerAttributes.PlayerPosition.Goalkeeper:
                 total += Goalkeeping;
                 total += Agility;
                 total = total / 16;
                 break;
-            case PlayerPosition.Defender:
+            case PlayerAttributes.PlayerPosition.Defender:
                 total += Tackling;
                 total += Blocking;
                 total = total / 16;
                 break;
-            case PlayerPosition.Midfielder:
+            case PlayerAttributes.PlayerPosition.Midfielder:
                 total += Dribbling;
                 total += Passing;
                 total += Crossing;
                 total = total / 17;
                 break;
-            case PlayerPosition.Forward:
+            case PlayerAttributes.PlayerPosition.Forward:
                 total += Dribbling;
                 total += Passing;
                 total += Shooting;
@@ -297,11 +197,10 @@ public class PlayerData : ScriptableObject
         return total;
     }
 
-    public float GetChancePerZone(MatchController.FieldZone _zone, TeamData.TeamStrategy _teamStrategy)
+    public float GetChancePerZone(MatchController.FieldZone _zone, TeamAttributes.TeamStrategy _teamStrategy)
     {
         float pct = 0f;
 
-        //Zones chancePerZone = MainController.Instance.PosChancePerZone.posChancePerZones[(int)Zone];
         Zones chancePerZone = MainController.Instance.Match.TeamStrategies[(int)_teamStrategy].PosChance.posChancePerZones[(int)Zone];
 
         switch(_zone)
@@ -338,7 +237,6 @@ public class PlayerData : ScriptableObject
             case MatchController.FieldZone.ARF: pct = chancePerZone.ARF; break;
             case MatchController.FieldZone.Box: pct = chancePerZone.Box; break;
         }
-
         return pct;
     }
 
@@ -374,62 +272,61 @@ public class PlayerData : ScriptableObject
         return pos;
     }
 
-    public int GetPlayerAttribute(PlayerAttributes _playerAttributes)
+    public int GetPlayerAttribute(AttributeType _playerAttributes)
     {
         int value = 0;
 
         switch(_playerAttributes)
         {
-            case PlayerAttributes.Agility: value = Agility; break;
-            case PlayerAttributes.Blocking: value = Blocking; break;
-            case PlayerAttributes.Crossing: value = Crossing; break;
-            case PlayerAttributes.Dribbling: value = Dribbling; break;
-            case PlayerAttributes.Freekick: value = Freekick; break;
-            case PlayerAttributes.Goalkeeping: value = Goalkeeping; break;
-            case PlayerAttributes.Heading: value = Heading; break;
-            case PlayerAttributes.Passing: value = Passing; break;
-            case PlayerAttributes.Penalty: value = Penalty; break;
-            case PlayerAttributes.Shooting: value = Shooting; break;
-            case PlayerAttributes.Speed: value = Speed; break;
-            case PlayerAttributes.Stability: value = Stability; break;
-            case PlayerAttributes.Stamina: value = Stamina; break;
-            case PlayerAttributes.Strength: value = Strength; break;
-            case PlayerAttributes.Tackling: value = Tackling; break;
-            case PlayerAttributes.Teamwork: value = Teamwork; break;
-            case PlayerAttributes.Vision: value = Vision; break;
+            case AttributeType.Agility: value = Agility; break;
+            case AttributeType.Blocking: value = Blocking; break;
+            case AttributeType.Crossing: value = Crossing; break;
+            case AttributeType.Dribbling: value = Dribbling; break;
+            case AttributeType.Freekick: value = Freekick; break;
+            case AttributeType.Goalkeeping: value = Goalkeeping; break;
+            case AttributeType.Heading: value = Heading; break;
+            case AttributeType.Passing: value = Passing; break;
+            case AttributeType.Penalty: value = Penalty; break;
+            case AttributeType.Shooting: value = Shooting; break;
+            case AttributeType.Speed: value = Speed; break;
+            case AttributeType.Stability: value = Stability; break;
+            case AttributeType.Stamina: value = Stamina; break;
+            case AttributeType.Strength: value = Strength; break;
+            case AttributeType.Tackling: value = Tackling; break;
+            case AttributeType.Teamwork: value = Teamwork; break;
+            case AttributeType.Vision: value = Vision; break;
         }
 
         return value;
     }
-
 
     public void ResetStatistics(string _type, string _id="")
     {
         switch(_type)
         {
             default:
-            case "Match" : MatchStats = new Statistics(); break;
-            case "LifeTime" : LifeTimeStats = new Statistics(); break;
+            case "Match" : MatchStats = new PlayerStatistics(); break;
+            case "LifeTime" : Attributes.LifeTimeStats = new PlayerStatistics(); break;
             case "Tournament" :
-                if (!TournamentStatistics.ContainsKey(_id)) TournamentStatistics.Add(_id, new Statistics());
-                TournamentStatistics[_id] = new Statistics();
+                if (!Attributes.TournamentStatistics.ContainsKey(_id)) Attributes.TournamentStatistics.Add(_id, new PlayerStatistics());
+                Attributes.TournamentStatistics[_id] = new PlayerStatistics();
+                Attributes.TournamentStatistics[_id] = new PlayerStatistics();
                 break;
         }
-        Save();
     }
 
     public void UpdateLifeTimeStats()
     {
-        Statistics stats = MatchStats;
+        PlayerStatistics stats = MatchStats;
 
-        UpdateStats(LifeTimeStats, stats);
+        UpdateStats(Attributes.LifeTimeStats, stats);
 
         if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics(stats);
 
-        ResetStatistics("Match");
+       ResetStatistics("Match");
     }
 
-    void UpdateStats(Statistics _stats, Statistics _data)
+    void UpdateStats(PlayerStatistics _stats, PlayerStatistics _data)
     {
         _stats.TotalGoals += _data.TotalGoals;
         _stats.TotalPasses += _data.TotalPasses;
@@ -448,30 +345,28 @@ public class PlayerData : ScriptableObject
         _stats.TotalPresence += _data.TotalPresence;
     }
 
-    public Statistics GetTournamentStatistics(string _key)
+    public PlayerStatistics GetTournamentStatistics(string _key)
     {
-        Statistics stats = null;
+        PlayerStatistics stats = new PlayerStatistics();
 
-        if (TournamentStatistics != null && TournamentStatistics.ContainsKey(_key)) stats = TournamentStatistics[_key];
+        if (Attributes.TournamentStatistics != null && Attributes.TournamentStatistics.ContainsKey(_key)) stats = Attributes.TournamentStatistics[_key];
 
         return stats;
     }
 
-    void UpdateTournamentStatistics(Statistics _stats)
+    void UpdateTournamentStatistics(PlayerStatistics _stats)
     {
         TournamentData currentTournament = MainController.Instance.CurrentTournament;
-        if (TournamentStatistics == null) TournamentStatistics = new TournamentStats();
+        if (Attributes.TournamentStatistics == null) Attributes.TournamentStatistics = new TournamentStats();
 
-        if (!TournamentStatistics.ContainsKey(currentTournament.Id))
+        if (!Attributes.TournamentStatistics.ContainsKey(currentTournament.Id))
         {
-            TournamentStatistics.Add(currentTournament.Id, new Statistics());
+            Attributes.TournamentStatistics.Add(currentTournament.Id, new PlayerStatistics());
         }
 
-        Statistics tStats = GetTournamentStatistics(currentTournament.Id);
+        PlayerStatistics tStats = GetTournamentStatistics(currentTournament.Id);
 
         UpdateStats(tStats, _stats);
-
-        Save();
     }
 
     public string GetFullName()
@@ -486,35 +381,29 @@ public class PlayerData : ScriptableObject
 
         switch (Position)
         {
-            case PlayerPosition.Goalkeeper:
+            case PlayerAttributes.PlayerPosition.Goalkeeper:
                 if (zone != 0) value = true;
                 break;
 
-            case PlayerPosition.Defender:
+            case PlayerAttributes.PlayerPosition.Defender:
                 if (zone < 1 || zone > 7) value = true;
                 break;
 
-            case PlayerPosition.Midfielder:
+            case PlayerAttributes.PlayerPosition.Midfielder:
                 if (zone < 8 || zone > 22) value = true;
                 break;
 
-            case PlayerPosition.Forward:
+            case PlayerAttributes.PlayerPosition.Forward:
                 if (zone < 23) value = true;
                 break;
         }
         return value;
     }
 
-    void Save()
-    {
-       // EditorUtility.SetDirty(this);
-        //AssetDatabase.SaveAssets();
-    }
-
     public void Reset()
     {
         ResetStatistics("LifeTime");
         Team = null;
-        TournamentStatistics = new TournamentStats();
+        Attributes.TournamentStatistics = new TournamentStats();
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class UserData
+﻿[System.Serializable]
+public struct UserData
 {
+    public string Id;
     public string Name;
 }

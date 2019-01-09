@@ -22,8 +22,6 @@ public class TournamentCreation : BaseScreen
 
     public Button BtnCreateTournament;
 
-    public int TotalTournaments;
-
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -41,19 +39,20 @@ public class TournamentCreation : BaseScreen
 
     public void AddTeam(TeamData _team)
     {
-        if(Options.TypeDropDown.value == (int)TournamentData.TournamentType.Championship)
+        if(Options.TypeDropDown.value == (int)TournamentAttributes.TournamentType.Championship)
         {
             Championship.AddTeam(_team);
             AvailableTeams.Remove(_team);
         }
     }
 
-    public void RemoveTeam(TeamData _team)
+    public void RemoveTeam(string _teamId)
     {
-        if (Options.TypeDropDown.value == (int)TournamentData.TournamentType.Championship)
+        if (Options.TypeDropDown.value == (int)TournamentAttributes.TournamentType.Championship)
         {
-            Championship.RemoveTeam(_team);
-            AvailableTeams.Add(_team);
+            TeamData team = MainController.Instance.GetTeamById(_teamId);
+            Championship.RemoveTeam(team);
+            AvailableTeams.Add(team);
             Options.TeamList.UpdateTeamList();
         }
     }
@@ -62,25 +61,29 @@ public class TournamentCreation : BaseScreen
     {
         TournamentData tournament = ScriptableObject.CreateInstance<TournamentData>();
         List<TeamData> teams = new List<TeamData>(TeamList);
-        List<TournamentData.MatchData> matches = new List<TournamentData.MatchData>(Championship.DataList);
+        List<MatchData> matches = new List<MatchData>(Championship.DataList);
         tournament.Name = Options.InputName.text;
-        tournament.Type = (TournamentData.TournamentType)Options.TypeDropDown.value;
+        tournament.Type = (TournamentAttributes.TournamentType)Options.TypeDropDown.value;
         tournament.StarsRequired = Options.StarsRequired.StarsRequired;
 
-        switch((TournamentData.TournamentType)Options.TypeDropDown.value)
+        switch((TournamentAttributes.TournamentType)Options.TypeDropDown.value)
         {
-            case TournamentData.TournamentType.Championship:
-                tournament.Teams = teams;
+            case TournamentAttributes.TournamentType.Championship:
+                //tournament.Teams = teams;
                 tournament.Matches = matches;
-                foreach (TeamData team in TeamList)
-                {;
-                    tournament.TotalRounds = teams.Count - 1;
+                int t = teams.Count;
+                string[] teamIds = new string[t];
+                tournament.TotalRounds = t - 1;
+                for (int i = 0; i < t; i++)
+                {
+                    teamIds[i] = teams[i].Id;
                 }
+                tournament.Attributes.TeamIds = teamIds;
                 break;
         }
-        if(string.IsNullOrEmpty(tournament.Id)) tournament.Id = GetUniqueID();
-        //AssetDatabase.CreateAsset(tournament, "Assets/Resources/Tournaments/" + tournament.Name + ".asset");
-        //AssetDatabase.SaveAssets();
+        if (string.IsNullOrEmpty(tournament.Id)) tournament.Id = Guid.NewGuid().ToString();
+        AssetDatabase.CreateAsset(tournament, "Assets/Data/Tournaments/" + tournament.Name + ".asset");
+        AssetDatabase.SaveAssets();
 
         LoadTournaments();
     }
@@ -116,22 +119,9 @@ public class TournamentCreation : BaseScreen
         }
         Options.TeamList.UpdateTeamList();
 
-        if((TournamentData.TournamentType)Options.TypeDropDown.value == TournamentData.TournamentType.Championship)
+        if((TournamentAttributes.TournamentType)Options.TypeDropDown.value == TournamentAttributes.TournamentType.Championship)
         {
             //TODO show Championship tables
         }
-    }
-
-    string GetUniqueID()
-    {
-        var random = new System.Random();
-        DateTime epochStart = new DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
-        double timestamp = (DateTime.UtcNow - epochStart).TotalSeconds;
-
-        string uniqueID = string.Format("{0:X}", Convert.ToInt32(timestamp))                //Time
-                + "-" + string.Format("{0:X}", Convert.ToInt32(Time.time * 1000000))        //Time in game
-                + "-" + string.Format("{0:X}", random.Next(1000000000));                //random number
-                
-        return uniqueID;
     }
 }

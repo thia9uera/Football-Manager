@@ -12,44 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ATA REG 20
   m_EditorClassIdentifier: 
-  FirstName: Otaviano
-  LastName: Cascata
-  Zone: 27
-  Position: 3
-  Strategy: 0
-  Goalkeeping: 12
-  Passing: 81
-  Dribbling: 70
-  Crossing: 65
-  Tackling: 50
-  Blocking: 50
-  Shooting: 77
-  Heading: 64
-  Freekick: 63
-  Penalty: 59
-  Speed: 72
-  Strength: 71
-  Agility: 70
-  Stamina: 81
-  Teamwork: 85
-  Vision: 81
-  Stability: 78
-  fatigue: 100
-  Team: {fileID: 0}
-  Prob_DefPosition: 1
-  Prob_OffPosition: 1
-  Prob_LeftPos: 1
-  Prob_RightPos: 1
-  Prob_Pass: 1
-  Prob_Shoot: 1
-  Prob_Fault: 0
-  Prob_Crossing: 1
-  Prob_Dribble: 1
-  Prob_Fall: 0
-  Prob_OffsideLine: 1
-  Prob_Marking: 1
-  Prob_Tackling: 1
-  Prob_LongPass: 1
+  Attributes:
+    Id: d94447d1-9d65-4bc3-86b1-1ba3dd8e1636
+    FirstName: Otaviano
+    LastName: Cascata
+    Zone: 27
+    Position: 3
+    Strategy: 0
+    Goalkeeping: 12
+    Passing: 81
+    Dribbling: 70
+    Crossing: 65
+    Tackling: 50
+    Blocking: 50
+    Shooting: 77
+    Heading: 64
+    Freekick: 63
+    Penalty: 59
+    Speed: 72
+    Strength: 71
+    Agility: 70
+    Stamina: 81
+    Teamwork: 85
+    Vision: 81
+    Stability: 78
+    LifeTimeStats:
+      TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 0
+        canRemove: 0
+        draggable: 0
+        expandable: 0
+        multipleSelection: 0
+        isExpanded: 0
+        label:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 0
+        footerHeight: 0
+        slideEasing: 0
+        verticalSpacing: 0
+        showDefaultBackground: 0
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
   LifeTimeStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -105,23 +133,21 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 0
-    _keyValues:
-    - 5C2F6010-4BDB2F-349195A8
-    _keys:
-    - 5C2F6010-4BDB2F-349195A8
-    _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+    _keyValues: []
+    _keys: []
+    _values: []
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

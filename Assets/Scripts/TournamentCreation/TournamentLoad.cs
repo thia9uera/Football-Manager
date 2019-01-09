@@ -31,12 +31,13 @@ public class TournamentLoad : MonoBehaviour
             itemList.Clear();
         }
 
-        fileList = new List<TournamentData>(Resources.LoadAll<TournamentData>("Tournaments"));
+        fileList = new List<TournamentData>(Tools.GetAtFolder<TournamentData>("Data/Tournaments"));
 
-        foreach (TournamentData file in fileList)
+        foreach (TournamentData tournament in fileList)
         {
+            tournament.LoadTeams();
             TournamentLoadItem item = Instantiate(fileTemplate, content);
-            item.Populate(file);
+            item.Populate(tournament);
             itemList.Add(item.gameObject);
         }
     }

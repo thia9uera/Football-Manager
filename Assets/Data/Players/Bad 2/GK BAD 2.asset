@@ -12,44 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: GK BAD 2
   m_EditorClassIdentifier: 
-  FirstName: MC
-  LastName: Creedence
-  Zone: 0
-  Position: 0
-  Strategy: 0
-  Goalkeeping: 42
-  Passing: 33
-  Dribbling: 33
-  Crossing: 33
-  Tackling: 35
-  Blocking: 35
-  Shooting: 32
-  Heading: 20
-  Freekick: 8
-  Penalty: 8
-  Speed: 62
-  Strength: 45
-  Agility: 47
-  Stamina: 75
-  Teamwork: 57
-  Vision: 34
-  Stability: 47
-  fatigue: 88.00001
-  Team: {fileID: 0}
-  Prob_DefPosition: 1
-  Prob_OffPosition: 1
-  Prob_LeftPos: 1
-  Prob_RightPos: 1
-  Prob_Pass: 1
-  Prob_Shoot: 1
-  Prob_Fault: 0
-  Prob_Crossing: 1
-  Prob_Dribble: 1
-  Prob_Fall: 0
-  Prob_OffsideLine: 1
-  Prob_Marking: 1
-  Prob_Tackling: 1
-  Prob_LongPass: 1
+  Attributes:
+    Id: 252300ba-253e-4587-93db-e8d7fc064847
+    FirstName: MC
+    LastName: Creedence
+    Zone: 0
+    Position: 0
+    Strategy: 0
+    Goalkeeping: 42
+    Passing: 33
+    Dribbling: 33
+    Crossing: 33
+    Tackling: 35
+    Blocking: 35
+    Shooting: 32
+    Heading: 20
+    Freekick: 8
+    Penalty: 8
+    Speed: 62
+    Strength: 45
+    Agility: 47
+    Stamina: 75
+    Teamwork: 57
+    Vision: 34
+    Stability: 47
+    LifeTimeStats:
+      TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
   LifeTimeStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -105,40 +133,21 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 0
-    _keyValues:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2F-7DF8EC-3A767F91
-    _keys:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2F-7DF8EC-3A767F91
-    _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+    _keyValues: []
+    _keys: []
+    _values: []
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

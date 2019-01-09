@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SquadSelectionArrowView : MonoBehaviour
 {
-    public PlayerData.PlayerStrategy Strategy;
+    public PlayerAttributes.PlayerStrategy Strategy;
     private Image image;
     public bool IsSelected = false;
 
@@ -19,7 +19,7 @@ public class SquadSelectionArrowView : MonoBehaviour
 
     public void HandleClick()
     {
-        if(IsSelected) GetComponentInParent<SquadSelectionArrowsView>().UpdateStrategy(PlayerData.PlayerStrategy.Neutral);
+        if(IsSelected) GetComponentInParent<SquadSelectionArrowsView>().UpdateStrategy(PlayerAttributes.PlayerStrategy.Neutral);
         else GetComponentInParent<SquadSelectionArrowsView>().UpdateStrategy(Strategy);
     }
 }

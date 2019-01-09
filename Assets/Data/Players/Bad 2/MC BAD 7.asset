@@ -12,44 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: MC BAD 7
   m_EditorClassIdentifier: 
-  FirstName: Nandinha
-  LastName: Imperador
-  Zone: 13
-  Position: 2
-  Strategy: 0
-  Goalkeeping: 20
-  Passing: 30
-  Dribbling: 32
-  Crossing: 52
-  Tackling: 42
-  Blocking: 37
-  Shooting: 23
-  Heading: 23
-  Freekick: 8
-  Penalty: 8
-  Speed: 33
-  Strength: 33
-  Agility: 40
-  Stamina: 77
-  Teamwork: 40
-  Vision: 35
-  Stability: 48
-  fatigue: 71.428566
-  Team: {fileID: 0}
-  Prob_DefPosition: 1
-  Prob_OffPosition: 1
-  Prob_LeftPos: 1
-  Prob_RightPos: 1
-  Prob_Pass: 1
-  Prob_Shoot: 1
-  Prob_Fault: 0
-  Prob_Crossing: 1
-  Prob_Dribble: 1
-  Prob_Fall: 0
-  Prob_OffsideLine: 1
-  Prob_Marking: 1
-  Prob_Tackling: 1
-  Prob_LongPass: 1
+  Attributes:
+    Id: e7c0eec7-511c-41ee-ba32-4bf7c14bf1b6
+    FirstName: Nandinha
+    LastName: Imperador
+    Zone: 13
+    Position: 2
+    Strategy: 0
+    Goalkeeping: 20
+    Passing: 30
+    Dribbling: 32
+    Crossing: 52
+    Tackling: 42
+    Blocking: 37
+    Shooting: 23
+    Heading: 23
+    Freekick: 8
+    Penalty: 8
+    Speed: 33
+    Strength: 33
+    Agility: 40
+    Stamina: 77
+    Teamwork: 40
+    Vision: 35
+    Stability: 48
+    LifeTimeStats:
+      TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
   LifeTimeStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -105,40 +133,21 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 0
-    _keyValues:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2F-7DF8EC-3A767F91
-    _keys:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2F-7DF8EC-3A767F91
-    _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+    _keyValues: []
+    _keys: []
+    _values: []
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

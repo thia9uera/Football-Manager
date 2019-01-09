@@ -12,44 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: ZAG BAD 14
   m_EditorClassIdentifier: 
-  FirstName: Miliciana
-  LastName: da Laguna
-  Zone: 7
-  Position: 1
-  Strategy: 0
-  Goalkeeping: 17
-  Passing: 37
-  Dribbling: 25
-  Crossing: 37
-  Tackling: 27
-  Blocking: 28
-  Shooting: 35
-  Heading: 37
-  Freekick: 10
-  Penalty: 15
-  Speed: 38
-  Strength: 32
-  Agility: 38
-  Stamina: 75
-  Teamwork: 32
-  Vision: 37
-  Stability: 47
-  fatigue: 89.333336
-  Team: {fileID: 0}
-  Prob_DefPosition: 1
-  Prob_OffPosition: 1
-  Prob_LeftPos: 1
-  Prob_RightPos: 1
-  Prob_Pass: 1
-  Prob_Shoot: 1
-  Prob_Fault: 0
-  Prob_Crossing: 1
-  Prob_Dribble: 1
-  Prob_Fall: 0
-  Prob_OffsideLine: 1
-  Prob_Marking: 1
-  Prob_Tackling: 1
-  Prob_LongPass: 1
+  Attributes:
+    Id: 7469de80-2885-4dab-ab96-a281c73da1e7
+    FirstName: Miliciana
+    LastName: da Laguna
+    Zone: 7
+    Position: 1
+    Strategy: 0
+    Goalkeeping: 17
+    Passing: 37
+    Dribbling: 25
+    Crossing: 37
+    Tackling: 27
+    Blocking: 28
+    Shooting: 35
+    Heading: 37
+    Freekick: 10
+    Penalty: 15
+    Speed: 38
+    Strength: 32
+    Agility: 38
+    Stamina: 75
+    Teamwork: 32
+    Vision: 37
+    Stability: 47
+    LifeTimeStats:
+      TotalPasses: 0
+      TotalCrosses: 0
+      TotalShots: 0
+      TotalHeaders: 0
+      TotalFaults: 0
+      TotalTackles: 0
+      TotalDribbles: 0
+      TotalGoals: 0
+      TotalSaves: 0
+      TotalPassesMissed: 0
+      TotalShotsMissed: 0
+      TotalHeadersMissed: 0
+      TotalDribblesMissed: 0
+      TotalCrossesMissed: 0
+      TotalPresence: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 0
+        canRemove: 0
+        draggable: 0
+        expandable: 0
+        multipleSelection: 0
+        isExpanded: 0
+        label:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 0
+        footerHeight: 0
+        slideEasing: 0
+        verticalSpacing: 0
+        showDefaultBackground: 0
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
   LifeTimeStats:
     TotalPasses: 0
     TotalCrosses: 0
@@ -105,40 +133,21 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 0
-    _keyValues:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2D-649471-306EAB65
-    _keys:
-    - 5C2F2BBE-7BE0A1-3136F98B
-    - 5C2F2C2D-649471-306EAB65
-    _values:
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
-    - TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+    _keyValues: []
+    _keys: []
+    _values: []
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

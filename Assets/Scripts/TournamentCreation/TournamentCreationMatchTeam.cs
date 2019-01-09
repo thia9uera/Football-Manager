@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -12,21 +10,21 @@ public class TournamentCreationMatchTeam : MonoBehaviour
     [SerializeField]
     Image frameImage;
 
-    TournamentData.TeamMatchData data;
+    TeamMatchData data;
 
-    public void Populate(TournamentData.TeamMatchData _data)
+    public void Populate(TeamMatchData _data)
     {
         data = _data;
-        nameLabel.text = data.Team.Name;
-        frameImage.color = data.Team.PrimaryColor;
-        if(_data.Team.IsPlaceholder)
+        nameLabel.text = data.TeamAttributes.Name;
+        frameImage.color = data.TeamAttributes.PrimaryColor;
+        if(_data.TeamAttributes.IsPlaceholder)
         {
-            nameLabel.color = data.Team.SecondaryColor;
+            nameLabel.color = data.TeamAttributes.SecondaryColor;
         }
     }
 
     public void ClickHandler()
     {
-        TournamentCreation.Instance.RemoveTeam(data.Team);
+        TournamentCreation.Instance.RemoveTeam(data.TeamAttributes.Id);
     }
 }
