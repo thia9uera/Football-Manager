@@ -503,231 +503,10 @@ public class MatchController : MonoBehaviour
             screen.AwayTeamSquad.UpdateFatigue();
         }
 
-
-        //IF LAST ACTION RESULTED IN A GOAL
-        switch (matchEvent)
-        {
-            case MatchEvent.Goal: ResolveGoal(); break;
-                
-
-            case MatchEvent.Offside:
-            case MatchEvent.Freekick:
-                if (!isFreekickTaken)
-                {
-                    if (matchEvent == MatchEvent.Offside) SwitchPossesion();
-
-                    isFreekickTaken = true;
-
-                    FieldZone zone = GetTeamZone(AttackingTeam);
-
-                    if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Freekick);
-                    attackingPlayer = GetAttackingPlayer(CurrentZone);
-                    localization.PLAYER_1 = attackingPlayer.FirstName;
-                    offensiveAction = GetFreeKickAction();
-
-                    if (offensiveAction == PlayerData.PlayerAction.Shot)
-                    {
-                        defendingPlayer = DefendingTeam.Squad[0];
-                        UpdateNarration("nar_FreekickTake_", 1, AttackingTeam);
-                        attackingPlayer.MatchStats.TotalShots++;
-                    }                    
-                    else
-                    {
-                        isFreekickTaken = false;
-                        marking = MarkingType.None;
-                        matchEvent = MatchEvent.None;
-                        ResolveAction();
-                    }
-                }
-                else
-                {
-                    isFreekickTaken = false;
-                    matchEvent = MatchEvent.None;
-                    ResolveShot(MarkingType.None);
-                }
-                return;
-
-            case MatchEvent.Penalty:
-                if (!isFreekickTaken)
-                {
-                    isFreekickTaken = true;
-                    attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Penalty);
-                    localization.PLAYER_1 = attackingPlayer.FirstName;
-                    defendingPlayer = DefendingTeam.Squad[0];
-                    localization.PLAYER_2 = defendingPlayer.FirstName;
-                    offensiveAction = PlayerData.PlayerAction.Shot;
-                    UpdateNarration("nar_PenaltyTake_", 1, AttackingTeam);
-                    attackingPlayer.MatchStats.TotalShots++;
-
-                    DebugString += "__________________________________________________________________________________________\n\n";
-                    DebugString += "<size=30>PENALTY - " + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n\n";
-                }
-                else
-                {
-                    attackingBonus *= attackingBonusHigh;
-                    matchEvent = MatchEvent.None;
-                    ResolveShot(MarkingType.None);
-                    isFreekickTaken = false;
-                }
-                return;
-
-            case MatchEvent.Goalkick:
-                attackingPlayer = AttackingTeam.Squad[0];
-                localization.PLAYER_1 = attackingPlayer.FirstName;
-                marking = MarkingType.None;
-                offensiveAction = PlayerData.PlayerAction.Cross;
-                ResolveAction();
-                break;
-        }
-
-        //IF LAST SHOT WAS A MISS
-        if (shotMissed)
-        {
-            if (matchEvent == MatchEvent.Freekick)
-            {
-                UpdateNarration("nar_WrongFreekick_", 1);
-                DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
-            }
-            else if (matchEvent == MatchEvent.Penalty)
-            {
-                UpdateNarration("nar_MissedShot_", 2);
-                DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
-                matchEvent = MatchEvent.Goalkick;
-            }
-            else if (offensiveAction == PlayerData.PlayerAction.Shot)
-            {
-                UpdateNarration("nar_WrongShot_", 3);
-                matchEvent = MatchEvent.Goalkick;
-            }
-            else if (offensiveAction == PlayerData.PlayerAction.Header)
-            {
-                UpdateNarration("nar_WrongHeader_");
-                DebugString += "\n\nCabeceou pra fora\n\n_____________________________________\n\n";
-                matchEvent = MatchEvent.Goalkick;
-            }
-
-            attackingPlayer.MatchStats.TotalShotsMissed++;
-            SwitchPossesion();
-            shotMissed = false;
-            return;
-        }
-        
-        //IF KEEPER CONCEDED A CORNER KICK
-        if(matchEvent == MatchEvent.CornerKick)
-        {
-            if (!isFreekickTaken)
-            {
-                shotSaved = false;
-
-                offensiveAction = PlayerData.PlayerAction.Cross;
-                CurrentZone = FieldZone.LF;
-
-                if (AttackingTeam == AwayTeam)
-                {
-                    CurrentZone = FieldZone.BLD;
-                }
-
-                defendingPlayer = null;
-                marking = MarkingType.None;
-                attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Crossing);
-
-                UpdateNarration("nar_CornerKick_", 1, AttackingTeam);
-
-                isFreekickTaken = true;
-            }
-            else
-            {
-                attackingBonus *= attackingBonusMedium;
-                CurrentZone = FieldZone.Box;
-                attackingPlayer = GetAttackingPlayer(GetTeamZone(AttackingTeam));
-                defendingPlayer = GetDefendingPlayer(GetTeamZone(DefendingTeam));
-
-                matchEvent = MatchEvent.None;
-                ResolveAction();
-            }
-            return;
-        }
-
-        //IF KEEPER SAVED LAST SHOT
-        if(shotSaved)
-        {
-            if (offensiveAction == PlayerData.PlayerAction.Header)
-            {
-                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cabecada de " + attackingPlayer.GetFullName() + "\n\n_____________________________________\n\n";
-                UpdateNarration("nar_SaveHeader_", 1, DefendingTeam);
-            }
-            else
-            {
-                if (matchEvent == MatchEvent.Freekick)
-                {
-                    DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cobranca de falta" + "\n\n_____________________________________\n\n";
-                    UpdateNarration("nar_SaveFreekick_",1, DefendingTeam);
-                    matchEvent = MatchEvent.None;
-                    keepDefender = true;
-                }
-                else if (matchEvent == MatchEvent.Penalty)
-                {
-                    DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cobranca de penalty" + "\n\n_____________________________________\n\n";
-                    UpdateNarration("nar_SavePenalty_", 1, DefendingTeam);
-                    matchEvent = MatchEvent.None;
-                    keepDefender = true;
-                }
-                else
-                {
-                    if(attackingPlayer == null) print("ATTACKER NULL");
-                    if (defendingPlayer == null) defendingPlayer = DefendingTeam.Squad[0];
-                    DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
-                    if(defenseExcitement == -1) UpdateNarration("nar_WorstSaveShot_", 1, DefendingTeam);
-                    else if (defenseExcitement == 0) UpdateNarration("nar_SaveShot_", 1, DefendingTeam);
-                    else if (defenseExcitement == 1) UpdateNarration("nar_BestSaveShot_", 1, DefendingTeam);
-                    keepDefender = true;
-                }
-            }
-
-            CurrentZone = FieldZone.OwnGoal;
-            if (DefendingTeam == AwayTeam) CurrentZone = GetAwayTeamZone();
-
-            defendingPlayer.MatchStats.TotalSaves++;
-            SwitchPossesion();
-            keepDefender = true;
-            shotSaved = false;
-            return;
-        }
+        ResolveEvents();
 
         //HALF TIME
-        if (matchTime >= 45 && !isHalfTime)
-        {
-            isHalfTime = true;
-            UpdateNarration("nar_FirstHalfEnd_");
-            AttackingTeam = AwayTeam;
-            DefendingTeam = HomeTeam;
-
-            if (!isSimulating)
-            {
-                screen.HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
-                screen.AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
-            }         
-
-            return;
-        }
-        if (isHalfTime && !secondHalfStarted)
-        {
-            secondHalfStarted = true;
-            RestartMatch();
-            UpdateNarration("nar_SecondHalfStart_");
-            DebugString = "SEGUNDO TEMPO\n\n";
-
-            return;
-        }
-        else if (matchTime >= 90)
-        {
-            EndMatch();
-             
-            return;
-        }
-
-        matchTime++;
-        if(!isSimulating) screen.Score.UpdateTime(matchTime);
+        UpdateMatchTime();
 
         //Step 1: Get players involved in the dispute
         if (!keepAttacker) attackingPlayer = GetAttackingPlayer(CurrentZone);
@@ -805,6 +584,28 @@ public class MatchController : MonoBehaviour
         }
     }
 
+    void ResolveEvents()
+    {
+        //IF LAST ACTION RESULTED IN A GOAL
+        switch (matchEvent)
+        {
+            case MatchEvent.Goal: ResolveGoal(); break;
+            case MatchEvent.Offside:
+            case MatchEvent.Freekick: ResolveFreekick(); break;
+            case MatchEvent.Penalty: ResolvePenalty(); break;
+            case MatchEvent.Goalkick: ResolveGoalkick(); break;
+        }
+
+        //IF LAST SHOT WAS A MISS
+        if (shotMissed) ResolveShotMissed();
+
+        //IF KEEPER CONCEDED A CORNER KICK
+        if (matchEvent == MatchEvent.CornerKick) ResolveCornerKick();
+
+        //IF KEEPER SAVED LAST SHOT
+        if (shotSaved) ResolveShotSaved();
+    }
+
     void ResolveGoal()
     {
         if (!isGoalAnnounced)
@@ -837,6 +638,79 @@ public class MatchController : MonoBehaviour
             UpdateNarration("nar_MatchRestart_");
             return;
         }
+    }
+
+    void ResolveFreekick()
+    {
+        if (!isFreekickTaken)
+        {
+            if (matchEvent == MatchEvent.Offside) SwitchPossesion();
+
+            isFreekickTaken = true;
+
+            FieldZone zone = GetTeamZone(AttackingTeam);
+
+            if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Freekick);
+            attackingPlayer = GetAttackingPlayer(CurrentZone);
+            localization.PLAYER_1 = attackingPlayer.FirstName;
+            offensiveAction = GetFreeKickAction();
+
+            if (offensiveAction == PlayerData.PlayerAction.Shot)
+            {
+                defendingPlayer = DefendingTeam.Squad[0];
+                UpdateNarration("nar_FreekickTake_", 1, AttackingTeam);
+                attackingPlayer.MatchStats.TotalShots++;
+            }
+            else
+            {
+                isFreekickTaken = false;
+                marking = MarkingType.None;
+                matchEvent = MatchEvent.None;
+                ResolveAction();
+            }
+        }
+        else
+        {
+            isFreekickTaken = false;
+            matchEvent = MatchEvent.None;
+            ResolveShot(MarkingType.None);
+        }
+        return;
+    }
+
+    void ResolvePenalty()
+    {
+        if (!isFreekickTaken)
+        {
+            isFreekickTaken = true;
+            attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Penalty);
+            localization.PLAYER_1 = attackingPlayer.FirstName;
+            defendingPlayer = DefendingTeam.Squad[0];
+            localization.PLAYER_2 = defendingPlayer.FirstName;
+            offensiveAction = PlayerData.PlayerAction.Shot;
+            UpdateNarration("nar_PenaltyTake_", 1, AttackingTeam);
+            attackingPlayer.MatchStats.TotalShots++;
+
+            DebugString += "__________________________________________________________________________________________\n\n";
+            DebugString += "<size=30>PENALTY - " + attackingPlayer.GetFullName() + " (" + attackingPlayer.GetOverall() + ")</size>\n\n";
+        }
+        else
+        {
+            attackingBonus *= attackingBonusHigh;
+            matchEvent = MatchEvent.None;
+            ResolveShot(MarkingType.None);
+            isFreekickTaken = false;
+        }
+        return;
+    }
+
+    void ResolveGoalkick()
+    {
+        attackingPlayer = AttackingTeam.Squad[0];
+        localization.PLAYER_1 = attackingPlayer.FirstName;
+        marking = MarkingType.None;
+        offensiveAction = PlayerData.PlayerAction.Cross;
+        ResolveAction();
     }
 
     void ResolveAction()
@@ -1134,6 +1008,155 @@ public class MatchController : MonoBehaviour
             }
             SwitchPossesion();
         }
+    }
+
+    void ResolveShotMissed()
+    {
+        if (matchEvent == MatchEvent.Freekick)
+        {
+            UpdateNarration("nar_WrongFreekick_", 1);
+            DebugString += "\n\nChutou na barreira\n\n_____________________________________\n\n";
+        }
+        else if (matchEvent == MatchEvent.Penalty)
+        {
+            UpdateNarration("nar_MissedShot_", 2);
+            DebugString += "\n\nChutou pra fora\n\n_____________________________________\n\n";
+            matchEvent = MatchEvent.Goalkick;
+        }
+        else if (offensiveAction == PlayerData.PlayerAction.Shot)
+        {
+            UpdateNarration("nar_WrongShot_", 3);
+            matchEvent = MatchEvent.Goalkick;
+        }
+        else if (offensiveAction == PlayerData.PlayerAction.Header)
+        {
+            UpdateNarration("nar_WrongHeader_");
+            DebugString += "\n\nCabeceou pra fora\n\n_____________________________________\n\n";
+            matchEvent = MatchEvent.Goalkick;
+        }
+
+        attackingPlayer.MatchStats.TotalShotsMissed++;
+        SwitchPossesion();
+        shotMissed = false;
+        return;
+    }
+
+    void ResolveCornerKick()
+    {
+        if (!isFreekickTaken)
+        {
+            shotSaved = false;
+
+            offensiveAction = PlayerData.PlayerAction.Cross;
+            CurrentZone = FieldZone.LF;
+
+            if (AttackingTeam == AwayTeam)
+            {
+                CurrentZone = FieldZone.BLD;
+            }
+
+            defendingPlayer = null;
+            marking = MarkingType.None;
+            attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Crossing);
+
+            UpdateNarration("nar_CornerKick_", 1, AttackingTeam);
+
+            isFreekickTaken = true;
+        }
+        else
+        {
+            attackingBonus *= attackingBonusMedium;
+            CurrentZone = FieldZone.Box;
+            attackingPlayer = GetAttackingPlayer(GetTeamZone(AttackingTeam));
+            defendingPlayer = GetDefendingPlayer(GetTeamZone(DefendingTeam));
+
+            matchEvent = MatchEvent.None;
+            ResolveAction();
+        }
+        return;
+    }
+
+    void ResolveShotSaved()
+    {
+        if (offensiveAction == PlayerData.PlayerAction.Header)
+        {
+            DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cabecada de " + attackingPlayer.GetFullName() + "\n\n_____________________________________\n\n";
+            UpdateNarration("nar_SaveHeader_", 1, DefendingTeam);
+        }
+        else
+        {
+            if (matchEvent == MatchEvent.Freekick)
+            {
+                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cobranca de falta" + "\n\n_____________________________________\n\n";
+                UpdateNarration("nar_SaveFreekick_", 1, DefendingTeam);
+                matchEvent = MatchEvent.None;
+                keepDefender = true;
+            }
+            else if (matchEvent == MatchEvent.Penalty)
+            {
+                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cobranca de penalty" + "\n\n_____________________________________\n\n";
+                UpdateNarration("nar_SavePenalty_", 1, DefendingTeam);
+                matchEvent = MatchEvent.None;
+                keepDefender = true;
+            }
+            else
+            {
+                if (attackingPlayer == null) print("ATTACKER NULL");
+                if (defendingPlayer == null) defendingPlayer = DefendingTeam.Squad[0];
+                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
+                if (defenseExcitement == -1) UpdateNarration("nar_WorstSaveShot_", 1, DefendingTeam);
+                else if (defenseExcitement == 0) UpdateNarration("nar_SaveShot_", 1, DefendingTeam);
+                else if (defenseExcitement == 1) UpdateNarration("nar_BestSaveShot_", 1, DefendingTeam);
+                keepDefender = true;
+            }
+        }
+
+        CurrentZone = FieldZone.OwnGoal;
+        if (DefendingTeam == AwayTeam) CurrentZone = GetAwayTeamZone();
+
+        defendingPlayer.MatchStats.TotalSaves++;
+        SwitchPossesion();
+        keepDefender = true;
+        shotSaved = false;
+        return;
+    }
+
+    void UpdateMatchTime()
+    {
+        if (matchTime >= 45 && !isHalfTime)
+        {
+            isHalfTime = true;
+            UpdateNarration("nar_FirstHalfEnd_");
+            AttackingTeam = AwayTeam;
+            DefendingTeam = HomeTeam;
+
+            if (!isSimulating)
+            {
+                screen.HomeTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+                screen.AwayTeamSquad.ModifyFatigue(fatigueRecoverHalfTime);
+            }
+
+            return;
+        }
+        if (isHalfTime && !secondHalfStarted)
+        {
+            secondHalfStarted = true;
+            RestartMatch();
+            UpdateNarration("nar_SecondHalfStart_");
+            DebugString = "SEGUNDO TEMPO\n\n";
+
+            return;
+        }
+        else if (matchTime >= 90)
+        {
+            EndMatch();
+
+            return;
+        }
+
+        matchTime++;
+
+        if (!isSimulating) screen.Score.UpdateTime(matchTime);
     }
 
     bool IsActionSuccessful(MarkingType _marking)
@@ -1972,10 +1995,7 @@ public class MatchController : MonoBehaviour
         int bonusChance = 0;
         defendingPlayer = DefendingTeam.Squad[0];
         localization.PLAYER_2 = defendingPlayer.FirstName;
-        FieldZone zone = CurrentZone;
-
-        if (attackingPlayer == AwayTeam) CurrentZone = GetAwayTeamZone();
-
+        FieldZone zone = GetTeamZone(AttackingTeam);
 
         switch(zone)
         {

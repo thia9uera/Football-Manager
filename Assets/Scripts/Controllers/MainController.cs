@@ -113,7 +113,11 @@ public class MainController : MonoBehaviour
 
         foreach (PlayerData p in AllPlayers)
         {
-            if (p.Id == _id) player = p;
+            if (p.Id == _id)
+            {
+                player = p;
+                break;
+            }
         }
 
         return player;
@@ -125,9 +129,13 @@ public class MainController : MonoBehaviour
 
         foreach (TeamData t in AllTeams)
         {
-            if (t.Id == _id) team = t;
+            if (t.Id == _id)
+            {
+                team = t;
+                break;
+            }
         }
-
+        if (team == null) print(_id + "    TEAMS: " + AllTeams.Count);
         return team;
     }
 

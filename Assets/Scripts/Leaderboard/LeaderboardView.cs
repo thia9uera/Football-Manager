@@ -39,8 +39,8 @@ public class LeaderboardView : BaseScreen
     {
         base.Show();
 
-        if (listPlayers == null || listPlayers.Count == 0) listPlayers = MainController.Instance.AllPlayers;
-        if (listTeams == null || listTeams.Count == 0) listTeams = MainController.Instance.AllTeams;
+        if (listPlayers == null || listPlayers.Count == 0) listPlayers = new List<PlayerData>(MainController.Instance.AllPlayers);
+        if (listTeams == null || listTeams.Count == 0) listTeams = new List<TeamData> (MainController.Instance.AllTeams);
 
         SwitchLeaderboard(type);
     }

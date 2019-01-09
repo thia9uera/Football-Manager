@@ -10,8 +10,10 @@ public class TournamentFixturesItem : MonoBehaviour
 
     public void Populate(MatchData _data)
     {
+        print(_data.HomeTeam.TeamAttributes.Id);
         TeamData homeTeam = MainController.Instance.GetTeamById(_data.HomeTeam.TeamAttributes.Id);
         TeamData awayTeam = MainController.Instance.GetTeamById(_data.AwayTeam.TeamAttributes.Id);
+
         home.Populate(_data.HomeTeam.TeamAttributes.Name, homeTeam.GetOveralRating().ToString(), _data.HomeTeam.Statistics.TotalGoals.ToString(), _data.HomeTeam.TeamAttributes.PrimaryColor, _data.isPlayed);
         away.Populate(_data.AwayTeam.TeamAttributes.Name, awayTeam.GetOveralRating().ToString(), _data.AwayTeam.Statistics.TotalGoals.ToString(), _data.AwayTeam.TeamAttributes.PrimaryColor, _data.isPlayed);
 
