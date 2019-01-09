@@ -123,9 +123,14 @@ public class LoadingScreen : BaseScreen
         PlayerData[] players = Tools.GetAtSubfolders<PlayerData>("Data/Players");
         TeamData[] teams = Tools.GetAtFolder<TeamData>("Data/Teams");
         TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
-        MainController.Instance.AllPlayers = new List<PlayerData>(players);
-        MainController.Instance.AllTeams = new List<TeamData>(teams);
-        MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
+
+        foreach (PlayerData p in players) MainController.Instance.AllPlayers.Add(Instantiate(p));
+        foreach (TeamData t in teams) MainController.Instance.AllTeams.Add(Instantiate(t));
+        foreach (TournamentData t in tournaments) MainController.Instance.AllTournaments.Add(Instantiate(t));
+        ;
+        //MainController.Instance.AllPlayers = new List<PlayerData>(players);
+       // MainController.Instance.AllTeams = new List<TeamData>(teams);
+       // MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
 
         foreach (TeamData team in teams) team.Initialize();
 
