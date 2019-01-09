@@ -13,11 +13,8 @@ public static class Tools
         foreach (string file in folder)
         {
             string localPath = "Assets/" + path;
-            int index = file.LastIndexOf("/", System.StringComparison.Ordinal);
-            if (index > 0)
-            {
-                localPath += file.Substring(index);
-            }
+            string fileName = Path.GetFileName(file);
+            localPath = "Assets/" + path + "/" + fileName;
             Object t = AssetDatabase.LoadAssetAtPath(localPath, typeof(T));
             if (t != null) al.Add(t);
         }

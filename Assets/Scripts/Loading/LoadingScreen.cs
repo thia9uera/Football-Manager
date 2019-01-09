@@ -48,16 +48,7 @@ public class LoadingScreen : BaseScreen
         int total = 0;
 
 #if UNITY_EDITOR
-        PlayerData[] players = Tools.GetAtSubfolders<PlayerData>("Data/Players");
-        TeamData[] teams = Tools.GetAtFolder<TeamData>("Data/Teams");
-        TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
-        Debug.Log("Players found: " + players.Length);
-        MainController.Instance.AllPlayers = new List<PlayerData>(players);
-        MainController.Instance.AllTeams = new List<TeamData>(teams);
-        MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
 
-        foreach (TeamData team in teams) team.Initialize();
-        Debug.Log("SAVE FILES FOUND: " + saves.Length);
         CreateNewFile();
 
         return;
@@ -129,6 +120,15 @@ public class LoadingScreen : BaseScreen
 
     public void CreateNewFile()
     {
+        PlayerData[] players = Tools.GetAtSubfolders<PlayerData>("Data/Players");
+        TeamData[] teams = Tools.GetAtFolder<TeamData>("Data/Teams");
+        TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
+        MainController.Instance.AllPlayers = new List<PlayerData>(players);
+        MainController.Instance.AllTeams = new List<TeamData>(teams);
+        MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
+
+        foreach (TeamData team in teams) team.Initialize();
+
         string str = "SAVE " + (saves.Length + 1);
         MainController.Instance.Data.CreateUserData(str);
 

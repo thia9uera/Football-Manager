@@ -507,37 +507,8 @@ public class MatchController : MonoBehaviour
         //IF LAST ACTION RESULTED IN A GOAL
         switch (matchEvent)
         {
-            case MatchEvent.Goal:
-                if (!isGoalAnnounced)
-                {
-                    isGoalAnnounced = true;
-                    UpdateNarration("nar_GoalScream_", 1, AttackingTeam);
-                    DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
-                    if (AttackingTeam == HomeTeam) homeTeamScore++;
-                    else awayTeamScore++;
-                    if(!isSimulating) screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
-                    attackingPlayer.MatchStats.TotalGoals++;
-                    AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
-                    return;
-                }
-                if (!isScorerAnnounced)
-                {
-                    isScorerAnnounced = true;
-                    UpdateNarration("nar_Goal_", 8, AttackingTeam);
-                    return;
-                }
-                else
-                {
-                    matchEvent = MatchEvent.None;
-                    isGoalAnnounced = false;
-                    isScorerAnnounced = false;
-
-                    SwitchPossesion();
-                    RestartMatch();
-
-                    UpdateNarration("nar_MatchRestart_");
-                    return;
-                }
+            case MatchEvent.Goal: ResolveGoal(); break;
+                
 
             case MatchEvent.Offside:
             case MatchEvent.Freekick:
@@ -831,6 +802,40 @@ public class MatchController : MonoBehaviour
                 if (attackingPlayer == null) print("NULL ATTACKING PLAYER IMPOSSIBRU");
                 ResolveAction();
             }
+        }
+    }
+
+    void ResolveGoal()
+    {
+        if (!isGoalAnnounced)
+        {
+            isGoalAnnounced = true;
+            UpdateNarration("nar_GoalScream_", 1, AttackingTeam);
+            DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
+            if (AttackingTeam == HomeTeam) homeTeamScore++;
+            else awayTeamScore++;
+            if (!isSimulating) screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
+            attackingPlayer.MatchStats.TotalGoals++;
+            AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
+            return;
+        }
+        if (!isScorerAnnounced)
+        {
+            isScorerAnnounced = true;
+            UpdateNarration("nar_Goal_", 8, AttackingTeam);
+            return;
+        }
+        else
+        {
+            matchEvent = MatchEvent.None;
+            isGoalAnnounced = false;
+            isScorerAnnounced = false;
+
+            SwitchPossesion();
+            RestartMatch();
+
+            UpdateNarration("nar_MatchRestart_");
+            return;
         }
     }
 
