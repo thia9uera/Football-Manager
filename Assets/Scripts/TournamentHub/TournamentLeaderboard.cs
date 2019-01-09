@@ -27,7 +27,6 @@ public class TournamentLeaderboard : MonoBehaviour
     {
         Clear();
         int index = 1;
-        print("LIST SIZE: " + _list.Count);
         foreach (PlayerData data in _list)
         {
             TournamentLeaderboardItem item = Instantiate(itemTemplate, content);
@@ -36,11 +35,6 @@ public class TournamentLeaderboard : MonoBehaviour
             {
                 case "Goals" :  param = data.Attributes.TournamentStatistics[_tournamentId].TotalGoals.ToString(); break;
             }
-            print("TOURNAMENT EXISTS: " + data.Attributes.TournamentStatistics.ContainsKey(_tournamentId));
-            print("PLAYER NAME: " + data.FirstName);
-            print("GOALS: " + param);
-            print("ITEM: " + item.name);
-            print("TEAM: " + data.Team.Name);
             item.Populate(index, data.GetFullName(), param, data.Team.IsUserControlled);
             item.gameObject.SetActive(true);
             index++;

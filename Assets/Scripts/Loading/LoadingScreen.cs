@@ -24,6 +24,8 @@ public class LoadingScreen : BaseScreen
     float time;
     bool isLoaded;
 
+    string newGameName;
+
     public override void Show()
     {
         base.Show();
@@ -37,8 +39,6 @@ public class LoadingScreen : BaseScreen
         {
             LoadBundles();
         }
-
-        //inputField.text = "Save " + (saves.Count + 1);
     }
 
     void LoadBundles()
@@ -87,6 +87,16 @@ public class LoadingScreen : BaseScreen
     {
         if (buttons != null) foreach (GameObject go in buttons) Destroy(go);
         buttons = new List<GameObject>();
+
+        LoadingFileButton btnNewGame = Instantiate(btnTemplate, content);
+        btnNewGame.Label = "NEW GAME";
+        btnNewGame.gameObject.SetActive(true);
+        buttons.Add(btnNewGame.gameObject);
+        btnNewGame.GetComponent<Button>().onClick.AddListener(delegate
+        {
+            CreateNewFile();
+
+        });
 
         foreach (UserData user in _users)
         {
