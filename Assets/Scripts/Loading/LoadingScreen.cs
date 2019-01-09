@@ -51,14 +51,13 @@ public class LoadingScreen : BaseScreen
         PlayerData[] players = Tools.GetAtSubfolders<PlayerData>("Data/Players");
         TeamData[] teams = Tools.GetAtFolder<TeamData>("Data/Teams");
         TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
-
+        Debug.Log("Players found: " + players.Length);
         MainController.Instance.AllPlayers = new List<PlayerData>(players);
         MainController.Instance.AllTeams = new List<TeamData>(teams);
         MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
 
         foreach (TeamData team in teams) team.Initialize();
-        print("FILES LOADED");
-        Debug.Log(saves);
+        Debug.Log("SAVE FILES FOUND: " + saves.Length);
         CreateNewFile();
 
         return;
@@ -106,6 +105,7 @@ public class LoadingScreen : BaseScreen
     void LoadFile(string _file)
     {
         MainController.Instance.Data.LoadGame(_file);
+        //MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
     }
 
     private void Update()
@@ -119,10 +119,10 @@ public class LoadingScreen : BaseScreen
 
     public void CreateNewFile()
     {
-        string name = "SAVE " + (saves.Length + 1);
-        MainController.Instance.Data.CreateUserData(name);
+        string str = "SAVE " + (saves.Length + 1);
+        MainController.Instance.Data.CreateUserData(str);
 
-        print("NEW SAVE FILE '" + name + "' CREATED");
+        print("NEW SAVE FILE '" + str + "' CREATED");
 
         MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
     }

@@ -13690,6 +13690,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7758417476612273236, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13794,16 +13804,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b428a91d6cd4fa491f7a550ce67f0c, type: 3}
@@ -24867,7 +24867,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2553497247572523410}
   m_HandleRect: {fileID: 1429386938678252055}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -38852,7 +38852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000029064298}
+  m_AnchoredPosition: {x: 0, y: -0.000010355684}
   m_SizeDelta: {x: -0.000025947966, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8638124564398125651

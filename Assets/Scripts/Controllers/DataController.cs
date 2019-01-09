@@ -8,6 +8,19 @@ public class DataController : MonoBehaviour
     string saveFolder;
     string userFolder;
 
+    int totalPlayers;
+    int totalTeams;
+    int totalTournaments;
+
+    int playersLoaded;
+    int teamsLoaded;
+    int tournamentsLoaded;
+
+    bool isLoadingGame;
+    bool isLoadingPlayers;
+    bool isLoadingTeams;
+    bool isLoadingTournaments;
+
     private void Start()
     {
         saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
@@ -15,11 +28,12 @@ public class DataController : MonoBehaviour
 
     public void CreateUserData(string _name)
     {
-        UserData userData = new UserData();
-        userData.Name = _name;
-        userData.Id = System.Guid.NewGuid().ToString();
+        UserData userData = new UserData
+        {
+            Name = _name,
+            Id = System.Guid.NewGuid().ToString()
+        };
         MainController.Instance.User = userData;
-        if(saveFolder == null) saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
         userFolder = CombinePaths(saveFolder, userData.Id);
         if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
         if (Directory.Exists(userFolder))
@@ -28,7 +42,11 @@ public class DataController : MonoBehaviour
                                         "Please choose a different name for you save file.",
                                         "OK");
         }
-        else Directory.CreateDirectory(userFolder);
+        else
+        {
+            Directory.CreateDirectory(userFolder);
+            SaveGame();
+        }
     }
 
     #region SAVE
@@ -51,7 +69,7 @@ public class DataController : MonoBehaviour
     {
         foreach (PlayerData player in MainController.Instance.AllPlayers)
         {
-            SaveData(player.Attributes, player.Id, "/Players/");
+            SaveData(player.Attributes, player.Id, "Players");
         }
     }
 
@@ -59,7 +77,7 @@ public class DataController : MonoBehaviour
     {
         foreach (TeamData team in MainController.Instance.AllTeams)
         {
-            SaveData(team.Attributes, team.Id, "/Teams/");
+            SaveData(team.Attributes, team.Id, "Teams");
         }
     }
 
@@ -67,7 +85,7 @@ public class DataController : MonoBehaviour
     {
         foreach (TournamentData tournament in MainController.Instance.AllTournaments)
         {
-            SaveData(tournament.Attributes, tournament.Id, "/Tournaments/");
+            SaveData(tournament.Attributes, tournament.Id, "Tournaments");
         }
     }
     #endregion
@@ -75,11 +93,12 @@ public class DataController : MonoBehaviour
     #region LOAD
     public void LoadGame(string _user)
     {
-        userFolder = _user;
+        isLoadingGame = true;
+        userFolder = CombinePaths(saveFolder, _user);
         LoadUser();
         LoadPlayers();
-        LoadTeams();
-        LoadTournaments();
+        //LoadTeams();
+        //LoadTournaments();
     }
 
     public void LoadUser()
@@ -89,42 +108,67 @@ public class DataController : MonoBehaviour
 
     public void LoadPlayers()
     {
-        foreach(PlayerData p in MainController.Instance.AllPlayers)
+        isLoadingPlayers = true;
+        string[] files = Directory.GetFiles(CombinePaths(userFolder, "Players"));
+        totalPlayers = files.Length;
+        foreach (string file in files)
         {
-            PlayerData player = p;
-            player = LoadData<PlayerData>(RemoveSpaces(player.FirstName + player.LastName));
+            PlayerAttributes data = LoadFile<PlayerAttributes>(file);
+            PlayerData player = new PlayerData
+            {
+                Attributes = data
+            };
+            MainController.Instance.AllPlayers.Add(player);
+            playersLoaded++;
         }
     }
 
     public void LoadTeams()
     {
-        foreach (TeamData t in MainController.Instance.AllTeams)
+        isLoadingTeams = true;
+        string[] files = Directory.GetFiles(CombinePaths(userFolder, "Teams"));
+        totalTeams = files.Length;
+        foreach (string file in files)
         {
-            TeamData team = t;
-            team = LoadData<TeamData>(RemoveSpaces(team.Name));
+            TeamAttributes data = LoadFile<TeamAttributes>(file);
+            TeamData team = new TeamData
+            {
+                Attributes = data
+            };
+            team.Initialize(true);
+            MainController.Instance.AllTeams.Add(team);
+            teamsLoaded++;
         }
     }
 
     public void LoadTournaments()
     {
-        foreach (TournamentData t in MainController.Instance.AllTournaments)
+        isLoadingTournaments = true;
+        string[] files = Directory.GetFiles(CombinePaths(userFolder, "Tournaments"));
+        totalTournaments = files.Length;
+        foreach (string file in files)
         {
-            TournamentData tournament = t;
-            tournament = LoadData<TournamentData>(RemoveSpaces(tournament.Name));
+            TournamentAttributes data = LoadFile<TournamentAttributes>(file);
+            TournamentData tournament = new TournamentData
+            {
+                Attributes = data
+            };
+            tournament.LoadTeams();
+            MainController.Instance.AllTournaments.Add(tournament);
+            tournamentsLoaded++;
         }
     }
 
     public UserData[] GetSaveFiles()
     {
-        Debug.Log("GET FILES");
+        if (saveFolder == null) saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
         List<UserData> datas = new List<UserData>();
         if (!Directory.Exists(saveFolder)) return datas.ToArray();
 
         string[] dirs = Directory.GetDirectories(saveFolder);
-        for (int i= 0; i < dirs.Length; i++)
+        foreach (string folder in dirs)
         {
-            UserData data = LoadFile<UserData>(CombinePaths(dirs[i], "UserData.txt"));
-
+            UserData data = LoadFile<UserData>(CombinePaths(folder, "UserData.txt"));
             datas.Add(data);
         }
 
@@ -136,12 +180,10 @@ public class DataController : MonoBehaviour
     public void SaveData<T>(T _data, string _name, string _subfolder = "")
     {
         string path = "";
-        string subfolder = "";
-
         string folder = CombinePaths(userFolder, _subfolder);
 
         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-
+        
         path = Path.Combine(folder, _name + ".txt");
         string jsonString = JsonUtility.ToJson(_data);
         using (StreamWriter streamWriter = File.CreateText(path))
@@ -200,9 +242,35 @@ public class DataController : MonoBehaviour
     }
     #endregion
 
+    void FinishLoadingGame()
+    {
+        isLoadingGame = false;
+        MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.MainMenu);
+        print("Finished Loading Game");
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
             SaveGame();
+
+        if(isLoadingGame)
+        {
+            if(isLoadingTournaments)
+            {
+                print("Tournaments loaded: " + tournamentsLoaded + "/" + totalTournaments);
+                if (tournamentsLoaded == totalTournaments) FinishLoadingGame();
+            }
+            else if(isLoadingTeams)
+            {
+                print("Teams loaded: " + teamsLoaded + "/" + totalTeams);
+                if (teamsLoaded == totalTeams) LoadTournaments();
+            }
+            else if (isLoadingPlayers)
+            {
+                print("Players loaded: " + playersLoaded + "/" + totalPlayers);
+                if (playersLoaded == totalPlayers) LoadTeams();
+            }
+        }
     }
 }

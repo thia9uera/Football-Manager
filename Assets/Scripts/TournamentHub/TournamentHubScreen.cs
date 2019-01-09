@@ -98,7 +98,10 @@ public class TournamentHubScreen : BaseScreen
             switch(_param)
             {
                 case "Goals":
-                    if (stats.TotalGoals > 0) playersList.Add(player);
+                    if (stats.TotalGoals > 0)
+                    {
+                        playersList.Add(player);
+                    }
                     playersList = MainController.Instance.SortPlayersBy(playersList, _param, currentTournament.Id);
                     break;
             }           

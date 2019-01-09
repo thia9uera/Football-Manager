@@ -107,11 +107,23 @@ public class MainController : MonoBehaviour
         return listPlayers;
     }
 
+    public PlayerData GetPlayerById(string _id)
+    {
+        PlayerData player = null;
+
+        foreach (PlayerData p in AllPlayers)
+        {
+            if (p.Id == _id) player = p;
+        }
+
+        return player;
+    }
+
     public TeamData GetTeamById(string _id)
     {
         TeamData team = null;
 
-        foreach (TeamData t in Instance.AllTeams)
+        foreach (TeamData t in AllTeams)
         {
             if (t.Id == _id) team = t;
         }

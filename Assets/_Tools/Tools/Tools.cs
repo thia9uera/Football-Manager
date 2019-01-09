@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -13,12 +12,11 @@ public static class Tools
         string[] folder = Directory.GetFiles(Application.dataPath + "/" + path);
         foreach (string file in folder)
         {
-            string filePath = file.Replace("\\", "/");
             string localPath = "Assets/" + path;
-            int index = filePath.LastIndexOf("/");
+            int index = file.LastIndexOf("/", System.StringComparison.Ordinal);
             if (index > 0)
             {
-                localPath += filePath.Substring(index);
+                localPath += file.Substring(index);
             }
             Object t = AssetDatabase.LoadAssetAtPath(localPath, typeof(T));
             if (t != null) al.Add(t);
@@ -26,9 +24,7 @@ public static class Tools
 
 
         T[] result = new T[al.Count];
-        for (int i = 0; i < al.Count; i++)
-            result[i] = (T)al[i];
-
+        for (int i = 0; i < al.Count; i++) result[i] = (T)al[i];
         return result;
     }
 
@@ -38,30 +34,19 @@ public static class Tools
         string[] directories = Directory.GetDirectories(Application.dataPath + "/" + path);
         foreach (string dir in directories)
         {
-            string directory = dir.Replace("\\", "/");
-            string[] subfolder = Directory.GetFiles(directory);
+            string directory = Path.GetFileName(dir);
+            string[] subfolder = Directory.GetFiles(dir);
             foreach (string file in subfolder)
             {
-                string filePath = file.Replace("\\", "/");
-                string localPath = "Assets/" + path;
-                int index = file.LastIndexOf("/");
-
-                if (index > 0)
-                {
-                    localPath += filePath.Substring(index);
-                }
+                string fileName = Path.GetFileName(file);
+                string localPath = "Assets/" + path + "/" + directory + "/" + fileName;
                 Object t = AssetDatabase.LoadAssetAtPath(localPath, typeof(T));
                 if (t != null) al.Add(t);
             }
-
         }
 
         T[] result = new T[al.Count];
-        for (int i = 0; i < al.Count; i++)
-        {
-            result[i] = (T)al[i];
-        }
-
+        for (int i = 0; i < al.Count; i++) result[i] = (T)al[i];
         return result;
     }
 }

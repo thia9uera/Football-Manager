@@ -32,7 +32,7 @@ public class TeamAttributes
     public FormationData.TeamFormation Formation;
     public TeamStrategy Strategy;
 
-    [HideInInspector]
+    //[HideInInspector]
     public string[] SquadIds, SubstitutesIds;
 
     public TeamStatistics LifeTimeStats;

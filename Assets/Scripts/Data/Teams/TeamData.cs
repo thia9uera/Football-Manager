@@ -174,27 +174,61 @@ public class TeamData : ScriptableObject
         ResetStatistics("LifeTime");
     }
 
-    public void Initialize()
+    public void Initialize(bool _fromSaveData = false)
     {
-        foreach (PlayerData player in GetAllPlayers()) player.Team = this; 
+        if(_fromSaveData)
+        {
+            SetSquad(Attributes.SquadIds);
+            SetSubstitutes(Attributes.SubstitutesIds);
+            return;
+        }
+
+        SetSquad(Squad);
+        SetSubstitutes(Substitutes);
+
     }
 
-    public void SetSquad(List<PlayerData> _players)
+    public void SetSquad(PlayerData[] _players)
     {
-        for(int i = 0; i < _players.Count; i++)
+        Attributes.SquadIds = new string[11];
+        for (int i = 0; i < _players.Length; i++)
         {
-            Squad[i] = _players[i];
+            Attributes.SquadIds[i] = _players[i].Id;
+            _players[i].Team = this;
         }
     }
 
-    public void SetSubstitutes(List<PlayerData> _players)
+    public void SetSquad(string[] _playerIds)
     {
         List<PlayerData> list = new List<PlayerData>();
-        for (int i = 0; i < _players.Count; i++)
+        for (int i = 0; i < _playerIds.Length; i++)
         {
-            list.Add(_players[i]);
+            PlayerData player = MainController.Instance.GetPlayerById(_playerIds[i]);
+            list.Add(player);
+            player.Team = this;
         }
+        Squad = list.ToArray();
+    }
 
+    public void SetSubstitutes(PlayerData[] _players)
+    {
+        Attributes.SubstitutesIds = new string[Substitutes.Length];
+        for (int i = 0; i < _players.Length; i++)
+        {
+            Attributes.SubstitutesIds[i] = _players[i].Id;
+            _players[i].Team = this;
+        }
+    }
+
+    public void SetSubstitutes(string[] _playerIds)
+    {
+        List<PlayerData> list = new List<PlayerData>();
+        for (int i = 0; i < _playerIds.Length; i++)
+        {
+            PlayerData player = MainController.Instance.GetPlayerById(_playerIds[i]);
+            list.Add(player);
+            player.Team = this;
+        }
         Substitutes = list.ToArray();
     }
 }
