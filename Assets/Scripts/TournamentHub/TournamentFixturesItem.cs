@@ -10,7 +10,6 @@ public class TournamentFixturesItem : MonoBehaviour
 
     public void Populate(MatchData _data)
     {
-        print(_data.HomeTeam.TeamAttributes.Id);
         TeamData homeTeam = MainController.Instance.GetTeamById(_data.HomeTeam.TeamAttributes.Id);
         TeamData awayTeam = MainController.Instance.GetTeamById(_data.AwayTeam.TeamAttributes.Id);
 

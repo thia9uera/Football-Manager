@@ -206,6 +206,7 @@
     <Compile Include="Assets\Scripts\Data\UserData.cs" />
     <Compile Include="Assets\Scripts\Generic\BaseScreen.cs" />
     <Compile Include="Assets\Scripts\Generic\ButtonDefault.cs" />
+    <Compile Include="Assets\Scripts\Generic\Dice.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardPlayerView.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardTeamView.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardView.cs" />
