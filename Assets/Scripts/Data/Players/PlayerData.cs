@@ -392,21 +392,21 @@ public class PlayerData : ScriptableObject
 
     void UpdateStats(PlayerStatistics _stats, PlayerStatistics _data)
     {
-        _stats.TotalGoals += _data.TotalGoals;
-        _stats.TotalPasses += _data.TotalPasses;
-        _stats.TotalCrosses += _data.TotalCrosses;
-        _stats.TotalFaults += _data.TotalFaults;
-        _stats.TotalTackles += _data.TotalTackles;
-        _stats.TotalDribbles += _data.TotalDribbles;
-        _stats.TotalHeaders += _data.TotalHeaders;
-        _stats.TotalSaves += _data.TotalSaves;
-        _stats.TotalShots += _data.TotalShots;
-        _stats.TotalCrossesMissed += _data.TotalCrossesMissed;
-        _stats.TotalDribblesMissed += _data.TotalDribblesMissed;
-        _stats.TotalHeadersMissed += _data.TotalHeadersMissed;
-        _stats.TotalPassesMissed += _data.TotalPassesMissed;
-        _stats.TotalShotsMissed += _data.TotalShotsMissed;
-        _stats.TotalPresence += _data.TotalPresence;
+        _stats.Goals += _data.Goals;
+        _stats.Passes += _data.Passes;
+        _stats.Crosses += _data.Crosses;
+        _stats.Faults += _data.Faults;
+        _stats.Tackles += _data.Tackles;
+        _stats.Dribbles += _data.Dribbles;
+        _stats.Headers += _data.Headers;
+        _stats.Saves += _data.Saves;
+        _stats.Shots += _data.Shots;
+        _stats.CrossesMissed += _data.CrossesMissed;
+        _stats.DribblesMissed += _data.DribblesMissed;
+        _stats.HeadersMissed += _data.HeadersMissed;
+        _stats.PassesMissed += _data.PassesMissed;
+        _stats.ShotsMissed += _data.ShotsMissed;
+        _stats.Presence += _data.Presence;
     }
 
     public PlayerStatistics GetTournamentStatistics(string _key)

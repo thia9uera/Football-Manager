@@ -101,7 +101,7 @@ public class TournamentHubScreen : BaseScreen
             switch(_param)
             {
                 case "Goals":
-                    if (stats.TotalGoals > 0)
+                    if (stats.Goals > 0)
                     {
                         playersList.Add(player);
                     }

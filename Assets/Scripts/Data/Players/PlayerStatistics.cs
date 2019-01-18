@@ -1,19 +1,20 @@
 ﻿[System.Serializable]
 public class PlayerStatistics
 {
-    public int TotalPasses;
-    public int TotalCrosses;
-    public int TotalShots;
-    public int TotalHeaders;
-    public int TotalFaults;
-    public int TotalTackles;
-    public int TotalDribbles;
-    public int TotalGoals;
-    public int TotalSaves;
-    public int TotalPassesMissed;
-    public int TotalShotsMissed;
-    public int TotalHeadersMissed;
-    public int TotalDribblesMissed;
-    public int TotalCrossesMissed;
-    public int TotalPresence;
+    public int Passes;
+    public int Crosses;
+    public int Shots;
+    public int Headers;
+    public int Faults;
+    public int Tackles;
+    public int Dribbles;
+    public int Goals;
+    public int Saves;
+    public int PassesMissed;
+    public int ShotsMissed;
+    public int HeadersMissed;
+    public int DribblesMissed;
+    public int CrossesMissed;
+    public int Presence;
+    public int Assists;
 }

@@ -37,21 +37,22 @@ MonoBehaviour:
     Vision: 81
     Stability: 76
     LifeTimeStats:
-      TotalPasses: 0
-      TotalCrosses: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalFaults: 0
-      TotalTackles: 0
-      TotalDribbles: 0
-      TotalGoals: 0
-      TotalSaves: 0
-      TotalPassesMissed: 0
-      TotalShotsMissed: 0
-      TotalHeadersMissed: 0
-      TotalDribblesMissed: 0
-      TotalCrossesMissed: 0
-      TotalPresence: 0
+      Passes: 0
+      Crosses: 0
+      Shots: 0
+      Headers: 0
+      Faults: 0
+      Tackles: 0
+      Dribbles: 0
+      Goals: 0
+      Saves: 0
+      PassesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
+      DribblesMissed: 0
+      CrossesMissed: 0
+      Presence: 0
+      Assists: 0
     TournamentStatistics:
       reorderableList:
         canAdd: 0
@@ -80,37 +81,39 @@ MonoBehaviour:
       _keys:
       - 25e4dad0-15fc-432e-9fbb-934f73921ef2
       _values:
-      - TotalPasses: 0
-        TotalCrosses: 0
-        TotalShots: 0
-        TotalHeaders: 0
-        TotalFaults: 0
-        TotalTackles: 0
-        TotalDribbles: 0
-        TotalGoals: 0
-        TotalSaves: 0
-        TotalPassesMissed: 0
-        TotalShotsMissed: 0
-        TotalHeadersMissed: 0
-        TotalDribblesMissed: 0
-        TotalCrossesMissed: 0
-        TotalPresence: 0
+      - Passes: 0
+        Crosses: 0
+        Shots: 0
+        Headers: 0
+        Faults: 0
+        Tackles: 0
+        Dribbles: 0
+        Goals: 0
+        Saves: 0
+        PassesMissed: 0
+        ShotsMissed: 0
+        HeadersMissed: 0
+        DribblesMissed: 0
+        CrossesMissed: 0
+        Presence: 0
+        Assists: 0
   MatchStats:
-    TotalPasses: 0
-    TotalCrosses: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
-    TotalDribbles: 0
-    TotalGoals: 0
-    TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
-    TotalHeadersMissed: 0
-    TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-    TotalPresence: 0
+    Passes: 0
+    Crosses: 0
+    Shots: 0
+    Headers: 0
+    Faults: 0
+    Tackles: 0
+    Dribbles: 0
+    Goals: 0
+    Saves: 0
+    PassesMissed: 0
+    ShotsMissed: 0
+    HeadersMissed: 0
+    DribblesMissed: 0
+    CrossesMissed: 0
+    Presence: 0
+    Assists: 0
   Team: {fileID: 0}
   Prob_DefPosition: 1
   Prob_OffPosition: 1
