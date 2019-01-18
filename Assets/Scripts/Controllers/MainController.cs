@@ -6,13 +6,26 @@ public class MainController : MonoBehaviour
 {
     public static MainController Instance;
 
+    [Space(10)]
+    [Header("Data")]
+    [Space(5)]
     public UserData User;
+    public List<PlayerData> AllPlayers;
+    public List<TeamData> AllTeams;
+    public List<TournamentData> AllTournaments;
 
+    [Space(10)]
+    [Header("Controllers")]
+    [Space(5)]
     public LocalizationData Localization;
     public MatchController Match;
-    public SquadSelectionView SquadSelection;
-
+    public DataController Data;
+    public CalendarController Calendar;
     public ScreenController Screens;
+
+    [Space(20)]
+
+    public SquadSelectionView SquadSelection;
 
     public Team_StrategyData TeamStrategyData;
     public Player_StrategyData PlayerStrategyData;
@@ -23,12 +36,6 @@ public class MainController : MonoBehaviour
 
     public TournamentData CurrentTournament;
     public MatchData CurrentMatch;
-
-    public List<PlayerData> AllPlayers;
-    public List<TeamData> AllTeams;
-    public List<TournamentData> AllTournaments;
-
-    public DataController Data;
 
     public void Awake()
     {
@@ -107,42 +114,11 @@ public class MainController : MonoBehaviour
         return listPlayers;
     }
 
-    public PlayerData GetPlayerById(string _id)
-    {
-        PlayerData player = null;
+    public PlayerData GetPlayerById(string _id) { return AllPlayers.Single(PlayerData => PlayerData.Id == _id); }
 
-        foreach (PlayerData p in AllPlayers)
-        {
-            if (p.Id == _id)
-            {
-                player = p;
-                break;
-            }
-        }
+    public TeamData GetTeamById(string _id) { return AllTeams.Single(TeamData => TeamData.Id == _id); }
 
-        return player;
-    }
-
-    public TeamData GetTeamById(string _id)
-    {
-        TeamData team = null;
-
-        foreach (TeamData t in AllTeams)
-        {
-            if (t.Id == _id)
-            {
-                team = t;
-                break;
-            }
-        }
-        if (team == null) print(_id + "    TEAMS: " + AllTeams.Count);
-        return team;
-    }
-
-    public FormationData GetFormation(FormationData.TeamFormation _formation)
-    {
-        return Match.TeamFormations[(int)_formation];
-    }
+    public FormationData GetFormation(FormationData.TeamFormation _formation) { return Match.TeamFormations[(int)_formation]; }
 
     public List<TeamData> SortTeamsBy(List<TeamData> listTeams, string _stat)
     {

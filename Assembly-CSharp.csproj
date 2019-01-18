@@ -176,6 +176,7 @@
     <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_ZoneView.cs" />
     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGeneratorItem.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CalendarController.cs" />
     <Compile Include="Assets\Scripts\Controllers\DataController.cs" />
     <Compile Include="Assets\Scripts\Controllers\DebugController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GlobalParameters.cs" />
