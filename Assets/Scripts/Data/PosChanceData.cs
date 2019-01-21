@@ -49,12 +49,9 @@ public class Zones {
 
 [CreateAssetMenu(fileName = "PosChance", menuName = "Position Chance", order = 1)]
 public class PosChanceData: ScriptableObject {
-	public List<Zones> posChancePerZones = new List<Zones>();
-
-    public void Save()
-    {
-        //EditorUtility.SetDirty(this);
-    }
+    public TeamAttributes.TeamStrategy Strategy;
+    [Space(10)]
+    public List<Zones> posChancePerZones = new List<Zones>();
 }
 
 

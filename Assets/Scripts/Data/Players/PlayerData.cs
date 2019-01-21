@@ -15,7 +15,7 @@ public class PlayerData : ScriptableObject
     public string FirstName { get { return Attributes.FirstName; } set { Attributes.FirstName = value; } }
     public string LastName { get { return Attributes.LastName; } set { Attributes.LastName = value; } }
 
-    public MatchController.FieldZone Zone { get { return Attributes.Zone; } set { Attributes.Zone = value; } }
+    public Field.Zone Zone { get { return Attributes.Zone; } set { Attributes.Zone = value; } }
     public PlayerAttributes.PlayerPosition Position { get { return Attributes.Position; } set { Attributes.Position = value; } }
     public PlayerAttributes. PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
 
@@ -51,6 +51,13 @@ public class PlayerData : ScriptableObject
             fatigue = value;
             if (fatigue <= 0) fatigue = 0.01f;
         }
+    }
+
+    public float FatigueModifier()
+    {
+        float value = 0.5f + (0.5f * (fatigue / 100));
+        //float value = 1f;
+        return value;
     }
 
     public PlayerStatistics MatchStats;
@@ -205,7 +212,7 @@ public class PlayerData : ScriptableObject
         return total;
     }
 
-    public float GetChancePerZone(MatchController.FieldZone _zone, TeamAttributes.TeamStrategy _teamStrategy)
+    public float GetChancePerZone(Field.Zone _zone, TeamAttributes.TeamStrategy _teamStrategy)
     {
         float pct = 0f;
 
@@ -213,37 +220,37 @@ public class PlayerData : ScriptableObject
 
         switch(_zone)
         {
-            case MatchController.FieldZone.OwnGoal: pct = chancePerZone.OwnGoal; break;
-            case MatchController.FieldZone.BLD: pct = chancePerZone.BLD; break;
-            case MatchController.FieldZone.BRD: pct = chancePerZone.BRD; break;
-            case MatchController.FieldZone.LD: pct = chancePerZone.LD; break;
-            case MatchController.FieldZone.LCD: pct = chancePerZone.LCD; break;
-            case MatchController.FieldZone.CD: pct = chancePerZone.CD; break;
-            case MatchController.FieldZone.RCD: pct = chancePerZone.RCD; break;
-            case MatchController.FieldZone.RD: pct = chancePerZone.RD; break;
-            case MatchController.FieldZone.LDM: pct = chancePerZone.LDM; break;
-            case MatchController.FieldZone.LCDM: pct = chancePerZone.LCDM; break;
-            case MatchController.FieldZone.CDM: pct = chancePerZone.CDM; break;
-            case MatchController.FieldZone.RCDM: pct = chancePerZone.RCDM; break;
-            case MatchController.FieldZone.RDM: pct = chancePerZone.RDM; break;
-            case MatchController.FieldZone.LM: pct = chancePerZone.LM; break;
-            case MatchController.FieldZone.LCM: pct = chancePerZone.LCM; break;
-            case MatchController.FieldZone.CM: pct = chancePerZone.CM; break;
-            case MatchController.FieldZone.RCM: pct = chancePerZone.RCM; break;
-            case MatchController.FieldZone.RM: pct = chancePerZone.RM; break;
-            case MatchController.FieldZone.LAM: pct = chancePerZone.LAM; break;
-            case MatchController.FieldZone.LCAM: pct = chancePerZone.LCAM; break;
-            case MatchController.FieldZone.CAM: pct = chancePerZone.CAM; break;
-            case MatchController.FieldZone.RCAM: pct = chancePerZone.RCAM; break;
-            case MatchController.FieldZone.RAM: pct = chancePerZone.RAM; break;
-            case MatchController.FieldZone.LF: pct = chancePerZone.LF; break;
-            case MatchController.FieldZone.LCF: pct = chancePerZone.LCF; break;
-            case MatchController.FieldZone.CF: pct = chancePerZone.CF; break;
-            case MatchController.FieldZone.RCF: pct = chancePerZone.RCF; break;
-            case MatchController.FieldZone.RF: pct = chancePerZone.RF; break;
-            case MatchController.FieldZone.ALF: pct = chancePerZone.ALF; break;
-            case MatchController.FieldZone.ARF: pct = chancePerZone.ARF; break;
-            case MatchController.FieldZone.Box: pct = chancePerZone.Box; break;
+            case Field.Zone.OwnGoal: pct = chancePerZone.OwnGoal; break;
+            case Field.Zone.BLD: pct = chancePerZone.BLD; break;
+            case Field.Zone.BRD: pct = chancePerZone.BRD; break;
+            case Field.Zone.LD: pct = chancePerZone.LD; break;
+            case Field.Zone.LCD: pct = chancePerZone.LCD; break;
+            case Field.Zone.CD: pct = chancePerZone.CD; break;
+            case Field.Zone.RCD: pct = chancePerZone.RCD; break;
+            case Field.Zone.RD: pct = chancePerZone.RD; break;
+            case Field.Zone.LDM: pct = chancePerZone.LDM; break;
+            case Field.Zone.LCDM: pct = chancePerZone.LCDM; break;
+            case Field.Zone.CDM: pct = chancePerZone.CDM; break;
+            case Field.Zone.RCDM: pct = chancePerZone.RCDM; break;
+            case Field.Zone.RDM: pct = chancePerZone.RDM; break;
+            case Field.Zone.LM: pct = chancePerZone.LM; break;
+            case Field.Zone.LCM: pct = chancePerZone.LCM; break;
+            case Field.Zone.CM: pct = chancePerZone.CM; break;
+            case Field.Zone.RCM: pct = chancePerZone.RCM; break;
+            case Field.Zone.RM: pct = chancePerZone.RM; break;
+            case Field.Zone.LAM: pct = chancePerZone.LAM; break;
+            case Field.Zone.LCAM: pct = chancePerZone.LCAM; break;
+            case Field.Zone.CAM: pct = chancePerZone.CAM; break;
+            case Field.Zone.RCAM: pct = chancePerZone.RCAM; break;
+            case Field.Zone.RAM: pct = chancePerZone.RAM; break;
+            case Field.Zone.LF: pct = chancePerZone.LF; break;
+            case Field.Zone.LCF: pct = chancePerZone.LCF; break;
+            case Field.Zone.CF: pct = chancePerZone.CF; break;
+            case Field.Zone.RCF: pct = chancePerZone.RCF; break;
+            case Field.Zone.RF: pct = chancePerZone.RF; break;
+            case Field.Zone.ALF: pct = chancePerZone.ALF; break;
+            case Field.Zone.ARF: pct = chancePerZone.ARF; break;
+            case Field.Zone.Box: pct = chancePerZone.Box; break;
         }
         return pct;
     }
@@ -305,7 +312,7 @@ public class PlayerData : ScriptableObject
         return chance;
     }
 
-    AltPosition GetAltPosition(MatchController.FieldZone _zone)
+    AltPosition GetAltPosition(Field.Zone _zone)
     {
         AltPosition pos = AltPosition.None;
         Vector2 posMatrix = MainController.Instance.Match.FieldMatrix[(int)Zone];

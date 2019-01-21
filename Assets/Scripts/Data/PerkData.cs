@@ -20,5 +20,5 @@ public class PerkData : ScriptableObject
     }
 
     [Tooltip("Leave empty if there are no restrictions")]
-    public MatchController.FieldZone[] ZoneRestriction;
+    public Field.Zone[] ZoneRestriction;
 }

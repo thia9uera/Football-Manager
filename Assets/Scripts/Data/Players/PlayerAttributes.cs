@@ -33,7 +33,7 @@ public struct PlayerAttributes
 
 
     [Space(10)]
-    public MatchController.FieldZone Zone;
+    public Field.Zone Zone;
     public PlayerPosition Position;
     public PlayerStrategy Strategy;
     //public PerkData Perk;

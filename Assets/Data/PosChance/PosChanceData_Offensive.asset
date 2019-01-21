@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37d099750e8b434aa75194aead7877b, type: 3}
   m_Name: PosChanceData_Offensive
   m_EditorClassIdentifier: 
+  Strategy: 1
   posChancePerZones:
   - Position: OwnGoal
     OwnGoal: 100

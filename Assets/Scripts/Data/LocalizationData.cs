@@ -73,7 +73,7 @@ public class LocalizationData : ScriptableObject
         return str;
     }
 
-    public string GetZoneString(MatchController.FieldZone _zone)
+    public string GetZoneString(Field.Zone _zone)
     {
         int zone = (int)_zone;
         string str = "";

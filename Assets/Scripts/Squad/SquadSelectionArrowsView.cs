@@ -21,32 +21,32 @@ public class SquadSelectionArrowsView : MonoBehaviour
         }
     }
 
-    public void HideArrows(MatchController.FieldZone _pos)
+    public void HideArrows(Field.Zone _pos)
     {
         foreach (SquadSelectionArrowView arrow in arrows)
         {
             switch(_pos)
             {
-                case MatchController.FieldZone.BLD:
-                case MatchController.FieldZone.LD:
-                case MatchController.FieldZone.LDM:
-                case MatchController.FieldZone.LM:
-                case MatchController.FieldZone.LAM:
-                case MatchController.FieldZone.LF:
-                case MatchController.FieldZone.ALF:
+                case Field.Zone.BLD:
+                case Field.Zone.LD:
+                case Field.Zone.LDM:
+                case Field.Zone.LM:
+                case Field.Zone.LAM:
+                case Field.Zone.LF:
+                case Field.Zone.ALF:
                     if(arrow.Strategy == PlayerAttributes.PlayerStrategy.Left || arrow.Strategy == PlayerAttributes.PlayerStrategy.LeftDefensive || arrow.Strategy == PlayerAttributes.PlayerStrategy.LeftOffensive)
                     {
                         arrow.gameObject.SetActive(false);
                     }
                     break;
 
-                case MatchController.FieldZone.BRD:
-                case MatchController.FieldZone.RD:
-                case MatchController.FieldZone.RDM:
-                case MatchController.FieldZone.RM:
-                case MatchController.FieldZone.RAM:
-                case MatchController.FieldZone.RF:
-                case MatchController.FieldZone.ARF:
+                case Field.Zone.BRD:
+                case Field.Zone.RD:
+                case Field.Zone.RDM:
+                case Field.Zone.RM:
+                case Field.Zone.RAM:
+                case Field.Zone.RF:
+                case Field.Zone.ARF:
                     if (arrow.Strategy == PlayerAttributes.PlayerStrategy.Right || arrow.Strategy == PlayerAttributes.PlayerStrategy.RightDefensive || arrow.Strategy == PlayerAttributes.PlayerStrategy.RightOffensive)
                     {
                         arrow.gameObject.SetActive(false);

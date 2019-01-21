@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SquadSlotView : MonoBehaviour
 {
-    public MatchController.FieldZone Zone;
+    public Field.Zone Zone;
 
     public PlayerData Player;
 
@@ -27,7 +27,7 @@ public class SquadSlotView : MonoBehaviour
     {
         controller = GetComponentInParent<SquadSelectionView>();
         posLabel.text = Zone.ToString();
-        if (Zone == MatchController.FieldZone.OwnGoal) Arrows.gameObject.SetActive(false);
+        if (Zone == Field.Zone.OwnGoal) Arrows.gameObject.SetActive(false);
     }
 
     public void Populate(PlayerData  _player)
@@ -39,7 +39,7 @@ public class SquadSlotView : MonoBehaviour
         if (Player.IsWronglyAssigned()) posLabel.color = Color.red;
         else posLabel.color = Color.gray;
 
-        if(Player.Zone != MatchController.FieldZone.OwnGoal)
+        if(Player.Zone != Field.Zone.OwnGoal)
         {
             Arrows.UpdateStrategy(Player.Strategy);
             Arrows.HideArrows(Zone);

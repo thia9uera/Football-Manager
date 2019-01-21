@@ -18,7 +18,7 @@ public class Debug_ZoneView : MonoBehaviour
     [SerializeField]
     private string[] labels;
 
-    public MatchController.FieldZone Zone;
+    public Field.Zone Zone;
 
     private float chance;
 

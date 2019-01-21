@@ -54,7 +54,7 @@ public class Debug_FieldView : MonoBehaviour
         DropDownPlayerPosition.ClearOptions();
         for(int i = 0; i < 31; i++)
         {
-            list.Add(((MatchController.FieldZone)i).ToString());
+            list.Add(((Field.Zone)i).ToString());
         }
         DropDownPlayerPosition.AddOptions(list);
 
@@ -86,7 +86,7 @@ public class Debug_FieldView : MonoBehaviour
 
     public void ValueChange()
     {
-        MatchController.FieldZone pos = (MatchController.FieldZone)DropDownPlayerPosition.value;
+        Field.Zone pos = (Field.Zone)DropDownPlayerPosition.value;
         //teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[DropDownTeamStrategy.value];
         TeamStrategy = (TeamAttributes.TeamStrategy)DropDownTeamStrategy.value;
         TestPlayer.Attributes.Zone = pos;
@@ -98,7 +98,7 @@ public class Debug_FieldView : MonoBehaviour
         TestPlayer.Attributes.Strategy = (PlayerAttributes.PlayerStrategy)DropDownPlayerStrategy.value;
     }
 
-    private float CalculatePresence(PlayerData _player, MatchController.FieldZone _zone)
+    private float CalculatePresence(PlayerData _player, Field.Zone _zone)
     {
         float chance = _player.GetChancePerZone(_zone, TeamStrategy);
 

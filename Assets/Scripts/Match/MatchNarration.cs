@@ -29,7 +29,7 @@ public class MatchNarration : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
-    public void UpdateNarration(string _text, int _variations = 1, TeamData _team = null, MatchController.FieldZone _zone = MatchController.FieldZone.OwnGoal)
+    public void UpdateNarration(string _text, int _variations = 1, TeamData _team = null, Field.Zone _zone = Field.Zone.OwnGoal)
     {
         MatchNarrationTextView text =  Instantiate(narrationText, content);
 

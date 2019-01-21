@@ -7,10 +7,10 @@ public class Debug_Popup : MonoBehaviour
 {
     public TMP_InputField InputField;
 
-    MatchController.FieldZone zone;
+    Field.Zone zone;
     float chance;
 	
-    public void ShowPopup(float _chance, MatchController.FieldZone _zone)
+    public void ShowPopup(float _chance, Field.Zone _zone)
     {
         gameObject.SetActive(true);
         zone = _zone;
@@ -23,46 +23,47 @@ public class Debug_Popup : MonoBehaviour
     {
         Zones data = MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Attributes.Zone];
         chance = float.Parse(InputField.text)/100;
-        data.Position = ((MatchController.FieldZone)Debug_FieldView.Instance.DropDownPlayerPosition.value).ToString();
+        data.Position = ((Field.Zone)Debug_FieldView.Instance.DropDownPlayerPosition.value).ToString();
 
         switch (zone)
         {
-            case MatchController.FieldZone.OwnGoal: data.OwnGoal = chance; break;
-            case MatchController.FieldZone.BLD: data.BLD = chance; break;
-            case MatchController.FieldZone.BRD: data.BRD = chance; break;
-            case MatchController.FieldZone.LD: data.LD = chance; break;
-            case MatchController.FieldZone.LCD: data.LCD = chance; break;
-            case MatchController.FieldZone.CD: data.CD = chance; break;
-            case MatchController.FieldZone.RCD: data.RCD = chance; break;
-            case MatchController.FieldZone.RD: data.RD = chance; break;
-            case MatchController.FieldZone.LDM: data.LDM = chance; break;
-            case MatchController.FieldZone.LCDM: data.LCDM = chance; break;
-            case MatchController.FieldZone.CDM: data.CDM = chance; break;
-            case MatchController.FieldZone.RCDM: data.RCDM = chance; break;
-            case MatchController.FieldZone.RDM: data.RDM = chance; break;
-            case MatchController.FieldZone.LM: data.LM = chance; break;
-            case MatchController.FieldZone.LCM: data.LCM = chance; break;
-            case MatchController.FieldZone.CM: data.CM = chance; break;
-            case MatchController.FieldZone.RCM: data.RCM = chance; break;
-            case MatchController.FieldZone.RM: data.RM = chance; break;
-            case MatchController.FieldZone.LAM: data.LAM = chance; break;
-            case MatchController.FieldZone.LCAM: data.LCAM = chance; break;
-            case MatchController.FieldZone.CAM: data.CAM = chance; break;
-            case MatchController.FieldZone.RCAM: data.RCAM = chance; break;
-            case MatchController.FieldZone.RAM: data.RAM = chance; break;
-            case MatchController.FieldZone.LF: data.LF = chance; break;
-            case MatchController.FieldZone.LCF: data.LCF = chance; break;
-            case MatchController.FieldZone.CF: data.CF = chance; break;
-            case MatchController.FieldZone.RCF: data.RCF = chance; break;
-            case MatchController.FieldZone.RF: data.RF = chance; break;
-            case MatchController.FieldZone.ALF: data.ALF = chance; break;
-            case MatchController.FieldZone.ARF: data.ARF = chance; break;
-            case MatchController.FieldZone.Box: data.Box = chance; break;
+            case Field.Zone.OwnGoal: data.OwnGoal = chance; break;
+            case Field.Zone.BLD: data.BLD = chance; break;
+            case Field.Zone.BRD: data.BRD = chance; break;
+            case Field.Zone.LD: data.LD = chance; break;
+            case Field.Zone.LCD: data.LCD = chance; break;
+            case Field.Zone.CD: data.CD = chance; break;
+            case Field.Zone.RCD: data.RCD = chance; break;
+            case Field.Zone.RD: data.RD = chance; break;
+            case Field.Zone.LDM: data.LDM = chance; break;
+            case Field.Zone.LCDM: data.LCDM = chance; break;
+            case Field.Zone.CDM: data.CDM = chance; break;
+            case Field.Zone.RCDM: data.RCDM = chance; break;
+            case Field.Zone.RDM: data.RDM = chance; break;
+            case Field.Zone.LM: data.LM = chance; break;
+            case Field.Zone.LCM: data.LCM = chance; break;
+            case Field.Zone.CM: data.CM = chance; break;
+            case Field.Zone.RCM: data.RCM = chance; break;
+            case Field.Zone.RM: data.RM = chance; break;
+            case Field.Zone.LAM: data.LAM = chance; break;
+            case Field.Zone.LCAM: data.LCAM = chance; break;
+            case Field.Zone.CAM: data.CAM = chance; break;
+            case Field.Zone.RCAM: data.RCAM = chance; break;
+            case Field.Zone.RAM: data.RAM = chance; break;
+            case Field.Zone.LF: data.LF = chance; break;
+            case Field.Zone.LCF: data.LCF = chance; break;
+            case Field.Zone.CF: data.CF = chance; break;
+            case Field.Zone.RCF: data.RCF = chance; break;
+            case Field.Zone.RF: data.RF = chance; break;
+            case Field.Zone.ALF: data.ALF = chance; break;
+            case Field.Zone.ARF: data.ARF = chance; break;
+            case Field.Zone.Box: data.Box = chance; break;
         }
 
         gameObject.SetActive(false);
         Debug_FieldView.Instance.Test();
-        MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.Save();
+        UnityEditor.EditorUtility.SetDirty(MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance);
+        UnityEditor.AssetDatabase.SaveAssets();
     }
 
     void Update()

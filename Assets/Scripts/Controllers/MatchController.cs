@@ -11,18 +11,6 @@ public class MatchController : MonoBehaviour
     public TeamData AwayTeam;
 
     //Names given by Home Team perspective
-    public enum FieldZone
-    { 
-        OwnGoal = 0, 
-        BLD, BRD,
-        LD, LCD, CD, RCD, RD,                   
-        LDM, LCDM, CDM, RCDM, RDM,                   
-        LM, LCM, CM, RCM,RM,
-        LAM, LCAM, CAM, RCAM, RAM,
-        LF, LCF, CF, RCF, RF,
-        ALF, ARF,
-        Box,
-    }
     const int totalZones = 31;
     public List<Vector2> FieldMatrix;
 
@@ -47,17 +35,9 @@ public class MatchController : MonoBehaviour
         Steal
     }
 
-    enum RollType
-    {
-        None,
-        GetMax,
-        DropMin,
-    }
+    public Field.Zone CurrentZone;
 
-    [SerializeField]
-    public FieldZone CurrentZone;
-
-    FieldZone lastZone;
+    Field.Zone lastZone;
 
     [SerializeField]
     ActionChancePerZoneData actionChancePerZone;
@@ -355,7 +335,7 @@ public class MatchController : MonoBehaviour
     {
         //startBtn.SetActive(false);
         
-        CurrentZone = lastZone =  FieldZone.CM;
+        CurrentZone = lastZone =  Field.Zone.CM;
         screen.Field.UpdateFieldArea((int)CurrentZone);
 
         isGameOn = true;
@@ -379,7 +359,7 @@ public class MatchController : MonoBehaviour
 
     void RestartMatch()
     { 
-        CurrentZone = lastZone = FieldZone.CM;
+        CurrentZone = lastZone = Field.Zone.CM;
         matchEvent = MatchEvent.None;
         attackingBonus = 1f;
         screen.Field.UpdateFieldArea((int)CurrentZone);
@@ -792,7 +772,7 @@ public class MatchController : MonoBehaviour
             }
             //CurrentZone = GetTargetZone();
             attackingPlayer.MatchStats.Crosses++;
-            if (GetTeamZone(AttackingTeam) == FieldZone.Box) AttackingTeam.MatchStats.TotalBoxCrosses++;
+            if (GetTeamZone(AttackingTeam) == Field.Zone.Box) AttackingTeam.MatchStats.TotalBoxCrosses++;
         }
         else
         {
@@ -1015,9 +995,9 @@ public class MatchController : MonoBehaviour
 
             isFreekickTaken = true;
 
-            FieldZone zone = GetTeamZone(AttackingTeam);
+            Field.Zone zone = GetTeamZone(AttackingTeam);
 
-            if ((int)zone >= (int)FieldZone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Freekick);
+            if ((int)zone >= (int)Field.Zone.LF) attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Freekick);
             attackingPlayer = GetAttackingPlayer(CurrentZone);
             localization.PLAYER_1 = attackingPlayer.FirstName;
             offensiveAction = GetFreeKickAction();
@@ -1118,11 +1098,11 @@ public class MatchController : MonoBehaviour
             shotSaved = false;
 
             offensiveAction = PlayerData.PlayerAction.Cross;
-            CurrentZone = FieldZone.LF;
+            CurrentZone = Field.Zone.LF;
 
             if (AttackingTeam == AwayTeam)
             {
-                CurrentZone = FieldZone.BLD;
+                CurrentZone = Field.Zone.BLD;
             }
 
             defendingPlayer = null;
@@ -1136,7 +1116,7 @@ public class MatchController : MonoBehaviour
         else
         {
             attackingBonus *= attackingBonusMedium;
-            CurrentZone = FieldZone.Box;
+            CurrentZone = Field.Zone.Box;
             attackingPlayer = GetAttackingPlayer(GetTeamZone(AttackingTeam));
             defendingPlayer = GetDefendingPlayer(GetTeamZone(DefendingTeam));
 
@@ -1181,7 +1161,7 @@ public class MatchController : MonoBehaviour
             }
         }
 
-        CurrentZone = FieldZone.OwnGoal;
+        CurrentZone = Field.Zone.OwnGoal;
         if (DefendingTeam == AwayTeam) CurrentZone = GetAwayTeamZone();
 
         defendingPlayer.MatchStats.Saves++;
@@ -1245,7 +1225,7 @@ public class MatchController : MonoBehaviour
         attackExcitment = 0;
         defenseExcitement = 0;
 
-        FieldZone zone = CurrentZone;
+        Field.Zone zone = CurrentZone;
         if (DefendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
         if ((int)zone < 8)
@@ -1499,7 +1479,7 @@ public class MatchController : MonoBehaviour
                 break;
         }
 
-        if (defendingPlayer != null && defendingPlayer.Zone == FieldZone.OwnGoal)
+        if (defendingPlayer != null && defendingPlayer.Zone == Field.Zone.OwnGoal)
         {
             defending = (float)(defendingPlayer.Goalkeeping + defendingPlayer.Agility + defendingPlayer.Vision + defendingPlayer.Speed) / 400;
             defenseBonusChance = GetPlayerAttributeBonus(defendingPlayer.Goalkeeping);
@@ -1524,7 +1504,7 @@ public class MatchController : MonoBehaviour
         attacking *= attackingBonus;
         if (attackingBonus > 0) DebugString += "<color=#00ff00>+ Attacking Bonus (" + ((1 - attackingBonus) * 100) + "%): </color>" + attacking;
 
-        int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
+        int attackRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(attacking * 5), attackBonusChance);
 
         if (attackRoll >= 20)
         {
@@ -1578,7 +1558,7 @@ public class MatchController : MonoBehaviour
             defending *= FatigueModifier(defendingPlayer.Fatigue);
             defenseDebug += "<color=#ff0000>- Fatigue: </color>" + defending;
             defFatigueRate = fatigueMedium;
-            int defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
+            int defenseRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(defending * 5), defenseBonusChance);
 
             if (defenseRoll >= 20)
             {
@@ -1605,11 +1585,11 @@ public class MatchController : MonoBehaviour
 
             if (fault >= Random.Range(0f, 1f))
             {
-                if (AttackingTeam == HomeTeam && CurrentZone == FieldZone.Box)
+                if (AttackingTeam == HomeTeam && CurrentZone == Field.Zone.Box)
                 {
                     matchEvent = MatchEvent.Penalty;
                 }
-                else if (AttackingTeam == AwayTeam && CurrentZone == FieldZone.OwnGoal)
+                else if (AttackingTeam == AwayTeam && CurrentZone == Field.Zone.OwnGoal)
                 {
                     matchEvent = MatchEvent.Penalty;
                 }
@@ -1720,15 +1700,15 @@ public class MatchController : MonoBehaviour
         if (_team == null) screen.Narration.UpdateNarration(_text, _variations, null, CurrentZone);
         else
         {
-            FieldZone zone = GetTeamZone(AttackingTeam);
+            Field.Zone zone = GetTeamZone(AttackingTeam);
             if (!lastActionSuccessful) zone = GetTeamZone(DefendingTeam);
             screen.Narration.UpdateNarration(_text, _variations, _team, zone);
         }
     }
 
-    PlayerData GetAttackingPlayer(FieldZone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
+    PlayerData GetAttackingPlayer(Field.Zone _zone, bool _excludeLastPlayer = false, bool _forcePlayer = false)
     {
-        FieldZone zone = GetTeamZone(AttackingTeam);
+        Field.Zone zone = GetTeamZone(AttackingTeam);
 
         float chance = 0f;
         bool forcePlayer = _forcePlayer;
@@ -1806,9 +1786,9 @@ public class MatchController : MonoBehaviour
         return GetActivePlayer(players);
     }
 
-    PlayerData GetDefendingPlayer(FieldZone _zone)
+    PlayerData GetDefendingPlayer(Field.Zone _zone)
     {
-        FieldZone zone = _zone;
+        Field.Zone zone = _zone;
         if (DefendingTeam == AwayTeam) zone = GetAwayTeamZone();
 
         float chance = 0f;
@@ -1856,7 +1836,7 @@ public class MatchController : MonoBehaviour
             bonus = GetPlayerAttributeBonus((player.Vision + player.Speed)/2);
             if (player.IsWronglyAssigned()) stats *= positionDebuff;
 
-            int r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
+            int r = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(stats*5) + bonus/10);
 
             if (r >= 20)
             {
@@ -1890,7 +1870,7 @@ public class MatchController : MonoBehaviour
         return activePlayer;
     }
 
-    float CalculatePresence(PlayerData _player, FieldZone _zone, TeamAttributes.TeamStrategy _teamStrategy)
+    float CalculatePresence(PlayerData _player, Field.Zone _zone, TeamAttributes.TeamStrategy _teamStrategy)
     {
         float chance = _player.GetChancePerZone(_zone, _teamStrategy);
 
@@ -1905,7 +1885,7 @@ public class MatchController : MonoBehaviour
     MarkingType GetMarkingType()
     {
         MarkingType type = MarkingType.None;
-        if (defendingPlayer == null || attackingPlayer.Zone == FieldZone.OwnGoal) return type;
+        if (defendingPlayer == null || attackingPlayer.Zone == Field.Zone.OwnGoal) return type;
 
         float totalChance = 0f;
         totalChance = defendingPlayer.Prob_Marking;
@@ -1913,14 +1893,14 @@ public class MatchController : MonoBehaviour
         totalChance += (float)GetPlayerAttributeBonus(defendingPlayer.Speed)/100;
         totalChance += (float)GetPlayerAttributeBonus(defendingPlayer.Vision)/100;
 
-        FieldZone zone = GetTeamZone(DefendingTeam);
+        Field.Zone zone = GetTeamZone(DefendingTeam);
 
         if(IsTeamStrategyApplicable(DefendingTeam.Strategy, zone))
         {
             totalChance *= DefendingTeam.GetStrategy().MarkingChance;
         }
 
-        float r = RollDice(20, 1, RollType.None, Mathf.FloorToInt(totalChance));
+        float r = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(totalChance));
 
         if (r >= 20)
         {
@@ -1941,7 +1921,7 @@ public class MatchController : MonoBehaviour
 
     PlayerData.PlayerAction GetOffensiveAction(MarkingType _marking)
     {
-        FieldZone zone = GetTeamZone(AttackingTeam);
+        Field.Zone zone = GetTeamZone(AttackingTeam);
         float bonus = 0;
 
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
@@ -1953,7 +1933,7 @@ public class MatchController : MonoBehaviour
         float shoot = attackingPlayer.GetActionChance(PlayerData.PlayerAction.Shot, zoneChance, _marking);
 
         float header = 0f;
-        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == FieldZone.Box && lastActionSuccessful)
+        if (offensiveAction == PlayerData.PlayerAction.Cross && zone == Field.Zone.Box && lastActionSuccessful)
         {
             header = attackingPlayer.GetActionChance(PlayerData.PlayerAction.Header, zoneChance, _marking);
         }
@@ -1970,7 +1950,7 @@ public class MatchController : MonoBehaviour
         }
 
         if (lastAction == PlayerData.PlayerAction.Cross && lastActionSuccessful) longPass = 0;
-        if (attackingPlayer.Zone == FieldZone.OwnGoal)
+        if (attackingPlayer.Zone == Field.Zone.OwnGoal)
         {
             dribble = 0;
             shoot = 0;
@@ -1984,7 +1964,7 @@ public class MatchController : MonoBehaviour
             dribble = 0f;
 
             bonus = GetPlayerAttributeBonus(attackingPlayer.Speed);
-            if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((sprint * 5) + (bonus / 10))) >= 20) sprint *= 2f;
+            if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((sprint * 5) + (bonus / 10))) >= 20) sprint *= 2f;
         }
 
         float total = pass + longPass + dribble + cross + shoot + header + sprint;
@@ -2040,34 +2020,34 @@ public class MatchController : MonoBehaviour
         int bonusChance = 0;
         defendingPlayer = DefendingTeam.Squad[0];
         localization.PLAYER_2 = defendingPlayer.FirstName;
-        FieldZone zone = GetTeamZone(AttackingTeam);
+        Field.Zone zone = GetTeamZone(AttackingTeam);
 
         switch(zone)
         {
-            case FieldZone.LAM:
-            case FieldZone.RAM:
+            case Field.Zone.LAM:
+            case Field.Zone.RAM:
                 distanceModifier = 0.5f;
                 break;
 
-            case FieldZone.LCAM:
-            case FieldZone.CAM:
-            case FieldZone.RCAM:
+            case Field.Zone.LCAM:
+            case Field.Zone.CAM:
+            case Field.Zone.RCAM:
                 distanceModifier = 0.65f;
                 break;
 
-            case FieldZone.LF:
-            case FieldZone.RF:
+            case Field.Zone.LF:
+            case Field.Zone.RF:
                 distanceModifier = 0.75f;
                 break;
 
-            case FieldZone.ALF:
-            case FieldZone.ARF:
+            case Field.Zone.ALF:
+            case Field.Zone.ARF:
                 distanceModifier = 0.35f;
                 break;
 
-            case FieldZone.LCF:
-            case FieldZone.CF:
-            case FieldZone.RCF:
+            case Field.Zone.LCF:
+            case Field.Zone.CF:
+            case Field.Zone.RCF:
                 distanceModifier = 0.8f;
                 break;
         }
@@ -2112,7 +2092,7 @@ public class MatchController : MonoBehaviour
         DebugString += "\n<color=#00ff00>+ Attacking Bonus (" + (1-attackingBonus)*100 + "%): </color>" + attacking + "\n";
        
 
-        int attackRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(attacking * 5), bonusChance);
+        int attackRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(attacking * 5), bonusChance);
 
         if (attackRoll >= 20)
         {
@@ -2138,7 +2118,7 @@ public class MatchController : MonoBehaviour
         DebugString += "\n\nKeeper: " + defending + "\n";
         defending *= FatigueModifier(defendingPlayer.Fatigue);
         DebugString += "\n<color=#ff0000>- Fatigue: </color>" + defending;
-        float defenseRoll = RollDice(20, 1, RollType.None, Mathf.FloorToInt(defending * 5), GetPlayerAttributeBonus(defendingPlayer.Goalkeeping));
+        float defenseRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(defending * 5), GetPlayerAttributeBonus(defendingPlayer.Goalkeeping));
 
         //defendingPlayer.Fatigue -= fatigueLow * (25 / (float)defendingPlayer.Stamina);
 
@@ -2171,7 +2151,7 @@ public class MatchController : MonoBehaviour
             if(defenseExcitement == -1) matchEvent = MatchEvent.CornerKick;
             else if (defenseExcitement == 0)
             {
-                int roll = RollDice(20);
+                int roll = Dice.Roll(20);
                 if (roll < 5) matchEvent = MatchEvent.CornerKick;
             }
         }
@@ -2184,25 +2164,25 @@ public class MatchController : MonoBehaviour
     PlayerData.PlayerAction GetFreeKickAction()
     {
         PlayerData.PlayerAction action = PlayerData.PlayerAction.Pass;
-        FieldZone zone = GetTeamZone(AttackingTeam);
+        Field.Zone zone = GetTeamZone(AttackingTeam);
         int bonus = 0;
         ActionChancePerZone zoneChance = actionChancePerZone.actionChancePerZones[(int)zone];
 
         float pass = zoneChance.Pass * attackingPlayer.Prob_Pass;
         bonus = GetPlayerAttributeBonus(attackingPlayer.Passing);
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((pass * 5) + (bonus / 10))) >= 20) pass *= 2f;
+        if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((pass * 5) + (bonus / 10))) >= 20) pass *= 2f;
 
         float longPass = zoneChance.LongPass * attackingPlayer.Prob_LongPass;
         bonus = GetPlayerAttributeBonus(Mathf.FloorToInt((float)(attackingPlayer.Passing + attackingPlayer.Strength) / 2));
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10))) >= 20) longPass *= 2f;
+        if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10))) >= 20) longPass *= 2f;
 
         float cross = zoneChance.Cross * attackingPlayer.Prob_Crossing;
         bonus = GetPlayerAttributeBonus(attackingPlayer.Crossing);
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((cross * 5) + (bonus / 10))) >= 20) cross *= 2f;
+        if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((cross * 5) + (bonus / 10))) >= 20) cross *= 2f;
 
         float shoot = zoneChance.Shot * attackingPlayer.Prob_Shoot;
         bonus = GetPlayerAttributeBonus(attackingPlayer.Shooting);
-        if (RollDice(20, 1, RollType.None, Mathf.FloorToInt((shoot * 5) + (bonus / 10))) >= 20) shoot *= 2f;
+        if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((shoot * 5) + (bonus / 10))) >= 20) shoot *= 2f;
 
         if (IsTeamStrategyApplicable(AttackingTeam.Strategy, zone))
         {
@@ -2260,56 +2240,27 @@ public class MatchController : MonoBehaviour
         return bonus;
     }
 
-    int RollDice(int _sides, int _amount = 1, RollType _rollType = RollType.None, int _bonus = 0, int _bonusChance = 100)
-    {
-        int n = 0;
-        int roll;
-        List<int> rolls = new List<int>();
-
-        while (n < _amount)
-        {
-            roll = 1 + Random.Range(0, _sides);
-            if (1 + Random.Range(0, 100) < _bonusChance) roll += _bonus;
-            rolls.Add(roll);
-            n++;
-        }
-
-        if (_rollType == RollType.GetMax)
-        {
-            return rolls.Max();
-        }
-        else if (_rollType == RollType.DropMin)
-        {
-            rolls.Remove(rolls.Min());
-            roll = 1 + Random.Range(0, _sides);
-            if (1 + Random.Range(0, 100) < _bonusChance) roll += _bonus;
-            rolls.Add(roll);
-            return rolls.Sum();
-        }
-        else return rolls.Sum();
-    }
-
     //Inverts the field for away team perspective
-    FieldZone GetAwayTeamZone()
+    Field.Zone GetAwayTeamZone()
     {
         int zone = (totalZones - 1) -  (int)CurrentZone;
 
-        return (FieldZone)zone;
+        return (Field.Zone)zone;
     }
 
-    FieldZone GetTeamZone(TeamData _team)
+    Field.Zone GetTeamZone(TeamData _team)
     {
-        FieldZone zone = CurrentZone;
+        Field.Zone zone = CurrentZone;
         if (_team == AwayTeam) zone = GetAwayTeamZone();
         return zone;
     }
 
-    FieldZone GetTargetZone()
+    Field.Zone GetTargetZone()
     {
-        FieldZone target = CurrentZone;
+        Field.Zone target = CurrentZone;
         lastZone = CurrentZone;
-        FieldZone zone = GetTeamZone(AttackingTeam);
-        List<KeyValuePair<FieldZone, float>> list = new List<KeyValuePair<FieldZone, float>>();
+        Field.Zone zone = GetTeamZone(AttackingTeam);
+        List<KeyValuePair<Field.Zone, float>> list = new List<KeyValuePair<Field.Zone, float>>();
 
         float _OwnGoal = 0;
         float _BLD = 0;
@@ -2543,43 +2494,43 @@ public class MatchController : MonoBehaviour
         _ARF /= total;
         _Box /= total;
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.OwnGoal, _OwnGoal));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.BLD, _BLD));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.BRD, _BRD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.OwnGoal, _OwnGoal));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.BLD, _BLD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.BRD, _BRD));
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LD, _LD));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCD, _LCD));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CD, _CD));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCD, _RCD));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RD, _RD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LD, _LD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LCD, _LCD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.CD, _CD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RCD, _RCD));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RD, _RD));
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LDM, _LDM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCDM, _LCDM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CDM, _CDM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCDM, _RCDM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RDM, _RDM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LDM, _LDM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LCDM, _LCDM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.CDM, _CDM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RCDM, _RCDM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RDM, _RDM));
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LM, _LM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCM, _LCM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CM, _CDM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCM, _RCM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RM, _RM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LM, _LM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LCM, _LCM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.CM, _CDM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RCM, _RCM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RM, _RM));
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LAM, _LAM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCAM, _LCAM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CAM, _CAM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCAM, _RCAM));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RAM, _RAM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LAM, _LAM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LCAM, _LCAM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.CAM, _CAM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RCAM, _RCAM));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RAM, _RAM));
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LF, _LF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.LCF, _LCF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.CF, _CF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RCF, _RCF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.RF, _RF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LF, _LF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.LCF, _LCF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.CF, _CF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RCF, _RCF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.RF, _RF));
 
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.ALF, _ALF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.ARF, _ARF));
-        list.Add(new KeyValuePair<FieldZone, float>(FieldZone.Box, _Box));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.ALF, _ALF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.ARF, _ARF));
+        list.Add(new KeyValuePair<Field.Zone, float>(Field.Zone.Box, _Box));
 
         float random = Random.Range(0.00001f, 1f);
         float cumulative = 0;
@@ -2593,7 +2544,7 @@ public class MatchController : MonoBehaviour
             }
         }
 
-        if (AttackingTeam == AwayTeam) target = (FieldZone)((totalZones - 1) - (int)target);
+        if (AttackingTeam == AwayTeam) target = (Field.Zone)((totalZones - 1) - (int)target);
         return target;
     }
 
@@ -2609,50 +2560,50 @@ public class MatchController : MonoBehaviour
         return best;
     }
 
-    bool IsTeamStrategyApplicable(TeamAttributes.TeamStrategy _strategy, FieldZone _zone)
+    bool IsTeamStrategyApplicable(TeamAttributes.TeamStrategy _strategy, Field.Zone _zone)
     {
         bool value = false;
         Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)_strategy];
 
         switch (_zone)
         {
-            case FieldZone.OwnGoal: value = teamStrategy.OwnGoal; break;
-            case FieldZone.BLD: value = teamStrategy.BLD; break;
-            case FieldZone.BRD: value = teamStrategy.BRD; break;
+            case Field.Zone.OwnGoal: value = teamStrategy.OwnGoal; break;
+            case Field.Zone.BLD: value = teamStrategy.BLD; break;
+            case Field.Zone.BRD: value = teamStrategy.BRD; break;
 
-            case FieldZone.LD: value = teamStrategy.LD; break;
-            case FieldZone.LCD: value = teamStrategy.LCD; break;
-            case FieldZone.CD: value = teamStrategy.CD; break;
-            case FieldZone.RCD: value = teamStrategy.RCD; break;
-            case FieldZone.RD: value = teamStrategy.RD; break;
+            case Field.Zone.LD: value = teamStrategy.LD; break;
+            case Field.Zone.LCD: value = teamStrategy.LCD; break;
+            case Field.Zone.CD: value = teamStrategy.CD; break;
+            case Field.Zone.RCD: value = teamStrategy.RCD; break;
+            case Field.Zone.RD: value = teamStrategy.RD; break;
 
-            case FieldZone.LDM: value = teamStrategy.LDM; break;
-            case FieldZone.LCDM: value = teamStrategy.LCDM; break;
-            case FieldZone.CDM: value = teamStrategy.CDM; break;
-            case FieldZone.RCDM: value = teamStrategy.RCDM; break;
-            case FieldZone.RDM: value = teamStrategy.RDM; break;
+            case Field.Zone.LDM: value = teamStrategy.LDM; break;
+            case Field.Zone.LCDM: value = teamStrategy.LCDM; break;
+            case Field.Zone.CDM: value = teamStrategy.CDM; break;
+            case Field.Zone.RCDM: value = teamStrategy.RCDM; break;
+            case Field.Zone.RDM: value = teamStrategy.RDM; break;
 
-            case FieldZone.LM: value = teamStrategy.LM; break;
-            case FieldZone.LCM: value = teamStrategy.LCM; break;
-            case FieldZone.CM: value = teamStrategy.CM; break;
-            case FieldZone.RCM: value = teamStrategy.RCM; break;
-            case FieldZone.RM: value = teamStrategy.RM; break;
+            case Field.Zone.LM: value = teamStrategy.LM; break;
+            case Field.Zone.LCM: value = teamStrategy.LCM; break;
+            case Field.Zone.CM: value = teamStrategy.CM; break;
+            case Field.Zone.RCM: value = teamStrategy.RCM; break;
+            case Field.Zone.RM: value = teamStrategy.RM; break;
 
-            case FieldZone.LAM: value = teamStrategy.LAM; break;
-            case FieldZone.LCAM: value = teamStrategy.LCAM; break;
-            case FieldZone.CAM: value = teamStrategy.CAM; break;
-            case FieldZone.RCAM: value = teamStrategy.RCAM; break;
-            case FieldZone.RAM: value = teamStrategy.RAM; break;
+            case Field.Zone.LAM: value = teamStrategy.LAM; break;
+            case Field.Zone.LCAM: value = teamStrategy.LCAM; break;
+            case Field.Zone.CAM: value = teamStrategy.CAM; break;
+            case Field.Zone.RCAM: value = teamStrategy.RCAM; break;
+            case Field.Zone.RAM: value = teamStrategy.RAM; break;
 
-            case FieldZone.LF: value = teamStrategy.LF; break;
-            case FieldZone.LCF: value = teamStrategy.LCF; break;
-            case FieldZone.CF: value = teamStrategy.CF; break;
-            case FieldZone.RCF: value = teamStrategy.RCF; break;
-            case FieldZone.RF: value = teamStrategy.RF; break;
+            case Field.Zone.LF: value = teamStrategy.LF; break;
+            case Field.Zone.LCF: value = teamStrategy.LCF; break;
+            case Field.Zone.CF: value = teamStrategy.CF; break;
+            case Field.Zone.RCF: value = teamStrategy.RCF; break;
+            case Field.Zone.RF: value = teamStrategy.RF; break;
 
-            case FieldZone.ALF: value = teamStrategy.ALF; break;
-            case FieldZone.ARF: value = teamStrategy.ARF; break;
-            case FieldZone.Box: value = teamStrategy.Box; break;
+            case Field.Zone.ALF: value = teamStrategy.ALF; break;
+            case Field.Zone.ARF: value = teamStrategy.ARF; break;
+            case Field.Zone.Box: value = teamStrategy.Box; break;
         }
         return value;
     }

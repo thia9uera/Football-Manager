@@ -13,5 +13,5 @@ public class FormationData : ScriptableObject
     }
 
     public TeamFormation Formation;
-    public MatchController.FieldZone[] Zones;
+    public Field.Zone[] Zones;
 }
