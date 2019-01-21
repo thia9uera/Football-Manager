@@ -72,9 +72,10 @@ public class MainController : MonoBehaviour
     {
         switch (_stat)
         {
-            case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Zone).ToList(); break;
+            case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Position).ToList(); break;
             case "Name": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "Goals": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.LifeTimeStats.Goals).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
+            case "Assists": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.LifeTimeStats.Assists).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "Shots": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.LifeTimeStats.Shots).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "ShotsMissed": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.LifeTimeStats.ShotsMissed).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "Headers": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.LifeTimeStats.Headers).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
@@ -95,9 +96,10 @@ public class MainController : MonoBehaviour
     {
         switch (_stat)
         {
-            case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Zone).ToList(); break;
+            case "Position": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.Position).ToList(); break;
             case "Name": listPlayers = listPlayers.OrderBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "Goals": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.TournamentStatistics[_tournamentId].Goals).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
+            case "Assists": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.TournamentStatistics[_tournamentId].Assists).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "Shots": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.TournamentStatistics[_tournamentId].Shots).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "ShotsMissed": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.TournamentStatistics[_tournamentId].ShotsMissed).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;
             case "Headers": listPlayers = listPlayers.OrderByDescending(PlayerData => PlayerData.Attributes.TournamentStatistics[_tournamentId].Headers).ThenBy(PlayerData => PlayerData.FirstName).ToList(); break;

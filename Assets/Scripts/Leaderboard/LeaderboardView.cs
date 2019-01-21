@@ -33,6 +33,9 @@ public class LeaderboardView : BaseScreen
     private string teamSorting = "Name";
 
     [SerializeField]
+    private ScrollRect scrollRect;
+
+    [SerializeField]
     int maxRows = 25;
 
     public override void Show()
@@ -123,6 +126,8 @@ public class LeaderboardView : BaseScreen
             listTeams = MainController.Instance.SortTeamsBy(listTeams, _stat);
             PopulateTeams();
         }
+
+        scrollRect.verticalNormalizedPosition = 1;
     }
 
     public void SwitchLeaderboard(string _type)

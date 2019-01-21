@@ -40,6 +40,6 @@ public class LeaderboardTeamView : MonoBehaviour
         faultsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalFaults);
         counterAttacksLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalCounterAttacks);
 
-        if (_index % 2 != 0) frame.color = Color.gray;
+        if (_index % 2 != 0) frame.color = Color.white;
     }
 }

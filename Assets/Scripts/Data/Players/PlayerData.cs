@@ -393,6 +393,7 @@ public class PlayerData : ScriptableObject
     void UpdateStats(PlayerStatistics _stats, PlayerStatistics _data)
     {
         _stats.Goals += _data.Goals;
+        _stats.Assists += _data.Assists;
         _stats.Passes += _data.Passes;
         _stats.Crosses += _data.Crosses;
         _stats.Faults += _data.Faults;

@@ -81,6 +81,7 @@ public class MatchController : MonoBehaviour
     MarkingType marking;
     PlayerData passer;
     int counterAttack = 0;
+    PlayerData penaltyTaker;
 
     int matchTime = 0;
     int homeTeamScore = 0;
@@ -498,12 +499,8 @@ public class MatchController : MonoBehaviour
     void DefineActions()
     {
         if(!isSimulating) screen.Field.UpdateFieldArea((int)CurrentZone);
-
-        if(!isSimulating)
-        {
-            screen.HomeTeamSquad.UpdateFatigue();
-            screen.AwayTeamSquad.UpdateFatigue();
-        }
+        screen.HomeTeamSquad.UpdateFatigue();
+        screen.AwayTeamSquad.UpdateFatigue();
 
         ResolveEvents();
 
@@ -888,7 +885,7 @@ public class MatchController : MonoBehaviour
         {
             DebugString += "CHUTOU! \n";
             UpdateNarration("nar_Shot_", 3, AttackingTeam);
-            ResolveShot(marking);
+            ResolveShot(marking, attackingPlayer);
             attackingPlayer.MatchStats.Shots++;
             AttackingTeam.MatchStats.TotalShots++;
         }
@@ -914,7 +911,7 @@ public class MatchController : MonoBehaviour
         {
             DebugString += "CABECEOU! \n";
             UpdateNarration("nar_Header_", 1, AttackingTeam);
-            ResolveShot(marking);
+            ResolveShot(marking, attackingPlayer);
             attackingPlayer.MatchStats.Headers++;
             AttackingTeam.MatchStats.TotalHeaders++;
         }
@@ -958,7 +955,7 @@ public class MatchController : MonoBehaviour
         //IF LAST ACTION RESULTED IN A GOAL
         switch (matchEvent)
         {
-            case MatchEvent.Goal: ResolveGoal(); break;
+            case MatchEvent.Goal: ResolveGoal(attackingPlayer); break;
             case MatchEvent.Offside:
             case MatchEvent.Freekick: ResolveFreekick(); break;
             case MatchEvent.Penalty: ResolvePenalty(); break;
@@ -966,28 +963,28 @@ public class MatchController : MonoBehaviour
         }
 
         //IF LAST SHOT WAS A MISS
-        if (shotMissed) ResolveShotMissed();
+        if (shotMissed) ResolveShotMissed(attackingPlayer);
 
         //IF KEEPER CONCEDED A CORNER KICK
         if (matchEvent == MatchEvent.CornerKick) ResolveCornerKick();
 
         //IF KEEPER SAVED LAST SHOT
-        if (shotSaved) ResolveShotSaved();
+        if (shotSaved) ResolveShotSaved(attackingPlayer);
     }
 
-    void ResolveGoal()
+    void ResolveGoal(PlayerData _shooter)
     {
         if (!isGoalAnnounced)
         {
             isGoalAnnounced = true;
             UpdateNarration("nar_GoalScream_", 1, AttackingTeam);
-            DebugString += "\n\n<size=40>GOL de " + attackingPlayer.GetFullName() + "</size>\n ________________________________\n \n";
+            DebugString += "\n\n<size=40>GOL de " + _shooter.GetFullName() + "</size>\n ________________________________\n \n";
             if (AttackingTeam == HomeTeam) homeTeamScore++;
             else awayTeamScore++;
             if (!isSimulating) screen.Score.UpdateScore(homeTeamScore, awayTeamScore);
-            attackingPlayer.MatchStats.Goals++;
+            _shooter.MatchStats.Goals++;
             if (passer != null) passer.MatchStats.Assists++;
-            AttackingTeam.MatchData.Scorers.Add(attackingPlayer);
+            AttackingTeam.MatchData.Scorers.Add(_shooter);
             return;
         }
         if (!isScorerAnnounced)
@@ -1043,7 +1040,7 @@ public class MatchController : MonoBehaviour
         {
             isFreekickTaken = false;
             matchEvent = MatchEvent.None;
-            ResolveShot(MarkingType.None);
+            ResolveShot(MarkingType.None, attackingPlayer);
         }
         return;
     }
@@ -1053,7 +1050,7 @@ public class MatchController : MonoBehaviour
         if (!isFreekickTaken)
         {
             isFreekickTaken = true;
-            attackingPlayer = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Penalty);
+            penaltyTaker = GetTopPlayerByAttribute(AttackingTeam.Squad, PlayerData.AttributeType.Penalty);
             localization.PLAYER_1 = attackingPlayer.FirstName;
             defendingPlayer = DefendingTeam.Squad[0];
             localization.PLAYER_2 = defendingPlayer.FirstName;
@@ -1068,7 +1065,7 @@ public class MatchController : MonoBehaviour
         {
             attackingBonus *= attackingBonusHigh;
             matchEvent = MatchEvent.None;
-            ResolveShot(MarkingType.None);
+            ResolveShot(MarkingType.None, penaltyTaker);
             isFreekickTaken = false;
         }
         return;
@@ -1083,7 +1080,7 @@ public class MatchController : MonoBehaviour
         ResolveAction();
     }
 
-    void ResolveShotMissed()
+    void ResolveShotMissed(PlayerData _shooter)
     {
         if (matchEvent == MatchEvent.Freekick)
         {
@@ -1108,7 +1105,7 @@ public class MatchController : MonoBehaviour
             matchEvent = MatchEvent.Goalkick;
         }
 
-        attackingPlayer.MatchStats.ShotsMissed++;
+        _shooter.MatchStats.ShotsMissed++;
         SwitchPossesion();
         shotMissed = false;
         return;
@@ -1149,11 +1146,11 @@ public class MatchController : MonoBehaviour
         return;
     }
 
-    void ResolveShotSaved()
+    void ResolveShotSaved(PlayerData _shooter)
     {
         if (offensiveAction == PlayerData.PlayerAction.Header)
         {
-            DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cabecada de " + attackingPlayer.GetFullName() + "\n\n_____________________________________\n\n";
+            DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende a cabecada de " + _shooter.GetFullName() + "\n\n_____________________________________\n\n";
             UpdateNarration("nar_SaveHeader_", 1, DefendingTeam);
         }
         else
@@ -1174,9 +1171,9 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                if (attackingPlayer == null) print("ATTACKER NULL");
+                if (_shooter == null) print("ATTACKER NULL");
                 if (defendingPlayer == null) defendingPlayer = DefendingTeam.Squad[0];
-                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + attackingPlayer.FirstName + " " + attackingPlayer.LastName + "\n\n_____________________________________\n\n";
+                DebugString += "\n\n" + defendingPlayer.GetFullName() + " defende o chute de " + _shooter.GetFullName() + "\n\n_____________________________________\n\n";
                 if (defenseExcitement == -1) UpdateNarration("nar_WorstSaveShot_", 1, DefendingTeam);
                 else if (defenseExcitement == 0) UpdateNarration("nar_SaveShot_", 1, DefendingTeam);
                 else if (defenseExcitement == 1) UpdateNarration("nar_BestSaveShot_", 1, DefendingTeam);
@@ -1558,15 +1555,13 @@ public class MatchController : MonoBehaviour
         }
 
         //Check if tackling is really happening  
-        if (_marking == MarkingType.None)
+        if (defendingPlayer == null)
         {
             isTackling = false;
             defensiveAction = PlayerData.PlayerAction.None;
         }
         else
         {
-            if (actionChancePerZone == null) print("ACTION CHANCE IS NULL");
-            if (defendingPlayer == null) print("DEFENDINF PLAYER IS NULL");
             float tackleChance = 0.75f * actionChancePerZone.actionChancePerZones[(int)zone].Tackle * defendingPlayer.Prob_Tackling;
             if (_marking == MarkingType.Close) tackleChance *= 1.25f;
 
@@ -2037,7 +2032,7 @@ public class MatchController : MonoBehaviour
         return action;
     } 
 
-    void ResolveShot(MarkingType _marking)
+    void ResolveShot(MarkingType _marking, PlayerData _shooter)
     {
         float attacking = 0f;
         float defending = 0f;
@@ -2082,29 +2077,29 @@ public class MatchController : MonoBehaviour
             
             if (matchEvent == MatchEvent.Freekick)
             {
-                attacking = (float)(attackingPlayer.Freekick + attackingPlayer.Strength) / 200;
+                attacking = (float)(_shooter.Freekick + _shooter.Strength) / 200;
                 bonusChance = GetPlayerAttributeBonus(attackingPlayer.Freekick);
             }
             else if (matchEvent == MatchEvent.Penalty)
             {
-                attacking = (float)(attackingPlayer.Penalty + attackingPlayer.Strength) / 200;
-                bonusChance = GetPlayerAttributeBonus(attackingPlayer.Penalty);
+                attacking = (float)(_shooter.Penalty + _shooter.Strength) / 200;
+                bonusChance = GetPlayerAttributeBonus(_shooter.Penalty);
             }
             else
             {
-                attacking = (float)(attackingPlayer.Shooting + attackingPlayer.Strength) / 200;
-                bonusChance = GetPlayerAttributeBonus(attackingPlayer.Shooting);
+                attacking = (float)(_shooter.Shooting + _shooter.Strength) / 200;
+                bonusChance = GetPlayerAttributeBonus(_shooter.Shooting);
             }
         }
         else if (offensiveAction == PlayerData.PlayerAction.Header)
         {
-            attacking = (float)(attackingPlayer.Heading + attackingPlayer.Strength) / 200;
-            bonusChance = GetPlayerAttributeBonus(attackingPlayer.Heading);
+            attacking = (float)(_shooter.Heading + _shooter.Strength) / 200;
+            bonusChance = GetPlayerAttributeBonus(_shooter.Heading);
         }
-
+      
         DebugString += "\n\n<size=30> RESOLVE SHOT </size>\n";
         DebugString += "Attacking: " + attacking + "\n";
-        attacking *= FatigueModifier(attackingPlayer.Fatigue);
+        attacking *= FatigueModifier(_shooter.Fatigue);
         DebugString += "\n<color=#ff0000>- Fatigue: </color>" + attacking;
         attacking *= distanceModifier;
         if (distanceModifier < 1) DebugString += "\n<color=#ff0000>- Distance modifier (-" + distanceModifier * 100 + "%):</color>" + attacking;
@@ -2170,7 +2165,7 @@ public class MatchController : MonoBehaviour
         DebugString += "\nGoleiro: " + defending;
         if (attacking <= defending)
         {
-            if (attackingPlayer == null) print("ATTACKER NULL DERP DERP DERP");
+            if (_shooter == null) print("ATTACKER NULL DERP DERP DERP");
             if (defendingPlayer == null) print("DEFENDER NULL DERP DERP DERP");
             shotSaved = true;
             if(defenseExcitement == -1) matchEvent = MatchEvent.CornerKick;
@@ -2610,7 +2605,7 @@ public class MatchController : MonoBehaviour
         {
             if(player.GetPlayerAttribute(_attribute) > higher) best = player;
         }
-
+        if (best == null) print("NO BEST PLAYER  - " + _attribute.ToString());
         return best;
     }
 

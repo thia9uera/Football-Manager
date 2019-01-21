@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LeaderboardPlayerView : MonoBehaviour
 {
-    [SerializeField]    public TextMeshProUGUI posLabel, nameLabel, goalsLabel, shotsLabel, shotsMissedLabel, headersLabel, headersMissedLabel,  passesLabel, crossesLabel, faultsLabel, tacklesLabel, dribblesLabel, presenceLabel, savesLabel;
+    [SerializeField]    public TextMeshProUGUI posLabel, nameLabel, goalsLabel, assistsLabel, shotsLabel, shotsMissedLabel, headersLabel, headersMissedLabel,  passesLabel, crossesLabel, faultsLabel, tacklesLabel, dribblesLabel, presenceLabel, savesLabel;
 
     public PlayerData Player;
 
@@ -19,6 +19,7 @@ public class LeaderboardPlayerView : MonoBehaviour
         posLabel.text = MainController.Instance.Localization.GetShortPositionString(_player.Position);
         nameLabel.text = _player.FirstName + " " + _player.LastName;
         goalsLabel.text = _player.Attributes.LifeTimeStats.Goals.ToString();
+        assistsLabel.text = _player.Attributes.LifeTimeStats.Assists.ToString();
         shotsLabel.text = _player.Attributes.LifeTimeStats.Shots.ToString();
         shotsMissedLabel.text = _player.Attributes.LifeTimeStats.ShotsMissed.ToString();
         headersLabel.text = _player.Attributes.LifeTimeStats.Headers.ToString();
@@ -31,6 +32,6 @@ public class LeaderboardPlayerView : MonoBehaviour
         savesLabel.text = _player.Attributes.LifeTimeStats.Saves.ToString();
         presenceLabel.text = _player.Attributes.LifeTimeStats.Presence.ToString();
 
-        if (_index % 2 != 0) frame.color = Color.gray;
+        if (_index % 2 != 0) frame.color = Color.white;
     }
 }
