@@ -18,7 +18,7 @@ public class MainController : MonoBehaviour
     [Header("Controllers")]
     [Space(5)]
     public LocalizationData Localization;
-    public MatchController Match;
+    public MatchControllerRefactor Match;
     public DataController Data;
     public CalendarController Calendar;
     public ScreenController Screens;
@@ -119,8 +119,6 @@ public class MainController : MonoBehaviour
     public PlayerData GetPlayerById(string _id) { return AllPlayers.Single(PlayerData => PlayerData.Id == _id); }
 
     public TeamData GetTeamById(string _id) { return AllTeams.Single(TeamData => TeamData.Id == _id); }
-
-    public FormationData GetFormation(FormationData.TeamFormation _formation) { return Match.TeamFormations[(int)_formation]; }
 
     public List<TeamData> SortTeamsBy(List<TeamData> listTeams, string _stat)
     {

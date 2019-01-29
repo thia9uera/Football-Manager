@@ -17,6 +17,8 @@ public class Debug_FieldView : MonoBehaviour
 
     public Debug_Popup Popup;
 
+    Field field;
+
     [SerializeField]
     private Text fatigueLabel;
 
@@ -71,7 +73,7 @@ public class Debug_FieldView : MonoBehaviour
         {
             zone = t.GetComponent<Debug_ZoneView>();
 
-            float chance = CalculatePresence(TestPlayer, zone.Zone);
+            float chance = field.CalculatePresence(TestPlayer, zone.Zone, TeamStrategy);
 
             if (chance >= 1f)
             {
@@ -96,17 +98,6 @@ public class Debug_FieldView : MonoBehaviour
     public void SetPlayerStrategy()
     {
         TestPlayer.Attributes.Strategy = (PlayerAttributes.PlayerStrategy)DropDownPlayerStrategy.value;
-    }
-
-    private float CalculatePresence(PlayerData _player, Field.Zone _zone)
-    {
-        float chance = _player.GetChancePerZone(_zone, TeamStrategy);
-
-        if (chance < 1f && chance > 0f)
-        {
-            chance *= ((float)(_player.Attributes.Speed + _player.Attributes.Vision) / 200) * ((float)_player.Fatigue / 100);
-        }
-        return chance;
     }
 
     public void OnSliderChange()

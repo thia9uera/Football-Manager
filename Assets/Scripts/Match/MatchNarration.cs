@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +19,10 @@ public class MatchNarration : MonoBehaviour
     [SerializeField]
     private Color grayText;
 
-    public void UpdateNarration(string _text, Color _frameColor)
+    public void UpdateNarration(string _text, Color _frameColor, string _zone)
     {
         MatchNarrationTextView text = Instantiate(narrationText, content);
-        text.Populate(_text, _frameColor, Color.white);
+        text.Populate(_text, _frameColor, Color.white, _zone);
         Canvas.ForceUpdateCanvases();
         scroll.verticalNormalizedPosition = 0;
         Canvas.ForceUpdateCanvases();

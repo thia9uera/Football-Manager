@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MatchSpeedSlider : MonoBehaviour
 {
-    MatchController controller;
+    MatchControllerRefactor controller;
 
     Slider slider;
 
@@ -16,12 +16,12 @@ public class MatchSpeedSlider : MonoBehaviour
     {
         controller = MainController.Instance.Match;
         slider = GetComponent<Slider>();
-        label.text = controller.MatchSpeed + "x";
+        //label.text = controller.MatchSpeed + "x";
     }
 
     public void OnSliderUpdate()
     {
         label.text = slider.value + "x";
-        controller.MatchSpeed = (int)slider.value;
+        //controller.MatchSpeed = (int)slider.value;
     }
 }

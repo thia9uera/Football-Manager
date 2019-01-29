@@ -182,7 +182,6 @@
     <Compile Include="Assets\Scripts\Controllers\Field.cs" />
     <Compile Include="Assets\Scripts\Controllers\GlobalParameters.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MatchControllerRefactor.cs" />
     <Compile Include="Assets\Scripts\Controllers\ScreenController.cs" />
     <Compile Include="Assets\Scripts\Data\Formations\FormationData.cs" />

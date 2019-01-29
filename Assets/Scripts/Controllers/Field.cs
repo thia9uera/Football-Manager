@@ -17,13 +17,25 @@ public class Field : MonoBehaviour
         Box,
     }
     const int totalZones = 31;
-    public List<Vector2> FieldMatrix;
-    public Zone CurrentZone;
-    public Zone LastZone;
+    public List<Vector2> Matrix;
+    [HideInInspector]
+    public Zone CurrentZone, LastZone;
+
+    public PosChanceData[] TeamStrategies;
+
+    [Space(5)]
+    public FormationData[] TeamFormations;
+
+    public Zone GetAwayTeamZone(Zone _zone)
+    {
+        int zone = (totalZones - 1) - (int)_zone;
+
+        return (Zone)zone;
+    }
 
     public float CalculatePresence(PlayerData _player, Zone _zone, TeamAttributes.TeamStrategy _teamStrategy)
     {
-        float chance = _player.GetChancePerZone(_zone, _teamStrategy);
+        float chance = _player.GetChancePerZone(_zone, GetTeamStrategyZones(_teamStrategy, _zone));
 
         if (chance < 1f && chance > 0f)
         {
@@ -33,9 +45,9 @@ public class Field : MonoBehaviour
         return chance;
     }
 
-    public Zone GetTargetZone(Zone _currentZone, MatchControllerRefactor.MatchEvent _event, PlayerData.PlayerAction _action, TeamAttributes.TeamStrategy _teamStrategy, bool _isAwayTeam)
+    public Zone GetTargetZone(Zone _currentZone, MatchControllerRefactor.MatchEvent _event, PlayerData.PlayerAction _action, TeamAttributes.TeamStrategy _teamStrategy)
     {
-        Zone target = CurrentZone;
+        Zone target = _currentZone;
         Zone zone = _currentZone;
         List<KeyValuePair<Zone, float>> list = new List<KeyValuePair<Zone, float>>();
 
@@ -321,7 +333,17 @@ public class Field : MonoBehaviour
             }
         }
 
-        if (_isAwayTeam) target = (Zone)((totalZones - 1) - (int)target);
+        //if (_isAwayTeam) target = (Zone)((totalZones - 1) - (int)target);
         return target;
+    }
+
+    Zones GetTeamStrategyZones(TeamAttributes.TeamStrategy _strategy, Zone _zone)
+    {
+        foreach(PosChanceData data in TeamStrategies)
+        {
+            if (data.Strategy == _strategy) return data.posChancePerZones[(int)_zone];
+        }
+
+        return null;
     }
 }

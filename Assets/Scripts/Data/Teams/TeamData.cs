@@ -173,6 +173,66 @@ public class TeamData : ScriptableObject
         return players;
     }
 
+    public PlayerData GetTopPlayerByAttribute(PlayerData.AttributeType _attribute, PlayerData[] _players, bool _includeSubs = false)
+    {
+        PlayerData best = null;
+        int higher = 0;
+        if (_includeSubs) Substitutes.CopyTo(_players, _players.Length);
+        foreach (PlayerData player in _players)
+        {
+            if (player.GetPlayerAttribute(_attribute) > higher) best = player;
+        }
+        return best;
+    }
+
+    public bool IsStrategyApplicable(Field.Zone _zone)
+    {
+        bool value = false;
+        Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
+
+        switch (_zone)
+        {
+            case Field.Zone.OwnGoal: value = teamStrategy.OwnGoal; break;
+            case Field.Zone.BLD: value = teamStrategy.BLD; break;
+            case Field.Zone.BRD: value = teamStrategy.BRD; break;
+
+            case Field.Zone.LD: value = teamStrategy.LD; break;
+            case Field.Zone.LCD: value = teamStrategy.LCD; break;
+            case Field.Zone.CD: value = teamStrategy.CD; break;
+            case Field.Zone.RCD: value = teamStrategy.RCD; break;
+            case Field.Zone.RD: value = teamStrategy.RD; break;
+
+            case Field.Zone.LDM: value = teamStrategy.LDM; break;
+            case Field.Zone.LCDM: value = teamStrategy.LCDM; break;
+            case Field.Zone.CDM: value = teamStrategy.CDM; break;
+            case Field.Zone.RCDM: value = teamStrategy.RCDM; break;
+            case Field.Zone.RDM: value = teamStrategy.RDM; break;
+
+            case Field.Zone.LM: value = teamStrategy.LM; break;
+            case Field.Zone.LCM: value = teamStrategy.LCM; break;
+            case Field.Zone.CM: value = teamStrategy.CM; break;
+            case Field.Zone.RCM: value = teamStrategy.RCM; break;
+            case Field.Zone.RM: value = teamStrategy.RM; break;
+
+            case Field.Zone.LAM: value = teamStrategy.LAM; break;
+            case Field.Zone.LCAM: value = teamStrategy.LCAM; break;
+            case Field.Zone.CAM: value = teamStrategy.CAM; break;
+            case Field.Zone.RCAM: value = teamStrategy.RCAM; break;
+            case Field.Zone.RAM: value = teamStrategy.RAM; break;
+
+            case Field.Zone.LF: value = teamStrategy.LF; break;
+            case Field.Zone.LCF: value = teamStrategy.LCF; break;
+            case Field.Zone.CF: value = teamStrategy.CF; break;
+            case Field.Zone.RCF: value = teamStrategy.RCF; break;
+            case Field.Zone.RF: value = teamStrategy.RF; break;
+
+            case Field.Zone.ALF: value = teamStrategy.ALF; break;
+            case Field.Zone.ARF: value = teamStrategy.ARF; break;
+            case Field.Zone.Box: value = teamStrategy.Box; break;
+        }
+        return value;
+    }
+
     public void Reset()
     {
         TournamentStatistics = new TeamTournamentStats();

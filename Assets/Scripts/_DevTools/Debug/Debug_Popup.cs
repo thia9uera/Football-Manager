@@ -21,7 +21,7 @@ public class Debug_Popup : MonoBehaviour
 
     public void Confirm()
     {
-        Zones data = MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Attributes.Zone];
+        Zones data = MainController.Instance.Match.Field.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Attributes.Zone];
         chance = float.Parse(InputField.text)/100;
         data.Position = ((Field.Zone)Debug_FieldView.Instance.DropDownPlayerPosition.value).ToString();
 
@@ -62,7 +62,7 @@ public class Debug_Popup : MonoBehaviour
 
         gameObject.SetActive(false);
         Debug_FieldView.Instance.Test();
-        UnityEditor.EditorUtility.SetDirty(MainController.Instance.Match.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].PosChance);
+        UnityEditor.EditorUtility.SetDirty(MainController.Instance.Match.Field.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy]);
         UnityEditor.AssetDatabase.SaveAssets();
     }
 

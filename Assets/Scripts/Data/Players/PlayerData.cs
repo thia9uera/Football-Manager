@@ -212,53 +212,52 @@ public class PlayerData : ScriptableObject
         return total;
     }
 
-    public float GetChancePerZone(Field.Zone _zone, TeamAttributes.TeamStrategy _teamStrategy)
+    public float GetChancePerZone(Field.Zone _zone, Zones _chancePerZone)
     {
         float pct = 0f;
 
-        Zones chancePerZone = MainController.Instance.Match.TeamStrategies[(int)_teamStrategy].PosChance.posChancePerZones[(int)Zone];
-
         switch(_zone)
         {
-            case Field.Zone.OwnGoal: pct = chancePerZone.OwnGoal; break;
-            case Field.Zone.BLD: pct = chancePerZone.BLD; break;
-            case Field.Zone.BRD: pct = chancePerZone.BRD; break;
-            case Field.Zone.LD: pct = chancePerZone.LD; break;
-            case Field.Zone.LCD: pct = chancePerZone.LCD; break;
-            case Field.Zone.CD: pct = chancePerZone.CD; break;
-            case Field.Zone.RCD: pct = chancePerZone.RCD; break;
-            case Field.Zone.RD: pct = chancePerZone.RD; break;
-            case Field.Zone.LDM: pct = chancePerZone.LDM; break;
-            case Field.Zone.LCDM: pct = chancePerZone.LCDM; break;
-            case Field.Zone.CDM: pct = chancePerZone.CDM; break;
-            case Field.Zone.RCDM: pct = chancePerZone.RCDM; break;
-            case Field.Zone.RDM: pct = chancePerZone.RDM; break;
-            case Field.Zone.LM: pct = chancePerZone.LM; break;
-            case Field.Zone.LCM: pct = chancePerZone.LCM; break;
-            case Field.Zone.CM: pct = chancePerZone.CM; break;
-            case Field.Zone.RCM: pct = chancePerZone.RCM; break;
-            case Field.Zone.RM: pct = chancePerZone.RM; break;
-            case Field.Zone.LAM: pct = chancePerZone.LAM; break;
-            case Field.Zone.LCAM: pct = chancePerZone.LCAM; break;
-            case Field.Zone.CAM: pct = chancePerZone.CAM; break;
-            case Field.Zone.RCAM: pct = chancePerZone.RCAM; break;
-            case Field.Zone.RAM: pct = chancePerZone.RAM; break;
-            case Field.Zone.LF: pct = chancePerZone.LF; break;
-            case Field.Zone.LCF: pct = chancePerZone.LCF; break;
-            case Field.Zone.CF: pct = chancePerZone.CF; break;
-            case Field.Zone.RCF: pct = chancePerZone.RCF; break;
-            case Field.Zone.RF: pct = chancePerZone.RF; break;
-            case Field.Zone.ALF: pct = chancePerZone.ALF; break;
-            case Field.Zone.ARF: pct = chancePerZone.ARF; break;
-            case Field.Zone.Box: pct = chancePerZone.Box; break;
+            case Field.Zone.OwnGoal: pct = _chancePerZone.OwnGoal; break;
+            case Field.Zone.BLD: pct = _chancePerZone.BLD; break;
+            case Field.Zone.BRD: pct = _chancePerZone.BRD; break;
+            case Field.Zone.LD: pct = _chancePerZone.LD; break;
+            case Field.Zone.LCD: pct = _chancePerZone.LCD; break;
+            case Field.Zone.CD: pct = _chancePerZone.CD; break;
+            case Field.Zone.RCD: pct = _chancePerZone.RCD; break;
+            case Field.Zone.RD: pct = _chancePerZone.RD; break;
+            case Field.Zone.LDM: pct = _chancePerZone.LDM; break;
+            case Field.Zone.LCDM: pct = _chancePerZone.LCDM; break;
+            case Field.Zone.CDM: pct = _chancePerZone.CDM; break;
+            case Field.Zone.RCDM: pct = _chancePerZone.RCDM; break;
+            case Field.Zone.RDM: pct = _chancePerZone.RDM; break;
+            case Field.Zone.LM: pct = _chancePerZone.LM; break;
+            case Field.Zone.LCM: pct = _chancePerZone.LCM; break;
+            case Field.Zone.CM: pct = _chancePerZone.CM; break;
+            case Field.Zone.RCM: pct = _chancePerZone.RCM; break;
+            case Field.Zone.RM: pct = _chancePerZone.RM; break;
+            case Field.Zone.LAM: pct = _chancePerZone.LAM; break;
+            case Field.Zone.LCAM: pct = _chancePerZone.LCAM; break;
+            case Field.Zone.CAM: pct = _chancePerZone.CAM; break;
+            case Field.Zone.RCAM: pct = _chancePerZone.RCAM; break;
+            case Field.Zone.RAM: pct = _chancePerZone.RAM; break;
+            case Field.Zone.LF: pct = _chancePerZone.LF; break;
+            case Field.Zone.LCF: pct = _chancePerZone.LCF; break;
+            case Field.Zone.CF: pct = _chancePerZone.CF; break;
+            case Field.Zone.RCF: pct = _chancePerZone.RCF; break;
+            case Field.Zone.RF: pct = _chancePerZone.RF; break;
+            case Field.Zone.ALF: pct = _chancePerZone.ALF; break;
+            case Field.Zone.ARF: pct = _chancePerZone.ARF; break;
+            case Field.Zone.Box: pct = _chancePerZone.Box; break;
         }
         return pct;
     }
 
-    public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MatchController.MarkingType _marking)
+    public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MatchControllerRefactor.MarkingType _marking, Field.Zone _zone)
     {
         float chance = 0f;
         float bonus = 0f;
+        Team_Strategy teamStrategy = Team.GetStrategy();
 
         switch (_action)
         {
@@ -266,46 +265,52 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Pass:
                 chance = _zoneChance.Pass * Prob_Pass;
                 bonus = GetAttributeBonus(Passing);
-                if (_marking == MatchController.MarkingType.Close) chance *= 2f;
+                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 2f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10)), 100) >= 20) chance *= 2f;
+                if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.PassingChance;
                 break;
 
             case PlayerAction.LongPass:
                 float longPass = _zoneChance.LongPass * Prob_LongPass;
                 bonus = GetAttributeBonus(Mathf.FloorToInt((float)(Passing + Strength) / 2));
-                if (_marking == MatchController.MarkingType.Close) longPass *= 1.75f;
+                if (_marking == MatchControllerRefactor.MarkingType.Close) longPass *= 1.75f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10)), 100) >= 20) longPass *= 2f;
+                if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.LongPassChance;
                 break;
 
             case PlayerAction.Dribble:
                 chance = _zoneChance.Dribble * Prob_Dribble;
                 bonus = GetAttributeBonus(Dribbling);
-                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
-                else if (_marking == MatchController.MarkingType.Distance) chance *= 1.5f;
+                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 0.5f;
+                else if (_marking == MatchControllerRefactor.MarkingType.Distance) chance *= 1.5f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
+                if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.DribblingChance;
                 break;
 
             case PlayerAction.Cross:
                 chance = _zoneChance.Cross * Prob_Crossing;
                 bonus = GetAttributeBonus(Crossing);
-                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
+                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 0.5f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
+                if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.CrossingChance;
                 break;
 
             case PlayerAction.Shot:
                 chance = _zoneChance.Shot * Prob_Shoot;
                 bonus = GetAttributeBonus(Shooting);
-                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
-                else if (_marking == MatchController.MarkingType.None) chance *= 3f;
+                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 0.5f;
+                else if (_marking == MatchControllerRefactor.MarkingType.None) chance *= 3f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
+                if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.ShootingChance;
                 break;
 
             case PlayerAction.Header:
                 chance = (_zoneChance.Shot + Prob_Shoot) * 1.5f;
                 bonus = GetAttributeBonus(Heading);
-                if (_marking == MatchController.MarkingType.Distance) chance *= 2f;
-                else if (_marking == MatchController.MarkingType.None) chance *= 3f;
+                if (_marking == MatchControllerRefactor.MarkingType.Distance) chance *= 2f;
+                else if (_marking == MatchControllerRefactor.MarkingType.None) chance *= 3f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
+                if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.ShootingChance;
                 break;
         }
 
@@ -315,11 +320,11 @@ public class PlayerData : ScriptableObject
     AltPosition GetAltPosition(Field.Zone _zone)
     {
         AltPosition pos = AltPosition.None;
-        Vector2 posMatrix = MainController.Instance.Match.FieldMatrix[(int)Zone];
+        Vector2 posMatrix = MainController.Instance.Match.Field.Matrix[(int)Zone];
         int posX = (int)posMatrix.x;
         int posY = (int)posMatrix.y;
 
-        Vector2 altPosMatrix = MainController.Instance.Match.FieldMatrix[(int)_zone];
+        Vector2 altPosMatrix = MainController.Instance.Match.Field.Matrix[(int)_zone];
         int altPosX = (int)altPosMatrix.x;
         int altPosY = (int)altPosMatrix.y;
 

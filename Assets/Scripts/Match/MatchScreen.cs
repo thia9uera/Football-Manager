@@ -19,6 +19,13 @@ public class MatchScreen : BaseScreen
     public MatchTeamView AwayTeamSquad;
     public MatchNarration Narration;
 
+    MatchControllerRefactor controller;
+
+    private void Awake()
+    {
+        controller = GetComponent<MatchControllerRefactor>();
+    }
+
     public override void Show()
     {
         base.Show();
@@ -34,5 +41,10 @@ public class MatchScreen : BaseScreen
     private void Update()
     {
         version.text = "v." + Application.version + "  " + Mathf.FloorToInt(1.0f / Time.smoothDeltaTime);
+    }
+
+    public void StartButtonClickHandler()
+    {
+        controller.KickOff();
     }
 }
