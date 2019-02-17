@@ -30,6 +30,7 @@ public class Debug_FieldView : MonoBehaviour
     public void Awake()
     {
         if (Instance == null) Instance = this;
+        field = MainController.Instance.Match.Field;
     }
 
     public void Start()
@@ -74,6 +75,8 @@ public class Debug_FieldView : MonoBehaviour
             zone = t.GetComponent<Debug_ZoneView>();
 
             float chance = field.CalculatePresence(TestPlayer, zone.Zone, TeamStrategy);
+
+            //print(zone.Zone.ToString() + " : " + chance);
 
             if (chance >= 1f)
             {

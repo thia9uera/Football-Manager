@@ -2,20 +2,20 @@
 public class TeamStatistics
 {
     public int Points;
-    public int TotalWins;
-    public int TotalLosts;
-    public int TotalDraws;
-    public int TotalGoals;
-    public int TotalGoalsAgainst;
-    public int TotalShots;
-    public int TotalHeaders;
-    public int TotalSteals;
-    public int TotalPasses;
-    public int TotalLongPasses;
-    public int TotalPassesMissed;
-    public int TotalBoxCrosses;
-    public int TotalFaults;
-    public int TotalOffsides;
-    public int TotalCornerKicks;
-    public int TotalCounterAttacks;
+    public int Wins;
+    public int Losts;
+    public int Draws;
+    public int Goals;
+    public int GoalsAgainst;
+    public int Shots;
+    public int Headers;
+    public int Steals;
+    public int Passes;
+    public int LongPasses;
+    public int PassesMissed;
+    public int BoxCrosses;
+    public int Faults;
+    public int Offsides;
+    public int CornerKicks;
+    public int CounterAttacks;
 }

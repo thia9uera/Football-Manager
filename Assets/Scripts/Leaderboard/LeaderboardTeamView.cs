@@ -24,21 +24,21 @@ public class LeaderboardTeamView : MonoBehaviour
         LocalizationData loc = MainController.Instance.Localization;
 
         nameLabel.text = _team.Name;
-        winsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalWins);
-        lostsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalLosts);
-        drawsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalDraws);
-        goalslabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalGoals);
-        goalsAgainstLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalGoalsAgainst);
-        shotsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalShots);
-        headersLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalHeaders);
-        stealsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalSteals);
-        passesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalPasses);
-        passesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalPasses);
-        longPassesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalLongPasses);
-        passesMissedLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalPassesMissed);
-        boxCrossesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalBoxCrosses);
-        faultsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalFaults);
-        counterAttacksLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.TotalCounterAttacks);
+        winsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Wins);
+        lostsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Losts);
+        drawsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Draws);
+        goalslabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Goals);
+        goalsAgainstLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.GoalsAgainst);
+        shotsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Shots);
+        headersLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Headers);
+        stealsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Steals);
+        passesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Passes);
+        passesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Passes);
+        longPassesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.LongPasses);
+        passesMissedLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.PassesMissed);
+        boxCrossesLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.BoxCrosses);
+        faultsLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.Faults);
+        counterAttacksLabel.text = loc.FormatBigNumber(_team.LifeTimeStats.CounterAttacks);
 
         if (_index % 2 != 0) frame.color = Color.white;
     }

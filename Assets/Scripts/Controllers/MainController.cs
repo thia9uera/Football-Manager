@@ -18,7 +18,7 @@ public class MainController : MonoBehaviour
     [Header("Controllers")]
     [Space(5)]
     public LocalizationData Localization;
-    public MatchControllerRefactor Match;
+    public MatchController Match;
     public DataController Data;
     public CalendarController Calendar;
     public ScreenController Screens;
@@ -125,22 +125,22 @@ public class MainController : MonoBehaviour
         switch (_stat)
         {
             case "Name": listTeams = listTeams.OrderBy(TeamData => TeamData.Name).ToList(); break;
-            case "Wins": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalWins).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Losts": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalLosts).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Draws": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalDraws).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalGoals).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "GoalsAgainst": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalGoalsAgainst).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Wins": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Wins).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Losts": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Losts).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Draws": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Draws).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Goals).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "GoalsAgainst": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.GoalsAgainst).ThenBy(TeamData => TeamData.Name).ToList(); break;
 
-            case "Shots": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalShots).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Headers": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalHeaders).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Steals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalSteals).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Passes": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalPasses).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "LongPasses": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalLongPasses).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "PassesMissed": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalPassesMissed).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Shots": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Shots).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Headers": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Headers).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Steals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Steals).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Passes": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Passes).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "LongPasses": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.LongPasses).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "PassesMissed": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.PassesMissed).ThenBy(TeamData => TeamData.Name).ToList(); break;
 
-            case "BoxCrosses": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalBoxCrosses).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "Faults": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalFaults).ThenBy(TeamData => TeamData.Name).ToList(); break;
-            case "CounterAttacks": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.TotalCounterAttacks).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "BoxCrosses": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.BoxCrosses).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Faults": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Faults).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "CounterAttacks": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.CounterAttacks).ThenBy(TeamData => TeamData.Name).ToList(); break;
         }
 
         return listTeams;

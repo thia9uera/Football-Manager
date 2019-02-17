@@ -40,9 +40,9 @@ public class MatchScoreView : MonoBehaviour
 
     public void UpdateTime(int _time)
     {
-        //float minutes = Mathf.Floor(_time / 60);
-        //float seconds = _time % 60;
-        timeLabel.text = _time.ToString("00") +  "'";
+        float minutes = Mathf.Floor(_time / 60);
+        float seconds = _time % 60;
+        timeLabel.text = minutes.ToString("00") +  ":" + seconds.ToString("00");
     }
 
     public void UpdateScore(int _homeTeamScore, int _awayTeamScore)

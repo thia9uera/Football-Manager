@@ -12,99 +12,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
   m_Name: TestPlayer
   m_EditorClassIdentifier: 
-  FirstName: Julia
-  LastName: Fernandes
-  Zone: 0
-  Position: 8
-  Strategy: 2
-  Goalkeeping: 28
-  Passing: 72
-  Dribbling: 50
-  Crossing: 50
-  Tackling: 82
-  Blocking: 50
-  Shooting: 55
-  Heading: 50
-  Freekick: 50
-  Penalty: 50
-  Speed: 100
-  Strength: 80
-  Agility: 63
-  Stamina: 71
-  Teamwork: 70
-  Vision: 100
-  Stability: 50
-  fatigue: 100
+  Attributes:
+    Id: 
+    FirstName: Test
+    LastName: Player
+    Zone: 0
+    Position: 0
+    Strategy: 0
+    Goalkeeping: 75
+    Passing: 75
+    Dribbling: 75
+    Crossing: 75
+    Tackling: 75
+    Blocking: 75
+    Shooting: 75
+    Heading: 75
+    Freekick: 75
+    Penalty: 75
+    Speed: 75
+    Strength: 75
+    Agility: 75
+    Stamina: 75
+    Teamwork: 75
+    Vision: 75
+    Stability: 75
+    LifeTimeStats:
+      Passes: 0
+      Crosses: 0
+      Shots: 0
+      Headers: 0
+      Faults: 0
+      Tackles: 0
+      Dribbles: 0
+      Goals: 0
+      Saves: 0
+      PassesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
+      DribblesMissed: 0
+      CrossesMissed: 0
+      Presence: 0
+      Assists: 0
+    TournamentStatistics:
+      reorderableList:
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
+        isExpanded: 0
+        label:
+          m_Text: Keys
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
+        elementDisplayType: 0
+        elementNameProperty: 
+        elementNameOverride: 
+        elementIcon: {fileID: 0}
+      reqReferences: {fileID: 0}
+      isExpanded: 0
+      _keyValues: []
+      _keys: []
+      _values: []
+  MatchStats:
+    Passes: 0
+    Crosses: 0
+    Shots: 0
+    Headers: 0
+    Faults: 0
+    Tackles: 0
+    Dribbles: 0
+    Goals: 0
+    Saves: 0
+    PassesMissed: 0
+    ShotsMissed: 0
+    HeadersMissed: 0
+    DribblesMissed: 0
+    CrossesMissed: 0
+    Presence: 0
+    Assists: 0
   Team: {fileID: 0}
-  Prob_DefPosition: 0.75
-  Prob_OffPosition: 3
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
   Prob_LeftPos: 1
   Prob_RightPos: 1
   Prob_Pass: 1
-  Prob_Shoot: 1.3
+  Prob_Shoot: 1
   Prob_Fault: 0
-  Prob_Crossing: 2.25
-  Prob_Dribble: 1.3
+  Prob_Crossing: 1
+  Prob_Dribble: 1
   Prob_Fall: 0
   Prob_OffsideLine: 1
   Prob_Marking: 1
   Prob_Tackling: 1
-  Prob_LongPass: 0
-  LifeTimeStats:
-    TotalPasses: 0
-    TotalCrosses: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
-    TotalDribbles: 0
-    TotalGoals: 0
-    TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
-    TotalHeadersMissed: 0
-    TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-    TotalPresence: 0
-  MatchStats:
-    TotalPasses: 0
-    TotalCrosses: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalFaults: 0
-    TotalTackles: 0
-    TotalDribbles: 0
-    TotalGoals: 0
-    TotalSaves: 0
-    TotalPassesMissed: 0
-    TotalShotsMissed: 0
-    TotalHeadersMissed: 0
-    TotalDribblesMissed: 0
-    TotalCrossesMissed: 0
-    TotalPresence: 0
-  TournamentStatistics:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: []
-    _keys: []
-    _values: []
+  Prob_LongPass: 1

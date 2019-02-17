@@ -11,6 +11,9 @@ public class MatchScreen : BaseScreen
     [SerializeField]
     TextMeshProUGUI version;
 
+    [SerializeField]
+    MatchStartButton startButton;
+
     public MatchSimulationScreen Simulation;
 
     public MatchScoreView Score;
@@ -19,11 +22,11 @@ public class MatchScreen : BaseScreen
     public MatchTeamView AwayTeamSquad;
     public MatchNarration Narration;
 
-    MatchControllerRefactor controller;
+    MatchController controller;
 
     private void Awake()
     {
-        controller = GetComponent<MatchControllerRefactor>();
+        controller = GetComponent<MatchController>();
     }
 
     public override void Show()
@@ -45,6 +48,7 @@ public class MatchScreen : BaseScreen
 
     public void StartButtonClickHandler()
     {
-        controller.KickOff();
+        controller.StartButtonClickHandler();
+        startButton.Toggle();
     }
 }

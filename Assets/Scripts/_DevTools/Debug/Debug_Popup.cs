@@ -9,7 +9,18 @@ public class Debug_Popup : MonoBehaviour
 
     Field.Zone zone;
     float chance;
-	
+
+    [SerializeField]
+    List<PosChanceData> posChandeDatas;
+
+    private void Awake()
+    {
+        posChandeDatas = new List<PosChanceData>();
+
+        PosChanceData[] dataList =  Tools.GetAtFolder<PosChanceData>("Data/PosChance");
+        foreach (PosChanceData data in dataList) posChandeDatas.Add(data);
+    }
+
     public void ShowPopup(float _chance, Field.Zone _zone)
     {
         gameObject.SetActive(true);
@@ -19,9 +30,23 @@ public class Debug_Popup : MonoBehaviour
         InputField.Select();
     }
 
+    Zones GetZones()
+    {
+        Zones zones = null;
+        foreach (PosChanceData data in posChandeDatas)
+        {
+            if(data.Strategy == Debug_FieldView.Instance.TeamStrategy)
+            {
+                zones = data.posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Attributes.Zone];
+            }
+        }
+
+        return zones;
+    }
+
     public void Confirm()
     {
-        Zones data = MainController.Instance.Match.Field.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy].posChancePerZones[(int)Debug_FieldView.Instance.TestPlayer.Attributes.Zone];
+        Zones data = GetZones();
         chance = float.Parse(InputField.text)/100;
         data.Position = ((Field.Zone)Debug_FieldView.Instance.DropDownPlayerPosition.value).ToString();
 
@@ -62,7 +87,7 @@ public class Debug_Popup : MonoBehaviour
 
         gameObject.SetActive(false);
         Debug_FieldView.Instance.Test();
-        UnityEditor.EditorUtility.SetDirty(MainController.Instance.Match.Field.TeamStrategies[(int)Debug_FieldView.Instance.TeamStrategy]);
+        UnityEditor.EditorUtility.SetDirty(posChandeDatas[(int)Debug_FieldView.Instance.TeamStrategy]);
         UnityEditor.AssetDatabase.SaveAssets();
     }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchControllerRefactor : MonoBehaviour
+public class MatchController : MonoBehaviour
 {
     public enum MatchEvent
     {
@@ -21,6 +21,8 @@ public class MatchControllerRefactor : MonoBehaviour
         ScorerAnnounced,
         FreekickTaken,
         ShotOnGoal,
+        HalfTime,
+        FullTime,
     }
 
     public enum MarkingType
@@ -91,11 +93,7 @@ public class MatchControllerRefactor : MonoBehaviour
     bool isSimulatingTournament;
     int turn = 0;
 
-    bool isHalfTime;
     bool secondHalfStarted;
-    bool isFreekickTaken;
-    bool isGoalAnnounced;
-    bool isScorerAnnounced;
 
     int matchSpeed = 1;
 
@@ -191,14 +189,14 @@ public class MatchControllerRefactor : MonoBehaviour
 
     public void KickOff()
     {
-        Field.CurrentZone = Field.LastZone = Field.Zone.CM;
-        screen.Field.UpdateFieldArea((int)Field.CurrentZone);
+        screen.Field.UpdateFieldArea((int)Field.Zone.CM);
 
         isGameOn = true;
         if (!isSimulatingMatch)
         {
             //UpdateNarration("nar_KickOff_");
             StartCoroutine("GameLoop");
+            StartCoroutine("Chronometer");
         }
     }
 
@@ -217,17 +215,35 @@ public class MatchControllerRefactor : MonoBehaviour
                 ResolveKickOff(attackingTeam, turn);
             }
 
-            else if(turn > 0)
+            else if(!secondHalfStarted && turn >= 45 && playList[turn-1].Event == MatchEvent.None)
             {
+                evt = true;
+                PlayInfo play = new PlayInfo();
+                play.Event = MatchEvent.HalfTime;
+                playList.Insert(0, play);
+                secondHalfStarted = true;
+            }
+
+            else if (turn >= 90 && playList[turn - 1].Event == MatchEvent.None)
+            {
+                evt = true;
+                PlayInfo play = new PlayInfo();
+                play.Event = MatchEvent.FullTime;
+                playList.Insert(0, play);
+            }
+
+            else
+            {              
                UpdateNarration(turn - 1);
+               CheckPossesion(playList[turn - 1]);
                evt =  ResolveEvents(attackingTeam, defendingTeam, turn);
             }
             
 
-            if (!evt) DefineActions(attackingTeam, defendingTeam, Field.CurrentZone, turn);            
+            if (!evt) DefineActions(attackingTeam, defendingTeam, turn);            
             turn++;
 
-            yield return new WaitForSeconds(2f / matchSpeed);
+            yield return new WaitForSeconds(1f / matchSpeed);
         }
     }
 
@@ -242,9 +258,19 @@ public class MatchControllerRefactor : MonoBehaviour
             }
 
 
-            if (!evt) DefineActions(attackingTeam, defendingTeam, Field.CurrentZone, turn);
+            if (!evt) DefineActions(attackingTeam, defendingTeam, turn);
             turn++;
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator Chronometer()
+    {
+        while (isGameOn)
+        {
+            matchTime++;
+            screen.Score.UpdateTime(matchTime);
+            yield return new WaitForSeconds(1f/60f);
         }
     }
 
@@ -253,7 +279,7 @@ public class MatchControllerRefactor : MonoBehaviour
 
     }
 
-    #region Resolve Match Events
+    #region MATCH EVENTS
 
     bool ResolveEvents(TeamData _attackingTeam , TeamData _defendingTeam, int _turn)
     {
@@ -262,14 +288,17 @@ public class MatchControllerRefactor : MonoBehaviour
         if (lastEvent == MatchEvent.None) return false;
         Field.Zone _zone = playList[lastTurn].TargetZone;
 
+
         PlayInfo playInfo = new PlayInfo();
         playList.Insert(_turn, playInfo);
         playInfo.Marking = MarkingType.None;
-        playInfo.Zone = _zone;
+        playInfo.Zone = playInfo.TargetZone = _zone;
         switch (lastEvent)
         {
             case MatchEvent.ShotOnGoal: ResolveShotOnGoal(_attackingTeam, _defendingTeam, _zone, _turn); break;
             case MatchEvent.Goal: ResolveGoal(_turn); break;
+            case MatchEvent.GoalAnnounced: ResolveGoalAnnounced(_turn); break;
+            case MatchEvent.ScorerAnnounced: ResolveScorerAnnounced(_turn); break;
             case MatchEvent.Offside:
             case MatchEvent.Freekick: ResolveFreekick(_attackingTeam, _defendingTeam,  _turn); break;
             case MatchEvent.Penalty: ResolvePenalty(_attackingTeam, _defendingTeam, _turn); break;
@@ -277,9 +306,22 @@ public class MatchControllerRefactor : MonoBehaviour
             case MatchEvent.ShotMissed: ResolveShotMissed(_attackingTeam, _defendingTeam, _turn); break;
             case MatchEvent.ShotSaved: ResolveShotSaved(_attackingTeam, _turn); break;
             case MatchEvent.CornerKick: ResolveCornerKick(_attackingTeam, _turn); break;
+            case MatchEvent.HalfTime: ResolveHalfTime(_turn); break;
+            case MatchEvent.FullTime: ResolveFullTime(_turn); break;
+            case MatchEvent.KickOff: ResolveKickOff(attackingTeam, turn); break;
         }
 
         return true;
+    }
+
+    void ResolveKickOff(TeamData _attackingTeam, int _turn)
+    {
+        PlayInfo playInfo = playList[_turn];
+        playInfo.Zone = Field.Zone.CM;
+        playInfo.Attacker = GetAttackingPlayer(_attackingTeam, playInfo.Zone, null, true);
+        playInfo.OffensiveAction = PlayerData.PlayerAction.Pass;
+        attackingBonus = 1f;
+        ResolveAction(_turn);
     }
 
     void ResolveShotOnGoal(TeamData _attackingTeam, TeamData _defendingTeam, Field.Zone _zone, int _turn)
@@ -291,19 +333,10 @@ public class MatchControllerRefactor : MonoBehaviour
         play.DefensiveAction = PlayerData.PlayerAction.Save;
         play.Event = MatchEvent.None;
         play.Zone = _zone;
-        bool success = IsShotSuccessful(_turn);
-        play.IsActionSuccesful = success;
-        if (success) play.Event = MatchEvent.Goal;
-        else
-        {
-            int roll = Dice.Roll(20);
-            if (play.Excitment == -1) play.Event = MatchEvent.CornerKick;
-            else if (play.Excitment == 0 && roll < 5) play.Event = MatchEvent.CornerKick;
-            else play.Event = MatchEvent.ShotSaved;
-        }
+        GetShotResult(_turn);
     }
 
-    bool IsShotSuccessful(int _turn)
+    void GetShotResult(int _turn)
     {
         PlayInfo play = playList[_turn];
         PlayInfo lastPlay = playList[_turn - 1];
@@ -319,6 +352,14 @@ public class MatchControllerRefactor : MonoBehaviour
 
         switch (zone)
         {
+            default:
+                distanceModifier = 0.1f;
+                break;
+
+            case Field.Zone.Box:
+                distanceModifier = 1f;
+                break;
+
             case Field.Zone.LAM:
             case Field.Zone.RAM:
                 distanceModifier = 0.5f;
@@ -392,8 +433,9 @@ public class MatchControllerRefactor : MonoBehaviour
         }
         else if (attackRoll <= 4)
         {
+            // SwitchPossesion();
             play.Event = MatchEvent.Goalkick;
-            return false;
+            return;
         }
 
         defending = ((float)defender.Goalkeeping + defender.Agility) / 200;
@@ -421,12 +463,28 @@ public class MatchControllerRefactor : MonoBehaviour
         if (attacking <= defending)
         {
             play.Excitment = defenseExcitement;
-            return false;
+
+            int roll = Dice.Roll(20);
+            if (defenseExcitement == -1) play.Event = MatchEvent.CornerKick;
+            else if (defenseExcitement == 0 && roll < 5) play.Event = MatchEvent.CornerKick;
+            else play.Event = MatchEvent.ShotSaved;
+            play.IsActionSuccesful =  false;
         }
         else
         {
-            return true;
+            play.IsActionSuccesful = true;
+            play.Event = MatchEvent.Goal;
         }
+    }
+
+    void ResolveShotSaved(TeamData _attackingTeam, int _turn)
+    {
+        PlayInfo play = playList[_turn];
+        play.Attacker = _attackingTeam.Squad[0];
+        play.Zone = Field.Zone.OwnGoal;
+        if (play.Attacker.Team == awayTeam) play.Zone = Field.Zone.Box;
+        play.OffensiveAction = GetOffensiveAction(MarkingType.None, play.Attacker, GetTeamZone(_attackingTeam, play.Zone), false);
+        play.IsActionSuccesful = IsActionSuccessful(_turn);
     }
 
     void ResolveGoal(int _turn)
@@ -436,7 +494,7 @@ public class MatchControllerRefactor : MonoBehaviour
         PlayerData assister = lastPlay.Assister;
 
         shooter.MatchStats.Goals++;
-        shooter.Team.MatchStats.TotalGoals++;
+        shooter.Team.MatchStats.Goals++;
         shooter.Team.MatchData.Scorers.Add(shooter);
         if (assister != null) assister.MatchStats.Assists++;
 
@@ -463,7 +521,7 @@ public class MatchControllerRefactor : MonoBehaviour
         playInfo.Event = MatchEvent.KickOff;
         playList.Insert(_turn, playInfo);
 
-        SwitchPossesion();
+        //SwitchPossesion();
     }
 
     void ResolveFreekick(TeamData _attackingTeam, TeamData _defendingTeam, int _turn)
@@ -478,7 +536,7 @@ public class MatchControllerRefactor : MonoBehaviour
         else
         {
             playInfo.Event = MatchEvent.None;
-            ResolveAction(_turn);           
+            ResolveAction(_turn);
         }
     }
 
@@ -488,16 +546,17 @@ public class MatchControllerRefactor : MonoBehaviour
         playInfo.Attacker = _attackingTeam.GetTopPlayerByAttribute(PlayerData.AttributeType.Penalty, _attackingTeam.Squad);
         playInfo.Defender = _defendingTeam.Squad[0];
         playInfo.OffensiveAction = PlayerData.PlayerAction.Shot;
+        playInfo.Marking = MarkingType.None;
         playInfo.Event = MatchEvent.ShotOnGoal;
-        ResolveShotOnGoal(_attackingTeam, _defendingTeam, playInfo.Zone, _turn);
     }
 
     void ResolveGoalkick(TeamData _attackingTeam, int _turn)
     {
         PlayInfo playInfo = playList[_turn];
         playInfo.Attacker = _attackingTeam.Squad[0];
+        playInfo.Defender = null;
         playInfo.Zone = Field.Zone.OwnGoal;
-        if (_attackingTeam == awayTeam) playInfo.Zone = Field.Zone.Box;
+        if (playInfo.Attacker.Team == awayTeam) playInfo.Zone = Field.Zone.Box;
         playInfo.Marking = MarkingType.None;
         playInfo.OffensiveAction = PlayerData.PlayerAction.Cross;
         ResolveAction(_turn);
@@ -506,12 +565,12 @@ public class MatchControllerRefactor : MonoBehaviour
     void ResolveShotMissed(TeamData _attackingTeam, TeamData _defendingTeam, int _turn)
     {
         PlayInfo playInfo = playList[_turn];
-        PlayInfo lastplay = playList[_turn - 1];
-        if (lastplay.Defender != null) playInfo.Attacker = lastplay.Defender;
-        else playInfo.Attacker = GetAttackingPlayer(_attackingTeam, lastplay.Zone, null, true);
-        playInfo.Defender = GetDefendingPlayer(_defendingTeam, lastplay.Zone, lastplay.Attacker);
-        playInfo.Marking = GetMarkingType(playInfo.Defender, playInfo.Zone);
-        playInfo.OffensiveAction = GetOffensiveAction(playInfo.Marking, playInfo.Attacker, playInfo.Zone, false);
+        PlayInfo lastPlay = playList[_turn - 1];
+        CopyPlay(playInfo, lastPlay);
+
+        playInfo.Event = MatchEvent.Goalkick;
+
+        //SwitchPossesion();
         return;
     }
 
@@ -521,43 +580,56 @@ public class MatchControllerRefactor : MonoBehaviour
         playInfo.Attacker = _attackingTeam.GetTopPlayerByAttribute(PlayerData.AttributeType.Crossing, _attackingTeam.Squad, false);
         playInfo.Zone = Field.Zone.ARF;
         if (playInfo.Attacker.Team == awayTeam) playInfo.Zone = Field.Zone.BLD;
-        playInfo.OffensiveAction = GetFreeKickAction(playInfo.Attacker, playInfo.Zone);
-        if (playInfo.OffensiveAction == PlayerData.PlayerAction.Shot)
+        playInfo.OffensiveAction = PlayerData.PlayerAction.Cross;
+        playInfo.Event = MatchEvent.None;
+        ResolveAction(_turn);
+    }
+
+    void ResolveHalfTime(int _turn)
+    {
+        PlayInfo playInfo = playList[_turn];
+        playInfo.Event = MatchEvent.KickOff;
+        attackingTeam = awayTeam;
+        defendingTeam = homeTeam;
+        playList.Insert(_turn, playInfo);
+    }
+
+    void ResolveFullTime(int _turn)
+    {
+        isGameOn = false;
+
+        if(homeTeam.MatchStats.Goals > awayTeam.MatchStats.Goals)
         {
-            playInfo.Event = MatchEvent.ShotOnGoal;
+            homeTeam.MatchStats.Wins++;
+            awayTeam.MatchStats.Losts++;
+
+            homeTeam.MatchStats.Points += 3;
+        }
+        else if (awayTeam.MatchStats.Goals > homeTeam.MatchStats.Goals)
+        {
+            awayTeam.MatchStats.Wins++;
+            homeTeam.MatchStats.Losts++;
+
+            awayTeam.MatchStats.Points += 3;
         }
         else
         {
-            //TODO Resolve Action
-            playInfo.Event = MatchEvent.None;
+            homeTeam.MatchStats.Draws++;
+            awayTeam.MatchStats.Draws++;
+
+            homeTeam.MatchStats.Points++;
+            awayTeam.MatchStats.Points++;
         }
-    }
 
-    void ResolveShotSaved(TeamData _attackingTeam, int _turn)
-    {
-        PlayInfo play = playList[_turn];
-        play.Attacker = _attackingTeam.Squad[0];
-        play.Zone = Field.Zone.OwnGoal;
-        if (play.Attacker.Team == awayTeam) play.Zone = Field.Zone.Box;
-        play.OffensiveAction = GetOffensiveAction(MarkingType.None, play.Attacker, GetTeamZone(_attackingTeam, play.Zone), false);
-        play.IsActionSuccesful = IsActionSuccessful(_turn);
-    }
-
-    void ResolveKickOff(TeamData _attackingTeam, int _turn)
-    {
-        PlayInfo playInfo = playList[_turn];
-        playInfo.Zone = Field.Zone.CM;
-        playInfo.Attacker = GetAttackingPlayer(_attackingTeam, playInfo.Zone, null, true);
-        playInfo.OffensiveAction = PlayerData.PlayerAction.Pass;
-        attackingBonus = 1f;
-        ResolveAction(_turn);
+        homeTeam.UpdateLifeTimeStats();
+        awayTeam.UpdateLifeTimeStats();
     }
 
     #endregion
 
-    #region Match Actions
+    #region MATCH ACTIONS
 
-    void DefineActions(TeamData _attackingTeam, TeamData _defendingTeam, Field.Zone _zone, int _turn)
+    void DefineActions(TeamData _attackingTeam, TeamData _defendingTeam, int _turn)
     {
         PlayInfo playInfo = new PlayInfo();
         playList.Insert(_turn, playInfo);
@@ -569,21 +641,20 @@ public class MatchControllerRefactor : MonoBehaviour
         keepDefender = false;
         PlayerData exludePlayer = null;
         bool forcePlayer = false;
-        if (_turn > 0)
+
+        PlayInfo lastPlay = playList[_turn-1];
+
+        playInfo.Zone = playInfo.TargetZone = lastPlay.TargetZone;
+
+        if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Pass || lastPlay.OffensiveAction == PlayerData.PlayerAction.LongPass || lastPlay.OffensiveAction == PlayerData.PlayerAction.Cross)
         {
-            PlayInfo lastPlay = playList[_turn-1];
-
-            playInfo.Zone = lastPlay.TargetZone;
-
-            if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Pass || lastPlay.OffensiveAction == PlayerData.PlayerAction.LongPass || lastPlay.OffensiveAction == PlayerData.PlayerAction.Cross)
-            {
-                playInfo.Assister = exludePlayer = lastPlay.Attacker;
-                if (lastPlay.IsActionSuccesful) forcePlayer = true;
-            }
-            else if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Dribble || lastPlay.OffensiveAction == PlayerData.PlayerAction.Sprint) keepAttacker = true;
-
-            if (!lastPlay.IsActionSuccesful && lastPlay.Defender != null) keepDefender = true;
+            playInfo.Assister = exludePlayer = lastPlay.Attacker;
+            if (lastPlay.IsActionSuccesful) forcePlayer = true;
         }
+        else if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Dribble || lastPlay.OffensiveAction == PlayerData.PlayerAction.Sprint) keepAttacker = true;
+
+        if (!lastPlay.IsActionSuccesful && lastPlay.Defender != null) keepDefender = true;
+
 
         //Step 1: Get players involved in the dispute
         if (keepAttacker)
@@ -592,7 +663,7 @@ public class MatchControllerRefactor : MonoBehaviour
         }
         else
         {
-            playInfo.Attacker = GetAttackingPlayer(_attackingTeam, _zone, exludePlayer, forcePlayer);
+            playInfo.Attacker = GetAttackingPlayer(_attackingTeam, playInfo.Zone, exludePlayer, forcePlayer);
         }
 
         if (keepDefender)
@@ -600,11 +671,7 @@ public class MatchControllerRefactor : MonoBehaviour
             playInfo.Attacker = playList[_turn - 1].Defender;
         }
 
-        playInfo.Defender = GetDefendingPlayer(_defendingTeam, _zone, exludePlayer);
-     
-
-        //HALF TIME
-        //UpdateMatchTime();
+        playInfo.Defender = GetDefendingPlayer(_defendingTeam, playInfo.Zone, exludePlayer);
 
         //No players from attacking team in the dispute
         if (playInfo.Attacker == null)
@@ -612,29 +679,27 @@ public class MatchControllerRefactor : MonoBehaviour
             keepDefender = true;
             //SwitchPossesion();
         }
+
         //Player from attacking team in the dispute
         else
         {
             //Step 2: Get type of marking
             if (playInfo.Defender == null || playInfo.Attacker.Zone == Field.Zone.OwnGoal) playInfo.Marking = MarkingType.None;
-            else playInfo.Marking = GetMarkingType(playInfo.Defender, _zone);
+            else playInfo.Marking = GetMarkingType(playInfo.Defender, playInfo.Zone);
 
             if (playInfo.Marking == MarkingType.Steal)
             {
                 attackingBonus = 1f;
-
                 keepDefender = true;
-
-                defendingTeam.MatchStats.TotalSteals++;
-
+                defendingTeam.MatchStats.Steals++;
                 //SwitchPossesion();
             }
             else
             {
                 //Step 3: Get type of offensive play
                 bool header = false;
-                if (playList[_turn - 1].IsActionSuccesful && playList[_turn - 1].OffensiveAction == PlayerData.PlayerAction.Cross) header = true;
-                playInfo.OffensiveAction = GetOffensiveAction(playInfo.Marking, playInfo.Attacker, _zone, header);
+                if (playList[_turn - 1].IsActionSuccesful && playList[_turn - 1].OffensiveAction == PlayerData.PlayerAction.Cross && GetTeamZone(playInfo.Attacker.Team, playInfo.Zone) == Field.Zone.Box) header = true;
+                playInfo.OffensiveAction = GetOffensiveAction(playInfo.Marking, playInfo.Attacker, playInfo.Zone, header);
 
                 //Step 4: Test action against defender (if there is one)
                 ResolveAction(_turn);
@@ -664,7 +729,6 @@ public class MatchControllerRefactor : MonoBehaviour
         else
         {
             attackingBonus = 1f;
-            if (play.Event != MatchEvent.Freekick || play.Event != MatchEvent.Penalty) SwitchPossesion();
             if (offensiveAction == PlayerData.PlayerAction.Shot || offensiveAction == PlayerData.PlayerAction.Header) play.Event = MatchEvent.ShotMissed;
         }
     }
@@ -698,7 +762,7 @@ public class MatchControllerRefactor : MonoBehaviour
         int attackExcitment = 0;
         int defenseExcitement = 0;
 
-        if ((int)GetTeamZone(attacker.Team, zone) < 8)
+        if ((int)GetTeamZone(attacker.Team, zone) > 14)
         {
             float offside = offsideChance;
             if (defender != null)
@@ -944,12 +1008,18 @@ public class MatchControllerRefactor : MonoBehaviour
         if (success) play.Excitment = attackExcitment;
         else play.Excitment = defenseExcitement;
 
+        /*
+        if(!success)
+        {
+            if (play.Event != MatchEvent.Freekick && play.Event != MatchEvent.Penalty) SwitchPossesion();
+        }
+        */
         return success;
     }
 
     #endregion
 
-    #region GetPlayers
+    #region GET PLAYERS
 
     PlayerData GetAttackingPlayer(TeamData _team, Field.Zone _zone, PlayerData _excludePlayer = null, bool _forcePlayer = false)
     {
@@ -1271,6 +1341,17 @@ public class MatchControllerRefactor : MonoBehaviour
         return false;
     }
 
+    void CheckPossesion(PlayInfo _lastPlay)
+    {
+        if (_lastPlay.Event == MatchEvent.Goalkick) SwitchPossesion();
+        else if (_lastPlay.Event == MatchEvent.ScorerAnnounced) SwitchPossesion();
+        else if (_lastPlay.Event == MatchEvent.Offside) SwitchPossesion();
+        else if (_lastPlay.Event == MatchEvent.ShotSaved) SwitchPossesion();
+        else if (_lastPlay.Attacker == null) SwitchPossesion();
+        else if (!_lastPlay.IsActionSuccesful && _lastPlay.Event == MatchEvent.None) SwitchPossesion();
+        else if (_lastPlay.Marking == MarkingType.Steal) SwitchPossesion();
+    }
+
     void SwitchPossesion()
     {
         if (attackingTeam == homeTeam)
@@ -1283,6 +1364,8 @@ public class MatchControllerRefactor : MonoBehaviour
             defendingTeam = awayTeam;
             attackingTeam = homeTeam;
         }
+
+        print("SWTICH");
     }
 
     void CopyPlay(PlayInfo _play, PlayInfo _original)
@@ -1322,12 +1405,36 @@ public class MatchControllerRefactor : MonoBehaviour
         string zone = play.Zone.ToString();
         string target = play.TargetZone.ToString();
 
-        //print(_turn + " - ZONE: " + zone + "  ATTACKER: " + attacker + "  DEFENDER: " + defender + "  ACTION: " + action + "  EVENT: " + evt + "  SUCCESS: " + success + "  TARGET: " + target);
+        string str = attacker + " VS " + defender + " - Actions: " + action + " - Success: " + success;
 
-        string str = "ATTACKER: " + attacker + " - Actions: " + action + " - Success: " + success + " - Event: " + evt + " - Defender: " + defender;
-        screen.Narration.UpdateNarration(str, color, zone);
+        if (play.Event != MatchEvent.None) str = attacker + " VS " + defender + " - Event: " + play.Event.ToString();
 
+        if (play.Event == MatchEvent.GoalAnnounced)
+        {
+            screen.Narration.UpdateNarration("GOOOOOAAALL!", color, "");
+            screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
+        }
+
+        else if(play.Event == MatchEvent.HalfTime) screen.Narration.UpdateNarration("FIM DO PRIMEIRO TEMPO!", color, "");
+        else if (play.Event == MatchEvent.FullTime) screen.Narration.UpdateNarration("TERMINA A PARTIDA", color, "");
+
+        else screen.Narration.UpdateNarration(str, color, zone);
         screen.Field.UpdateFieldArea((int)play.Zone);
+        
+    }
+
+    public void StartButtonClickHandler()
+    {
+        if (matchTime == 0) KickOff();
+        else
+        {
+            isGameOn = !isGameOn;
+            if (isGameOn)
+            {
+                StartCoroutine("GameLoop");
+                StartCoroutine("Chronometer");
+            }
+        }
     }
 
     void Reset()
@@ -1337,11 +1444,8 @@ public class MatchControllerRefactor : MonoBehaviour
         keepAttacker = false;
         keepDefender = false;
         matchTime = 0;
-        isHalfTime = false;
         secondHalfStarted = false;
-        isFreekickTaken = false;
-        isGoalAnnounced = false;
-        isScorerAnnounced = false;
+
         if (screen.HomeTeamSquad != null)
         {
             screen.HomeTeamSquad.ResetFatigue();

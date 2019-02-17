@@ -101,20 +101,20 @@ public class TeamData : ScriptableObject
     public void UpdateStats(TeamStatistics _stats, TeamStatistics _data)
     {
         _stats.Points += _data.Points;
-        _stats.TotalWins += _data.TotalWins;
-        _stats.TotalLosts += _data.TotalLosts;
-        _stats.TotalDraws += _data.TotalDraws;
-        _stats.TotalGoals += _data.TotalGoals;
-        _stats.TotalGoalsAgainst += _data.TotalGoalsAgainst;
-        _stats.TotalShots += _data.TotalShots;
-        _stats.TotalHeaders += _data.TotalHeaders;
-        _stats.TotalSteals += _data.TotalSteals;
-        _stats.TotalPasses += _data.TotalPasses;
-        _stats.TotalLongPasses += _data.TotalLongPasses;
-        _stats.TotalPassesMissed += _data.TotalPassesMissed;
-        _stats.TotalBoxCrosses += _data.TotalBoxCrosses;
-        _stats.TotalFaults += _data.TotalFaults;
-        _stats.TotalCounterAttacks += _data.TotalCounterAttacks;
+        _stats.Wins += _data.Wins;
+        _stats.Losts += _data.Losts;
+        _stats.Draws += _data.Draws;
+        _stats.Goals += _data.Goals;
+        _stats.GoalsAgainst += _data.GoalsAgainst;
+        _stats.Shots += _data.Shots;
+        _stats.Headers += _data.Headers;
+        _stats.Steals += _data.Steals;
+        _stats.Passes += _data.Passes;
+        _stats.LongPasses += _data.LongPasses;
+        _stats.PassesMissed += _data.PassesMissed;
+        _stats.BoxCrosses += _data.BoxCrosses;
+        _stats.Faults += _data.Faults;
+        _stats.CounterAttacks += _data.CounterAttacks;
     }
 
     public TeamStatistics GetTournamentStatistics(string _key)

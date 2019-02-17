@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MatchSpeedSlider : MonoBehaviour
 {
-    MatchControllerRefactor controller;
+    MatchController controller;
 
     Slider slider;
 

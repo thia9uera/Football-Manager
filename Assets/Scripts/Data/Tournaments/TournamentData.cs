@@ -41,9 +41,9 @@ public class TournamentData : ScriptableObject
         switch(_param)
         {
             case "Name": list = list.OrderBy(TeamData => TeamData.Name).ToList(); break;
-            case "Points": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].TotalWins).ToList(); break;
-            case "GoalsScored": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].TotalGoals).ToList(); break;
-            case "GoalsAgainst": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].TotalGoalsAgainst).ToList(); break;
+            case "Points": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].Wins).ToList(); break;
+            case "GoalsScored": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].Goals).ToList(); break;
+            case "GoalsAgainst": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].GoalsAgainst).ToList(); break;
         }
         return list;
     }

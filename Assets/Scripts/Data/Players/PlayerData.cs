@@ -253,7 +253,7 @@ public class PlayerData : ScriptableObject
         return pct;
     }
 
-    public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MatchControllerRefactor.MarkingType _marking, Field.Zone _zone)
+    public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MatchController.MarkingType _marking, Field.Zone _zone)
     {
         float chance = 0f;
         float bonus = 0f;
@@ -265,7 +265,7 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Pass:
                 chance = _zoneChance.Pass * Prob_Pass;
                 bonus = GetAttributeBonus(Passing);
-                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 2f;
+                if (_marking == MatchController.MarkingType.Close) chance *= 2f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10)), 100) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.PassingChance;
                 break;
@@ -273,7 +273,7 @@ public class PlayerData : ScriptableObject
             case PlayerAction.LongPass:
                 float longPass = _zoneChance.LongPass * Prob_LongPass;
                 bonus = GetAttributeBonus(Mathf.FloorToInt((float)(Passing + Strength) / 2));
-                if (_marking == MatchControllerRefactor.MarkingType.Close) longPass *= 1.75f;
+                if (_marking == MatchController.MarkingType.Close) longPass *= 1.75f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10)), 100) >= 20) longPass *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.LongPassChance;
                 break;
@@ -281,8 +281,8 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Dribble:
                 chance = _zoneChance.Dribble * Prob_Dribble;
                 bonus = GetAttributeBonus(Dribbling);
-                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 0.5f;
-                else if (_marking == MatchControllerRefactor.MarkingType.Distance) chance *= 1.5f;
+                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
+                else if (_marking == MatchController.MarkingType.Distance) chance *= 1.5f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.DribblingChance;
                 break;
@@ -290,7 +290,7 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Cross:
                 chance = _zoneChance.Cross * Prob_Crossing;
                 bonus = GetAttributeBonus(Crossing);
-                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 0.5f;
+                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.CrossingChance;
                 break;
@@ -298,8 +298,8 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Shot:
                 chance = _zoneChance.Shot * Prob_Shoot;
                 bonus = GetAttributeBonus(Shooting);
-                if (_marking == MatchControllerRefactor.MarkingType.Close) chance *= 0.5f;
-                else if (_marking == MatchControllerRefactor.MarkingType.None) chance *= 3f;
+                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
+                else if (_marking == MatchController.MarkingType.None) chance *= 3f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.ShootingChance;
                 break;
@@ -307,8 +307,8 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Header:
                 chance = (_zoneChance.Shot + Prob_Shoot) * 1.5f;
                 bonus = GetAttributeBonus(Heading);
-                if (_marking == MatchControllerRefactor.MarkingType.Distance) chance *= 2f;
-                else if (_marking == MatchControllerRefactor.MarkingType.None) chance *= 3f;
+                if (_marking == MatchController.MarkingType.Distance) chance *= 2f;
+                else if (_marking == MatchController.MarkingType.None) chance *= 3f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.ShootingChance;
                 break;

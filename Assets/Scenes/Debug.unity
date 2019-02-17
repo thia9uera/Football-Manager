@@ -1378,6 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputField: {fileID: 122124101}
+  posChandeDatas: []
 --- !u!224 &182794440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1603,10 +1604,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c279102e0bd7144b5ecd723f4cf42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  User:
+    Id: 
+    Name: 
+  AllPlayers: []
+  AllTeams: []
+  AllTournaments: []
   Localization: {fileID: 11400000, guid: 114321360e3484547b55da21fb943845, type: 2}
-  Match: {fileID: 114199573927085586, guid: 450466c7fca6e454cb96d3aaca810f78, type: 3}
-  SquadSelection: {fileID: 0}
+  Match: {fileID: 7177247282912746892, guid: aa1b0f636daaefd4c8e39e15df310d97, type: 3}
+  Data: {fileID: 0}
+  Calendar: {fileID: 0}
   Screens: {fileID: 0}
+  SquadSelection: {fileID: 0}
   TeamStrategyData: {fileID: 11400000, guid: bd993648d80e8b64eb209ac61f2128a4, type: 2}
   PlayerStrategyData: {fileID: 11400000, guid: d316f164b933c0a4ba7e8d8f8d4b3309, type: 2}
   Modifiers: {fileID: 11400000, guid: 4da60f8ba8ad4844fb3c15bb57acecc5, type: 2}
@@ -1616,19 +1625,161 @@ MonoBehaviour:
   CurrentTournament: {fileID: 0}
   CurrentMatch:
     HomeTeam:
-      Team: {fileID: 0}
-      Score: 0
+      TeamAttributes:
+        Id: 
+        Name: 
+        Tag: 
+        PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
+        SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
+        Formation: 0
+        Strategy: 0
+        SquadIds: []
+        SubstitutesIds: []
+        LifeTimeStats:
+          Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
+        TournamentStatistics:
+          reorderableList:
+            canAdd: 0
+            canRemove: 0
+            draggable: 0
+            expandable: 0
+            multipleSelection: 0
+            isExpanded: 0
+            label:
+              m_Text: 
+              m_Image: {fileID: 0}
+              m_Tooltip: 
+            headerHeight: 0
+            footerHeight: 0
+            slideEasing: 0
+            verticalSpacing: 0
+            showDefaultBackground: 0
+            elementDisplayType: 0
+            elementNameProperty: 
+            elementNameOverride: 
+            elementIcon: {fileID: 0}
+          reqReferences: {fileID: 0}
+          isExpanded: 0
+          _keyValues: []
+          _keys: []
+          _values: []
+        IsUserControlled: 0
+        IsPlaceholder: 0
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
       Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 0
     AwayTeam:
-      Team: {fileID: 0}
-      Score: 0
+      TeamAttributes:
+        Id: 
+        Name: 
+        Tag: 
+        PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
+        SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
+        Formation: 0
+        Strategy: 0
+        SquadIds: []
+        SubstitutesIds: []
+        LifeTimeStats:
+          Points: 0
+          TotalWins: 0
+          TotalLosts: 0
+          TotalDraws: 0
+          TotalGoals: 0
+          TotalGoalsAgainst: 0
+          TotalShots: 0
+          TotalHeaders: 0
+          TotalSteals: 0
+          TotalPasses: 0
+          TotalLongPasses: 0
+          TotalPassesMissed: 0
+          TotalBoxCrosses: 0
+          TotalFaults: 0
+          TotalOffsides: 0
+          TotalCornerKicks: 0
+          TotalCounterAttacks: 0
+        TournamentStatistics:
+          reorderableList:
+            canAdd: 0
+            canRemove: 0
+            draggable: 0
+            expandable: 0
+            multipleSelection: 0
+            isExpanded: 0
+            label:
+              m_Text: 
+              m_Image: {fileID: 0}
+              m_Tooltip: 
+            headerHeight: 0
+            footerHeight: 0
+            slideEasing: 0
+            verticalSpacing: 0
+            showDefaultBackground: 0
+            elementDisplayType: 0
+            elementNameProperty: 
+            elementNameOverride: 
+            elementIcon: {fileID: 0}
+          reqReferences: {fileID: 0}
+          isExpanded: 0
+          _keyValues: []
+          _keys: []
+          _values: []
+        IsUserControlled: 0
+        IsPlaceholder: 0
+      Statistics:
+        Points: 0
+        TotalWins: 0
+        TotalLosts: 0
+        TotalDraws: 0
+        TotalGoals: 0
+        TotalGoalsAgainst: 0
+        TotalShots: 0
+        TotalHeaders: 0
+        TotalSteals: 0
+        TotalPasses: 0
+        TotalLongPasses: 0
+        TotalPassesMissed: 0
+        TotalBoxCrosses: 0
+        TotalFaults: 0
+        TotalOffsides: 0
+        TotalCornerKicks: 0
+        TotalCounterAttacks: 0
       Scorers: []
       YellowCards: []
       RedCards: []
-      Points: 0
     isPlayed: 0
     Round: 0
 --- !u!1 &217019864

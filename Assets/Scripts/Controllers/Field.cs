@@ -18,8 +18,6 @@ public class Field : MonoBehaviour
     }
     const int totalZones = 31;
     public List<Vector2> Matrix;
-    [HideInInspector]
-    public Zone CurrentZone, LastZone;
 
     public PosChanceData[] TeamStrategies;
 
@@ -35,7 +33,8 @@ public class Field : MonoBehaviour
 
     public float CalculatePresence(PlayerData _player, Zone _zone, TeamAttributes.TeamStrategy _teamStrategy)
     {
-        float chance = _player.GetChancePerZone(_zone, GetTeamStrategyZones(_teamStrategy, _zone));
+        Zones posChanceStr = GetTeamStrategyZones(_teamStrategy, _player.Zone);
+        float chance = _player.GetChancePerZone(_zone, posChanceStr);
 
         if (chance < 1f && chance > 0f)
         {
@@ -45,7 +44,7 @@ public class Field : MonoBehaviour
         return chance;
     }
 
-    public Zone GetTargetZone(Zone _currentZone, MatchControllerRefactor.MatchEvent _event, PlayerData.PlayerAction _action, TeamAttributes.TeamStrategy _teamStrategy)
+    public Zone GetTargetZone(Zone _currentZone, MatchController.MatchEvent _event, PlayerData.PlayerAction _action, TeamAttributes.TeamStrategy _teamStrategy)
     {
         Zone target = _currentZone;
         Zone zone = _currentZone;
@@ -89,7 +88,7 @@ public class Field : MonoBehaviour
         float _ARF = 0;
         float _Box = 0;
 
-        if (_event == MatchControllerRefactor.MatchEvent.Goalkick)
+        if (_event == MatchController.MatchEvent.Goalkick)
         {
             _LDM = 0.75f;
             _LCDM = 0.75f;
