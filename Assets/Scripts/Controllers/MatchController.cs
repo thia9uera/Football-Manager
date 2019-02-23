@@ -95,7 +95,7 @@ public class MatchController : MonoBehaviour
 
     bool secondHalfStarted;
 
-    int matchSpeed = 1;
+    public int MatchSpeed = 1;
 
     void Awake()
     {
@@ -136,7 +136,6 @@ public class MatchController : MonoBehaviour
         screen.Score.UpdateTime(matchTime);
         screen.Score.UpdateScore(0, 0);
         screen.Score.Populate(homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, awayTeam.PrimaryColor);
-
 
         isSimulatingTournament = _simulateTournament;
         if (_simulateTournament) StartSimulation(true);
@@ -214,36 +213,32 @@ public class MatchController : MonoBehaviour
                 playList.Insert(0, play);
                 ResolveKickOff(attackingTeam, turn);
             }
-
             else if(!secondHalfStarted && turn >= 45 && playList[turn-1].Event == MatchEvent.None)
             {
                 evt = true;
-                PlayInfo play = new PlayInfo();
-                play.Event = MatchEvent.HalfTime;
-                playList.Insert(0, play);
+                playList[turn - 1].Event = MatchEvent.HalfTime;
                 secondHalfStarted = true;
+                ResolveEvents(attackingTeam, defendingTeam, turn);
             }
 
             else if (turn >= 90 && playList[turn - 1].Event == MatchEvent.None)
             {
                 evt = true;
-                PlayInfo play = new PlayInfo();
-                play.Event = MatchEvent.FullTime;
-                playList.Insert(0, play);
+                playList[turn - 1].Event = MatchEvent.FullTime;
+                ResolveEvents(attackingTeam, defendingTeam, turn);
             }
 
             else
-            {              
-               UpdateNarration(turn - 1);
+            {
                CheckPossesion(playList[turn - 1]);
-               evt =  ResolveEvents(attackingTeam, defendingTeam, turn);
+               evt = ResolveEvents(attackingTeam, defendingTeam, turn);
             }
-            
 
+            UpdateNarration(turn - 1);
             if (!evt) DefineActions(attackingTeam, defendingTeam, turn);            
             turn++;
 
-            yield return new WaitForSeconds(1f / matchSpeed);
+            yield return new WaitForSeconds(1f / MatchSpeed);
         }
     }
 
@@ -268,9 +263,9 @@ public class MatchController : MonoBehaviour
     {
         while (isGameOn)
         {
-            matchTime++;
+            matchTime += MatchSpeed;
             screen.Score.UpdateTime(matchTime);
-            yield return new WaitForSeconds(1f/60f);
+            yield return new WaitForSeconds((0.015f) / MatchSpeed);
         }
     }
 
@@ -287,7 +282,6 @@ public class MatchController : MonoBehaviour
         MatchEvent lastEvent = playList[lastTurn].Event;
         if (lastEvent == MatchEvent.None) return false;
         Field.Zone _zone = playList[lastTurn].TargetZone;
-
 
         PlayInfo playInfo = new PlayInfo();
         playList.Insert(_turn, playInfo);
@@ -1008,12 +1002,6 @@ public class MatchController : MonoBehaviour
         if (success) play.Excitment = attackExcitment;
         else play.Excitment = defenseExcitement;
 
-        /*
-        if(!success)
-        {
-            if (play.Event != MatchEvent.Freekick && play.Event != MatchEvent.Penalty) SwitchPossesion();
-        }
-        */
         return success;
     }
 
@@ -1364,8 +1352,6 @@ public class MatchController : MonoBehaviour
             defendingTeam = awayTeam;
             attackingTeam = homeTeam;
         }
-
-        print("SWTICH");
     }
 
     void CopyPlay(PlayInfo _play, PlayInfo _original)
@@ -1385,6 +1371,8 @@ public class MatchController : MonoBehaviour
 
     void UpdateNarration(int _turn)
     {
+        if (_turn < 0) return;
+
         PlayInfo play = playList[_turn];
         string attacker = "None";
         Color color = Color.gray;
@@ -1411,14 +1399,14 @@ public class MatchController : MonoBehaviour
 
         if (play.Event == MatchEvent.GoalAnnounced)
         {
-            screen.Narration.UpdateNarration("GOOOOOAAALL!", color, "");
+            screen.Narration.UpdateNarration("GOOOOOAAALL!", color, _turn.ToString());
             screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
         }
 
-        else if(play.Event == MatchEvent.HalfTime) screen.Narration.UpdateNarration("FIM DO PRIMEIRO TEMPO!", color, "");
-        else if (play.Event == MatchEvent.FullTime) screen.Narration.UpdateNarration("TERMINA A PARTIDA", color, "");
+        if(play.Event == MatchEvent.HalfTime) screen.Narration.UpdateNarration("FIM DO PRIMEIRO TEMPO!", color, _turn.ToString());
+        else if (play.Event == MatchEvent.FullTime) screen.Narration.UpdateNarration("TERMINA A PARTIDA", color, _turn.ToString());
 
-        else screen.Narration.UpdateNarration(str, color, zone);
+        else screen.Narration.UpdateNarration(str, color, _turn.ToString());
         screen.Field.UpdateFieldArea((int)play.Zone);
         
     }
@@ -1445,6 +1433,8 @@ public class MatchController : MonoBehaviour
         keepDefender = false;
         matchTime = 0;
         secondHalfStarted = false;
+
+        screen.SpeedSlider.UpdateSlider(MatchSpeed);
 
         if (screen.HomeTeamSquad != null)
         {

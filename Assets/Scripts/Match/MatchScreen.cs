@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MatchScreen : BaseScreen
 {
@@ -21,6 +20,7 @@ public class MatchScreen : BaseScreen
     public MatchTeamView HomeTeamSquad;
     public MatchTeamView AwayTeamSquad;
     public MatchNarration Narration;
+    public MatchSpeedSlider SpeedSlider;
 
     MatchController controller;
 
