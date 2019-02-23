@@ -57,6 +57,7 @@ public class DataController : MonoBehaviour
         SaveTeams();
         SaveTournaments();
         print("GAME SAVED");
+        LoadGame(MainController.Instance.User.Id);
     }
 
     public void SaveUser()
@@ -108,6 +109,7 @@ public class DataController : MonoBehaviour
 
     public void LoadPlayers()
     {
+        MainController.Instance.AllPlayers = new List<PlayerData>();
         isLoadingPlayers = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Players"));
         totalPlayers = files.Length;
@@ -125,6 +127,7 @@ public class DataController : MonoBehaviour
 
     public void LoadTeams()
     {
+        MainController.Instance.AllTeams = new List<TeamData>();
         isLoadingTeams = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Teams"));
         totalTeams = files.Length;
@@ -143,6 +146,7 @@ public class DataController : MonoBehaviour
 
     public void LoadTournaments()
     {
+        MainController.Instance.AllTournaments = new List<TournamentData>();
         isLoadingTournaments = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Tournaments"));
         totalTournaments = files.Length;

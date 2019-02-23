@@ -24,8 +24,6 @@ public class LoadingScreen : BaseScreen
     float time;
     bool isLoaded;
 
-    string newGameName;
-
     public override void Show()
     {
         base.Show();
@@ -106,7 +104,6 @@ public class LoadingScreen : BaseScreen
     void LoadFile(string _file)
     {
         MainController.Instance.Data.LoadGame(_file);
-        //MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
     }
 
     private void Update()
@@ -125,25 +122,18 @@ public class LoadingScreen : BaseScreen
         TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
 
         foreach (PlayerData p in players) MainController.Instance.AllPlayers.Add(Instantiate(p));
-        foreach (TeamData t in teams) MainController.Instance.AllTeams.Add(Instantiate(t));
+        foreach (TeamData t in teams)
+        {
+            MainController.Instance.AllTeams.Add(Instantiate(t));
+            t.Initialize();
+        }
         foreach (TournamentData t in tournaments) MainController.Instance.AllTournaments.Add(Instantiate(t));
-        ;
-        //MainController.Instance.AllPlayers = new List<PlayerData>(players);
-       // MainController.Instance.AllTeams = new List<TeamData>(teams);
-       // MainController.Instance.AllTournaments = new List<TournamentData>(tournaments);
-
-        foreach (TeamData team in teams) team.Initialize();
 
         string str = "SAVE " + (saves.Length + 1);
         MainController.Instance.Data.CreateUserData(str);
 
         print("NEW SAVE FILE '" + str + "' CREATED");
 
-        MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
-    }
-
-    void PopulateData()
-    {
-
+        //MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
     }
 }
