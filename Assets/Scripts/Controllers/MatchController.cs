@@ -138,7 +138,7 @@ public class MatchController : MonoBehaviour
         screen.Score.Populate(homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, awayTeam.PrimaryColor);
 
         isSimulatingTournament = _simulateTournament;
-        if (_simulateTournament) StartSimulation(true);
+        if(_simulateTournament) StartSimulation();
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -170,7 +170,7 @@ public class MatchController : MonoBehaviour
         screen.AwayTeamSquad.Populate(awayTeam);
     }
 
-    void StartSimulation(bool _hideMain)
+    void StartSimulation()
     {
         screen.Narration.Reset();
 
@@ -179,11 +179,8 @@ public class MatchController : MonoBehaviour
         Reset();
         KickOff();
 
-        if (_hideMain)
-        {
-            if (screen == null) screen = GetComponent<MatchScreen>();
-            screen.ShowMain(false);
-        }
+        if (screen == null) screen = GetComponent<MatchScreen>();
+        screen.ShowMain(false);
     }
 
     public void KickOff()
@@ -197,46 +194,17 @@ public class MatchController : MonoBehaviour
             StartCoroutine("GameLoop");
             StartCoroutine("Chronometer");
         }
+        else
+        {
+            StartCoroutine("SimulateLoop");
+        }
     }
 
     IEnumerator GameLoop()
     {
         while (isGameOn == true)
         {
-            bool evt = false;
-            if(turn == 0)
-            {
-                evt = true;
-                PlayInfo play = new PlayInfo();
-                play.Event = MatchEvent.None;
-                play.Marking = MarkingType.None;
-                playList.Insert(0, play);
-                ResolveKickOff(attackingTeam, turn);
-            }
-            else if(!secondHalfStarted && turn >= 45 && playList[turn-1].Event == MatchEvent.None)
-            {
-                evt = true;
-                playList[turn - 1].Event = MatchEvent.HalfTime;
-                secondHalfStarted = true;
-                ResolveEvents(attackingTeam, defendingTeam, turn);
-            }
-
-            else if (turn >= 90 && playList[turn - 1].Event == MatchEvent.None)
-            {
-                evt = true;
-                playList[turn - 1].Event = MatchEvent.FullTime;
-                ResolveEvents(attackingTeam, defendingTeam, turn);
-            }
-
-            else
-            {
-               CheckPossesion(playList[turn - 1]);
-               evt = ResolveEvents(attackingTeam, defendingTeam, turn);
-            }
-
-            UpdateNarration(turn - 1);
-            if (!evt) DefineActions(attackingTeam, defendingTeam, turn);            
-            turn++;
+            RunGame();
 
             yield return new WaitForSeconds(1f / MatchSpeed);
         }
@@ -246,15 +214,7 @@ public class MatchController : MonoBehaviour
     {
         while (isGameOn)
         {
-            bool evt = false;
-            if (turn > 0)
-            {
-                evt = ResolveEvents(attackingTeam, defendingTeam, turn);
-            }
-
-
-            if (!evt) DefineActions(attackingTeam, defendingTeam, turn);
-            turn++;
+            RunGame();
             yield return new WaitForEndOfFrame();
         }
     }
@@ -269,9 +229,103 @@ public class MatchController : MonoBehaviour
         }
     }
 
+    void RunGame()
+    {
+        bool evt = false;
+        if (turn == 0)
+        {
+            evt = true;
+            PlayInfo play = new PlayInfo();
+            play.Event = MatchEvent.KickOff;
+            playList.Insert(0, play);
+            //ResolveKickOff(attackingTeam, turn);
+        }
+        else if (!secondHalfStarted && turn >= 45 && playList[turn - 1].Event == MatchEvent.None)
+        {
+            playList[turn - 1].Event = MatchEvent.HalfTime;
+            secondHalfStarted = true;
+            evt =  ResolveEvents(attackingTeam, defendingTeam, turn);
+        }
+
+        else if (turn >= 90 && playList[turn - 1].Event == MatchEvent.None)
+        {
+            playList[turn - 1].Event = MatchEvent.FullTime;
+            evt = ResolveEvents(attackingTeam, defendingTeam, turn);
+            return;
+        }
+
+        else
+        {
+            CheckPossesion(playList[turn - 1]);
+            evt = ResolveEvents(attackingTeam, defendingTeam, turn);
+        }
+
+        if(!isSimulatingMatch) UpdateNarration(turn - 1);
+        if (!evt) DefineActions(attackingTeam, defendingTeam, turn);
+        turn++;
+    }
+
     public void PauseGame(bool _isPaused)
     {
 
+    }
+
+    void EndGame()
+    {
+        StopAllCoroutines();
+        if (homeTeam.MatchStats.Goals > awayTeam.MatchStats.Goals)
+        {
+            homeTeam.MatchStats.Wins++;
+            awayTeam.MatchStats.Losts++;
+
+            homeTeam.MatchStats.Points += 3;
+        }
+        else if (awayTeam.MatchStats.Goals > homeTeam.MatchStats.Goals)
+        {
+            awayTeam.MatchStats.Wins++;
+            homeTeam.MatchStats.Losts++;
+
+            awayTeam.MatchStats.Points += 3;
+        }
+        else
+        {
+            homeTeam.MatchStats.Draws++;
+            awayTeam.MatchStats.Draws++;
+
+            homeTeam.MatchStats.Points++;
+            awayTeam.MatchStats.Points++;
+        }
+
+        bool updateMatch = false;
+        if (MainController.Instance.CurrentMatch != null)
+        {
+            MainController.Instance.CurrentMatch.isPlayed = true;
+            updateMatch = true;
+        }
+
+        homeTeam.UpdateLifeTimeStats(updateMatch, true);
+        awayTeam.UpdateLifeTimeStats(updateMatch, false);
+
+        screen.Simulation.UpdateFeedback(MainController.Instance.CurrentMatch);
+
+        MainController.Instance.CurrentMatch = null;
+
+        //Save tournament match data
+        if (MainController.Instance.CurrentTournament != null)
+        {
+            MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
+            if (nextMatch != null)
+            {              
+                Populate(nextMatch, isSimulatingTournament);
+                StartSimulation();
+            }
+            else
+            {
+                isSimulatingMatch = false;
+                //AssetDatabase.SaveAssets();
+                MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
+            }
+        }
     }
 
     #region MATCH EVENTS
@@ -592,31 +646,7 @@ public class MatchController : MonoBehaviour
     {
         isGameOn = false;
 
-        if(homeTeam.MatchStats.Goals > awayTeam.MatchStats.Goals)
-        {
-            homeTeam.MatchStats.Wins++;
-            awayTeam.MatchStats.Losts++;
-
-            homeTeam.MatchStats.Points += 3;
-        }
-        else if (awayTeam.MatchStats.Goals > homeTeam.MatchStats.Goals)
-        {
-            awayTeam.MatchStats.Wins++;
-            homeTeam.MatchStats.Losts++;
-
-            awayTeam.MatchStats.Points += 3;
-        }
-        else
-        {
-            homeTeam.MatchStats.Draws++;
-            awayTeam.MatchStats.Draws++;
-
-            homeTeam.MatchStats.Points++;
-            awayTeam.MatchStats.Points++;
-        }
-
-        homeTeam.UpdateLifeTimeStats();
-        awayTeam.UpdateLifeTimeStats();
+        EndGame();
     }
 
     #endregion
