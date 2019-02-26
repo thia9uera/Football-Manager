@@ -28,7 +28,7 @@ public class MatchNarration : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
-    public void UpdateNarration(string _text, int _variations = 1, TeamData _team = null, Field.Zone _zone = Field.Zone.OwnGoal)
+    public void UpdateNarration(string _text, int _variations = 1, TeamData _team = null, Field.Zone _zone = Field.Zone.OwnGoal, MatchController.PlayInfo _play = null)
     {
         MatchNarrationTextView text =  Instantiate(narrationText, content);
 
@@ -49,6 +49,7 @@ public class MatchNarration : MonoBehaviour
 
         string zone = _zone.ToString();
 
+        text.PlayInfo = _play;
         text.Populate(MainController.Instance.Localization.Localize(_text), frameColor, textColor, zone);
         Canvas.ForceUpdateCanvases();
         scroll.verticalNormalizedPosition = 0;

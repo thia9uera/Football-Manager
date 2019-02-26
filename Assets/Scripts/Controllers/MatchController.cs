@@ -1415,8 +1415,7 @@ public class MatchController : MonoBehaviour
 
         string tag = "";
         int variations = 1;
-
-
+        bool isNeutral = false;
 
         switch(play.OffensiveAction)
         {
@@ -1449,14 +1448,14 @@ public class MatchController : MonoBehaviour
             case PlayerData.PlayerAction.Shot:
                 if(play.IsActionSuccessful)
                 {
-                    tag = "nar_Shot_";
-                    variations = 3;
+                    //tag = "nar_Shot_";
+                   // variations = 3;
                 }
                 else
                 {
-                    if (!play.IsActionDefended) tag = "nar_WrongShot_";
-                    else tag = "nar_BlockShot_";
-                    variations = 3;
+                   // if (!play.IsActionDefended) tag = "nar_WrongShot_";
+                    //else tag = "nar_BlockShot_";
+                   // variations = 3;
                 }
                 break;
 
@@ -1492,33 +1491,51 @@ public class MatchController : MonoBehaviour
                     tag = "nar_SecondHalfStart_";
                     isSecondHalf = false;
                 }
+                isNeutral = true;
                 break;
 
             case MatchEvent.HalfTime:
                 tag = "nar_FirstHalfEnd_";
                 variations = 1;
                 isSecondHalf = true;
+                isNeutral = true;
                 break;
 
             case MatchEvent.FullTime:
                 tag = "nar_TimeUp_";
                 variations = 1;
+                isNeutral = true;
                 break;
 
             case MatchEvent.Goal:
-                tag = "nar_Goal_";
-                variations = 8;
+                tag = "nar_GoalScream_";
+                variations = 1;
                 screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
                 break;
 
+            case MatchEvent.GoalAnnounced:
+                tag = "nar_Goal_";
+                variations = 8;
+                if (play.Excitment == 1)
+                {
+                    tag = "nar_BestGoal_";
+                    variations = 5;
+                }
+                else if (play.Excitment == -1)
+                {
+                    tag = "nar_WorstGoal_";
+                    variations = 5;
+                }
+                break;
+
             case MatchEvent.Fault:
-                tag = "nar_Fault_";
+                //tag = "nar_Fault_";
                 variations = 5;
                 break;
 
             case MatchEvent.CornerKick:
                 tag = "nar_CornerKick_";
-                variations = 5;
+                variations = 1;
                 break;
 
             case MatchEvent.Penalty:
@@ -1533,6 +1550,11 @@ public class MatchController : MonoBehaviour
                 variations = 1;
                 break;
 
+            case MatchEvent.ShotMissed:
+                tag = "nar_MissedShot_";
+                variations = 2;
+                break;
+
             case MatchEvent.Offside:
                 tag = "nar_Offside_";
                 variations = 3;
@@ -1541,13 +1563,35 @@ public class MatchController : MonoBehaviour
 
         if (tag != "")
         {
-            Field.Zone attZone = GetTeamZone(play.Attacker.Team, play.Zone);
-            string zone = MainController.Instance.Localization.GetZoneString(attZone);
-            MainController.Instance.Localization.SetGlobals(play.Attacker.FirstName, play.Defender.FirstName, play.Attacker.Team.Name, play.Defender.Team.Name, zone);
-            screen.Narration.UpdateNarration(tag, variations, play.Attacker.Team, play.Zone);
+            SetGlobalStrings(play); 
+            if (isNeutral) screen.Narration.UpdateNarration(tag, variations, null, play.Zone, play);
+            else screen.Narration.UpdateNarration(tag, variations, play.Attacker.Team, play.Zone, play);
         }
 
         screen.Field.UpdateFieldArea((int)play.Zone);       
+    }
+
+    void SetGlobalStrings(PlayInfo _play)
+    {
+        Field.Zone attZone = _play.Zone;
+        string attacker = "";
+        string defender = "";
+        string attTeam = "";
+        string defTeam = "";
+        string zone = MainController.Instance.Localization.GetZoneString(attZone);
+        if (_play.Attacker != null)
+        {
+            attZone = GetTeamZone(_play.Attacker.Team, _play.Zone);
+            zone = MainController.Instance.Localization.GetZoneString(attZone);
+            attacker = _play.Attacker.FirstName;
+            attTeam = _play.Attacker.Team.Name;
+        }
+        if(_play.Defender != null)
+        {
+            defender = _play.Defender.FirstName;
+            defTeam = _play.Defender.Team.Name;
+        }
+        MainController.Instance.Localization.SetGlobals(attacker, defender, attTeam, defTeam, zone);
     }
 
     public void StartButtonClickHandler()

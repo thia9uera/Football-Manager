@@ -983,7 +983,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[TEAM_1}] troca passes [{ZONE}]'
+      - '{[TEAM_1]} troca passes {[ZONE]}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_FlowDribbles_1
@@ -1009,7 +1009,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1551218078230
+    Google_LastUpdatedVersion: 1551222146961
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2
