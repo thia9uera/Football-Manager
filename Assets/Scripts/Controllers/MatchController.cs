@@ -9,7 +9,6 @@ public class MatchController : MonoBehaviour
         None,
         KickOff,
         Penalty,
-        Freekick,
         Offside,
         ThrowIn,
         Goal,
@@ -23,6 +22,7 @@ public class MatchController : MonoBehaviour
         ShotOnGoal,
         HalfTime,
         FullTime,
+        Fault,
     }
 
     public enum MarkingType
@@ -61,11 +61,12 @@ public class MatchController : MonoBehaviour
         public PlayerData Attacker;
         public float AttackerRoll;
         public PlayerData.PlayerAction OffensiveAction;
-        public bool IsActionSuccesful;
+        public bool IsActionSuccessful;
 
         public PlayerData Defender;
         public float DefenderRoll;
         public PlayerData.PlayerAction DefensiveAction;
+        public bool IsActionDefended;
 
         public MarkingType Marking;
         public MatchEvent Event;
@@ -94,6 +95,9 @@ public class MatchController : MonoBehaviour
     int turn = 0;
 
     bool secondHalfStarted;
+    bool isSecondHalf = false;
+    int flowPasses = 0;
+    int flowDribbles = 0;
 
     public int MatchSpeed = 1;
 
@@ -348,7 +352,7 @@ public class MatchController : MonoBehaviour
             case MatchEvent.GoalAnnounced: ResolveGoalAnnounced(_turn); break;
             case MatchEvent.ScorerAnnounced: ResolveScorerAnnounced(_turn); break;
             case MatchEvent.Offside:
-            case MatchEvent.Freekick: ResolveFreekick(_attackingTeam, _defendingTeam,  _turn); break;
+            case MatchEvent.Fault: ResolveFreekick(_attackingTeam, _defendingTeam,  _turn); break;
             case MatchEvent.Penalty: ResolvePenalty(_attackingTeam, _defendingTeam, _turn); break;
             case MatchEvent.Goalkick: ResolveGoalkick(_attackingTeam, _turn); break;
             case MatchEvent.ShotMissed: ResolveShotMissed(_attackingTeam, _defendingTeam, _turn); break;
@@ -439,7 +443,7 @@ public class MatchController : MonoBehaviour
         if (play.OffensiveAction == PlayerData.PlayerAction.Shot)
         {
 
-            if (lastPlay.Event == MatchEvent.Freekick)
+            if (lastPlay.Event == MatchEvent.Fault)
             {
                 attacking = (float)(attacker.Freekick + attacker.Strength) / 200;
                 bonusChance = GetPlayerAttributeBonus(attacker.Freekick);
@@ -516,11 +520,11 @@ public class MatchController : MonoBehaviour
             if (defenseExcitement == -1) play.Event = MatchEvent.CornerKick;
             else if (defenseExcitement == 0 && roll < 5) play.Event = MatchEvent.CornerKick;
             else play.Event = MatchEvent.ShotSaved;
-            play.IsActionSuccesful =  false;
+            play.IsActionSuccessful =  false;
         }
         else
         {
-            play.IsActionSuccesful = true;
+            play.IsActionSuccessful = true;
             play.Event = MatchEvent.Goal;
         }
     }
@@ -532,7 +536,7 @@ public class MatchController : MonoBehaviour
         play.Zone = Field.Zone.OwnGoal;
         if (play.Attacker.Team == awayTeam) play.Zone = Field.Zone.Box;
         play.OffensiveAction = GetOffensiveAction(MarkingType.None, play.Attacker, GetTeamZone(_attackingTeam, play.Zone), false);
-        play.IsActionSuccesful = IsActionSuccessful(_turn);
+        play.IsActionSuccessful = IsActionSuccessful(_turn);
     }
 
     void ResolveGoal(int _turn)
@@ -673,11 +677,11 @@ public class MatchController : MonoBehaviour
         if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Pass || lastPlay.OffensiveAction == PlayerData.PlayerAction.LongPass || lastPlay.OffensiveAction == PlayerData.PlayerAction.Cross)
         {
             playInfo.Assister = exludePlayer = lastPlay.Attacker;
-            if (lastPlay.IsActionSuccesful) forcePlayer = true;
+            if (lastPlay.IsActionSuccessful) forcePlayer = true;
         }
         else if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Dribble || lastPlay.OffensiveAction == PlayerData.PlayerAction.Sprint) keepAttacker = true;
 
-        if (!lastPlay.IsActionSuccesful && lastPlay.Defender != null) keepDefender = true;
+        if (!lastPlay.IsActionSuccessful && lastPlay.Defender != null) keepDefender = true;
 
 
         //Step 1: Get players involved in the dispute
@@ -722,7 +726,7 @@ public class MatchController : MonoBehaviour
             {
                 //Step 3: Get type of offensive play
                 bool header = false;
-                if (playList[_turn - 1].IsActionSuccesful && playList[_turn - 1].OffensiveAction == PlayerData.PlayerAction.Cross && GetTeamZone(playInfo.Attacker.Team, playInfo.Zone) == Field.Zone.Box) header = true;
+                if (playList[_turn - 1].IsActionSuccessful && playList[_turn - 1].OffensiveAction == PlayerData.PlayerAction.Cross && GetTeamZone(playInfo.Attacker.Team, playInfo.Zone) == Field.Zone.Box) header = true;
                 playInfo.OffensiveAction = GetOffensiveAction(playInfo.Marking, playInfo.Attacker, playInfo.Zone, header);
 
                 //Step 4: Test action against defender (if there is one)
@@ -737,9 +741,9 @@ public class MatchController : MonoBehaviour
         MarkingType marking = play.Marking;
         PlayerData.PlayerAction offensiveAction = play.OffensiveAction;
         play.TargetZone = play.Zone;
-        play.IsActionSuccesful = IsActionSuccessful(_turn);
+        play.IsActionSuccessful = IsActionSuccessful(_turn);
 
-        if (play.IsActionSuccesful)
+        if (play.IsActionSuccessful)
         {
             //Give bonus based on type of marking
             if (marking == MarkingType.Close) attackingBonus *= attackingBonusHigh;
@@ -771,7 +775,7 @@ public class MatchController : MonoBehaviour
         {
             lastPlay = playList[_turn - 1];
             lastAction = lastPlay.OffensiveAction;
-            isLastActionSuccessful = lastPlay.IsActionSuccesful;
+            isLastActionSuccessful = lastPlay.IsActionSuccessful;
         }
         bool success = false;
         float attacking = 0f;
@@ -1005,12 +1009,16 @@ public class MatchController : MonoBehaviour
             if (fault >= Random.Range(0f, 1f))
             {
                 if (GetTeamZone(attacker.Team, zone) == Field.Zone.Box) play.Event = MatchEvent.Penalty;
-                else play.Event = MatchEvent.Freekick;
+                else play.Event = MatchEvent.Fault;
 
                 success = false;
             }
 
-            else success |= attacking > defending;
+            else
+            {
+                success |= attacking > defending;
+                play.IsActionDefended = !success;
+            }
 
             defender.MatchStats.Tackles++;
         }
@@ -1366,7 +1374,7 @@ public class MatchController : MonoBehaviour
         else if (_lastPlay.Event == MatchEvent.Offside) SwitchPossesion();
         else if (_lastPlay.Event == MatchEvent.ShotSaved) SwitchPossesion();
         else if (_lastPlay.Attacker == null) SwitchPossesion();
-        else if (!_lastPlay.IsActionSuccesful && _lastPlay.Event == MatchEvent.None) SwitchPossesion();
+        else if (!_lastPlay.IsActionSuccessful && _lastPlay.Event == MatchEvent.None) SwitchPossesion();
         else if (_lastPlay.Marking == MarkingType.Steal) SwitchPossesion();
     }
 
@@ -1396,7 +1404,7 @@ public class MatchController : MonoBehaviour
         _play.Event = _original.Event;
         _play.Excitment = _original.Excitment;
         _play.Marking = _original.Marking;
-        _play.IsActionSuccesful = _original.IsActionSuccesful;
+        _play.IsActionSuccessful = _original.IsActionSuccessful;
     }
 
     void UpdateNarration(int _turn)
@@ -1404,41 +1412,142 @@ public class MatchController : MonoBehaviour
         if (_turn < 0) return;
 
         PlayInfo play = playList[_turn];
-        string attacker = "None";
-        Color color = Color.gray;
-        if (play.Attacker != null)
+
+        string tag = "";
+        int variations = 1;
+
+
+
+        switch(play.OffensiveAction)
         {
-            attacker = play.Attacker.FirstName;
-            color = play.Attacker.Team.PrimaryColor;
+            case PlayerData.PlayerAction.Pass:
+                if (play.IsActionSuccessful)
+                {
+                    flowPasses++;
+                    if (flowPasses == 3) tag = "nar_FlowPasses_";
+                    variations = 1;
+                }
+                else
+                {
+                    flowPasses = 0;
+                }
+                break;
+
+            case PlayerData.PlayerAction.Dribble:
+                if (play.IsActionSuccessful)
+                {
+                    flowPasses++;
+                    if (flowDribbles == 3) tag = "nar_FlowDribbles_";
+                    variations = 1;
+                }
+                else
+                {
+                    flowDribbles = 0;
+                }
+                break;
+
+            case PlayerData.PlayerAction.Shot:
+                if(play.IsActionSuccessful)
+                {
+                    tag = "nar_Shot_";
+                    variations = 3;
+                }
+                else
+                {
+                    if (!play.IsActionDefended) tag = "nar_WrongShot_";
+                    else tag = "nar_BlockShot_";
+                    variations = 3;
+                }
+                break;
+
+            case PlayerData.PlayerAction.Header:
+                if (play.IsActionSuccessful)
+                {
+                    tag = "nar_Header_";
+                    variations = 1;
+                }
+                else
+                {
+                    if (!play.IsActionDefended)
+                    {
+                        tag = "nar_WrongHeader_";
+                        variations = 1;
+                    }
+                    else
+                    {
+                        tag = "nar_BlockHeader_";
+                        variations = 2;
+                    }                
+                }
+                break;
         }
-        else if (play.Defender != null)
+
+        switch(play.Event)
         {
-            color = play.Defender.Team.PrimaryColor;
+            case MatchEvent.KickOff:
+                tag = "nar_KickOff_";
+                variations = 1;
+                if (isSecondHalf)
+                {
+                    tag = "nar_SecondHalfStart_";
+                    isSecondHalf = false;
+                }
+                break;
+
+            case MatchEvent.HalfTime:
+                tag = "nar_FirstHalfEnd_";
+                variations = 1;
+                isSecondHalf = true;
+                break;
+
+            case MatchEvent.FullTime:
+                tag = "nar_TimeUp_";
+                variations = 1;
+                break;
+
+            case MatchEvent.Goal:
+                tag = "nar_Goal_";
+                variations = 8;
+                screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
+                break;
+
+            case MatchEvent.Fault:
+                tag = "nar_Fault_";
+                variations = 5;
+                break;
+
+            case MatchEvent.CornerKick:
+                tag = "nar_CornerKick_";
+                variations = 5;
+                break;
+
+            case MatchEvent.Penalty:
+                tag = "nar_Penalty_";
+                variations = 1;
+                break;
+
+            case MatchEvent.ShotSaved:
+                tag = "nar_SaveShot_";
+                if (play.Excitment == 1) tag = "nar_BestSaveShot_";
+                else if (play.Excitment == -1) tag = "nar_WorstShot";
+                variations = 1;
+                break;
+
+            case MatchEvent.Offside:
+                tag = "nar_Offside_";
+                variations = 3;
+                break;
         }
-        string defender = "None";
-        if (play.Defender != null) defender = play.Defender.FirstName;
-        string action = play.OffensiveAction.ToString();
-        string evt = play.Event.ToString();
-        string success = play.IsActionSuccesful.ToString();
-        string zone = play.Zone.ToString();
-        string target = play.TargetZone.ToString();
 
-        string str = attacker + " VS " + defender + " - Actions: " + action + " - Success: " + success;
-
-        if (play.Event != MatchEvent.None) str = attacker + " VS " + defender + " - Event: " + play.Event.ToString();
-
-        if (play.Event == MatchEvent.GoalAnnounced)
+        if (tag != "")
         {
-            screen.Narration.UpdateNarration("GOOOOOAAALL!", color, _turn.ToString());
-            screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
+            Field.Zone attZone = GetTeamZone(play.Attacker.Team, play.Zone);
+            string zone = MainController.Instance.Localization.GetZoneString(attZone);
+            MainController.Instance.Localization.SetGlobals(play.Attacker.FirstName, play.Defender.FirstName, play.Attacker.Team.Name, play.Defender.Team.Name, zone);
+            screen.Narration.UpdateNarration(tag, variations, play.Attacker.Team, play.Zone);
         }
 
-        if(play.Event == MatchEvent.HalfTime) screen.Narration.UpdateNarration("FIM DO PRIMEIRO TEMPO!", color, _turn.ToString());
-        else if (play.Event == MatchEvent.FullTime) screen.Narration.UpdateNarration("TERMINA A PARTIDA", color, _turn.ToString());
-
-        else screen.Narration.UpdateNarration(str, color, _turn.ToString());
-        screen.Field.UpdateFieldArea((int)play.Zone);
-        
+        screen.Field.UpdateFieldArea((int)play.Zone);       
     }
 
     public void StartButtonClickHandler()

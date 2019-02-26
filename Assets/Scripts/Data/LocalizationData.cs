@@ -7,6 +7,15 @@ public class LocalizationData : ScriptableObject
 {
     [HideInInspector]
     public string PLAYER_1, PLAYER_2, TEAM_1, TEAM_2, ZONE, EXTRA_1;
+    public void SetGlobals(string _player1, string _player2, string _team1, string _team2, string _zone, string _extra="")
+    {
+        PLAYER_1 = _player1;
+        PLAYER_2 = _player2;
+        TEAM_1 = _team1;
+        TEAM_2 = _team2;
+        ZONE = _zone;
+    }
+
     public enum Language
     {
         English,
@@ -78,11 +87,11 @@ public class LocalizationData : ScriptableObject
         int zone = (int)_zone;
         string str = "";
 
-        if(zone > 12)
+        if(zone > 22)
         {
             str = "zone_Attack";
         }
-        else if(zone > 3)
+        else if(zone > 7)
         {
             str = "zone_Midfield";
         }

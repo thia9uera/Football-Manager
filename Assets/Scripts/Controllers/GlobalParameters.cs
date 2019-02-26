@@ -19,7 +19,6 @@
             if (ParamName == "ZONE")
                 return MainController.Instance.Localization.ZONE;
 
-
             if (ParamName == "EXTRA_1")
                 return MainController.Instance.Localization.EXTRA_1;
 
