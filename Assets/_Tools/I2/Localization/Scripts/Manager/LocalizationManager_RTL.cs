@@ -45,11 +45,13 @@ namespace I2.Loc
 
 
             // Restore all tags
-
+  
             for (int i = 0; i < tags.Count; i++)
             {
                 var len = line.Length;
+  
                 for (int j = 0; j < len; ++j)
+                {
                     if (line[j] == '@' && line[j + 1] == '@' && line[j + 2] >= tagBase && line[j + 3] == '@' && line[j + 4] == '@')
                     {
                         int idx = line[j + 2] - tagBase;
@@ -61,11 +63,13 @@ namespace I2.Loc
 
                         break;
                     }
+                }
             }
+
             return line;
         }
 
-        
+       
         public static string FixRTL_IfNeeded(string text, int maxCharacters = 0, bool ignoreNumber=false)
 		{
 			if (IsRight2Left)

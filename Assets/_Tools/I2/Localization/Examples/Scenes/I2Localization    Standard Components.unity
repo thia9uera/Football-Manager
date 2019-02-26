@@ -200,6 +200,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects: []
   LocalizeEvent:
     m_PersistentCalls:
@@ -277,7 +278,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 167348269}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &167348268
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +308,7 @@ Transform:
   - {fileID: 1423492665}
   - {fileID: 1099668625}
   - {fileID: 941646752}
+  - {fileID: 663069740}
   - {fileID: 276461885}
   - {fileID: 220773515}
   - {fileID: 1666749074}
@@ -342,7 +344,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 167348269}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &220773516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +369,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects:
   - {fileID: 2800000, guid: 8f7115ef5a3ecfd42935c3ff54434ae8, type: 3}
   LocalizeEvent:
@@ -443,7 +446,7 @@ Transform:
   m_Children:
   - {fileID: 319616242}
   m_Father: {fileID: 167348269}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &276461886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +471,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects:
   - {fileID: 100000, guid: d243bb55d50b4424cb4d5e5036104aef, type: 2}
   - {fileID: 100000, guid: a5c71238940815045b04992831c96352, type: 2}
@@ -923,6 +927,133 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &663069739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 663069740}
+  - 33: {fileID: 663069744}
+  - 65: {fileID: 663069743}
+  - 23: {fileID: 663069742}
+  - 114: {fileID: 663069741}
+  m_Layer: 0
+  m_Name: MeshRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &663069740
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663069739}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5943017, y: -1.7532818, z: 1.865202}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 167348269}
+  m_RootOrder: 3
+--- !u!114 &663069741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663069739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: MeshRenderer
+  mTermSecondary: MeshRendererMaterial
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  Source: {fileID: 0}
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  TranslatedObjects:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1744296199}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_UnityStandard_MeshRenderer
+--- !u!23 &663069742
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663069739}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &663069743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663069739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &663069744
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663069739}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &941646749
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +1095,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects: []
   LocalizeEvent:
     m_PersistentCalls:
@@ -1152,6 +1284,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects:
   - {fileID: 8300000, guid: 4c79df509da191f4b979e9d8318d23c8, type: 3}
   - {fileID: 8300000, guid: 45fe233cbd2709f4985023f19b734908, type: 3}
@@ -1296,124 +1429,170 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488051eaa73ba421e8fe4868f2e0f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: Arial
+      TermType: 1
+      Description: 
+      Languages:
+      - ARIAL
+      - COMIC
+      - ARIAL
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Audio
+      TermType: 3
+      Description: 
+      Languages:
+      - ingles
+      - References/Sounds/espannol
+      - frances
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Color/Red
+      TermType: 0
+      Description: 
+      Languages:
+      - Red
+      - Rojo
+      - Rouge
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Flag Texture
+      TermType: 5
+      Description: 
+      Languages:
+      - References/Textures/L_EN
+      - References/Textures/L_ES
+      - References/Textures/L_FR
+      Flags: 000000
+      Languages_Touch: []
+    - Term: MyCallBack
+      TermType: 0
+      Description: 
+      Languages:
+      - '{PLAYER_COLOR} Player Wins!'
+      - El jugador {PLAYER_COLOR} ha ganado!
+      - Joueur {PLAYER_COLOR} gagne!
+      Flags: 000000
+      Languages_Touch: []
+    - Term: MyText1
+      TermType: 0
+      Description: 
+      Languages:
+      - This is a TextMesh
+      - Esto es un TextMesh
+      - Il s'agit d'une TextMesh
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Prefab
+      TermType: 4
+      Description: 
+      Languages:
+      - Mesh_US
+      - Mesh_ES
+      - References/Prefabs/Mesh_FR
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Standard Unity Example
+      TermType: 0
+      Description: 
+      Languages:
+      - 'This example shows how to localize Standard Unity Components like
+
+        Audio Sources, GUI Text, GUI Texture, Text Mesh and Prefabs'
+      - 'Este ejemplo muestra como localizar componentes comunes:
+
+
+        Audio Source, GUI Text, GUI Texture, Text Mesh and Prefabs'
+      - "Cet exemple montre comment localiser standard Unit\uFFFD composants:\n\nAudio
+        Source, GUI Text, GUI Texture, Text Mesh and Prefabs"
+      Flags: 000000
+      Languages_Touch: []
+    - Term: Flag Sprites
+      TermType: 5
+      Description: 
+      Languages:
+      - References/Sprites/L_EN[L_EN]
+      - References/Sprites/L_ES[L_ES]
+      - References/Sprites/L_FR[L_FR]
+      Flags: 000000
+      Languages_Touch: []
+    - Term: MeshRenderer
+      TermType: 8
+      Description: 
+      Languages:
+      - Cube
+      - Capsule
+      - Sphere
+      Flags: 000000
+      Languages_Touch: []
+    - Term: MeshRendererMaterial
+      TermType: 6
+      Description: 
+      Languages:
+      - Default-Diffuse
+      - Default-Skybox
+      - Default-Material
+      Flags: 000000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: 
+    mLanguages:
+    - Name: English
+      Code: en-US
+      Flags: 0
+    - Name: Spanish
+      Code: es
+      Flags: 0
+    - Name: French
+      Code: fr-BE
+      Flags: 0
+    IgnoreDeviceLanguage: 0
+    _AllowUnloadingLanguages: 1
+    Google_WebServiceURL: 
+    Google_SpreadsheetKey: teVYmvqeNTF8ZkQhQ21a0Gw
+    Google_SpreadsheetName: 
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateDelay: 5
+    Assets:
+    - {fileID: 12800000, guid: 769d4a2288b99004184236f5fc4469c8, type: 3}
+    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1
+  version: 1
   NeverDestroy: 0
   UserAgreesToHaveItOnTheScene: 0
   UserAgreesToHaveItInsideThePluginsFolder: 0
-  Spreadsheet_LocalFileName: C:/Data/Frank/Unity Projects/Unity Plugins/Localization.csv
-  Spreadsheet_LocalCSVSeparator: ','
-  Spreadsheet_LocalCSVEncoding: Unicode (UTF-8)
-  Spreadsheet_SpecializationAsRows: 1
-  Assets:
-  - {fileID: 12800000, guid: 769d4a2288b99004184236f5fc4469c8, type: 3}
+  GoogleLiveSyncIsUptoDate: 1
+  Assets: []
   Google_WebServiceURL: 
   Google_SpreadsheetKey: teVYmvqeNTF8ZkQhQ21a0Gw
   Google_SpreadsheetName: 
   Google_LastUpdatedVersion: 
   GoogleUpdateFrequency: 3
-  GoogleInEditorCheckFrequency: 2
   GoogleUpdateDelay: 5
-  mLanguages:
-  - Name: English
-    Code: en-US
-    Flags: 0
-  - Name: Spanish
-    Code: es
-    Flags: 0
-  - Name: French
-    Code: fr-BE
-    Flags: 0
+  mLanguages: []
   IgnoreDeviceLanguage: 0
-  mTerms:
-  - Term: Arial
-    TermType: 1
-    Description: 
-    Languages:
-    - ARIAL
-    - COMIC
-    - ARIAL
-    Flags: 000000
-    Languages_Touch: []
-  - Term: Audio
-    TermType: 3
-    Description: 
-    Languages:
-    - ingles
-    - References/Sounds/espannol
-    - frances
-    Flags: 000000
-    Languages_Touch: []
-  - Term: Color/Red
-    TermType: 0
-    Description: 
-    Languages:
-    - Red
-    - Rojo
-    - Rouge
-    Flags: 000000
-    Languages_Touch: []
-  - Term: Flag Texture
-    TermType: 5
-    Description: 
-    Languages:
-    - References/Textures/L_EN
-    - References/Textures/L_ES
-    - References/Textures/L_FR
-    Flags: 000000
-    Languages_Touch: []
-  - Term: MyCallBack
-    TermType: 0
-    Description: 
-    Languages:
-    - '{PLAYER_COLOR} Player Wins!'
-    - El jugador {PLAYER_COLOR} ha ganado!
-    - Joueur {PLAYER_COLOR} gagne!
-    Flags: 000000
-    Languages_Touch: []
-  - Term: MyText1
-    TermType: 0
-    Description: 
-    Languages:
-    - This is a TextMesh
-    - Esto es un TextMesh
-    - Il s'agit d'une TextMesh
-    Flags: 000000
-    Languages_Touch: []
-  - Term: Prefab
-    TermType: 4
-    Description: 
-    Languages:
-    - Mesh_US
-    - Mesh_ES
-    - References/Prefabs/Mesh_FR
-    Flags: 000000
-    Languages_Touch: []
-  - Term: Standard Unity Example
-    TermType: 0
-    Description: 
-    Languages:
-    - 'This example shows how to localize Standard Unity Components like
-
-      Audio Sources, GUI Text, GUI Texture, Text Mesh and Prefabs'
-    - 'Este ejemplo muestra como localizar componentes comunes:
-
-
-      Audio Source, GUI Text, GUI Texture, Text Mesh and Prefabs'
-    - "Cet exemple montre comment localiser standard Unit\uFFFD composants:\n\nAudio
-      Source, GUI Text, GUI Texture, Text Mesh and Prefabs"
-    Flags: 000000
-    Languages_Touch: []
-  - Term: Flag Sprites
-    TermType: 5
-    Description: 
-    Languages:
-    - References/Sprites/L_EN[L_EN]
-    - References/Sprites/L_ES[L_ES]
-    - References/Sprites/L_FR[L_FR]
-    Flags: 000000
-    Languages_Touch: []
+  _AllowUnloadingLanguages: 1
+  mTerms: []
   CaseInsensitiveTerms: 0
   OnMissingTranslation: 1
   mTerm_AppName: 
+  Spreadsheet_LocalFileName: C:/Data/Frank/Unity Projects/Unity Plugins/Localization.csv
+  Spreadsheet_LocalCSVSeparator: ','
+  Spreadsheet_LocalCSVEncoding: Unicode (UTF-8)
+  Spreadsheet_SpecializationAsRows: 1
+  Google_Password: change_this
+  GoogleInEditorCheckFrequency: 2
 --- !u!1 &1423492664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,6 +1648,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects: []
   LocalizeEvent:
     m_PersistentCalls:
@@ -1707,7 +1887,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 167348269}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1666749075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,6 +1912,7 @@ MonoBehaviour:
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
   AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
   TranslatedObjects: []
   LocalizeEvent:
     m_PersistentCalls:
@@ -1792,6 +1973,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTarget: {fileID: 220773517}
+--- !u!114 &1744296199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4679336707a2b54caa10d99561be751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 663069742}
 --- !u!1 &1797551106
 GameObject:
   m_ObjectHideFlags: 0

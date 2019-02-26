@@ -86,7 +86,8 @@ namespace I2.Loc
             string url = string.Format ("http://www.google.com/translate_t?hl=en&vi=c&ie=UTF8&oe=UTF8&submit=Translate&langpair={0}|{1}&text={2}", mCurrentBatch_FromLanguageCode, mCurrentBatch_ToLanguageCode, Uri.EscapeUriString( sb.ToString() ));
             Debug.Log(url);
 
-            www = new UnityWebRequest(url);
+            www = UnityWebRequest.Get(url);
+            I2Utils.SendWebRequest(www);
         }
 
         public override eJobState GetState()

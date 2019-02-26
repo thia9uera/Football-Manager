@@ -47,7 +47,7 @@ namespace I2.Loc
 				mKeyToExplore = GUILayout.TextField(mKeyToExplore, EditorStyles.toolbarTextField, GUILayout.ExpandWidth(true));
 				if (GUILayout.Button("Create", "toolbarbutton", GUILayout.Width(60)))
 				{
-					LanguageSource.ValidateFullTerm( ref mKeyToExplore );
+					LanguageSourceData.ValidateFullTerm( ref mKeyToExplore );
 					EditorApplication.update += ReplaceSelectedTerms;
 				}
 			GUILayout.EndHorizontal();
@@ -127,9 +127,9 @@ namespace I2.Loc
 			DoParseTermsInCurrentScene();
 
 			//--[ Update Selected Categories ]-------------
-			string mNewCategory = LanguageSource.GetCategoryFromFullTerm(sNewKey);
+			string mNewCategory = LanguageSourceData.GetCategoryFromFullTerm(sNewKey);
 			if (mNewCategory == string.Empty)
-				mNewCategory = LanguageSource.EmptyCategory;
+				mNewCategory = LanguageSourceData.EmptyCategory;
 			if (!mSelectedCategories.Contains(mNewCategory))
 				mSelectedCategories.Add (mNewCategory);
 			//RemoveUnusedCategoriesFromSelected();

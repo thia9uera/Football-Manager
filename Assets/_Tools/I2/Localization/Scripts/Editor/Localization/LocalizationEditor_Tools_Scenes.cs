@@ -168,8 +168,8 @@ namespace I2.Loc
 			if (InitialScene != Editor_GetCurrentScene())
 				Editor_OpenScene( InitialScene );
 			
-			if (mLanguageSource)
-				Selection.activeObject = mLanguageSource.gameObject;
+			if (mLanguageSource!=null)
+				Selection.activeObject = mLanguageSource.ownerObject;
 		}
 		#endregion
 	}

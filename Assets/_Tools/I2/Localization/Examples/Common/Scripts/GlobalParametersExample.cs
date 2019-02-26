@@ -6,7 +6,7 @@
 		public override string GetParameterValue( string ParamName )
         {
             if (ParamName == "WINNER")
-                return "BUNDA";            // For your game, get this value from your Game Manager
+                return "Javier";            // For your game, get this value from your Game Manager
             
             if (ParamName == "NUM PLAYERS")
                 return 5.ToString();

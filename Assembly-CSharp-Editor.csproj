@@ -80,7 +80,9 @@
     <Compile Include="Assets\_Tools\AssetBundleBrowser\Editor\MessageList.cs" />
     <Compile Include="Assets\_Tools\AssetBundleBrowser\Editor\MessageSystem.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\EditorTools.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LanguageSourceAssetInspector.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LanguageSourceInspector.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LocalizationEditor.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LocalizationParamsManagerInspector.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LocalizeDropdownInspector.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LocalizeInspector.cs" />

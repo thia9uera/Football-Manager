@@ -73,8 +73,10 @@ namespace I2.Loc
 
 			GUILayout.EndHorizontal();
 
-			//--[ Keys List ]-----------------------------------------
-			mScrollPos_Keys = GUILayout.BeginScrollView( mScrollPos_Keys, false, false, "horizontalScrollbar", "verticalScrollbar", EditorStyles.textArea, GUILayout.MinHeight(Height), GUILayout.MaxHeight(Screen.height), GUILayout.ExpandHeight(false));
+            TermsListHeight = Mathf.Min(Screen.height, TermsListHeight);
+
+            //--[ Keys List ]-----------------------------------------
+            mScrollPos_Keys = GUILayout.BeginScrollView( mScrollPos_Keys, false, false, "horizontalScrollbar", "verticalScrollbar", EditorStyles.textArea, GUILayout.Height(TermsListHeight)/*GUILayout.MinHeight(Height), GUILayout.MaxHeight(Screen.height), GUILayout.ExpandHeight(false)*/);
 
 			bool bAnyValidUsage = false;
 
@@ -85,8 +87,6 @@ namespace I2.Loc
 			float YPosMin = -ScrollHeight;
 			int nSkip = 0;
 			int nDraw = 0;
-			if (TermsListHeight<=0)
-				TermsListHeight = Screen.height;
 
 			if (mShowableTerms.Count == 0 && Event.current.type == EventType.Layout)
 				UpdateTermsToShownInList ();
@@ -139,7 +139,8 @@ namespace I2.Loc
 			GUILayout.Space(SkipSize+2);
 			if (mSelectedCategories.Count < mParsedCategories.Count) 
 			{
-				if (GUILayout.Button ("...", EditorStyles.label)) 
+                SkipSize += 25;
+                if (GUILayout.Button ("...", EditorStyles.label)) 
 				{
 					mSelectedCategories.Clear ();
 					mSelectedCategories.AddRange (mParsedCategories);
@@ -151,12 +152,14 @@ namespace I2.Loc
 
 			GUILayout.EndScrollView();
 
-			Rect ListRect = GUILayoutUtility.GetLastRect();
-			if (ListRect.height>5)
-				TermsListHeight = ListRect.height;
+            TermsListHeight = YPosMin + mRowSize + 25;//SkipSize+25;
+
+            //Rect ListRect = GUILayoutUtility.GetLastRect();
+            //if (ListRect.height>5)
+            //	TermsListHeight = ListRect.height;
             //Debug.Log(nDraw + " " + nSkip + " " + Screen.height + " " + TermsListHeight);
 
-			OnGUI_Keys_ListSelection( KeyListFilterID );    // Selection Buttons
+            OnGUI_Keys_ListSelection( KeyListFilterID );    // Selection Buttons
 			
 //			if (!bAnyValidUsage)
 //				EditorGUILayout.HelpBox("Use (Tools\\Parse Terms) to find how many times each of the Terms are used", UnityEditor.MessageType.Info);
@@ -273,7 +276,7 @@ namespace I2.Loc
 
             float listWidth = Mathf.Max(Screen.width / EditorGUIUtility.pixelsPerPoint, mTermList_MaxWidth);
             Rect rectKey = new Rect(MinX, YPosMin+2, listWidth-MinX, mRowSize);
-            if (sCategory != LanguageSource.EmptyCategory)
+            if (sCategory != LanguageSourceData.EmptyCategory)
                 rectKey.width -= 130;
             if (mKeyToExplore == FullKey) 
 			{
@@ -307,7 +310,7 @@ namespace I2.Loc
 				GUI.color = Color.white;
 			}
 			//--[ Category ]--------------------------
-			if (sCategory != LanguageSource.EmptyCategory) 
+			if (sCategory != LanguageSourceData.EmptyCategory) 
 			{
 				if (mKeyToExplore == FullKey) 
 				{
@@ -347,7 +350,7 @@ namespace I2.Loc
 			}*/
         }
 
-		bool TermHasAllTranslations( LanguageSource source, TermData data )
+		bool TermHasAllTranslations( LanguageSourceData source, TermData data )
 		{
             if (source==null) source = LocalizationManager.Sources[0];
 			for (int i=0, imax=data.Languages.Length; i<imax; ++i)
@@ -376,7 +379,7 @@ namespace I2.Loc
 					mTermsList_NewTerm = EditorGUILayout.TextField(mTermsList_NewTerm, EditorStyles.toolbarTextField, GUILayout.ExpandWidth(true));
 					GUILayout.EndHorizontal();
 
-					LanguageSource.ValidateFullTerm( ref mTermsList_NewTerm );
+					LanguageSourceData.ValidateFullTerm( ref mTermsList_NewTerm );
 					if (string.IsNullOrEmpty(mTermsList_NewTerm) || mLanguageSource.ContainsTerm(mTermsList_NewTerm) || mTermsList_NewTerm=="-")
 						GUI.enabled = false;
 	
@@ -608,7 +611,7 @@ namespace I2.Loc
 
 
             var fullTerm = Term;
-            if (!string.IsNullOrEmpty(Category) && Category != LanguageSource.EmptyCategory)
+            if (!string.IsNullOrEmpty(Category) && Category != LanguageSourceData.EmptyCategory)
                 fullTerm = Category + "/" + Term;
 
 			if (parsedTerm != null && parsedTerm.termData != null)
@@ -733,7 +736,7 @@ namespace I2.Loc
             mKeyToExplore = string.Empty;
             mTermList_MaxWidth = -1;
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(mLanguageSource);
+            mLanguageSource.Editor_SetDirty();
 
             EditorApplication.update += DoParseTermsInCurrentScene;
 			EditorApplication.update += RepaintScene;

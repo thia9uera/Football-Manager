@@ -92,6 +92,8 @@
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Languages.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Misc.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSource_Terms.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSourceAsset.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\LanguageSource\LanguageSourceData.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\LocalizationReader.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Localize.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\LocalizeDropdown.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Child.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_GUIText.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_GUITexture.cs" />
+    <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_MeshRenderer.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Prefab.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_SpriteRenderer.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_TextMesh.cs" />

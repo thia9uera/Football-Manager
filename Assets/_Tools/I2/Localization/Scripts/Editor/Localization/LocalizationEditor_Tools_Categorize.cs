@@ -79,7 +79,7 @@ namespace I2.Loc
 		{
 			GUILayout.BeginHorizontal();
 			string sKey, sCategory;
-			LanguageSource.DeserializeFullTerm(Term, out sKey, out sCategory);
+			LanguageSourceData.DeserializeFullTerm(Term, out sKey, out sCategory);
 			if (!string.IsNullOrEmpty(sCategory))
 			{
 				GUI.color = Color.gray;
@@ -137,9 +137,9 @@ namespace I2.Loc
 			
 			EditorApplication.update -= AssignCategoryToSelectedTerms;
 
-			mNewCategory = mNewCategory.Trim (LanguageSource.CategorySeparators);
+			mNewCategory = mNewCategory.Trim (LanguageSourceData.CategorySeparators);
 
-			if (mNewCategory==LanguageSource.EmptyCategory)
+			if (mNewCategory==LanguageSourceData.EmptyCategory)
 				mNewCategory = string.Empty;
 
 			TermReplacements = new Dictionary<string, string>(System.StringComparer.Ordinal);
@@ -148,7 +148,7 @@ namespace I2.Loc
 				string sKey, sCategory;
 				string OldTerm = mSelectedKeys[i];
 
-				LanguageSource.DeserializeFullTerm( OldTerm, out sKey, out sCategory );
+				LanguageSourceData.DeserializeFullTerm( OldTerm, out sKey, out sCategory );
 				if (!string.IsNullOrEmpty(mNewCategory))
 					sKey = string.Concat(mNewCategory, "/", sKey);
 
@@ -163,7 +163,7 @@ namespace I2.Loc
 						termData.Term = sKey;
 					else
 						TermReplacements.Remove (OldTerm);
-                    EditorUtility.SetDirty(mLanguageSource);
+                    mLanguageSource.Editor_SetDirty();
 				}
 			}
 			if (TermReplacements.Count<=0)
@@ -177,7 +177,7 @@ namespace I2.Loc
 				ParseTerms(true, false, true);
 
                 if (string.IsNullOrEmpty(mNewCategory)) 
-					mNewCategory = LanguageSource.EmptyCategory;
+					mNewCategory = LanguageSourceData.EmptyCategory;
 				if (!mSelectedCategories.Contains(mNewCategory))
 					mSelectedCategories.Add (mNewCategory);
                 //RemoveUnusedCategoriesFromSelected();

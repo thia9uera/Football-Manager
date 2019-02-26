@@ -49,7 +49,7 @@ namespace I2.Loc
                 if (Sources[i].TryGetTranslation(Term, out Translation, overrideLanguage))
                 {
                     if (applyParameters)
-                        ApplyLocalizationParams(ref Translation, localParametersRoot);
+                        ApplyLocalizationParams(ref Translation, localParametersRoot, allowLocalizedParameters:true);
 
                     if (IsRight2Left && FixForRTL)
                         Translation = ApplyRTLfix(Translation, maxLineLengthForRTL, ignoreRTLnumbers);
@@ -141,7 +141,7 @@ namespace I2.Loc
 			}
 			if (OnLocalizeEvent != null)
 				OnLocalizeEvent ();
-			ResourceManager.pInstance.CleanResourceCache();
+			//ResourceManager.pInstance.CleanResourceCache();
             #if UNITY_EDITOR
                 RepaintInspectors();
             #endif
@@ -198,7 +198,7 @@ namespace I2.Loc
 
 			return null;
 		}
-        public static TermData GetTermData(string term, out LanguageSource source)
+        public static TermData GetTermData(string term, out LanguageSourceData source)
         {
             InitializeIfNeeded();
 

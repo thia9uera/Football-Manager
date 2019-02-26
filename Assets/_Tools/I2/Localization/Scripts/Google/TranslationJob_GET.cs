@@ -41,7 +41,8 @@ namespace I2.Loc
             mQueries.RemoveAt(lastQuery);
 
             string url = string.Format("{0}?action=Translate&list={1}", LocalizationManager.GetWebServiceURL(), query);
-            www = new UnityWebRequest(url);
+            www = UnityWebRequest.Get(url);
+            I2Utils.SendWebRequest(www);
         }
 
         public override eJobState GetState()

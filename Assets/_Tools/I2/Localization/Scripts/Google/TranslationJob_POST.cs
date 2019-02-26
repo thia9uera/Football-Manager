@@ -27,7 +27,8 @@ namespace I2.Loc
             form.AddField("action", "Translate");
             form.AddField("list", data[0]);
 
-            www = new UnityWebRequest(LocalizationManager.GetWebServiceURL(), form.ToString());
+            www = UnityWebRequest.Post(LocalizationManager.GetWebServiceURL(), form);
+            I2Utils.SendWebRequest(www);
         }
 
         public override eJobState GetState()

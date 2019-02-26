@@ -402,7 +402,8 @@ namespace I2.Loc
 		
 		public static bool ObjectExistInScene( GameObject Obj )
 		{
-			//if (Obj.transform.root != Obj.transform)
+            return Obj.scene.IsValid() && Obj.scene.isLoaded;
+			/* //if (Obj.transform.root != Obj.transform)
 			//	continue;
 			
 			// We are only interested in GameObjects that are visible in the Hierachy panel and are persitent 
@@ -410,19 +411,17 @@ namespace I2.Loc
 				return false;
 			
 			// We are not interested in Prefab, unless they are Prefab Instances
-			//PrefabType pfType = PrefabUtility.GetPrefabType(Obj);
-
-            if(PrefabUtility.GetPrefabInstanceStatus(Obj) != PrefabInstanceStatus.Connected)
-			//if(pfType == PrefabType.Prefab || pfType == PrefabType.ModelPrefab)
+			PrefabType pfType = PrefabUtility.GetPrefabType(Obj);
+			if(pfType == PrefabType.Prefab || pfType == PrefabType.ModelPrefab)
 				return false;
 			
 			// If the database contains the object then its not an scene object, 
 			// but the previous test should get rid of them, so I will just comment this 
 			// unless an false positive object is found in the future
-			/*if (AssetDatabase.Contains(Obj))
-					return false;*/
+			//if (AssetDatabase.Contains(Obj))
+			//		return false;
 			
-			return true;
+			return true;*/
 		}
 
 		public static IEnumerable<GameObject> SceneRoots()

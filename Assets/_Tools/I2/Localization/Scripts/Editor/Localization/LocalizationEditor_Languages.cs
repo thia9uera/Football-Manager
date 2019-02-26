@@ -208,7 +208,7 @@ namespace I2.Loc
 		void SwapLanguages( int iFirst, int iSecond )
 		{
 			serializedObject.ApplyModifiedProperties();
-			LanguageSource Source = mLanguageSource;
+			LanguageSourceData Source = mLanguageSource;
 
 			SwapValues( Source.mLanguages, iFirst, iSecond );
 			foreach (TermData termData in Source.mTerms)
@@ -332,7 +332,7 @@ namespace I2.Loc
 					continue;
 				
 				string sourceCode, sourceText;
-				FindTranslationSource( LanguageSource.GetKeyFromFullTerm(termData.Term), termData, code, null, out sourceText, out sourceCode );
+				FindTranslationSource( LanguageSourceData.GetKeyFromFullTerm(termData.Term), termData, code, null, out sourceText, out sourceCode );
 
 				mTranslationTerms.Add (termData.Term);
 
@@ -400,7 +400,7 @@ namespace I2.Loc
                       //  continue;
 
                     string sourceCode, sourceText;
-                    FindTranslationSource(LanguageSource.GetKeyFromFullTerm(termData.Term), termData, langCode, null, out sourceText, out sourceCode);
+                    FindTranslationSource(LanguageSourceData.GetKeyFromFullTerm(termData.Term), termData, langCode, null, out sourceText, out sourceCode);
 
                     string result = GoogleTranslation.RebuildTranslation(sourceText, mTranslationRequests, langCode);               // gets the result from google and rebuilds the text from multiple queries if its is plurals
 
