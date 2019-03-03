@@ -213,7 +213,6 @@ public class DataController : MonoBehaviour
             string jsonString = streamReader.ReadToEnd();
             file = JsonUtility.FromJson<T>(jsonString);
         }
-
         return file;
     }
 

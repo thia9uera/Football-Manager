@@ -17,4 +17,5 @@ public class PlayerStatistics
     public int CrossesMissed;
     public int Presence;
     public int Assists;
+    public float MatchRating = 6.0f;
 }

@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using RotaryHeart.Lib.SerializableDictionary;
+
 
 [CreateAssetMenu(fileName = "Player", menuName = "Player Data", order = 1)]
 [System.Serializable]

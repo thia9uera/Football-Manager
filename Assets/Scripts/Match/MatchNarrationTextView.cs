@@ -40,7 +40,7 @@ public class MatchNarrationTextView : MonoBehaviour
             print("ATTACKER: " + PlayInfo.Attacker.GetFullName());
             print("OFF ACTION: " + PlayInfo.OffensiveAction.ToString());
             print("SUCCESS: " + PlayInfo.IsActionSuccessful);
-            //public float AttackerRoll;
+            print("ATTACKER ROLL: " + PlayInfo.AttackerRoll);
         }
         else
         {
@@ -52,9 +52,9 @@ public class MatchNarrationTextView : MonoBehaviour
         if (PlayInfo.Defender != null)
         {
             print("DEFENDER: " + PlayInfo.Defender.GetFullName());
-            //public float DefenderRoll;
             print("DEF ACTION: " + PlayInfo.DefensiveAction.ToString());
             print("DEFENSE SUCCESS: " + PlayInfo.IsActionDefended);
+            print("DEFENDER ROLL: " + PlayInfo.DefenderRoll);
         }
         else
         {
@@ -65,9 +65,10 @@ public class MatchNarrationTextView : MonoBehaviour
 
         print("MARKING TYPE: " + PlayInfo.Marking.ToString());
         print("EVENT: " + PlayInfo.Event.ToString());
-        //public PlayerData Assister;
+        if (PlayInfo.Assister != null) print("ASSISTER: " + PlayInfo.Assister.GetFullName());
         print("EXCITMENT: " + PlayInfo.Excitment);
         print("ZONE (ABSOLUTE): " + PlayInfo.Zone.ToString());
         print("TARGET ZONE (ABSOLUTE): " + PlayInfo.TargetZone.ToString());
+        print("COUNTER ATTACK: " + PlayInfo.CounterAttack);
     }
 }

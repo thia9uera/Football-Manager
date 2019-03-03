@@ -7,6 +7,7 @@ namespace RotaryHeart.Lib.SerializableDictionary
     /// <summary>
     /// This class is only used to be able to draw the custom property drawer
     /// </summary>
+    [System.Serializable]
     public abstract class DrawableDictionary
     {
         [UnityEngine.HideInInspector]

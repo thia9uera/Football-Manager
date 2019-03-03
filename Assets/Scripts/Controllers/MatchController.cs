@@ -74,6 +74,8 @@ public class MatchController : MonoBehaviour
         public int Excitment;
         public Field.Zone Zone;
         public Field.Zone TargetZone;
+
+        public int CounterAttack;
     }
     List<PlayInfo> playList;
 
@@ -266,6 +268,8 @@ public class MatchController : MonoBehaviour
 
         if(!isSimulatingMatch) UpdateNarration(turn - 1);
         if (!evt) DefineActions(attackingTeam, defendingTeam, turn);
+
+        UpdateRating(turn);
         turn++;
     }
 
@@ -1040,6 +1044,9 @@ public class MatchController : MonoBehaviour
         if (success) play.Excitment = attackExcitment;
         else play.Excitment = defenseExcitement;
 
+        play.AttackerRoll = attacking;
+        play.DefenderRoll = defending;
+
         return success;
     }
 
@@ -1237,6 +1244,12 @@ public class MatchController : MonoBehaviour
             header = _player.GetActionChance(PlayerData.PlayerAction.Header, zoneChance, _marking, zone);
         }
 
+        if (counterAttack > 0)
+        {
+            cross *= 1.5f;
+            longPass *= 1.5f;
+        }
+
         if (_player.Zone == Field.Zone.OwnGoal)
         {
             dribble = 0;
@@ -1424,6 +1437,7 @@ public class MatchController : MonoBehaviour
                 {
                     flowPasses++;
                     if (flowPasses == 3) tag = "nar_FlowPasses_";
+                    if (play.CounterAttack > 0) tag = "nar_CounterAttack_";
                     variations = 1;
                 }
                 else
@@ -1592,6 +1606,50 @@ public class MatchController : MonoBehaviour
             defTeam = _play.Defender.Team.Name;
         }
         MainController.Instance.Localization.SetGlobals(attacker, defender, attTeam, defTeam, zone);
+    }
+
+    void UpdateRating(int _turn)
+    {
+        PlayInfo play = playList[_turn];
+
+        float attackerRating = 0f;
+        float defenderRating = 0f;
+
+        if(play.IsActionSuccessful)
+        {
+           attackerRating = 0.2f;
+           defenderRating = -0.1f;
+        }
+        else
+        {
+            attackerRating = -0.12f;
+        }
+
+        if(play.IsActionDefended) defenderRating = 0.2f;
+        if (play.Event == MatchEvent.Fault) defenderRating = -0.2f;
+        if (play.Event == MatchEvent.ShotSaved)
+        {
+            defenderRating = 0.2f;
+            if (playList[_turn - 1].Event == MatchEvent.Penalty) defenderRating = 2f;
+        }
+
+        if (play.Event == MatchEvent.Goal)
+        {
+            attackerRating = 2f;
+            defenderRating = -1f;
+        }
+
+        if (play.Attacker != null)
+        {
+            play.Attacker.MatchStats.MatchRating += attackerRating;
+            if (play.Attacker.MatchStats.MatchRating > 10) play.Attacker.MatchStats.MatchRating = 10f;
+            else if (play.Attacker.MatchStats.MatchRating < 0) play.Defender.MatchStats.MatchRating = 0f;
+        }
+        if (play.Defender != null)
+        {
+            if (play.Defender.MatchStats.MatchRating > 10) play.Defender.MatchStats.MatchRating = 10f;
+            else if (play.Defender.MatchStats.MatchRating < 0) play.Defender.MatchStats.MatchRating = 0f;
+        }
     }
 
     public void StartButtonClickHandler()
