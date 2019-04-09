@@ -45,19 +45,20 @@ public class DataController : MonoBehaviour
         else
         {
             Directory.CreateDirectory(userFolder);
-            SaveGame();
+            SaveGame(true);
         }
     }
 
     #region SAVE
-    public void SaveGame()
+    public void SaveGame(bool _loadAfter = false)
     {
         SaveUser();
         SavePlayers();
         SaveTeams();
         SaveTournaments();
-        print("GAME SAVED");
-        LoadGame(MainController.Instance.User.Id);
+       
+        if(_loadAfter) LoadGame(MainController.Instance.User.Id);
+        else print("GAME SAVED");
     }
 
     public void SaveUser()

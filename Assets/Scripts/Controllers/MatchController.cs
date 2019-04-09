@@ -37,22 +37,24 @@ public class MatchController : MonoBehaviour
     ActionChancePerZoneData actionChancePerZone;
 
     public Field Field;
-    MatchScreen screen;
+
+    [SerializeField]
+    private MatchScreen screen;
 
     #region Game Modifiers
 
-    float positionDebuff;
-    float attackingBonusLow;
-    float attackingBonusMedium;
-    float attackingBonusHigh;
-    float faultChance;
-    float offsideChance;
-    float counterAttackChance;
+    private float positionDebuff;
+    private float attackingBonusLow;
+    private float attackingBonusMedium;
+    private float attackingBonusHigh;
+    private float faultChance;
+    private float offsideChance;
+    private float counterAttackChance;
 
-    int fatigueLow;
-    int fatigueMedium;
-    int fatigueHigh;
-    float fatigueRecoverHalfTime;
+    private int fatigueLow;
+    private int fatigueMedium;
+    private int fatigueHigh;
+    private float fatigueRecoverHalfTime;
 
     #endregion
 
@@ -77,38 +79,36 @@ public class MatchController : MonoBehaviour
 
         public int CounterAttack;
     }
-    List<PlayInfo> playList;
 
-    TeamData homeTeam;
-    TeamData awayTeam;
+    private List<PlayInfo> playList;
 
-    TeamData attackingTeam;
-    TeamData defendingTeam;
+    private TeamData homeTeam;
+    private TeamData awayTeam;
 
-    float attackingBonus = 1f;
-    int counterAttack = 0;
-    bool keepAttacker;
-    bool keepDefender;
+    private TeamData attackingTeam;
+    private TeamData defendingTeam;
 
-    int matchTime = 0;
-    bool isGameOn;
-    bool isSimulatingMatch;
-    bool isSimulatingTournament;
-    int turn = 0;
+    private float attackingBonus = 1f;
+    private int counterAttack = 0;
+    private bool keepAttacker;
+    private bool keepDefender;
 
-    bool secondHalfStarted;
-    bool isSecondHalf = false;
-    int flowPasses = 0;
-    int flowDribbles = 0;
+    private int matchTime = 0;
+    private bool isGameOn;
+    private bool isSimulatingMatch;
+    private bool isSimulatingTournament;
+    private int turn = 0;
+
+    private bool secondHalfStarted;
+    private bool isSecondHalf = false;
+    private int flowPasses = 0;
+    private int flowDribbles = 0;
 
     public int MatchSpeed = 1;
 
-    void Awake()
+    private void Start()
     {
         Game_Modifier modifiers = MainController.Instance.Modifiers.game_Modifiers[0];
-
-        screen = GetComponent<MatchScreen>();
-        Field = GetComponent<Field>();
 
         positionDebuff = modifiers.PositionDebuff;
         attackingBonusLow = modifiers.AttackBonusLow;
@@ -244,7 +244,7 @@ public class MatchController : MonoBehaviour
             PlayInfo play = new PlayInfo();
             play.Event = MatchEvent.KickOff;
             playList.Insert(0, play);
-            //ResolveKickOff(attackingTeam, turn);
+            ResolveKickOff(attackingTeam, turn);
         }
         else if (!secondHalfStarted && turn >= 45 && playList[turn - 1].Event == MatchEvent.None)
         {
@@ -531,6 +531,9 @@ public class MatchController : MonoBehaviour
             play.IsActionSuccessful = true;
             play.Event = MatchEvent.Goal;
         }
+
+        play.AttackerRoll = attacking;
+        play.DefenderRoll = defending;
     }
 
     void ResolveShotSaved(TeamData _attackingTeam, int _turn)
@@ -557,7 +560,7 @@ public class MatchController : MonoBehaviour
         PlayInfo playInfo = playList[_turn];
         CopyPlay(playInfo, lastPlay);
         playInfo.Event = MatchEvent.GoalAnnounced;
-        playList.Insert(_turn, playInfo);
+        playList.Insert(_turn, playInfo);  
     }
 
     void ResolveGoalAnnounced(int _turn)
@@ -757,11 +760,33 @@ public class MatchController : MonoBehaviour
             if (offensiveAction == PlayerData.PlayerAction.Shot || offensiveAction == PlayerData.PlayerAction.Header) play.Event = MatchEvent.ShotOnGoal;
 
             else play.TargetZone = GetTeamZone(play.Attacker.Team, Field.GetTargetZone(GetTeamZone(play.Attacker.Team, play.Zone), play.Event, play.OffensiveAction, play.Attacker.Team.Strategy));
+
+            switch(play.OffensiveAction)
+            {
+                case PlayerData.PlayerAction.LongPass:
+                case PlayerData.PlayerAction.Pass: play.Attacker.MatchStats.Passes++; break;
+                case PlayerData.PlayerAction.Cross: play.Attacker.MatchStats.Crosses++; break;
+                case PlayerData.PlayerAction.Shot: play.Attacker.MatchStats.Shots++; break;
+                case PlayerData.PlayerAction.Header: play.Attacker.MatchStats.Headers++; break;
+                case PlayerData.PlayerAction.Dribble: play.Attacker.MatchStats.Dribbles++; break;
+            }
         }
         else
         {
             attackingBonus = 1f;
             if (offensiveAction == PlayerData.PlayerAction.Shot || offensiveAction == PlayerData.PlayerAction.Header) play.Event = MatchEvent.ShotMissed;
+
+            switch (play.OffensiveAction)
+            {
+                case PlayerData.PlayerAction.LongPass:
+                case PlayerData.PlayerAction.Pass: play.Attacker.MatchStats.PassesMissed++; break;
+                case PlayerData.PlayerAction.Cross: play.Attacker.MatchStats.CrossesMissed++; break;
+                case PlayerData.PlayerAction.Shot: play.Attacker.MatchStats.ShotsMissed++; break;
+                case PlayerData.PlayerAction.Header: play.Attacker.MatchStats.HeadersMissed++; break;
+                case PlayerData.PlayerAction.Dribble: play.Attacker.MatchStats.DribblesMissed++; break;
+            }
+
+            if (play.Event == MatchEvent.Fault) play.Defender.MatchStats.Faults++;
         }
     }
 
@@ -1474,7 +1499,7 @@ public class MatchController : MonoBehaviour
                 break;
 
             case PlayerData.PlayerAction.Header:
-                if (play.IsActionSuccessful)
+                if (play.IsActionSuccessful && play.Event == MatchEvent.ShotOnGoal)
                 {
                     tag = "nar_Header_";
                     variations = 1;
@@ -1519,6 +1544,11 @@ public class MatchController : MonoBehaviour
                 tag = "nar_TimeUp_";
                 variations = 1;
                 isNeutral = true;
+                break;
+
+            case MatchEvent.ShotOnGoal:
+                tag = "nar_Shot_";
+                variations = 3;
                 break;
 
             case MatchEvent.Goal:
@@ -1630,7 +1660,7 @@ public class MatchController : MonoBehaviour
         if (play.Event == MatchEvent.ShotSaved)
         {
             defenderRating = 0.2f;
-            if (playList[_turn - 1].Event == MatchEvent.Penalty) defenderRating = 2f;
+            if (_turn > 3 && playList[_turn - 2].Event == MatchEvent.Penalty) defenderRating = 2f;
         }
 
         if (play.Event == MatchEvent.Goal)
@@ -1647,6 +1677,7 @@ public class MatchController : MonoBehaviour
         }
         if (play.Defender != null)
         {
+            play.Defender.MatchStats.MatchRating += defenderRating;
             if (play.Defender.MatchStats.MatchRating > 10) play.Defender.MatchStats.MatchRating = 10f;
             else if (play.Defender.MatchStats.MatchRating < 0) play.Defender.MatchStats.MatchRating = 0f;
         }

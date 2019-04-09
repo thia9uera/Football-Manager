@@ -74,6 +74,8 @@ public class LoadingScreen : BaseScreen
 
     void PopulateLoadFiles(UserData[] _users)
     {
+        label.text = "SELECT GAME FILE";
+
         if (buttons != null) foreach (GameObject go in buttons) Destroy(go);
         buttons = new List<GameObject>();
 
@@ -95,14 +97,15 @@ public class LoadingScreen : BaseScreen
             buttons.Add(btn.gameObject);
             btn.GetComponent<Button>().onClick.AddListener(delegate 
             {
-                LoadFile(user.Id);
-                
+                LoadFile(user.Id);               
             });
         }
     }
 
     void LoadFile(string _file)
     {
+        content.gameObject.SetActive(false);
+        label.text = "LOADING...";
         MainController.Instance.Data.LoadGame(_file);
     }
 
@@ -117,6 +120,9 @@ public class LoadingScreen : BaseScreen
 
     public void CreateNewFile()
     {
+        content.gameObject.SetActive(false);
+        label.text = "PREPARING...";
+
         PlayerData[] players = Tools.GetAtSubfolders<PlayerData>("Data/Players");
         TeamData[] teams = Tools.GetAtFolder<TeamData>("Data/Teams");
         TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
