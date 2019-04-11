@@ -33,7 +33,7 @@ public class TournamentLeaderboard : MonoBehaviour
             string param = "";
             switch(_param)
             {
-                case "Goals" :  param = data.Attributes.TournamentStatistics[_tournamentId].Goals.ToString(); break;
+                case "Goals" :  param = data.TournamentStatistics(_tournamentId).Goals.ToString(); break;
             }
             item.Populate(index, data.GetFullName() + "\n<size=20><color=#666666>" + data.Team.Name, param, data.Team.IsUserControlled);
             item.gameObject.SetActive(true);

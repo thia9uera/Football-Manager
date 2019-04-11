@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class DataController : MonoBehaviour
     bool isLoadingPlayers;
     bool isLoadingTeams;
     bool isLoadingTournaments;
+
+    string extension = ".auxter";
 
     private void Start()
     {
@@ -173,7 +176,7 @@ public class DataController : MonoBehaviour
         string[] dirs = Directory.GetDirectories(saveFolder);
         foreach (string folder in dirs)
         {
-            UserData data = LoadFile<UserData>(CombinePaths(folder, "UserData.txt"));
+            UserData data = LoadFile<UserData>(CombinePaths(folder, "UserData" + extension));
             datas.Add(data);
         }
 
@@ -189,12 +192,22 @@ public class DataController : MonoBehaviour
 
         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
         
-        path = Path.Combine(folder, _name + ".txt");
-        string jsonString = JsonUtility.ToJson(_data);
-        using (StreamWriter streamWriter = File.CreateText(path))
+       path = Path.Combine(folder, _name + extension);
+       string jsonString = JsonUtility.ToJson(_data);
+       using (StreamWriter streamWriter = File.CreateText(path))
+       {
+          streamWriter.Write(jsonString);
+       }
+
+       /*
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        path = Path.Combine(folder, _name + extension);
+        using (FileStream fileStream = File.Open(path, FileMode.OpenOrCreate))
         {
-            streamWriter.Write(jsonString);
+            binaryFormatter.Serialize(fileStream, _data);
+            fileStream.Position = 0;
         }
+        */
     }
 
     public T LoadData<T>(string _fileName)
@@ -207,13 +220,24 @@ public class DataController : MonoBehaviour
 
         string path;
         string folder = CombinePaths(userFolder, subfolder);
+
+        path = CombinePaths(folder, _fileName + extension);
         T file;
-        path = CombinePaths(folder, _fileName + ".txt");
         using (StreamReader streamReader = File.OpenText(path))
         {
             string jsonString = streamReader.ReadToEnd();
             file = JsonUtility.FromJson<T>(jsonString);
         }
+
+        /*
+         BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+         using (FileStream fileStream = File.Open(path, FileMode.Open))
+         {
+             file =  (T)binaryFormatter.Deserialize(fileStream);
+             fileStream.Position = 0;
+         }
+         */
         return file;
     }
 
@@ -226,6 +250,14 @@ public class DataController : MonoBehaviour
             file = JsonUtility.FromJson<T>(jsonString);
         }
 
+        /*
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+        using (FileStream fileStream = File.Open(_path, FileMode.Open))
+        {
+            file = (T)binaryFormatter.Deserialize(fileStream);
+        }
+        */
         return file;
     }
 

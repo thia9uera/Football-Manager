@@ -1,4 +1,4 @@
-﻿using RotaryHeart.Lib.SerializableDictionary;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -109,8 +109,9 @@ public struct PlayerAttributes
 
     public PlayerStatistics LifeTimeStats;
 
-    public PlayerTournamentStats TournamentStatistics;
+    [SerializeField]
+    public List<PlayerStatistics> TournamentStatistics;
 }
 
-[System.Serializable]
-public class PlayerTournamentStats : SerializableDictionaryBase<string, PlayerStatistics> { }
+//[System.Serializable]
+//public class PlayerTournamentStats : SerializableDictionaryBase<string, PlayerStatistics> { }

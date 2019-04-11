@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Player", menuName = "Player Data", order = 1)]
@@ -382,9 +383,11 @@ public class PlayerData : ScriptableObject
             case "Match" : MatchStats = new PlayerStatistics(); break;
             case "LifeTime" : Attributes.LifeTimeStats = new PlayerStatistics(); break;
             case "Tournament" :
-                if (!Attributes.TournamentStatistics.ContainsKey(_id)) Attributes.TournamentStatistics.Add(_id, new PlayerStatistics());
-                Attributes.TournamentStatistics[_id] = new PlayerStatistics();
-                Attributes.TournamentStatistics[_id] = new PlayerStatistics();
+                if (TournamentStatistics(_id) != null)
+                {
+                    PlayerStatistics tStats = TournamentStatistics(_id);
+                    tStats = new PlayerStatistics();
+                }
                 break;
         }
     }
@@ -423,7 +426,20 @@ public class PlayerData : ScriptableObject
     {
         PlayerStatistics stats = new PlayerStatistics();
 
-        if (Attributes.TournamentStatistics != null && Attributes.TournamentStatistics.ContainsKey(_key)) stats = Attributes.TournamentStatistics[_key];
+        //if (Attributes.TournamentStatistics != null && Attributes.TournamentStatistics.ContainsKey(_key)) stats = Attributes.TournamentStatistics[_key];
+
+        if (Attributes.TournamentStatistics != null)
+        {
+            foreach(PlayerStatistics tournament in Attributes.TournamentStatistics)
+            {
+                if(tournament.TournamentID == _key)
+                {
+                    stats = tournament;
+                }
+             //   stats = Attributes.TournamentStatistics[_key];
+            }
+            
+        }
 
         return stats;
     }
@@ -431,18 +447,45 @@ public class PlayerData : ScriptableObject
     void UpdateTournamentStatistics(PlayerStatistics _stats)
     {
         TournamentData currentTournament = MainController.Instance.CurrentTournament;
-        if (Attributes.TournamentStatistics == null) Attributes.TournamentStatistics = new PlayerTournamentStats();
+        if (Attributes.TournamentStatistics == null) Attributes.TournamentStatistics = new List<PlayerStatistics>();
 
-        if (!Attributes.TournamentStatistics.ContainsKey(currentTournament.Id))
-        {
-            Attributes.TournamentStatistics.Add(currentTournament.Id, new PlayerStatistics());
-        }
+        //if (!Attributes.TournamentStatistics.ContainsKey(currentTournament.Id))
+        //{
+        // Attributes.TournamentStatistics.Add(currentTournament.Id, new PlayerStatistics());
+        // }
 
+        CheckTournament(currentTournament.Id);
+        
         PlayerStatistics tStats = GetTournamentStatistics(currentTournament.Id);
 
         UpdateStats(tStats, _stats);
     }
 
+    public PlayerStatistics TournamentStatistics(string _id)
+    {
+        foreach(PlayerStatistics stats in Attributes.TournamentStatistics)
+        {
+            if (stats.TournamentID == _id) return stats;
+        }
+        return null;
+    }
+
+    public void CheckTournament(string _id)
+    {
+        bool tournamentExists = false;
+        foreach (PlayerStatistics tournament in Attributes.TournamentStatistics)
+        {
+            if (tournament.TournamentID == _id)
+            {
+                tournamentExists = true;
+            }
+        }
+
+        if (!tournamentExists)
+        {
+            Attributes.TournamentStatistics.Add(new PlayerStatistics(_id));
+        }
+    }
     public string GetFullName()
     {
         return FirstName + " " + LastName;
@@ -478,7 +521,7 @@ public class PlayerData : ScriptableObject
     {
         ResetStatistics("LifeTime");
         Team = null;
-        Attributes.TournamentStatistics = new PlayerTournamentStats();
+        Attributes.TournamentStatistics = new List<PlayerStatistics>();
     }
 
     public int GetAttributeBonus(int _attribute)

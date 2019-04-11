@@ -217,6 +217,7 @@
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardView.cs" />
     <Compile Include="Assets\Scripts\Loading\LoadingFileButton.cs" />
     <Compile Include="Assets\Scripts\Loading\LoadingScreen.cs" />
+    <Compile Include="Assets\Scripts\Loading\Preloader.cs" />
     <Compile Include="Assets\Scripts\Match\MatchFieldView.cs" />
     <Compile Include="Assets\Scripts\Match\MatchNarration.cs" />
     <Compile Include="Assets\Scripts\Match\MatchNarrationTextView.cs" />

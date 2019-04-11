@@ -1,6 +1,9 @@
 ﻿[System.Serializable]
 public class PlayerStatistics
 {
+    public PlayerStatistics(){}
+    public PlayerStatistics(string _tournamentId) { TournamentID = _tournamentId; }
+
     public int Passes;
     public int Crosses;
     public int Shots;
@@ -18,4 +21,6 @@ public class PlayerStatistics
     public int Presence;
     public int Assists;
     public float MatchRating = 6.0f;
+    public string TournamentID;
+
 }
