@@ -108,6 +108,7 @@
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\PostProcessBuild_IOS.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\PostProcessBuild_UnloadLanguages.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\UpgradeManager.cs" />
+    <Compile Include="Assets\_Tools\PrimitiveUI\Editor\PrimitiveUIEditor.cs" />
     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Editor\Constants.cs" />
     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Editor\Definer.cs" />
     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Editor\DictionaryPropertyDrawer.cs" />

@@ -25,18 +25,28 @@ public struct PlayerAttributes
         RightOffensive,
     }
 
+    public enum Group
+    {
+        Neutral,
+        Good,
+        Evil,
+        NeutralGood,
+        NeutralEvil
+    }
+
     public string Id;
 
     [Header("Personal")]
     public string FirstName;
     public string LastName;
 
-
     [Space(10)]
     public Field.Zone Zone;
     public PlayerPosition Position;
     public PlayerStrategy Strategy;
-    //public PerkData Perk;
+
+    [Space(5)]
+    public Group Synergy;
 
 
     [Space(10)]
@@ -112,6 +122,3 @@ public struct PlayerAttributes
     [SerializeField]
     public List<PlayerStatistics> TournamentStatistics;
 }
-
-//[System.Serializable]
-//public class PlayerTournamentStats : SerializableDictionaryBase<string, PlayerStatistics> { }

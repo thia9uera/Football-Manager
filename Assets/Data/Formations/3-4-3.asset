@@ -12,5 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce2f364d98c9d346820be3db93547d1, type: 3}
   m_Name: 3-4-3
   m_EditorClassIdentifier: 
+  Name: 3-4-3
   Formation: 0
-  Zones: 000000000300000005000000070000000d0000000f000000110000001400000017000000190000001b000000
+  Zones: 000000000300000005000000070000000d0000000f0000001100000014000000170000001b00000019000000
+  Connections:
+  - ZoneA: 3
+    ZoneB: 0
+  - ZoneA: 0
+    ZoneB: 7
+  - ZoneA: 0
+    ZoneB: 5
+  - ZoneA: 3
+    ZoneB: 5
+  - ZoneA: 7
+    ZoneB: 17
+  - ZoneA: 5
+    ZoneB: 15
+  - ZoneA: 15
+    ZoneB: 20
+  - ZoneA: 5
+    ZoneB: 7
+  - ZoneA: 17
+    ZoneB: 27
+  - ZoneA: 3
+    ZoneB: 13
+  - ZoneA: 13
+    ZoneB: 23
+  - ZoneA: 23
+    ZoneB: 25
+  - ZoneA: 25
+    ZoneB: 27
+  - ZoneA: 20
+    ZoneB: 25
+  - ZoneA: 15
+    ZoneB: 13
+  - ZoneA: 15
+    ZoneB: 17

@@ -141,6 +141,11 @@
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\SetLanguage.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\SetLanguageDropdown.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\StringObfuscator.cs" />
+    <Compile Include="Assets\_Tools\PrimitiveUI\Examples\Scripts\ControlBoxScaler.cs" />
+    <Compile Include="Assets\_Tools\PrimitiveUI\Examples\Scripts\PUIExampleCharts.cs" />
+    <Compile Include="Assets\_Tools\PrimitiveUI\Examples\Scripts\PUIExampleRPGStats.cs" />
+    <Compile Include="Assets\_Tools\PrimitiveUI\Examples\Scripts\PUIExampleSineWaves.cs" />
+    <Compile Include="Assets\_Tools\PrimitiveUI\PrimitiveCanvas.cs" />
     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\DrawKeyAsPropertyAttribute.cs" />
     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Example\DataBaseExample.cs" />
     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Example\NestedDB.cs" />
@@ -177,6 +182,8 @@
     <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_FieldView.cs" />
     <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_Popup.cs" />
     <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_ZoneView.cs" />
+    <Compile Include="Assets\Scripts\_DevTools\FormationSetup\FormationSetup.cs" />
+    <Compile Include="Assets\Scripts\_DevTools\FormationSetup\FormationZone.cs" />
     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGeneratorItem.cs" />
     <Compile Include="Assets\Scripts\Controllers\CalendarController.cs" />
@@ -232,6 +239,7 @@
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentCard.cs" />
     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentSelection.cs" />
+    <Compile Include="Assets\Scripts\Squad\SquadEditField.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadMainView.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowsView.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowView.cs" />
