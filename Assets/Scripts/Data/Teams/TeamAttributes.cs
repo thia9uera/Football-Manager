@@ -30,7 +30,7 @@ public class TeamAttributes
     public Color SecondaryColor = Color.red;
 
     [Space(10)]
-    public FormationData.TeamFormation Formation;
+    public FormationData Formation;
     public TeamStrategy Strategy;
 
     //[HideInInspector]

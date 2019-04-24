@@ -15,7 +15,8 @@ public class PlayerData : ScriptableObject
 
     public Field.Zone Zone { get { return Attributes.Zone; } set { Attributes.Zone = value; } }
     public PlayerAttributes.PlayerPosition Position { get { return Attributes.Position; } set { Attributes.Position = value; } }
-    public PlayerAttributes. PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
+    public PlayerAttributes.PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
+    public PlayerAttributes.SynergyGroup Synergy { get { return Attributes.Synergy; } set { Attributes.Synergy = value; } }
 
     public int Goalkeeping { get { return Attributes.Goalkeeping; } set { Attributes.Goalkeeping = value; } } 
     public int Passing { get { return Attributes.Passing; } set { Attributes.Passing = value; } }
@@ -533,6 +534,56 @@ public class PlayerData : ScriptableObject
         }
 
         return bonus;
+    }
+    
+    public int GetSynergyBonus(PlayerAttributes.SynergyGroup _group)
+    {
+        int value = 0;
+
+        switch(Synergy)
+        {
+            case PlayerAttributes.SynergyGroup.Evil:
+                if (_group == PlayerAttributes.SynergyGroup.Evil) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.Good) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = -1;
+                break;
+
+            case PlayerAttributes.SynergyGroup.NeutralGood:
+                if (_group == PlayerAttributes.SynergyGroup.Evil) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.Good) value = +1;
+                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = +1;
+                break;
+
+            case PlayerAttributes.SynergyGroup.Good:
+                if (_group == PlayerAttributes.SynergyGroup.Evil) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.Good) value = +1;
+                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = +1;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = +1;
+                break;
+
+            case PlayerAttributes.SynergyGroup.Neutral:
+                if (_group == PlayerAttributes.SynergyGroup.Evil) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.Good) value = +1;
+                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = 0;
+                break;
+
+            case PlayerAttributes.SynergyGroup.NeutralEvil:
+                if (_group == PlayerAttributes.SynergyGroup.Evil) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.Good) value = 0;
+                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = -1;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = +1;
+                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = -1;
+                break;
+        }
+
+        return value;
     }
 }
 

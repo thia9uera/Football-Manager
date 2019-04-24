@@ -19,7 +19,7 @@ MonoBehaviour:
     Zone: 15
     Position: 2
     Strategy: 0
-    Synergy: 4
+    Synergy: 0
     Goalkeeping: 28
     Passing: 80
     Dribbling: 75

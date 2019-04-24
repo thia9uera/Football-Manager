@@ -5,15 +5,6 @@ using UnityEngine;
 public class FormationData : ScriptableObject
 {
     public string Name = "0-0-0";
-    public enum TeamFormation
-    {
-        _3_4_3,
-        _3_5_2,
-        _4_3_3,
-        _3_3_4,
-    }
-
-    public TeamFormation Formation;
     public Field.Zone[] Zones;
 
     [System.Serializable]

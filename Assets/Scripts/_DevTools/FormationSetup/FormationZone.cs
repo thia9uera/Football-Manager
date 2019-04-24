@@ -14,7 +14,7 @@ public class FormationZone : MonoBehaviour, IPointerClickHandler
     private bool isSelected;
     private Image img;
 
-    private bool isActive;
+    public bool isActive;
 
     public void Awake()
     {

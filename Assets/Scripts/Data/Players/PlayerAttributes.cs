@@ -25,7 +25,7 @@ public struct PlayerAttributes
         RightOffensive,
     }
 
-    public enum Group
+    public enum SynergyGroup
     {
         Neutral,
         Good,
@@ -46,7 +46,7 @@ public struct PlayerAttributes
     public PlayerStrategy Strategy;
 
     [Space(5)]
-    public Group Synergy;
+    public SynergyGroup Synergy;
 
 
     [Space(10)]

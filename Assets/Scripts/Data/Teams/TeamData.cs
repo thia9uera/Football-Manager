@@ -15,7 +15,7 @@ public class TeamData : ScriptableObject
     public Color PrimaryColor { get { return Attributes.PrimaryColor; } set { Attributes.PrimaryColor = value; } }
     public Color SecondaryColor { get { return Attributes.SecondaryColor; } set { Attributes.SecondaryColor = value; } }
 
-    public FormationData.TeamFormation Formation { get { return Attributes.Formation; } set { Attributes.Formation = value; } }
+    public FormationData Formation { get { return Attributes.Formation; } set { Attributes.Formation = value; } }
     public TeamAttributes.TeamStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
 
     [Space(10)]

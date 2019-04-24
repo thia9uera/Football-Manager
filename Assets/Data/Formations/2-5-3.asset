@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce2f364d98c9d346820be3db93547d1, type: 3}
+  m_Name: 2-5-3
+  m_EditorClassIdentifier: 
+  Name: 2-5-3
+  Zones: 0000000004000000060000000a0000000d0000000e000000100000001100000018000000190000001a000000
+  Connections:
+  - ZoneA: 0
+    ZoneB: 4
+  - ZoneA: 0
+    ZoneB: 6
+  - ZoneA: 4
+    ZoneB: 10
+  - ZoneA: 6
+    ZoneB: 10
+  - ZoneA: 10
+    ZoneB: 14
+  - ZoneA: 10
+    ZoneB: 16
+  - ZoneA: 16
+    ZoneB: 17
+  - ZoneA: 14
+    ZoneB: 13
+  - ZoneA: 14
+    ZoneB: 24
+  - ZoneA: 16
+    ZoneB: 26
+  - ZoneA: 25
+    ZoneB: 24
+  - ZoneA: 25
+    ZoneB: 26

@@ -61,6 +61,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\CallbackNotification.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\Example_ChangeLanguage.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\Example_LocalizedString.cs" />
@@ -195,6 +206,7 @@
     <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
     <Compile Include="Assets\Scripts\Controllers\ScreenController.cs" />
     <Compile Include="Assets\Scripts\Data\Formations\FormationData.cs" />
+    <Compile Include="Assets\Scripts\Data\Formations\FormationsData.cs" />
     <Compile Include="Assets\Scripts\Data\LocalizationData.cs" />
     <Compile Include="Assets\Scripts\Data\PerkData.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerNamesData.cs" />
@@ -239,7 +251,10 @@
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentCard.cs" />
     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentSelection.cs" />
+    <Compile Include="Assets\Scripts\Squad\SquadEdit.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadEditField.cs" />
+    <Compile Include="Assets\Scripts\Squad\SquadEditPlayer.cs" />
+    <Compile Include="Assets\Scripts\Squad\SquadEditZone.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadMainView.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowsView.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowView.cs" />
@@ -299,6 +314,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-HSV.shader" />
+    <None Include="Assets\_Tools\Demigiant\DOTweenPro\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
@@ -311,6 +327,7 @@
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\_Tools\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\_Tools\UIEffect\Shaders\UI-EffectCapture.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -318,6 +335,7 @@
     <None Include="Assets\_Tools\I2\Localization\readme.txt" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\_Tools\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-Shiny.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect.shader" />
@@ -327,6 +345,7 @@
     <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\_Tools\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -562,6 +581,15 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

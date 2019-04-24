@@ -234,7 +234,14 @@ public class FormationSetup : MonoBehaviour
             return;
         }
 
-        Formation.Zones = formationZones.ToArray();
+        //Formation.Zones = formationZones.ToArray();
+        List<Field.Zone> list = new List<Field.Zone>();
+        foreach(FormationZone zone in zones)
+        {
+            if (zone.isActive) list.Add(zone.Zone);
+        }
+        Formation.Zones = list.ToArray();
+
         string oldName = folder + Formation.name + ".asset";
         string newName = nameInput.text;
         AssetDatabase.RenameAsset(oldName, newName);

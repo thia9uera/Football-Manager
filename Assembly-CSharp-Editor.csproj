@@ -79,6 +79,8 @@
     <Compile Include="Assets\_Tools\AssetBundleBrowser\Editor\InspectTab\InspectTreeView.cs" />
     <Compile Include="Assets\_Tools\AssetBundleBrowser\Editor\MessageList.cs" />
     <Compile Include="Assets\_Tools\AssetBundleBrowser\Editor\MessageSystem.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
+    <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\Editor\DOTweenPreviewManager.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\EditorTools.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LanguageSourceAssetInspector.cs" />
     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Editor\Inspectors\LanguageSourceInspector.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Assets\Editor\CreateAssetBundle.cs" />
     <Compile Include="Assets\Editor\ResetAllData.cs" />
     <None Include="Assets\_Tools\I2\Localization\Scripts\Editor\Unity XCode\Xcode.txt" />
+    <None Include="Assets\_Tools\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -408,6 +411,24 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenProEditor">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>D:/Projects/Games/Football Manager/Unity/Football Manager/Assets/_Tools/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
