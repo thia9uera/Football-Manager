@@ -10966,7 +10966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: 17.399902}
+  m_AnchoredPosition: {x: -50, y: 17.40039}
   m_SizeDelta: {x: 500, y: -386.3}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &944426880
@@ -13628,6 +13628,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7758417476612273236, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13732,16 +13742,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7758417476612273241, guid: 20b428a91d6cd4fa491f7a550ce67f0c,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b428a91d6cd4fa491f7a550ce67f0c, type: 3}
@@ -26046,6 +26046,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquadEdit
       objectReference: {fileID: 0}
+    - target: {fileID: 6948196883857478141, guid: b38adcf5cb056f64fa402d3661828864,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6948196883857478142, guid: b38adcf5cb056f64fa402d3661828864,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26151,26 +26156,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 53705572, guid: b38adcf5cb056f64fa402d3661828864, type: 3}
       propertyPath: dropdown
       value: 
@@ -26180,6 +26165,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610,
         type: 2}
+    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 4.6688232
+      objectReference: {fileID: 0}
     - target: {fileID: 229249436, guid: b38adcf5cb056f64fa402d3661828864, type: 3}
       propertyPath: m_Sprite
       value: 
