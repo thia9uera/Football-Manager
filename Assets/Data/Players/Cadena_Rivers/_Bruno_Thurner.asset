@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: db639446-ff90-4253-8da2-998d4a27e231
+    Portrait: MC_1
     FirstName: Bruno
     LastName: Thurner
     Zone: 17

@@ -2,7 +2,7 @@
 using System.Collections;
 using I2.Loc;
 
-[CreateAssetMenu(fileName = "Localization", menuName = "Localization Data", order = 1)]
+[CreateAssetMenu(fileName = "Localization", menuName = "Data/Localization Data", order = 1)]
 public class LocalizationData : ScriptableObject
 {
     [HideInInspector]

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+    Portrait: DF_2
     FirstName: Marcos
     LastName: Silveira
     Zone: 3

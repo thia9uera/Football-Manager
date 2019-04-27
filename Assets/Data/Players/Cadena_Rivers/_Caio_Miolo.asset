@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: b8bdf88e-f30d-4993-a567-bfb085f270fb
+    Portrait: FW_0
     FirstName: Caio
     LastName: Miolo
     Zone: 0

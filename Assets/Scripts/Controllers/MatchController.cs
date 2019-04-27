@@ -171,9 +171,14 @@ public class MatchController : MonoBehaviour
 
         //if(matchTime > 0 && matchTime < 90) PauseGame(false);
 
-
         screen.HomeTeamSquad.Populate(homeTeam);
         screen.AwayTeamSquad.Populate(awayTeam);
+    }
+
+    public TeamData GetUserTeam()
+    {
+        if (homeTeam.IsUserControlled) return homeTeam;
+        else return awayTeam;
     }
 
     void StartSimulation()

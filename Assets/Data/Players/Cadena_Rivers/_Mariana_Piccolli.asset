@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 10c9d827-60d9-4569-af79-ccf910bb3909
+    Portrait: 
     FirstName: Mariana
     LastName: Piccolli
     Zone: 0

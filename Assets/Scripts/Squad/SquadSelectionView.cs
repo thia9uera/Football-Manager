@@ -107,7 +107,7 @@ public class SquadSelectionView : MonoBehaviour
     {
         List<PlayerData> updated = new List<PlayerData>(Team.Substitutes);
 
-        foreach (PlayerData player in oldSubs)
+        foreach (PlayerData player in Team.Substitutes)
         {
             if (!updated.Contains(player))
             {

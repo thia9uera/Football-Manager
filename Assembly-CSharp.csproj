@@ -198,6 +198,7 @@
     <Compile Include="Assets\Scripts\_DevTools\FormationSetup\FormationZone.cs" />
     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGeneratorItem.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AtlasManager.cs" />
     <Compile Include="Assets\Scripts\Controllers\CalendarController.cs" />
     <Compile Include="Assets\Scripts\Controllers\DataController.cs" />
     <Compile Include="Assets\Scripts\Controllers\DebugController.cs" />
@@ -209,7 +210,6 @@
     <Compile Include="Assets\Scripts\Data\Formations\FormationData.cs" />
     <Compile Include="Assets\Scripts\Data\Formations\FormationsData.cs" />
     <Compile Include="Assets\Scripts\Data\LocalizationData.cs" />
-    <Compile Include="Assets\Scripts\Data\PerkData.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerNamesData.cs" />
     <Compile Include="Assets\Scripts\Data\Players\PlayerAttributes.cs" />
     <Compile Include="Assets\Scripts\Data\Players\PlayerData.cs" />
@@ -255,6 +255,7 @@
     <Compile Include="Assets\Scripts\Squad\SquadEdit.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadEditField.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadEditPlayer.cs" />
+    <Compile Include="Assets\Scripts\Squad\SquadEditSubstitutes.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadEditZone.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadMainView.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowsView.cs" />

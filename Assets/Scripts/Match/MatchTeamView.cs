@@ -16,7 +16,12 @@ public class MatchTeamView : MonoBehaviour
 
             MatchPlayerView item = ItemList[i];
             if (_resetFatigue) player.Fatigue = 100;
-            item.Populate(player);        
+            item.Populate(player);
+        }
+
+        if(_resetFatigue)
+        {
+            foreach (PlayerData p in _team.Substitutes) p.Fatigue = 100;
         }
     }
 

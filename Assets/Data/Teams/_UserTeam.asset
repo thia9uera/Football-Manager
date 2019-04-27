@@ -31,13 +31,13 @@ MonoBehaviour:
     - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
     - 4c57c1a6-f14e-41b0-9842-2502667eeab4
     - 208149e6-bad1-4f23-be7c-99a6aa317f32
-    - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
-    SubstitutesIds:
-    - 10c9d827-60d9-4569-af79-ccf910bb3909
-    - c8f220fd-69de-4b3f-a996-f0c41b005c6d
     - b8bdf88e-f30d-4993-a567-bfb085f270fb
+    SubstitutesIds:
+    - c8f220fd-69de-4b3f-a996-f0c41b005c6d
     - 7817cfcd-0833-4811-b2df-8711a90e184c
     - 6a800c4b-5745-4c3c-910d-f93cd2395505
+    - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+    - 10c9d827-60d9-4569-af79-ccf910bb3909
     LifeTimeStats:
       Points: 0
       Wins: 0
@@ -114,13 +114,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5b8c41b064b71d4fa2220121d80d570, type: 2}
   - {fileID: 11400000, guid: 6c8cb649dd7668d448284d2467ecf818, type: 2}
   - {fileID: 11400000, guid: b1c3464b0a6323b47b2a92aa1ea8da37, type: 2}
-  - {fileID: 11400000, guid: 1ab154db865e3da40837555d8f43962e, type: 2}
-  Substitutes:
-  - {fileID: 11400000, guid: f10b2673e14e177448c614b7bf4943b7, type: 2}
-  - {fileID: 11400000, guid: 6fb5333380137d543947ebe5ea4073aa, type: 2}
   - {fileID: 11400000, guid: 48d70abddd9439143ae193f12b84c834, type: 2}
+  Substitutes:
+  - {fileID: 11400000, guid: 6fb5333380137d543947ebe5ea4073aa, type: 2}
   - {fileID: 11400000, guid: 29a655effb1230a4b8b9455daa8c0aaa, type: 2}
   - {fileID: 11400000, guid: 4cc1eba80f13f0d448d9e5efc595e39c, type: 2}
+  - {fileID: 11400000, guid: 1ab154db865e3da40837555d8f43962e, type: 2}
+  - {fileID: 11400000, guid: f10b2673e14e177448c614b7bf4943b7, type: 2}
   Captain: {fileID: 0}
   Stars: 0
   MatchStats:

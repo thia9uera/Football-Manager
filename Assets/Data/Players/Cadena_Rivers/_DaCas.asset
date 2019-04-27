@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 208149e6-bad1-4f23-be7c-99a6aa317f32
+    Portrait: FW_1
     FirstName: Guilherme
     LastName: Da Cas
     Zone: 25

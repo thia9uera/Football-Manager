@@ -7,6 +7,7 @@ public class ScreenController : MonoBehaviour
     public MainMenu MainMenu;
     public TournamentHubScreen TournamentHub;
     public MatchScreen Match;
+    public SquadEdit EditSQuad;
 
     public List<BaseScreen> ScreenList;
     BaseScreen.ScreenType prevScreen;

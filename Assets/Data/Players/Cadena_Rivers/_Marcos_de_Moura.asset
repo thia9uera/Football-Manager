@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 3ed54838-1b27-4421-b98f-dac73a6578fc
+    Portrait: MC_2
     FirstName: Marcus
     LastName: de Moura
     Zone: 13

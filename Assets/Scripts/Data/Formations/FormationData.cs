@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Formation", menuName = "Formation Data", order = 1)]
+[CreateAssetMenu(fileName = "Formation", menuName = "Data/Formation Data", order = 1)]
 public class FormationData : ScriptableObject
 {
     public string Name = "0-0-0";

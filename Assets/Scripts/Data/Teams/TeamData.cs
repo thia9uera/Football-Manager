@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Team", menuName = "Team Data", order = 1)]
+[CreateAssetMenu(fileName = "Team", menuName = "Data/Team Data", order = 1)]
 public class TeamData : ScriptableObject
 {
     [Space(10)]

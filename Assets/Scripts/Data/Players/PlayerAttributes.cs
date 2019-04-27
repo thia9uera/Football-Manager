@@ -37,6 +37,7 @@ public struct PlayerAttributes
     public string Id;
 
     [Header("Personal")]
+    public string Portrait;
     public string FirstName;
     public string LastName;
 

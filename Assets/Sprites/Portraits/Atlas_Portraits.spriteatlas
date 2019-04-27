@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Portraits
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: d8096026482422d4a86d45a3f9293d67, type: 3}
+    - {fileID: 2800000, guid: a159815fd65c9a646ad58f60ae54d32d, type: 3}
+    - {fileID: 2800000, guid: 8b44a24ed522ff845bc7294213175714, type: 3}
+    - {fileID: 2800000, guid: b33a61e9f1b9d0949b898b5783fd3f1c, type: 3}
+    - {fileID: 2800000, guid: 266b2d37d0c3e1246a3208526c903c84, type: 3}
+    - {fileID: 2800000, guid: 2797c49ea9fd1084a8296666dfbb82de, type: 3}
+    - {fileID: 2800000, guid: 9682ad36a46591f4ba06b372475b6419, type: 3}
+    - {fileID: 2800000, guid: eb876610512b1244e9ded2e425385530, type: 3}
+    - {fileID: 2800000, guid: 2d7aa0df42dcde24c9b4a40ddd6692ae, type: 3}
+    - {fileID: 2800000, guid: d6ce23daadf32ee4b8d135fcc59640bc, type: 3}
+    - {fileID: 2800000, guid: 0526140a7e90a8c46b4e0b8923a6b6a4, type: 3}
+    - {fileID: 2800000, guid: 8a29483974827004e8b4889da9339199, type: 3}
+    totalSpriteSurfaceArea: 167088
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: eb876610512b1244e9ded2e425385530, type: 3}
+  - {fileID: 21300000, guid: d8096026482422d4a86d45a3f9293d67, type: 3}
+  - {fileID: 21300000, guid: 9682ad36a46591f4ba06b372475b6419, type: 3}
+  - {fileID: 21300000, guid: 266b2d37d0c3e1246a3208526c903c84, type: 3}
+  - {fileID: 21300000, guid: 8a29483974827004e8b4889da9339199, type: 3}
+  - {fileID: 21300000, guid: b33a61e9f1b9d0949b898b5783fd3f1c, type: 3}
+  - {fileID: 21300000, guid: 0526140a7e90a8c46b4e0b8923a6b6a4, type: 3}
+  - {fileID: 21300000, guid: d6ce23daadf32ee4b8d135fcc59640bc, type: 3}
+  - {fileID: 21300000, guid: 8b44a24ed522ff845bc7294213175714, type: 3}
+  - {fileID: 21300000, guid: 2797c49ea9fd1084a8296666dfbb82de, type: 3}
+  - {fileID: 21300000, guid: a159815fd65c9a646ad58f60ae54d32d, type: 3}
+  - {fileID: 21300000, guid: 2d7aa0df42dcde24c9b4a40ddd6692ae, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - GK_0
+  - DF_0
+  - FW_2
+  - FW_0
+  - Empty
+  - DF_3
+  - MC_2
+  - MC_1
+  - DF_2
+  - FW_1
+  - DF_1
+  - MC_0
+  m_Tag: Atlas_Portraits
+  m_IsVariant: 0

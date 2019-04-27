@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 7817cfcd-0833-4811-b2df-8711a90e184c
+    Portrait: MC_1
     FirstName: Carlos
     LastName: Hoezel
     Zone: 0

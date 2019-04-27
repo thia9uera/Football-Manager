@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Player", menuName = "Player Data", order = 1)]
+[CreateAssetMenu(fileName = "Player", menuName = "Data/Player Data", order = 1)]
 [System.Serializable]
 public class PlayerData : ScriptableObject
 {
@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
 
     public string Id { get { return Attributes.Id; } set { Attributes.Id = value; } }
 
+    public Sprite Portrait { get { return MainController.Instance.Atlas.GetPortrait(Attributes.Portrait, Attributes.Position);} set { Attributes.Portrait = value.name; } } 
     public string FirstName { get { return Attributes.FirstName; } set { Attributes.FirstName = value; } }
     public string LastName { get { return Attributes.LastName; } set { Attributes.LastName = value; } }
 

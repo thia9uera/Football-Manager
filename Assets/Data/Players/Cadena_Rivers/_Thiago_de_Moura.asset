@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: d602daf3-09ad-49e4-a928-fc53bbc23cf3
+    Portrait: 
     FirstName: Thiago
     LastName: de Moura
     Zone: 5

@@ -22,10 +22,11 @@ public class MainController : MonoBehaviour
     public DataController Data;
     public CalendarController Calendar;
     public ScreenController Screens;
+    public AtlasManager Atlas;
 
     [Space(20)]
 
-    public SquadSelectionView SquadSelection;
+    public SquadEdit SquadSelection;
 
     public Team_StrategyData TeamStrategyData;
     public Player_StrategyData PlayerStrategyData;
@@ -54,11 +55,10 @@ public class MainController : MonoBehaviour
         if(Screens != null) Screens.ShowScreen(BaseScreen.ScreenType.Loading);
     }
 
-    public void EditSquad(TeamData _team)
+    public void EditSquad()
     {
         Match.PauseGame(true);
-        Match.gameObject.SetActive(false);
-        SquadSelection.Populate(_team);
+        Screens.ShowScreen(BaseScreen.ScreenType.EditSquad);
     }
 
     public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)

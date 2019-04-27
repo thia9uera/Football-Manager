@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEditor;
 
-[CreateAssetMenu(fileName = "Tournament", menuName = "Tournament Data", order = 2)]
+[CreateAssetMenu(fileName = "Tournament", menuName = "Data/Tournament Data", order = 2)]
 public class TournamentData : ScriptableObject
 {
     public TournamentAttributes Attributes;
