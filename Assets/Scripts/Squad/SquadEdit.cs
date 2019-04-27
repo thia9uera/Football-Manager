@@ -18,15 +18,15 @@ public class SquadEdit : MonoBehaviour
     private TeamData team;
 
     private void Start()
-    {
-        UpdateDropdown();
+    {       
         Show();
     }
 
     public void Show()
     {
-        Field.PopulatePlayers(team.Squad);
-        Field.UpdateFormation(team.Formation);
+        Field.PopulatePlayers(team.Squad, team.Formation);
+        //Field.UpdateFormation(team.Formation);
+        UpdateDropdown();
     }
 
     private void UpdateDropdown()

@@ -28,12 +28,14 @@ public class SquadEditField : MonoBehaviour
         //lineStyle = new StrokeStyle(Color.white, 4f, StrokeScaleMode.Absolute);
     }
 
-    public void PopulatePlayers(PlayerData[] _players)
+    public void PopulatePlayers(PlayerData[] _players, FormationData _formation)
     {
         for(int i = 0; i < _players.Length; i++)
         {
             players[i].Player = _players[i];
         }
+
+        //UpdateFormation(_formation);
     }
 
     public void UpdateFormation(FormationData _data)
