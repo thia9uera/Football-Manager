@@ -63,7 +63,7 @@ public class ChampionshipCreation : MonoBehaviour
         {
             for (int t = i; t < totalTeams; t++)
             {
-                TeamData team = new TeamData();
+                TeamData team = ScriptableObject.CreateInstance<TeamData>();
                 team.Attributes = new TeamAttributes();
                 placeholderList.Add(team);
                 teams.Add(team);

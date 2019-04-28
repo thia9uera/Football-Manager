@@ -86,6 +86,7 @@ public class TournamentCreation : BaseScreen
         AssetDatabase.SaveAssets();
         MainController.Instance.AllTournaments.Add(tournament);
         LoadTournaments();
+        MainController.Instance.Data.SaveGame();
     }
 
     public void LoadTournaments()
