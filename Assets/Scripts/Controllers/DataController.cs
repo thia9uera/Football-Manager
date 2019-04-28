@@ -141,6 +141,7 @@ public class DataController : MonoBehaviour
             team.Attributes = data;
             team.Initialize(true);
 
+            if (team.IsUserControlled) MainController.Instance.UserTeam = team;
             MainController.Instance.AllTeams.Add(team);
             teamsLoaded++;
         }

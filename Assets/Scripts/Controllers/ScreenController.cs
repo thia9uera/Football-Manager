@@ -10,26 +10,26 @@ public class ScreenController : MonoBehaviour
     public SquadEdit EditSQuad;
 
     public List<BaseScreen> ScreenList;
-    BaseScreen.ScreenType prevScreen;
-    BaseScreen.ScreenType currentScreen;
+    public BaseScreen.ScreenType PrevScreen;
+    public BaseScreen.ScreenType CurrentScreen;
 
     public void ShowScreen(BaseScreen.ScreenType _type)
     {
-        prevScreen = currentScreen;
+        PrevScreen = CurrentScreen;
         foreach (BaseScreen screen in ScreenList)
         {
             if (screen.Type == _type)
             {
                 screen.Show();
-                currentScreen = screen.Type;
+                CurrentScreen = screen.Type;
             }
             else screen.Hide();
         }
-        if (prevScreen == BaseScreen.ScreenType.None) prevScreen = currentScreen;
+        if (PrevScreen == BaseScreen.ScreenType.None) PrevScreen = CurrentScreen;
     }
 
     public void ShowPreviousScreen()
     {
-        ShowScreen(prevScreen);
+        ShowScreen(PrevScreen);
     }
 }

@@ -38,6 +38,8 @@ public class MainController : MonoBehaviour
     public TournamentData CurrentTournament;
     public MatchData CurrentMatch;
 
+    public TeamData UserTeam;
+
     public void Awake()
     {
         if (Instance == null) Instance = this;
@@ -63,9 +65,8 @@ public class MainController : MonoBehaviour
 
     public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)
     {
-        SquadSelection.gameObject.SetActive(false);
-        Match.gameObject.SetActive(true);
-        Match.UpdateTeams(_in, _out);      
+        Screens.ShowPreviousScreen();
+        if (Screens.PrevScreen == BaseScreen.ScreenType.Match) Match.UpdateTeams(_in, _out);   
     }
 
     public List<PlayerData> SortPlayersBy(List<PlayerData> listPlayers, string _stat)

@@ -19,24 +19,33 @@ public class SquadEditPlayer : MonoBehaviour
     private SquadEdit controller;
 
     [SerializeField]
-    private GameObject details;
+    private GameObject details, icoSubs, icoWarning;
 
     private float clicked = 0;
     private float clicktime = 0;
-    private float clickdelay = 0.5f;
+    private float clickdelay = 0.25f;
+    private bool isDoubleClick;
 
     private Field.Zone zone;
 
     private bool isSub;
     private int index;
 
+    private bool isSelected;
+
     public void MoveTo(Vector3 _pos, Field.Zone _zone)
     {
         zone = _zone;
         if(Player) Player.Zone = _zone;
         RectTransform rect = GetComponent<RectTransform>();
-        rect.DOMove(_pos, 0.5f);
+        rect.DOMove(_pos, 0.5f).OnComplete(UpdateZone);
         if (group.alpha == 0f) group.DOFade(1f, 0.5f);
+    }
+
+    private void UpdateZone()
+    {
+        Player.Zone = Player.Team.Formation.Zones[index];
+        icoWarning.SetActive(Player.IsWronglyAssigned());
     }
 
     public void FadeScaling()
@@ -58,7 +67,6 @@ public class SquadEditPlayer : MonoBehaviour
         Player = _player;
         isSub = true;
 
-        Player.Zone = zone;
         nameLabel.text = Player.GetFullName();
         overallLabel.text = Player.GetOverall().ToString();
         portrait.sprite = Player.Portrait;
@@ -74,15 +82,17 @@ public class SquadEditPlayer : MonoBehaviour
 
         if (Player)
         {
-            Player.Zone = zone;
+            Player.Zone = Player.Team.Formation.Zones[index];
             nameLabel.text = Player.GetFullName();
             overallLabel.text = Player.GetOverall().ToString();
             portrait.sprite = Player.Portrait;
             details.SetActive(true);
+            UpdateZone();
         }
         else
         {
             details.SetActive(false);
+            icoWarning.SetActive(false);
             portrait.sprite = MainController.Instance.Atlas.GetPortrait("Empty");
         }
     }
@@ -95,21 +105,21 @@ public class SquadEditPlayer : MonoBehaviour
 
     public void OnPointerDown()
     {
+        transform.DOScale(0.8f, 0.1f);
         clicked++;
-        if (clicked == 1) clicktime = Time.time;
+        if (clicked == 1)
+        {
+            clicktime = Time.time;
+            isDoubleClick = false;
+        }
 
         if (clicked > 1 && Time.time - clicktime < clickdelay)
         {
+            isDoubleClick = true;
             clicked = 0;
             clicktime = 0;
             OnDoubleClick();
         }
-        else if (Time.time - clicktime > 1)
-        {
-            clicked = 0;
-        }
-
-        transform.DOScale(0.8f, 0.1f);
     }
 
     private void OnDoubleClick()
@@ -127,12 +137,21 @@ public class SquadEditPlayer : MonoBehaviour
 
     public void OnPointerUp()
     {
-        transform.DOScale(1f, 0.2f);
+        transform.DOScale(1f, 0.2f).OnComplete(CheckClickStatus);
     }
 
+    private void CheckClickStatus()
+    {
+        if (Time.time - clicktime > clickdelay && !isDoubleClick)
+        {
+            clicked = 0;
+            Select();
+        }
+    }
     private void Select()
     {
-
+        isSelected = !isSelected;
+        icoSubs.SetActive(isSelected);
     }
 
     public void OnPointerEnter()

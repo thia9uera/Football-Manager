@@ -31,6 +31,7 @@ public class SquadEdit : BaseScreen
     {
         base.Show();
 
+        if (Team == null) Team = MainController.Instance.UserTeam;
         if (Team.Formation == null) Team.Formation = Formations.List[0];
 
         squadList = new List<PlayerData>(Team.Squad);

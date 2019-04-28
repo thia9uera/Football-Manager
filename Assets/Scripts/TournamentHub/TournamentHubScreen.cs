@@ -116,4 +116,9 @@ public class TournamentHubScreen : BaseScreen
     {
         MainController.Instance.Screens.ShowScreen(ScreenType.Leaderboards);
     }
+
+    public void EditSquad()
+    {
+        MainController.Instance.Screens.ShowScreen(ScreenType.EditSquad);
+    }
 }

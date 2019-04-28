@@ -640,6 +640,7 @@ MonoBehaviour:
       RedCards: []
     isPlayed: 0
     Round: 0
+  UserTeam: {fileID: 0}
 --- !u!114 &443455898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +676,8 @@ MonoBehaviour:
   - {fileID: 1879046518}
   - {fileID: 343090192}
   - {fileID: 633391458}
+  PrevScreen: 0
+  CurrentScreen: 0
 --- !u!114 &443455900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3497,6 +3500,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4004670248667916971, guid: 22c85a53d7ccc6f46a260c57f867cf30,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 31.644531
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004670250098612902, guid: 22c85a53d7ccc6f46a260c57f867cf30,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 213.98438
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004670249667711555, guid: 22c85a53d7ccc6f46a260c57f867cf30,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 414.6797
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c85a53d7ccc6f46a260c57f867cf30, type: 3}
 --- !u!222 &4223835736845069693
@@ -3706,6 +3724,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TournamentHub
       objectReference: {fileID: 0}
+    - target: {fileID: 6043222876320442889, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6043222876320442894, guid: da9038e7ba2cd2544ab503741d41eaa7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3810,6 +3833,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222876378523004, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222876920243452, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222876920243452, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222878043699257, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -900
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222878262937462, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222878262937462, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222876193255982, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222878238060221, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043222878238060221, guid: da9038e7ba2cd2544ab503741d41eaa7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da9038e7ba2cd2544ab503741d41eaa7, type: 3}
