@@ -32,6 +32,10 @@ JsonFx license: https://github.com/jsonfx/jsonfx/blob/master/LICENSE.txt
 -----------------
  Version History
 -----------------
+1.2
+- FIX: Fixed errors when used with Unity2017+
+- FIX: Updated the manual
+- NEW: Added support for bool type (column name start with b_
 
 1.1
 - NEW: Added one button to generate class for all worksheets

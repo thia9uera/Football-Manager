@@ -8,7 +8,6 @@ using UnityEditor;
 using System;
 using System.Collections.Generic;
 using JsonFx.Json;
-using UnityEngine.Networking;
 
 namespace SuperAshley.GoogleSpreadSheet
 {
@@ -23,8 +22,8 @@ namespace SuperAshley.GoogleSpreadSheet
         const string WORKSHEET_LIST_URL = "https://spreadsheets.google.com/feeds/worksheets/{0}/public/full?alt=json";
 
         string spreadsheetID = string.Empty;
-        UnityWebRequest spreadsheetWWW;
-        UnityWebRequest worksheetWWW;
+        WWW spreadsheetWWW;
+        WWW worksheetWWW;
 
         Vector2 worksheetScroll;
         Vector2 cellScroll;
@@ -273,7 +272,7 @@ namespace SuperAshley.GoogleSpreadSheet
         {
             string url = string.Format(WORKSHEET_LIST_URL, spreadsheetID);
 
-            spreadsheetWWW = new UnityWebRequest(url);
+            spreadsheetWWW = new WWW(url);
 
             EditorApplication.update += CheckLoadSpreadsheetData;
         }
@@ -286,7 +285,7 @@ namespace SuperAshley.GoogleSpreadSheet
 
                 if (string.IsNullOrEmpty(spreadsheetWWW.error))
                 {
-                    string resJson = spreadsheetWWW.url;
+                    string resJson = spreadsheetWWW.text;
                     SASettings.WorksheetJSON = resJson;
 
                     PopulateWorksheetDict(resJson);
@@ -333,7 +332,7 @@ namespace SuperAshley.GoogleSpreadSheet
 
         void LoadWorksheetData(string url)
         {
-            worksheetWWW = new UnityWebRequest(url);
+            worksheetWWW = new WWW(url);
 
             EditorApplication.update += CheckLoadWorksheetData;
         }
@@ -345,7 +344,7 @@ namespace SuperAshley.GoogleSpreadSheet
                 EditorApplication.update -= CheckLoadWorksheetData;
                 if (string.IsNullOrEmpty(worksheetWWW.error))
                 {
-                    string resJson = worksheetWWW.downloadHandler.text;
+                    string resJson = worksheetWWW.text;
                     SASettings.CellsJSON = resJson;
 
                     PopulateCellList(resJson);

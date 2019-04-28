@@ -1445,7 +1445,6 @@ public class MatchController : MonoBehaviour
     bool CheckCounterAttack(TeamData _defendingTeam, Field.Zone _zone)
     {
         if (counterAttack > 0) counterAttack = 0;
-        counterAttackChance = MainController.Instance.Modifiers.game_Modifiers[0].CounterAttackChance;
         counterAttackChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)_defendingTeam.Strategy].CounterAttackChance;
         float counterRoll = Random.Range(0, 1f);
 
@@ -1726,7 +1725,7 @@ public class MatchController : MonoBehaviour
         {
             play.Attacker.MatchStats.MatchRating += attackerRating;
             if (play.Attacker.MatchStats.MatchRating > 10) play.Attacker.MatchStats.MatchRating = 10f;
-            else if (play.Attacker.MatchStats.MatchRating < 0) play.Defender.MatchStats.MatchRating = 0f;
+            else if (play.Attacker.MatchStats.MatchRating < 0) play.Attacker.MatchStats.MatchRating = 0f;
         }
         if (play.Defender != null)
         {
