@@ -151,8 +151,8 @@ public class MatchController : MonoBehaviour
     {
         if (_in.Count > 0)
         {
-            string playersIn = "";
-            string playersOut = "";
+            string playersIn = "In: ";
+            string playersOut = "Out: ";
             PlayerData player;
             for (int i = 0; i < _in.Count; i++)
             {
@@ -167,9 +167,12 @@ public class MatchController : MonoBehaviour
                 if (i == 0) playersOut += player.FirstName + " " + player.LastName;
                 else playersOut += ", " + player.FirstName + " " + player.LastName;
             }
+
+            screen.Narration.UpdateNarration(playersIn, GetUserTeam());
+            screen.Narration.UpdateNarration(playersOut, GetUserTeam());
         }
 
-        //if(matchTime > 0 && matchTime < 90) PauseGame(false);
+        if(turn > 0 && turn < 90) PauseGame(false);
 
         screen.HomeTeamSquad.Populate(homeTeam);
         screen.AwayTeamSquad.Populate(awayTeam);
@@ -280,7 +283,13 @@ public class MatchController : MonoBehaviour
 
     public void PauseGame(bool _isPaused)
     {
+        isGameOn = !_isPaused;
 
+        if(isGameOn)
+        {
+            StartCoroutine("GameLoop");
+            StartCoroutine("Chronometer");
+        }
     }
 
     void EndGame()
@@ -309,6 +318,9 @@ public class MatchController : MonoBehaviour
             awayTeam.MatchStats.Points++;
         }
 
+        homeTeam.MatchStats.GoalsAgainst += awayTeam.MatchStats.Goals;
+        awayTeam.MatchStats.GoalsAgainst += homeTeam.MatchStats.Goals;
+
         bool updateMatch = false;
         if (MainController.Instance.CurrentMatch != null)
         {
@@ -335,7 +347,6 @@ public class MatchController : MonoBehaviour
             else
             {
                 isSimulatingMatch = false;
-                //AssetDatabase.SaveAssets();
                 MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
             }
         }
@@ -769,10 +780,27 @@ public class MatchController : MonoBehaviour
             switch(play.OffensiveAction)
             {
                 case PlayerData.PlayerAction.LongPass:
-                case PlayerData.PlayerAction.Pass: play.Attacker.MatchStats.Passes++; break;
-                case PlayerData.PlayerAction.Cross: play.Attacker.MatchStats.Crosses++; break;
-                case PlayerData.PlayerAction.Shot: play.Attacker.MatchStats.Shots++; break;
-                case PlayerData.PlayerAction.Header: play.Attacker.MatchStats.Headers++; break;
+                case PlayerData.PlayerAction.Pass:
+                    play.Attacker.MatchStats.Passes++;
+                    play.Attacker.Team.MatchStats.Passes++;
+                    break;
+                case PlayerData.PlayerAction.Cross:
+                    play.Attacker.MatchStats.Crosses++;
+                    play.Attacker.Team.MatchStats.Crosses++;
+                    if(play.TargetZone == Field.Zone.Box)
+                    {
+                        play.Attacker.MatchStats.BoxCrosses++;
+                        play.Attacker.Team.MatchStats.BoxCrosses++;
+                    }
+                    break;
+                case PlayerData.PlayerAction.Shot:
+                    play.Attacker.MatchStats.Shots++;
+                    play.Attacker.Team.MatchStats.Shots++;
+                    break;
+                case PlayerData.PlayerAction.Header:
+                    play.Attacker.MatchStats.Headers++;
+                    play.Attacker.Team.MatchStats.Headers++;
+                    break;
                 case PlayerData.PlayerAction.Dribble: play.Attacker.MatchStats.Dribbles++; break;
             }
         }
@@ -784,14 +812,30 @@ public class MatchController : MonoBehaviour
             switch (play.OffensiveAction)
             {
                 case PlayerData.PlayerAction.LongPass:
-                case PlayerData.PlayerAction.Pass: play.Attacker.MatchStats.PassesMissed++; break;
-                case PlayerData.PlayerAction.Cross: play.Attacker.MatchStats.CrossesMissed++; break;
-                case PlayerData.PlayerAction.Shot: play.Attacker.MatchStats.ShotsMissed++; break;
-                case PlayerData.PlayerAction.Header: play.Attacker.MatchStats.HeadersMissed++; break;
+                case PlayerData.PlayerAction.Pass:
+                    play.Attacker.MatchStats.PassesMissed++;
+                    play.Attacker.Team.MatchStats.PassesMissed++;
+                    break;
+                case PlayerData.PlayerAction.Cross:
+                    play.Attacker.MatchStats.CrossesMissed++;
+                    play.Attacker.Team.MatchStats.CrossesMissed++;
+                    break;
+                case PlayerData.PlayerAction.Shot:
+                    play.Attacker.MatchStats.ShotsMissed++;
+                    play.Attacker.Team.MatchStats.ShotsMissed++;
+                    break;
+                case PlayerData.PlayerAction.Header:
+                    play.Attacker.MatchStats.HeadersMissed++;
+                    play.Attacker.Team.MatchStats.HeadersMissed++;
+                    break;
                 case PlayerData.PlayerAction.Dribble: play.Attacker.MatchStats.DribblesMissed++; break;
             }
 
-            if (play.Event == MatchEvent.Fault) play.Defender.MatchStats.Faults++;
+            if (play.Event == MatchEvent.Fault)
+            {
+                play.Defender.MatchStats.Faults++;
+                play.Defender.Team.MatchStats.Faults++;
+            }
         }
     }
 
@@ -1711,6 +1755,7 @@ public class MatchController : MonoBehaviour
         matchTime = 0;
         secondHalfStarted = false;
 
+        screen.Reset();
         screen.SpeedSlider.UpdateSlider(MatchSpeed);
 
         if (screen.HomeTeamSquad != null)

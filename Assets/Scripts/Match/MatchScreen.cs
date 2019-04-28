@@ -57,4 +57,10 @@ public class MatchScreen : BaseScreen
         MainController.Instance.Screens.EditSQuad.Team = controller.GetUserTeam();
         MainController.Instance.Screens.ShowScreen(ScreenType.EditSquad);
     }
+
+    public void Reset()
+    {
+        startButton.SetLabelStart();
+        Field.ResetField();
+    }
 }

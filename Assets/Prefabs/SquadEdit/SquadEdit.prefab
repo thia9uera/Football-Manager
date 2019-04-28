@@ -361,8 +361,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5262275, g: 1, b: 0, a: 1}
-    m_PressedColor: {r: 0.38421243, g: 0.6415094, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.81476784, g: 1, b: 0, a: 1}
+    m_PressedColor: {r: 0.19006507, g: 0.5849056, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -383,8 +383,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Close
+      - m_Target: {fileID: 53705572}
+        m_MethodName: Confirm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1188,7 +1188,8 @@ MonoBehaviour:
   Field: {fileID: 6948196884763273390}
   formationDropdown: {fileID: 1532302157896618947}
   strategyDropdown: {fileID: 1532302158373445826}
-  team: {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
+  Team: {fileID: 0}
+  btnConfirm: {fileID: 1612770268}
 --- !u!1 &6948196883919463778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3441,16 +3442,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnFormationDropDownSelect
       objectReference: {fileID: 0}
-    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 7894804951275132756, guid: e9bc0122e673ff5408504fc6363b7010,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -3475,6 +3466,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9bc0122e673ff5408504fc6363b7010, type: 3}
@@ -3623,16 +3624,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnStrategyDropdownSelect
       objectReference: {fileID: 0}
-    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 215
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 430
-      objectReference: {fileID: 0}
     - target: {fileID: 7894804951275132756, guid: e9bc0122e673ff5408504fc6363b7010,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -3657,6 +3648,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 215
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444004046682330866, guid: e9bc0122e673ff5408504fc6363b7010,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 430
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9bc0122e673ff5408504fc6363b7010, type: 3}

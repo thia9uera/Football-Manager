@@ -10,7 +10,7 @@ public class PlayerData : ScriptableObject
 
     public string Id { get { return Attributes.Id; } set { Attributes.Id = value; } }
 
-    public Sprite Portrait { get { return MainController.Instance.Atlas.GetPortrait(Attributes.Portrait, Attributes.Position);} set { Attributes.Portrait = value.name; } } 
+    public Sprite Portrait { get { return MainController.Instance.Atlas.GetPortrait(Attributes.Portrait, Attributes.Position); } set { Attributes.Portrait = value.name; } }
     public string FirstName { get { return Attributes.FirstName; } set { Attributes.FirstName = value; } }
     public string LastName { get { return Attributes.LastName; } set { Attributes.LastName = value; } }
 
@@ -19,7 +19,7 @@ public class PlayerData : ScriptableObject
     public PlayerAttributes.PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
     public PlayerAttributes.SynergyGroup Synergy { get { return Attributes.Synergy; } set { Attributes.Synergy = value; } }
 
-    public int Goalkeeping { get { return Attributes.Goalkeeping; } set { Attributes.Goalkeeping = value; } } 
+    public int Goalkeeping { get { return Attributes.Goalkeeping; } set { Attributes.Goalkeeping = value; } }
     public int Passing { get { return Attributes.Passing; } set { Attributes.Passing = value; } }
     public int Dribbling { get { return Attributes.Dribbling; } set { Attributes.Dribbling = value; } }
     public int Crossing { get { return Attributes.Crossing; } set { Attributes.Crossing = value; } }

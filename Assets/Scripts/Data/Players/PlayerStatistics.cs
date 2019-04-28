@@ -6,6 +6,7 @@ public class PlayerStatistics
 
     public int Passes;
     public int Crosses;
+    public int BoxCrosses;
     public int Shots;
     public int Headers;
     public int Faults;

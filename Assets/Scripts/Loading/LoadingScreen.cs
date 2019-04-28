@@ -142,4 +142,11 @@ public class LoadingScreen : BaseScreen
 
         //MainController.Instance.Screens.ShowScreen(ScreenType.MainMenu);
     }
+
+    public void DeleteSaveFiles()
+    {
+        MainController.Instance.Data.WipeSaveData();
+        Show();
+    }
+
 }

@@ -22,8 +22,6 @@ public class MatchFieldView : MonoBehaviour
         {
             GameObject obj = fieldAreas[i];
 
-            //obj.SetActive(false);
-
             if (i == _area)
             {
                 Image img = obj.GetComponent<Image>();
@@ -32,6 +30,17 @@ public class MatchFieldView : MonoBehaviour
                 ballPosition = obj.transform.position;
             }
         }        
+    }
+
+    public void ResetField()
+    {
+        ballPosition = fieldAreas[15].transform.position;
+        foreach(GameObject obj in fieldAreas)
+        {
+            Image img = obj.GetComponent<Image>();
+            Color col = img.color;
+            img.color = new Color(col.r, col.g, col.b, 0f);
+        }
     }
 
     private void Update()

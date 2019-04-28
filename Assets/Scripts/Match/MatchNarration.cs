@@ -56,6 +56,31 @@ public class MatchNarration : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
+    public void UpdateNarration(string _text, TeamData _team = null)
+    {
+        MatchNarrationTextView text = Instantiate(narrationText, content);
+
+        Color textColor = Color.white;
+        Color frameColor;
+
+        if (_team == null)
+        {
+            frameColor = grayFrame;
+            textColor = grayText;
+        }
+        else
+        {
+            frameColor = _team.PrimaryColor;
+        }
+
+        string zone = "";
+
+        text.Populate(_text, frameColor, textColor, zone);
+        Canvas.ForceUpdateCanvases();
+        scroll.verticalNormalizedPosition = 0;
+        Canvas.ForceUpdateCanvases();
+    }
+
     public void Reset()
     {
         foreach(Transform go in content)

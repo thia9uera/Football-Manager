@@ -120,10 +120,9 @@ public class DataController : MonoBehaviour
         foreach (string file in files)
         {
             PlayerAttributes data = LoadFile<PlayerAttributes>(file);
-            PlayerData player = new PlayerData
-            {
-                Attributes = data
-            };
+            PlayerData player = ScriptableObject.CreateInstance<PlayerData>();
+            player.Attributes = data;
+
             MainController.Instance.AllPlayers.Add(player);
             playersLoaded++;
         }
@@ -138,11 +137,10 @@ public class DataController : MonoBehaviour
         foreach (string file in files)
         {
             TeamAttributes data = LoadFile<TeamAttributes>(file);
-            TeamData team = new TeamData
-            {
-                Attributes = data
-            };
+            TeamData team = ScriptableObject.CreateInstance<TeamData>();
+            team.Attributes = data;
             team.Initialize(true);
+
             MainController.Instance.AllTeams.Add(team);
             teamsLoaded++;
         }
@@ -157,10 +155,8 @@ public class DataController : MonoBehaviour
         foreach (string file in files)
         {
             TournamentAttributes data = LoadFile<TournamentAttributes>(file);
-            TournamentData tournament = new TournamentData
-            {
-                Attributes = data
-            };
+            TournamentData tournament = ScriptableObject.CreateInstance<TournamentData>();
+            tournament.Attributes = data;
             tournament.LoadTeams();
             MainController.Instance.AllTournaments.Add(tournament);
             tournamentsLoaded++;
@@ -277,6 +273,11 @@ public class DataController : MonoBehaviour
         return str;
     }
     #endregion
+
+    public void WipeSaveData()
+    {
+        Directory.Delete(saveFolder, true);
+    }
 
     void FinishLoadingGame()
     {
