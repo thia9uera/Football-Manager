@@ -743,6 +743,7 @@ public class MatchController : MonoBehaviour
                 attackingBonus = 1f;
                 keepDefender = true;
                 defendingTeam.MatchStats.Steals++;
+                CheckCounterAttack(defendingTeam, GetTeamZone(defendingTeam, playInfo.Zone));
                 //SwitchPossesion();
             }
             else
@@ -835,6 +836,10 @@ public class MatchController : MonoBehaviour
             {
                 play.Defender.MatchStats.Faults++;
                 play.Defender.Team.MatchStats.Faults++;
+            }
+            else
+            {
+                if(play.Defender != null) CheckCounterAttack(defendingTeam, GetTeamZone(defendingTeam, play.Zone));
             }
         }
     }
@@ -1441,16 +1446,15 @@ public class MatchController : MonoBehaviour
     {
         if (counterAttack > 0) counterAttack = 0;
         counterAttackChance = MainController.Instance.Modifiers.game_Modifiers[0].CounterAttackChance;
-
         counterAttackChance *= MainController.Instance.TeamStrategyData.team_Strategys[(int)_defendingTeam.Strategy].CounterAttackChance;
         float counterRoll = Random.Range(0, 1f);
 
         if ((int)_zone < 17 && counterAttackChance > counterRoll)
         {
             counterAttack = 4;
+            defendingTeam.MatchStats.CounterAttacks++;
             return true;
         }
-
         return false;
     }
 
