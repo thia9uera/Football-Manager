@@ -21,15 +21,14 @@ public class SquadEditPlayer : MonoBehaviour
     [SerializeField]
     private GameObject details, icoSubs, icoWarning;
 
-    private float clicked = 0;
-    private float clicktime = 0;
-    private float clickdelay = 0.25f;
-    private bool isDoubleClick;
+    public float tapSpeed = 0.25f;
+    private float countdown = 0;
+    private int taps = 0;
 
     private Field.Zone zone;
 
     private bool isSub;
-    private int index;
+    public int Index;
 
     private bool isSelected;
 
@@ -44,7 +43,7 @@ public class SquadEditPlayer : MonoBehaviour
 
     private void UpdateZone()
     {
-        Player.Zone = Player.Team.Formation.Zones[index];
+        Player.Zone = Player.Team.Formation.Zones[Index];
         icoWarning.SetActive(Player.IsWronglyAssigned());
     }
 
@@ -56,9 +55,8 @@ public class SquadEditPlayer : MonoBehaviour
 
     public void FadeOut()
     {
-        //transform.DOScale(0.5f, 0.5f);
-        transform.DOScale(0f, 0.5f).SetDelay(0.3f);
-        group.DOFade(0f, 0.5f).OnComplete(Destroy).SetDelay(0.3f);
+        transform.DOScale(0f, 0.3f).SetDelay(0.2f);
+        group.DOFade(0f, 0.3f).OnComplete(Destroy).SetDelay(0.2f);
     }
 
     public void PopulateSub(PlayerData _player, SquadEdit _controller)
@@ -78,11 +76,11 @@ public class SquadEditPlayer : MonoBehaviour
     {
         controller = _controller;
         Player = _player;
-        index = _index;
+        Index = _index;
 
         if (Player)
         {
-            Player.Zone = Player.Team.Formation.Zones[index];
+            Player.Zone = Player.Team.Formation.Zones[Index];
             nameLabel.text = Player.GetFullName();
             overallLabel.text = Player.GetOverall().ToString();
             portrait.sprite = Player.Portrait;
@@ -97,29 +95,27 @@ public class SquadEditPlayer : MonoBehaviour
         }
     }
 
+
+    public void Select()
+    {
+        isSelected = !isSelected;
+        icoSubs.SetActive(isSelected);
+    }
+
     public void Empty()
     {
         Player = null;
-        Populate(Player, controller, index);
+        Populate(Player, controller, Index);
+    }
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     public void OnPointerDown()
     {
-        transform.DOScale(0.8f, 0.1f);
-        clicked++;
-        if (clicked == 1)
-        {
-            clicktime = Time.time;
-            isDoubleClick = false;
-        }
-
-        if (clicked > 1 && Time.time - clicktime < clickdelay)
-        {
-            isDoubleClick = true;
-            clicked = 0;
-            clicktime = 0;
-            OnDoubleClick();
-        }
+        transform.DOScale(0.9f, 0.1f);
     }
 
     private void OnDoubleClick()
@@ -130,33 +126,35 @@ public class SquadEditPlayer : MonoBehaviour
         }
         else
         {
-            controller.RemovePlayer(Player, index);
+            controller.RemovePlayer(Player, Index);
             Empty();
         }
     }
 
-    public void OnPointerUp()
+    private void OnSingleClick()
     {
-        transform.DOScale(1f, 0.2f).OnComplete(CheckClickStatus);
+        if (isSub) controller.SelectSubPlayer(this);
+        else controller.SelectSquadPlayer(this);
     }
 
-    private void CheckClickStatus()
+    public void OnPointerUp()
     {
-        if (Time.time - clicktime > clickdelay && !isDoubleClick)
-        {
-            clicked = 0;
-            Select();
-        }
+        transform.DOScale(1f, 0.2f);
     }
-    private void Select()
+
+    public void OnPointerClick()
     {
-        isSelected = !isSelected;
-        icoSubs.SetActive(isSelected);
+        countdown = tapSpeed;
+        taps++;
+        if (taps == 2)
+        {
+            CheckClicks();
+        }
     }
 
     public void OnPointerEnter()
     {
-        transform.DOScale(1.2f, 0.1f);
+        transform.DOScale(1.1f, 0.1f);
     }
 
     public void OnPointerExit()
@@ -164,8 +162,29 @@ public class SquadEditPlayer : MonoBehaviour
         transform.DOScale(1f, 0.2f);
     }
 
-    private void Destroy()
+    private void Update()
     {
-        Destroy(gameObject);
+        if (countdown > 0)
+        {
+            countdown -= Time.deltaTime;
+        }
+        else if (countdown < 0)
+        {
+            countdown = 0;
+            CheckClicks();
+        }
     }
+
+    private void CheckClicks()
+    {
+        if (taps >= 2)
+        {
+            OnDoubleClick();
+        }
+        if (taps == 1)
+        {
+            OnSingleClick();
+        }
+        taps = 0; 
+      }
 }

@@ -330,6 +330,8 @@ MonoBehaviour:
   details: {fileID: 4360844165612050091}
   icoSubs: {fileID: 8398209986431619409}
   icoWarning: {fileID: 2367121929631778784}
+  tapSpeed: 0.25
+  Index: 0
 --- !u!114 &325061437532912091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +402,23 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 5504456110854648963}
           m_MethodName: OnPointerUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5504456110854648963}
+          m_MethodName: OnPointerClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

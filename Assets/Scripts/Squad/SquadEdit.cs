@@ -27,6 +27,9 @@ public class SquadEdit : BaseScreen
     private List<PlayerData> squadList;
     private List<PlayerData> subsList;
 
+    public SquadEditPlayer SelectedSquadPlayer;
+    public SquadEditPlayer SelectedSubPlayer;
+
     public override void Show()
     {
         base.Show();
@@ -95,8 +98,13 @@ public class SquadEdit : BaseScreen
         Team.Strategy = (TeamAttributes.TeamStrategy)strategyDropdown.value;
     }
 
-    public void AddPlayer(PlayerData _player, SquadEditPlayer _obj)
+    public void AddPlayer(PlayerData _player, SquadEditPlayer _obj, SquadEditPlayer _squadSlot=null)
     {
+        if(_squadSlot != null)
+        {
+
+        }
+
         if (!squadList.Contains(null)) return;
         for (int i = 0; i < squadList.Count; i++)
         {
@@ -144,5 +152,90 @@ public class SquadEdit : BaseScreen
 
         Subs.Clear();
         MainController.Instance.FinishSquadEdit(playersIn, playersOut);
+    }
+
+    public void SelectSquadPlayer(SquadEditPlayer _playerSlot)
+    {
+        
+        if (SelectedSquadPlayer == null)
+        {
+            if (SelectedSubPlayer != null)
+            {
+                SwapPlayer(SelectedSubPlayer, _playerSlot);
+                SelectedSubPlayer.Select();
+                SelectedSubPlayer = null;
+                return;
+            }
+
+            SelectedSquadPlayer = _playerSlot;
+            SelectedSquadPlayer.Select();
+        }
+        else
+        {
+            if (SelectedSquadPlayer == _playerSlot)
+            {
+                _playerSlot.Select();
+                SelectedSquadPlayer = null;
+                return;
+            }
+            else
+            {
+                PlayerData player1 = SelectedSquadPlayer.Player;
+                PlayerData player2 = _playerSlot.Player;
+
+                if (player1 != null) _playerSlot.Populate(player1, this, _playerSlot.Index);
+                else _playerSlot.Empty();
+
+                if (player2 != null)
+                {
+                    SelectedSquadPlayer.Populate(player2, this, SelectedSquadPlayer.Index);
+                }
+                else SelectedSquadPlayer.Empty();
+
+                SelectedSquadPlayer.Select();
+                SelectedSquadPlayer = null;
+                return;
+            }
+        }
+    }
+
+    public void SelectSubPlayer(SquadEditPlayer _playerSlot)
+    {
+        if (SelectedSubPlayer == null)
+        {
+            if (SelectedSquadPlayer != null)
+            {
+                SwapPlayer(_playerSlot, SelectedSquadPlayer);
+                SelectedSquadPlayer.Select();
+                SelectedSquadPlayer = null;
+                return;
+            }
+
+            SelectedSubPlayer = _playerSlot;
+            SelectedSubPlayer.Select();
+        }
+        else
+        {
+            if (SelectedSubPlayer == _playerSlot)
+            {
+                _playerSlot.Select();
+                SelectedSubPlayer = null;
+                return;
+            }
+            else
+            {
+                SelectedSubPlayer.Select();
+                _playerSlot.Select();
+                SelectedSubPlayer = _playerSlot;
+                return;
+            }
+
+        }
+    }
+
+    private void SwapPlayer(SquadEditPlayer _playerIn, SquadEditPlayer _playerOut)
+    {
+        if(_playerOut.Player != null) RemovePlayer(_playerOut.Player, _playerOut.Index);
+        if(_playerIn.Player != null) AddPlayer(_playerIn.Player, _playerIn, _playerIn);
     }
 }
