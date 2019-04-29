@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Globalization;
 
 namespace SuperAshley.GoogleSpreadSheet
 {
@@ -93,7 +94,7 @@ namespace SuperAshley.GoogleSpreadSheet
                         }
                         else if (info.FieldType == typeof(float))
                         {
-                            value = float.Parse(cellList[row][col]);
+                            value = float.Parse(cellList[row][col], CultureInfo.InvariantCulture);
                         }
                         else if (info.FieldType == typeof(string))
                         {

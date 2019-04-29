@@ -321,7 +321,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Name: WingOffensive
+  - Name: Wing Offensive
     Description: bla
     DefPosChance: 1
     OffPosChance: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: CenterOffensive
+  - Name: Center Offensive
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: ForceOffside
+  - Name: Force Offside
     Description: bla
     DefPosChance: 0.5
     OffPosChance: 0
