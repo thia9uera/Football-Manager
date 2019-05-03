@@ -22,6 +22,6 @@ public class PlayerStatistics
     public int Presence;
     public int Assists;
     public float MatchRating = 6.0f;
+    public float AverageRating;
     public string TournamentID;
-
 }

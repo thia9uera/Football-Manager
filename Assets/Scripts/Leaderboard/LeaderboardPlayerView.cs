@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LeaderboardPlayerView : MonoBehaviour
 {
-    [SerializeField]    public TextMeshProUGUI posLabel, nameLabel, goalsLabel, assistsLabel, shotsLabel, shotsMissedLabel, headersLabel, headersMissedLabel,  passesLabel, crossesLabel, faultsLabel, tacklesLabel, dribblesLabel, presenceLabel, savesLabel;
+    [SerializeField] public TextMeshProUGUI posLabel, nameLabel, goalsLabel, assistsLabel, shotsLabel, shotsMissedLabel, headersLabel, headersMissedLabel, passesLabel, crossesLabel, faultsLabel, customLabel;
 
     public PlayerData Player;
 
@@ -12,7 +12,7 @@ public class LeaderboardPlayerView : MonoBehaviour
     private Image frame; 
 
 
-    public void Populate(PlayerData _player, int _index)
+    public void Populate(PlayerData _player, int _index, float _customStat)
     {
         Player = _player;
 
@@ -27,11 +27,13 @@ public class LeaderboardPlayerView : MonoBehaviour
         passesLabel.text = _player.Attributes.LifeTimeStats.Passes.ToString();
         crossesLabel.text = _player.Attributes.LifeTimeStats.Crosses.ToString();
         faultsLabel.text = _player.Attributes.LifeTimeStats.Faults.ToString();
-        tacklesLabel.text = _player.Attributes.LifeTimeStats.Tackles.ToString();
-        dribblesLabel.text = _player.Attributes.LifeTimeStats.Dribbles.ToString();
-        savesLabel.text = _player.Attributes.LifeTimeStats.Saves.ToString();
-        presenceLabel.text = _player.Attributes.LifeTimeStats.Presence.ToString();
+        customLabel.text = _customStat.ToString();
 
         if (_index % 2 != 0) frame.color = Color.white;
+    }
+
+    private int GetCustomStat(string _stat)
+    {
+        return (int)Player.GetType().GetField("_stat").GetValue(this);
     }
 }

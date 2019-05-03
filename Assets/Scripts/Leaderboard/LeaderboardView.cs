@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LeaderboardView : BaseScreen
 {
@@ -18,6 +19,12 @@ public class LeaderboardView : BaseScreen
 
     [SerializeField]
     private LeaderboardTeamView teamTeamplate;
+
+    [SerializeField]
+    private TMP_Dropdown playersDropdown, teamsDropdown;
+
+    [SerializeField]
+    private List<string> playerStats, teamStats;
 
     private List<PlayerData> listPlayers;
     private List<TeamData> listTeams;
@@ -45,6 +52,9 @@ public class LeaderboardView : BaseScreen
         if (listPlayers == null || listPlayers.Count == 0) listPlayers = new List<PlayerData>(MainController.Instance.AllPlayers);
         if (listTeams == null || listTeams.Count == 0) listTeams = new List<TeamData> (MainController.Instance.AllTeams);
 
+        playersDropdown.ClearOptions();
+        playersDropdown.AddOptions(playerStats);
+
         SwitchLeaderboard(type);
     }
 
@@ -64,7 +74,8 @@ public class LeaderboardView : BaseScreen
         {
             PlayerData player = listPlayers[i];
             LeaderboardPlayerView item = Instantiate(playerTeamplate, content);
-            item.Populate(player, i);
+            //float customStat = (float)player.GetType().GetField(playerSorting).GetValue(this);
+            item.Populate(player, i, 0);
         }
     }
 
@@ -163,5 +174,11 @@ public class LeaderboardView : BaseScreen
                 }
                 break;
         }
+    }
+
+    public void OnPlayersDropdownChange()
+    {
+        string stat = playerStats[playersDropdown.value];
+        SortBy(stat);
     }
 }
