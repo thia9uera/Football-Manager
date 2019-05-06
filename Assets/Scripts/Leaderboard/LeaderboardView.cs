@@ -38,6 +38,7 @@ public class LeaderboardView : BaseScreen
 
     private string playerSorting = "Name";
     private string teamSorting = "Name";
+    private string customSorting;
 
     [SerializeField]
     private ScrollRect scrollRect;
@@ -54,6 +55,7 @@ public class LeaderboardView : BaseScreen
 
         playersDropdown.ClearOptions();
         playersDropdown.AddOptions(playerStats);
+        customSorting = playerStats[playersDropdown.value];
 
         SwitchLeaderboard(type);
     }
@@ -74,8 +76,8 @@ public class LeaderboardView : BaseScreen
         {
             PlayerData player = listPlayers[i];
             LeaderboardPlayerView item = Instantiate(playerTeamplate, content);
-            //float customStat = (float)player.GetType().GetField(playerSorting).GetValue(this);
-            item.Populate(player, i, 0);
+            float customStat = player.GetStatistic(customSorting);
+            item.Populate(player, i, customStat);
         }
     }
 
@@ -178,7 +180,7 @@ public class LeaderboardView : BaseScreen
 
     public void OnPlayersDropdownChange()
     {
-        string stat = playerStats[playersDropdown.value];
-        SortBy(stat);
+        customSorting = playerStats[playersDropdown.value];
+        SortBy(customSorting);
     }
 }

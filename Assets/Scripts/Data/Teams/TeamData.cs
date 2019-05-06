@@ -84,7 +84,10 @@ public class TeamData : ScriptableObject
         if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics(data);
 
         //Update players statistics
-        foreach (PlayerData player in GetAllPlayers()) player.UpdateLifeTimeStats();
+        foreach (PlayerData player in GetAllPlayers())
+        {
+            player.UpdateLifeTimeStats();
+        }
 
         if (_updateMatchData)
         {

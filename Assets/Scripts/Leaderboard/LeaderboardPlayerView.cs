@@ -27,7 +27,7 @@ public class LeaderboardPlayerView : MonoBehaviour
         passesLabel.text = _player.Attributes.LifeTimeStats.Passes.ToString();
         crossesLabel.text = _player.Attributes.LifeTimeStats.Crosses.ToString();
         faultsLabel.text = _player.Attributes.LifeTimeStats.Faults.ToString();
-        customLabel.text = _customStat.ToString();
+        customLabel.text = _customStat.ToString("F2");
 
         if (_index % 2 != 0) frame.color = Color.white;
     }

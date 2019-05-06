@@ -382,7 +382,6 @@ public class MatchController : MonoBehaviour
             case MatchEvent.FullTime: ResolveFullTime(_turn); break;
             case MatchEvent.KickOff: ResolveKickOff(attackingTeam, turn); break;
         }
-
         return true;
     }
 
@@ -405,6 +404,11 @@ public class MatchController : MonoBehaviour
         play.DefensiveAction = PlayerData.PlayerAction.Save;
         play.Event = MatchEvent.None;
         play.Zone = _zone;
+
+        print("LAST ACTION:  " + play.OffensiveAction);
+        if (play.OffensiveAction == PlayerData.PlayerAction.Shot) play.Attacker.MatchStats.ShotsOnGoal++;
+        else if (play.OffensiveAction == PlayerData.PlayerAction.Header) play.Attacker.MatchStats.HeadersOnGoal++;
+
         GetShotResult(_turn);
     }
 
@@ -556,9 +560,10 @@ public class MatchController : MonoBehaviour
     {
         PlayInfo play = playList[_turn];
         play.Attacker = _attackingTeam.Squad[0];
+        play.Attacker.MatchStats.Saves++;
         play.Zone = Field.Zone.OwnGoal;
         if (play.Attacker.Team == awayTeam) play.Zone = Field.Zone.Box;
-        play.OffensiveAction = GetOffensiveAction(MarkingType.None, play.Attacker, GetTeamZone(_attackingTeam, play.Zone), false);
+        play.OffensiveAction = GetOffensiveAction(MarkingType.None, play.Attacker, play.Zone, false);
         play.IsActionSuccessful = IsActionSuccessful(_turn);
     }
 
@@ -788,7 +793,7 @@ public class MatchController : MonoBehaviour
                 case PlayerData.PlayerAction.Cross:
                     play.Attacker.MatchStats.Crosses++;
                     play.Attacker.Team.MatchStats.Crosses++;
-                    if(play.TargetZone == Field.Zone.Box)
+                    if(GetTeamZone(play.Attacker.Team, play.TargetZone) == Field.Zone.Box)
                     {
                         play.Attacker.MatchStats.BoxCrosses++;
                         play.Attacker.Team.MatchStats.BoxCrosses++;
@@ -1251,7 +1256,7 @@ public class MatchController : MonoBehaviour
             }
         }
 
-        if (activePlayer != null) activePlayer.MatchStats.Presence++;
+        //if (activePlayer != null) activePlayer.MatchStats.Presence++;
         return activePlayer;
     }
 
@@ -1723,12 +1728,14 @@ public class MatchController : MonoBehaviour
 
         if (play.Attacker != null)
         {
+            play.Attacker.MatchStats.Presence++;
             play.Attacker.MatchStats.MatchRating += attackerRating;
             if (play.Attacker.MatchStats.MatchRating > 10) play.Attacker.MatchStats.MatchRating = 10f;
             else if (play.Attacker.MatchStats.MatchRating < 0) play.Attacker.MatchStats.MatchRating = 0f;
         }
         if (play.Defender != null)
         {
+            play.Defender.MatchStats.Presence++;
             play.Defender.MatchStats.MatchRating += defenderRating;
             if (play.Defender.MatchStats.MatchRating > 10) play.Defender.MatchStats.MatchRating = 10f;
             else if (play.Defender.MatchStats.MatchRating < 0) play.Defender.MatchStats.MatchRating = 0f;

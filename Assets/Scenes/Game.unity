@@ -10900,6 +10900,9 @@ MonoBehaviour:
   - CrossesMissed
   - Presence
   - AverageRating
+  - ShotsOnGoal
+  - HeadersOnGoal
+  - MatchesPlayed
   teamStats: []
   type: 0
   btnPlayers: {fileID: 324119964}
@@ -12213,6 +12216,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match
       objectReference: {fileID: 0}
+    - target: {fileID: 7177247282912746881, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6691733348293449176, guid: aa1b0f636daaefd4c8e39e15df310d97,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12317,6 +12325,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954499659376204089, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 158.344
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954499659376204089, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954499659376204089, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954499659376204089, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954158948492556291, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954071419935299047, guid: aa1b0f636daaefd4c8e39e15df310d97,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1b0f636daaefd4c8e39e15df310d97, type: 3}

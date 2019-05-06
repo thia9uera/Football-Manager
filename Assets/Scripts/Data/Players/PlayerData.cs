@@ -406,9 +406,11 @@ public class PlayerData : ScriptableObject
 
     void UpdateStats(PlayerStatistics _stats, PlayerStatistics _data)
     {
+        _stats.MatchesPlayed++;
         _stats.Goals += _data.Goals;
         _stats.Assists += _data.Assists;
         _stats.Passes += _data.Passes;
+        _stats.BoxCrosses += _data.BoxCrosses;
         _stats.Crosses += _data.Crosses;
         _stats.Faults += _data.Faults;
         _stats.Tackles += _data.Tackles;
@@ -416,12 +418,15 @@ public class PlayerData : ScriptableObject
         _stats.Headers += _data.Headers;
         _stats.Saves += _data.Saves;
         _stats.Shots += _data.Shots;
+        _stats.ShotsOnGoal += _data.ShotsOnGoal;
         _stats.CrossesMissed += _data.CrossesMissed;
         _stats.DribblesMissed += _data.DribblesMissed;
         _stats.HeadersMissed += _data.HeadersMissed;
+        _stats.HeadersOnGoal += _data.HeadersOnGoal;
         _stats.PassesMissed += _data.PassesMissed;
         _stats.ShotsMissed += _data.ShotsMissed;
         _stats.Presence += _data.Presence;
+        _stats.AverageRating = (_stats.AverageRating + _data.MatchRating) / _stats.MatchesPlayed;
     }
 
     public PlayerStatistics GetTournamentStatistics(string _key)
@@ -584,6 +589,40 @@ public class PlayerData : ScriptableObject
                 break;
         }
 
+        return value;
+    }
+
+    public float GetStatistic(string _var)
+    {
+        float value = 0;
+
+        PlayerStatistics stats = Attributes.LifeTimeStats;
+
+        switch(_var)
+        {
+            case "Passes": value = stats.Passes; break;
+            case "Crosses": value = stats.Crosses; break;
+            case "BoxCrosses": value = stats.BoxCrosses; break;
+            case "Shots": value = stats.Shots; break;
+            case "ShotsOnGoal": value = stats.ShotsOnGoal; break;
+            case "Headers": value = stats.Headers; break;
+            case "HeadersOnGoal": value = stats.HeadersOnGoal; break;
+            case "Faults": value = stats.Faults; break;
+            case "Tackles": value = stats.Tackles; break;
+            case "Dribbles": value = stats.Dribbles; break;
+            case "Goals": value = stats.Goals; break;
+            case "Saves": value = stats.Saves; break;
+            case "PassesMissed": value = stats.PassesMissed; break;
+            case "ShotsMissed": value = stats.ShotsMissed; break;
+            case "HeadersMissed": value = stats.HeadersMissed; break;
+            case "DribblesMissed": value = stats.DribblesMissed; break;
+            case "CrossesMissed": value = stats.CrossesMissed; break;
+            case "Presence": value = stats.Presence; break;
+            case "MatchesPlayed": value = stats.MatchesPlayed; break;
+            case "Assists": value = stats.Assists; break;
+            case "MatchRating": value = stats.MatchRating; break;
+            case "AverageRating": value = stats.AverageRating; break;
+        }
         return value;
     }
 }
