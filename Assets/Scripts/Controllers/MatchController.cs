@@ -405,9 +405,8 @@ public class MatchController : MonoBehaviour
         play.Event = MatchEvent.None;
         play.Zone = _zone;
 
-        print("LAST ACTION:  " + play.OffensiveAction);
-        if (play.OffensiveAction == PlayerData.PlayerAction.Shot) play.Attacker.MatchStats.ShotsOnGoal++;
-        else if (play.OffensiveAction == PlayerData.PlayerAction.Header) play.Attacker.MatchStats.HeadersOnGoal++;
+        if(play.OffensiveAction == PlayerData.PlayerAction.Shot) play.Attacker.MatchStats.Shots++;
+        else if (play.OffensiveAction == PlayerData.PlayerAction.Header) play.Attacker.MatchStats.Headers++;
 
         GetShotResult(_turn);
     }
@@ -510,7 +509,17 @@ public class MatchController : MonoBehaviour
         else if (attackRoll <= 4)
         {
             // SwitchPossesion();
-            play.Event = MatchEvent.Goalkick;
+            play.Event = MatchEvent.CornerKick;
+            if (play.OffensiveAction == PlayerData.PlayerAction.Shot)
+            {
+                play.Attacker.MatchStats.ShotsMissed++;
+                play.Attacker.Team.MatchStats.ShotsMissed++;
+            }
+            else if (play.OffensiveAction == PlayerData.PlayerAction.Header)
+            {
+                play.Attacker.MatchStats.HeadersMissed++;
+                play.Attacker.Team.MatchStats.HeadersMissed++;
+            }
             return;
         }
 
@@ -543,8 +552,26 @@ public class MatchController : MonoBehaviour
             int roll = Dice.Roll(20);
             if (defenseExcitement == -1) play.Event = MatchEvent.CornerKick;
             else if (defenseExcitement == 0 && roll < 5) play.Event = MatchEvent.CornerKick;
-            else play.Event = MatchEvent.ShotSaved;
+            else
+            {
+                play.Event = MatchEvent.ShotSaved;
+                if (play.OffensiveAction == PlayerData.PlayerAction.Shot) play.Attacker.MatchStats.ShotsOnGoal++;
+                else if (play.OffensiveAction == PlayerData.PlayerAction.Header) play.Attacker.MatchStats.HeadersOnGoal++;
+            }
             play.IsActionSuccessful =  false;
+            if (play.Event == MatchEvent.CornerKick)
+            {
+                if (play.OffensiveAction == PlayerData.PlayerAction.Shot)
+                {
+                    play.Attacker.MatchStats.ShotsMissed++;
+                    play.Attacker.Team.MatchStats.ShotsMissed++;
+                }
+                else if (play.OffensiveAction == PlayerData.PlayerAction.Header)
+                {
+                    play.Attacker.MatchStats.HeadersMissed++;
+                    play.Attacker.Team.MatchStats.HeadersMissed++;
+                }
+            }
         }
         else
         {
@@ -780,7 +807,6 @@ public class MatchController : MonoBehaviour
             else if (marking == MarkingType.None) attackingBonus *= attackingBonusLow;
 
             if (offensiveAction == PlayerData.PlayerAction.Shot || offensiveAction == PlayerData.PlayerAction.Header) play.Event = MatchEvent.ShotOnGoal;
-
             else play.TargetZone = GetTeamZone(play.Attacker.Team, Field.GetTargetZone(GetTeamZone(play.Attacker.Team, play.Zone), play.Event, play.OffensiveAction, play.Attacker.Team.Strategy));
 
             switch(play.OffensiveAction)
@@ -798,14 +824,6 @@ public class MatchController : MonoBehaviour
                         play.Attacker.MatchStats.BoxCrosses++;
                         play.Attacker.Team.MatchStats.BoxCrosses++;
                     }
-                    break;
-                case PlayerData.PlayerAction.Shot:
-                    play.Attacker.MatchStats.Shots++;
-                    play.Attacker.Team.MatchStats.Shots++;
-                    break;
-                case PlayerData.PlayerAction.Header:
-                    play.Attacker.MatchStats.Headers++;
-                    play.Attacker.Team.MatchStats.Headers++;
                     break;
                 case PlayerData.PlayerAction.Dribble: play.Attacker.MatchStats.Dribbles++; break;
             }
@@ -825,14 +843,6 @@ public class MatchController : MonoBehaviour
                 case PlayerData.PlayerAction.Cross:
                     play.Attacker.MatchStats.CrossesMissed++;
                     play.Attacker.Team.MatchStats.CrossesMissed++;
-                    break;
-                case PlayerData.PlayerAction.Shot:
-                    play.Attacker.MatchStats.ShotsMissed++;
-                    play.Attacker.Team.MatchStats.ShotsMissed++;
-                    break;
-                case PlayerData.PlayerAction.Header:
-                    play.Attacker.MatchStats.HeadersMissed++;
-                    play.Attacker.Team.MatchStats.HeadersMissed++;
                     break;
                 case PlayerData.PlayerAction.Dribble: play.Attacker.MatchStats.DribblesMissed++; break;
             }
