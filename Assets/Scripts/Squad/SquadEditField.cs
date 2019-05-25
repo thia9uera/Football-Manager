@@ -34,6 +34,8 @@ public class SquadEditField : MonoBehaviour
         {
             players[i].Populate(_players[i], _controller, i);
         }
+
+        UpdateFormation(_formation);
     }
 
     public void AddPlayer(PlayerData _player, int _index, SquadEdit _controller)

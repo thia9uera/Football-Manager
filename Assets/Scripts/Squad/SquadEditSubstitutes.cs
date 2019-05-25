@@ -24,7 +24,7 @@ public class SquadEditSubstitutes : MonoBehaviour
     public void AddPlayer(PlayerData _player)
     {
         SquadEditPlayer player = Instantiate(playerTemplate, scrollContent);
-        player.PopulateSub(_player, controller);
+        player.PopulateSub(_player, controller, 0.5f);
     }
 
     public void Clear()

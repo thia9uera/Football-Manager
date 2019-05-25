@@ -38,7 +38,7 @@ public class SquadEditPlayer : MonoBehaviour
         if(Player) Player.Zone = _zone;
         RectTransform rect = GetComponent<RectTransform>();
         rect.DOMove(_pos, 0.5f).OnComplete(UpdateZone);
-        if (group.alpha == 0f) group.DOFade(1f, 0.5f);
+        if (group.alpha <= 0f) group.DOFade(1f, 0.5f);
     }
 
     private void UpdateZone()
@@ -47,19 +47,19 @@ public class SquadEditPlayer : MonoBehaviour
         icoWarning.SetActive(Player.IsWronglyAssigned());
     }
 
-    public void FadeScaling()
+    public void FadeScaling(float _delay=0)
     {
-        transform.DOScale(0.5f, 0.5f).From();
-        group.DOFade(0f, 0.5f).From();
+        transform.DOScale(0.5f, 0.2f).From().SetDelay(_delay);
+        group.DOFade(0f, 0.2f).From().SetDelay(_delay);
     }
 
     public void FadeOut()
     {
         transform.DOScale(0f, 0.3f).SetDelay(0.2f);
-        group.DOFade(0f, 0.3f).OnComplete(Destroy).SetDelay(0.2f);
+        group.DOFade(0f, 0.3f).OnComplete(Destroy);
     }
 
-    public void PopulateSub(PlayerData _player, SquadEdit _controller)
+    public void PopulateSub(PlayerData _player, SquadEdit _controller, float _delay=0)
     {
         controller = _controller;
         Player = _player;
@@ -69,7 +69,7 @@ public class SquadEditPlayer : MonoBehaviour
         overallLabel.text = Player.GetOverall().ToString();
         portrait.sprite = Player.Portrait;
         details.SetActive(true);
-        FadeScaling();
+        FadeScaling(_delay);
     }
 
     public void Populate(PlayerData _player, SquadEdit _controller, int _index)
