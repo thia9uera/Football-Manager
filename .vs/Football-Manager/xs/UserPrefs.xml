@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Squad/SquadEditSubstitutes.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Data/Tournaments/MatchData.cs">
     <Files>
-      <File FileName="Assets/Scripts/Squad/SquadEdit.cs" Line="128" Column="6" />
-      <File FileName="Assets/Scripts/Squad/SquadEditField.cs" Line="38" Column="37" />
-      <File FileName="Assets/Scripts/Squad/SquadEditPlayer.cs" Line="59" Column="51" />
-      <File FileName="Assets/Scripts/Squad/SquadEditSubstitutes.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TournamentCreation/TournamentCreation.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs" Line="100" Column="68" />
+      <File FileName="Assets/Scripts/Data/Tournaments/MatchData.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,14 +11,14 @@
           <Node name="Football-Manager" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Controllers" expanded="True" />
                 <Node name="Data" expanded="True">
-                  <Node name="Players" expanded="True" />
-                  <Node name="Tournaments" expanded="True" />
+                  <Node name="Teams" expanded="True" />
+                  <Node name="Tournaments" expanded="True">
+                    <Node name="MatchData.cs" selected="True" />
+                  </Node>
                 </Node>
-                <Node name="Squad" expanded="True">
-                  <Node name="SquadEditSubstitutes.cs" selected="True" />
-                </Node>
+                <Node name="Squad" expanded="True" />
+                <Node name="TournamentCreation" expanded="True" />
                 <Node name="TournamentHub" expanded="True" />
               </Node>
             </Node>
@@ -30,7 +29,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="06e81efd-bd1f-4c77-8a9a-92ffb6ea9b5b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4a4929c0-dc4a-4a3a-9e9b-52737ce5b648" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

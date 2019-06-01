@@ -77,23 +77,24 @@ public class ChampionshipCreation : MonoBehaviour
         int half = totalTeams / 2;
         List<TeamData> listA = new List<TeamData>(teams);
         List<TeamData> listB = new List<TeamData>(teams);
-        TeamData homeTeam = null;
-        TeamData awayTeam = null;
+        TeamData homeTeam;
+        TeamData awayTeam;
         for (int r = 0; r < rounds; r++)
         {
             for (int t = 0; t < half; t++)
             {
-                homeTeam = listA[t];
-                awayTeam = listA[rounds - t];
+                if (r % 2 == 0)
+                {
+                    homeTeam = listA[t];
+                    awayTeam = listA[rounds - t];
+                }
+                else
+                {
+                    homeTeam = listA[rounds - t];
+                    awayTeam = listA[t];
+                }
 
-                MatchData data = new MatchData();
-                data.HomeTeam = new TeamMatchData();
-                data.HomeTeam.TeamAttributes = homeTeam.Attributes;
-
-                data.AwayTeam = new TeamMatchData();
-                data.AwayTeam.TeamAttributes = awayTeam.Attributes;
-
-                data.Round = r;
+                MatchData data = new MatchData(homeTeam.Attributes, awayTeam.Attributes, r);
                 DataList.Add(data);
             }
 

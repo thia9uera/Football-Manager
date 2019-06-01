@@ -8,6 +8,15 @@ public class MatchData
     public bool isPlayed;
     public int Round;
 
+
+    public MatchData(TeamAttributes _home, TeamAttributes _away, int _round)
+    {
+        HomeTeam = new TeamMatchData(_home);
+        AwayTeam = new TeamMatchData(_away);
+        isPlayed = false;
+        Round = _round;
+    }
+
     public void Reset()
     {
         isPlayed = false;
@@ -24,6 +33,15 @@ public struct TeamMatchData
     public List<PlayerData> Scorers;
     public List<PlayerData> YellowCards;
     public List<PlayerData> RedCards;
+
+    public TeamMatchData(TeamAttributes _attributes)
+    {
+        TeamAttributes = _attributes;
+        Statistics = new TeamStatistics();
+        Scorers = new List<PlayerData>();
+        YellowCards = new List<PlayerData>();
+        RedCards = new List<PlayerData>();
+    }
 
     public void Reset()
     {
