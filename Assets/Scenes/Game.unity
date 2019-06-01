@@ -538,7 +538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 431.39, y: -40}
+  m_AnchoredPosition: {x: 431.39062, y: -40}
   m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &146222409
@@ -5262,7 +5262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230.695, y: -40}
+  m_AnchoredPosition: {x: 230.69531, y: -40}
   m_SizeDelta: {x: 301.39, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791023525
@@ -5664,7 +5664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &897917621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11204,42 +11204,42 @@ PrefabInstance:
     - target: {fileID: 5684722049996649052, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -960
       objectReference: {fileID: 0}
     - target: {fileID: 5684722049996649052, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5684722048366953294, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -540.00006
       objectReference: {fileID: 0}
     - target: {fileID: 5684722048366953294, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5684722049408522791, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5684722049408522791, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5684722048747561742, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5684722048747561742, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb83008ea8e0d43f5a44c6f0ce850829, type: 3}

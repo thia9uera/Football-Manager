@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ChampionshipCreation : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class ChampionshipCreation : MonoBehaviour
 
     List<TeamData> placeholderList;
     int totalTeams;
+
+    [SerializeField]
+    private Toggle homeAwayTeams;
 
     void Awake()
     {
@@ -112,6 +116,16 @@ public class ChampionshipCreation : MonoBehaviour
                 }
             }
             listB = new List<TeamData>(listA);
+        }
+
+        if(homeAwayTeams.isOn)
+        {
+            List<MatchData> dList = new List<MatchData>(DataList);
+            foreach(MatchData data in dList)
+            {
+                MatchData d = new MatchData(data.AwayTeam.TeamAttributes, data.HomeTeam.TeamAttributes, data.Round + rounds);
+                DataList.Add(d);
+            }
         }
 
         UpdateMatchList();

@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Data/Tournaments/MatchData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TournamentCreation/TournamentCreationTeamList.cs">
     <Files>
       <File FileName="Assets/Scripts/TournamentCreation/TournamentCreation.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs" Line="100" Column="68" />
-      <File FileName="Assets/Scripts/Data/Tournaments/MatchData.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TournamentCreation/ChampionshipCreation.cs" Line="126" Column="46" />
+      <File FileName="Assets/Scripts/Data/Tournaments/MatchData.cs" Line="12" Column="76" />
+      <File FileName="Assets/Scripts/TournamentCreation/TournamentCreationOptions.cs" Line="25" Column="3" />
+      <File FileName="Assets/Scripts/TournamentCreation/TournamentCreationTeamList.cs" Line="29" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,12 +15,12 @@
               <Node name="Scripts" expanded="True">
                 <Node name="Data" expanded="True">
                   <Node name="Teams" expanded="True" />
-                  <Node name="Tournaments" expanded="True">
-                    <Node name="MatchData.cs" selected="True" />
-                  </Node>
+                  <Node name="Tournaments" expanded="True" />
                 </Node>
                 <Node name="Squad" expanded="True" />
-                <Node name="TournamentCreation" expanded="True" />
+                <Node name="TournamentCreation" expanded="True">
+                  <Node name="TournamentCreationTeamList.cs" selected="True" />
+                </Node>
                 <Node name="TournamentHub" expanded="True" />
               </Node>
             </Node>

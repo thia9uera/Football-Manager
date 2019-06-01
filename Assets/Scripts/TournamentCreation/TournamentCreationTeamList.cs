@@ -27,9 +27,12 @@ public class TournamentCreationTeamList : MonoBehaviour
         itemsList.Clear();
         foreach (TeamData team in TournamentCreation.Instance.AvailableTeams)
         {
-            TournamentCreationTeam item = Instantiate(teamTemplate, content);
-            item.Populate(team);
-            itemsList.Add(item.gameObject);
+            if (!team.IsUserControlled)
+            {
+                TournamentCreationTeam item = Instantiate(teamTemplate, content);
+                item.Populate(team);
+                itemsList.Add(item.gameObject);
+            }
         }
     }
 }
