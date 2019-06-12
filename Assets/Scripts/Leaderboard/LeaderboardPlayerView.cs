@@ -31,9 +31,4 @@ public class LeaderboardPlayerView : MonoBehaviour
 
         if (_index % 2 != 0) frame.color = Color.white;
     }
-
-    private int GetCustomStat(string _stat)
-    {
-        return (int)Player.GetType().GetField("_stat").GetValue(this);
-    }
 }

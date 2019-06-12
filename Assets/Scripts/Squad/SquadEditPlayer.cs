@@ -27,7 +27,7 @@ public class SquadEditPlayer : MonoBehaviour
 
     private Field.Zone zone;
 
-    private bool isSub;
+    public bool IsSub;
     public int Index;
 
     private bool isSelected;
@@ -63,7 +63,7 @@ public class SquadEditPlayer : MonoBehaviour
     {
         controller = _controller;
         Player = _player;
-        isSub = true;
+        IsSub = true;
 
         nameLabel.text = Player.GetFullName();
         overallLabel.text = Player.GetOverall().ToString();
@@ -95,6 +95,14 @@ public class SquadEditPlayer : MonoBehaviour
         }
     }
 
+    public void PopulateDrag(PlayerData _player, bool _isSub, int _index)
+    {
+        Player = _player;
+        IsSub = _isSub;
+        Index = _index;
+        portrait.sprite = Player.Portrait;
+        overallLabel.text = _player.GetOverall().ToString();
+    }
 
     public void Select()
     {
@@ -120,7 +128,7 @@ public class SquadEditPlayer : MonoBehaviour
 
     private void OnDoubleClick()
     {
-        if (isSub)
+        if (IsSub)
         {
             controller.AddPlayer(Player, this);
         }
@@ -133,7 +141,7 @@ public class SquadEditPlayer : MonoBehaviour
 
     private void OnSingleClick()
     {
-        if (isSub) controller.SelectSubPlayer(this);
+        if (IsSub) controller.SelectSubPlayer(this);
         else controller.SelectSquadPlayer(this);
     }
 
@@ -155,11 +163,15 @@ public class SquadEditPlayer : MonoBehaviour
     public void OnPointerEnter()
     {
         transform.DOScale(1.1f, 0.1f);
+
+        controller.HoveringPlayer = this;
     }
 
     public void OnPointerExit()
     {
         transform.DOScale(1f, 0.2f);
+
+        controller.HoveringPlayer = null;
     }
 
     private void Update()

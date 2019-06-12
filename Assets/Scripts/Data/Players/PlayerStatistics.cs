@@ -11,14 +11,15 @@ public class PlayerStatistics
     public int ShotsOnGoal;
     public int ShotsMissed;
     public int Headers;
+    public int HeadersMissed;
+    public int HeadersOnGoal;
     public int Faults;
     public int Tackles;
     public int Dribbles;
     public int Goals;
+    public int GoalsByHeader;
     public int Saves;
     public int PassesMissed;
-    public int HeadersMissed;
-    public int HeadersOnGoal;
     public int DribblesMissed;
     public int CrossesMissed;
     public int Presence;

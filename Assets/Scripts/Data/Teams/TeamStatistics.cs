@@ -7,6 +7,7 @@ public class TeamStatistics
     public int Draws;
     public int Goals;
     public int GoalsAgainst;
+    public int GoalsByHeader;
     public int Shots;
     public int Headers;
     public int Steals;

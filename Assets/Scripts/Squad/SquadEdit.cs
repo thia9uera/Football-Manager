@@ -22,13 +22,19 @@ public class SquadEdit : BaseScreen
     [SerializeField]
     private Button btnConfirm;
 
-    private bool isDragging;
-
     private List<PlayerData> squadList;
     private List<PlayerData> subsList;
 
     public SquadEditPlayer SelectedSquadPlayer;
     public SquadEditPlayer SelectedSubPlayer;
+
+    public SquadEditPlayer HoveringPlayer;
+    public SquadEditPlayer DragPlayer;
+    private bool isDragging;
+    private bool isHoveringSubs;
+
+    [SerializeField]
+    private GameObject hoveringSubsHit;
 
     public override void Show()
     {
@@ -100,11 +106,6 @@ public class SquadEdit : BaseScreen
 
     public void AddPlayer(PlayerData _player, SquadEditPlayer _obj, SquadEditPlayer _squadSlot=null)
     {
-        if(_squadSlot != null)
-        {
-
-        }
-
         if (!squadList.Contains(null)) return;
         for (int i = 0; i < squadList.Count; i++)
         {
@@ -156,7 +157,6 @@ public class SquadEdit : BaseScreen
 
     public void SelectSquadPlayer(SquadEditPlayer _playerSlot)
     {
-        
         if (SelectedSquadPlayer == null)
         {
             if (SelectedSubPlayer != null)
@@ -178,24 +178,22 @@ public class SquadEdit : BaseScreen
                 SelectedSquadPlayer = null;
                 return;
             }
-            else
+
+            PlayerData player1 = SelectedSquadPlayer.Player;
+            PlayerData player2 = _playerSlot.Player;
+
+            if (player1 != null) _playerSlot.Populate(player1, this, _playerSlot.Index);
+            else _playerSlot.Empty();
+
+            if (player2 != null)
             {
-                PlayerData player1 = SelectedSquadPlayer.Player;
-                PlayerData player2 = _playerSlot.Player;
-
-                if (player1 != null) _playerSlot.Populate(player1, this, _playerSlot.Index);
-                else _playerSlot.Empty();
-
-                if (player2 != null)
-                {
-                    SelectedSquadPlayer.Populate(player2, this, SelectedSquadPlayer.Index);
-                }
-                else SelectedSquadPlayer.Empty();
-
-                SelectedSquadPlayer.Select();
-                SelectedSquadPlayer = null;
-                return;
+                SelectedSquadPlayer.Populate(player2, this, SelectedSquadPlayer.Index);
             }
+            else SelectedSquadPlayer.Empty();
+
+            SelectedSquadPlayer.Select();
+            SelectedSquadPlayer = null;
+            return;
         }
     }
 
@@ -237,5 +235,69 @@ public class SquadEdit : BaseScreen
     {
         if(_playerOut.Player != null) RemovePlayer(_playerOut.Player, _playerOut.Index);
         if(_playerIn.Player != null) AddPlayer(_playerIn.Player, _playerIn, _playerIn);
+    }
+
+    public void HoveringSubs()
+    {
+        isHoveringSubs = true;
+    }
+
+    public void NotHoveringSubs()
+    {
+        isHoveringSubs = false;
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            if(!isDragging && HoveringPlayer != null && HoveringPlayer.Player != null)
+            {
+                isDragging = true;
+                DragPlayer.PopulateDrag(HoveringPlayer.Player, HoveringPlayer.IsSub, HoveringPlayer.Index);
+                if (!HoveringPlayer.IsSub) SelectedSquadPlayer = HoveringPlayer;
+                else SelectedSubPlayer = HoveringPlayer;
+                hoveringSubsHit.SetActive(true);
+                DragPlayer.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if(isDragging)
+            {
+                isDragging = false;
+                hoveringSubsHit.SetActive(false);
+                if (isHoveringSubs)
+                {
+                    if (!DragPlayer.IsSub)
+                    {
+                        RemovePlayer(SelectedSquadPlayer.Player, SelectedSquadPlayer.Index);
+                        SelectedSquadPlayer.Empty();
+                    }
+                }
+                else if(HoveringPlayer != null)
+                {
+                    if(DragPlayer.IsSub)
+                    {
+                        SwapPlayer(SelectedSubPlayer, HoveringPlayer);
+                    }
+                    else
+                    {
+                        PlayerData player1 = HoveringPlayer.Player;
+                        PlayerData player2 = SelectedSquadPlayer.Player;
+
+                        if(player2 != null) HoveringPlayer.Populate(player2, this, HoveringPlayer.Index);
+                        if(player1 != null) SelectedSquadPlayer.Populate(player1, this, SelectedSquadPlayer.Index);
+                    }
+                }
+
+                DragPlayer.gameObject.SetActive(false);
+            }
+        }
+
+        if(isDragging)
+        {
+            DragPlayer.transform.position = Input.mousePosition;
+        }
     }
 }

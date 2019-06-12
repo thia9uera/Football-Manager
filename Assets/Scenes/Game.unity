@@ -157,7 +157,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000013697992, y: 0.00006611724}
-  m_SizeDelta: {x: -1907.0001, y: 0}
+  m_SizeDelta: {x: -1907, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &14291723
 MonoBehaviour:
@@ -538,7 +538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 431.39062, y: -40}
+  m_AnchoredPosition: {x: 431.39, y: -40}
   m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &146222409
@@ -2922,6 +2922,7 @@ MonoBehaviour:
           Draws: 0
           Goals: 0
           GoalsAgainst: 0
+          GoalsByHeader: 0
           Shots: 0
           Headers: 0
           Steals: 0
@@ -2972,6 +2973,7 @@ MonoBehaviour:
         Draws: 0
         Goals: 0
         GoalsAgainst: 0
+        GoalsByHeader: 0
         Shots: 0
         Headers: 0
         Steals: 0
@@ -3008,6 +3010,7 @@ MonoBehaviour:
           Draws: 0
           Goals: 0
           GoalsAgainst: 0
+          GoalsByHeader: 0
           Shots: 0
           Headers: 0
           Steals: 0
@@ -3058,6 +3061,7 @@ MonoBehaviour:
         Draws: 0
         Goals: 0
         GoalsAgainst: 0
+        GoalsByHeader: 0
         Shots: 0
         Headers: 0
         Steals: 0
@@ -3836,7 +3840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &570956033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5262,7 +5266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230.69531, y: -40}
+  m_AnchoredPosition: {x: 230.695, y: -40}
   m_SizeDelta: {x: 301.39, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791023525
@@ -6707,7 +6711,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 4.7458496}
+  m_SizeDelta: {x: 80.3241, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072555997
 MonoBehaviour:
@@ -8210,7 +8214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1380583846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10903,7 +10907,20 @@ MonoBehaviour:
   - ShotsOnGoal
   - HeadersOnGoal
   - MatchesPlayed
-  teamStats: []
+  - GoalsByHeader
+  teamStats:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   type: 0
   btnPlayers: {fileID: 324119964}
   btnTeams: {fileID: 1417460655}
@@ -12830,11 +12847,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquadEdit
       objectReference: {fileID: 0}
-    - target: {fileID: 6948196883857478141, guid: b38adcf5cb056f64fa402d3661828864,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6948196883857478142, guid: b38adcf5cb056f64fa402d3661828864,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12943,17 +12955,17 @@ PrefabInstance:
     - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6948196884921151630, guid: b38adcf5cb056f64fa402d3661828864,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80.3241
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b38adcf5cb056f64fa402d3661828864, type: 3}

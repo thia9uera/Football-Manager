@@ -603,6 +603,13 @@ public class MatchController : MonoBehaviour
         shooter.MatchStats.Goals++;
         shooter.Team.MatchStats.Goals++;
         shooter.Team.MatchData.Scorers.Add(shooter);
+
+        if (lastPlay.OffensiveAction == PlayerData.PlayerAction.Header)
+        {
+            shooter.MatchStats.GoalsByHeader++;
+            shooter.Team.MatchStats.GoalsByHeader++;
+        }
+
         if (assister != null) assister.MatchStats.Assists++;
 
         PlayInfo playInfo = playList[_turn];
