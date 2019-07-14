@@ -12,7 +12,7 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
         set
         {
             teamsAmount = value;
-            UpdateButtons();
+            //UpdateButtons();
         }
         get
         {
@@ -20,8 +20,8 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
         }
     }
 
-    int maxTeams = 48;
-    int minTeams = 2;
+    private int teamAmountIndex;
+    private readonly int[] teamAmountList = {2, 4, 8, 16, 24, 32};
 
     [SerializeField]
     Button BtnPlus;
@@ -34,25 +34,28 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
 
     private void Start()
     {
-        //UpdateButtons();
+        //TeamsAmount = teamAmountList[teamAmountIndex];
+        UpdateButtons();
     }
 
     public void PlusHandler()
     {
-        TeamsAmount += 2;
+        teamAmountIndex++;
         UpdateButtons();
     }
 
     public void MinusHandler()
     {
-        TeamsAmount -= 2;
+        teamAmountIndex--;
         UpdateButtons();
     }
 
     void UpdateButtons()
     {
-        BtnPlus.interactable = !(TeamsAmount == maxTeams);
-        BtnMinus.interactable = !(TeamsAmount == minTeams);
+        BtnPlus.interactable = !(teamAmountIndex >= teamAmountList.Length-1);
+        BtnMinus.interactable = !(teamAmountIndex <= 0);
+
+        TeamsAmount = teamAmountList[teamAmountIndex];
 
         label.text = "Teams: " + TeamsAmount;
     }

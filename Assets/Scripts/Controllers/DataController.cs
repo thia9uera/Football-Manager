@@ -62,6 +62,8 @@ public class DataController : MonoBehaviour
        
         if(_loadAfter) LoadGame(MainController.Instance.User.Id);
         else print("GAME SAVED");
+
+        print(saveFolder);
     }
 
     public void SaveUser()
@@ -184,12 +186,11 @@ public class DataController : MonoBehaviour
     #region GENERICS
     public void SaveData<T>(T _data, string _name, string _subfolder = "")
     {
-        string path = "";
-        string folder = CombinePaths(userFolder, _subfolder);
+       string folder = CombinePaths(userFolder, _subfolder);
 
-        if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-        
-       path = Path.Combine(folder, _name + extension);
+       if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+       string path = Path.Combine(folder, _name + extension);
        string jsonString = JsonUtility.ToJson(_data);
        using (StreamWriter streamWriter = File.CreateText(path))
        {

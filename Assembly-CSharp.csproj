@@ -265,6 +265,7 @@
     <Compile Include="Assets\Scripts\Squad\SquadSubsView.cs" />
     <Compile Include="Assets\Scripts\Squad\SquadSubView.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\ChampionshipCreation.cs" />
+    <Compile Include="Assets\Scripts\TournamentCreation\CupCreation.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreation.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationMatch.cs" />
     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationMatchTeam.cs" />

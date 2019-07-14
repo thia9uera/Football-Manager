@@ -12,14 +12,17 @@ public class TournamentCreation : BaseScreen
     public TournamentCreationOptions Options;
 
     public ChampionshipCreation Championship;
+    public CupCreation Cup;
 
+    [HideInInspector]
     public List<TeamData> AvailableTeams;
+
+    [HideInInspector]
+    public List<TeamData> TeamList;
 
     public GameObject Edit;
     public GameObject Load;
-
-    public List<TeamData> TeamList;
-
+       
     public Button BtnCreateTournament;
 
     private void Awake()
@@ -54,6 +57,21 @@ public class TournamentCreation : BaseScreen
             Championship.RemoveTeam(team);
             AvailableTeams.Add(team);
             Options.TeamList.UpdateTeamList();
+        }
+    }
+
+    public void ChangeType(TournamentAttributes.TournamentType _type)
+    {
+        switch (_type)
+        {
+            case TournamentAttributes.TournamentType.Championship:
+                Championship.gameObject.SetActive(true);
+                Cup.gameObject.SetActive(false);
+                break;
+            case TournamentAttributes.TournamentType.Cup:
+                Championship.gameObject.SetActive(false);
+                Cup.gameObject.SetActive(true);
+                break;
         }
     }
 

@@ -148,8 +148,8 @@ public class SquadEdit : BaseScreen
             if (!oldSubs.Contains(player)) playersOut.Add(player);
         }
 
-        Team.Squad = squadList.ToArray();
-        Team.Substitutes = subsList.ToArray();
+        Team.SetSquad(squadList.ToArray());
+        Team.SetSubstitutes(subsList.ToArray());
 
         Subs.Clear();
         MainController.Instance.FinishSquadEdit(playersIn, playersOut);

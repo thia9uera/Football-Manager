@@ -65,8 +65,7 @@ public class TeamData : ScriptableObject
     {
         switch (_type)
         {
-            default:
-            case "Match": MatchStats = new TeamStatistics(); break;
+            case "Match":
             case "LifeTime": LifeTimeStats = new TeamStatistics(); break;
             case "Tournament":
                 TournamentStatistics[_id] = new TeamStatistics();
@@ -122,9 +121,7 @@ public class TeamData : ScriptableObject
 
     public TeamStatistics GetTournamentStatistics(string _key)
     {
-        TeamStatistics stats = new TeamStatistics();
-
-        stats = TournamentStatistics[_key];
+        TeamStatistics stats = TournamentStatistics[_key];
 
         return stats;
     }
@@ -153,17 +150,13 @@ public class TeamData : ScriptableObject
 
     public int GetOveralRating()
     {
-        int overal = 0;
-
         int total = 0;
         foreach (PlayerData player in Squad)
         {
             total += player.GetOverall();
         }
 
-        overal = total / Squad.Length;
-
-        return overal;
+        return total / Squad.Length;
     }
 
     public List<PlayerData> GetAllPlayers()

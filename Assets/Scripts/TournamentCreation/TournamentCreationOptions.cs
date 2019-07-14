@@ -12,6 +12,7 @@ public class TournamentCreationOptions : MonoBehaviour
     public TournamentCreationStars StarsRequired;
     public TournamentCreationTeamsAmount TeamsAmount;
     public Toggle HomeAwayToggle;
+    public TournamentCreation Controller; 
 
     void Start ()
     {
@@ -23,4 +24,31 @@ public class TournamentCreationOptions : MonoBehaviour
         }
         TypeDropDown.AddOptions(list);
 	}
+
+    public void TournamentSetup()
+    {
+        Controller.ChangeType(TournamentAttributes.TournamentType.Championship);
+        TeamsAmount.gameObject.SetActive(false);
+        HomeAwayToggle.gameObject.SetActive(true);
+    }
+
+    public void CupSetup()
+    {
+        Controller.ChangeType(TournamentAttributes.TournamentType.Cup);
+        TeamsAmount.gameObject.SetActive(true);
+        HomeAwayToggle.gameObject.SetActive(false);       
+    }
+
+    public void OnTypeDropdownChange()
+    {
+        switch (TypeDropDown.value)
+        {
+            case 0:
+                TournamentSetup();
+                break;
+            case 1:
+                CupSetup();
+                break;
+        }
+    }
 }
