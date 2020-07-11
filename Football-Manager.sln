@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio for Mac
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{2434C05D-4227-1AC0-6B68-F95A09151076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptInspector", "ScriptInspector.csproj", "{CF6755BA-86D4-A638-B7E2-BB23F3588D74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{20BB96DE-F1D1-E783-FFD8-D29961E3FD50}"
 EndProject
@@ -15,6 +17,10 @@ Global
 		{2434C05D-4227-1AC0-6B68-F95A09151076}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2434C05D-4227-1AC0-6B68-F95A09151076}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2434C05D-4227-1AC0-6B68-F95A09151076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6755BA-86D4-A638-B7E2-BB23F3588D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6755BA-86D4-A638-B7E2-BB23F3588D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6755BA-86D4-A638-B7E2-BB23F3588D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6755BA-86D4-A638-B7E2-BB23F3588D74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20BB96DE-F1D1-E783-FFD8-D29961E3FD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20BB96DE-F1D1-E783-FFD8-D29961E3FD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20BB96DE-F1D1-E783-FFD8-D29961E3FD50}.Release|Any CPU.ActiveCfg = Release|Any CPU

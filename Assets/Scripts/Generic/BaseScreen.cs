@@ -15,6 +15,7 @@ public class BaseScreen : MonoBehaviour
         TournamentSelection,
         Leaderboards,
         Loading,
+        MatchVisual,
     }
 
     public ScreenType Type;

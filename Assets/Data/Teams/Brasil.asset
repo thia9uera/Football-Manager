@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: BRA
     PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
     SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
-    Formation: {fileID: 0}
+    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
     Strategy: 0
     SquadIds:
     - 97dbaa64-77da-4562-9aab-2be31d547bad
@@ -34,7 +34,6 @@ MonoBehaviour:
     - b2bcea07-dbcc-418e-b749-999ab80e763f
     SubstitutesIds:
     - c3f33bce-ab21-484d-b9b9-3c7cf65c36e1
-    - 3c4252d7-0364-4a6d-81dd-c88995c20c27
     - 5dd65e86-8fb9-4693-a018-aeff16b0e8a6
     - 20506774-44d7-42bc-a3fc-f43cc749e9f9
     - 2f248a35-3089-440f-8d57-b5f15beef069
@@ -45,6 +44,7 @@ MonoBehaviour:
       Draws: 0
       Goals: 0
       GoalsAgainst: 0
+      GoalsByHeader: 0
       Shots: 0
       Headers: 0
       Steals: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
         Draws: 0
         Goals: 0
         GoalsAgainst: 0
+        GoalsByHeader: 0
         Shots: 0
         Headers: 0
         Steals: 0
@@ -137,6 +138,7 @@ MonoBehaviour:
     Draws: 0
     Goals: 0
     GoalsAgainst: 0
+    GoalsByHeader: 0
     Shots: 0
     Headers: 0
     Steals: 0
@@ -186,6 +188,7 @@ MonoBehaviour:
         Draws: 0
         Goals: 0
         GoalsAgainst: 0
+        GoalsByHeader: 0
         Shots: 0
         Headers: 0
         Steals: 0
@@ -234,6 +237,7 @@ MonoBehaviour:
           Draws: 0
           Goals: 0
           GoalsAgainst: 0
+          GoalsByHeader: 0
           Shots: 0
           Headers: 0
           Steals: 0
@@ -258,6 +262,7 @@ MonoBehaviour:
       Draws: 0
       Goals: 0
       GoalsAgainst: 0
+      GoalsByHeader: 0
       Shots: 0
       Headers: 0
       Steals: 0

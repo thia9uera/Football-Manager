@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: BAD4
     PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.70170856, a: 1}
     SecondaryColor: {r: 0, g: 0, b: 0, a: 1}
-    Formation: 0
+    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
     Strategy: 0
     SquadIds:
     - 40c960cf-6fa4-43b3-bbd3-29891acd29f0
@@ -38,22 +38,27 @@ MonoBehaviour:
     - 3619e8a5-17ea-4ce2-898b-aea75a79ee96
     LifeTimeStats:
       Points: 0
-      TotalWins: 0
-      TotalLosts: 0
-      TotalDraws: 0
-      TotalGoals: 0
-      TotalGoalsAgainst: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalSteals: 0
-      TotalPasses: 0
-      TotalLongPasses: 0
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 0
-      TotalFaults: 0
-      TotalOffsides: 0
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 0
+      Wins: 0
+      Losts: 0
+      Draws: 0
+      Goals: 0
+      GoalsAgainst: 0
+      GoalsByHeader: 0
+      Shots: 0
+      Headers: 0
+      Steals: 0
+      Passes: 0
+      Crosses: 0
+      LongPasses: 0
+      PassesMissed: 0
+      CrossesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
+      BoxCrosses: 0
+      Faults: 0
+      Offsides: 0
+      CornerKicks: 0
+      CounterAttacks: 0
     TournamentStatistics:
       reorderableList:
         canAdd: 0
@@ -102,22 +107,27 @@ MonoBehaviour:
   Stars: 0
   MatchStats:
     Points: 0
-    TotalWins: 0
-    TotalLosts: 0
-    TotalDraws: 0
-    TotalGoals: 0
-    TotalGoalsAgainst: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalSteals: 0
-    TotalPasses: 0
-    TotalLongPasses: 0
-    TotalPassesMissed: 0
-    TotalBoxCrosses: 0
-    TotalFaults: 0
-    TotalOffsides: 0
-    TotalCornerKicks: 0
-    TotalCounterAttacks: 0
+    Wins: 0
+    Losts: 0
+    Draws: 0
+    Goals: 0
+    GoalsAgainst: 0
+    GoalsByHeader: 0
+    Shots: 0
+    Headers: 0
+    Steals: 0
+    Passes: 0
+    Crosses: 0
+    LongPasses: 0
+    PassesMissed: 0
+    CrossesMissed: 0
+    ShotsMissed: 0
+    HeadersMissed: 0
+    BoxCrosses: 0
+    Faults: 0
+    Offsides: 0
+    CornerKicks: 0
+    CounterAttacks: 0
   MatchData:
     TeamAttributes:
       Id: 
@@ -125,28 +135,33 @@ MonoBehaviour:
       Tag: 
       PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
       SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-      Formation: 0
+      Formation: {fileID: 0}
       Strategy: 0
       SquadIds: []
       SubstitutesIds: []
       LifeTimeStats:
         Points: 0
-        TotalWins: 0
-        TotalLosts: 0
-        TotalDraws: 0
-        TotalGoals: 0
-        TotalGoalsAgainst: 0
-        TotalShots: 0
-        TotalHeaders: 0
-        TotalSteals: 0
-        TotalPasses: 0
-        TotalLongPasses: 0
-        TotalPassesMissed: 0
-        TotalBoxCrosses: 0
-        TotalFaults: 0
-        TotalOffsides: 0
-        TotalCornerKicks: 0
-        TotalCounterAttacks: 0
+        Wins: 0
+        Losts: 0
+        Draws: 0
+        Goals: 0
+        GoalsAgainst: 0
+        GoalsByHeader: 0
+        Shots: 0
+        Headers: 0
+        Steals: 0
+        Passes: 0
+        Crosses: 0
+        LongPasses: 0
+        PassesMissed: 0
+        CrossesMissed: 0
+        ShotsMissed: 0
+        HeadersMissed: 0
+        BoxCrosses: 0
+        Faults: 0
+        Offsides: 0
+        CornerKicks: 0
+        CounterAttacks: 0
       TournamentStatistics:
         reorderableList:
           canAdd: 0
@@ -177,22 +192,27 @@ MonoBehaviour:
       IsPlaceholder: 0
     Statistics:
       Points: 3
-      TotalWins: 1
-      TotalLosts: 0
-      TotalDraws: 0
-      TotalGoals: 1
-      TotalGoalsAgainst: 0
-      TotalShots: 5
-      TotalHeaders: 0
-      TotalSteals: 1
-      TotalPasses: 14
-      TotalLongPasses: 4
-      TotalPassesMissed: 1
-      TotalBoxCrosses: 1
-      TotalFaults: 5
-      TotalOffsides: 1
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 0
+      Wins: 0
+      Losts: 0
+      Draws: 0
+      Goals: 0
+      GoalsAgainst: 0
+      GoalsByHeader: 0
+      Shots: 0
+      Headers: 0
+      Steals: 0
+      Passes: 0
+      Crosses: 0
+      LongPasses: 0
+      PassesMissed: 0
+      CrossesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
+      BoxCrosses: 0
+      Faults: 0
+      Offsides: 0
+      CornerKicks: 0
+      CounterAttacks: 0
     Scorers:
     - {fileID: 11400000, guid: 580b0e010bda1d844900cacd5b2d55d1, type: 2}
     YellowCards: []

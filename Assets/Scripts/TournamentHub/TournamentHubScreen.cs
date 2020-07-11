@@ -65,7 +65,9 @@ public class TournamentHubScreen : BaseScreen
     {
         MainController.Instance.CurrentMatch = nextMatchData;
         MainController.Instance.Match.Populate(nextMatchData);
+	    //MainController.Instance.Screens.MatchVisual.Populate(nextMatchData);
         MainController.Instance.Screens.ShowScreen(ScreenType.Match);
+	    //MainController.Instance.Screens.ShowScreen(ScreenType.MatchVisual);
     }
 
     public void ResetTournament()

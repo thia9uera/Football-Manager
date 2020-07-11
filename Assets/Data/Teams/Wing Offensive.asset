@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: WNG
     PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
     SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-    Formation: 0
+    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
     Strategy: 4
     SquadIds:
     - d9afc9d4-eb66-4fcf-9c15-d8feefdf4dd2
@@ -38,22 +38,27 @@ MonoBehaviour:
     - f70e5359-29f1-4ea0-8e9c-e72012379343
     LifeTimeStats:
       Points: 0
-      TotalWins: 0
-      TotalLosts: 0
-      TotalDraws: 0
-      TotalGoals: 0
-      TotalGoalsAgainst: 0
-      TotalShots: 0
-      TotalHeaders: 0
-      TotalSteals: 0
-      TotalPasses: 0
-      TotalLongPasses: 0
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 0
-      TotalFaults: 0
-      TotalOffsides: 0
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 0
+      Wins: 0
+      Losts: 0
+      Draws: 0
+      Goals: 0
+      GoalsAgainst: 0
+      GoalsByHeader: 0
+      Shots: 0
+      Headers: 0
+      Steals: 0
+      Passes: 0
+      Crosses: 0
+      LongPasses: 0
+      PassesMissed: 0
+      CrossesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
+      BoxCrosses: 0
+      Faults: 0
+      Offsides: 0
+      CornerKicks: 0
+      CounterAttacks: 0
     TournamentStatistics:
       reorderableList:
         canAdd: 0
@@ -102,22 +107,27 @@ MonoBehaviour:
   Stars: 0
   MatchStats:
     Points: 0
-    TotalWins: 0
-    TotalLosts: 0
-    TotalDraws: 0
-    TotalGoals: 0
-    TotalGoalsAgainst: 0
-    TotalShots: 0
-    TotalHeaders: 0
-    TotalSteals: 0
-    TotalPasses: 0
-    TotalLongPasses: 0
-    TotalPassesMissed: 0
-    TotalBoxCrosses: 0
-    TotalFaults: 0
-    TotalOffsides: 0
-    TotalCornerKicks: 0
-    TotalCounterAttacks: 0
+    Wins: 0
+    Losts: 0
+    Draws: 0
+    Goals: 0
+    GoalsAgainst: 0
+    GoalsByHeader: 0
+    Shots: 0
+    Headers: 0
+    Steals: 0
+    Passes: 0
+    Crosses: 0
+    LongPasses: 0
+    PassesMissed: 0
+    CrossesMissed: 0
+    ShotsMissed: 0
+    HeadersMissed: 0
+    BoxCrosses: 0
+    Faults: 0
+    Offsides: 0
+    CornerKicks: 0
+    CounterAttacks: 0
   MatchData:
     TeamAttributes:
       Id: 649f7ea6-0487-4b02-b0a9-63dd6795531f
@@ -125,28 +135,33 @@ MonoBehaviour:
       Tag: WNG
       PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
       SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-      Formation: 0
+      Formation: {fileID: 0}
       Strategy: 4
       SquadIds: []
       SubstitutesIds: []
       LifeTimeStats:
         Points: 0
-        TotalWins: 0
-        TotalLosts: 0
-        TotalDraws: 0
-        TotalGoals: 0
-        TotalGoalsAgainst: 0
-        TotalShots: 0
-        TotalHeaders: 0
-        TotalSteals: 0
-        TotalPasses: 0
-        TotalLongPasses: 0
-        TotalPassesMissed: 0
-        TotalBoxCrosses: 0
-        TotalFaults: 0
-        TotalOffsides: 0
-        TotalCornerKicks: 0
-        TotalCounterAttacks: 0
+        Wins: 0
+        Losts: 0
+        Draws: 0
+        Goals: 0
+        GoalsAgainst: 0
+        GoalsByHeader: 0
+        Shots: 0
+        Headers: 0
+        Steals: 0
+        Passes: 0
+        Crosses: 0
+        LongPasses: 0
+        PassesMissed: 0
+        CrossesMissed: 0
+        ShotsMissed: 0
+        HeadersMissed: 0
+        BoxCrosses: 0
+        Faults: 0
+        Offsides: 0
+        CornerKicks: 0
+        CounterAttacks: 0
       TournamentStatistics:
         reorderableList:
           canAdd: 0
@@ -175,42 +190,52 @@ MonoBehaviour:
         - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
         _values:
         - Points: 0
-          TotalWins: 0
-          TotalLosts: 0
-          TotalDraws: 0
-          TotalGoals: 0
-          TotalGoalsAgainst: 0
-          TotalShots: 0
-          TotalHeaders: 0
-          TotalSteals: 0
-          TotalPasses: 0
-          TotalLongPasses: 0
-          TotalPassesMissed: 0
-          TotalBoxCrosses: 0
-          TotalFaults: 0
-          TotalOffsides: 0
-          TotalCornerKicks: 0
-          TotalCounterAttacks: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
       IsUserControlled: 0
       IsPlaceholder: 0
     Statistics:
       Points: 3
-      TotalWins: 1
-      TotalLosts: 0
-      TotalDraws: 0
-      TotalGoals: 9
-      TotalGoalsAgainst: 0
-      TotalShots: 6
-      TotalHeaders: 3
-      TotalSteals: 3
-      TotalPasses: 15
-      TotalLongPasses: 4
-      TotalPassesMissed: 0
-      TotalBoxCrosses: 5
-      TotalFaults: 4
-      TotalOffsides: 2
-      TotalCornerKicks: 0
-      TotalCounterAttacks: 2
+      Wins: 0
+      Losts: 0
+      Draws: 0
+      Goals: 0
+      GoalsAgainst: 0
+      GoalsByHeader: 0
+      Shots: 0
+      Headers: 0
+      Steals: 0
+      Passes: 0
+      Crosses: 0
+      LongPasses: 0
+      PassesMissed: 0
+      CrossesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
+      BoxCrosses: 0
+      Faults: 0
+      Offsides: 0
+      CornerKicks: 0
+      CounterAttacks: 0
     Scorers:
     - {fileID: 11400000, guid: a17f465920205ce4f80b301a828149d0, type: 2}
     - {fileID: 11400000, guid: bbba02dccdfe5394f93c4c696ca8d0de, type: 2}

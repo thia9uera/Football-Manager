@@ -5,7 +5,7 @@ using UnityEngine;
 public class SquadEditField : MonoBehaviour
 {
     [SerializeField]
-    private SquadEditZone[] zones;
+    private FieldZone[] zones;
 
     [SerializeField]
     private PrimitiveCanvas lines;
@@ -55,10 +55,10 @@ public class SquadEditField : MonoBehaviour
         UpdateConnections();
     }
 
-    private SquadEditZone GetZone(Field.Zone _zone)
+    private FieldZone GetZone(Field.Zone _zone)
     {
-        SquadEditZone zone = null;
-        foreach(SquadEditZone z in zones)
+        FieldZone zone = null;
+        foreach(FieldZone z in zones)
         {
             if (z.Zone == _zone) zone = z;
         }
@@ -91,7 +91,7 @@ public class SquadEditField : MonoBehaviour
     {
         RectTransform rect = null;
 
-        foreach (SquadEditZone zone in zones)
+        foreach (FieldZone zone in zones)
         {
             if (zone.Zone == _zone) rect = zone.Rect;
         }

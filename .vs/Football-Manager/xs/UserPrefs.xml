@@ -1,12 +1,14 @@
 ﻿<Properties StartupConfiguration="{2434C05D-4227-1AC0-6B68-F95A09151076}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Data/Teams/TeamData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Match/MatchVisual.cs">
     <Files>
-      <File FileName="Assets/Scripts/Squad/SquadEdit.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Squad/SquadEditPlayer.cs" Line="150" Column="9" />
-      <File FileName="Assets/Scripts/Controllers/DataController.cs" Line="195" Column="65" />
-      <File FileName="Assets/Scripts/Data/Teams/TeamAttributes.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Loading/LoadingScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Data/Teams/TeamData.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Match/MatchVisual.cs" Line="55" Column="23" />
+      <File FileName="Assets/Scripts/Match/MatchPlayer.cs" Line="28" Column="32" />
+      <File FileName="Assets/Scripts/TournamentHub/TournamentHubScreen.cs" Line="68" Column="77" />
+      <File FileName="Assets/Scripts/Controllers/MainController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/MatchController.cs" Line="1464" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/Field.cs" Line="27" Column="1" />
+      <File FileName="Assets/Scripts/Squad/FieldZone.cs" Line="11" Column="56" />
+      <File FileName="Assets/Scripts/Match/MatchZonesContainer.cs" Line="13" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,13 +18,11 @@
               <Node name="Data" expanded="True" />
               <Node name="Scripts" expanded="True">
                 <Node name="Controllers" expanded="True" />
-                <Node name="Data" expanded="True">
-                  <Node name="Teams" expanded="True">
-                    <Node name="TeamData.cs" selected="True" />
-                  </Node>
+                <Node name="Match" expanded="True">
+                  <Node name="MatchVisual.cs" selected="True" />
                 </Node>
-                <Node name="Loading" expanded="True" />
                 <Node name="Squad" expanded="True" />
+                <Node name="TournamentHub" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -32,7 +32,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d95de848-a7cf-494a-a349-4027a3a5f0db" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8710e984-6a28-4413-9789-35ea51823056" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

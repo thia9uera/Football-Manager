@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MatchController : MonoBehaviour
 {
@@ -346,10 +347,16 @@ public class MatchController : MonoBehaviour
             }
             else
             {
-                isSimulatingMatch = false;
-                MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
+                Sequence seq = DOTween.Sequence();
+                seq.AppendInterval(1f).AppendCallback(ExitSimulation);              
             }
         }
+    }
+
+    private void ExitSimulation()
+    {
+        isSimulatingMatch = false;
+        MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.TournamentHub);
     }
 
     #region MATCH EVENTS

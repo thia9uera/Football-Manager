@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: GRT1
     PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
     SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-    Formation: 0
+    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
     Strategy: 0
     SquadIds:
     - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
@@ -43,12 +43,17 @@ MonoBehaviour:
       Draws: 0
       Goals: 0
       GoalsAgainst: 0
+      GoalsByHeader: 0
       Shots: 0
       Headers: 0
       Steals: 0
       Passes: 0
+      Crosses: 0
       LongPasses: 0
       PassesMissed: 0
+      CrossesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
       BoxCrosses: 0
       Faults: 0
       Offsides: 0
@@ -88,12 +93,17 @@ MonoBehaviour:
         Draws: 0
         Goals: 0
         GoalsAgainst: 0
+        GoalsByHeader: 0
         Shots: 0
         Headers: 0
         Steals: 0
         Passes: 0
+        Crosses: 0
         LongPasses: 0
         PassesMissed: 0
+        CrossesMissed: 0
+        ShotsMissed: 0
+        HeadersMissed: 0
         BoxCrosses: 0
         Faults: 0
         Offsides: 0
@@ -126,12 +136,17 @@ MonoBehaviour:
     Draws: 0
     Goals: 0
     GoalsAgainst: 0
+    GoalsByHeader: 0
     Shots: 0
     Headers: 0
     Steals: 0
     Passes: 0
+    Crosses: 0
     LongPasses: 0
     PassesMissed: 0
+    CrossesMissed: 0
+    ShotsMissed: 0
+    HeadersMissed: 0
     BoxCrosses: 0
     Faults: 0
     Offsides: 0
@@ -144,7 +159,7 @@ MonoBehaviour:
       Tag: 
       PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
       SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-      Formation: 0
+      Formation: {fileID: 0}
       Strategy: 0
       SquadIds: []
       SubstitutesIds: []
@@ -155,12 +170,17 @@ MonoBehaviour:
         Draws: 0
         Goals: 0
         GoalsAgainst: 0
+        GoalsByHeader: 0
         Shots: 0
         Headers: 0
         Steals: 0
         Passes: 0
+        Crosses: 0
         LongPasses: 0
         PassesMissed: 0
+        CrossesMissed: 0
+        ShotsMissed: 0
+        HeadersMissed: 0
         BoxCrosses: 0
         Faults: 0
         Offsides: 0
@@ -201,12 +221,17 @@ MonoBehaviour:
       Draws: 0
       Goals: 0
       GoalsAgainst: 0
+      GoalsByHeader: 0
       Shots: 0
       Headers: 0
       Steals: 0
       Passes: 0
+      Crosses: 0
       LongPasses: 0
       PassesMissed: 0
+      CrossesMissed: 0
+      ShotsMissed: 0
+      HeadersMissed: 0
       BoxCrosses: 0
       Faults: 0
       Offsides: 0
