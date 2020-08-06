@@ -17,10 +17,10 @@ public class MatchSpeedSlider : MonoBehaviour
     public void OnSliderUpdate()
     {
         label.text = slider.value + "x";
-        controller.MatchSpeed = (int)slider.value;
+	    controller.MatchSpeed = (uint)slider.value;
     }
 
-    public void UpdateSlider(int _speed)
+	public void UpdateSlider(uint _speed)
     {
         label.text = _speed + "x";
         slider.value = _speed;

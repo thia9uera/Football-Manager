@@ -4,14 +4,9 @@ using UnityEngine.UI;
 
 public class MatchScreen : BaseScreen
 {
-    [SerializeField]
-    GameObject main;
-
-    [SerializeField]
-    TextMeshProUGUI version;
-
-    [SerializeField]
-    MatchStartButton startButton;
+	[SerializeField] private GameObject main;
+	[SerializeField] private TextMeshProUGUI version;
+	[SerializeField] private MatchStartButton startButton;
 
     public MatchSimulationScreen Simulation;
 
@@ -22,10 +17,10 @@ public class MatchScreen : BaseScreen
     public MatchNarration Narration;
     public MatchSpeedSlider SpeedSlider;
 
-    MatchController controller;
+	private MatchController controller;
 
-    private void Awake()
-    {
+	private void Start()
+	{
         controller = GetComponent<MatchController>();
     }
 
@@ -38,7 +33,7 @@ public class MatchScreen : BaseScreen
     public void ShowMain(bool _show)
     {
         main.SetActive(_show);
-        Simulation.gameObject.SetActive(!_show);
+	    Simulation.gameObject.SetActive(!_show);      		
     }
 
     private void Update()
@@ -54,8 +49,8 @@ public class MatchScreen : BaseScreen
 
     public void EditSquad()
     {
-        MainController.Instance.Screens.EditSQuad.Team = controller.GetUserTeam();
-        MainController.Instance.Screens.ShowScreen(ScreenType.EditSquad);
+	   ScreenController.Instance.EditSquad.Team = controller.GetUserTeam();
+       ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
     }
 
     public void Reset()

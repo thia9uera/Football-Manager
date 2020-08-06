@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class DataController : MonoBehaviour
 {
+	public static DataController Instance;
     string saveFolder;
     string userFolder;
 
@@ -22,18 +24,24 @@ public class DataController : MonoBehaviour
     bool isLoadingTeams;
     bool isLoadingTournaments;
 
-    string extension = ".auxter";
+	string extension = ".auxter";
+    
+	private void Awake()
+	{
+		if(Instance == null) Instance = this;
+	}
 
     private void Start()
     {
         saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
     }
 
-    public void CreateUserData(string _name)
+	public void CreateUserData(string _coachName, string _teamName)
     {
         UserData userData = new UserData
         {
-            Name = _name,
+	        Name = _coachName,
+	        TeamName = _teamName,
             Id = System.Guid.NewGuid().ToString()
         };
         MainController.Instance.User = userData;
@@ -54,46 +62,58 @@ public class DataController : MonoBehaviour
 
     #region SAVE
     public void SaveGame(bool _loadAfter = false)
-    {
-        SaveUser();
-        SavePlayers();
-        SaveTeams();
-        SaveTournaments();
-       
-        if(_loadAfter) LoadGame(MainController.Instance.User.Id);
-        else print("GAME SAVED");
+	{
+		MainController.Instance.User.LastTimeSaved = System.DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm");
+    	
+		StartCoroutine("SaveFlow", _loadAfter);
+	}
+    
+	private IEnumerator SaveFlow(bool _loadAfter)
+	{
+		yield return StartCoroutine("SaveUser");
+		yield return StartCoroutine("SavePlayers");
+		yield return StartCoroutine("SaveTeams");
+		yield return StartCoroutine("SaveTournaments");
+		
+		       
+		if(_loadAfter) LoadGame(MainController.Instance.User.Id);
+		else print("GAME SAVED");
 
-        print(saveFolder);
-    }
+		print(saveFolder);
+	}
 
-    public void SaveUser()
+	private IEnumerator SaveUser()
     {
         UserData user = MainController.Instance.User;
-        SaveData(user, "UserData");
+	    SaveData(user, "UserData");
+	    yield return false;
     }
 
-    public void SavePlayers()
+    private IEnumerator SavePlayers()
     {
         foreach (PlayerData player in MainController.Instance.AllPlayers)
         {
             SaveData(player.Attributes, player.Id, "Players");
         }
+	    yield return false;
     }
 
-    public void SaveTeams()
+    private IEnumerator SaveTeams()
     {
         foreach (TeamData team in MainController.Instance.AllTeams)
         {
             SaveData(team.Attributes, team.Id, "Teams");
         }
+	    yield return false;
     }
 
-    public void SaveTournaments()
+    private IEnumerator SaveTournaments()
     {
         foreach (TournamentData tournament in MainController.Instance.AllTournaments)
         {
             SaveData(tournament.Attributes, tournament.Id, "Tournaments");
         }
+	    yield return false;
     }
     #endregion
 
@@ -102,18 +122,26 @@ public class DataController : MonoBehaviour
     {
         isLoadingGame = true;
         userFolder = CombinePaths(saveFolder, _user);
-        LoadUser();
-        LoadPlayers();
-        //LoadTeams();
-        //LoadTournaments();
+	    StartCoroutine("LoadFlow");
     }
+    
+	private IEnumerator LoadFlow()
+	{
+		yield return StartCoroutine("LoadUser");
+		yield return StartCoroutine("LoadPlayers");
+		yield return StartCoroutine("LoadTeams");
+		yield return StartCoroutine("LoadTournaments");
+		
+		ScreenController.Instance.ShowScreen(ScreenType.Manager);
+	}
 
-    public void LoadUser()
+	public IEnumerator LoadUser()
     {
-        MainController.Instance.User = LoadData<UserData>("UserData");
+	    MainController.Instance.User = LoadData<UserData>("UserData");
+	    yield return null;
     }
 
-    public void LoadPlayers()
+	private IEnumerator LoadPlayers()
     {
         MainController.Instance.AllPlayers = new List<PlayerData>();
         isLoadingPlayers = true;
@@ -128,9 +156,10 @@ public class DataController : MonoBehaviour
             MainController.Instance.AllPlayers.Add(player);
             playersLoaded++;
         }
+	    yield return null;
     }
 
-    public void LoadTeams()
+	private IEnumerator LoadTeams()
     {
         MainController.Instance.AllTeams = new List<TeamData>();
         isLoadingTeams = true;
@@ -147,9 +176,10 @@ public class DataController : MonoBehaviour
             MainController.Instance.AllTeams.Add(team);
             teamsLoaded++;
         }
+	    yield return null;
     }
 
-    public void LoadTournaments()
+	private IEnumerator LoadTournaments()
     {
         MainController.Instance.AllTournaments = new List<TournamentData>();
         isLoadingTournaments = true;
@@ -164,9 +194,10 @@ public class DataController : MonoBehaviour
             MainController.Instance.AllTournaments.Add(tournament);
             tournamentsLoaded++;
         }
+	    yield return null;
     }
 
-    public UserData[] GetSaveFiles()
+	public UserData[] GetSaveFiles()
     {
         if (saveFolder == null) saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
         List<UserData> datas = new List<UserData>();
@@ -259,13 +290,13 @@ public class DataController : MonoBehaviour
         return file;
     }
 
-    static string RemoveSpaces(string _str)
+	private static string RemoveSpaces(string _str)
     {
         string str = _str.Replace(" ", "_");
         return str;
     }
 
-    static string CombinePaths(string str_1, string str_2)
+	private static string CombinePaths(string str_1, string str_2)
     {
         string str = "";
 
@@ -280,12 +311,36 @@ public class DataController : MonoBehaviour
     {
         Directory.Delete(saveFolder, true);
     }
+    
+	public void DeleteSavedData(string _fileName)
+	{
+		string path = CombinePaths(saveFolder, _fileName);
+		DeleteDirectory(path);
+	}
+	
+	public static void DeleteDirectory(string target_dir)
+	{
+		string[] files = Directory.GetFiles(target_dir);
+		string[] dirs = Directory.GetDirectories(target_dir);
+
+		foreach (string file in files)
+		{
+			File.SetAttributes(file, FileAttributes.Normal);
+			File.Delete(file);
+		}
+
+		foreach (string dir in dirs)
+		{
+			DeleteDirectory(dir);
+		}
+
+		Directory.Delete(target_dir, false);
+	}
 
     void FinishLoadingGame()
     {
         isLoadingGame = false;
-        MainController.Instance.Screens.ShowScreen(BaseScreen.ScreenType.MainMenu);
-        print("Finished Loading Game");
+        ScreenController.Instance.ShowScreen(ScreenType.MainMenu);
     }
 
     void Update()
@@ -293,23 +348,5 @@ public class DataController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
             SaveGame();
 
-        if(isLoadingGame)
-        {
-            if(isLoadingTournaments)
-            {
-                print("Tournaments loaded: " + tournamentsLoaded + "/" + totalTournaments);
-                if (tournamentsLoaded == totalTournaments) FinishLoadingGame();
-            }
-            else if(isLoadingTeams)
-            {
-                print("Teams loaded: " + teamsLoaded + "/" + totalTeams);
-                if (teamsLoaded == totalTeams) LoadTournaments();
-            }
-            else if (isLoadingPlayers)
-            {
-                print("Players loaded: " + playersLoaded + "/" + totalPlayers);
-                if (playersLoaded == totalPlayers) LoadTeams();
-            }
-        }
     }
 }

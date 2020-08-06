@@ -1,0 +1,1702 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b1852fbe99fd147a39cee00603b1e5, type: 3}
+  m_Name: Short One
+  m_EditorClassIdentifier: 
+  Attributes:
+    Id: dd5182c9-ee68-40a9-be08-a33947c0daef
+    Name: Short One
+    Type: 0
+    StarsRequired: 0
+    TeamIds:
+    - 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+    - 04382309-bf84-4cd2-b662-c14fc0fae78c
+    - 4c94caea-b95a-4d04-a7be-0a2b2d0521c0
+    - 5f1151e7-3325-4565-bb2e-6e3d736ec6a1
+    Matches:
+    - HomeTeam:
+        TeamAttributes:
+          Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+          Name: Cadena Rivers
+          Tag: CAR
+          PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
+          SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 5
+          SquadIds:
+          - d39d5566-b548-4f99-8c03-7f1f858f2dfe
+          - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+          - d602daf3-09ad-49e4-a928-fc53bbc23cf3
+          - 86b26191-3901-4d08-8be1-846a9dd77b41
+          - 3ed54838-1b27-4421-b98f-dac73a6578fc
+          - 9dc3c417-b197-43f2-af84-7c28af83ca34
+          - db639446-ff90-4253-8da2-998d4a27e231
+          - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
+          - 4c57c1a6-f14e-41b0-9842-2502667eeab4
+          - 208149e6-bad1-4f23-be7c-99a6aa317f32
+          - b8bdf88e-f30d-4993-a567-bfb085f270fb
+          SubstitutesIds:
+          - c8f220fd-69de-4b3f-a996-f0c41b005c6d
+          - 7817cfcd-0833-4811-b2df-8711a90e184c
+          - 6a800c4b-5745-4c3c-910d-f93cd2395505
+          - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+          - 10c9d827-60d9-4569-af79-ccf910bb3909
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues:
+            - 
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _keys:
+            - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _values:
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+          IsUserControlled: 1
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: 5f1151e7-3325-4565-bb2e-6e3d736ec6a1
+          Name: Pe-de-Gancho United
+          Tag: BAD3
+          PrimaryColor: {r: 0.21176472, g: 0.74036276, b: 0.9137255, a: 1}
+          SecondaryColor: {r: 1, g: 0.98985946, b: 0.25, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 3
+          SquadIds:
+          - f0183fb2-9c03-4fc2-8854-1f0c2f5ef0e1
+          - 33eec6b9-ff9d-4fff-b110-5a43be8dcd91
+          - c5b7dbcd-4e90-4d7d-ba24-390ff5b5bbca
+          - 7469de80-2885-4dab-ab96-a281c73da1e7
+          - f9955ba9-876d-4e3a-a904-7f3863e1bd30
+          - 923a3041-468d-4b65-a4f0-b8a28263dbcd
+          - fe5cab7a-3bc6-4fa9-9f9a-9d8c7e8cdce1
+          - be991d13-578a-4ad4-b9c9-9c10c374e4fc
+          - e6277026-ea82-44af-9062-50472fb8725f
+          - e31440a7-fc5b-48a7-9444-d41db8579885
+          - c6426605-014a-49f6-8363-cabddc20465e
+          SubstitutesIds:
+          - 55e4c64a-c94c-4ace-a106-7095f35c1ba2
+          - c0b6a4cf-84b7-4e53-baf3-cb95f4828b5b
+          - f72013f6-ae2f-4810-a785-fb3cca21db05
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 0
+    - HomeTeam:
+        TeamAttributes:
+          Id: 04382309-bf84-4cd2-b662-c14fc0fae78c
+          Name: Supimpa FC
+          Tag: GRT1
+          PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 0
+          SquadIds:
+          - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+          - c11fdd1d-0bef-4cef-871c-990ce854da15
+          - 00428931-4cf4-42e5-b230-652cad4e22e3
+          - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+          - a07cd4cf-b486-405b-8373-328d804ea658
+          - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+          - d8cd582a-9aa4-429f-8750-57558a836863
+          - e086cad7-543a-4165-a316-ad08e63dcc38
+          - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+          - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+          - 03b5b089-876a-4583-8d31-052cc0481f15
+          SubstitutesIds:
+          - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+          - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+          - 6f721830-d655-4977-9df5-ece89b644acf
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues:
+            - 
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _keys:
+            - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _values:
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: 4c94caea-b95a-4d04-a7be-0a2b2d0521c0
+          Name: Reguloides
+          Tag: REG4
+          PrimaryColor: {r: 0.5996464, g: 0.21960784, b: 0.8784314, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 0
+          SquadIds:
+          - 2d151d7f-ba94-4cba-8dda-f0e6e92db209
+          - eb50b54e-d920-4ced-bc80-fa012be7d3f4
+          - 64db8a48-b99e-4eec-9b5d-05171bee4978
+          - 77087c31-a205-40ab-b510-95a18a03af7a
+          - 4c0983cf-6a68-406d-9c28-d690c3cfa94f
+          - 6fdae505-3a04-4321-bf3d-b542cd107da6
+          - 6a24930c-25c5-49ea-8340-0277222786ff
+          - 67f509f9-1929-409b-8597-68c0b49e0771
+          - 2eb81837-91ed-46ca-b818-a4148b8f9464
+          - 0c35ce6f-d929-49fb-901e-09b7c1297888
+          - 032eb5a4-6a82-43ab-afa9-667a8508a9ba
+          SubstitutesIds:
+          - 582960ad-5a3a-4074-8b92-261b9a6b7694
+          - d0b0f8c9-cb12-4f91-bcee-b51714ef934c
+          - 002d3bd8-4229-4988-ab28-f84da43e9f00
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 0
+    - HomeTeam:
+        TeamAttributes:
+          Id: 4c94caea-b95a-4d04-a7be-0a2b2d0521c0
+          Name: Reguloides
+          Tag: REG4
+          PrimaryColor: {r: 0.5996464, g: 0.21960784, b: 0.8784314, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 0
+          SquadIds:
+          - 2d151d7f-ba94-4cba-8dda-f0e6e92db209
+          - eb50b54e-d920-4ced-bc80-fa012be7d3f4
+          - 64db8a48-b99e-4eec-9b5d-05171bee4978
+          - 77087c31-a205-40ab-b510-95a18a03af7a
+          - 4c0983cf-6a68-406d-9c28-d690c3cfa94f
+          - 6fdae505-3a04-4321-bf3d-b542cd107da6
+          - 6a24930c-25c5-49ea-8340-0277222786ff
+          - 67f509f9-1929-409b-8597-68c0b49e0771
+          - 2eb81837-91ed-46ca-b818-a4148b8f9464
+          - 0c35ce6f-d929-49fb-901e-09b7c1297888
+          - 032eb5a4-6a82-43ab-afa9-667a8508a9ba
+          SubstitutesIds:
+          - 582960ad-5a3a-4074-8b92-261b9a6b7694
+          - d0b0f8c9-cb12-4f91-bcee-b51714ef934c
+          - 002d3bd8-4229-4988-ab28-f84da43e9f00
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+          Name: Cadena Rivers
+          Tag: CAR
+          PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
+          SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 5
+          SquadIds:
+          - d39d5566-b548-4f99-8c03-7f1f858f2dfe
+          - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+          - d602daf3-09ad-49e4-a928-fc53bbc23cf3
+          - 86b26191-3901-4d08-8be1-846a9dd77b41
+          - 3ed54838-1b27-4421-b98f-dac73a6578fc
+          - 9dc3c417-b197-43f2-af84-7c28af83ca34
+          - db639446-ff90-4253-8da2-998d4a27e231
+          - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
+          - 4c57c1a6-f14e-41b0-9842-2502667eeab4
+          - 208149e6-bad1-4f23-be7c-99a6aa317f32
+          - b8bdf88e-f30d-4993-a567-bfb085f270fb
+          SubstitutesIds:
+          - c8f220fd-69de-4b3f-a996-f0c41b005c6d
+          - 7817cfcd-0833-4811-b2df-8711a90e184c
+          - 6a800c4b-5745-4c3c-910d-f93cd2395505
+          - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+          - 10c9d827-60d9-4569-af79-ccf910bb3909
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues:
+            - 
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _keys:
+            - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _values:
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+          IsUserControlled: 1
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 1
+    - HomeTeam:
+        TeamAttributes:
+          Id: 04382309-bf84-4cd2-b662-c14fc0fae78c
+          Name: Supimpa FC
+          Tag: GRT1
+          PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 0
+          SquadIds:
+          - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+          - c11fdd1d-0bef-4cef-871c-990ce854da15
+          - 00428931-4cf4-42e5-b230-652cad4e22e3
+          - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+          - a07cd4cf-b486-405b-8373-328d804ea658
+          - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+          - d8cd582a-9aa4-429f-8750-57558a836863
+          - e086cad7-543a-4165-a316-ad08e63dcc38
+          - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+          - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+          - 03b5b089-876a-4583-8d31-052cc0481f15
+          SubstitutesIds:
+          - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+          - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+          - 6f721830-d655-4977-9df5-ece89b644acf
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues:
+            - 
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _keys:
+            - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _values:
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: 5f1151e7-3325-4565-bb2e-6e3d736ec6a1
+          Name: Pe-de-Gancho United
+          Tag: BAD3
+          PrimaryColor: {r: 0.21176472, g: 0.74036276, b: 0.9137255, a: 1}
+          SecondaryColor: {r: 1, g: 0.98985946, b: 0.25, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 3
+          SquadIds:
+          - f0183fb2-9c03-4fc2-8854-1f0c2f5ef0e1
+          - 33eec6b9-ff9d-4fff-b110-5a43be8dcd91
+          - c5b7dbcd-4e90-4d7d-ba24-390ff5b5bbca
+          - 7469de80-2885-4dab-ab96-a281c73da1e7
+          - f9955ba9-876d-4e3a-a904-7f3863e1bd30
+          - 923a3041-468d-4b65-a4f0-b8a28263dbcd
+          - fe5cab7a-3bc6-4fa9-9f9a-9d8c7e8cdce1
+          - be991d13-578a-4ad4-b9c9-9c10c374e4fc
+          - e6277026-ea82-44af-9062-50472fb8725f
+          - e31440a7-fc5b-48a7-9444-d41db8579885
+          - c6426605-014a-49f6-8363-cabddc20465e
+          SubstitutesIds:
+          - 55e4c64a-c94c-4ace-a106-7095f35c1ba2
+          - c0b6a4cf-84b7-4e53-baf3-cb95f4828b5b
+          - f72013f6-ae2f-4810-a785-fb3cca21db05
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 1
+    - HomeTeam:
+        TeamAttributes:
+          Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+          Name: Cadena Rivers
+          Tag: CAR
+          PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
+          SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 5
+          SquadIds:
+          - d39d5566-b548-4f99-8c03-7f1f858f2dfe
+          - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
+          - d602daf3-09ad-49e4-a928-fc53bbc23cf3
+          - 86b26191-3901-4d08-8be1-846a9dd77b41
+          - 3ed54838-1b27-4421-b98f-dac73a6578fc
+          - 9dc3c417-b197-43f2-af84-7c28af83ca34
+          - db639446-ff90-4253-8da2-998d4a27e231
+          - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
+          - 4c57c1a6-f14e-41b0-9842-2502667eeab4
+          - 208149e6-bad1-4f23-be7c-99a6aa317f32
+          - b8bdf88e-f30d-4993-a567-bfb085f270fb
+          SubstitutesIds:
+          - c8f220fd-69de-4b3f-a996-f0c41b005c6d
+          - 7817cfcd-0833-4811-b2df-8711a90e184c
+          - 6a800c4b-5745-4c3c-910d-f93cd2395505
+          - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
+          - 10c9d827-60d9-4569-af79-ccf910bb3909
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues:
+            - 
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _keys:
+            - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _values:
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+          IsUserControlled: 1
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: 04382309-bf84-4cd2-b662-c14fc0fae78c
+          Name: Supimpa FC
+          Tag: GRT1
+          PrimaryColor: {r: 0.9137255, g: 0.21176472, b: 0.2187808, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 0
+          SquadIds:
+          - fa6507a1-5a6f-4fca-8a5b-dd5d07214a48
+          - c11fdd1d-0bef-4cef-871c-990ce854da15
+          - 00428931-4cf4-42e5-b230-652cad4e22e3
+          - 68de88f4-e714-46a5-a125-ef9a4ba61bb0
+          - a07cd4cf-b486-405b-8373-328d804ea658
+          - f245fe5f-1a4c-441c-8c49-4c6bc88de788
+          - d8cd582a-9aa4-429f-8750-57558a836863
+          - e086cad7-543a-4165-a316-ad08e63dcc38
+          - 6ce4e322-86d5-43a6-a3a6-8c1285e50a50
+          - 0bb227b3-3843-4ad3-ba7c-917bb12c648d
+          - 03b5b089-876a-4583-8d31-052cc0481f15
+          SubstitutesIds:
+          - 0cb5bc2a-2f4c-4e8f-a4ee-7c0875b7abd9
+          - 7ae42a9b-f361-4a4c-9833-96d724288cc5
+          - 6f721830-d655-4977-9df5-ece89b644acf
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues:
+            - 
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _keys:
+            - 25e4dad0-15fc-432e-9fbb-934f73921ef2
+            - 13d36d7e-3efc-4299-84bd-afcc1a7139e2
+            - 650768db-55b2-4621-a0b4-841dcce037f2
+            _values:
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+            - Points: 0
+              Wins: 0
+              Losts: 0
+              Draws: 0
+              Goals: 0
+              GoalsAgainst: 0
+              GoalsByHeader: 0
+              Shots: 0
+              Headers: 0
+              Steals: 0
+              Passes: 0
+              Crosses: 0
+              LongPasses: 0
+              PassesMissed: 0
+              CrossesMissed: 0
+              ShotsMissed: 0
+              HeadersMissed: 0
+              BoxCrosses: 0
+              Faults: 0
+              Offsides: 0
+              CornerKicks: 0
+              CounterAttacks: 0
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 2
+    - HomeTeam:
+        TeamAttributes:
+          Id: 4c94caea-b95a-4d04-a7be-0a2b2d0521c0
+          Name: Reguloides
+          Tag: REG4
+          PrimaryColor: {r: 0.5996464, g: 0.21960784, b: 0.8784314, a: 1}
+          SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 0
+          SquadIds:
+          - 2d151d7f-ba94-4cba-8dda-f0e6e92db209
+          - eb50b54e-d920-4ced-bc80-fa012be7d3f4
+          - 64db8a48-b99e-4eec-9b5d-05171bee4978
+          - 77087c31-a205-40ab-b510-95a18a03af7a
+          - 4c0983cf-6a68-406d-9c28-d690c3cfa94f
+          - 6fdae505-3a04-4321-bf3d-b542cd107da6
+          - 6a24930c-25c5-49ea-8340-0277222786ff
+          - 67f509f9-1929-409b-8597-68c0b49e0771
+          - 2eb81837-91ed-46ca-b818-a4148b8f9464
+          - 0c35ce6f-d929-49fb-901e-09b7c1297888
+          - 032eb5a4-6a82-43ab-afa9-667a8508a9ba
+          SubstitutesIds:
+          - 582960ad-5a3a-4074-8b92-261b9a6b7694
+          - d0b0f8c9-cb12-4f91-bcee-b51714ef934c
+          - 002d3bd8-4229-4988-ab28-f84da43e9f00
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 0
+              canRemove: 0
+              draggable: 0
+              expandable: 0
+              multipleSelection: 0
+              isExpanded: 0
+              label:
+                m_Text: 
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 0
+              footerHeight: 0
+              slideEasing: 0
+              verticalSpacing: 0
+              showDefaultBackground: 0
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamAttributes:
+          Id: 5f1151e7-3325-4565-bb2e-6e3d736ec6a1
+          Name: Pe-de-Gancho United
+          Tag: BAD3
+          PrimaryColor: {r: 0.21176472, g: 0.74036276, b: 0.9137255, a: 1}
+          SecondaryColor: {r: 1, g: 0.98985946, b: 0.25, a: 1}
+          Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+          Strategy: 3
+          SquadIds:
+          - f0183fb2-9c03-4fc2-8854-1f0c2f5ef0e1
+          - 33eec6b9-ff9d-4fff-b110-5a43be8dcd91
+          - c5b7dbcd-4e90-4d7d-ba24-390ff5b5bbca
+          - 7469de80-2885-4dab-ab96-a281c73da1e7
+          - f9955ba9-876d-4e3a-a904-7f3863e1bd30
+          - 923a3041-468d-4b65-a4f0-b8a28263dbcd
+          - fe5cab7a-3bc6-4fa9-9f9a-9d8c7e8cdce1
+          - be991d13-578a-4ad4-b9c9-9c10c374e4fc
+          - e6277026-ea82-44af-9062-50472fb8725f
+          - e31440a7-fc5b-48a7-9444-d41db8579885
+          - c6426605-014a-49f6-8363-cabddc20465e
+          SubstitutesIds:
+          - 55e4c64a-c94c-4ace-a106-7095f35c1ba2
+          - c0b6a4cf-84b7-4e53-baf3-cb95f4828b5b
+          - f72013f6-ae2f-4810-a785-fb3cca21db05
+          LifeTimeStats:
+            Points: 0
+            Wins: 0
+            Losts: 0
+            Draws: 0
+            Goals: 0
+            GoalsAgainst: 0
+            GoalsByHeader: 0
+            Shots: 0
+            Headers: 0
+            Steals: 0
+            Passes: 0
+            Crosses: 0
+            LongPasses: 0
+            PassesMissed: 0
+            CrossesMissed: 0
+            ShotsMissed: 0
+            HeadersMissed: 0
+            BoxCrosses: 0
+            Faults: 0
+            Offsides: 0
+            CornerKicks: 0
+            CounterAttacks: 0
+          TournamentStatistics:
+            reorderableList:
+              canAdd: 1
+              canRemove: 1
+              draggable: 1
+              expandable: 1
+              multipleSelection: 1
+              isExpanded: 0
+              label:
+                m_Text: Keys
+                m_Image: {fileID: 0}
+                m_Tooltip: 
+              headerHeight: 18
+              footerHeight: 13
+              slideEasing: 0.15
+              verticalSpacing: 2
+              showDefaultBackground: 1
+              elementDisplayType: 0
+              elementNameProperty: 
+              elementNameOverride: 
+              elementIcon: {fileID: 0}
+            reqReferences: {fileID: 0}
+            isExpanded: 0
+            _keyValues: []
+            _keys: []
+            _values: []
+          IsUserControlled: 0
+          IsPlaceholder: 0
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 2
+    TotalRounds: 3
+    CurrentRound: 0
+  Teams: []

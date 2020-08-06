@@ -7,7 +7,7 @@ using TMPro;
 
 public class FormationZone : MonoBehaviour, IPointerClickHandler
 {
-    public Field.Zone Zone;
+    public Zone Zone;
 
     private TextMeshProUGUI label;
 

@@ -16,7 +16,7 @@ public class TeamData : ScriptableObject
     public Color SecondaryColor { get { return Attributes.SecondaryColor; } set { Attributes.SecondaryColor = value; } }
 
     public FormationData Formation { get { return Attributes.Formation; } set { Attributes.Formation = value; } }
-    public TeamAttributes.TeamStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
+    public TeamStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
 
     [Space(10)]
     [Header("Players")]
@@ -39,6 +39,8 @@ public class TeamData : ScriptableObject
 
     public bool IsPlaceholder { get { return Attributes.IsPlaceholder; } set { Attributes.IsPlaceholder = value; } }
 
+	public bool IsAwayTeam = false;
+
     private void Awake()
     {
         MatchStats = new TeamStatistics();
@@ -58,23 +60,23 @@ public class TeamData : ScriptableObject
 
     public Team_Strategy GetStrategy()
     {
-        return MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
+	    return GameData.Instance.TeamStrategies[(int)Strategy];
     }
 
     public void ResetStatistics(string _type, string _id = "")
     {
         switch (_type)
         {
-            case "Match":
+        	case "Match": MatchStats = new TeamStatistics(); break;
             case "LifeTime": LifeTimeStats = new TeamStatistics(); break;
             case "Tournament":
-                TournamentStatistics[_id] = new TeamStatistics();
+	            TournamentStatistics[_id] = new TeamStatistics();
                 foreach (PlayerData player in GetAllPlayers()) player.ResetStatistics("Tournament", _id);
                 break;
         }
     }
 
-    public void UpdateLifeTimeStats(bool _updateMatchData=false, bool _isHomeTeam=false)
+    public void UpdateLifeTimeStats(bool _updateMatchData = false, bool _isHomeTeam = false)
     {
         TeamStatistics data = MatchStats;
 
@@ -169,7 +171,7 @@ public class TeamData : ScriptableObject
         return players;
     }
 
-    public PlayerData GetTopPlayerByAttribute(PlayerData.AttributeType _attribute, PlayerData[] _players, bool _includeSubs = false)
+    public PlayerData GetTopPlayerByAttribute(AttributeType _attribute, PlayerData[] _players, bool _includeSubs = false)
     {
         PlayerData best = null;
         int higher = 0;
@@ -181,50 +183,50 @@ public class TeamData : ScriptableObject
         return best;
     }
 
-    public bool IsStrategyApplicable(Field.Zone _zone)
+    public bool IsStrategyApplicable(Zone _zone)
     {
         bool value = false;
-        Team_Strategy teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)Strategy];
+	    Team_Strategy teamStrategy = GameData.Instance.TeamStrategies[(int)Strategy];
 
         switch (_zone)
         {
-            case Field.Zone.OwnGoal: value = teamStrategy.OwnGoal; break;
-            case Field.Zone.BLD: value = teamStrategy.BLD; break;
-            case Field.Zone.BRD: value = teamStrategy.BRD; break;
+            case Zone.OwnGoal: value = teamStrategy.OwnGoal; break;
+            case Zone.BLD: value = teamStrategy.BLD; break;
+            case Zone.BRD: value = teamStrategy.BRD; break;
 
-            case Field.Zone.LD: value = teamStrategy.LD; break;
-            case Field.Zone.LCD: value = teamStrategy.LCD; break;
-            case Field.Zone.CD: value = teamStrategy.CD; break;
-            case Field.Zone.RCD: value = teamStrategy.RCD; break;
-            case Field.Zone.RD: value = teamStrategy.RD; break;
+            case Zone.LD: value = teamStrategy.LD; break;
+            case Zone.LCD: value = teamStrategy.LCD; break;
+            case Zone.CD: value = teamStrategy.CD; break;
+            case Zone.RCD: value = teamStrategy.RCD; break;
+            case Zone.RD: value = teamStrategy.RD; break;
 
-            case Field.Zone.LDM: value = teamStrategy.LDM; break;
-            case Field.Zone.LCDM: value = teamStrategy.LCDM; break;
-            case Field.Zone.CDM: value = teamStrategy.CDM; break;
-            case Field.Zone.RCDM: value = teamStrategy.RCDM; break;
-            case Field.Zone.RDM: value = teamStrategy.RDM; break;
+            case Zone.LDM: value = teamStrategy.LDM; break;
+            case Zone.LCDM: value = teamStrategy.LCDM; break;
+            case Zone.CDM: value = teamStrategy.CDM; break;
+            case Zone.RCDM: value = teamStrategy.RCDM; break;
+            case Zone.RDM: value = teamStrategy.RDM; break;
 
-            case Field.Zone.LM: value = teamStrategy.LM; break;
-            case Field.Zone.LCM: value = teamStrategy.LCM; break;
-            case Field.Zone.CM: value = teamStrategy.CM; break;
-            case Field.Zone.RCM: value = teamStrategy.RCM; break;
-            case Field.Zone.RM: value = teamStrategy.RM; break;
+            case Zone.LM: value = teamStrategy.LM; break;
+            case Zone.LCM: value = teamStrategy.LCM; break;
+            case Zone.CM: value = teamStrategy.CM; break;
+            case Zone.RCM: value = teamStrategy.RCM; break;
+            case Zone.RM: value = teamStrategy.RM; break;
 
-            case Field.Zone.LAM: value = teamStrategy.LAM; break;
-            case Field.Zone.LCAM: value = teamStrategy.LCAM; break;
-            case Field.Zone.CAM: value = teamStrategy.CAM; break;
-            case Field.Zone.RCAM: value = teamStrategy.RCAM; break;
-            case Field.Zone.RAM: value = teamStrategy.RAM; break;
+            case Zone.LAM: value = teamStrategy.LAM; break;
+            case Zone.LCAM: value = teamStrategy.LCAM; break;
+            case Zone.CAM: value = teamStrategy.CAM; break;
+            case Zone.RCAM: value = teamStrategy.RCAM; break;
+            case Zone.RAM: value = teamStrategy.RAM; break;
 
-            case Field.Zone.LF: value = teamStrategy.LF; break;
-            case Field.Zone.LCF: value = teamStrategy.LCF; break;
-            case Field.Zone.CF: value = teamStrategy.CF; break;
-            case Field.Zone.RCF: value = teamStrategy.RCF; break;
-            case Field.Zone.RF: value = teamStrategy.RF; break;
+            case Zone.LF: value = teamStrategy.LF; break;
+            case Zone.LCF: value = teamStrategy.LCF; break;
+            case Zone.CF: value = teamStrategy.CF; break;
+            case Zone.RCF: value = teamStrategy.RCF; break;
+            case Zone.RF: value = teamStrategy.RF; break;
 
-            case Field.Zone.ALF: value = teamStrategy.ALF; break;
-            case Field.Zone.ARF: value = teamStrategy.ARF; break;
-            case Field.Zone.Box: value = teamStrategy.Box; break;
+            case Zone.ALF: value = teamStrategy.ALF; break;
+            case Zone.ARF: value = teamStrategy.ARF; break;
+            case Zone.Box: value = teamStrategy.Box; break;
         }
         return value;
     }
@@ -291,4 +293,136 @@ public class TeamData : ScriptableObject
         }
         Substitutes = list.ToArray();
     }
+    
+    
+	public PlayerData GetAttackingPlayer(Zone _zone, PlayerData _excludePlayer = null, bool _forcePlayer = false, bool _isAwayTeam = false)
+	{
+		Zone zone = Field.Instance.GetTeamZone(_zone, _isAwayTeam);
+
+		float chance = 0f;
+		bool forcePlayer = _forcePlayer;
+
+		List<PlayerData> players = new List<PlayerData>();
+
+		foreach (PlayerData player in Squad)
+		{
+			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
+
+			if (forcePlayer)
+			{
+				if (chance > 0f) players.Add(player);
+			}
+			else
+			{
+				if (chance >= 1f) players.Add(player);
+				else if (chance > 0 && chance >= Random.Range(0f, 1f)) players.Add(player);
+			}
+		}
+
+		if (_excludePlayer != null && players.Contains(_excludePlayer)) players.Remove(_excludePlayer);
+
+		return GetActivePlayer(players);
+	}
+
+	public PlayerData GetBestPlayerInArea(Zone _zone, AttributeType _attribute)
+	{
+		Zone zone = GetTeamZone(_zone);
+
+		float chance = 0f;
+
+
+		List<PlayerData> players = new List<PlayerData>();
+
+		foreach (PlayerData player in Squad)
+		{
+			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
+			if (chance > 0f) players.Add(player);
+              
+		}
+
+		return GetTopPlayerByAttribute(_attribute, players.ToArray());
+	}
+
+	public PlayerData GetDefendingPlayer(Zone _zone, PlayerData _excludePlayer = null, float _counterAttack = 0)
+	{
+		Zone zone = Field.Instance.GetTeamZone(_zone, IsAwayTeam);
+        
+		float chance = 0f;
+
+		List<PlayerData> players = new List<PlayerData>();
+		foreach (PlayerData player in Squad)
+		{
+			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
+			if (_counterAttack > 0)
+			{
+				chance *= 0.5f;
+			}
+			if (chance >= 1f)
+			{
+				players.Add(player);
+			}
+			else
+			{
+				if (chance > 0 && chance >= Random.Range(0f, 1f))
+				{
+					players.Add(player);
+				}
+			}
+		}
+
+		if (_excludePlayer != null && players.Contains(_excludePlayer)) players.Remove(_excludePlayer);
+
+		return GetActivePlayer(players);
+	}
+	
+	private PlayerData GetActivePlayer(List<PlayerData> _list)
+	{
+		PlayerData activePlayer = null;
+		List<KeyValuePair<PlayerData, float>> compareList = new List<KeyValuePair<PlayerData, float>>();
+		int bonus = 0;
+		float total = 0f;
+
+		foreach (PlayerData player in _list)
+		{
+			float stats = (float)(player.Speed + player.Vision) / 200;
+			stats *= player.FatigueModifier();
+			bonus = player.GetAttributeBonus((player.Vision + player.Speed) / 2);
+			if (player.IsWronglyAssigned()) stats *= GameData.Instance.GameModifiers.PositionDebuff;
+
+			int r = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(stats * 5) + bonus / 10);
+
+			if (r >= 20) stats *= 1.5f;
+			else if (r <= 1) stats *= 0.75f;
+
+			total += stats;
+			compareList.Add(new KeyValuePair<PlayerData, float>(player, stats));
+		}
+
+		float random = Random.Range(0f, 1f);
+		float cumulative = 0f;
+
+		for (int i = 0; i < compareList.Count; i++)
+		{
+			float value = compareList[i].Value / total;
+
+			cumulative += value;
+			if (random <= cumulative)
+			{
+				activePlayer = compareList[i].Key;
+				break;
+			}
+		}
+
+		//if (activePlayer != null) activePlayer.MatchStats.Presence++;
+		return activePlayer;
+	}
+	
+	public Zone GetTeamZone (Zone _zone)
+	{
+		if(!IsAwayTeam) return _zone;
+		else
+		{
+			return Field.Instance.GetTeamZone(_zone, IsAwayTeam);
+		}
+	}
 }

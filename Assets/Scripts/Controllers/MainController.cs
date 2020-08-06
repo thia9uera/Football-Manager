@@ -9,31 +9,23 @@ public class MainController : MonoBehaviour
     [Space(10)]
     [Header("Data")]
     [Space(5)]
-    public UserData User;
-    public List<PlayerData> AllPlayers;
+    [SerializeField] private InitialData initialData;
+    
+	[Space(10)]
+	public UserData User;
+    
+	public List<PlayerData> AllPlayers;
     public List<TeamData> AllTeams;
     public List<TournamentData> AllTournaments;
 
     [Space(10)]
     [Header("Controllers")]
     [Space(5)]
-    public LocalizationData Localization;
     public MatchController Match;
-    public DataController Data;
-    public CalendarController Calendar;
-    public ScreenController Screens;
-    public AtlasManager Atlas;
 
     [Space(20)]
 
     public SquadEdit SquadSelection;
-
-    public Team_StrategyData TeamStrategyData;
-    public Player_StrategyData PlayerStrategyData;
-    public Game_ModifierData Modifiers;
-    public PosChanceData PosChancePerZone;
-    public TargetPassPerZoneData TargetPassPerZone;
-    public TargetCrossPerZoneData TargetCrossPerZone;
 
     public TournamentData CurrentTournament;
     public MatchData CurrentMatch;
@@ -43,10 +35,14 @@ public class MainController : MonoBehaviour
     public void Awake()
     {
         if (Instance == null) Instance = this;
-        Localization.Initialize();
 
         Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 0;
+	    QualitySettings.vSyncCount = 0;
+	    
+	    UserTeam = initialData.UserTeam;
+	    AllPlayers = initialData.AllPlayers;
+	    AllTeams = initialData.AllTeams;
+	    AllTournaments = initialData.AllTournaments;
     }
 
     public void Start()
@@ -54,19 +50,22 @@ public class MainController : MonoBehaviour
         //TeamData home = Resources.Load<TeamData>("Teams/Crossing");
         //TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
         //if(Match != null) Match.Populate(home, away);
-        if(Screens != null) Screens.ShowScreen(BaseScreen.ScreenType.Loading);
+	    LocalizationController.Instance.Initialize();
+	    ScreenController.Instance.ShowScreen(ScreenType.Loading);
+	    ScreenController.Instance.Loading.LoadScreenDelay(2, ScreenType.Start);
+
     }
 
     public void EditSquad()
     {
         Match.PauseGame(true);
-        Screens.ShowScreen(BaseScreen.ScreenType.EditSquad);
+        ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
     }
 
     public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)
     {
-        Screens.ShowPreviousScreen();
-        if (Screens.PrevScreen == BaseScreen.ScreenType.Match) Match.UpdateTeams(_in, _out);   
+        ScreenController.Instance.ShowPreviousScreen();
+        if (ScreenController.Instance.PrevScreen == ScreenType.Match) Match.UpdateTeams(_in, _out);   
     }
 
     public List<PlayerData> SortPlayersBy(List<PlayerData> listPlayers, string _stat)

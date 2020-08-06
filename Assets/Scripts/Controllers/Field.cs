@@ -3,27 +3,64 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    //Names given by Home Team perspective
-    public enum Zone
-    {
-        OwnGoal = 0,
-        BLD, BRD,
-        LD, LCD, CD, RCD, RD,
-        LDM, LCDM, CDM, RCDM, RDM,
-        LM, LCM, CM, RCM, RM,
-        LAM, LCAM, CAM, RCAM, RAM,
-        LF, LCF, CF, RCF, RF,
-        ALF, ARF,
-        Box,
-    }
-    const int totalZones = 31;
-    public List<Vector2> Matrix;
+	public static Field Instance;
+	
+	private const int totalZones = 31;
+	public List<Vector2> Matrix;
+	
+	private float _OwnGoal = 0;
+	private float _BLD = 0;
+	private float _BRD = 0;
 
-    public PosChanceData[] TeamStrategies;
+	private float _LD = 0;
+	private float _LCD = 0;
+	private float _CD = 0;
+	private float _RCD = 0;
+	private float _RD = 0;
 
-    [Space(5)]
-    public FormationData[] TeamFormations;
+	private float _LDM = 0;
+	private float _LCDM = 0;
+	private float _CDM = 0;
+	private float _RCDM = 0;
+	private float _RDM = 0;
 
+	private float _LM = 0;
+	private float _LCM = 0;
+	private float _CM = 0;
+	private float _RCM = 0;
+	private float _RM = 0;
+
+	private float _LAM = 0;
+	private float _LCAM = 0;
+	private float _CAM = 0;
+	private float _RCAM = 0;
+	private float _RAM = 0;
+
+	private float _LF = 0;
+	private float _LCF = 0;
+	private float _CF = 0;
+	private float _RCF = 0;
+	private float _RF = 0;
+
+	private float _ALF = 0;
+	private float _ARF = 0;
+	private float _Box = 0;
+    
+	private void Awake()
+	{
+		if(Instance == null) Instance = this;
+	}
+
+	public Zone GetTeamZone(Zone _zone, bool _isAwayTeam)
+	{
+		Zone zone = _zone;
+		if (_isAwayTeam)
+		{
+			zone = GetAwayTeamZone(_zone);
+		}
+		return zone;
+	}
+	
     public Zone GetAwayTeamZone(Zone _zone)
     {
         int zone = (totalZones - 1) - (int)_zone;
@@ -31,10 +68,9 @@ public class Field : MonoBehaviour
         return (Zone)zone;
     }
 
-    public float CalculatePresence(PlayerData _player, Zone _zone, TeamAttributes.TeamStrategy _teamStrategy)
+    public float CalculatePresence(PlayerData _player, Zone _zone, TeamStrategy _teamStrategy)
     {
-        Zones posChanceStr = GetTeamStrategyZones(_teamStrategy, _player.Zone);
-        float chance = _player.GetChancePerZone(_zone, posChanceStr);
+        float chance = _player.GetChancePerZone(_zone);
 
         if (chance < 1f && chance > 0f)
         {
@@ -44,51 +80,50 @@ public class Field : MonoBehaviour
         return chance;
     }
 
-    public Zone GetTargetZone(Zone _currentZone, MatchController.MatchEvent _event, PlayerData.PlayerAction _action, TeamAttributes.TeamStrategy _teamStrategy)
+    public Zone GetTargetZone(Zone _currentZone, MatchEvent _event, PlayerAction _action, TeamStrategy _teamStrategy)
     {
-        Zone target = _currentZone;
         Zone zone = _currentZone;
         List<KeyValuePair<Zone, float>> list = new List<KeyValuePair<Zone, float>>();
 
-        float _OwnGoal = 0;
-        float _BLD = 0;
-        float _BRD = 0;
+        _OwnGoal = 0;
+        _BLD = 0;
+        _BRD = 0;
 
-        float _LD = 0;
-        float _LCD = 0;
-        float _CD = 0;
-        float _RCD = 0;
-        float _RD = 0;
+        _LD = 0;
+        _LCD = 0;
+        _CD = 0;
+        _RCD = 0;
+        _RD = 0;
 
-        float _LDM = 0;
-        float _LCDM = 0;
-        float _CDM = 0;
-        float _RCDM = 0;
-        float _RDM = 0;
+        _LDM = 0;
+        _LCDM = 0;
+        _CDM = 0;
+        _RCDM = 0;
+        _RDM = 0;
 
-        float _LM = 0;
-        float _LCM = 0;
-        float _CM = 0;
-        float _RCM = 0;
-        float _RM = 0;
+        _LM = 0;
+        _LCM = 0;
+        _CM = 0;
+        _RCM = 0;
+        _RM = 0;
 
-        float _LAM = 0;
-        float _LCAM = 0;
-        float _CAM = 0;
-        float _RCAM = 0;
-        float _RAM = 0;
+        _LAM = 0;
+        _LCAM = 0;
+        _CAM = 0;
+        _RCAM = 0;
+        _RAM = 0;
 
-        float _LF = 0;
-        float _LCF = 0;
-        float _CF = 0;
-        float _RCF = 0;
-        float _RF = 0;
+        _LF = 0;
+        _LCF = 0;
+        _CF = 0;
+        _RCF = 0;
+        _RF = 0;
 
-        float _ALF = 0;
-        float _ARF = 0;
-        float _Box = 0;
+        _ALF = 0;
+        _ARF = 0;
+        _Box = 0;
 
-        if (_event == MatchController.MatchEvent.Goalkick)
+        if (_event == MatchEvent.Goalkick)
         {
             _LDM = 0.75f;
             _LCDM = 0.75f;
@@ -107,9 +142,9 @@ public class Field : MonoBehaviour
             _RAM = 0.5f;
         }
 
-        else if (_action == PlayerData.PlayerAction.Pass || _action == PlayerData.PlayerAction.Dribble || _action == PlayerData.PlayerAction.Sprint)
+        else if (_action == PlayerAction.Pass || _action == PlayerAction.Dribble || _action == PlayerAction.Sprint)
         {
-            TargetPassPerZone data = MainController.Instance.TargetPassPerZone.targetPassPerZones[(int)zone];
+	        TargetPassPerZone data = GameData.Instance.TargetPassPerZone[(int)zone];
 
             _OwnGoal = data.OwnGoal;
             _BLD = data.BLD;
@@ -150,9 +185,9 @@ public class Field : MonoBehaviour
             _Box = data.Box;
         }
 
-        else if (_action == PlayerData.PlayerAction.Cross || _action == PlayerData.PlayerAction.LongPass)
+        else if (_action == PlayerAction.Cross || _action == PlayerAction.LongPass)
         {
-            TargetCrossPerZone data = MainController.Instance.TargetCrossPerZone.targetCrossPerZones[(int)zone];
+	        TargetCrossPerZone data = GameData.Instance.TargetCrossPerZone[(int)zone];
 
             _OwnGoal = data.OwnGoal;
             _BLD = data.BLD;
@@ -194,7 +229,7 @@ public class Field : MonoBehaviour
         }
 
 
-        Team_Strategy strategy = MainController.Instance.TeamStrategyData.team_Strategys[(int)_teamStrategy];
+	    Team_Strategy strategy = GameData.Instance.TeamStrategies[(int)_teamStrategy];
         _OwnGoal *= strategy.Target_OwnGoal;
         _BLD *= strategy.Target_BLD;
         _BRD *= strategy.Target_BRD;
@@ -320,8 +355,10 @@ public class Field : MonoBehaviour
         list.Add(new KeyValuePair<Zone, float>(Zone.ARF, _ARF));
         list.Add(new KeyValuePair<Zone, float>(Zone.Box, _Box));
 
+	    Zone target = _currentZone;	    
         float random = Random.Range(0.00001f, 1f);
-        float cumulative = 0;
+	    float cumulative = 0;
+	    
         for (int i = 0; i < list.Count; i++)
         {
             cumulative += list[i].Value;
@@ -331,18 +368,6 @@ public class Field : MonoBehaviour
                 break;
             }
         }
-
-        //if (_isAwayTeam) target = (Zone)((totalZones - 1) - (int)target);
         return target;
-    }
-
-    Zones GetTeamStrategyZones(TeamAttributes.TeamStrategy _strategy, Zone _zone)
-    {
-        foreach(PosChanceData data in TeamStrategies)
-        {
-            if (data.Strategy == _strategy) return data.posChancePerZones[(int)_zone];
-        }
-
-        return null;
     }
 }

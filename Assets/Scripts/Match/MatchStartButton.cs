@@ -13,7 +13,7 @@ public class MatchStartButton : MonoBehaviour
 
     void Start()
     {
-        label.text = MainController.Instance.Localization.Localize("btn_Start");
+        label.text = LocalizationController.Instance.Localize("btn_Start");
     }
 
     public void Toggle()
@@ -21,16 +21,16 @@ public class MatchStartButton : MonoBehaviour
         isPause = !isPause;
         string str = "btn_Start";
         if (isPause) str = "btn_Pause";
-        label.text = MainController.Instance.Localization.Localize(str);
+        label.text = LocalizationController.Instance.Localize(str);
     }
 
     public void SetLabelStart()
     {
-        label.text = MainController.Instance.Localization.Localize("btn_Start");
+        label.text = LocalizationController.Instance.Localize("btn_Start");
     }
 
     public void SetLabelPause()
     {
-        label.text = MainController.Instance.Localization.Localize("btn_Pause");
+        label.text = LocalizationController.Instance.Localize("btn_Pause");
     }
 }

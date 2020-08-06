@@ -16,9 +16,6 @@ public class MatchVisual : BaseScreen
     private Vector2 awayTeamSpawn = new Vector2(64f, 600f);
 
     [SerializeField]
-    private Field field;
-
-    [SerializeField]
     private MatchZonesContainer zones, leftZones, rightZones;
 
     [SerializeField]
@@ -71,12 +68,12 @@ public class MatchVisual : BaseScreen
 
         for(int j=0; j< formation.Zones.Length; j++)
         {
-            Field.Zone zone = formation.Zones[j];
+            Zone zone = formation.Zones[j];
             _list[j].MoveTo(GetZone(zone, _zones).transform.position, 1f, 0.1f*j);
         }
     }
 
-    private FieldZone GetZone(Field.Zone _zone, MatchZonesContainer _container)
+    private FieldZone GetZone(Zone _zone, MatchZonesContainer _container)
     {
         FieldZone zone = null;
         foreach (FieldZone z in _container.ZoneList)
@@ -86,12 +83,12 @@ public class MatchVisual : BaseScreen
         return zone;
     }
 
-    Field.Zone GetTeamZone(TeamData _team, Field.Zone _zone)
+    Zone GetTeamZone(TeamData _team, Zone _zone)
     {
-        Field.Zone zone = _zone;
+        Zone zone = _zone;
         if (_team == awayTeam)
         {
-            zone = field.GetAwayTeamZone(_zone);
+	        zone = Field.Instance.GetAwayTeamZone(_zone);
         }
         return zone;
     }

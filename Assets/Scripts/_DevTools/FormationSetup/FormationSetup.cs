@@ -27,7 +27,7 @@ public class FormationSetup : MonoBehaviour
     private FormationZone[] zones;
     public FormationZone SelectedZone;
 
-    private List<Field.Zone> formationZones;
+    private List<Zone> formationZones;
 
     private float fieldWidth;
     private float fieldHeight;
@@ -63,7 +63,7 @@ public class FormationSetup : MonoBehaviour
     {
         nameInput.text = Formation.Name;
 
-        formationZones = new List<Field.Zone>(Formation.Zones);
+        formationZones = new List<Zone>(Formation.Zones);
         foreach (FormationZone zone in zones)
         {
             zone.Deselect();
@@ -166,7 +166,7 @@ public class FormationSetup : MonoBehaviour
         }
     }
 
-    private RectTransform GetZoneRect(Field.Zone _zone)
+    private RectTransform GetZoneRect(Zone _zone)
     {
         RectTransform rect = null;
 
@@ -191,7 +191,7 @@ public class FormationSetup : MonoBehaviour
 
     public void ActivateZone(FormationZone _zone)
     {
-        if(_zone.Zone == Field.Zone.OwnGoal)
+        if(_zone.Zone == Zone.OwnGoal)
         {
             Debug.LogWarning("Cannot remove Goal Keeper position");
             return;
@@ -235,7 +235,7 @@ public class FormationSetup : MonoBehaviour
         }
 
         //Formation.Zones = formationZones.ToArray();
-        List<Field.Zone> list = new List<Field.Zone>();
+        List<Zone> list = new List<Zone>();
         foreach(FormationZone zone in zones)
         {
             if (zone.isActive) list.Add(zone.Zone);
@@ -256,7 +256,7 @@ public class FormationSetup : MonoBehaviour
     {
         FormationData data = ScriptableObject.CreateInstance<FormationData>();
         data.Name = "0-0-0";
-        data.Zones = new Field.Zone[] { Field.Zone.OwnGoal };
+        data.Zones = new Zone[] { Zone.OwnGoal };
         data.Connections = new List<FormationData.Connection>();
         AssetDatabase.CreateAsset(data, folder + data.Name + ".asset");
         AssetDatabase.SaveAssets();

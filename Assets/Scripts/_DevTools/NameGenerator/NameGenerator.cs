@@ -22,7 +22,7 @@ public class NameGenerator : MonoBehaviour
     List<PlayerData> playerList;
 
     [SerializeField]
-    PlayerNamesData namesData;
+	RandomNamesData namesData;
     List<string> firstNames;
     List<string> lastNames;
 
@@ -58,7 +58,7 @@ public class NameGenerator : MonoBehaviour
             team.Attributes.Name = team.Name;
             team.Attributes.PrimaryColor = team.PrimaryColor;
             team.Attributes.SecondaryColor = team.SecondaryColor;
-            team.Attributes.Strategy = (TeamAttributes.TeamStrategy)team.Strategy;
+            team.Attributes.Strategy = (TeamStrategy)team.Strategy;
             team.Attributes.Formation = (FormationData)team.Formation;
             team.Attributes.Tag = team.Tag;
             team.Attributes.Id = System.Guid.NewGuid().ToString();

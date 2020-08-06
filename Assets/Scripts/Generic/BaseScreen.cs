@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ScreenType
+{
+    None,
+    MainMenu,
+    TournamentHub,
+    Match,
+    EditSquad,
+    TournamentCreation,
+    TournamentSelection,
+    Leaderboards,
+    Loading,
+	Start,
+	CreateTeam,
+	Manager,
+	Squad,
+}
+    
 public class BaseScreen : MonoBehaviour
 {
-    public enum ScreenType
-    {
-        None,
-        MainMenu,
-        TournamentHub,
-        Match,
-        EditSquad,
-        TournamentCreation,
-        TournamentSelection,
-        Leaderboards,
-        Loading,
-        MatchVisual,
-    }
-
     public ScreenType Type;
 
     public virtual void Show()

@@ -21,64 +21,120 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Goalkeeper
-      - Goleiro
+      - <color={0}>Goalkeeper</color>
+      - <color={0}>Goleiro<color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Goalkeeper
       TermType: 0
       Description: 
       Languages:
-      - GK
-      - GOL
+      - <color={0}>GK</color>
+      - <color={0}>GOL<color>
       Flags: 0000
       Languages_Touch: []
     - Term: pos_Defender
       TermType: 0
       Description: 
       Languages:
-      - Defender
-      - Zagueiro
+      - <color={0}>Defender<color={0}>
+      - <color={0}>Zagueiro<color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Defender
       TermType: 0
       Description: 
       Languages:
-      - DEF
-      - ZAG
+      - <color={0}>DEF<color={0}>
+      - <color={0}>ZAG<color>
       Flags: 0000
       Languages_Touch: []
     - Term: pos_Midfielder
       TermType: 0
       Description: 
       Languages:
-      - Midifielder
-      - Meio-Campo
+      - <color={0}>Midifielder<color={0}>
+      - <color={0}>Meio-Campo<color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Midfielder
       TermType: 0
       Description: 
       Languages:
-      - MID
-      - MC
+      - <color={0}>MID<color={0}>
+      - <color={0}>MC<color>
       Flags: 0000
       Languages_Touch: []
     - Term: pos_Forward
       TermType: 0
       Description: 
       Languages:
-      - Forward
-      - Atacante
+      - <color={0}>Forward<color={0}>
+      - <color={0}>Atacante<color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Forward
       TermType: 0
       Description: 
       Languages:
-      - FW
-      - ATA
+      - <color={0}>FW<color={0}>
+      - <color={0}>ATA<color>
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Position
+      TermType: 0
+      Description: 
+      Languages:
+      - POS
+      - POS
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - NAME
+      - NOME
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Attack
+      TermType: 0
+      Description: 
+      Languages:
+      - ATTACK
+      - ATAQUE
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Defense
+      TermType: 0
+      Description: 
+      Languages:
+      - DEFENSE
+      - DEFESA
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Physical
+      TermType: 0
+      Description: 
+      Languages:
+      - PHYSICAL
+      - "F\xEDSICO"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Tactical
+      TermType: 0
+      Description: 
+      Languages:
+      - TACTICAL
+      - "T\xC1TICO"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: stat_Mental
+      TermType: 0
+      Description: 
+      Languages:
+      - MENTAL
+      - MENTAL
       Flags: 0000
       Languages_Touch: []
     - Term: zone_Attack
@@ -133,7 +189,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - GOOOOAAAAAL!!!
+      - <size=40>GOOOOAAAAAL!!!
       - <size=40>GOOOOOOOOOOOOOOL!!!
       Flags: 0000
       Languages_Touch: []
@@ -1002,6 +1058,78 @@ MonoBehaviour:
       - '{[TEAM_1]} aproveita o contra-ataque'
       Flags: 0000
       Languages_Touch: []
+    - Term: btn_NewGame
+      TermType: 0
+      Description: 
+      Languages:
+      - NEW GAME
+      - NOVO JOGO
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_LoadGame
+      TermType: 0
+      Description: 
+      Languages:
+      - LOAD GAME
+      - CARREGAR JOGO
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_Ready
+      TermType: 0
+      Description: 
+      Languages:
+      - READY
+      - PRONTO
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_CreateTeam
+      TermType: 0
+      Description: 
+      Languages:
+      - CREATE TEAM
+      - CRIAR TIME
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_TeamName
+      TermType: 0
+      Description: 
+      Languages:
+      - TEAM NAME
+      - NOME DO TIME
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_CoachName
+      TermType: 0
+      Description: 
+      Languages:
+      - COACH NAME
+      - NOME DO TREINADOR
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_PrimaryColor
+      TermType: 0
+      Description: 
+      Languages:
+      - PRIMARY COLOR
+      - "COR PRIM\xC1RIA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_SecondaryColor
+      TermType: 0
+      Description: 
+      Languages:
+      - SECONDARY COLOR
+      - "COR SECUND\xC1RIA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_SelectPlayerToEdit
+      TermType: 0
+      Description: 
+      Languages:
+      - SELECT PLAYER TO EDIT
+      - SELECIONE JOGADOR PARA EDITAR
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -1017,7 +1145,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1551552221694
+    Google_LastUpdatedVersion: 1596384685280
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2
