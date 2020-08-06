@@ -10,14 +10,14 @@ public class PlayerData : ScriptableObject
 
     public string Id { get { return Attributes.Id; } set { Attributes.Id = value; } }
 
-    public Sprite Portrait { get { return MainController.Instance.Atlas.GetPortrait(Attributes.Portrait, Attributes.Position); } set { Attributes.Portrait = value.name; } }
+	public Sprite Portrait { get { return  AtlasManager.Instance.GetPortrait(Attributes.Portrait, Attributes.Position); } set { Attributes.Portrait = value.name; } }
     public string FirstName { get { return Attributes.FirstName; } set { Attributes.FirstName = value; } }
     public string LastName { get { return Attributes.LastName; } set { Attributes.LastName = value; } }
 
-    public Field.Zone Zone { get { return Attributes.Zone; } set { Attributes.Zone = value; } }
-    public PlayerAttributes.PlayerPosition Position { get { return Attributes.Position; } set { Attributes.Position = value; } }
-    public PlayerAttributes.PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
-    public PlayerAttributes.SynergyGroup Synergy { get { return Attributes.Synergy; } set { Attributes.Synergy = value; } }
+    public Zone Zone { get { return Attributes.Zone; } set { Attributes.Zone = value; } }
+    public PlayerPosition Position { get { return Attributes.Position; } set { Attributes.Position = value; } }
+    public PlayerStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
+    public SynergyGroup Synergy { get { return Attributes.Synergy; } set { Attributes.Synergy = value; } }
 
     public int Goalkeeping { get { return Attributes.Goalkeeping; } set { Attributes.Goalkeeping = value; } }
     public int Passing { get { return Attributes.Passing; } set { Attributes.Passing = value; } }
@@ -61,21 +61,7 @@ public class PlayerData : ScriptableObject
     }
 
     public PlayerStatistics MatchStats;
-
     public TeamData Team;
-
-    private enum AltPosition
-    {
-        None,
-        Offensive,
-        Defensive,
-        Left,
-        Right,
-        LeftDefensive,
-        RightDefensive,
-        LeftOffensive,
-        RightOffensive
-    }
 
     [HideInInspector]
     public float Prob_DefPosition,
@@ -93,44 +79,6 @@ public class PlayerData : ScriptableObject
         Prob_Tackling,
         Prob_LongPass;
 
-    public enum AttributeType
-    {
-        Goalkeeping,
-        Passing,
-        Crossing,
-        Tackling,
-        Shooting,
-        Heading,
-        Freekick,
-        Penalty,
-        Speed,
-        Strength,
-        Agility,
-        Stamina,
-        Teamwork,
-        Vision,
-        Stability,
-        Blocking,
-        Dribbling,
-    }
-
-    public enum PlayerAction
-    {
-        None,
-        Dribble,
-        Pass,
-        LongPass,
-        Cross,
-        ThroughPass,
-        Shot,
-        LongShot,
-        Tackle,
-        Fault,
-        Block,
-        Save,
-        Header,
-        Sprint,
-    }
 
     private void Awake()
     {
@@ -139,7 +87,7 @@ public class PlayerData : ScriptableObject
 
     public void ApplyBonus()
     {
-        Player_Strategy _playerStrategy = MainController.Instance.PlayerStrategyData.player_Strategys[(int)Strategy];
+	    Player_Strategy _playerStrategy = GameData.Instance.PlayerStrategies[(int)Strategy];
 
         Prob_DefPosition = _playerStrategy.DefPosChance;
         Prob_OffPosition = _playerStrategy.OffPosChance;
@@ -161,47 +109,44 @@ public class PlayerData : ScriptableObject
     {
         int total = 0;
 
-        //total += Goalkeeping;
-        total += Passing;
-        total += Dribbling;
-        total += Crossing;
-        total += Tackling;
-        total += Blocking;
-        total += Shooting;
-        total += Heading;
-        //total += Freekick;
-        //total += Penalty;
-        total += Speed;
-        total += Strength;
-        total += Agility;
-        total += Stamina;
-        total += Teamwork;
-        total += Vision;
-        total += Stability;
+	    total += Passing;		// 1
+	    total += Dribbling; 	// 2
+	    total += Crossing;		// 3
+	    total += Tackling;		// 4
+	    total += Blocking;		// 5
+	    total += Shooting;		// 6
+	    total += Heading;		// 7
+	    total += Speed; 		// 8
+	    total += Strength;		// 9
+	    total += Agility;		// 10
+	    total += Stamina;		// 11
+	    total += Teamwork;		// 12
+	    total += Vision;		// 13
+    	total += Stability; 	// 14
 
         switch (Position)
         {
-            case PlayerAttributes.PlayerPosition.Goalkeeper:
-                total += Goalkeeping;
-                total += Agility;
+            case PlayerPosition.Goalkeeper:
+	            total += Goalkeeping;	// 15
+	            total += Agility;		// 16
                 total = total / 16;
                 break;
-            case PlayerAttributes.PlayerPosition.Defender:
-                total += Tackling;
-                total += Blocking;
+            case PlayerPosition.Defender:
+	            total += Tackling;		// 15
+	            total += Blocking;		// 16
                 total = total / 16;
                 break;
-            case PlayerAttributes.PlayerPosition.Midfielder:
-                total += Dribbling;
-                total += Passing;
-                total += Crossing;
+            case PlayerPosition.Midfielder:
+	            total += Dribbling;		// 15
+	            total += Passing;		// 16
+	            total += Crossing;		// 17
                 total = total / 17;
                 break;
-            case PlayerAttributes.PlayerPosition.Forward:
-                total += Dribbling;
-                total += Passing;
-                total += Shooting;
-                total += Heading;
+            case PlayerPosition.Forward:
+	            total += Dribbling;		// 15
+	            total += Passing;		// 16
+	            total += Shooting;		// 17
+	            total += Heading;		// 18
                 total = total / 18;
                 break;
             default:
@@ -211,49 +156,103 @@ public class PlayerData : ScriptableObject
 
         return total;
     }
+    
+	public int GetSummaryAttribute(SummaryAttributeType _type)
+	{
+		int total = 0;
+		
+		switch(_type)
+		{
+			case SummaryAttributeType.Attack :
+			{
+				total += Dribbling;
+				total += Shooting;
+				total += Heading;
+				total /= 3;
+			}
+			break;
+			case SummaryAttributeType.Defense :
+			{
+				if(Position == PlayerPosition.Goalkeeper)
+				{
+					total += Tackling/2;
+					total += Blocking/2;
+					total += Goalkeeping;
+				}
+				else
+				{
+					total += Tackling;
+					total += Blocking;
+				}
+				total /= 2;
+			}
+			break;
+			case SummaryAttributeType.Physical :
+			{
+				total += Speed;
+				total += Agility;
+				total += Strength;
+				total += Stamina;
+				total /= 4;
+			}
+			break;
+			case SummaryAttributeType.Tactical :
+			{
+				total += Vision;
+				total += Teamwork;
+				total += Passing;
+				total += Crossing;
+				total /= 4;
+			}
+			break;
+		}
+		
+		return total;
+	}
 
-    public float GetChancePerZone(Field.Zone _zone, Zones _chancePerZone)
-    {
+    public float GetChancePerZone(Zone _zone)
+	{
+		Zones _chancePerZone = GameData.Instance.GetPosChanceData(Team.Strategy, _zone);
         float pct = 0f;
 
         switch(_zone)
         {
-            case Field.Zone.OwnGoal: pct = _chancePerZone.OwnGoal; break;
-            case Field.Zone.BLD: pct = _chancePerZone.BLD; break;
-            case Field.Zone.BRD: pct = _chancePerZone.BRD; break;
-            case Field.Zone.LD: pct = _chancePerZone.LD; break;
-            case Field.Zone.LCD: pct = _chancePerZone.LCD; break;
-            case Field.Zone.CD: pct = _chancePerZone.CD; break;
-            case Field.Zone.RCD: pct = _chancePerZone.RCD; break;
-            case Field.Zone.RD: pct = _chancePerZone.RD; break;
-            case Field.Zone.LDM: pct = _chancePerZone.LDM; break;
-            case Field.Zone.LCDM: pct = _chancePerZone.LCDM; break;
-            case Field.Zone.CDM: pct = _chancePerZone.CDM; break;
-            case Field.Zone.RCDM: pct = _chancePerZone.RCDM; break;
-            case Field.Zone.RDM: pct = _chancePerZone.RDM; break;
-            case Field.Zone.LM: pct = _chancePerZone.LM; break;
-            case Field.Zone.LCM: pct = _chancePerZone.LCM; break;
-            case Field.Zone.CM: pct = _chancePerZone.CM; break;
-            case Field.Zone.RCM: pct = _chancePerZone.RCM; break;
-            case Field.Zone.RM: pct = _chancePerZone.RM; break;
-            case Field.Zone.LAM: pct = _chancePerZone.LAM; break;
-            case Field.Zone.LCAM: pct = _chancePerZone.LCAM; break;
-            case Field.Zone.CAM: pct = _chancePerZone.CAM; break;
-            case Field.Zone.RCAM: pct = _chancePerZone.RCAM; break;
-            case Field.Zone.RAM: pct = _chancePerZone.RAM; break;
-            case Field.Zone.LF: pct = _chancePerZone.LF; break;
-            case Field.Zone.LCF: pct = _chancePerZone.LCF; break;
-            case Field.Zone.CF: pct = _chancePerZone.CF; break;
-            case Field.Zone.RCF: pct = _chancePerZone.RCF; break;
-            case Field.Zone.RF: pct = _chancePerZone.RF; break;
-            case Field.Zone.ALF: pct = _chancePerZone.ALF; break;
-            case Field.Zone.ARF: pct = _chancePerZone.ARF; break;
-            case Field.Zone.Box: pct = _chancePerZone.Box; break;
+            case Zone.OwnGoal: pct = _chancePerZone.OwnGoal; break;
+            case Zone.BLD: pct = _chancePerZone.BLD; break;
+            case Zone.BRD: pct = _chancePerZone.BRD; break;
+            case Zone.LD: pct = _chancePerZone.LD; break;
+            case Zone.LCD: pct = _chancePerZone.LCD; break;
+            case Zone.CD: pct = _chancePerZone.CD; break;
+            case Zone.RCD: pct = _chancePerZone.RCD; break;
+            case Zone.RD: pct = _chancePerZone.RD; break;
+            case Zone.LDM: pct = _chancePerZone.LDM; break;
+            case Zone.LCDM: pct = _chancePerZone.LCDM; break;
+            case Zone.CDM: pct = _chancePerZone.CDM; break;
+            case Zone.RCDM: pct = _chancePerZone.RCDM; break;
+            case Zone.RDM: pct = _chancePerZone.RDM; break;
+            case Zone.LM: pct = _chancePerZone.LM; break;
+            case Zone.LCM: pct = _chancePerZone.LCM; break;
+            case Zone.CM: pct = _chancePerZone.CM; break;
+            case Zone.RCM: pct = _chancePerZone.RCM; break;
+            case Zone.RM: pct = _chancePerZone.RM; break;
+            case Zone.LAM: pct = _chancePerZone.LAM; break;
+            case Zone.LCAM: pct = _chancePerZone.LCAM; break;
+            case Zone.CAM: pct = _chancePerZone.CAM; break;
+            case Zone.RCAM: pct = _chancePerZone.RCAM; break;
+            case Zone.RAM: pct = _chancePerZone.RAM; break;
+            case Zone.LF: pct = _chancePerZone.LF; break;
+            case Zone.LCF: pct = _chancePerZone.LCF; break;
+            case Zone.CF: pct = _chancePerZone.CF; break;
+            case Zone.RCF: pct = _chancePerZone.RCF; break;
+            case Zone.RF: pct = _chancePerZone.RF; break;
+            case Zone.ALF: pct = _chancePerZone.ALF; break;
+            case Zone.ARF: pct = _chancePerZone.ARF; break;
+            case Zone.Box: pct = _chancePerZone.Box; break;
         }
         return pct;
     }
 
-    public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MatchController.MarkingType _marking, Field.Zone _zone)
+	public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MarkingType _marking, Zone _zone)
     {
         float chance = 0f;
         float bonus = 0f;
@@ -265,7 +264,7 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Pass:
                 chance = _zoneChance.Pass * Prob_Pass;
                 bonus = GetAttributeBonus(Passing);
-                if (_marking == MatchController.MarkingType.Close) chance *= 2f;
+                if (_marking == MarkingType.Close) chance *= 2f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10)), 100) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.PassingChance;
                 break;
@@ -273,7 +272,7 @@ public class PlayerData : ScriptableObject
             case PlayerAction.LongPass:
                 float longPass = _zoneChance.LongPass * Prob_LongPass;
                 bonus = GetAttributeBonus(Mathf.FloorToInt((float)(Passing + Strength) / 2));
-                if (_marking == MatchController.MarkingType.Close) longPass *= 1.75f;
+                if (_marking == MarkingType.Close) longPass *= 1.75f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((longPass * 5) + (bonus / 10)), 100) >= 20) longPass *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.LongPassChance;
                 break;
@@ -281,8 +280,8 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Dribble:
                 chance = _zoneChance.Dribble * Prob_Dribble;
                 bonus = GetAttributeBonus(Dribbling);
-                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
-                else if (_marking == MatchController.MarkingType.Distance) chance *= 1.5f;
+                if (_marking == MarkingType.Close) chance *= 0.5f;
+                else if (_marking == MarkingType.Distance) chance *= 1.5f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.DribblingChance;
                 break;
@@ -290,7 +289,7 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Cross:
                 chance = _zoneChance.Cross * Prob_Crossing;
                 bonus = GetAttributeBonus(Crossing);
-                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
+                if (_marking == MarkingType.Close) chance *= 0.5f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.CrossingChance;
                 break;
@@ -298,8 +297,8 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Shot:
                 chance = _zoneChance.Shot * Prob_Shoot;
                 bonus = GetAttributeBonus(Shooting);
-                if (_marking == MatchController.MarkingType.Close) chance *= 0.5f;
-                else if (_marking == MatchController.MarkingType.None) chance *= 3f;
+                if (_marking == MarkingType.Close) chance *= 0.5f;
+                else if (_marking == MarkingType.None) chance *= 3f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.ShootingChance;
                 break;
@@ -307,8 +306,8 @@ public class PlayerData : ScriptableObject
             case PlayerAction.Header:
                 chance = (_zoneChance.Shot + Prob_Shoot) * 1.5f;
                 bonus = GetAttributeBonus(Heading);
-                if (_marking == MatchController.MarkingType.Distance) chance *= 2f;
-                else if (_marking == MatchController.MarkingType.None) chance *= 3f;
+                if (_marking == MarkingType.Distance) chance *= 2f;
+                else if (_marking == MarkingType.None) chance *= 3f;
                 if (Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt((chance * 5) + (bonus / 10))) >= 20) chance *= 2f;
                 if (Team.IsStrategyApplicable(_zone)) chance *= teamStrategy.ShootingChance;
                 break;
@@ -317,14 +316,14 @@ public class PlayerData : ScriptableObject
         return chance;
     }
 
-    AltPosition GetAltPosition(Field.Zone _zone)
+    AltPosition GetAltPosition(Zone _zone)
     {
         AltPosition pos = AltPosition.None;
-        Vector2 posMatrix = MainController.Instance.Match.Field.Matrix[(int)Zone];
+	    Vector2 posMatrix = Field.Instance.Matrix[(int)Zone];
         int posX = (int)posMatrix.x;
         int posY = (int)posMatrix.y;
 
-        Vector2 altPosMatrix = MainController.Instance.Match.Field.Matrix[(int)_zone];
+	    Vector2 altPosMatrix = Field.Instance.Matrix[(int)_zone];
         int altPosX = (int)altPosMatrix.x;
         int altPosY = (int)altPosMatrix.y;
 
@@ -493,9 +492,9 @@ public class PlayerData : ScriptableObject
             Attributes.TournamentStatistics.Add(new PlayerStatistics(_id));
         }
     }
-    public string GetFullName()
+    public string FullName
     {
-        return FirstName + " " + LastName;
+	    get { return FirstName + " " + LastName; } 
     }
 
     public bool IsWronglyAssigned()
@@ -505,19 +504,19 @@ public class PlayerData : ScriptableObject
 
         switch (Position)
         {
-            case PlayerAttributes.PlayerPosition.Goalkeeper:
+            case PlayerPosition.Goalkeeper:
                 if (zone != 0) value = true;
                 break;
 
-            case PlayerAttributes.PlayerPosition.Defender:
+            case PlayerPosition.Defender:
                 if (zone < 1 || zone > 7) value = true;
                 break;
 
-            case PlayerAttributes.PlayerPosition.Midfielder:
+            case PlayerPosition.Midfielder:
                 if (zone < 8 || zone > 22) value = true;
                 break;
 
-            case PlayerAttributes.PlayerPosition.Forward:
+            case PlayerPosition.Forward:
                 if (zone < 23) value = true;
                 break;
         }
@@ -542,50 +541,50 @@ public class PlayerData : ScriptableObject
         return bonus;
     }
     
-    public int GetSynergyBonus(PlayerAttributes.SynergyGroup _group)
+    public int GetSynergyBonus(SynergyGroup _group)
     {
         int value = 0;
 
         switch(Synergy)
         {
-            case PlayerAttributes.SynergyGroup.Evil:
-                if (_group == PlayerAttributes.SynergyGroup.Evil) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.Good) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = -1;
+            case SynergyGroup.Evil:
+                if (_group == SynergyGroup.Evil) value = -1;
+                else if (_group == SynergyGroup.Good) value = -1;
+                else if (_group == SynergyGroup.Neutral) value = 0;
+                else if (_group == SynergyGroup.NeutralEvil) value = 0;
+                else if (_group == SynergyGroup.NeutralGood) value = -1;
                 break;
 
-            case PlayerAttributes.SynergyGroup.NeutralGood:
-                if (_group == PlayerAttributes.SynergyGroup.Evil) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.Good) value = +1;
-                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = +1;
+            case SynergyGroup.NeutralGood:
+                if (_group == SynergyGroup.Evil) value = -1;
+                else if (_group == SynergyGroup.Good) value = +1;
+                else if (_group == SynergyGroup.Neutral) value = 0;
+                else if (_group == SynergyGroup.NeutralEvil) value = -1;
+                else if (_group == SynergyGroup.NeutralGood) value = +1;
                 break;
 
-            case PlayerAttributes.SynergyGroup.Good:
-                if (_group == PlayerAttributes.SynergyGroup.Evil) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.Good) value = +1;
-                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = +1;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = +1;
+            case SynergyGroup.Good:
+                if (_group == SynergyGroup.Evil) value = -1;
+                else if (_group == SynergyGroup.Good) value = +1;
+                else if (_group == SynergyGroup.Neutral) value = +1;
+                else if (_group == SynergyGroup.NeutralEvil) value = 0;
+                else if (_group == SynergyGroup.NeutralGood) value = +1;
                 break;
 
-            case PlayerAttributes.SynergyGroup.Neutral:
-                if (_group == PlayerAttributes.SynergyGroup.Evil) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.Good) value = +1;
-                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = 0;
+            case SynergyGroup.Neutral:
+                if (_group == SynergyGroup.Evil) value = 0;
+                else if (_group == SynergyGroup.Good) value = +1;
+                else if (_group == SynergyGroup.Neutral) value = 0;
+                else if (_group == SynergyGroup.NeutralEvil) value = -1;
+                else if (_group == SynergyGroup.NeutralGood) value = 0;
                 break;
 
-            case PlayerAttributes.SynergyGroup.NeutralEvil:
-                if (_group == PlayerAttributes.SynergyGroup.Evil) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.Good) value = 0;
-                else if (_group == PlayerAttributes.SynergyGroup.Neutral) value = -1;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralEvil) value = +1;
-                else if (_group == PlayerAttributes.SynergyGroup.NeutralGood) value = -1;
+            case SynergyGroup.NeutralEvil:
+                if (_group == SynergyGroup.Evil) value = 0;
+                else if (_group == SynergyGroup.Good) value = 0;
+                else if (_group == SynergyGroup.Neutral) value = -1;
+                else if (_group == SynergyGroup.NeutralEvil) value = +1;
+                else if (_group == SynergyGroup.NeutralGood) value = -1;
                 break;
         }
 

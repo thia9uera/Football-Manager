@@ -4,19 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class TeamAttributes
 {
-    public enum TeamStrategy
-    {
-        Neutral,
-        Offensive,
-        Defensive,
-        Deadlock,
-        WingsOffensive,
-        CenterOffensive,
-        Crossing,
-        Pressure,
-        ForceOffside
-    }
-
     [HideInInspector]
     public string Id;
 

@@ -84,9 +84,9 @@ public class TournamentData : ScriptableObject
 
     public void ResetTournament()
     {
-        Debug.Log("RESETED TOURNAMENT");
+	    Debug.Log("RESETED TOURNAMENT"); 
         foreach(MatchData match in Matches) match.Reset();
-        foreach (TeamData data in Teams) data.ResetStatistics("Tournament", Id);
+	    foreach (TeamData team in Teams) team.ResetStatistics("Tournament", Id);
         CurrentRound = 0;
     }
 

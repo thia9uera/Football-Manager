@@ -4,20 +4,43 @@ using UnityEngine;
 
 public class ScreenController : MonoBehaviour
 {
+	public static ScreenController Instance;
+	
+	[Header("Screens")]
+	[Space(5)]
+	public LoadingScreen Loading;
+	public StartScreen Start;
+	public CreateTeamScreen CreateTeam;
+	public ManagerScreen Manager;
+	
+	[Space(10)]
     public MainMenu MainMenu;
     public TournamentHubScreen TournamentHub;
     public MatchScreen Match;
-    public SquadEdit EditSQuad;
-    public MatchVisual MatchVisual;
+	public SquadEdit EditSquad;
 
-    public List<BaseScreen> ScreenList;
-    public BaseScreen.ScreenType PrevScreen;
-    public BaseScreen.ScreenType CurrentScreen;
 
-    public void ShowScreen(BaseScreen.ScreenType _type)
+    [HideInInspector] public ScreenType PrevScreen;
+	[HideInInspector] public ScreenType CurrentScreen;
+    
+	private List<BaseScreen> screenList;
+	
+	private void Awake()
+	{
+		if(Instance == null) Instance = this;
+		
+		screenList = new List<BaseScreen>();
+		
+		screenList.Add(Loading);
+		screenList.Add(Start);
+		screenList.Add(CreateTeam);
+		screenList.Add(Manager);
+	}
+
+    public void ShowScreen(ScreenType _type)
     {
         PrevScreen = CurrentScreen;
-        foreach (BaseScreen screen in ScreenList)
+        foreach (BaseScreen screen in screenList)
         {
             if (screen.Type == _type)
             {
@@ -26,7 +49,7 @@ public class ScreenController : MonoBehaviour
             }
             else screen.Hide();
         }
-        if (PrevScreen == BaseScreen.ScreenType.None) PrevScreen = CurrentScreen;
+        if (PrevScreen == ScreenType.None) PrevScreen = CurrentScreen;
     }
 
     public void ShowPreviousScreen()

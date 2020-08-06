@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41d40ad476724e569c8e995f4408329, type: 3}
+  m_Name: RandomNames_ENG
+  m_EditorClassIdentifier: 
+  FirstNames:
+  - John
+  - Dewie
+  - Nail
+  - Vinny
+  - James
+  - Jamie
+  - Willy
+  - Jack
+  - Jacob
+  - Hughie
+  - Philip
+  - Stanley
+  - Fonzie
+  - Richard
+  - Mathews
+  - Matt
+  - Ronald
+  - Ronnie
+  - Diego
+  - Dwight
+  - Charles
+  - Edward
+  - Eddie
+  - Jon
+  - Juan
+  - Mercy
+  - Martha
+  - Gretchen
+  - July
+  - Jewel
+  - Marcela
+  - Manny
+  - Jordan
+  - Nina
+  - Joyce
+  - Andy
+  - Camila
+  - Mila
+  - Gigi
+  - Bruna
+  - Gabriela
+  - Kelly
+  - Kathtyn
+  - Mary Lou
+  - Mary
+  - Andre
+  - Dre
+  - Milena
+  - Vera
+  - Marcy
+  - Ed
+  - Marylin
+  - Gladys
+  - Gerald
+  - Jerry
+  - Rich
+  - Jules
+  - Elton
+  - Julius
+  - Anthony
+  - Victoria
+  - Stella
+  - Rose
+  - Aubrey
+  - Reese
+  - Claudia
+  - Valentina
+  - Val
+  - Elisa
+  - Eli
+  - Fiuza
+  - Michael
+  - Neymar
+  - River
+  - Pepe
+  - Pam
+  - David
+  - Donald
+  - Dandara
+  - Tatiana
+  - Tathy
+  - Julia
+  - Giulia
+  - Theresa
+  - Talia
+  - Mariska
+  - Bob
+  - Bernie
+  - Axl
+  - Gilbert
+  - Ashley
+  - Candice
+  - Candy
+  - Rocky
+  - Karl
+  - Phill
+  - Greg
+  - Morgan
+  - Tracy
+  - Morty
+  LastNames:
+  - Smith
+  - Colt
+  - Pepper
+  - Sellek
+  - Phenomenon
+  - Lynch
+  - Jordan
+  - Johnson
+  - Williams
+  - Popcorn
+  - Pops
+  - Brown
+  - Jones
+  - Black
+  - Miller
+  - Olive
+  - Davis
+  - Cookie
+  - Rodriguez
+  - Butcher
+  - Taylor
+  - Never Nude
+  - Lee
+  - Clark
+  - Stone
+  - Lollipop
+  - Young
+  - Scott
+  - Junior
+  - Adams
+  - Hall
+  - Green
+  - Carter
+  - Fox
+  - Bouncer
+  - Thomas
+  - White
+  - Harris
+  - Sanchez
+  - Moore
+  - Tarantino
+  - Allen
+  - King
+  - Queen
+  - Wright
+  - Bernard
+  - Beesly
+  - Halpert
+  - Roberts
+  - Muller
+  - Nielsen
+  - Flanderson
+  - Anderson
+  - Rossi
+  - Murphy
+  - Mayers
+  - Barbano
+  - Mendez
+  - Newbie
+  - Fields
+  - Ford
+  - Vickers
+  - Beer
+  - Stocker
+  - Morrison
+  - Cranberry
+  - Threepwood
+  - Days
+  - Castro
+  - Rice
+  - Bean
+  - Pox
+  - Shultz
+  - Night Fever
+  - Martin
+  - Diabolique
+  - Sands
+  - Fisherman
+  - Fire
+  - Harbor
+  - Dante
+  - Despair
+  - Fear
+  - Morgan
+  - Morriconi
+  - Maguire
+  - Gyllenhall
+  - Vance
+  - Spielberg
+  - Notch
+  - Seesaw
+  - Cruz
+  - Rockbottom
+  - Goodsoup
+  - Cross
+  - Broth
+  - Woods
+  - Bush
+  - Obama
+  - Trump
+  TeamNames:
+  - Small Talk FC
+  - Sheepherd's Smiths
+  - Emotion Kickers
+  - Flawsquad
+  - Beet Farmers
+  - Devil's Butchers
+  - Cornerkick Fanatics
+  - Chanceller Gang
+  - Brothers Fist
+  - Footballesters

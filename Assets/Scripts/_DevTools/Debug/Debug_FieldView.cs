@@ -17,20 +17,17 @@ public class Debug_FieldView : MonoBehaviour
 
     public Debug_Popup Popup;
 
-    Field field;
-
     [SerializeField]
     private Text fatigueLabel;
 
     [SerializeField]
     private Slider slider;
 
-    public TeamAttributes.TeamStrategy TeamStrategy;
+    public TeamStrategy TeamStrategy;
 
     public void Awake()
     {
         if (Instance == null) Instance = this;
-        field = MainController.Instance.Match.Field;
     }
 
     public void Start()
@@ -38,7 +35,7 @@ public class Debug_FieldView : MonoBehaviour
         DropDownPlayerPosition.value = (int)TestPlayer.Attributes.Zone;
 
         List<string> list = new List<string>();
-        foreach (Player_Strategy strategy in MainController.Instance.PlayerStrategyData.player_Strategys)
+	    foreach (Player_Strategy strategy in GameData.Instance.PlayerStrategies)
         {
             list.Add(strategy.Name);
         }
@@ -46,22 +43,22 @@ public class Debug_FieldView : MonoBehaviour
         DropDownPlayerStrategy.value = (int)TestPlayer.Attributes.Strategy;
 
         list.Clear();
-        foreach (Team_Strategy strategy in MainController.Instance.TeamStrategyData.team_Strategys)
+	    foreach (Team_Strategy strategy in GameData.Instance.TeamStrategies)
         {
             list.Add(strategy.Name);
         }
         DropDownTeamStrategy.AddOptions(list);
-        TeamStrategy = (TeamAttributes.TeamStrategy)DropDownTeamStrategy.value;
+        TeamStrategy = (TeamStrategy)DropDownTeamStrategy.value;
 
         list.Clear();
         DropDownPlayerPosition.ClearOptions();
         for(int i = 0; i < 31; i++)
         {
-            list.Add(((Field.Zone)i).ToString());
+            list.Add(((Zone)i).ToString());
         }
         DropDownPlayerPosition.AddOptions(list);
 
-        TestPlayer.Attributes.Strategy = (PlayerAttributes.PlayerStrategy)DropDownPlayerStrategy.value;
+        TestPlayer.Attributes.Strategy = (PlayerStrategy)DropDownPlayerStrategy.value;
 
         Test();
     }
@@ -74,9 +71,7 @@ public class Debug_FieldView : MonoBehaviour
         {
             zone = t.GetComponent<Debug_ZoneView>();
 
-            float chance = field.CalculatePresence(TestPlayer, zone.Zone, TeamStrategy);
-
-            //print(zone.Zone.ToString() + " : " + chance);
+	        float chance = Field.Instance.CalculatePresence(TestPlayer, zone.Zone, TeamStrategy);
 
             if (chance >= 1f)
             {
@@ -91,16 +86,16 @@ public class Debug_FieldView : MonoBehaviour
 
     public void ValueChange()
     {
-        Field.Zone pos = (Field.Zone)DropDownPlayerPosition.value;
+        Zone pos = (Zone)DropDownPlayerPosition.value;
         //teamStrategy = MainController.Instance.TeamStrategyData.team_Strategys[DropDownTeamStrategy.value];
-        TeamStrategy = (TeamAttributes.TeamStrategy)DropDownTeamStrategy.value;
+        TeamStrategy = (TeamStrategy)DropDownTeamStrategy.value;
         TestPlayer.Attributes.Zone = pos;
         Test();
     }
 
     public void SetPlayerStrategy()
     {
-        TestPlayer.Attributes.Strategy = (PlayerAttributes.PlayerStrategy)DropDownPlayerStrategy.value;
+        TestPlayer.Attributes.Strategy = (PlayerStrategy)DropDownPlayerStrategy.value;
     }
 
     public void OnSliderChange()

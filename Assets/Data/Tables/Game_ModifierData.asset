@@ -17,7 +17,7 @@ MonoBehaviour:
     FaultChance: 0.2
     OffsideChance: 0.05
     AttackBonusLow: 1.02
-    AttackBonusMediun: 1.05
+    AttackBonusMedium: 1
     AttackBonusHigh: 1.1
     FatigueLow: 8
     FatigueMedium: 12

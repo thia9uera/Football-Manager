@@ -32,8 +32,8 @@ public class MatchPlayerView : MonoBehaviour
     public void Populate(PlayerData _player)
     {
         Player = _player;
-        nameLabel.text = _player.GetFullName();
-        posLabel.text = MainController.Instance.Localization.GetShortPositionString(_player.Position);
+	    nameLabel.text = _player.FullName;
+        posLabel.text = LocalizationController.Instance.GetShortPositionString(_player.Position);
         UpdateFatigue();
     }
 

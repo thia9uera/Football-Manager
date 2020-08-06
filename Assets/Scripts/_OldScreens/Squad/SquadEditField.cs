@@ -1,0 +1,127 @@
+﻿using PrimitiveUI;
+using DG.Tweening;
+using UnityEngine;
+using System.Collections.Generic;
+
+public class SquadEditField : MonoBehaviour
+{
+	[SerializeField] private PrimitiveCanvas lines;
+	
+	[Space(10)]
+    [SerializeField] private FieldZone[] zones;   
+	[SerializeField] private SquadEditPlayer[] players;
+    
+	[Space(10)]
+	[SerializeField] private Color positiveColor;
+	[SerializeField] private Color negativeColor;
+	[SerializeField] private Color neutralColor;
+
+    private float fieldWidth;
+    private float fieldHeight;
+
+   // private StrokeStyle lineStyle;
+
+    private FormationData formation;
+
+    private void Awake()
+    {
+        RectTransform rect = GetComponent<RectTransform>();
+        fieldWidth = rect.sizeDelta.x;
+        fieldHeight = rect.sizeDelta.y;
+        //lineStyle = new StrokeStyle(Color.white, 4f, StrokeScaleMode.Absolute);
+    }
+
+	public void PopulatePlayers(PlayerData[] _players, FormationData _formation, SquadScreen _controller)
+    {
+	    for(int i = 0; i < _players.Length; i++)
+        {
+            players[i].Populate(_players[i], _controller, i);
+        }
+
+        UpdateFormation(_formation);
+    }
+
+    public void AddPlayer(PlayerData _player, int _index, SquadScreen _controller)
+    {
+        players[_index].Populate(_player, _controller, _index);
+    }
+
+    public void UpdateFormation(FormationData _data)
+    {
+        formation = _data;
+        for(int i = 0; i < _data.Zones.Length; i++)
+        {
+            Zone zone = _data.Zones[i];
+            players[i].MoveTo(GetZone(zone).transform.position, zone);
+        }
+
+        UpdateConnections();
+    }
+
+    private FieldZone GetZone(Zone _zone)
+    {
+        FieldZone zone = null;
+        foreach(FieldZone z in zones)
+        {
+            if (z.Zone == _zone) zone = z;
+        }
+        return zone;
+    }
+
+    private void UpdateConnections()
+    {
+        lines.Clear();
+
+        CanvasGroup group = lines.GetComponent<CanvasGroup>();
+        group.alpha = 0;
+
+	    Color color = neutralColor;
+
+        foreach (FormationData.Connection connection in formation.Connections)
+        {
+            int synergy = GetZonePlayer(connection.ZoneA).GetSynergyBonus(GetZonePlayer(connection.ZoneB).Synergy);
+
+	        if (synergy == 1) color = positiveColor;
+	        else if (synergy == -1) color = negativeColor;
+
+            DrawLine(GetZoneRect(connection.ZoneA), GetZoneRect(connection.ZoneB), color);
+        }
+
+        group.DOFade(1f, 1f).SetDelay(0.5f);
+    }
+
+    private RectTransform GetZoneRect(Zone _zone)
+    {
+        RectTransform rect = null;
+
+        foreach (FieldZone zone in zones)
+        {
+            if (zone.Zone == _zone) rect = zone.Rect;
+        }
+        return rect;
+    }
+
+    private PlayerData GetZonePlayer(Zone _zone)
+    {
+        PlayerData player = null;
+
+        foreach (SquadEditPlayer p in players)
+        {
+            if (p.Player.Zone == _zone) player = p.Player;
+        }
+        return player;
+    }
+
+    private void DrawLine(RectTransform _pointA, RectTransform _pointB, Color _color)
+    {
+        float startX = (_pointA.anchoredPosition.x) / fieldWidth;
+        float startY = (_pointA.anchoredPosition.y) / fieldHeight;
+
+        float endX = (_pointB.anchoredPosition.x) / fieldWidth;
+        float endY = (_pointB.anchoredPosition.y) / fieldHeight;
+
+	    StrokeStyle lineStyle = new StrokeStyle(_color, 2f, StrokeScaleMode.Absolute);
+
+        lines.DrawLine(new Vector2(startX, startY), new Vector2(endX, endY), lineStyle);
+    }
+}

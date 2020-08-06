@@ -7,16 +7,11 @@ using I2.Loc;
 
 public class MatchNarrationTextView : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI label;
+    [SerializeField] private TextMeshProUGUI label;
+    [SerializeField] private TextMeshProUGUI zone;
+    [SerializeField] private Image frame;
 
-    [SerializeField]
-    private TextMeshProUGUI zone;
-
-    [SerializeField]
-    private Image frame;
-
-    public MatchController.PlayInfo PlayInfo;
+	public PlayInfo PlayInfo;
 
     public void Populate(string _text, Color _frameColor, Color _textColor, string _zone = "")
     {
@@ -24,7 +19,7 @@ public class MatchNarrationTextView : MonoBehaviour
         label.color = _textColor;
         zone.text = _zone;
 
-        frame.color = _frameColor;
+	    frame.color = _frameColor;
     }
 
     public void OnClick()
@@ -37,7 +32,7 @@ public class MatchNarrationTextView : MonoBehaviour
 
         if (PlayInfo.Attacker != null)
         {
-            print("ATTACKER: " + PlayInfo.Attacker.GetFullName());
+            print("ATTACKER: " + PlayInfo.Attacker.FullName);
             print("OFF ACTION: " + PlayInfo.OffensiveAction.ToString());
             print("SUCCESS: " + PlayInfo.IsActionSuccessful);
             print("ATTACKER ROLL: " + PlayInfo.AttackerRoll);
@@ -51,7 +46,7 @@ public class MatchNarrationTextView : MonoBehaviour
 
         if (PlayInfo.Defender != null)
         {
-            print("DEFENDER: " + PlayInfo.Defender.GetFullName());
+	        print("DEFENDER: " + PlayInfo.Defender.FullName);
             print("DEF ACTION: " + PlayInfo.DefensiveAction.ToString());
             print("DEFENSE SUCCESS: " + PlayInfo.IsActionDefended);
             print("DEFENDER ROLL: " + PlayInfo.DefenderRoll);
@@ -65,7 +60,7 @@ public class MatchNarrationTextView : MonoBehaviour
 
         print("MARKING TYPE: " + PlayInfo.Marking.ToString());
         print("EVENT: " + PlayInfo.Event.ToString());
-        if (PlayInfo.Assister != null) print("ASSISTER: " + PlayInfo.Assister.GetFullName());
+	    if (PlayInfo.Assister != null) print("ASSISTER: " + PlayInfo.Assister.FullName);
         print("EXCITMENT: " + PlayInfo.Excitment);
         print("ZONE (ABSOLUTE): " + PlayInfo.Zone.ToString());
         print("TARGET ZONE (ABSOLUTE): " + PlayInfo.TargetZone.ToString());

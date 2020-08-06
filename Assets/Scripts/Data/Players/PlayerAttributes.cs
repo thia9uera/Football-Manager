@@ -4,36 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public struct PlayerAttributes
 {
-    public enum PlayerPosition
-    {
-        Goalkeeper,
-        Defender,
-        Midfielder,
-        Forward,
-    }
-
-    public enum PlayerStrategy
-    {
-        Neutral,
-        Defensive,
-        Ofensive,
-        Left,
-        Right,
-        LeftDefensive,
-        RightDefensive,
-        LeftOffensive,
-        RightOffensive,
-    }
-
-    public enum SynergyGroup
-    {
-        Neutral,
-        Good,
-        Evil,
-        NeutralGood,
-        NeutralEvil
-    }
-
     public string Id;
 
     [Header("Personal")]
@@ -42,7 +12,7 @@ public struct PlayerAttributes
     public string LastName;
 
     [Space(10)]
-    public Field.Zone Zone;
+    public Zone Zone;
     public PlayerPosition Position;
     public PlayerStrategy Strategy;
 

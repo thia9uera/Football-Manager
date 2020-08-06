@@ -2,22 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ButtonDefault : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI label;
+	[SerializeField] private TextMeshProUGUI label;
+	[SerializeField] protected Button button;
 
     public string Label
     {
-        get
-        {
-            return label.text;
-        }
-
         set
         {
             label.text = value;
         }
     }
+    
+	public bool Enabled
+	{
+		set
+		{
+			button.interactable = value;
+		}
+	}
+	
+	public CanvasGroup CanvasGroup
+	{
+		get
+		{
+			return transform.GetComponent<CanvasGroup>();
+		}
+	}
 }

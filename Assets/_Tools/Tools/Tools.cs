@@ -19,7 +19,6 @@ public static class Tools
             if (t != null) al.Add(t);
         }
 
-
         T[] result = new T[al.Count];
         for (int i = 0; i < al.Count; i++) result[i] = (T)al[i];
         return result;
@@ -46,5 +45,12 @@ public static class Tools
         for (int i = 0; i < al.Count; i++) result[i] = (T)al[i];
         return result;
     }
+    
+	public static Object GetFile<T>(string _fileName)
+	{
+		string localPath = "Assets/" + _fileName;
+		Object t = AssetDatabase.LoadAssetAtPath(localPath, typeof(T));
+		return t;
+	}
 }
 #endif

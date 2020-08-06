@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2019_3_10;UNITY_2019_3;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_OSX;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TextMeshPro;RHSD;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2019_3_10;UNITY_2019_3;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TextMeshPro;RHSD;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -61,40 +61,42 @@
      <Compile Include="Assets\Scripts\Controllers\DebugController.cs" />
      <Compile Include="Assets\Scripts\Controllers\Field.cs" />
      <Compile Include="Assets\Scripts\Controllers\GlobalParameters.cs" />
+     <Compile Include="Assets\Scripts\Controllers\LocalizationController.cs" />
      <Compile Include="Assets\Scripts\Controllers\MainController.cs" />
      <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
      <Compile Include="Assets\Scripts\Controllers\ScreenController.cs" />
-     <Compile Include="Assets\Scripts\Data\Formations\FormationData.cs" />
-     <Compile Include="Assets\Scripts\Data\Formations\FormationsData.cs" />
-     <Compile Include="Assets\Scripts\Data\LocalizationData.cs" />
-     <Compile Include="Assets\Scripts\Data\PlayerNamesData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Formations\FormationData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Formations\FormationsData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\GameData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\InitialData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\PosChanceData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\StrategyData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\ActionChancePerZoneData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\Game_ModifierData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\Player_StrategyData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\TargetCrossPerZoneData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\TargetPassPerZoneData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\Team_StrategyData.cs" />
+     <Compile Include="Assets\Scripts\Data\Localization\LocalizationData.cs" />
      <Compile Include="Assets\Scripts\Data\Players\PlayerAttributes.cs" />
      <Compile Include="Assets\Scripts\Data\Players\PlayerData.cs" />
      <Compile Include="Assets\Scripts\Data\Players\PlayerStatistics.cs" />
-     <Compile Include="Assets\Scripts\Data\PosChanceData.cs" />
-     <Compile Include="Assets\Scripts\Data\StrategyData.cs" />
-     <Compile Include="Assets\Scripts\Data\Tables\ActionChancePerZoneData.cs" />
-     <Compile Include="Assets\Scripts\Data\Tables\Game_ModifierData.cs" />
-     <Compile Include="Assets\Scripts\Data\Tables\Player_StrategyData.cs" />
-     <Compile Include="Assets\Scripts\Data\Tables\TargetCrossPerZoneData.cs" />
-     <Compile Include="Assets\Scripts\Data\Tables\TargetPassPerZoneData.cs" />
-     <Compile Include="Assets\Scripts\Data\Tables\Team_StrategyData.cs" />
      <Compile Include="Assets\Scripts\Data\Teams\TeamAttributes.cs" />
      <Compile Include="Assets\Scripts\Data\Teams\TeamData.cs" />
      <Compile Include="Assets\Scripts\Data\Teams\TeamStatistics.cs" />
      <Compile Include="Assets\Scripts\Data\Tournaments\MatchData.cs" />
      <Compile Include="Assets\Scripts\Data\Tournaments\TournamentAttributes.cs" />
      <Compile Include="Assets\Scripts\Data\Tournaments\TournamentData.cs" />
-     <Compile Include="Assets\Scripts\Data\UserData.cs" />
+     <Compile Include="Assets\Scripts\Data\User\UserData.cs" />
      <Compile Include="Assets\Scripts\Generic\BaseScreen.cs" />
      <Compile Include="Assets\Scripts\Generic\ButtonDefault.cs" />
      <Compile Include="Assets\Scripts\Generic\Dice.cs" />
-     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardPlayerView.cs" />
-     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardTeamView.cs" />
-     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardView.cs" />
-     <Compile Include="Assets\Scripts\Loading\LoadingFileButton.cs" />
-     <Compile Include="Assets\Scripts\Loading\LoadingScreen.cs" />
-     <Compile Include="Assets\Scripts\Loading\Preloader.cs" />
+     <Compile Include="Assets\Scripts\Generic\InputFieldRandom.cs" />
+     <Compile Include="Assets\Scripts\Generic\PlayerInfoList.cs" />
+     <Compile Include="Assets\Scripts\Generic\PlayerInfoRow.cs" />
+     <Compile Include="Assets\Scripts\Generic\TabsView.cs" />
+     <Compile Include="Assets\Scripts\Match\MatchActionManager.cs" />
+     <Compile Include="Assets\Scripts\Match\MatchEvents.cs" />
      <Compile Include="Assets\Scripts\Match\MatchFieldView.cs" />
      <Compile Include="Assets\Scripts\Match\MatchNarration.cs" />
      <Compile Include="Assets\Scripts\Match\MatchNarrationTextView.cs" />
@@ -108,43 +110,21 @@
      <Compile Include="Assets\Scripts\Match\MatchTeamView.cs" />
      <Compile Include="Assets\Scripts\Match\MatchVisual.cs" />
      <Compile Include="Assets\Scripts\Match\MatchZonesContainer.cs" />
-     <Compile Include="Assets\Scripts\Menu\BackButton.cs" />
-     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentCard.cs" />
-     <Compile Include="Assets\Scripts\Menu\TournamentSelection\TournamentSelection.cs" />
-     <Compile Include="Assets\Scripts\Squad\FieldZone.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadEdit.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadEditField.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadEditPlayer.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadEditSubstitutes.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadMainView.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowView.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadSelectionArrowsView.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadSelectionView.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadSlotView.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadSubView.cs" />
-     <Compile Include="Assets\Scripts\Squad\SquadSubsView.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\ChampionshipCreation.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\CupCreation.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreation.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationMatch.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationMatchTeam.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationOptions.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationStars.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationTeam.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationTeamList.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentCreationTeamsAmount.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentLoad.cs" />
-     <Compile Include="Assets\Scripts\TournamentCreation\TournamentLoadItem.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentFixtures.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentFixturesItem.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentFixturesItemTeam.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentHubScreen.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentLeaderboard.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentLeaderboardItem.cs" />
-     <Compile Include="Assets\Scripts\TournamentHub\TournamentNextMatch.cs" />
+     <Compile Include="Assets\Scripts\Match\PlayDiceRolls.cs" />
+     <Compile Include="Assets\Scripts\Match\PlayInfo.cs" />
+     <Compile Include="Assets\Scripts\Screens\CreateTeam\ColorPick.cs" />
+     <Compile Include="Assets\Scripts\Screens\CreateTeam\ColorPicker.cs" />
+     <Compile Include="Assets\Scripts\Screens\CreateTeam\CreateTeamScreen.cs" />
+     <Compile Include="Assets\Scripts\Screens\Loading\LoadingFileButton.cs" />
+     <Compile Include="Assets\Scripts\Screens\Loading\LoadingScreen.cs" />
+     <Compile Include="Assets\Scripts\Screens\Loading\Preloader.cs" />
+     <Compile Include="Assets\Scripts\Screens\Manager\ManagerScreen.cs" />
+     <Compile Include="Assets\Scripts\Screens\Squad\SquadScreen.cs" />
+     <Compile Include="Assets\Scripts\Screens\Start\StartScreen.cs" />
+     <Compile Include="Assets\Scripts\Shared\Enums.cs" />
      <Compile Include="Assets\Scripts\_DevTools\Avatars\AvatarEditor.cs" />
      <Compile Include="Assets\Scripts\_DevTools\Avatars\CanvasScreenshot.cs" />
+     <Compile Include="Assets\Scripts\_DevTools\Debug\DebugTextFile.cs" />
      <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_FieldView.cs" />
      <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_Popup.cs" />
      <Compile Include="Assets\Scripts\_DevTools\Debug\Debug_ZoneView.cs" />
@@ -152,6 +132,45 @@
      <Compile Include="Assets\Scripts\_DevTools\FormationSetup\FormationZone.cs" />
      <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGenerator.cs" />
      <Compile Include="Assets\Scripts\_DevTools\NameGenerator\NameGeneratorItem.cs" />
+     <Compile Include="Assets\Scripts\_DevTools\NameGenerator\RandomNamesData.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Leaderboard\LeaderboardPlayerView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Leaderboard\LeaderboardTeamView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Leaderboard\LeaderboardView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Menu\BackButton.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Menu\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Menu\TournamentSelection\TournamentCard.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Menu\TournamentSelection\TournamentSelection.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\FieldZone.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadEdit.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadEditField.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadEditPlayer.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadEditSubstitutes.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadMainView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadSelectionArrowView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadSelectionArrowsView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadSelectionView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadSlotView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadSubView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\Squad\SquadSubsView.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\ChampionshipCreation.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\CupCreation.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreation.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationMatch.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationMatchTeam.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationOptions.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationStars.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationTeam.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationTeamList.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentCreationTeamsAmount.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentLoad.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentCreation\TournamentLoadItem.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentFixtures.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentFixturesItem.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentFixturesItemTeam.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentHubScreen.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentLeaderboard.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentLeaderboardItem.cs" />
+     <Compile Include="Assets\Scripts\_OldScreens\TournamentHub\TournamentNextMatch.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -357,11 +376,20 @@
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Connect.Share.Editor">
+ <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.Connect.Share.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.InternalAPIEditorBridgeDev.001">
+ <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.InternalAPIEditorBridgeDev.001.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.EditorCoroutines.Editor">
+ <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -375,9 +403,6 @@
  <Reference Include="com.unity.multiplayer-weaver.Editor">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
@@ -387,20 +412,11 @@
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.SpatialTracking">
- <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
- </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.XR.LegacyInputHelpers">
- <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -410,9 +426,6 @@
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.ARModule">
- <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AccessibilityModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
@@ -431,12 +444,6 @@
  </Reference>
  <Reference Include="UnityEngine.ClothModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.ClusterInputModule">
- <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.ClusterRendererModule">
- <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
@@ -579,6 +586,9 @@
  <Reference Include="UnityEngine.VideoModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.WebGLModule">
+ <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.WebGLModule.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.WindModule">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
  </Reference>
@@ -605,6 +615,9 @@
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="System.IO.Compression.FileSystem">
+ <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Library/PackageCache/com.unity.connect.share@2.0.3/Plugins/System.IO.Compression.FileSystem.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.10f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -962,6 +975,10 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{8B94892B-78B8-16C8-1A29-BF29C94406F5}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="ScriptInspector.csproj">
       <Project>{CF6755BA-86D4-A638-B7E2-BB23F3588D74}</Project>
       <Name>ScriptInspector</Name>
