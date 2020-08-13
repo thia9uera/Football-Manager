@@ -15,14 +15,28 @@ public class TeamData : ScriptableObject
     public Color PrimaryColor { get { return Attributes.PrimaryColor; } set { Attributes.PrimaryColor = value; } }
     public Color SecondaryColor { get { return Attributes.SecondaryColor; } set { Attributes.SecondaryColor = value; } }
 
-    public FormationData Formation { get { return Attributes.Formation; } set { Attributes.Formation = value; } }
-    public TeamStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
+	public TeamStrategy Strategy { get { return Attributes.Strategy; } set { Attributes.Strategy = value; } }
+	public FormationData Formation
+	{ 
+		get 
+		{ 
+			return GameData.Instance.Formations.GetFormation((FormationType)Attributes.Formation);
+		} 
+		set 
+		{ 
+			int id = GameData.Instance.Formations.GetFormationId(value); 
+			FormationSet = (FormationType)id;
+		} 
+	}
 
     [Space(10)]
     [Header("Players")]
     [Space(10)]
     public PlayerData[] Squad;
-    public PlayerData[] Substitutes;
+	public PlayerData[] Substitutes;
+    
+	[Space(10)]
+	public FormationType FormationSet;
 
     [Space(10)]
     public PlayerData Captain;
@@ -130,8 +144,12 @@ public class TeamData : ScriptableObject
 
     public void InitializeTournamentData(string _id)
     {
-        if (TournamentStatistics.ContainsKey(_id)) return;
-
+	    if (TournamentStatistics.ContainsKey(_id))
+	    {
+	    	ResetStatistics("Tournament", _id);	
+	    	return;
+	    }
+	    
         TournamentStatistics.Add(_id, new TeamStatistics());
     }
 
@@ -238,7 +256,8 @@ public class TeamData : ScriptableObject
     }
 
     public void Initialize(bool _fromSaveData = false)
-    {
+	{
+		if(IsUserControlled) Debug.Log("INITIALIZE");
         if(_fromSaveData)
         {
             SetSquad(Attributes.SquadIds);

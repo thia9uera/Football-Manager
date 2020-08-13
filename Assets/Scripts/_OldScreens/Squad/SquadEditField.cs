@@ -19,6 +19,7 @@ public class SquadEditField : MonoBehaviour
     private float fieldWidth;
     private float fieldHeight;
 
+	private Vector3 initialPlayerPosition;
    // private StrokeStyle lineStyle;
 
     private FormationData formation;
@@ -27,13 +28,15 @@ public class SquadEditField : MonoBehaviour
     {
         RectTransform rect = GetComponent<RectTransform>();
         fieldWidth = rect.sizeDelta.x;
-        fieldHeight = rect.sizeDelta.y;
+	    fieldHeight = rect.sizeDelta.y;
+        
+	    initialPlayerPosition = players[0].transform.position;
         //lineStyle = new StrokeStyle(Color.white, 4f, StrokeScaleMode.Absolute);
     }
 
-	public void PopulatePlayers(PlayerData[] _players, FormationData _formation, SquadScreen _controller)
+	public void PopulatePlayers(List<PlayerData> _players, FormationData _formation, SquadScreen _controller)
     {
-	    for(int i = 0; i < _players.Length; i++)
+	    for(int i = 0; i < _players.Count; i++)
         {
             players[i].Populate(_players[i], _controller, i);
         }
@@ -124,4 +127,12 @@ public class SquadEditField : MonoBehaviour
 
         lines.DrawLine(new Vector2(startX, startY), new Vector2(endX, endY), lineStyle);
     }
+    
+	public void Reset()
+	{
+		foreach (SquadEditPlayer player in players)
+		{
+			player.transform.position = initialPlayerPosition;
+		}
+	}
 }

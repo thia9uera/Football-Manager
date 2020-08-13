@@ -6,23 +6,17 @@ using UnityEngine.UI;
 
 public class ChampionshipCreation : MonoBehaviour
 {
-    [SerializeField]
-    TournamentCreationMatch matchTemplate;
+	[SerializeField] private TextMeshProUGUI teamAmountLabel;
+	[SerializeField] private TournamentCreationMatch matchTemplate;
+    [SerializeField] private TextMeshProUGUI roundLabelTemplate;
+	[SerializeField] private Transform content;
+	[SerializeField] private Toggle homeAwayTeams;
 
-    [SerializeField]
-    TextMeshProUGUI roundLabelTemplate;
-
-    [SerializeField]
-    Transform content;
-
-    List<GameObject> matchList;
+	private List<GameObject> matchList;
     public List<MatchData> DataList;
 
-    List<TeamData> placeholderList;
-    int totalTeams;
-
-    [SerializeField]
-    private Toggle homeAwayTeams;
+    private List<TeamData> placeholderList;
+    private int totalTeams;
 
     void Awake()
     {
@@ -31,27 +25,29 @@ public class ChampionshipCreation : MonoBehaviour
     }
 
     public void AddTeam(TeamData _data)
-    {
+	{
         TournamentCreation.Instance.TeamList.Add(_data);
         DataList.Clear();
         CreateRounds();
     }
 
     public void RemoveTeam(TeamData _data)
-    {
+	{
         TournamentCreation.Instance.TeamList.Remove(_data);
         DataList.Clear();
         CreateRounds();
     }
 
     public void CreateRounds()
-    {
+	{
         //Get teams that were added
         DataList.Clear();
         List<TeamData> list = TournamentCreation.Instance.TeamList;
         List<TeamData> teams = new List<TeamData>(list);
-
-        totalTeams = list.Count;
+				
+		totalTeams = list.Count;
+		if(totalTeams == 0) return;
+	    teamAmountLabel.text = totalTeams + " Teams";
         if (totalTeams % 2 != 0) totalTeams++;
 
         int i = 0;
@@ -77,28 +73,47 @@ public class ChampionshipCreation : MonoBehaviour
         }
 
         //Create rounds
-        int rounds = totalTeams - 1;
+	    int totalRounds = totalTeams - 1;
         int half = totalTeams / 2;
         List<TeamData> listA = new List<TeamData>(teams);
         List<TeamData> listB = new List<TeamData>(teams);
         TeamData homeTeam;
-        TeamData awayTeam;
-        for (int r = 0; r < rounds; r++)
-        {
+	    TeamData awayTeam;
+	    
+	    int day = (int)WeekDay.Sunday;
+		int maxGamesPerDay = half < 5 ? half : 5;
+		int totalGames = 0;
+		int totalGameDays = 0;
+	    int weekDay = 0;
+        
+	    for (int round = 0; round < totalRounds; round++)
+	    {
             for (int t = 0; t < half; t++)
             {
-                if (r % 2 == 0)
+                if (round % 2 == 0)
                 {
                     homeTeam = listA[t];
-                    awayTeam = listA[rounds - t];
+	                awayTeam = listA[totalRounds - t];
+	                
                 }
                 else
                 {
-                    homeTeam = listA[rounds - t];
-                    awayTeam = listA[t];
+                    homeTeam = listA[totalRounds - t];
+	                awayTeam = listA[t];               
                 }
+				
 
-                MatchData data = new MatchData(homeTeam.Attributes, awayTeam.Attributes, r);
+	            if(round > totalGameDays || totalGames % maxGamesPerDay == 0) 
+	            {
+	            	if(weekDay == 0) day += 3; // if it's Sunday skips to Wednesday
+	            	else day += 4; // if it's Wednesday skips to Sunday
+	            	weekDay = (weekDay == 0) ? 1 : 0;
+	            	totalGameDays++;
+	            }
+	            
+	            totalGames++;
+
+	            MatchData data = new MatchData(homeTeam.Attributes, awayTeam.Attributes, round, day);
                 DataList.Add(data);
             }
 
@@ -116,15 +131,27 @@ public class ChampionshipCreation : MonoBehaviour
                 }
             }
             listB = new List<TeamData>(listA);
-        }
+	    }
 
         if(homeAwayTeams.isOn)
         {
-            List<MatchData> dList = new List<MatchData>(DataList);
+        	if(totalGames < maxGamesPerDay) day += 7;
+        	MatchData matchData;
+	        List<MatchData> dList = new List<MatchData>(DataList);
+	        int round;
             foreach(MatchData data in dList)
             {
-                MatchData d = new MatchData(data.AwayTeam.TeamAttributes, data.HomeTeam.TeamAttributes, data.Round + rounds);
-                DataList.Add(d);
+            	round = data.Round + totalRounds;
+            	if(totalGames % maxGamesPerDay == 0) 
+	            {
+	            	if(weekDay == 0) day += 3; // if it's Sunday skips to Wednesday
+	            	else day += 4; // if it's Wednesday skips to Sunday
+	            	weekDay = (weekDay == 0) ? 1 : 0;
+	            }
+
+	            matchData = new MatchData(data.AwayTeam.TeamAttributes, data.HomeTeam.TeamAttributes, round, day);
+	            DataList.Add(matchData);
+	            totalGames++;
             }
         }
 
@@ -133,25 +160,32 @@ public class ChampionshipCreation : MonoBehaviour
 
     public void UpdateMatchList()
 	{
+		if(DataList.Count == 0) return;
 		if(matchList == null) matchList = new List<GameObject>();
         if(matchList.Count > 0) ClearMatchList();
-        int round = -1;
+		int round = -1;
+		int day = DataList[0].Day;
+		AddDateLabel(day);
         foreach(MatchData data in DataList)
         {
-            if(data.Round > round)
+	        if(data.Day != day)
             {
-                round = data.Round;
-                TextMeshProUGUI txt = Instantiate(roundLabelTemplate, content);
-                txt.text = "Round " + (round + 1);
-                matchList.Add(txt.gameObject);
+		        day = data.Day;
+		        AddDateLabel(day);
             }
             TournamentCreationMatch match = Instantiate(matchTemplate, content);
             match.Populate(data);
-            matchList.Add(match.gameObject);
+	        matchList.Add(match.gameObject);
+	        //Debug.Log(data.HomeTeam.TeamAttributes.Name + " X " + data.AwayTeam.TeamAttributes.Name + "  -  " + CalendarController.Instance.GetDay(data.Day));
         }
-
-        TournamentCreation.Instance.BtnCreateTournament.interactable = (placeholderList.Count <= 0);
-    }
+	}
+    
+	private void AddDateLabel(int _day)
+	{
+		TextMeshProUGUI txt = Instantiate(roundLabelTemplate, content);
+		txt.text = CalendarController.Instance.GetDay(_day) + " - " + CalendarController.Instance.GetWeekDay(_day);
+		matchList.Add(txt.gameObject);
+	}
 
     public void ClearMatchList()
 	{

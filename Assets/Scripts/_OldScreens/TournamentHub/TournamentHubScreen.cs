@@ -74,7 +74,7 @@ public class TournamentHubScreen : BaseScreen
 
     public void BackToMenu()
     {
-        ScreenController.Instance.ShowScreen(ScreenType.MainMenu);
+	    //ScreenController.Instance.ShowScreen(ScreenType.MainMenu);
     }
 
     public void SortPlayerLeaderboardBy(string _param)
@@ -103,11 +103,11 @@ public class TournamentHubScreen : BaseScreen
 
     public void OpenLeaderboards()
     {
-        ScreenController.Instance.ShowScreen(ScreenType.Leaderboards);
+	    // ScreenController.Instance.ShowScreen(ScreenType.Leaderboards);
     }
 
     public void EditSquad()
     {
-        ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
+	    //ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
     }
 }

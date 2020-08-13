@@ -13,7 +13,7 @@ public class MainMenu : BaseScreen
     public override void Show()
     {
         base.Show();
-        ShowSubmenu(ScreenType.TournamentSelection);
+	    //ShowSubmenu(ScreenType.TournamentSelection);
     }
 
     public void ShowSubmenu(ScreenType _type)

@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: GA1
     PrimaryColor: {r: 0.33429068, g: 0.21176472, b: 0.9137255, a: 1}
     SecondaryColor: {r: 0.8018868, g: 0.26855645, b: 0.26855645, a: 1}
-    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+    Formation: 0
     Strategy: 0
     SquadIds:
     - e83aa960-942f-4e25-b589-2bb38943b8d3
@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a3f19d8716998fa438a92a6d6ef1ba70, type: 2}
   - {fileID: 11400000, guid: 87a9d2c1aaa895443abaa896af02a616, type: 2}
   - {fileID: 11400000, guid: bc112e257dc6b204b88471ac1b860b68, type: 2}
+  FormationSet: 0
   Captain: {fileID: 11400000, guid: a0543db72b159344e9dab38dcb6457c5, type: 2}
   Stars: 0
   MatchStats:
@@ -128,6 +129,7 @@ MonoBehaviour:
     Offsides: 0
     CornerKicks: 0
     CounterAttacks: 0
+  IsAwayTeam: 0
   MatchData:
     TeamAttributes:
       Id: 
@@ -135,7 +137,7 @@ MonoBehaviour:
       Tag: 
       PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
       SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-      Formation: {fileID: 0}
+      Formation: 0
       Strategy: 0
       SquadIds: []
       SubstitutesIds: []

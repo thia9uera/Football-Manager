@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
 	[SerializeField] private TargetPassPerZoneData TargetPassPerZoneData;
 	[SerializeField] private TargetCrossPerZoneData TargetCrossPerZoneData;
 	[SerializeField] private ActionChancePerZoneData ActionChancePerZoneData;
+	[SerializeField] private FormationsData FormationsData;
 	
 	[Space(10)]
 	[SerializeField] private PosChanceData[] StrategyPosChanceData;
@@ -20,6 +21,7 @@ public class GameData : MonoBehaviour
 	public List<TargetPassPerZone> TargetPassPerZone { get { return TargetPassPerZoneData.targetPassPerZones;}}
 	public List<TargetCrossPerZone> TargetCrossPerZone { get { return TargetCrossPerZoneData.targetCrossPerZones;}}
 	public List<ActionChancePerZone> ActionChancePerZone { get { return ActionChancePerZoneData.actionChancePerZones;}}
+	public FormationsData Formations { get { return FormationsData; }}
 	
 	public Zones GetPosChanceData(TeamStrategy _strategy, Zone _zone)
 	{

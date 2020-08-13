@@ -12,6 +12,7 @@ public class ScreenController : MonoBehaviour
 	public StartScreen Start;
 	public CreateTeamScreen CreateTeam;
 	public ManagerScreen Manager;
+	public TournamentInfoScreen Tournament;
 	
 	[Space(10)]
     public MainMenu MainMenu;
@@ -35,6 +36,7 @@ public class ScreenController : MonoBehaviour
 		screenList.Add(Start);
 		screenList.Add(CreateTeam);
 		screenList.Add(Manager);
+		screenList.Add(Tournament);
 	}
 
     public void ShowScreen(ScreenType _type)

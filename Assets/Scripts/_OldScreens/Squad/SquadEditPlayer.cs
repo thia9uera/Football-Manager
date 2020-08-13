@@ -48,9 +48,10 @@ public class SquadEditPlayer : MonoBehaviour
     }
 
     public void FadeScaling(float _delay=0)
-    {
+	{
+		group.alpha = 0;
         transform.DOScale(0.5f, 0.2f).From().SetDelay(_delay);
-        group.DOFade(0f, 0.2f).From().SetDelay(_delay);
+	    group.DOFade(1f, 0.2f).SetDelay(_delay);
     }
 
     public void FadeOut()
@@ -66,6 +67,7 @@ public class SquadEditPlayer : MonoBehaviour
         IsSub = true;
 
 	    nameLabel.text = Player.FullName;
+	    nameLabel.gameObject.SetActive(false);
         overallLabel.text = Player.GetOverall().ToString();
         portrait.sprite = Player.Portrait;
         details.SetActive(true);
@@ -77,7 +79,6 @@ public class SquadEditPlayer : MonoBehaviour
         controller = _controller;
         Player = _player;
         Index = _index;
-
         if (Player)
         {
             Player.Zone = Player.Team.Formation.Zones[Index];
@@ -109,6 +110,11 @@ public class SquadEditPlayer : MonoBehaviour
         isSelected = !isSelected;
         icoSubs.SetActive(isSelected);
     }
+    
+	public void SetOpacity(float _value)
+	{
+		group.alpha = _value;
+	}
 
     public void Empty()
     {
@@ -116,7 +122,7 @@ public class SquadEditPlayer : MonoBehaviour
         Populate(Player, controller, Index);
     }
 
-    private void Destroy()
+	public void Destroy()
     {
         Destroy(gameObject);
     }
@@ -127,7 +133,8 @@ public class SquadEditPlayer : MonoBehaviour
     }
 
     private void OnDoubleClick()
-    {
+	{
+		/*
         if (IsSub)
         {
             controller.AddPlayer(Player, this);
@@ -136,7 +143,8 @@ public class SquadEditPlayer : MonoBehaviour
         {
             controller.RemovePlayer(Player, Index);
             Empty();
-        }
+		}
+		*/
     }
 
     private void OnSingleClick()
@@ -164,15 +172,29 @@ public class SquadEditPlayer : MonoBehaviour
     {
         transform.DOScale(1.1f, 0.1f);
 
-        controller.HoveringPlayer = this;
+	    controller.HoveringPlayer = this;
+	    if(IsSub) nameLabel.gameObject.SetActive(true);
     }
 
     public void OnPointerExit()
     {
         transform.DOScale(1f, 0.2f);
 
-        controller.HoveringPlayer = null;
+	    controller.HoveringPlayer = null;
+	    if(IsSub) nameLabel.gameObject.SetActive(false);
     }
+    
+	public void OnBeginDrag()
+	{
+		Debug.Log("BEGIN DRAG");
+		controller.StartDragPlayer();
+	}
+	
+	public void OnEndDrag()
+	{
+		Debug.Log("END DRAG");
+		controller.StopDragPlayer();
+	}
 
     private void Update()
     {

@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: BRA
     PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
     SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
-    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+    Formation: 0
     Strategy: 0
     SquadIds:
     - 97dbaa64-77da-4562-9aab-2be31d547bad
@@ -62,54 +62,30 @@ MonoBehaviour:
       CounterAttacks: 0
     TournamentStatistics:
       reorderableList:
-        canAdd: 1
-        canRemove: 1
-        draggable: 1
-        expandable: 1
-        multipleSelection: 1
+        canAdd: 0
+        canRemove: 0
+        draggable: 0
+        expandable: 0
+        multipleSelection: 0
         isExpanded: 0
         label:
-          m_Text: Keys
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        headerHeight: 18
-        footerHeight: 13
-        slideEasing: 0.15
-        verticalSpacing: 2
-        showDefaultBackground: 1
+        headerHeight: 0
+        footerHeight: 0
+        slideEasing: 0
+        verticalSpacing: 0
+        showDefaultBackground: 0
         elementDisplayType: 0
         elementNameProperty: 
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
       isExpanded: 0
-      _keyValues:
-      - 
-      _keys:
-      - 25e4dad0-15fc-432e-9fbb-934f73921ef2
-      _values:
-      - Points: 0
-        Wins: 0
-        Losts: 0
-        Draws: 0
-        Goals: 0
-        GoalsAgainst: 0
-        GoalsByHeader: 0
-        Shots: 0
-        Headers: 0
-        Steals: 0
-        Passes: 0
-        Crosses: 0
-        LongPasses: 0
-        PassesMissed: 0
-        CrossesMissed: 0
-        ShotsMissed: 0
-        HeadersMissed: 0
-        BoxCrosses: 0
-        Faults: 0
-        Offsides: 0
-        CornerKicks: 0
-        CounterAttacks: 0
+      _keyValues: []
+      _keys: []
+      _values: []
     IsUserControlled: 0
     IsPlaceholder: 0
   Squad:
@@ -129,6 +105,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c34525a122ae54f408308bfa317d55a3, type: 2}
   - {fileID: 11400000, guid: 0245709de3d473d449b58a018d95fb9a, type: 2}
   - {fileID: 11400000, guid: 93bf3b8ec08d4494b92e85122ec9d2e5, type: 2}
+  FormationSet: 0
   Captain: {fileID: 0}
   Stars: 0
   MatchStats:
@@ -154,6 +131,7 @@ MonoBehaviour:
     Offsides: 0
     CornerKicks: 0
     CounterAttacks: 0
+  IsAwayTeam: 0
   MatchData:
     TeamAttributes:
       Id: e4570048-7c33-467f-b178-605edf19adb9
@@ -161,7 +139,7 @@ MonoBehaviour:
       Tag: BRA
       PrimaryColor: {r: 0.046146322, g: 0.5754717, b: 0.06731805, a: 1}
       SecondaryColor: {r: 0.9528302, g: 0.94195914, b: 0.15730685, a: 1}
-      Formation: {fileID: 0}
+      Formation: 0
       Strategy: 0
       SquadIds:
       - 97dbaa64-77da-4562-9aab-2be31d547bad

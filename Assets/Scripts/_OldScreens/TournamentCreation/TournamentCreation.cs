@@ -12,38 +12,35 @@ public class TournamentCreation : BaseScreen
     public TournamentCreationOptions Options;
 
     public ChampionshipCreation Championship;
-    public CupCreation Cup;
+	public CupCreation Cup;
 
-    [HideInInspector]
-    public List<TeamData> AvailableTeams;
-
-    [HideInInspector]
-    public List<TeamData> TeamList;
+    [HideInInspector] public List<TeamData> AvailableTeams;
+    [HideInInspector] public List<TeamData> TeamList;
 
     public GameObject Edit;
     public GameObject Load;
-       
-    public Button BtnCreateTournament;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        Edit.SetActive(false);
-        Load.SetActive(true);
     }
+    
+	private void Start()
+	{
+		CalendarController.Instance.InitializeCalendar(2020);
+		Show();
+	}
 
     public override void Show()
     {
         base.Show();
-        Edit.SetActive(false);
-        Load.SetActive(true);
 	    LoadTournaments();
-	    ChangeType(TournamentAttributes.TournamentType.Championship);
+	    //ChangeType(TournamentType.Championship);
     }
 
     public void AddTeam(TeamData _team)
     {
-        if(Options.TypeDropDown.value == (int)TournamentAttributes.TournamentType.Championship)
+        if(Options.TypeDropDown.value == (int)TournamentType.Championship)
         {
             Championship.AddTeam(_team);
             AvailableTeams.Remove(_team);
@@ -52,7 +49,7 @@ public class TournamentCreation : BaseScreen
 
     public void RemoveTeam(string _teamId)
     {
-        if (Options.TypeDropDown.value == (int)TournamentAttributes.TournamentType.Championship)
+        if (Options.TypeDropDown.value == (int)TournamentType.Championship)
         {
             TeamData team = MainController.Instance.GetTeamById(_teamId);
             Championship.RemoveTeam(team);
@@ -61,16 +58,16 @@ public class TournamentCreation : BaseScreen
         }
     }
 
-    public void ChangeType(TournamentAttributes.TournamentType _type)
+    public void ChangeType(TournamentType _type)
     {
         switch (_type)
         {
-            case TournamentAttributes.TournamentType.Championship:
+            case TournamentType.Championship:
 	            Championship.gameObject.SetActive(true);
-	            Championship.ClearMatchList();
+	        	//Championship.ClearMatchList();
                 Cup.gameObject.SetActive(false);
                 break;
-            case TournamentAttributes.TournamentType.Cup:
+            case TournamentType.Cup:
                 Championship.gameObject.SetActive(false);
 	            Cup.gameObject.SetActive(true);
                 break;
@@ -83,12 +80,11 @@ public class TournamentCreation : BaseScreen
         List<TeamData> teams = new List<TeamData>(TeamList);
         List<MatchData> matches = new List<MatchData>(Championship.DataList);
         tournament.Name = Options.InputName.text;
-        tournament.Type = (TournamentAttributes.TournamentType)Options.TypeDropDown.value;
-        tournament.StarsRequired = Options.StarsRequired.StarsRequired;
+        tournament.Type = (TournamentType)Options.TypeDropDown.value;
 
-        switch((TournamentAttributes.TournamentType)Options.TypeDropDown.value)
+        switch((TournamentType)Options.TypeDropDown.value)
         {
-            case TournamentAttributes.TournamentType.Championship:
+            case TournamentType.Championship:
                 //tournament.Teams = teams;
                 tournament.Matches = matches;
                 int t = teams.Count;
@@ -106,7 +102,7 @@ public class TournamentCreation : BaseScreen
         AssetDatabase.SaveAssets();
         MainController.Instance.AllTournaments.Add(tournament);
         LoadTournaments();
-	    DataController.Instance.SaveGame();
+	    //DataController.Instance.SaveGame();
     }
 
     public void LoadTournaments()
@@ -119,17 +115,16 @@ public class TournamentCreation : BaseScreen
     }
 
     public void EditTournament(TournamentData _data)
-    {
+	{
+		Debug.Log("EDIT TOURNAMENT");
         AvailableTeams = new List<TeamData>(MainController.Instance.AllTeams);
 
         Edit.SetActive(true);
         Load.SetActive(false);
 
         Options.InputName.text = _data.Name;
-        Options.TypeDropDown.value = (int)_data.Type;
-        Options.StarsRequired.StarsRequired = _data.StarsRequired;
+	    Options.TypeDropDown.value = (int)_data.Type;
 
-        BtnCreateTournament.interactable = false;
         TeamList = new List<TeamData>();
         TeamList = new List<TeamData>(_data.Teams);
         Championship.CreateRounds();
@@ -140,9 +135,15 @@ public class TournamentCreation : BaseScreen
         }
         Options.TeamList.UpdateTeamList();
 
-        if((TournamentAttributes.TournamentType)Options.TypeDropDown.value == TournamentAttributes.TournamentType.Championship)
+        if((TournamentType)Options.TypeDropDown.value == TournamentType.Championship)
         {
-            //TODO show Championship tables
+	        Options.ChampionshipSetup();
         }
     }
+   
+	public void DeleteTournament(TournamentData _data)
+	{
+		AssetDatabase.DeleteAsset("Assets/Data/Tournaments/" + _data.Name + ".asset");
+		LoadTournaments();
+	}
 }

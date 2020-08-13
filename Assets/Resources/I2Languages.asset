@@ -1130,6 +1130,102 @@ MonoBehaviour:
       - SELECIONE JOGADOR PARA EDITAR
       Flags: 0000
       Languages_Touch: []
+    - Term: title_View
+      TermType: 0
+      Description: 
+      Languages:
+      - VIEW
+      - "VISUALIZAC\xC3O"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_Formation
+      TermType: 0
+      Description: 
+      Languages:
+      - FORMATION
+      - "FORMA\xC7\xC3O"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_Strategy
+      TermType: 0
+      Description: 
+      Languages:
+      - STRATEGY
+      - "ESTRAT\xC9GIA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_Neutral
+      TermType: 0
+      Description: 
+      Languages:
+      - Neutral
+      - Neutra
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_Defensive
+      TermType: 0
+      Description: 
+      Languages:
+      - Defensive
+      - Defensiva
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_Offensive
+      TermType: 0
+      Description: 
+      Languages:
+      - Offensive
+      - Ofensiva
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_Deadlock
+      TermType: 0
+      Description: 
+      Languages:
+      - Deadlock
+      - Retranca
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_WingOffensive
+      TermType: 0
+      Description: 
+      Languages:
+      - Wing Ofensive
+      - Ofensiva Lateral
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_Crossing
+      TermType: 0
+      Description: 
+      Languages:
+      - Crossing
+      - Cruzamento
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_Pressure
+      TermType: 0
+      Description: 
+      Languages:
+      - Pressure
+      - "Press\u0101o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_ForceOffside
+      TermType: 0
+      Description: 
+      Languages:
+      - Force Offside
+      - "Impedimento For\xE7ado"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: strategy_CenterOffensive
+      TermType: 0
+      Description: 
+      Languages:
+      - Center Offensive
+      - Ofensiva Central
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -1145,7 +1241,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1596384685280
+    Google_LastUpdatedVersion: 1596823695077
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

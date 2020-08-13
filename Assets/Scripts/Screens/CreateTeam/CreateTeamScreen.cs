@@ -50,4 +50,9 @@ public class CreateTeamScreen : BaseScreen
 		
 		ScreenController.Instance.ShowScreen(ScreenType.Loading);
 	}
+	
+	public void BackClickHandler()
+	{
+		ScreenController.Instance.ShowScreen(ScreenType.Start);
+	}
 }

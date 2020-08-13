@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: _DaCas
+  m_EditorClassIdentifier: 
+  Attributes:
+    Id: 208149e6-bad1-4f23-be7c-99a6aa317f32
+    Portrait: FW_1
+    FirstName: Guilherme
+    LastName: Da Cas
+    Zone: 25
+    Position: 3
+    Strategy: 2
+    Synergy: 1
+    Goalkeeping: 64
+    Passing: 67
+    Dribbling: 65
+    Crossing: 62
+    Tackling: 61
+    Blocking: 61
+    Shooting: 59
+    Heading: 96
+    Freekick: 57
+    Penalty: 61
+    Speed: 82
+    Strength: 83
+    Agility: 86
+    Stamina: 83
+    Teamwork: 87
+    Vision: 92
+    Stability: 86
+    LifeTimeStats:
+      Passes: 0
+      Crosses: 0
+      BoxCrosses: 0
+      Shots: 0
+      ShotsOnGoal: 0
+      ShotsMissed: 0
+      Headers: 0
+      HeadersMissed: 0
+      HeadersOnGoal: 0
+      Faults: 0
+      Tackles: 0
+      Dribbles: 0
+      Goals: 0
+      GoalsByHeader: 0
+      Saves: 0
+      PassesMissed: 0
+      DribblesMissed: 0
+      CrossesMissed: 0
+      Presence: 0
+      Assists: 0
+      MatchesPlayed: 0
+      MatchRating: 6
+      AverageRating: 0
+      TournamentID: 
+    TournamentStatistics: []
+  MatchStats:
+    Passes: 0
+    Crosses: 0
+    BoxCrosses: 0
+    Shots: 0
+    ShotsOnGoal: 0
+    ShotsMissed: 0
+    Headers: 0
+    HeadersMissed: 0
+    HeadersOnGoal: 0
+    Faults: 0
+    Tackles: 0
+    Dribbles: 0
+    Goals: 0
+    GoalsByHeader: 0
+    Saves: 0
+    PassesMissed: 0
+    DribblesMissed: 0
+    CrossesMissed: 0
+    Presence: 0
+    Assists: 0
+    MatchesPlayed: 0
+    MatchRating: 6
+    AverageRating: 0
+    TournamentID: 
+  Team: {fileID: 0}
+  Prob_DefPosition: 0.25
+  Prob_OffPosition: 4
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1.3
+  Prob_Fault: 0
+  Prob_Crossing: 1.5
+  Prob_Dribble: 1.3
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

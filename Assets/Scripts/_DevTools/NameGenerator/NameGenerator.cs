@@ -59,7 +59,7 @@ public class NameGenerator : MonoBehaviour
             team.Attributes.PrimaryColor = team.PrimaryColor;
             team.Attributes.SecondaryColor = team.SecondaryColor;
             team.Attributes.Strategy = (TeamStrategy)team.Strategy;
-            team.Attributes.Formation = (FormationData)team.Formation;
+	        team.Attributes.Formation = team.Attributes.Formation;
             team.Attributes.Tag = team.Tag;
             team.Attributes.Id = System.Guid.NewGuid().ToString();
             EditorUtility.SetDirty(team);

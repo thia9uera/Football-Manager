@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: _Dalmazzo
+  m_EditorClassIdentifier: 
+  Attributes:
+    Id: c8f220fd-69de-4b3f-a996-f0c41b005c6d
+    Portrait: DF_3
+    FirstName: Andre
+    LastName: Dalmazzo
+    Zone: 0
+    Position: 1
+    Strategy: 0
+    Synergy: 0
+    Goalkeeping: 27
+    Passing: 57
+    Dribbling: 50
+    Crossing: 50
+    Tackling: 56
+    Blocking: 50
+    Shooting: 35
+    Heading: 62
+    Freekick: 28
+    Penalty: 27
+    Speed: 56
+    Strength: 94
+    Agility: 53
+    Stamina: 75
+    Teamwork: 81
+    Vision: 56
+    Stability: 44
+    LifeTimeStats:
+      Passes: 0
+      Crosses: 0
+      BoxCrosses: 0
+      Shots: 0
+      ShotsOnGoal: 0
+      ShotsMissed: 0
+      Headers: 0
+      HeadersMissed: 0
+      HeadersOnGoal: 0
+      Faults: 0
+      Tackles: 0
+      Dribbles: 0
+      Goals: 0
+      GoalsByHeader: 0
+      Saves: 0
+      PassesMissed: 0
+      DribblesMissed: 0
+      CrossesMissed: 0
+      Presence: 0
+      Assists: 0
+      MatchesPlayed: 0
+      MatchRating: 6
+      AverageRating: 0
+      TournamentID: 
+    TournamentStatistics: []
+  MatchStats:
+    Passes: 0
+    Crosses: 0
+    BoxCrosses: 0
+    Shots: 0
+    ShotsOnGoal: 0
+    ShotsMissed: 0
+    Headers: 0
+    HeadersMissed: 0
+    HeadersOnGoal: 0
+    Faults: 0
+    Tackles: 0
+    Dribbles: 0
+    Goals: 0
+    GoalsByHeader: 0
+    Saves: 0
+    PassesMissed: 0
+    DribblesMissed: 0
+    CrossesMissed: 0
+    Presence: 0
+    Assists: 0
+    MatchesPlayed: 0
+    MatchRating: 6
+    AverageRating: 0
+    TournamentID: 
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

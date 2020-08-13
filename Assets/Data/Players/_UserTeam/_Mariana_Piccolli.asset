@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: _Mariana_Piccolli
+  m_EditorClassIdentifier: 
+  Attributes:
+    Id: 10c9d827-60d9-4569-af79-ccf910bb3909
+    Portrait: 
+    FirstName: Mariana
+    LastName: Piccolli
+    Zone: 0
+    Position: 3
+    Strategy: 0
+    Synergy: 0
+    Goalkeeping: 48
+    Passing: 24
+    Dribbling: 50
+    Crossing: 50
+    Tackling: 31
+    Blocking: 50
+    Shooting: 43
+    Heading: 14
+    Freekick: 16
+    Penalty: 18
+    Speed: 48
+    Strength: 31
+    Agility: 31
+    Stamina: 71
+    Teamwork: 95
+    Vision: 33
+    Stability: 63
+    LifeTimeStats:
+      Passes: 0
+      Crosses: 0
+      BoxCrosses: 0
+      Shots: 0
+      ShotsOnGoal: 0
+      ShotsMissed: 0
+      Headers: 0
+      HeadersMissed: 0
+      HeadersOnGoal: 0
+      Faults: 0
+      Tackles: 0
+      Dribbles: 0
+      Goals: 0
+      GoalsByHeader: 0
+      Saves: 0
+      PassesMissed: 0
+      DribblesMissed: 0
+      CrossesMissed: 0
+      Presence: 0
+      Assists: 0
+      MatchesPlayed: 0
+      MatchRating: 6
+      AverageRating: 0
+      TournamentID: 
+    TournamentStatistics: []
+  MatchStats:
+    Passes: 0
+    Crosses: 0
+    BoxCrosses: 0
+    Shots: 0
+    ShotsOnGoal: 0
+    ShotsMissed: 0
+    Headers: 0
+    HeadersMissed: 0
+    HeadersOnGoal: 0
+    Faults: 0
+    Tackles: 0
+    Dribbles: 0
+    Goals: 0
+    GoalsByHeader: 0
+    Saves: 0
+    PassesMissed: 0
+    DribblesMissed: 0
+    CrossesMissed: 0
+    Presence: 0
+    Assists: 0
+    MatchesPlayed: 0
+    MatchRating: 6
+    AverageRating: 0
+    TournamentID: 
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

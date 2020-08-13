@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce2f364d98c9d346820be3db93547d1, type: 3}
   m_Name: 2-5-3
   m_EditorClassIdentifier: 
+  Type: 2
   Name: 2-5-3
   Zones: 0000000004000000060000000a0000000d0000000e000000100000001100000018000000190000001a000000
   Connections:

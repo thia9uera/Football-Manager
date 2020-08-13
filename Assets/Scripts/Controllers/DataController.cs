@@ -8,23 +8,25 @@ using UnityEngine;
 public class DataController : MonoBehaviour
 {
 	public static DataController Instance;
-    string saveFolder;
-    string userFolder;
+	private string saveFolder;
+    private string userFolder;
 
-    int totalPlayers;
-    int totalTeams;
-    int totalTournaments;
+    private int totalPlayers;
+    private int totalTeams;
+    private int totalTournaments;
 
-    int playersLoaded;
-    int teamsLoaded;
-    int tournamentsLoaded;
+    private int playersLoaded;
+    private int teamsLoaded;
+    private int tournamentsLoaded;
 
-    bool isLoadingGame;
-    bool isLoadingPlayers;
-    bool isLoadingTeams;
-    bool isLoadingTournaments;
-
-	string extension = ".auxter";
+    private bool isLoadingGame;
+	private bool isLoadingPlayers;
+    private bool isLoadingTeams;
+    private bool isLoadingTournaments;
+	
+	private MainController mainController;
+	
+	private string extension = ".auxter";
     
 	private void Awake()
 	{
@@ -33,7 +35,8 @@ public class DataController : MonoBehaviour
 
     private void Start()
     {
-        saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
+	    saveFolder = CombinePaths(Application.persistentDataPath, "SaveFiles/");
+	    mainController = MainController.Instance;
     }
 
 	public void CreateUserData(string _coachName, string _teamName)
@@ -44,7 +47,7 @@ public class DataController : MonoBehaviour
 	        TeamName = _teamName,
             Id = System.Guid.NewGuid().ToString()
         };
-        MainController.Instance.User = userData;
+        mainController.User = userData;
         userFolder = CombinePaths(saveFolder, userData.Id);
         if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
         if (Directory.Exists(userFolder))
@@ -63,7 +66,7 @@ public class DataController : MonoBehaviour
     #region SAVE
     public void SaveGame(bool _loadAfter = false)
 	{
-		MainController.Instance.User.LastTimeSaved = System.DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm");
+		mainController.User.LastTimeSaved = System.DateTime.UtcNow.ToString("dd-MM-yyyy HH:mm");
     	
 		StartCoroutine("SaveFlow", _loadAfter);
 	}
@@ -76,40 +79,68 @@ public class DataController : MonoBehaviour
 		yield return StartCoroutine("SaveTournaments");
 		
 		       
-		if(_loadAfter) LoadGame(MainController.Instance.User.Id);
+		if(_loadAfter) LoadGame(mainController.User.Id);
 		else print("GAME SAVED");
 
 		print(saveFolder);
 	}
+	
+	public void QuickSave()
+	{
+		StartCoroutine("QuickSaveFlow");
+	}
+	
+	private IEnumerator QuickSaveFlow()
+	{
+		yield return StartCoroutine("SaveTeamPlayer", mainController.UserTeam.GetAllPlayers());
+		yield return StartCoroutine("SaveTeam", mainController.UserTeam);
+		
+		print("GAME SAVED");
+	}
 
 	private IEnumerator SaveUser()
     {
-        UserData user = MainController.Instance.User;
+        UserData user = mainController.User;
 	    SaveData(user, "UserData");
 	    yield return false;
     }
-
-    private IEnumerator SavePlayers()
-    {
-        foreach (PlayerData player in MainController.Instance.AllPlayers)
+    
+	private IEnumerator SavePlayers()
+	{
+		foreach (PlayerData player in mainController.AllPlayers)
         {
             SaveData(player.Attributes, player.Id, "Players");
         }
 	    yield return false;
-    }
+	}
+    
+	private IEnumerator SaveTeamPlayer(List<PlayerData> _playerList = null)
+	{
+		foreach (PlayerData player in _playerList)
+		{
+			SaveData(player.Attributes, player.Id, "Players");
+		}
+		yield return false;
+	}
 
-    private IEnumerator SaveTeams()
-    {
-        foreach (TeamData team in MainController.Instance.AllTeams)
-        {
-            SaveData(team.Attributes, team.Id, "Teams");
-        }
+	private IEnumerator SaveTeams()
+	{
+		foreach(TeamData team in mainController.AllTeams)
+		{
+			SaveData(team.Attributes, team.Id, "Teams");
+		}
 	    yield return false;
-    }
+	}
+    
+	private IEnumerator SaveTeam(TeamData _team)
+	{
+		SaveData(_team.Attributes, _team.Id, "Teams");
+		yield return false;
+	}
 
     private IEnumerator SaveTournaments()
     {
-        foreach (TournamentData tournament in MainController.Instance.AllTournaments)
+        foreach (TournamentData tournament in mainController.AllTournaments)
         {
             SaveData(tournament.Attributes, tournament.Id, "Tournaments");
         }
@@ -137,13 +168,13 @@ public class DataController : MonoBehaviour
 
 	public IEnumerator LoadUser()
     {
-	    MainController.Instance.User = LoadData<UserData>("UserData");
+	    mainController.User = LoadData<UserData>("UserData");
 	    yield return null;
     }
 
 	private IEnumerator LoadPlayers()
     {
-        MainController.Instance.AllPlayers = new List<PlayerData>();
+        mainController.AllPlayers = new List<PlayerData>();
         isLoadingPlayers = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Players"));
         totalPlayers = files.Length;
@@ -153,7 +184,7 @@ public class DataController : MonoBehaviour
             PlayerData player = ScriptableObject.CreateInstance<PlayerData>();
             player.Attributes = data;
 
-            MainController.Instance.AllPlayers.Add(player);
+            mainController.AllPlayers.Add(player);
             playersLoaded++;
         }
 	    yield return null;
@@ -161,7 +192,7 @@ public class DataController : MonoBehaviour
 
 	private IEnumerator LoadTeams()
     {
-        MainController.Instance.AllTeams = new List<TeamData>();
+        mainController.AllTeams = new List<TeamData>();
         isLoadingTeams = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Teams"));
         totalTeams = files.Length;
@@ -172,8 +203,8 @@ public class DataController : MonoBehaviour
             team.Attributes = data;
             team.Initialize(true);
 
-            if (team.IsUserControlled) MainController.Instance.UserTeam = team;
-            MainController.Instance.AllTeams.Add(team);
+            if (team.IsUserControlled) mainController.UserTeam = team;
+            mainController.AllTeams.Add(team);
             teamsLoaded++;
         }
 	    yield return null;
@@ -181,17 +212,24 @@ public class DataController : MonoBehaviour
 
 	private IEnumerator LoadTournaments()
     {
-        MainController.Instance.AllTournaments = new List<TournamentData>();
+	    mainController.AllTournaments = new List<TournamentData>();
+	    mainController.ActiveTournaments.Clear();
         isLoadingTournaments = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Tournaments"));
-        totalTournaments = files.Length;
+	    totalTournaments = files.Length;
+	    
         foreach (string file in files)
         {
             TournamentAttributes data = LoadFile<TournamentAttributes>(file);
             TournamentData tournament = ScriptableObject.CreateInstance<TournamentData>();
             tournament.Attributes = data;
             tournament.LoadTeams();
-            MainController.Instance.AllTournaments.Add(tournament);
+	        mainController.AllTournaments.Add(tournament);
+                    
+	        if(mainController.UserTeam.TournamentStatistics.ContainsKey(data.Id))
+	        {
+	        	mainController.ActiveTournaments.Add(tournament.Id);
+	        }
             tournamentsLoaded++;
         }
 	    yield return null;
@@ -340,7 +378,7 @@ public class DataController : MonoBehaviour
     void FinishLoadingGame()
     {
         isLoadingGame = false;
-        ScreenController.Instance.ShowScreen(ScreenType.MainMenu);
+	    //ScreenController.Instance.ShowScreen(ScreenType.MainMenu);
     }
 
     void Update()

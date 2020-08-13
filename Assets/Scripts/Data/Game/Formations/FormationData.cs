@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Formation", menuName = "Data/Formation Data", order = 1)]
 public class FormationData : ScriptableObject
 {
+	public FormationType Type;
     public string Name = "0-0-0";
     public Zone[] Zones;
 

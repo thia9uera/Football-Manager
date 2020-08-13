@@ -39,7 +39,7 @@ public class LoadingScreen : BaseScreen
 	public void LoadScreenDelay(float _delay, ScreenType _screenToShow)
 	{
 		screenToShowAfterLoad = _screenToShow;
-		Invoke("ShowScreen", 10f);
+		Invoke("ShowScreen", _delay);
 	}
 	
 	public void ShowScreen()

@@ -17,6 +17,7 @@ public class MainController : MonoBehaviour
 	public List<PlayerData> AllPlayers;
     public List<TeamData> AllTeams;
     public List<TournamentData> AllTournaments;
+	public List<string> ActiveTournaments;
 
     [Space(10)]
     [Header("Controllers")]
@@ -32,10 +33,10 @@ public class MainController : MonoBehaviour
 
     public TeamData UserTeam;
 
-    public void Awake()
+	private void Awake()
     {
         if (Instance == null) Instance = this;
-
+		
         Application.targetFrameRate = 60;
 	    QualitySettings.vSyncCount = 0;
 	    
@@ -43,23 +44,38 @@ public class MainController : MonoBehaviour
 	    AllPlayers = initialData.AllPlayers;
 	    AllTeams = initialData.AllTeams;
 	    AllTournaments = initialData.AllTournaments;
+	    
+	    ActiveTournaments = new List<string>();
+	    
+	    if(AllTournaments.Count > 0) // This is for the Tournament Creation
+	    {
+	    	foreach(TournamentData tournament in AllTournaments)
+	    	{
+		    	if(initialData.InitialTournaments.Contains(tournament))
+		    	{
+			    	UserTeam.InitializeTournamentData(tournament.Id);
+			    	//ActiveTournaments.Add(tournament.Id);
+		    	}	    	
+	    	}
+	    }
+
+	    initialData = null;
     }
 
     public void Start()
     {
-        //TeamData home = Resources.Load<TeamData>("Teams/Crossing");
-        //TeamData away = Resources.Load<TeamData>("Teams/Cadena_Rivers");
-        //if(Match != null) Match.Populate(home, away);
-	    LocalizationController.Instance.Initialize();
-	    ScreenController.Instance.ShowScreen(ScreenType.Loading);
-	    ScreenController.Instance.Loading.LoadScreenDelay(2, ScreenType.Start);
-
+	    if(LocalizationController.Instance != null) LocalizationController.Instance.Initialize();
+	    if(ScreenController.Instance != null) 
+	    {
+		    ScreenController.Instance.ShowScreen(ScreenType.Loading);
+	    	ScreenController.Instance.Loading.LoadScreenDelay(2, ScreenType.Start);
+	    }
     }
 
     public void EditSquad()
     {
         Match.PauseGame(true);
-        ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
+	    //ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
     }
 
     public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)
@@ -67,6 +83,10 @@ public class MainController : MonoBehaviour
         ScreenController.Instance.ShowPreviousScreen();
         if (ScreenController.Instance.PrevScreen == ScreenType.Match) Match.UpdateTeams(_in, _out);   
     }
+    
+	public PlayerData GetPlayerById(string _id) { return AllPlayers.Single(PlayerData => PlayerData.Id == _id); }
+	public TeamData GetTeamById(string _id) { return AllTeams.Single(TeamData => TeamData.Id == _id); }   
+	public TournamentData GetTournamentById(string _id) { return AllTournaments.Single(TournamentData => TournamentData.Id == _id); }
 
     public List<PlayerData> SortPlayersBy(List<PlayerData> listPlayers, string _stat)
     {
@@ -121,10 +141,6 @@ public class MainController : MonoBehaviour
 
         return listPlayers;
     }
-
-    public PlayerData GetPlayerById(string _id) { return AllPlayers.Single(PlayerData => PlayerData.Id == _id); }
-
-    public TeamData GetTeamById(string _id) { return AllTeams.Single(TeamData => TeamData.Id == _id); }
 
     public List<TeamData> SortTeamsBy(List<TeamData> listTeams, string _stat)
     {

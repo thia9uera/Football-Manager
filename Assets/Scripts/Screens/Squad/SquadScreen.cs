@@ -9,14 +9,16 @@ public class SquadScreen : BaseScreen
 	[SerializeField] private SquadEditField field;	
 	[SerializeField] private Button btnConfirm;
 	[SerializeField] private SquadEditSubstitutes substitutes;
+	[SerializeField] private GameObject hoveringSubsHit;
+	[SerializeField] private SquadEditPlayer dragPlayer;
 	
 	[Space(10)]
-	[Header("Formations")]
 	[SerializeField] private TMP_Dropdown formationDropdown;
-	[SerializeField] private FormationsData formationData;
+	[SerializeField] private TMP_Dropdown strategyDropdown;
 	
 	
 	private TeamData teamData;
+	private FormationsData formationData;
 	private List<string> formationNameList;
 
 	private List<PlayerData> squadList;
@@ -26,20 +28,36 @@ public class SquadScreen : BaseScreen
 	private SquadEditPlayer selectedSubPlayer;
 
 	[HideInInspector] public SquadEditPlayer HoveringPlayer;
-	[HideInInspector] public SquadEditPlayer DragPlayer;
-	
+
 	private bool isDragging;
 	private bool isHoveringSubs;
+	private bool hasChanged;
 	
 	override public void Show()
 	{
 		base.Show();		
 		
 		teamData = MainController.Instance.UserTeam;
+		formationData = GameData.Instance.Formations;
 		
-		field.PopulatePlayers(teamData.Squad, teamData.Formation, this);
+		squadList = new List<PlayerData>(teamData.Squad);
+		subsList = new List<PlayerData>(teamData.Substitutes);
+		
+		field.Reset();
+		field.PopulatePlayers(squadList, teamData.Formation, this);
+		substitutes.Clear();
+		substitutes.Populate(subsList, this);
 		
 		UpdateFormationDropdown();
+		UpdateStrategyDropdown();
+		
+		hasChanged = false;
+	}
+	
+	override public void Hide()
+	{
+		base.Hide();
+		if(hasChanged) DataController.Instance.QuickSave();
 	}
 	
 	private void UpdateFormationDropdown()
@@ -51,7 +69,7 @@ public class SquadScreen : BaseScreen
 		{
 			FormationData data = formationData.List[i];
 			formationNameList.Add(data.Name);
-			if (data.Name == teamData.Formation.Name) selected = i;
+			if (data.Type == teamData.Formation.Type) selected = i;
 		}
 
 		formationDropdown.ClearOptions();
@@ -69,6 +87,29 @@ public class SquadScreen : BaseScreen
 				field.UpdateFormation(data);
 			}
 		}
+		hasChanged = true;
+	}
+	
+	private void UpdateStrategyDropdown()
+	{
+		List<Team_Strategy> list = GameData.Instance.TeamStrategies;
+		List<string> strList = new List<string>();
+
+		for (int i = 0; i < list.Count; i++)
+		{
+			Team_Strategy data = list[i];
+			strList.Add(LocalizationController.Instance.Localize(data.Name));
+		}
+
+		strategyDropdown.ClearOptions();
+		strategyDropdown.AddOptions(strList);
+		strategyDropdown.value = (int)teamData.Strategy;
+	}
+	
+	public void OnStrategyDropdownSelect()
+	{
+		teamData.Strategy = (TeamStrategy)strategyDropdown.value;
+		hasChanged = true;
 	}
 	
 	public void AddPlayer(PlayerData _player, SquadEditPlayer _obj, SquadEditPlayer _squadSlot=null)
@@ -83,8 +124,9 @@ public class SquadScreen : BaseScreen
 			}
 		}
 		subsList.Remove(_player);
-		_obj.FadeOut();
+		_obj.Destroy();
 		//UpdateConfirmButton();
+		hasChanged = true;
 	}
 
 	public void RemovePlayer(PlayerData _player, int _index)
@@ -158,16 +200,13 @@ public class SquadScreen : BaseScreen
 			{
 				_playerSlot.Select();
 				selectedSubPlayer = null;
-				return;
 			}
 			else
 			{
 				selectedSubPlayer.Select();
 				_playerSlot.Select();
 				selectedSubPlayer = _playerSlot;
-				return;
 			}
-
 		}
 	}
 	
@@ -177,7 +216,7 @@ public class SquadScreen : BaseScreen
 		if(_playerIn.Player != null) AddPlayer(_playerIn.Player, _playerIn, _playerIn);
 	}
 
-	public void HoveringSubs()
+	public void IsHoveringSubs()
 	{
 		isHoveringSubs = true;
 	}
@@ -185,5 +224,50 @@ public class SquadScreen : BaseScreen
 	public void NotHoveringSubs()
 	{
 		isHoveringSubs = false;
+	}
+	
+	public void StartDragPlayer()
+	{
+		Debug.Log("START DRAG PLAYER");
+		isDragging = true;
+		
+		if (!HoveringPlayer.IsSub) selectedSquadPlayer = HoveringPlayer;
+		else selectedSubPlayer = HoveringPlayer;
+		
+		HoveringPlayer.SetOpacity(0.3f);
+		
+		dragPlayer.gameObject.SetActive(true);
+		dragPlayer.PopulateDrag(HoveringPlayer.Player, HoveringPlayer.IsSub, HoveringPlayer.Index);
+	}
+	
+	public void StopDragPlayer()
+	{
+		Debug.Log("STOP DRAG PLAYER");
+		isDragging = false;
+		//hoveringSubsHit.SetActive(false);
+		if(selectedSquadPlayer) selectedSquadPlayer.SetOpacity(1);
+		if(selectedSubPlayer) selectedSubPlayer.SetOpacity(1);
+		
+		if(HoveringPlayer != null)
+		{
+			if(dragPlayer.IsSub != HoveringPlayer.IsSub)
+			{
+				SwapPlayer(selectedSubPlayer, HoveringPlayer);
+			}
+			else
+			{
+				
+			}
+		}
+
+		dragPlayer.gameObject.SetActive(false);
+	}
+	
+	private void Update()
+	{ 
+		if(isDragging)
+		{
+			dragPlayer.transform.position = Input.mousePosition;
+		}
 	}
 }

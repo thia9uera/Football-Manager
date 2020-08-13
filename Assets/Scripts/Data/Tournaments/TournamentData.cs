@@ -12,16 +12,14 @@ public class TournamentData : ScriptableObject
     public string Name { get { return Attributes.Name; } set { Attributes.Name = value; } }
 
 
-    public TournamentAttributes.TournamentType Type { get { return Attributes.Type; } set { Attributes.Type = value; } }
-
-    public int StarsRequired { get { return Attributes.StarsRequired; } set { Attributes.StarsRequired = value; } }
+    public TournamentType Type { get { return Attributes.Type; } set { Attributes.Type = value; } }
 
     public string[] TeamIds { get { return Attributes.TeamIds; } set { Attributes.TeamIds = value; } }
     public List<TeamData> Teams;
     public List<MatchData> Matches { get { return new List<MatchData>(Attributes.Matches); } set { Attributes.Matches = value.ToArray(); } }
 
     public int TotalRounds { get { return Attributes.TotalRounds; } set { Attributes.TotalRounds = value; } }
-    public int CurrentRound { get { return Attributes.CurrentRound; } set { Attributes.CurrentRound = value; } }
+	public int CurrentRound { get { return Attributes.CurrentRound; } set { Attributes.CurrentRound = value; } }
 
     /// <summary>
     /// Gets the teams ordered by parameter.
@@ -89,6 +87,14 @@ public class TournamentData : ScriptableObject
 	    foreach (TeamData team in Teams) team.ResetStatistics("Tournament", Id);
         CurrentRound = 0;
     }
+    
+	public void InitializeTournament()
+	{
+		foreach(MatchData match in Matches)
+		{
+			
+		}
+	}
 
     public List<PlayerData> GetAllPlayers()
     {
@@ -103,7 +109,8 @@ public class TournamentData : ScriptableObject
     }
 
     public void LoadTeams()
-    {
+	{
+		Debug.Log("LOAD TEAMS");
         Teams = new List<TeamData>();
         foreach(string id in TeamIds)
         {

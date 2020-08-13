@@ -6,15 +6,16 @@ public class MatchData
     public TeamMatchData HomeTeam;
     public TeamMatchData AwayTeam;
     public bool isPlayed;
-    public int Round;
+	public int Round;
+	public int Day;
 
-
-    public MatchData(TeamAttributes _home, TeamAttributes _away, int _round)
+	public MatchData(TeamAttributes _home, TeamAttributes _away, int _round, int _day)
     {
         HomeTeam = new TeamMatchData(_home);
         AwayTeam = new TeamMatchData(_away);
         isPlayed = false;
-        Round = _round;
+	    Round = _round;
+	    Day = _day;
     }
 
     public void Reset()

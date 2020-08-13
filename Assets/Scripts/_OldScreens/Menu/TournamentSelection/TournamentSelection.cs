@@ -6,7 +6,7 @@ using System.Linq;
 public class TournamentSelection : BaseScreen
 {
     [SerializeField]
-    TournamentCard cardTemplate;
+    TournamentCard_Old cardTemplate;
 
     [SerializeField]
     Transform content;
@@ -41,7 +41,6 @@ public class TournamentSelection : BaseScreen
 
         switch (_param)
         {
-            case "StarsRequired": tournamentList = tournamentList.OrderBy(TournamentData => TournamentData.StarsRequired).ToList(); break;
             case "MostTeams": tournamentList = tournamentList.OrderByDescending(TournamentData => TournamentData.Teams.Count).ToList(); break;
         }
 
@@ -50,7 +49,7 @@ public class TournamentSelection : BaseScreen
             file.LoadTeams();
             foreach (TeamData team in file.Teams) team.InitializeTournamentData(file.Id);
 
-            TournamentCard item = Instantiate(cardTemplate, content);
+            TournamentCard_Old item = Instantiate(cardTemplate, content);
             item.Populate(file);
             itemList.Add(item.gameObject);
         }
@@ -58,6 +57,6 @@ public class TournamentSelection : BaseScreen
 
     public void CreateNew()
     {
-        ScreenController.Instance.MainMenu.ShowSubmenu(ScreenType.TournamentCreation);
+	    //ScreenController.Instance.MainMenu.ShowSubmenu(ScreenType.TournamentCreation);
     }
 }

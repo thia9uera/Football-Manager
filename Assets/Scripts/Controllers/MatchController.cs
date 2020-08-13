@@ -411,7 +411,7 @@ public class MatchController : MonoBehaviour
     private void ExitSimulation()
     {
         isSimulatingMatch = false;
-        ScreenController.Instance.ShowScreen(ScreenType.TournamentHub);
+	    //ScreenController.Instance.ShowScreen(ScreenType.TournamentHub);
     }
 
 	private MarkingType GetMarkingType(PlayerData _defender, Zone _zone)

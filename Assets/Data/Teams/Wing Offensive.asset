@@ -18,7 +18,7 @@ MonoBehaviour:
     Tag: WNG
     PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
     SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-    Formation: {fileID: 11400000, guid: 1bc249485f8b074458cbf83302b432c0, type: 2}
+    Formation: 0
     Strategy: 4
     SquadIds:
     - d9afc9d4-eb66-4fcf-9c15-d8feefdf4dd2
@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92d19f7c3ede20f4a882edde55137490, type: 2}
   - {fileID: 11400000, guid: 8db75d0437558664985918447754c7fe, type: 2}
   - {fileID: 11400000, guid: 89cc1ad71c809fc44be232f8952abff0, type: 2}
+  FormationSet: 0
   Captain: {fileID: 11400000, guid: cc44b5d6a5c7e804cbbf2f3a04d44f78, type: 2}
   Stars: 0
   MatchStats:
@@ -128,6 +129,7 @@ MonoBehaviour:
     Offsides: 0
     CornerKicks: 0
     CounterAttacks: 0
+  IsAwayTeam: 0
   MatchData:
     TeamAttributes:
       Id: 649f7ea6-0487-4b02-b0a9-63dd6795531f
@@ -135,7 +137,7 @@ MonoBehaviour:
       Tag: WNG
       PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
       SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
-      Formation: {fileID: 0}
+      Formation: 0
       Strategy: 4
       SquadIds: []
       SubstitutesIds: []

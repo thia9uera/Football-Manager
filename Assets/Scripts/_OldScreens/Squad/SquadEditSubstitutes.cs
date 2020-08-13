@@ -12,19 +12,21 @@ public class SquadEditSubstitutes : MonoBehaviour
 
 	private SquadScreen controller;
 
-    public void Populate(PlayerData[] _players, SquadScreen _controller)
+	public void Populate(List<PlayerData> _players, SquadScreen _controller)
     {
-        controller = _controller;
-        foreach(PlayerData p in _players)
+	    controller = _controller;
+	    float delay = 0;
+	    foreach(PlayerData player in _players)
         {
-            AddPlayer(p);
+		    AddPlayer(player, delay);
+		    delay += 0.1f;
         }
     }
 
-    public void AddPlayer(PlayerData _player)
+	public void AddPlayer(PlayerData _player, float _delay = 0)
     {
         SquadEditPlayer player = Instantiate(playerTemplate, scrollContent);
-        player.PopulateSub(_player, controller, 0.5f);
+	    player.PopulateSub(_player, controller, _delay);
     }
 
     public void Clear()
@@ -34,4 +36,9 @@ public class SquadEditSubstitutes : MonoBehaviour
             Destroy(t.gameObject);
         }
     }
+    
+	public void EnablePlayer(bool _value)
+	{
+		
+	}
 }

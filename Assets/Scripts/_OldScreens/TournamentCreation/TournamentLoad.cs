@@ -5,19 +5,13 @@ using UnityEngine;
 public class TournamentLoad : MonoBehaviour
 {
     [SerializeField]
-    TournamentLoadItem fileTemplate;
+	private TournamentLoadItem fileTemplate;
 
     [SerializeField]
     Transform content;
 
     List<TournamentData> fileList;
     List<GameObject> itemList;
-
-    void Start()
-    {
-        LoadFiles();
-    }
-
 
     public void LoadFiles()
     {
@@ -32,12 +26,11 @@ public class TournamentLoad : MonoBehaviour
         }
 
         fileList = new List<TournamentData>(Tools.GetAtFolder<TournamentData>("Data/Tournaments"));
-
         foreach (TournamentData tournament in fileList)
         {
             tournament.LoadTeams();
             TournamentLoadItem item = Instantiate(fileTemplate, content);
-            item.Populate(tournament);
+	        item.Populate(tournament);
             itemList.Add(item.gameObject);
         }
     }

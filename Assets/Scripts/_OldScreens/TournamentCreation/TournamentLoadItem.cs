@@ -5,19 +5,24 @@ using TMPro;
 
 public class TournamentLoadItem : MonoBehaviour
 {
-    public TournamentData Data;
+	[HideInInspector] public TournamentData Data;
 
-    [SerializeField]
-    TextMeshProUGUI label;
+	[SerializeField] private TextMeshProUGUI label;
 
     public void Populate(TournamentData _data)
     {
         Data = _data;
-        label.text = _data.Name + " <color=#999999> (" + _data.Type.ToString() + ")";
+	    label.text = _data.Name + " (" + _data.Type.ToString() + ")";
+	    gameObject.SetActive(true);
     }
 
     public void ClickHandler()
     {
         TournamentCreation.Instance.EditTournament(Data);
     }
+    
+	public void DeleteHandler()
+	{
+		TournamentCreation.Instance.DeleteTournament(Data);
+	}
 }   

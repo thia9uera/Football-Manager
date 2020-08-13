@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: ac562c58-7b36-4174-b121-bee874e4096d
+    Portrait: 
     FirstName: Guilherminho
     LastName: Privada
     Zone: 0
     Position: 1
     Strategy: 0
+    Synergy: 0
     Goalkeeping: 77
     Passing: 58
     Dribbling: 29
@@ -39,63 +41,54 @@ MonoBehaviour:
     LifeTimeStats:
       Passes: 0
       Crosses: 0
+      BoxCrosses: 0
       Shots: 0
+      ShotsOnGoal: 0
+      ShotsMissed: 0
       Headers: 0
+      HeadersMissed: 0
+      HeadersOnGoal: 0
       Faults: 0
       Tackles: 0
       Dribbles: 0
       Goals: 0
+      GoalsByHeader: 0
       Saves: 0
       PassesMissed: 0
-      ShotsMissed: 0
-      HeadersMissed: 0
       DribblesMissed: 0
       CrossesMissed: 0
       Presence: 0
       Assists: 0
-    TournamentStatistics:
-      reorderableList:
-        canAdd: 0
-        canRemove: 0
-        draggable: 0
-        expandable: 0
-        multipleSelection: 0
-        isExpanded: 0
-        label:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        headerHeight: 0
-        footerHeight: 0
-        slideEasing: 0
-        verticalSpacing: 0
-        showDefaultBackground: 0
-        elementDisplayType: 0
-        elementNameProperty: 
-        elementNameOverride: 
-        elementIcon: {fileID: 0}
-      reqReferences: {fileID: 0}
-      isExpanded: 0
-      _keyValues: []
-      _keys: []
-      _values: []
+      MatchesPlayed: 0
+      MatchRating: 6
+      AverageRating: 0
+      TournamentID: 
+    TournamentStatistics: []
   MatchStats:
     Passes: 0
     Crosses: 0
+    BoxCrosses: 0
     Shots: 0
+    ShotsOnGoal: 0
+    ShotsMissed: 0
     Headers: 0
+    HeadersMissed: 0
+    HeadersOnGoal: 0
     Faults: 0
     Tackles: 0
     Dribbles: 0
     Goals: 0
+    GoalsByHeader: 0
     Saves: 0
     PassesMissed: 0
-    ShotsMissed: 0
-    HeadersMissed: 0
     DribblesMissed: 0
     CrossesMissed: 0
     Presence: 0
     Assists: 0
+    MatchesPlayed: 0
+    MatchRating: 6
+    AverageRating: 0
+    TournamentID: 
   Team: {fileID: 0}
   Prob_DefPosition: 1
   Prob_OffPosition: 1

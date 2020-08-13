@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d82c515bc905d641b0ddcded5b994b4, type: 3}
+  m_Name: _Christian
+  m_EditorClassIdentifier: 
+  Attributes:
+    Id: 6a800c4b-5745-4c3c-910d-f93cd2395505
+    Portrait: MC_2
+    FirstName: Christian
+    LastName: 
+    Zone: 0
+    Position: 2
+    Strategy: 0
+    Synergy: 0
+    Goalkeeping: 63
+    Passing: 61
+    Dribbling: 83
+    Crossing: 59
+    Tackling: 56
+    Blocking: 52
+    Shooting: 59
+    Heading: 54
+    Freekick: 77
+    Penalty: 77
+    Speed: 50
+    Strength: 65
+    Agility: 57
+    Stamina: 54
+    Teamwork: 91
+    Vision: 79
+    Stability: 80
+    LifeTimeStats:
+      Passes: 0
+      Crosses: 0
+      BoxCrosses: 0
+      Shots: 0
+      ShotsOnGoal: 0
+      ShotsMissed: 0
+      Headers: 0
+      HeadersMissed: 0
+      HeadersOnGoal: 0
+      Faults: 0
+      Tackles: 0
+      Dribbles: 0
+      Goals: 0
+      GoalsByHeader: 0
+      Saves: 0
+      PassesMissed: 0
+      DribblesMissed: 0
+      CrossesMissed: 0
+      Presence: 0
+      Assists: 0
+      MatchesPlayed: 0
+      MatchRating: 6
+      AverageRating: 0
+      TournamentID: 
+    TournamentStatistics: []
+  MatchStats:
+    Passes: 0
+    Crosses: 0
+    BoxCrosses: 0
+    Shots: 0
+    ShotsOnGoal: 0
+    ShotsMissed: 0
+    Headers: 0
+    HeadersMissed: 0
+    HeadersOnGoal: 0
+    Faults: 0
+    Tackles: 0
+    Dribbles: 0
+    Goals: 0
+    GoalsByHeader: 0
+    Saves: 0
+    PassesMissed: 0
+    DribblesMissed: 0
+    CrossesMissed: 0
+    Presence: 0
+    Assists: 0
+    MatchesPlayed: 0
+    MatchRating: 6
+    AverageRating: 0
+    TournamentID: 
+  Team: {fileID: 0}
+  Prob_DefPosition: 1
+  Prob_OffPosition: 1
+  Prob_LeftPos: 1
+  Prob_RightPos: 1
+  Prob_Pass: 1
+  Prob_Shoot: 1
+  Prob_Fault: 0
+  Prob_Crossing: 1
+  Prob_Dribble: 1
+  Prob_Fall: 0
+  Prob_OffsideLine: 1
+  Prob_Marking: 1
+  Prob_Tackling: 1
+  Prob_LongPass: 1

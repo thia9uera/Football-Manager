@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Team_StrategyData
   m_EditorClassIdentifier: 
   team_Strategys:
-  - Name: Neutral
+  - Name: strategy_Neutral
     Description: bla
     DefPosChance: 1
     OffPosChance: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: Offensive
+  - Name: strategy_Offensive
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: Defensive
+  - Name: strategy_Defensive
     Description: bla
     DefPosChance: 4
     OffPosChance: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Name: Deadlock
+  - Name: strategy_Deadlock
     Description: bla
     DefPosChance: 4
     OffPosChance: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
     ALF: 0
     ARF: 0
     Box: 0
-  - Name: WingOffensive
+  - Name: strategy_WingOffensive
     Description: bla
     DefPosChance: 1
     OffPosChance: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: CenterOffensive
+  - Name: strategy_CenterOffensive
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: Crossing
+  - Name: strategy_Crossing
     Description: bla
     DefPosChance: 0.25
     OffPosChance: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: Pressure
+  - Name: strategy_Pressure
     Description: bla
     DefPosChance: 1
     OffPosChance: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
     ALF: 1
     ARF: 1
     Box: 1
-  - Name: ForceOffside
+  - Name: strategy_ForceOffside
     Description: bla
     DefPosChance: 0.5
     OffPosChance: 0

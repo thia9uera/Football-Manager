@@ -22,6 +22,8 @@ public class CompileData
 		initialData.AllPlayers = players.ToList();
 		initialData.AllTeams = teams.ToList();
 		initialData.AllTournaments = tournaments.ToList();		
+		
+		AssetDatabase.SaveAssets();
 	}
 }
 #endif

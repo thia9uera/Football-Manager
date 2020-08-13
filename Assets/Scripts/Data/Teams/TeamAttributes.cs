@@ -4,12 +4,11 @@ using UnityEngine;
 [System.Serializable]
 public class TeamAttributes
 {
-    [HideInInspector]
     public string Id;
 
     [Header("Details")]
     public string Name;
-    [Tooltip("Max 3 characters")]
+	[Tooltip("Max 3 characters")]
     public string Tag;
 
     [Space(10)]
@@ -17,7 +16,7 @@ public class TeamAttributes
     public Color SecondaryColor = Color.red;
 
     [Space(10)]
-    public FormationData Formation;
+	public int Formation;
     public TeamStrategy Strategy;
 
     //[HideInInspector]
@@ -28,8 +27,7 @@ public class TeamAttributes
 
     public bool IsUserControlled;
 
-    [HideInInspector]
-    public bool IsPlaceholder;
+    [HideInInspector] public bool IsPlaceholder;
 }
 
 [System.Serializable]

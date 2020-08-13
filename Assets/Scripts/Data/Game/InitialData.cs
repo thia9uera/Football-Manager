@@ -9,4 +9,7 @@ public class InitialData : ScriptableObject
 	public List<PlayerData> AllPlayers;
 	public List<TeamData> AllTeams;
 	public List<TournamentData> AllTournaments;
+	
+	[Space(10)]
+	public List<TournamentData> InitialTournaments;
 }
