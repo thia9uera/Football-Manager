@@ -18,6 +18,7 @@ public class MatchSpeedSlider : MonoBehaviour
     {
         label.text = slider.value + "x";
 	    controller.MatchSpeed = (uint)slider.value;
+	    slider.fillRect.gameObject.SetActive(slider.value > slider.minValue);
     }
 
 	public void UpdateSlider(uint _speed)

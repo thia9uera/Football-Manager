@@ -64,7 +64,7 @@ public class TeamData : ScriptableObject
     public void ResetMatchData()
     {
         MatchData = new TeamMatchData();
-        MatchData.TeamAttributes = Attributes;
+	    MatchData.TeamId = Attributes.Id;
         MatchData.Statistics = new TeamStatistics();
         MatchData.Scorers = new List<PlayerData>();
         MatchData.RedCards = new List<PlayerData>();
@@ -85,32 +85,22 @@ public class TeamData : ScriptableObject
             case "LifeTime": LifeTimeStats = new TeamStatistics(); break;
             case "Tournament":
 	            TournamentStatistics[_id] = new TeamStatistics();
-                foreach (PlayerData player in GetAllPlayers()) player.ResetStatistics("Tournament", _id);
+                foreach (PlayerData player in AllPlayers) player.ResetStatistics("Tournament", _id);
                 break;
         }
     }
 
-    public void UpdateLifeTimeStats(bool _updateMatchData = false, bool _isHomeTeam = false)
+	public void UpdateLifeTimeStats(string _tournamentId)
     {
         TeamStatistics data = MatchStats;
 
         UpdateStats(LifeTimeStats, data);
-
-        if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics(data);
+	    UpdateTournamentStatistics(data, _tournamentId);
 
         //Update players statistics
-        foreach (PlayerData player in GetAllPlayers())
+        foreach (PlayerData player in AllPlayers)
         {
-            player.UpdateLifeTimeStats();
-        }
-
-        if (_updateMatchData)
-        {
-            MatchData.TeamAttributes = Attributes;
-            MatchData.Statistics = data;
-
-            if(_isHomeTeam) MainController.Instance.CurrentMatch.HomeTeam = MatchData;
-            else MainController.Instance.CurrentMatch.AwayTeam = MatchData;
+	        player.UpdateLifeTimeStats(_tournamentId);
         }
 
         ResetStatistics("Match");
@@ -153,40 +143,44 @@ public class TeamData : ScriptableObject
         TournamentStatistics.Add(_id, new TeamStatistics());
     }
 
-    void UpdateTournamentStatistics(TeamStatistics _stats)
+	void UpdateTournamentStatistics(TeamStatistics _stats, string _tournamentId)
     {
-        TournamentData currentTournament = MainController.Instance.CurrentTournament;
         if (TournamentStatistics == null) Attributes.TournamentStatistics = new TeamTournamentStats();
 
-        if (!TournamentStatistics.ContainsKey(currentTournament.Id))
+        if (!TournamentStatistics.ContainsKey(_tournamentId))
         {
-            TournamentStatistics.Add(currentTournament.Id, new TeamStatistics());
+            TournamentStatistics.Add(_tournamentId, new TeamStatistics());
         }
 
-        TeamStatistics tStats = GetTournamentStatistics(currentTournament.Id);
+        TeamStatistics tStats = GetTournamentStatistics(_tournamentId);
 
         UpdateStats(tStats, _stats);
     }
 
-    public int GetOveralRating()
-    {
-        int total = 0;
-        foreach (PlayerData player in Squad)
-        {
-            total += player.GetOverall();
-        }
-
-        return total / Squad.Length;
+    public int OveralRating
+	{
+		get
+	    {			
+	        int total = 0;
+	        foreach (PlayerData player in Squad)
+	        {
+	            total += player.GetOverall();
+	        }
+			return total / Squad.Length;
+		}
     }
 
-    public List<PlayerData> GetAllPlayers()
-    {
-        List<PlayerData> players = new List<PlayerData>();
-
-        players.AddRange(Squad);
-        players.AddRange(Substitutes);
-
-        return players;
+    public List<PlayerData> AllPlayers
+	{
+		get
+	    {
+	        List<PlayerData> players = new List<PlayerData>();
+	
+	        players.AddRange(Squad);
+	        players.AddRange(Substitutes);
+	
+		    return players;
+	    }
     }
 
     public PlayerData GetTopPlayerByAttribute(AttributeType _attribute, PlayerData[] _players, bool _includeSubs = false)
@@ -251,7 +245,7 @@ public class TeamData : ScriptableObject
 
     public void Reset()
     {
-        TournamentStatistics = new TeamTournamentStats();
+	    TournamentStatistics.Clear();
         ResetStatistics("LifeTime");
     }
 

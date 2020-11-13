@@ -13,7 +13,8 @@ public class TournamentFixtures : MonoBehaviour
     public void Populate(List<MatchData> _list, int _currentRound)
     {
         Clear();
-        int round = -1;
+	    int round = -1;
+	    uint idx = 0;
         foreach (MatchData data in _list)
         {
             if (data.Round > round)
@@ -25,8 +26,9 @@ public class TournamentFixtures : MonoBehaviour
                 itemList.Add(txt.gameObject);
             }
             TournamentFixturesItem match = Instantiate(itemTemplate, content);
-            match.Populate(data);
-            itemList.Add(match.gameObject);
+	        match.Populate(data, idx);
+	        itemList.Add(match.gameObject);
+	        idx++;
         }
     }
 

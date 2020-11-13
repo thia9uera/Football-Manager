@@ -86,7 +86,7 @@ public class LocalizationController : MonoBehaviour
 			case PlayerPosition.Goalkeeper: color = "#8033cc"; break;
 			case PlayerPosition.Defender: color = "#5299cc"; break;
 			case PlayerPosition.Midfielder: color = "#cc8f14"; break;
-			case PlayerPosition.Forward: color = "#e55c5c"; break;
+			case PlayerPosition.Forward: color = "#bf4830"; break;
 		}
 		
 		return color;
@@ -116,6 +116,7 @@ public class LocalizationController : MonoBehaviour
 	public string Localize(string _text)
 	{
 		LocalizedString str = _text;
+		if(string.IsNullOrEmpty(str)) Debug.Log("STRING NOT FOUND: " + _text);
 		return str;
 	}
 

@@ -29,6 +29,7 @@ public class TournamentsScreen : BaseScreen
 		{
 			card = Instantiate(cardTemplate, scrollContent);
 			card.Populate(tournamentData);
+			cardList.Add(card);
 		}
 	}
 	
@@ -40,7 +41,7 @@ public class TournamentsScreen : BaseScreen
 		{
 			foreach(TournamentCard card in cardList)
 			{
-				Destroy(card);
+				Destroy(card.gameObject);
 			}
 		}
 		

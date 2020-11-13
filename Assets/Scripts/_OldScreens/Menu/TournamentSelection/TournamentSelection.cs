@@ -17,7 +17,6 @@ public class TournamentSelection : BaseScreen
     public override void Show()
     {
         base.Show();
-        MainController.Instance.CurrentTournament = null;
         Populate();
     }
 

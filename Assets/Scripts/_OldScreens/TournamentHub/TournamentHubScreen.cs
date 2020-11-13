@@ -17,7 +17,7 @@ public class TournamentHubScreen : BaseScreen
     public override void Show()
     {
         base.Show();
-        currentTournament = MainController.Instance.CurrentTournament;
+	    //currentTournament = MainController.Instance.CurrentTournament;
         titleLabel.text = currentTournament.Name;
 
         leaderboard.Populate(currentTournament.SortTeamsBy("Points"), currentTournament.Id);
@@ -41,7 +41,7 @@ public class TournamentHubScreen : BaseScreen
         {
             if(match.Round == currentTournament.CurrentRound)
             {
-                if(match.HomeTeam.TeamAttributes.IsUserControlled || match.AwayTeam.TeamAttributes.IsUserControlled)
+	            if(match.HomeTeam.TeamData.IsUserControlled || match.AwayTeam.TeamData.IsUserControlled)
                 {
                     nextMatch.Populate(match);
                     nextMatchData = match;
@@ -51,8 +51,8 @@ public class TournamentHubScreen : BaseScreen
     }
     public void PlayNextMatch()
     {
-        MainController.Instance.CurrentMatch = nextMatchData;
-        MainController.Instance.Match.Populate(nextMatchData);
+	    //MainController.Instance.CurrentMatch = nextMatchData;
+	    //MainController.Instance.Match.Populate(nextMatchData);
 	    //MainController.Instance.Screens.MatchVisual.Populate(nextMatchData);
         ScreenController.Instance.ShowScreen(ScreenType.Match);
 	    //MainController.Instance.Screens.ShowScreen(ScreenType.MatchVisual);
@@ -67,9 +67,9 @@ public class TournamentHubScreen : BaseScreen
     public void SimulateTournament()
     {
         ScreenController.Instance.ShowScreen(ScreenType.Match);
-	    MainController.Instance.CurrentMatch = nextMatchData;
+	    //MainController.Instance.CurrentMatch = nextMatchData;
 	    ScreenController.Instance.Match.Simulation.Clear();
-        MainController.Instance.Match.Populate(nextMatchData, true);
+	    //MainController.Instance.Match.Populate(nextMatchData, true);
     }
 
     public void BackToMenu()
@@ -81,7 +81,7 @@ public class TournamentHubScreen : BaseScreen
     {
         List<PlayerData> playersList = new List<PlayerData>();
  
-        foreach (PlayerData player in currentTournament.GetAllPlayers())
+        foreach (PlayerData player in currentTournament.AllPlayers)
         {
             player.CheckTournament(currentTournament.Id);
             PlayerStatistics stats = player.TournamentStatistics(currentTournament.Id);

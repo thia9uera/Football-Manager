@@ -27,7 +27,7 @@ public class CreateTeamScreen : BaseScreen
 		coachNameField.RandomButtonHandler();
 		teamNameField.RandomButtonHandler();
 		
-		playersList.Populate(MainController.Instance.UserTeam.GetAllPlayers());
+		playersList.Populate(MainController.Instance.UserTeam.AllPlayers);
 	}
 	
 	public void UpdateColorPickers()

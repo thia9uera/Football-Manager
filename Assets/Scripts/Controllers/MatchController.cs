@@ -12,9 +12,6 @@ public class MatchController : MonoBehaviour
 
     private TeamData homeTeam;
     private TeamData awayTeam;
-
-    private TeamData attackingTeam;
-    private TeamData defendingTeam;
     
     private bool keepAttacker;
 	private bool keepDefender;
@@ -26,24 +23,23 @@ public class MatchController : MonoBehaviour
 	
 	private uint matchTime = 0;
 	private byte turn = 0; 
-	private byte flowPasses = 0;
-	private byte flowDribbles = 0;
 
 	public uint MatchSpeed = 1;
 	
 	private MatchActionManager actionManager;
 	private PlayDiceRolls playDiceRolls;
 	private MatchEvents matchEvents;
+	private MatchData currentMatch;
+	private MatchData nextMatch;
 
     public void Populate(MatchData _data, bool _simulateTournament = false)
     {
-        Reset();
+	    Reset();
+        
+	    currentMatch = _data;
 
-        homeTeam = MainController.Instance.GetTeamById(_data.HomeTeam.TeamAttributes.Id);
-        awayTeam = MainController.Instance.GetTeamById(_data.AwayTeam.TeamAttributes.Id);
-
-        attackingTeam = homeTeam;
-	    defendingTeam = awayTeam;
+	    homeTeam = _data.HomeTeam.TeamData;
+	    awayTeam = _data.AwayTeam.TeamData;
         
 	    homeTeam.IsAwayTeam = false;
 	    awayTeam.IsAwayTeam = true;
@@ -55,10 +51,12 @@ public class MatchController : MonoBehaviour
         screen.AwayTeamSquad.Populate(awayTeam, true);
 	    screen.Score.UpdateTime(matchTime, 0);
         screen.Score.UpdateScore(0, 0);
-        screen.Score.Populate(homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, awayTeam.PrimaryColor);
+	    screen.Score.Populate(homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, TeamDisplayColor(awayTeam));
+	    
+	    screen.Narration.Initialize(homeTeam.PrimaryColor, TeamDisplayColor(awayTeam), awayTeam);
 
         isSimulatingTournament = _simulateTournament;
-        if(_simulateTournament) StartSimulation();
+	    if(_simulateTournament) StartSimulation();
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -81,9 +79,10 @@ public class MatchController : MonoBehaviour
                 if (i == 0) playersOut += player.FirstName + " " + player.LastName;
                 else playersOut += ", " + player.FirstName + " " + player.LastName;
             }
+            
 
-            screen.Narration.UpdateNarration(playersIn, GetUserTeam());
-            screen.Narration.UpdateNarration(playersOut, GetUserTeam());
+	        screen.Narration.UpdateNarration(playersIn, TeamDisplayColor(UserTeam));
+            screen.Narration.UpdateNarration(playersOut, TeamDisplayColor(UserTeam));
         }
 
         if(turn > 0 && turn < 90) PauseGame(false);
@@ -92,13 +91,22 @@ public class MatchController : MonoBehaviour
         screen.AwayTeamSquad.Populate(awayTeam);
     }
 
-    public TeamData GetUserTeam()
-    {
-        if (homeTeam.IsUserControlled) return homeTeam;
-        else return awayTeam;
-    }
+	private TeamData UserTeam
+	{
+		get
+		{
+	        if (homeTeam.IsUserControlled) return homeTeam;
+	        else return awayTeam;
+		}
+	}
+    
+	private Color TeamDisplayColor(TeamData _team)
+	{
+		if(_team == awayTeam && awayTeam.PrimaryColor == homeTeam.PrimaryColor) return _team.SecondaryColor;
+		return _team.PrimaryColor;
+	}
 
-	private void StartSimulation()
+	public void StartSimulation()
     {
         screen.Narration.Reset();
 
@@ -115,7 +123,7 @@ public class MatchController : MonoBehaviour
     {
         screen.Field.UpdateFieldArea((int)Zone.CM);
 
-        isGameOn = true;
+	    isGameOn = true;
         if (!isSimulatingMatch)
         {
             //UpdateNarration("nar_KickOff_");
@@ -147,12 +155,13 @@ public class MatchController : MonoBehaviour
 	}
 
 	private IEnumerator SimulateLoop()
-    {
+	{
+		Debug.Log("SIMULATE LOOP");
         while (isGameOn)
         {
-	        yield return StartCoroutine("StartTurn");
-	        yield return StartCoroutine("FinishTurn");
-            yield return new WaitForEndOfFrame();
+	        yield return StartCoroutine("StartTurn");	        
+	        yield return StartCoroutine("FinishTurn");  
+	        yield return new WaitForEndOfFrame();
         }
     }
 
@@ -171,20 +180,20 @@ public class MatchController : MonoBehaviour
 	    bool evt = false;
 	    PlayInfo currentPlay = new PlayInfo();
 	    currentPlay.Turn = turn;
-	    currentPlay.AttackingTeam = attackingTeam;
-	    currentPlay.DefendingTeam = defendingTeam;
 	    PlayInfo lastPlay = turn  > 0 ? playList[turn-1] : null;
-        
+	    if(lastPlay != null) currentPlay = CheckPossesion(lastPlay, currentPlay);
+	    Debug.Log("START TURN " + turn);
 	    //Kick off
         if (turn == 0)
         {
             evt = true;
             
-            currentPlay.Event = MatchEvent.KickOff;      
-	        currentPlay.Attacker = null;
-	        currentPlay.Defender = null;
+	        currentPlay.Event = MatchEvent.KickOff;      
+	        currentPlay.AttackingTeam = homeTeam;
+	        currentPlay.DefendingTeam = awayTeam;
             
 	        currentPlay = ResolveKickOff(currentPlay);
+	        screen.Narration.UpdateNarration("nar_KickOff_", GameData.Instance.Colors.MediumGray);
 	        yield return currentPlay;
         }
 	    //Half time
@@ -203,10 +212,7 @@ public class MatchController : MonoBehaviour
 	        evt = true;
         }						
         else
-        {     	
-	        CheckPossesion(lastPlay);
-	        currentPlay.AttackingTeam = attackingTeam;
-	        currentPlay.DefendingTeam = defendingTeam;
+        {     		        
 	        evt = lastPlay.Event != MatchEvent.None;
 	        currentPlay = ResolveEvents(currentPlay, lastPlay);
 	        yield return currentPlay;
@@ -258,7 +264,9 @@ public class MatchController : MonoBehaviour
 	{
 		_playInfo.Zone = Zone.CM;
 		_playInfo.Attacker = _playInfo.AttackingTeam.GetAttackingPlayer(_playInfo.Zone, null, true);
+		_playInfo.Defender = null;
 		_playInfo.OffensiveAction = PlayerAction.Pass;
+		_playInfo.Event = MatchEvent.None;
 		_playInfo = actionManager.ResolveAction(_playInfo, null);
 		return _playInfo;
 	}
@@ -266,14 +274,15 @@ public class MatchController : MonoBehaviour
 	private void ResolveHalfTime(PlayInfo _playInfo)
 	{
 		_playInfo.Event = MatchEvent.KickOff;
-		attackingTeam = awayTeam;
-		defendingTeam = homeTeam;
+		_playInfo.AttackingTeam = awayTeam;
+		_playInfo.DefendingTeam = homeTeam;
 	}
 
 	private void ResolveFullTime()
 	{
+		screen.Narration.UpdateNarration("nar_TimeUp_", GameData.Instance.Colors.MediumGray);
 		isGameOn = false;
-		EndGame();
+		EndGame();		
 	}
 
 	private PlayInfo DefineActions(PlayInfo _currentPlay, PlayInfo _lastPlay)
@@ -316,7 +325,7 @@ public class MatchController : MonoBehaviour
 			if (_currentPlay.Marking == MarkingType.Steal)
 			{
 				keepDefender = true;
-				defendingTeam.MatchStats.Steals++;
+				_currentPlay.DefendingTeam.MatchStats.Steals++;
 				_currentPlay.CounterAttack = actionManager.CheckCounterAttack(_currentPlay.DefendingTeam, _currentPlay.Zone);	            
 			}
 			else
@@ -373,44 +382,48 @@ public class MatchController : MonoBehaviour
 
         homeTeam.MatchStats.GoalsAgainst += awayTeam.MatchStats.Goals;
         awayTeam.MatchStats.GoalsAgainst += homeTeam.MatchStats.Goals;
+   	    
+	    currentMatch.HomeTeam.Statistics = homeTeam.MatchStats;
+	    currentMatch.AwayTeam.Statistics = awayTeam.MatchStats;
+	    
+	    currentMatch.isPlayed = true;
+	    
+	    homeTeam.UpdateLifeTimeStats(currentMatch.TournamentId);
+	    awayTeam.UpdateLifeTimeStats(currentMatch.TournamentId);
 
-        bool updateMatch = false;
-        if (MainController.Instance.CurrentMatch != null)
+	    screen.Simulation.AddMatch(currentMatch);
+
+	    //Save tournament match data
+	    TournamentData currentTournament = MainController.Instance.GetTournamentById(currentMatch.TournamentId);
+        if (currentTournament!= null)
         {
-            MainController.Instance.CurrentMatch.isPlayed = true;
-            updateMatch = true;
-        }
-
-        homeTeam.UpdateLifeTimeStats(updateMatch, true);
-        awayTeam.UpdateLifeTimeStats(updateMatch, false);
-
-	    screen.Simulation.AddMatch(MainController.Instance.CurrentMatch);
-
-        MainController.Instance.CurrentMatch = null;
-
-        //Save tournament match data
-        if (MainController.Instance.CurrentTournament != null)
-        {
-        	TeamStatistics homeTeamStats = homeTeam.GetTournamentStatistics(MainController.Instance.CurrentTournament.Id);
-        	TeamStatistics awayTeamStats = awayTeam.GetTournamentStatistics(MainController.Instance.CurrentTournament.Id);
+        	TeamStatistics homeTeamStats = homeTeam.GetTournamentStatistics(currentTournament.Id);
+        	TeamStatistics awayTeamStats = awayTeam.GetTournamentStatistics(currentTournament.Id);
 	        
-            MatchData nextMatch = MainController.Instance.CurrentTournament.GetNextMatch(isSimulatingTournament);
+	        nextMatch = currentTournament.GetNextMatch(isSimulatingTournament);
+	        Sequence seq = DOTween.Sequence();
             if (nextMatch != null)
             {              
-                Populate(nextMatch, isSimulatingTournament);
-                StartSimulation();
+            	screen.ShowButtons(false);
+	            seq.AppendInterval(1f).AppendCallback(StartNextMatch);  
             }
             else
-            {
-                Sequence seq = DOTween.Sequence();
-                seq.AppendInterval(1f).AppendCallback(ExitSimulation);              
+            {	            
+	            seq.AppendInterval(1f).AppendCallback(ExitSimulation);  	            
             }
         }
     }
+    
+	private void StartNextMatch()
+	{
+		Populate(nextMatch, isSimulatingTournament);
+		StartSimulation();
+	}
 
     private void ExitSimulation()
     {
-        isSimulatingMatch = false;
+	    isSimulatingMatch = false;
+	    screen.ShowContinueButton();
 	    //ScreenController.Instance.ShowScreen(ScreenType.TournamentHub);
     }
 
@@ -424,7 +437,7 @@ public class MatchController : MonoBehaviour
 	    totalChance += (float)_defender.GetAttributeBonus(_defender.Speed) / 100;
 	    totalChance += (float)_defender.GetAttributeBonus(_defender.Vision) / 100;
 
-	    Zone zone = Field.Instance.GetTeamZone(_zone, defendingTeam == awayTeam);
+	    Zone zone = Field.Instance.GetTeamZone(_zone, _defender.Team == awayTeam);
 
         if (_defender.Team.IsStrategyApplicable(zone))
         {
@@ -450,197 +463,35 @@ public class MatchController : MonoBehaviour
         return type;
     }
 
-	private void CheckPossesion(PlayInfo _lastPlay)
-    {
-        if (_lastPlay.Event == MatchEvent.Goalkick) SwitchPossesion();
-        else if (_lastPlay.Event == MatchEvent.ScorerAnnounced) SwitchPossesion();
-        else if (_lastPlay.Event == MatchEvent.Offside) SwitchPossesion();
-        else if (_lastPlay.Event == MatchEvent.ShotSaved) SwitchPossesion();
-        else if (_lastPlay.Attacker == null) SwitchPossesion();
-        else if (_lastPlay.Marking == MarkingType.Steal) SwitchPossesion();
-        else if (!_lastPlay.IsActionSuccessful && _lastPlay.Event == MatchEvent.None) SwitchPossesion();
+	private PlayInfo CheckPossesion(PlayInfo _lastPlay, PlayInfo _currentPlay)
+	{
+		if (_lastPlay.Event == MatchEvent.Goalkick) return SwitchPossesion(_lastPlay,_currentPlay);
+        else if (_lastPlay.Event == MatchEvent.ScorerAnnounced) return SwitchPossesion(_lastPlay,_currentPlay);
+        else if (_lastPlay.Event == MatchEvent.Offside) return SwitchPossesion(_lastPlay,_currentPlay);
+        else if (_lastPlay.Event == MatchEvent.ShotSaved) return SwitchPossesion(_lastPlay,_currentPlay);
+        else if (_lastPlay.Attacker == null) return SwitchPossesion(_lastPlay,_currentPlay);
+        else if (_lastPlay.Marking == MarkingType.Steal) return SwitchPossesion(_lastPlay,_currentPlay);
+        else if (!_lastPlay.IsActionSuccessful && _lastPlay.Event == MatchEvent.None) return SwitchPossesion(_lastPlay,_currentPlay);
+        
+		//NO SWITCH
+		_currentPlay.AttackingTeam = _lastPlay.AttackingTeam;
+		_currentPlay.DefendingTeam = _lastPlay.DefendingTeam;
+		return _currentPlay;
     }
 
-	private void SwitchPossesion()
-    {
-        if (attackingTeam == homeTeam)
-        {
-            attackingTeam = awayTeam;
-            defendingTeam = homeTeam;
-        }
-        else if (attackingTeam == awayTeam)
-        {
-            defendingTeam = awayTeam;
-            attackingTeam = homeTeam;
-        }
+	private PlayInfo SwitchPossesion(PlayInfo _lastPlay, PlayInfo _currentPlay)
+	{
+		_currentPlay.AttackingTeam = _lastPlay.DefendingTeam;
+		_currentPlay.DefendingTeam = _lastPlay.AttackingTeam;
+		
+		return _currentPlay;
     }
 
 	private void UpdateNarration(PlayInfo _playInfo)
 	{
-		PlayInfo currentPlay = _playInfo;
-
-        string tag = "";
-        int variations = 1;
-        bool isNeutral = false;
-
-        switch(currentPlay.OffensiveAction)
-        {
-            case PlayerAction.Pass:
-                if (currentPlay.IsActionSuccessful)
-                {
-                    flowPasses++;
-                    if (flowPasses == 3) tag = "nar_FlowPasses_";
-                    if (currentPlay.CounterAttack > 0) tag = "nar_CounterAttack_";
-                    variations = 1;
-                }
-                else
-                {
-                    flowPasses = 0;
-                }
-                break;
-
-            case PlayerAction.Dribble:
-                if (currentPlay.IsActionSuccessful)
-                {
-                    flowPasses++;
-                    if (flowDribbles == 3) tag = "nar_FlowDribbles_";
-                    variations = 1;
-                }
-                else
-                {
-                    flowDribbles = 0;
-                }
-                break;
-
-            case PlayerAction.Shot:
-                if(currentPlay.IsActionSuccessful)
-                {
-                    //tag = "nar_Shot_";
-                   // variations = 3;
-                }
-                else
-                {
-                   // if (!currentPlay.IsActionDefended) tag = "nar_WrongShot_";
-                    //else tag = "nar_BlockShot_";
-                   // variations = 3;
-                }
-                break;
-
-            case PlayerAction.Header:
-                if (currentPlay.IsActionSuccessful && currentPlay.Event == MatchEvent.ShotOnGoal)
-                {
-                    tag = "nar_Header_";
-                    variations = 1;
-                }
-                else
-                {
-                    if (!currentPlay.IsActionDefended)
-                    {
-                        tag = "nar_WrongHeader_";
-                        variations = 1;
-                    }
-                    else
-                    {
-                        tag = "nar_BlockHeader_";
-                        variations = 2;
-                    }                
-                }
-                break;
-        }
-
-        switch(currentPlay.Event)
-        {
-            case MatchEvent.KickOff:
-                tag = "nar_KickOff_";
-                variations = 1;
-                if (isSecondHalf)
-                {
-                    tag = "nar_SecondHalfStart_";
-                    isSecondHalf = false;
-                }
-                isNeutral = true;
-                break;
-
-            case MatchEvent.HalfTime:
-                tag = "nar_FirstHalfEnd_";
-                variations = 1;
-                isSecondHalf = true;
-                isNeutral = true;
-                break;
-
-            case MatchEvent.FullTime:
-                tag = "nar_TimeUp_";
-                variations = 1;
-                isNeutral = true;
-                break;
-
-            case MatchEvent.ShotOnGoal:
-                tag = "nar_Shot_";
-                variations = 3;
-                break;
-
-            case MatchEvent.Goal:
-                tag = "nar_GoalScream_";
-                variations = 1;
-	            screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
-                break;
-
-            case MatchEvent.GoalAnnounced:
-                tag = "nar_Goal_";
-                variations = 8;
-                if (currentPlay.Excitment == 1)
-                {
-                    tag = "nar_BestGoal_";
-                    variations = 5;
-                }
-                else if (currentPlay.Excitment == -1)
-                {
-                    tag = "nar_WorstGoal_";
-                    variations = 5;
-                }
-                break;
-
-            case MatchEvent.Fault:
-                //tag = "nar_Fault_";
-                variations = 5;
-                break;
-
-            case MatchEvent.CornerKick:
-                tag = "nar_CornerKick_";
-                variations = 1;
-                break;
-
-            case MatchEvent.Penalty:
-                tag = "nar_Penalty_";
-                variations = 1;
-                break;
-
-            case MatchEvent.ShotSaved:
-                tag = "nar_SaveShot_";
-                if (currentPlay.Excitment == 1) tag = "nar_BestSaveShot_";
-                else if (currentPlay.Excitment == -1) tag = "nar_WorstShot";
-                variations = 1;
-                break;
-
-            case MatchEvent.ShotMissed:
-                tag = "nar_MissedShot_";
-                variations = 2;
-                break;
-
-            case MatchEvent.Offside:
-                tag = "nar_Offside_";
-                variations = 3;
-                break;
-        }
-
-        if (tag != "")
-        {
-            SetGlobalStrings(currentPlay); 
-            if (isNeutral) screen.Narration.UpdateNarration(tag, variations, null, currentPlay.Zone, currentPlay);
-            else screen.Narration.UpdateNarration(tag, variations, currentPlay.Attacker.Team, currentPlay.Zone, currentPlay);
-        }
-
-        screen.Field.UpdateFieldArea((int)currentPlay.Zone);       
+		screen.Narration.UpdateNarration(_playInfo);		
+		
+        screen.Field.UpdateFieldArea((int)_playInfo.Zone);       
     }
 
 	private void SetGlobalStrings(PlayInfo _play)
@@ -653,7 +504,7 @@ public class MatchController : MonoBehaviour
         string zone = LocalizationController.Instance.GetZoneString(attZone);
         if (_play.Attacker != null)
         {
-	        attZone = Field.Instance.GetTeamZone(_play.Zone, attackingTeam == awayTeam);
+	        attZone = Field.Instance.GetTeamZone(_play.Zone, _play.AttackingTeam == awayTeam);
             zone = LocalizationController.Instance.GetZoneString(attZone);
             attacker = _play.Attacker.FirstName;
             attTeam = _play.Attacker.Team.Name;
@@ -733,8 +584,7 @@ public class MatchController : MonoBehaviour
         matchTime = 0;
         secondHalfStarted = false;
 
-        screen.Reset();
-        screen.SpeedSlider.UpdateSlider(MatchSpeed);
+		screen.Reset(MatchSpeed);
 
         if (screen.HomeTeamSquad != null)
         {

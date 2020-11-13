@@ -16,7 +16,6 @@ public class TournamentInfoScreen : TabScreen
 		InitializeList();
 		TournamentTable.Data = Data;
 		Tabs.SelectTab(ScreenType.TournamentTable);
-		Debug.Log("SHOW TOURNAMENT INFO");
 	}
 	
 	public void OnBackButtonClicked()

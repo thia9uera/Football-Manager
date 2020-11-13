@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-	[SerializeField] private Team_StrategyData TeamStrategyData;
-	[SerializeField] private Player_StrategyData PlayerStrategyData;
-	[SerializeField] private Game_ModifierData GameModifierData;
-	[SerializeField] private TargetPassPerZoneData TargetPassPerZoneData;
-	[SerializeField] private TargetCrossPerZoneData TargetCrossPerZoneData;
-	[SerializeField] private ActionChancePerZoneData ActionChancePerZoneData;
-	[SerializeField] private FormationsData FormationsData;
+	[SerializeField] private Team_StrategyData teamStrategyData;
+	[SerializeField] private Player_StrategyData playerStrategyData;
+	[SerializeField] private Game_ModifierData gameModifierData;
+	[SerializeField] private TargetPassPerZoneData targetPassPerZoneData;
+	[SerializeField] private TargetCrossPerZoneData targetCrossPerZoneData;
+	[SerializeField] private ActionChancePerZoneData actionChancePerZoneData;
+	[SerializeField] private FormationsData formationsData;
+	public GameColors Colors;
 	
 	[Space(10)]
 	[SerializeField] private PosChanceData[] StrategyPosChanceData;
 	
-	public Game_Modifier GameModifiers { get { return GameModifierData.game_Modifiers[0]; }}
-	public List<Player_Strategy> PlayerStrategies { get { return PlayerStrategyData.player_Strategys; }}
-	public List<Team_Strategy> TeamStrategies { get { return TeamStrategyData.team_Strategys; }}
-	public List<TargetPassPerZone> TargetPassPerZone { get { return TargetPassPerZoneData.targetPassPerZones;}}
-	public List<TargetCrossPerZone> TargetCrossPerZone { get { return TargetCrossPerZoneData.targetCrossPerZones;}}
-	public List<ActionChancePerZone> ActionChancePerZone { get { return ActionChancePerZoneData.actionChancePerZones;}}
-	public FormationsData Formations { get { return FormationsData; }}
+	public Game_Modifier GameModifiers { get { return gameModifierData.game_Modifiers[0]; }}
+	public List<Player_Strategy> PlayerStrategies { get { return playerStrategyData.player_Strategys; }}
+	public List<Team_Strategy> TeamStrategies { get { return teamStrategyData.team_Strategys; }}
+	public List<TargetPassPerZone> TargetPassPerZone { get { return targetPassPerZoneData.targetPassPerZones;}}
+	public List<TargetCrossPerZone> TargetCrossPerZone { get { return targetCrossPerZoneData.targetCrossPerZones;}}
+	public List<ActionChancePerZone> ActionChancePerZone { get { return actionChancePerZoneData.actionChancePerZones;}}
+	public FormationsData Formations { get { return formationsData; }}
 	
 	public Zones GetPosChanceData(TeamStrategy _strategy, Zone _zone)
 	{

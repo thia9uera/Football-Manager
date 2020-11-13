@@ -19,18 +19,6 @@ public class MainController : MonoBehaviour
     public List<TournamentData> AllTournaments;
 	public List<string> ActiveTournaments;
 
-    [Space(10)]
-    [Header("Controllers")]
-    [Space(5)]
-    public MatchController Match;
-
-    [Space(20)]
-
-    public SquadEdit SquadSelection;
-
-    public TournamentData CurrentTournament;
-    public MatchData CurrentMatch;
-
     public TeamData UserTeam;
 
 	private void Awake()
@@ -46,18 +34,7 @@ public class MainController : MonoBehaviour
 	    AllTournaments = initialData.AllTournaments;
 	    
 	    ActiveTournaments = new List<string>();
-	    
-	    if(AllTournaments.Count > 0) // This is for the Tournament Creation
-	    {
-	    	foreach(TournamentData tournament in AllTournaments)
-	    	{
-		    	if(initialData.InitialTournaments.Contains(tournament))
-		    	{
-			    	UserTeam.InitializeTournamentData(tournament.Id);
-			    	//ActiveTournaments.Add(tournament.Id);
-		    	}	    	
-	    	}
-	    }
+	    UserTeam.Reset();
 
 	    initialData = null;
     }
@@ -74,14 +51,14 @@ public class MainController : MonoBehaviour
 
     public void EditSquad()
     {
-        Match.PauseGame(true);
+	    //Match.PauseGame(true);
 	    //ScreenController.Instance.ShowScreen(ScreenType.EditSquad);
     }
 
     public void FinishSquadEdit(List<PlayerData> _in, List<PlayerData> _out)
     {
-        ScreenController.Instance.ShowPreviousScreen();
-        if (ScreenController.Instance.PrevScreen == ScreenType.Match) Match.UpdateTeams(_in, _out);   
+	    //ScreenController.Instance.ShowPreviousScreen();
+	    //if (ScreenController.Instance.PrevScreen == ScreenType.Match) Match.UpdateTeams(_in, _out);   
     }
     
 	public PlayerData GetPlayerById(string _id) { return AllPlayers.Single(PlayerData => PlayerData.Id == _id); }
@@ -147,7 +124,7 @@ public class MainController : MonoBehaviour
         switch (_stat)
         {
             case "Name": listTeams = listTeams.OrderBy(TeamData => TeamData.Name).ToList(); break;
-            case "Wins": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Wins).ThenBy(TeamData => TeamData.Name).ToList(); break;
+            case "Wins": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Wins).ThenBy(TeamData => TeamData.Attributes.LifeTimeStats.Goals).ToList(); break;
             case "Losts": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Losts).ThenBy(TeamData => TeamData.Name).ToList(); break;
             case "Draws": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Draws).ThenBy(TeamData => TeamData.Name).ToList(); break;
             case "Goals": listTeams = listTeams.OrderByDescending(TeamData => TeamData.Attributes.LifeTimeStats.Goals).ThenBy(TeamData => TeamData.Name).ToList(); break;

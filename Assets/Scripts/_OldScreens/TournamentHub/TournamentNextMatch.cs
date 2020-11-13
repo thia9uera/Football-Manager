@@ -9,6 +9,6 @@ public class TournamentNextMatch : MonoBehaviour
 
     public void Populate(MatchData _data)
     {
-        match.Populate(_data);
+	    match.Populate(_data);
     }
 }

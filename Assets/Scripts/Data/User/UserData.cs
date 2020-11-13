@@ -5,4 +5,6 @@ public struct UserData
 	public string Name;
 	public string TeamName;
 	public string LastTimeSaved;
+	public int CurrentYear;
+	public int CurrentDay;
 }

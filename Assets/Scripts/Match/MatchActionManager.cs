@@ -595,7 +595,9 @@ public class MatchActionManager
 			if (offensiveAction == PlayerAction.Shot || offensiveAction == PlayerAction.Header) currentPlay.Event = MatchEvent.ShotOnGoal;
 			else 
 			{
-				currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay.Zone, currentPlay.Event, currentPlay.OffensiveAction, currentPlay.Attacker.Team.Strategy);
+				
+				if(currentPlay.Event == MatchEvent.KickOff) currentPlay.TargetZone = Zone.CM;
+				else currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay.Zone, currentPlay.Event, currentPlay.OffensiveAction, currentPlay.Attacker.Team.Strategy);
 				switch(currentPlay.OffensiveAction)
 				{
 					case PlayerAction.LongPass:

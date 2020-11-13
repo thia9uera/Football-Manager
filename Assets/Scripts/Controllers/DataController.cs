@@ -45,7 +45,9 @@ public class DataController : MonoBehaviour
         {
 	        Name = _coachName,
 	        TeamName = _teamName,
-            Id = System.Guid.NewGuid().ToString()
+	        Id = System.Guid.NewGuid().ToString(),
+	        CurrentYear = 2020,
+	    	CurrentDay = 0	        
         };
         mainController.User = userData;
         userFolder = CombinePaths(saveFolder, userData.Id);
@@ -92,7 +94,7 @@ public class DataController : MonoBehaviour
 	
 	private IEnumerator QuickSaveFlow()
 	{
-		yield return StartCoroutine("SaveTeamPlayer", mainController.UserTeam.GetAllPlayers());
+		yield return StartCoroutine("SaveTeamPlayer", mainController.UserTeam.AllPlayers);
 		yield return StartCoroutine("SaveTeam", mainController.UserTeam);
 		
 		print("GAME SAVED");
@@ -163,6 +165,7 @@ public class DataController : MonoBehaviour
 		yield return StartCoroutine("LoadTeams");
 		yield return StartCoroutine("LoadTournaments");
 		
+		CalendarController.Instance.InitializeCalendar();
 		ScreenController.Instance.ShowScreen(ScreenType.Manager);
 	}
 

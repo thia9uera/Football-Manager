@@ -153,7 +153,7 @@ public class NameGenerator : MonoBehaviour
         foreach(TeamData team in teams)
         {
             t++;
-            foreach (PlayerData player in team.GetAllPlayers())
+            foreach (PlayerData player in team.AllPlayers)
             {
                 player.Team = team;
                 //EditorUtility.SetDirty(player);

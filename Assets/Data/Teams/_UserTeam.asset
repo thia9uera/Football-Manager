@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
-    Name: Cornerkick Fanatics
+    Name: Brothers Fist
     Tag: CAR
-    PrimaryColor: {r: 0.7568628, g: 0.56078434, b: 0.27450982, a: 1}
-    SecondaryColor: {r: 0.6431373, g: 0.21960786, b: 0.20392159, a: 1}
+    PrimaryColor: {r: 0.78431374, g: 0.5568628, b: 0.20392157, a: 1}
+    SecondaryColor: {r: 0.7019608, g: 0.1764706, b: 0.1764706, a: 1}
     Formation: 0
     Strategy: 5
     SquadIds:
@@ -85,9 +85,22 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 1
       _keyValues:
-      - 1aa03677-f2c3-4626-a547-f41c8dfb09d7
+      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
+      - d1e8671b-47f8-4c5b-90b6-f480b2156652
+      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
+      - d1e8671b-47f8-4c5b-90b6-f480b2156652
+      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
+      - d1e8671b-47f8-4c5b-90b6-f480b2156652
+      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
+      - d1e8671b-47f8-4c5b-90b6-f480b2156652
+      - 
+      - 
+      - d1e8671b-47f8-4c5b-90b6-f480b2156652
+      - 639ae764-c08c-4c66-a800-3e4b92b433eb
+      - d1e8671b-47f8-4c5b-90b6-f480b2156652
+      - 
       _keys:
-      - 1aa03677-f2c3-4626-a547-f41c8dfb09d7
+      - 
       _values:
       - Points: 0
         Wins: 0
@@ -159,106 +172,7 @@ MonoBehaviour:
     CounterAttacks: 0
   IsAwayTeam: 0
   MatchData:
-    TeamAttributes:
-      Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
-      Name: Cadena Rivers
-      Tag: CAR
-      PrimaryColor: {r: 0.35617658, g: 0.49614182, b: 0.8679245, a: 1}
-      SecondaryColor: {r: 0.95848936, g: 0.9622642, b: 0.81247777, a: 1}
-      Formation: 0
-      Strategy: 5
-      SquadIds:
-      - d39d5566-b548-4f99-8c03-7f1f858f2dfe
-      - ec80b1a4-ab26-45a5-872e-d5a7fcb1d608
-      - d602daf3-09ad-49e4-a928-fc53bbc23cf3
-      - 86b26191-3901-4d08-8be1-846a9dd77b41
-      - 3ed54838-1b27-4421-b98f-dac73a6578fc
-      - 9dc3c417-b197-43f2-af84-7c28af83ca34
-      - db639446-ff90-4253-8da2-998d4a27e231
-      - 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
-      - 4c57c1a6-f14e-41b0-9842-2502667eeab4
-      - 208149e6-bad1-4f23-be7c-99a6aa317f32
-      - 3f28bf16-2701-4c80-888a-c67c7b0d1ddd
-      SubstitutesIds:
-      - 10c9d827-60d9-4569-af79-ccf910bb3909
-      - c8f220fd-69de-4b3f-a996-f0c41b005c6d
-      - b8bdf88e-f30d-4993-a567-bfb085f270fb
-      - 7817cfcd-0833-4811-b2df-8711a90e184c
-      - 6a800c4b-5745-4c3c-910d-f93cd2395505
-      LifeTimeStats:
-        Points: 3
-        Wins: 0
-        Losts: 0
-        Draws: 0
-        Goals: 0
-        GoalsAgainst: 0
-        GoalsByHeader: 0
-        Shots: 0
-        Headers: 0
-        Steals: 0
-        Passes: 0
-        Crosses: 0
-        LongPasses: 0
-        PassesMissed: 0
-        CrossesMissed: 0
-        ShotsMissed: 0
-        HeadersMissed: 0
-        BoxCrosses: 0
-        Faults: 0
-        Offsides: 0
-        CornerKicks: 0
-        CounterAttacks: 0
-      TournamentStatistics:
-        reorderableList:
-          canAdd: 0
-          canRemove: 0
-          draggable: 0
-          expandable: 0
-          multipleSelection: 0
-          isExpanded: 0
-          label:
-            m_Text: 
-            m_Image: {fileID: 0}
-            m_Tooltip: 
-          headerHeight: 0
-          footerHeight: 0
-          slideEasing: 0
-          verticalSpacing: 0
-          showDefaultBackground: 0
-          elementDisplayType: 0
-          elementNameProperty: 
-          elementNameOverride: 
-          elementIcon: {fileID: 0}
-        reqReferences: {fileID: 0}
-        isExpanded: 0
-        _keyValues: []
-        _keys:
-        - 25e4dad0-15fc-432e-9fbb-934f73921ef2
-        _values:
-        - Points: 0
-          Wins: 0
-          Losts: 0
-          Draws: 0
-          Goals: 0
-          GoalsAgainst: 0
-          GoalsByHeader: 0
-          Shots: 0
-          Headers: 0
-          Steals: 0
-          Passes: 0
-          Crosses: 0
-          LongPasses: 0
-          PassesMissed: 0
-          CrossesMissed: 0
-          ShotsMissed: 0
-          HeadersMissed: 0
-          BoxCrosses: 0
-          Faults: 0
-          Offsides: 0
-          CornerKicks: 0
-          CounterAttacks: 0
-      IsUserControlled: 1
-      IsPlaceholder: 0
+    TeamId: 
     Statistics:
       Points: 0
       Wins: 0

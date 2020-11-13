@@ -16,8 +16,8 @@ MonoBehaviour:
     Id: 65b5ae67-dcf8-4cc5-8ce9-51dd01ee74a1
     Name: Master Attackers
     Tag: SA1
-    PrimaryColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    SecondaryColor: {r: 0.93333334, g: 0.07450977, b: 0.13579428, a: 1}
+    PrimaryColor: {r: 0.7019608, g: 0.1764706, b: 0.1764706, a: 1}
+    SecondaryColor: {r: 0.1764706, g: 0.44705883, b: 0.69803923, a: 1}
     Formation: 0
     Strategy: 0
     SquadIds:
@@ -61,21 +61,21 @@ MonoBehaviour:
       CounterAttacks: 0
     TournamentStatistics:
       reorderableList:
-        canAdd: 0
-        canRemove: 0
-        draggable: 0
-        expandable: 0
-        multipleSelection: 0
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
         isExpanded: 0
         label:
-          m_Text: 
+          m_Text: Keys
           m_Image: {fileID: 0}
           m_Tooltip: 
-        headerHeight: 0
-        footerHeight: 0
-        slideEasing: 0
-        verticalSpacing: 0
-        showDefaultBackground: 0
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
         elementDisplayType: 0
         elementNameProperty: 
         elementNameOverride: 
@@ -131,90 +131,7 @@ MonoBehaviour:
     CounterAttacks: 0
   IsAwayTeam: 0
   MatchData:
-    TeamAttributes:
-      Id: 65b5ae67-dcf8-4cc5-8ce9-51dd01ee74a1
-      Name: Master Attackers
-      Tag: SA1
-      PrimaryColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      SecondaryColor: {r: 0.93333334, g: 0.07450977, b: 0.13579428, a: 1}
-      Formation: 0
-      Strategy: 0
-      SquadIds: []
-      SubstitutesIds: []
-      LifeTimeStats:
-        Points: 0
-        Wins: 0
-        Losts: 0
-        Draws: 0
-        Goals: 0
-        GoalsAgainst: 0
-        GoalsByHeader: 0
-        Shots: 0
-        Headers: 0
-        Steals: 0
-        Passes: 0
-        Crosses: 0
-        LongPasses: 0
-        PassesMissed: 0
-        CrossesMissed: 0
-        ShotsMissed: 0
-        HeadersMissed: 0
-        BoxCrosses: 0
-        Faults: 0
-        Offsides: 0
-        CornerKicks: 0
-        CounterAttacks: 0
-      TournamentStatistics:
-        reorderableList:
-          canAdd: 0
-          canRemove: 0
-          draggable: 0
-          expandable: 0
-          multipleSelection: 0
-          isExpanded: 0
-          label:
-            m_Text: 
-            m_Image: {fileID: 0}
-            m_Tooltip: 
-          headerHeight: 0
-          footerHeight: 0
-          slideEasing: 0
-          verticalSpacing: 0
-          showDefaultBackground: 0
-          elementDisplayType: 0
-          elementNameProperty: 
-          elementNameOverride: 
-          elementIcon: {fileID: 0}
-        reqReferences: {fileID: 0}
-        isExpanded: 0
-        _keyValues: []
-        _keys:
-        - 9384f45d-262f-49fb-a5d3-f6fa71c79bcc
-        _values:
-        - Points: 0
-          Wins: 0
-          Losts: 0
-          Draws: 0
-          Goals: 0
-          GoalsAgainst: 0
-          GoalsByHeader: 0
-          Shots: 0
-          Headers: 0
-          Steals: 0
-          Passes: 0
-          Crosses: 0
-          LongPasses: 0
-          PassesMissed: 0
-          CrossesMissed: 0
-          ShotsMissed: 0
-          HeadersMissed: 0
-          BoxCrosses: 0
-          Faults: 0
-          Offsides: 0
-          CornerKicks: 0
-          CounterAttacks: 0
-      IsUserControlled: 0
-      IsPlaceholder: 0
+    TeamId: 
     Statistics:
       Points: 3
       Wins: 0

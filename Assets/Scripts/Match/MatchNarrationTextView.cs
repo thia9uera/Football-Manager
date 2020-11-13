@@ -7,35 +7,58 @@ using I2.Loc;
 
 public class MatchNarrationTextView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI label;
-    [SerializeField] private TextMeshProUGUI zone;
+	[SerializeField] private TMP_Text label;
     [SerializeField] private Image frame;
+	[SerializeField] private Image homeColor;
+	[SerializeField] private Image awayColor;
 
-	public PlayInfo PlayInfo;
+	private PlayInfo playInfo;
 
-    public void Populate(string _text, Color _frameColor, Color _textColor, string _zone = "")
-    {
+	public void Populate(string _text, bool _isAway, PlayInfo _play, Color _homeColor, Color _awayColor)
+	{
+		playInfo = _play;
         label.text = _text;
-        label.color = _textColor;
-        zone.text = _zone;
-
-	    frame.color = _frameColor;
+	    
+	    homeColor.gameObject.SetActive(!_isAway);
+		awayColor.gameObject.SetActive(_isAway);
+	    
+		homeColor.color = _homeColor;
+		awayColor.color = _awayColor;
     }
+    
+	public void Populate(string _text, Color _frameColor)
+	{
+		label.text = _text;
+		frame.color = _frameColor;
+	    
+		homeColor.gameObject.SetActive(false);
+		awayColor.gameObject.SetActive(false);
+	}
+	
+	public void Populate(string _text, Color _frameColor, Color _textColor)
+	{
+		label.text = _text;
+		label.color = _textColor;
+		frame.color = _frameColor;
+	    
+		homeColor.gameObject.SetActive(false);
+		awayColor.gameObject.SetActive(false);
+	}
 
     public void OnClick()
     {
-        if(PlayInfo == null)
+        if(playInfo == null)
         {
             print("PLAY INFO IS NULL");
             return;
         }
 
-        if (PlayInfo.Attacker != null)
+        if (playInfo.Attacker != null)
         {
-            print("ATTACKER: " + PlayInfo.Attacker.FullName);
-            print("OFF ACTION: " + PlayInfo.OffensiveAction.ToString());
-            print("SUCCESS: " + PlayInfo.IsActionSuccessful);
-            print("ATTACKER ROLL: " + PlayInfo.AttackerRoll);
+            print("ATTACKER: " + playInfo.Attacker.FullName);
+            print("OFF ACTION: " + playInfo.OffensiveAction.ToString());
+            print("SUCCESS: " + playInfo.IsActionSuccessful);
+            print("ATTACKER ROLL: " + playInfo.AttackerRoll);
         }
         else
         {
@@ -44,12 +67,12 @@ public class MatchNarrationTextView : MonoBehaviour
 
         print(" ---");
 
-        if (PlayInfo.Defender != null)
+        if (playInfo.Defender != null)
         {
-	        print("DEFENDER: " + PlayInfo.Defender.FullName);
-            print("DEF ACTION: " + PlayInfo.DefensiveAction.ToString());
-            print("DEFENSE SUCCESS: " + PlayInfo.IsActionDefended);
-            print("DEFENDER ROLL: " + PlayInfo.DefenderRoll);
+	        print("DEFENDER: " + playInfo.Defender.FullName);
+            print("DEF ACTION: " + playInfo.DefensiveAction.ToString());
+            print("DEFENSE SUCCESS: " + playInfo.IsActionDefended);
+            print("DEFENDER ROLL: " + playInfo.DefenderRoll);
         }
         else
         {
@@ -58,12 +81,12 @@ public class MatchNarrationTextView : MonoBehaviour
 
         print(" ---");
 
-        print("MARKING TYPE: " + PlayInfo.Marking.ToString());
-        print("EVENT: " + PlayInfo.Event.ToString());
-	    if (PlayInfo.Assister != null) print("ASSISTER: " + PlayInfo.Assister.FullName);
-        print("EXCITMENT: " + PlayInfo.Excitment);
-        print("ZONE (ABSOLUTE): " + PlayInfo.Zone.ToString());
-        print("TARGET ZONE (ABSOLUTE): " + PlayInfo.TargetZone.ToString());
-        print("COUNTER ATTACK: " + PlayInfo.CounterAttack);
+        print("MARKING TYPE: " + playInfo.Marking.ToString());
+        print("EVENT: " + playInfo.Event.ToString());
+	    if (playInfo.Assister != null) print("ASSISTER: " + playInfo.Assister.FullName);
+        print("EXCITMENT: " + playInfo.Excitment);
+        print("ZONE (ABSOLUTE): " + playInfo.Zone.ToString());
+        print("TARGET ZONE (ABSOLUTE): " + playInfo.TargetZone.ToString());
+        print("COUNTER ATTACK: " + playInfo.CounterAttack);
     }
 }

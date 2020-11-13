@@ -36,8 +36,8 @@ public class MatchVisual : BaseScreen
 
     public void Populate(MatchData _data)
     {
-        homeTeam = MainController.Instance.GetTeamById(_data.HomeTeam.TeamAttributes.Id);
-        awayTeam = MainController.Instance.GetTeamById(_data.AwayTeam.TeamAttributes.Id);
+	    homeTeam = _data.HomeTeam.TeamData;
+	    awayTeam = _data.AwayTeam.TeamData;
 
 
         homeTeam.ResetMatchData();

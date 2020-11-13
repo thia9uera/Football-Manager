@@ -13,12 +13,17 @@ public class TournamentCreation : BaseScreen
 
     public ChampionshipCreation Championship;
 	public CupCreation Cup;
+	
+	[SerializeField] private Toggle homeAwayTeams;
 
     [HideInInspector] public List<TeamData> AvailableTeams;
     [HideInInspector] public List<TeamData> TeamList;
 
     public GameObject Edit;
-    public GameObject Load;
+	public GameObject Load;
+    
+	private InitialData initialData;
+	private TournamentData editingTournament;
 
     private void Awake()
     {
@@ -28,6 +33,8 @@ public class TournamentCreation : BaseScreen
 	private void Start()
 	{
 		CalendarController.Instance.InitializeCalendar(2020);
+		initialData = (InitialData) Tools.GetFile<InitialData>("Data/Misc/InitialData.asset");
+		editingTournament = null;
 		Show();
 	}
 
@@ -35,6 +42,7 @@ public class TournamentCreation : BaseScreen
     {
         base.Show();
 	    LoadTournaments();
+	    Debug.Log("INITIAL DATA: " + initialData);
 	    //ChangeType(TournamentType.Championship);
     }
 
@@ -75,12 +83,21 @@ public class TournamentCreation : BaseScreen
     }
 
     public void CreateTournament()
-    {
-        TournamentData tournament = ScriptableObject.CreateInstance<TournamentData>();
+	{
+		TournamentData tournament;
+		bool isNew = false;
+		if(editingTournament != null) tournament = editingTournament;
+		else 
+		{
+			tournament = ScriptableObject.CreateInstance<TournamentData>();
+			//tournament.Id = Guid.NewGuid().ToString();
+			isNew = true;
+		}
         List<TeamData> teams = new List<TeamData>(TeamList);
         List<MatchData> matches = new List<MatchData>(Championship.DataList);
         tournament.Name = Options.InputName.text;
-        tournament.Type = (TournamentType)Options.TypeDropDown.value;
+		tournament.Type = (TournamentType)Options.TypeDropDown.value;
+		tournament.Id = Championship.TournamentId;
 
         switch((TournamentType)Options.TypeDropDown.value)
         {
@@ -89,7 +106,8 @@ public class TournamentCreation : BaseScreen
                 tournament.Matches = matches;
                 int t = teams.Count;
                 string[] teamIds = new string[t];
-                tournament.TotalRounds = t - 1;
+	            tournament.TotalRounds = t - 1;
+	            if(homeAwayTeams.isOn) tournament.TotalRounds *= 2;
                 for (int i = 0; i < t; i++)
                 {
                     teamIds[i] = teams[i].Id;
@@ -97,12 +115,13 @@ public class TournamentCreation : BaseScreen
                 tournament.Attributes.TeamIds = teamIds;
                 break;
         }
-        if (string.IsNullOrEmpty(tournament.Id)) tournament.Id = Guid.NewGuid().ToString();
-        AssetDatabase.CreateAsset(tournament, "Assets/Data/Tournaments/" + tournament.Name + ".asset");
-        AssetDatabase.SaveAssets();
-        MainController.Instance.AllTournaments.Add(tournament);
+
+		if(isNew) AssetDatabase.CreateAsset(tournament, "Assets/Data/Tournaments/" + tournament.Name + ".asset");
+	    AssetDatabase.SaveAssets();
+		
         LoadTournaments();
-	    //DataController.Instance.SaveGame();
+		//DataController.Instance.SaveGame();
+		editingTournament = null;
     }
 
     public void LoadTournaments()
@@ -116,14 +135,17 @@ public class TournamentCreation : BaseScreen
 
     public void EditTournament(TournamentData _data)
 	{
-		Debug.Log("EDIT TOURNAMENT");
+		editingTournament = _data;
         AvailableTeams = new List<TeamData>(MainController.Instance.AllTeams);
 
         Edit.SetActive(true);
         Load.SetActive(false);
 
         Options.InputName.text = _data.Name;
-	    Options.TypeDropDown.value = (int)_data.Type;
+		Options.TypeDropDown.value = (int)_data.Type;
+		Championship.TournmanentName = Options.InputName.text;
+		if(editingTournament.Id == null) Championship.TournamentId = Guid.NewGuid().ToString();
+		else Championship.TournamentId = editingTournament.Id;
 
         TeamList = new List<TeamData>();
         TeamList = new List<TeamData>(_data.Teams);
@@ -145,5 +167,10 @@ public class TournamentCreation : BaseScreen
 	{
 		AssetDatabase.DeleteAsset("Assets/Data/Tournaments/" + _data.Name + ".asset");
 		LoadTournaments();
+	}
+	
+	public void OnTournamentNameChange()
+	{
+		Championship.TournmanentName = Options.InputName.text;
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ManagerScreen : TabScreen
 {
@@ -10,12 +11,20 @@ public class ManagerScreen : TabScreen
 	public SettingsScreen SettingsScreen;
 	public CalendarScreen CalendarScreen;
 	
+	[Space(10)]
+	[SerializeField] private TMP_Text teamNameLabel;
+	
+	[Space(10)]
+	[SerializeField] private MatchButton nextMatchButton;
+	
 	public override void Show()
 	{
 		base.Show();
 		
 		InitializeList();
 		Tabs.SelectTab(ScreenType.Squad);
+		teamNameLabel.text = MainController.Instance.UserTeam.Name;
+		nextMatchButton.Populate(CalendarController.Instance.NextMatch);
 	}
 	
 	override protected void InitializeList()
@@ -27,5 +36,11 @@ public class ManagerScreen : TabScreen
 		screenList.Add(TournamentsScreen);
 		screenList.Add(SettingsScreen);
 		screenList.Add(CalendarScreen);
+	}
+	
+	public void OnMatchButtonPressed()
+	{
+		ScreenController.Instance.Match.Populate(CalendarController.Instance.NextMatch);
+		ScreenController.Instance.ShowScreen(ScreenType.Match);
 	}
 }

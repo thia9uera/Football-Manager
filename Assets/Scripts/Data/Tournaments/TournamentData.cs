@@ -34,12 +34,14 @@ public class TournamentData : ScriptableObject
     /// <param name="_param">Parameter.</param>
     public List<TeamData> SortTeamsBy(string _param)
     {
-        List<TeamData> list = Teams;
+	    List<TeamData> list = Teams;
 
         switch(_param)
         {
             case "Name": list = list.OrderBy(TeamData => TeamData.Name).ToList(); break;
-            case "Points": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].Points).ThenBy(TeamData => TeamData.TournamentStatistics[Id].Wins).ToList(); break;
+            case "Points": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].Points)
+	            .ThenByDescending(TeamData => TeamData.TournamentStatistics[Id].Wins)
+	            .ThenByDescending(TeamData => TeamData.TournamentStatistics[Id].Goals).ToList(); break;
             case "GoalsScored": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].Goals).ToList(); break;
             case "GoalsAgainst": list = list.OrderByDescending(TeamData => TeamData.TournamentStatistics[Id].GoalsAgainst).ToList(); break;
         }
@@ -72,50 +74,40 @@ public class TournamentData : ScriptableObject
             if (!_isSimulating) CurrentRound++;
             else CurrentRound = TotalRounds;
         }
-        else
-        {
-            MainController.Instance.CurrentMatch = data;
-        }
 
         return data;
     }
 
     public void ResetTournament()
     {
-	    Debug.Log("RESETED TOURNAMENT"); 
         foreach(MatchData match in Matches) match.Reset();
 	    foreach (TeamData team in Teams) team.ResetStatistics("Tournament", Id);
         CurrentRound = 0;
     }
-    
-	public void InitializeTournament()
+
+    public List<PlayerData> AllPlayers
 	{
-		foreach(MatchData match in Matches)
-		{
-			
-		}
-	}
-
-    public List<PlayerData> GetAllPlayers()
-    {
-        List<PlayerData> list = new List<PlayerData>();
-
-        foreach (TeamData team in Teams)
-        {
-            list.AddRange(team.GetAllPlayers());
-        }
-
-        return list;
+		get
+	    {
+	        List<PlayerData> list = new List<PlayerData>();
+	
+	        foreach (TeamData team in Teams)
+	        {
+	            list.AddRange(team.AllPlayers);
+	        }
+	
+			    return list;
+	    }
     }
 
     public void LoadTeams()
 	{
-		Debug.Log("LOAD TEAMS");
         Teams = new List<TeamData>();
         foreach(string id in TeamIds)
         {
             TeamData team = MainController.Instance.GetTeamById(id);
-            Teams.Add(team);
+	        Teams.Add(team);
+	        team.InitializeTournamentData(Id);
         }
     }
 }

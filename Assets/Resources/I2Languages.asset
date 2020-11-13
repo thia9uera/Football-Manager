@@ -161,30 +161,6 @@ MonoBehaviour:
       - na defesa
       Flags: 0000
       Languages_Touch: []
-    - Term: btn_Start
-      TermType: 0
-      Description: 
-      Languages:
-      - Start
-      - "Come\xE7ar"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: btn_Simulate
-      TermType: 0
-      Description: 
-      Languages:
-      - Simulate
-      - Simular
-      Flags: 0000
-      Languages_Touch: []
-    - Term: btn_Pause
-      TermType: 0
-      Description: 
-      Languages:
-      - Pause
-      - Parar
-      Flags: 0000
-      Languages_Touch: []
     - Term: nar_GoalScream_1
       TermType: 0
       Description: 
@@ -197,225 +173,224 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} coloca no \xE2ngulo e marca para o {[TEAM_1]}"
+      - '{PLAYER_1} scores a great goal for {TEAM_1}'
+      - "{PLAYER_1} coloca no \xE2ngulo e marca para o {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chuta rasteiro com categoria e marca para o {[TEAM_1]}'
+      - A low shot from {PLAYER_1} and it's a goal for {TEAM_1}
+      - '{PLAYER_1} chuta rasteiro com categoria e marca para o {TEAM_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chuta com firmeza e marca para o {[TEAM_1]}'
+      - '{PLAYER_1} powerful shot gets {TEAM_1}''s keeper by surprise'
+      - '{PLAYER_1} chuta com firmeza e marca para o {TEAM_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_4
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} chuta no contrap\xE9 do goleiro e marca para o {[TEAM_1]}"
+      - '{PLAYER_1} deceives the keeper and scores for {TEAM_1}'
+      - "{PLAYER_1} chuta no contrap\xE9 do goleiro e marca para o {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_5
       TermType: 0
       Description: 
       Languages:
-      - 
-      - Bateu na trave e entrou! {[PLAYER_1]} marca para o {[TEAM_1]}
+      - Hit the post and got in! {PLAYER_1} scores for {TEAM_1}
+      - Bateu na trave e entrou! {PLAYER_1} marca para o {TEAM_1}
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_6
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chutou caindo e marcou para o {[TEAM_1]}'
+      - '{PLAYER_1} almost fell but managed to score for {TEAM_1}'
+      - '{PLAYER_1} chutou caindo e marcou para o {TEAM_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_7
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chutou mascado e marcou para o {[TEAM_1]}'
+      - '{PLAYER_1} shot on the defender but the ball is in {TEAM_1}'
+      - '{PLAYER_1} chutou mascado e marcou para o {TEAM_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_8
       TermType: 0
       Description: 
       Languages:
-      - 
-      - Que paulada! {[PLAYER_1]} marca para o {[TEAM_1]}
+      - What a shot! {PLAYER_1} scores for {TEAM_1}
+      - Que paulada! {PLAYER_1} marca para o {TEAM_1}
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestGoal_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} toca por cobertura e marca um gola\xE7o para o {[TEAM_1]}"
+      - '{PLAYER_1} shot over the keeper and scored a great goal for {TEAM_1}'
+      - "{PLAYER_1} toca por cobertura e marca um gola\xE7o para o {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestGoal_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} chutou de bico e surpreendeu o goleiro. \xC9 gol do {[TEAM_1]}"
+      - '{PLAYER_1} quick shot surprised the keeper. It''s goal for {TEAM_1}'
+      - "{PLAYER_1} chutou de bico e surpreendeu o goleiro. \xC9 gol do {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestGoal_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "Que bomba no angulo! Gola\xE7o de {[PLAYER_1]} para o {[TEAM_1]}"
+      - Holly cow! Amazing goal from {PLAYER_1} for {TEAM_1}
+      - "Que bomba no angulo! Gola\xE7o de {PLAYER_1} para o {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestGoal_4
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "Chutou com muita categoria! Gola\xE7o de {[PLAYER_1]} para o {[TEAM_1]}"
+      - Such finesse! {PLAYER_1} scored a great goal for  {TEAM_1}
+      - "Chutou com muita categoria! Gola\xE7o de {PLAYER_1} para o {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestGoal_5
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "Chute indefens\xE1vel no \xE2ngulo! Que gola\xE7o de {[PLAYER_1]} para o
-        {[TEAM_1]}"
+      - No chance for the keeper. Superb goal from {PLAYER_1} for {TEAM_1}
+      - "Chute indefens\xE1vel no \xE2ngulo! Que gola\xE7o de {PLAYER_1} para o {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstGoal_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} caiu de bunda na bola e ela entrou. \xC9 gol do {[TEAM_1]}"
+      - '{PLAYER_1} fell on top of the ball but is goal for {TEAM_1}'
+      - "{PLAYER_1} caiu de bunda na bola e ela entrou. \xC9 gol do {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstGoal_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} furou a bola e bateu de canela. Mas \xE9 gol do {[TEAM_1]}"
+      - '{PLAYER_1} almost lost the balance but managed to score for {TEAM_1}'
+      - "{PLAYER_1} furou a bola e bateu de canela. Mas \xE9 gol do {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstGoal_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} bateu de pan\xE7a na bola. Gol chorado do {[TEAM_1]}"
+      - The ball hit {PLAYER_1} on the gut and gets in. Goal for {TEAM_1}
+      - "{PLAYER_1} bateu de pan\xE7a na bola. Gol chorado do {TEAM_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstGoal_4
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} marca um gol chorado para o {[TEAM_1]}'
+      - '{PLAYER_1} score a pathetic goal for {TEAM_1}'
+      - '{PLAYER_1} marca um gol chorado para o {TEAM_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstGoal_5
       TermType: 0
       Description: 
       Languages:
-      - 
-      - Um gol bem esquisito de {[PLAYER_1]} para o {[TEAM_1]}
+      - A very weird goal from {PLAYER_1} for {TEAM_1}
+      - Um gol bem esquisito de {PLAYER_1} para o {TEAM_1}
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Pass_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} pass to {[PLAYER_2]}'
-      - '{[PLAYER_1]} passa para {[PLAYER_2]}'
+      - '{PLAYER_1} passes to {PLAYER_2}'
+      - '{PLAYER_1} passa para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestPass_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} passa bonito para {[PLAYER_2]}'
+      - Great passes from {PLAYER_1} to {PLAYER_2}
+      - '{PLAYER_1} passa bonito para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestPass_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} passa de letra para {[PLAYER_2]}'
+      - '{PLAYER_1} passes to {PLAYER_2}'
+      - '{PLAYER_1} passa de letra para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestPass_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} passa de calcanhar para {[PLAYER_2]}'
+      - '{PLAYER_1} pass to {PLAYER_2}es'
+      - '{PLAYER_1} passa de calcanhar para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstPass_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} passa torto para {[PLAYER_2]}'
+      - '{PLAYER_1} almost lost the pass to {PLAYER_2}'
+      - '{PLAYER_1} passa torto para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongPass_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} misses the pass'
-      - '{[PLAYER_1]} erra o passe'
+      - '{PLAYER_1} misses the pass'
+      - '{PLAYER_1} erra o passe'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_LongPass_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} lan\xE7a para {[PLAYER_2]}"
+      - '{PLAYER_1} makes a long pass to {PLAYER_2}'
+      - "{PLAYER_1} lan\xE7a para {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestLongPass_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} lan\xE7a com perfei\xE7\xE3o para {[PLAYER_2]}"
+      - '{PLAYER_1} makes a perfect long pass to {PLAYER_2}'
+      - "{PLAYER_1} lan\xE7a com perfei\xE7\xE3o para {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstLongPass_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} lan\xE7a na fogueira para {[PLAYER_2]}"
+      - '{PLAYER_1} almost misses the long pass to {PLAYER_2}'
+      - "{PLAYER_1} lan\xE7a na fogueira para {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockPass_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} blocks the pass from {[PLAYER_2]}'
-      - '{[PLAYER_2]} bloqueia o passe de {[PLAYER_1]}'
+      - '{PLAYER_1} blocks the pass from {PLAYER_2}'
+      - '{PLAYER_2} bloqueia o passe de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestBlockPass_1
@@ -423,351 +398,351 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[PLAYER_2]} antecipa o passe e rouba a bola!'
+      - '{PLAYER_2} antecipa o passe e rouba a bola!'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Cross_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} cross the ball'
-      - '{[PLAYER_1]} cruza a bola'
+      - '{PLAYER_1} crosses the ball'
+      - '{PLAYER_1} cruza a bola'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestCross_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} cruza de trivela'
+      - '{PLAYER_1} crosses beatifully '
+      - '{PLAYER_1} cruza de trivela'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestCross_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} cruza de letra'
+      - '{PLAYER_1} tries a superb cross'
+      - '{PLAYER_1} cruza de letra'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestCross_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} cruza bonito'
+      - '{PLAYER_1} crosses in style'
+      - '{PLAYER_1} cruza bonito'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstCross_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} cruza esquisito'
+      - '{PLAYER_1} almost misses the cross'
+      - '{PLAYER_1} cruza esquisito'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongCross_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} misses the cross'
-      - '{[PLAYER_1]} erra o cruzamento'
+      - '{PLAYER_1} misses the cross'
+      - '{PLAYER_1} erra o cruzamento'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockCross_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} blocks the cross from {[PLAYER_2]}'
-      - '{[PLAYER_2]} bloqueia o cruzamento de {[PLAYER_1]}'
+      - '{PLAYER_1} blocks the cross from {PLAYER_2}'
+      - '{PLAYER_2} bloqueia o cruzamento de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstBlockCross_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - A bola bate em {[PLAYER_2]}
+      - The ball hits {PLAYER_2}
+      - A bola bate em {PLAYER_2}
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Dribble_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} dribbles {[PLAYER_2]}'
-      - '{[PLAYER_1]} dribla {[PLAYER_2]}'
+      - '{PLAYER_1} dribbles {PLAYER_2}'
+      - '{PLAYER_1} dribla {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Dribble_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} dribla na velocidade'
+      - '{PLAYER_1} runs by {PLAYER_2}'
+      - '{PLAYER_1} dribla na velocidade'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestDribble_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} d\xE1 uma janelina em {[PLAYER_2]}"
+      - '{PLAYER_1} dribbles and humiliates {PLAYER_2}'
+      - "{PLAYER_1} d\xE1 uma janelina em {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestDribble_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} d\xE1 chapeuzinho em {[PLAYER_2]}"
+      - '{PLAYER_1} dribbles {PLAYER_2} in style'
+      - "{PLAYER_1} d\xE1 chapeuzinho em {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestDribble_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} pedala e passa por {[PLAYER_2]}'
+      - '{PLAYER_1} dribbles {PLAYER_2} beautifully'
+      - '{PLAYER_1} pedala e passa por {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstDribble_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} dribla esquisito e passa por {[PLAYER_2]}'
+      - '{PLAYER_1} dribbles {PLAYER_2} but almost falls down'
+      - '{PLAYER_1} dribla esquisito e passa por {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongDribble_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} tripped while dribbling'
-      - '{[PLAYER_1]} se atrapalha no drible'
+      - '{PLAYER_1} tripped while dribbling'
+      - '{PLAYER_1} se atrapalha no drible'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockDribble_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} stops the drible from {[PLAYER_2]}'
-      - "{[PLAYER_2]} p\xE1ra o drible de {[PLAYER_1]}"
+      - '{PLAYER_1} stops the drible from {PLAYER_2}'
+      - "{PLAYER_2} p\xE1ra o drible de {PLAYER_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Sprint_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} avan\xE7a sozinho"
+      - '{PLAYER_1} runs alone'
+      - "{PLAYER_1} avan\xE7a sozinho"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongSprint_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} tenta correr e trope\xE7a na bola"
+      - '{PLAYER_1} lost the while trying to sprint pass the defender'
+      - "{PLAYER_1} tenta correr e trope\xE7a na bola"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Shot_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} tries the shot...'
-      - '{[PLAYER_1]} tenta o chute...'
+      - '{PLAYER_1} tries the shot...'
+      - '{PLAYER_1} tenta o chute...'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Shot_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} ajeita pra chutar...'
+      - '{PLAYER_1} tries the shot...'
+      - '{PLAYER_1} ajeita pra chutar...'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Shot_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} prepara o chute...'
+      - '{PLAYER_1} tries the shot...'
+      - '{PLAYER_1} prepara o chute...'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongShot_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} chuta nas pernas do advers\xE1rio"
+      - '{PLAYER_1} misses the shot'
+      - "{PLAYER_1} chuta nas pernas do advers\xE1rio"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongShot_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_1]} chuta o ch\xE3o e perde a chance"
+      - '{PLAYER_1} misses the shot'
+      - "{PLAYER_1} chuta o ch\xE3o e perde a chance"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongShot_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} se atrapalha e erra o chute'
+      - '{PLAYER_1} misses the shot'
+      - '{PLAYER_1} se atrapalha e erra o chute'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockShot_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_2]} bloqueia o chute de {[PLAYER_1]}'
+      - '{PLAYER_1} blocks the shot from {PLAYER_2}'
+      - '{PLAYER_2} bloqueia o chute de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockShot_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_2]} impede o chute de {[PLAYER_1]}'
+      - '{PLAYER_1} stops the shot from {PLAYER_2}'
+      - '{PLAYER_2} impede o chute de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockShot_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_2]} \xE9 o xerife da defesa!"
+      - '{PLAYER_1} blocks the shot from {PLAYER_2}'
+      - "{PLAYER_2} \xE9 o xerife da defesa!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_MissedShot_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chuta pra fora!'
+      - '{PLAYER_1} shoots far for the goal'
+      - '{PLAYER_1} chuta pra fora!'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_MissedShot_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chuta longe do gol!'
+      - '{PLAYER_1} misses the shot'
+      - '{PLAYER_1} chuta longe do gol!'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Header_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} tries the header...'
-      - "{[PLAYER_1]} tenta o lance de cabe\xE7a..."
+      - '{PLAYER_1} tries the header...'
+      - "{PLAYER_1} tenta o lance de cabe\xE7a..."
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongHeader_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} misses the header'
-      - "{[PLAYER_1]} erra a cabe\xE7ada"
+      - '{PLAYER_1} misses the header'
+      - "{PLAYER_1} erra a cabe\xE7ada"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockHeader_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_2]} jumps higher than {[PLAYER_1]}'
-      - '{[PLAYER_2]} pula mais alto que {[PLAYER_1]}'
+      - '{PLAYER_1} jumps higher than {PLAYER_2}'
+      - '{PLAYER_1} pula mais alto que {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BlockHeader_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_2]} desarma a jogada a\xE9rea"
+      - '{PLAYER_1} stops the aerial play'
+      - "{PLAYER_1} desarma a jogada a\xE9rea"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goalkick_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} takes the goal kick'
-      - '{[PLAYER_1]} cobra o tiro de meta'
+      - '{PLAYER_1} takes the goal kick'
+      - '{PLAYER_1} cobra o tiro de meta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongGoalkick_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} cobra mal o tiro de meta'
+      - '{PLAYER_1} gives away teh goal kick'
+      - '{PLAYER_1} cobra mal o tiro de meta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} commits a fault on {[PLAYER_2]}'
-      - '{[PLAYER_2]} faz falta em {[PLAYER_1]}'
+      - '{PLAYER_1} commits a fault on {PLAYER_2}'
+      - '{PLAYER_2} faz falta em {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_2
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_2]} chega forte em {[PLAYER_1]} e faz falta'
+      - '{PLAYER_1} commits a fault on {PLAYER_2}'
+      - '{PLAYER_2} chega forte em {PLAYER_1} e faz falta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_3
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_2]} d\xE1 carrinho em {[PLAYER_1]} e faz falta"
+      - '{PLAYER_1} tries the sliding tackle in {PLAYER_2} and it''s a foul'
+      - "{PLAYER_2} d\xE1 carrinho em {PLAYER_1} e faz falta"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_4
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_2]} puxa {[PLAYER_1]} pela camisa e faz falta'
+      - '{PLAYER_1} commits a foul on {PLAYER_2}'
+      - '{PLAYER_2} puxa {PLAYER_1} pela camisa e faz falta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_5
       TermType: 0
       Description: 
       Languages:
-      - 
-      - "{[PLAYER_2]} derruba {[PLAYER_1]} {[ZONE]}, \xE9 falta!"
+      - '{PLAYER_1} commits a foul on {PLAYER_2}'
+      - "{PLAYER_2} derruba {PLAYER_1} {[ZONE]}, \xE9 falta!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_FreekickTake_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} takes the shot...'
-      - "{[PLAYER_1]} vai para a cobran\xE7a..."
+      - '{PLAYER_1} takes the shot...'
+      - "{PLAYER_1} vai para a cobran\xE7a..."
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongFreekick_1
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[PLAYER_1]} chuta por cima do gol'
+      - '{PLAYER_1} shoots above the post'
+      - '{PLAYER_1} chuta por cima do gol'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_PenaltyTake_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} takes the shot...'
-      - "{[PLAYER_1]} vai para a cobran\xE7a..."
+      - '{PLAYER_1} takes the shot...'
+      - "{PLAYER_1} vai para a cobran\xE7a..."
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Penalty_1
@@ -782,47 +757,47 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 
-      - '{[TEAM_1]} perde a posse de bola'
+      - '{TEAM_1} loses possession'
+      - '{TEAM_1} perde a posse de bola'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_LostPossession_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
-      - "{[PLAYER_1]} d\xE1 bobeira e perde a bola"
+      - '{PLAYER_1} lost the ball'
+      - "{PLAYER_1} d\xE1 bobeira e perde a bola"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_LostPossession_2
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
-      - "{[PLAYER_1]}} trope\xE7a e perde a bola"
+      - '{PLAYER_1} lost the ball'
+      - "{PLAYER_1}} trope\xE7a e perde a bola"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_LostPossession_3
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
-      - '{[PLAYER_1]} perde a posse de bola'
+      - '{PLAYER_1} lost the ball'
+      - '{PLAYER_1} perde a posse de bola'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_LostPossession_4
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
-      - "{[PLAYER_1]} perde a bola para o advers\xE1rio"
+      - '{PLAYER_1} lost the ball'
+      - "{PLAYER_1} perde a bola para o advers\xE1rio"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_EmptyPlay_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
+      - '{PLAYER_1} lost the ball'
       - "Ningu\xE9m aparece na jogada e a bola sobra"
       Flags: 0000
       Languages_Touch: []
@@ -830,7 +805,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
+      - '{PLAYER_1} lost the ball'
       - "Ningu\xE9m na jogada e a bola sobra"
       Flags: 0000
       Languages_Touch: []
@@ -838,7 +813,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_1]} lost the ball'
+      - '{PLAYER_1} lost the ball'
       - Bola perdida
       Flags: 0000
       Languages_Touch: []
@@ -847,23 +822,23 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[PLAYER_2]} rouba a bola de {[PLAYER_1]}'
+      - '{PLAYER_2} rouba a bola de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_SaveShot_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_2]} stops the shot from {[PLAYER_1]}'
-      - '{[PLAYER_2]} defende o chute de {[PLAYER_1]}'
+      - '{PLAYER_2} stops the shot from {PLAYER_1}'
+      - '{PLAYER_2} defende o chute de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSaveShot_1
       TermType: 0
       Description: 
       Languages:
-      - 'What a save from {[PLAYER_2]}! '
-      - 'Que defesa de {[PLAYER_2]}! '
+      - 'What a save from {PLAYER_2}! '
+      - 'Que defesa de {PLAYER_2}! '
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSaveShot_1
@@ -871,15 +846,15 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{[PLAYER_2]} por sorte n\xE3o toma um frango"
+      - "{PLAYER_2} por sorte n\xE3o toma um frango"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_SaveHeader_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_2]} stops the header from {[PLAYER_1]}'
-      - "{[PLAYER_2]} defende a cabe\xE7ada de {[PLAYER_1]}"
+      - '{PLAYER_2} stops the header from {PLAYER_1}'
+      - "{PLAYER_2} defende a cabe\xE7ada de {PLAYER_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSaveHeader_1
@@ -887,7 +862,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{[PLAYER_2]} se estica e defende a cabe\xE7ada de {[PLAYER_1]}"
+      - "{PLAYER_2} se estica e defende a cabe\xE7ada de {PLAYER_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSaveHeader_1
@@ -902,8 +877,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_2]} stops the freekick from {[PLAYER_1]}'
-      - "{[PLAYER_2]} defende a cobran\xE7a de {[PLAYER_1]}"
+      - '{PLAYER_2} stops the freekick from {PLAYER_1}'
+      - "{PLAYER_2} defende a cobran\xE7a de {PLAYER_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSaveFreekick_1
@@ -911,7 +886,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[PLAYER_2]} faz defesa impressionante!'
+      - '{PLAYER_2} faz defesa impressionante!'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSaveFreekick
@@ -919,15 +894,15 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[PLAYER_2]} defende em dois tempos'
+      - '{PLAYER_2} defende em dois tempos'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_SavePenalty_1
       TermType: 0
       Description: 
       Languages:
-      - '{[PLAYER_2]} stops the penalty from {[PLAYER_1]}'
-      - "{[PLAYER_2]} defende a cobran\xE7a de p\xEAnalti de {[PLAYER_1]}"
+      - '{PLAYER_2} stops the penalty from {PLAYER_1}'
+      - "{PLAYER_2} defende a cobran\xE7a de p\xEAnalti de {PLAYER_1}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSavePenalty_1
@@ -935,7 +910,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{[PLAYER_2]} pula no canto certo e defende o p\xEAnalti!"
+      - "{PLAYER_2} pula no canto certo e defende o p\xEAnalti!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSavePenalty_1
@@ -943,7 +918,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{[PLAYER_2]} sai errado mas defende com o p\xE9!"
+      - "{PLAYER_2} sai errado mas defende com o p\xE9!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Offside_1
@@ -951,7 +926,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[PLAYER_1]} impedido no lance'
+      - '{PLAYER_1} impedido no lance'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Offside_2
@@ -967,7 +942,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{[PLAYER_1]} est\xE1 impedido"
+      - "{PLAYER_1} est\xE1 impedido"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_KickOff_1
@@ -1031,7 +1006,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - Escanteio para o {[TEAM_1]}
+      - Escanteio para o {TEAM_1}
       Flags: 0000
       Languages_Touch: []
     - Term: nar_FlowPasses_1
@@ -1039,7 +1014,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[TEAM_1]} troca passes {[ZONE]}'
+      - '{TEAM_1} troca passes {[ZONE]}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_FlowDribbles_1
@@ -1047,7 +1022,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[PLAYER_1]} faz fila {[ZONE]}'
+      - '{PLAYER_1} faz fila {[ZONE]}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_CounterAttack_1
@@ -1055,7 +1030,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{[TEAM_1]} aproveita o contra-ataque'
+      - '{TEAM_1} aproveita o contra-ataque'
       Flags: 0000
       Languages_Touch: []
     - Term: btn_NewGame
@@ -1080,6 +1055,22 @@ MonoBehaviour:
       Languages:
       - READY
       - PRONTO
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_ManageTeam
+      TermType: 0
+      Description: 
+      Languages:
+      - MANAGE TEAM
+      - GERENCIAR TIME
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_Continue
+      TermType: 0
+      Description: 
+      Languages:
+      - CONTINUE
+      - CONTINUAR
       Flags: 0000
       Languages_Touch: []
     - Term: title_CreateTeam
@@ -1146,12 +1137,28 @@ MonoBehaviour:
       - "FORMA\xC7\xC3O"
       Flags: 0000
       Languages_Touch: []
+    - Term: title_Substitutes
+      TermType: 0
+      Description: 
+      Languages:
+      - SUBSTITUTES
+      - RESERVAS
+      Flags: 0000
+      Languages_Touch: []
     - Term: title_Strategy
       TermType: 0
       Description: 
       Languages:
       - STRATEGY
       - "ESTRAT\xC9GIA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_Speed
+      TermType: 0
+      Description: 
+      Languages:
+      - SPEED
+      - VELOCIDADE
       Flags: 0000
       Languages_Touch: []
     - Term: strategy_Neutral
@@ -1226,6 +1233,190 @@ MonoBehaviour:
       - Ofensiva Central
       Flags: 0000
       Languages_Touch: []
+    - Term: tournament_round
+      TermType: 0
+      Description: 
+      Languages:
+      - ROUND {0} / {1}
+      - RODADA {0} / {1}
+      Flags: 0000
+      Languages_Touch: []
+    - Term: tournament_MatchResultWin
+      TermType: 0
+      Description: 
+      Languages:
+      - W {0} - {1}
+      - V {0} - {1}
+      Flags: 0000
+      Languages_Touch: []
+    - Term: tournament_MatchResultLose
+      TermType: 0
+      Description: 
+      Languages:
+      - L {0} - {1}
+      - D {0} - {1}
+      Flags: 0000
+      Languages_Touch: []
+    - Term: tournament_MatchResultDraw
+      TermType: 0
+      Description: 
+      Languages:
+      - D {0} - {1}
+      - E {0} - {1}
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Monday
+      TermType: 0
+      Description: 
+      Languages:
+      - MONDAY
+      - SEGUNDA
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Tuesday
+      TermType: 0
+      Description: 
+      Languages:
+      - TUESDAY
+      - "TER\xC7A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Wednesday
+      TermType: 0
+      Description: 
+      Languages:
+      - WEDNESDAY
+      - QUARTA
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Thursday
+      TermType: 0
+      Description: 
+      Languages:
+      - THURSDAY
+      - QUINTA
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Friday
+      TermType: 0
+      Description: 
+      Languages:
+      - FRIDAY
+      - SEXTA
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Saturday
+      TermType: 0
+      Description: 
+      Languages:
+      - SATURDAY
+      - "S\xC1BADO"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: weekday_Sunday
+      TermType: 0
+      Description: 
+      Languages:
+      - SUNDAY
+      - DOMINGO
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_January
+      TermType: 0
+      Description: 
+      Languages:
+      - January
+      - Janeiro
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_February
+      TermType: 0
+      Description: 
+      Languages:
+      - February
+      - Fevereiro
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_March
+      TermType: 0
+      Description: 
+      Languages:
+      - March
+      - "Mar\xE7o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_April
+      TermType: 0
+      Description: 
+      Languages:
+      - April
+      - Abril
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_May
+      TermType: 0
+      Description: 
+      Languages:
+      - May
+      - Maio
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_June
+      TermType: 0
+      Description: 
+      Languages:
+      - June
+      - Junho
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_July
+      TermType: 0
+      Description: 
+      Languages:
+      - July
+      - Julho
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_August
+      TermType: 0
+      Description: 
+      Languages:
+      - August
+      - Agosto
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_September
+      TermType: 0
+      Description: 
+      Languages:
+      - September
+      - Setembro
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_October
+      TermType: 0
+      Description: 
+      Languages:
+      - October
+      - Outubro
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_November
+      TermType: 0
+      Description: 
+      Languages:
+      - November
+      - Novembro
+      Flags: 0000
+      Languages_Touch: []
+    - Term: month_December
+      TermType: 0
+      Description: 
+      Languages:
+      - December
+      - Dezembro
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -1241,7 +1432,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1596823695077
+    Google_LastUpdatedVersion: 1604749175322
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

@@ -16,8 +16,8 @@ MonoBehaviour:
     Id: ce19ca31-cff3-43bc-8357-86c55728f980
     Name: Awesomegas
     Tag: GRT3
-    PrimaryColor: {r: 0.21176472, g: 0.9137255, b: 0.22013308, a: 1}
-    SecondaryColor: {r: 1, g: 1, b: 1, a: 1}
+    PrimaryColor: {r: 0.1764706, g: 0.44705883, b: 0.69803923, a: 1}
+    SecondaryColor: {r: 0.7019608, g: 0.1764706, b: 0.1764706, a: 1}
     Formation: 0
     Strategy: 0
     SquadIds:
@@ -61,30 +61,58 @@ MonoBehaviour:
       CounterAttacks: 0
     TournamentStatistics:
       reorderableList:
-        canAdd: 0
-        canRemove: 0
-        draggable: 0
-        expandable: 0
-        multipleSelection: 0
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
         isExpanded: 0
         label:
-          m_Text: 
+          m_Text: Keys
           m_Image: {fileID: 0}
           m_Tooltip: 
-        headerHeight: 0
-        footerHeight: 0
-        slideEasing: 0
-        verticalSpacing: 0
-        showDefaultBackground: 0
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
         elementDisplayType: 0
         elementNameProperty: 
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
       isExpanded: 0
-      _keyValues: []
-      _keys: []
-      _values: []
+      _keyValues:
+      - 893164c7-7c13-4fab-8b1c-304a4d3755ef
+      - ba96112c-79e7-4b39-8de1-e296964f2cae
+      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
+      - 
+      - 639ae764-c08c-4c66-a800-3e4b92b433eb
+      _keys:
+      - 
+      _values:
+      - Points: 0
+        Wins: 0
+        Losts: 0
+        Draws: 0
+        Goals: 0
+        GoalsAgainst: 0
+        GoalsByHeader: 0
+        Shots: 0
+        Headers: 0
+        Steals: 0
+        Passes: 0
+        Crosses: 0
+        LongPasses: 0
+        PassesMissed: 0
+        CrossesMissed: 0
+        ShotsMissed: 0
+        HeadersMissed: 0
+        BoxCrosses: 0
+        Faults: 0
+        Offsides: 0
+        CornerKicks: 0
+        CounterAttacks: 0
     IsUserControlled: 0
     IsPlaceholder: 0
   Squad:
@@ -131,67 +159,7 @@ MonoBehaviour:
     CounterAttacks: 0
   IsAwayTeam: 0
   MatchData:
-    TeamAttributes:
-      Id: 
-      Name: 
-      Tag: 
-      PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
-      SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-      Formation: 0
-      Strategy: 0
-      SquadIds: []
-      SubstitutesIds: []
-      LifeTimeStats:
-        Points: 0
-        Wins: 0
-        Losts: 0
-        Draws: 0
-        Goals: 0
-        GoalsAgainst: 0
-        GoalsByHeader: 0
-        Shots: 0
-        Headers: 0
-        Steals: 0
-        Passes: 0
-        Crosses: 0
-        LongPasses: 0
-        PassesMissed: 0
-        CrossesMissed: 0
-        ShotsMissed: 0
-        HeadersMissed: 0
-        BoxCrosses: 0
-        Faults: 0
-        Offsides: 0
-        CornerKicks: 0
-        CounterAttacks: 0
-      TournamentStatistics:
-        reorderableList:
-          canAdd: 0
-          canRemove: 0
-          draggable: 0
-          expandable: 0
-          multipleSelection: 0
-          isExpanded: 0
-          label:
-            m_Text: 
-            m_Image: {fileID: 0}
-            m_Tooltip: 
-          headerHeight: 0
-          footerHeight: 0
-          slideEasing: 0
-          verticalSpacing: 0
-          showDefaultBackground: 0
-          elementDisplayType: 0
-          elementNameProperty: 
-          elementNameOverride: 
-          elementIcon: {fileID: 0}
-        reqReferences: {fileID: 0}
-        isExpanded: 0
-        _keyValues: []
-        _keys: []
-        _values: []
-      IsUserControlled: 0
-      IsPlaceholder: 0
+    TeamId: 
     Statistics:
       Points: 3
       Wins: 0

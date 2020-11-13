@@ -6,22 +6,30 @@ using UnityEngine.UI;
 
 public class ChampionshipCreation : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI teamAmountLabel;
+	[HideInInspector] public string TournmanentName;
+	[HideInInspector] public string TournamentId;
+	
+	[SerializeField] private TMP_Text teamAmountLabel;
 	[SerializeField] private TournamentCreationMatch matchTemplate;
-    [SerializeField] private TextMeshProUGUI roundLabelTemplate;
+    [SerializeField] private TMP_Text roundLabelTemplate;
 	[SerializeField] private Transform content;
 	[SerializeField] private Toggle homeAwayTeams;
 
 	private List<GameObject> matchList;
     public List<MatchData> DataList;
 
-    private List<TeamData> placeholderList;
+	private List<TeamData> placeholderList;
+	private TeamData placeholderTeam;
     private int totalTeams;
 
     void Awake()
     {
         DataList = new List<MatchData>();
-        matchList = new List<GameObject>();
+	    matchList = new List<GameObject>();
+	    placeholderTeam = new TeamData();
+	    placeholderTeam.Attributes = new TeamAttributes();
+	    placeholderTeam.Id = "Placeholder";
+	    placeholderTeam.Name = "MISSING TEAM";
     }
 
     public void AddTeam(TeamData _data)
@@ -63,12 +71,7 @@ public class ChampionshipCreation : MonoBehaviour
         {
             for (int t = i; t < totalTeams; t++)
             {
-                TeamData team = ScriptableObject.CreateInstance<TeamData>();
-                team.Attributes = new TeamAttributes();
-                placeholderList.Add(team);
-                teams.Add(team);
-                team.Name = "MISSING TEAM " + (t + 1);
-                team.IsPlaceholder = true;
+                teams.Add(placeholderTeam);
             }
         }
 
@@ -81,7 +84,7 @@ public class ChampionshipCreation : MonoBehaviour
 	    TeamData awayTeam;
 	    
 	    int day = (int)WeekDay.Sunday;
-		int maxGamesPerDay = half < 5 ? half : 5;
+		int maxGamesPerDay = half < 6 ? half : 6;
 		int totalGames = 0;
 		int totalGameDays = 0;
 	    int weekDay = 0;
@@ -93,15 +96,13 @@ public class ChampionshipCreation : MonoBehaviour
                 if (round % 2 == 0)
                 {
                     homeTeam = listA[t];
-	                awayTeam = listA[totalRounds - t];
-	                
+	                awayTeam = listA[totalRounds - t];	                
                 }
                 else
                 {
                     homeTeam = listA[totalRounds - t];
 	                awayTeam = listA[t];               
-                }
-				
+                }				
 
 	            if(round > totalGameDays || totalGames % maxGamesPerDay == 0) 
 	            {
@@ -112,8 +113,7 @@ public class ChampionshipCreation : MonoBehaviour
 	            }
 	            
 	            totalGames++;
-
-	            MatchData data = new MatchData(homeTeam.Attributes, awayTeam.Attributes, round, day);
+	            MatchData data = new MatchData(homeTeam, awayTeam, round, day, TournmanentName, TournamentId);
                 DataList.Add(data);
             }
 
@@ -149,7 +149,7 @@ public class ChampionshipCreation : MonoBehaviour
 	            	weekDay = (weekDay == 0) ? 1 : 0;
 	            }
 
-	            matchData = new MatchData(data.AwayTeam.TeamAttributes, data.HomeTeam.TeamAttributes, round, day);
+	            matchData = new MatchData(data, round, day);
 	            DataList.Add(matchData);
 	            totalGames++;
             }
@@ -165,6 +165,8 @@ public class ChampionshipCreation : MonoBehaviour
         if(matchList.Count > 0) ClearMatchList();
 		int round = -1;
 		int day = DataList[0].Day;
+		TeamData home;
+		TeamData away;
 		AddDateLabel(day);
         foreach(MatchData data in DataList)
         {
@@ -173,8 +175,12 @@ public class ChampionshipCreation : MonoBehaviour
 		        day = data.Day;
 		        AddDateLabel(day);
             }
-            TournamentCreationMatch match = Instantiate(matchTemplate, content);
-            match.Populate(data);
+	        TournamentCreationMatch match = Instantiate(matchTemplate, content);
+	        
+	        home = (data.HomeTeam.TeamId == "Placeholder") ? placeholderTeam : MainController.Instance.GetTeamById(data.HomeTeam.TeamId);
+	        away = (data.AwayTeam.TeamId == "Placeholder") ? placeholderTeam : MainController.Instance.GetTeamById(data.AwayTeam.TeamId);
+	        
+	        match.Populate(home, away);
 	        matchList.Add(match.gameObject);
 	        //Debug.Log(data.HomeTeam.TeamAttributes.Name + " X " + data.AwayTeam.TeamAttributes.Name + "  -  " + CalendarController.Instance.GetDay(data.Day));
         }
@@ -182,7 +188,7 @@ public class ChampionshipCreation : MonoBehaviour
     
 	private void AddDateLabel(int _day)
 	{
-		TextMeshProUGUI txt = Instantiate(roundLabelTemplate, content);
+		TMP_Text txt = Instantiate(roundLabelTemplate, content);
 		txt.text = CalendarController.Instance.GetDay(_day) + " - " + CalendarController.Instance.GetWeekDay(_day);
 		matchList.Add(txt.gameObject);
 	}
@@ -195,5 +201,5 @@ public class ChampionshipCreation : MonoBehaviour
             Destroy(match.gameObject);
         }
         matchList.Clear();
-    }
+	}
 }

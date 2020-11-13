@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class MatchData
@@ -8,15 +9,33 @@ public class MatchData
     public bool isPlayed;
 	public int Round;
 	public int Day;
+	public string TournamentName;
+	public string TournamentId;
 
-	public MatchData(TeamAttributes _home, TeamAttributes _away, int _round, int _day)
-    {
-        HomeTeam = new TeamMatchData(_home);
-        AwayTeam = new TeamMatchData(_away);
+	public MatchData(TeamData _home, TeamData _away, int _round, int _day, string _tournamentName, string _tournamentId)
+	{
+		TeamAttributes attributes = _home.IsPlaceholder ? _home.Attributes : null;  	
+		HomeTeam = new TeamMatchData(_home.Id, attributes);
+		
+		attributes = _away.IsPlaceholder ? _away.Attributes : null;  
+		AwayTeam = new TeamMatchData(_away.Id, attributes);
         isPlayed = false;
 	    Round = _round;
-	    Day = _day;
-    }
+		Day = _day;
+		TournamentName = _tournamentName;
+		TournamentId = _tournamentId;
+	}
+	
+	public MatchData(MatchData _data, int _round, int _day)
+	{ 	
+		HomeTeam = _data.AwayTeam;  
+		AwayTeam = _data.HomeTeam;
+		isPlayed = false;
+		Round = _round;
+		Day = _day;
+		TournamentName = _data.TournamentName;
+		TournamentId = _data.TournamentId;
+	}
 
     public void Reset()
     {
@@ -29,15 +48,22 @@ public class MatchData
 [System.Serializable]
 public struct TeamMatchData
 {
-    public TeamAttributes TeamAttributes;
-    public TeamStatistics Statistics;
+	public string TeamId;
+	public TeamData TeamData
+	{
+		get
+		{
+			return MainController.Instance.GetTeamById(TeamId);
+		}
+	}
+	public TeamStatistics Statistics;
     public List<PlayerData> Scorers;
     public List<PlayerData> YellowCards;
     public List<PlayerData> RedCards;
 
-    public TeamMatchData(TeamAttributes _attributes)
+	public TeamMatchData(string _teamId, TeamAttributes _attributes)
     {
-        TeamAttributes = _attributes;
+	    TeamId = _teamId;
         Statistics = new TeamStatistics();
         Scorers = new List<PlayerData>();
         YellowCards = new List<PlayerData>();
@@ -45,7 +71,8 @@ public struct TeamMatchData
     }
 
     public void Reset()
-    {
+	{
+		TeamId = "";
         Statistics = new TeamStatistics();
         Scorers = new List<PlayerData>();
         YellowCards = new List<PlayerData>();

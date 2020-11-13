@@ -6,28 +6,12 @@ using UnityEngine.UI;
 
 public class MatchPlayerView : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI nameLabel;
-
-    [SerializeField]
-    private TextMeshProUGUI posLabel;
-
-    [SerializeField]
-    private TextMeshProUGUI ratingLabel;
-
-    [SerializeField]
-    private Image fatigueBar;
+    [SerializeField] private TextMeshProUGUI nameLabel;
+    [SerializeField] private TextMeshProUGUI posLabel;
+    [SerializeField] private TextMeshProUGUI ratingLabel;
+    [SerializeField] private Image fatigueBar;
 
     public PlayerData Player;
-
-    [SerializeField]
-    private Color red;
-
-    [SerializeField]
-    private Color yellow;
-
-    [SerializeField]
-    private Color green;
 
     public void Populate(PlayerData _player)
     {
@@ -42,9 +26,9 @@ public class MatchPlayerView : MonoBehaviour
         float fill = (float)Player.Fatigue / 100;
         fatigueBar.fillAmount = fill;
 
-        if (fill < 0.25f) fatigueBar.color = red;
-        else if (fill < 0.5f) fatigueBar.color = yellow;
-        else fatigueBar.color = green;
+	    if (fill < 0.25f) fatigueBar.color = GameData.Instance.Colors.Negative;
+	    else if (fill < 0.5f) fatigueBar.color = GameData.Instance.Colors.Warning;
+	    else fatigueBar.color = GameData.Instance.Colors.Positive;;
 
         ratingLabel.text = Player.MatchStats.MatchRating.ToString("F1");
     }

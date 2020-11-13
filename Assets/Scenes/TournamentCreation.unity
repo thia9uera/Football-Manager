@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 125605025}
   - component: {fileID: 125605026}
   - component: {fileID: 125605027}
+  - component: {fileID: 125605028}
   m_Layer: 5
   m_Name: Controllers
   m_TagString: Untagged
@@ -176,6 +177,8 @@ MonoBehaviour:
     Name: 
     TeamName: 
     LastTimeSaved: 
+    CurrentYear: 0
+    CurrentDay: 0
   AllPlayers: []
   AllTeams: []
   AllTournaments: []
@@ -185,67 +188,7 @@ MonoBehaviour:
   CurrentTournament: {fileID: 0}
   CurrentMatch:
     HomeTeam:
-      TeamAttributes:
-        Id: 
-        Name: 
-        Tag: 
-        PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
-        SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-        Formation: 0
-        Strategy: 0
-        SquadIds: []
-        SubstitutesIds: []
-        LifeTimeStats:
-          Points: 0
-          Wins: 0
-          Losts: 0
-          Draws: 0
-          Goals: 0
-          GoalsAgainst: 0
-          GoalsByHeader: 0
-          Shots: 0
-          Headers: 0
-          Steals: 0
-          Passes: 0
-          Crosses: 0
-          LongPasses: 0
-          PassesMissed: 0
-          CrossesMissed: 0
-          ShotsMissed: 0
-          HeadersMissed: 0
-          BoxCrosses: 0
-          Faults: 0
-          Offsides: 0
-          CornerKicks: 0
-          CounterAttacks: 0
-        TournamentStatistics:
-          reorderableList:
-            canAdd: 0
-            canRemove: 0
-            draggable: 0
-            expandable: 0
-            multipleSelection: 0
-            isExpanded: 0
-            label:
-              m_Text: 
-              m_Image: {fileID: 0}
-              m_Tooltip: 
-            headerHeight: 0
-            footerHeight: 0
-            slideEasing: 0
-            verticalSpacing: 0
-            showDefaultBackground: 0
-            elementDisplayType: 0
-            elementNameProperty: 
-            elementNameOverride: 
-            elementIcon: {fileID: 0}
-          reqReferences: {fileID: 0}
-          isExpanded: 0
-          _keyValues: []
-          _keys: []
-          _values: []
-        IsUserControlled: 0
-        IsPlaceholder: 0
+      TeamId: 
       Statistics:
         Points: 0
         Wins: 0
@@ -273,67 +216,7 @@ MonoBehaviour:
       YellowCards: []
       RedCards: []
     AwayTeam:
-      TeamAttributes:
-        Id: 
-        Name: 
-        Tag: 
-        PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
-        SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-        Formation: 0
-        Strategy: 0
-        SquadIds: []
-        SubstitutesIds: []
-        LifeTimeStats:
-          Points: 0
-          Wins: 0
-          Losts: 0
-          Draws: 0
-          Goals: 0
-          GoalsAgainst: 0
-          GoalsByHeader: 0
-          Shots: 0
-          Headers: 0
-          Steals: 0
-          Passes: 0
-          Crosses: 0
-          LongPasses: 0
-          PassesMissed: 0
-          CrossesMissed: 0
-          ShotsMissed: 0
-          HeadersMissed: 0
-          BoxCrosses: 0
-          Faults: 0
-          Offsides: 0
-          CornerKicks: 0
-          CounterAttacks: 0
-        TournamentStatistics:
-          reorderableList:
-            canAdd: 0
-            canRemove: 0
-            draggable: 0
-            expandable: 0
-            multipleSelection: 0
-            isExpanded: 0
-            label:
-              m_Text: 
-              m_Image: {fileID: 0}
-              m_Tooltip: 
-            headerHeight: 0
-            footerHeight: 0
-            slideEasing: 0
-            verticalSpacing: 0
-            showDefaultBackground: 0
-            elementDisplayType: 0
-            elementNameProperty: 
-            elementNameOverride: 
-            elementIcon: {fileID: 0}
-          reqReferences: {fileID: 0}
-          isExpanded: 0
-          _keyValues: []
-          _keys: []
-          _values: []
-        IsUserControlled: 0
-        IsPlaceholder: 0
+      TeamId: 
       Statistics:
         Points: 0
         Wins: 0
@@ -363,6 +246,7 @@ MonoBehaviour:
     isPlayed: 0
     Round: 0
     Day: 0
+    TournamentName: 
   UserTeam: {fileID: 0}
 --- !u!114 &125605027
 MonoBehaviour:
@@ -379,6 +263,26 @@ MonoBehaviour:
   Days: []
   CurrentDay: 0
   CurrentYear: 0
+--- !u!114 &125605028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125605024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f313b6549753464b81e48062efb6fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 114321360e3484547b55da21fb943845, type: 2}
+  PLAYER_1: 
+  PLAYER_2: 
+  TEAM_1: 
+  TEAM_2: 
+  ZONE: 
+  EXTRA_1: 
+  currentlanguage: 0
 --- !u!1 &619037832
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +613,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1618940959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5684722049317628637, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+    type: 3}
+  m_PrefabInstance: {fileID: 5684722050430987069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba7a30bbf0109049960aaa1b7949448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2139348515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2051176849, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+    type: 3}
+  m_PrefabInstance: {fileID: 5684722050430987069}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5684722050430987069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,6 +644,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 838155406}
     m_Modifications:
+    - target: {fileID: 116652963242649116, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116652963242649116, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5684722048366953294, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -741,6 +679,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -144.7998
       objectReference: {fileID: 0}
+    - target: {fileID: 5684722049317628637, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: homeAwayTeams
+      value: 
+      objectReference: {fileID: 2139348515}
     - target: {fileID: 5684722049317628642, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -884,6 +827,51 @@ PrefabInstance:
     - target: {fileID: 5684722049996649052, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684722050438533454, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684722050438533454, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684722050438533454, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684722050438533454, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1618940959}
+    - target: {fileID: 5684722050438533454, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTournamentNameChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684722050438533454, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900530192135596133, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900530192135596133, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666858268569800031, guid: fb83008ea8e0d43f5a44c6f0ce850829,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

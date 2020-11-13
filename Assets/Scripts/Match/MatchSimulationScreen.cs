@@ -18,9 +18,9 @@ public class MatchSimulationScreen : MonoBehaviour
 
     public void UpdateFeedback(MatchData _data)
     {
-        string home = _data.HomeTeam.TeamAttributes.Name;
+	    string home = _data.HomeTeam.TeamData.Name;
         string homeScore = _data.HomeTeam.Statistics.Goals.ToString();
-        string away = _data.AwayTeam.TeamAttributes.Name;
+	    string away = _data.AwayTeam.TeamData.Name;
         string awayScore = _data.AwayTeam.Statistics.Goals.ToString();
 
         feedbackLabel.text = home + "  " + homeScore + "  X  " + awayScore + "  " + away;
@@ -30,6 +30,8 @@ public class MatchSimulationScreen : MonoBehaviour
 	{
 		TournamentFixturesItem match = Instantiate(itemTemplate, content);
 		match.Populate(_data);
+		
+		if(itemList == null) itemList = new List<GameObject>();
 		itemList.Add(match.gameObject);
 	}
 	

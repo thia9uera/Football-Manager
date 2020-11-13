@@ -41,7 +41,7 @@ public class TournamentCard_Old : MonoBehaviour
         for (int i = 0; i < max; i++)
         {
             TeamData tData = list[i];
-            team[i].text = tData.Name + " (" + tData.GetOveralRating() + ")";
+	        team[i].text = tData.Name + " (" + tData.OveralRating + ")";
             if(tData.TournamentStatistics.ContainsKey(Data.Id)) score[i].text = tData.TournamentStatistics[Data.Id].Points + " pts";
         }
 
@@ -49,7 +49,7 @@ public class TournamentCard_Old : MonoBehaviour
 
     public void ClickHandler()
     {
-        MainController.Instance.CurrentTournament = Data;
+	    //MainController.Instance.CurrentTournament = Data;
 	    //ScreenController.Instance.ShowScreen(ScreenType.TournamentHub);
     }
 }

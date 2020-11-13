@@ -393,12 +393,12 @@ public class PlayerData : ScriptableObject
         }
     }
 
-    public void UpdateLifeTimeStats()
+	public void UpdateLifeTimeStats(string _tournamentId)
     {
         PlayerStatistics stats = MatchStats;
         if (Attributes.LifeTimeStats == null) Attributes.LifeTimeStats = new PlayerStatistics();
         UpdateStats(Attributes.LifeTimeStats, stats);
-        if (MainController.Instance.CurrentTournament != null) UpdateTournamentStatistics(stats);
+	    UpdateTournamentStatistics(stats, _tournamentId);
 
         ResetStatistics("Match");
     }
@@ -450,9 +450,8 @@ public class PlayerData : ScriptableObject
         return stats;
     }
 
-    void UpdateTournamentStatistics(PlayerStatistics _stats)
+	void UpdateTournamentStatistics(PlayerStatistics _stats, string _tournamentid)
     {
-        TournamentData currentTournament = MainController.Instance.CurrentTournament;
         if (Attributes.TournamentStatistics == null) Attributes.TournamentStatistics = new List<PlayerStatistics>();
 
         //if (!Attributes.TournamentStatistics.ContainsKey(currentTournament.Id))
@@ -460,9 +459,9 @@ public class PlayerData : ScriptableObject
         // Attributes.TournamentStatistics.Add(currentTournament.Id, new PlayerStatistics());
         // }
 
-        CheckTournament(currentTournament.Id);
+        CheckTournament(_tournamentid);
         
-        PlayerStatistics tStats = GetTournamentStatistics(currentTournament.Id);
+        PlayerStatistics tStats = GetTournamentStatistics(_tournamentid);
 
         UpdateStats(tStats, _stats);
     }

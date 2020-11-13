@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class MatchScoreView : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI timeLabel = null;
-	[SerializeField] private TextMeshProUGUI homeScoreLabel = null;
-	[SerializeField] private TextMeshProUGUI awayScoreLabel = null;
-	[SerializeField] private TextMeshProUGUI homeNameLabel = null;
-	[SerializeField] private TextMeshProUGUI awayNameLabel = null;
+	[SerializeField] private TMP_Text timeLabel = null;
+	[SerializeField] private TMP_Text homeScoreLabel = null;
+	[SerializeField] private TMP_Text awayScoreLabel = null;
+	[SerializeField] private TMP_Text homeNameLabel = null;
+	[SerializeField] private TMP_Text awayNameLabel = null;
 	[SerializeField] private Image homeFrame = null;
 	[SerializeField] private Image awayFrame = null;
 
@@ -29,7 +29,8 @@ public class MatchScoreView : MonoBehaviour
     {
 	    float minutes = _turn;
         float seconds = _time % 60;
-        timeLabel.text = minutes.ToString("00") +  ":" + seconds.ToString("00");
+	    //timeLabel.text = minutes.ToString("00") +  ":" + seconds.ToString("00");
+	    timeLabel.text = minutes + "'";
     }
 
     public void UpdateScore(int _homeTeamScore, int _awayTeamScore)

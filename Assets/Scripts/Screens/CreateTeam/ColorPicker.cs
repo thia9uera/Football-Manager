@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {	
-	[SerializeField] private Color[] availableColors;
 	[SerializeField] private ColorPick colorPickTemplate;
 	[SerializeField] private Transform colorPickContainer;
 	
+	private List<Color> availableColors;
 	private List<ColorPick> colorPickList;
 	
 	public int IdSelected = 0;
@@ -19,6 +19,7 @@ public class ColorPicker : MonoBehaviour
 	
 	public void Initiliaze(int _startingColor, int _blockedColor)
 	{
+		availableColors = GameData.Instance.Colors.TeamColors;
 		IdSelected = _startingColor;
 		colorPickList = new List<ColorPick>();
 		int id = 0;

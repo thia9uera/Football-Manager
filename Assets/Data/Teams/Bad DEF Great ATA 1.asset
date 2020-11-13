@@ -16,8 +16,8 @@ MonoBehaviour:
     Id: eecaa026-ee25-4844-beef-27242045b5c1
     Name: Defensorry Attackers
     Tag: BD-GA1
-    PrimaryColor: {r: 0.9137255, g: 0.60219765, b: 0.21176472, a: 1}
-    SecondaryColor: {r: 0.21306516, g: 0.685812, b: 0.7169812, a: 1}
+    PrimaryColor: {r: 0.29411766, g: 0.20392157, b: 0.5019608, a: 1}
+    SecondaryColor: {r: 0.78431374, g: 0.5568628, b: 0.20392157, a: 1}
     Formation: 0
     Strategy: 0
     SquadIds:
@@ -61,21 +61,21 @@ MonoBehaviour:
       CounterAttacks: 0
     TournamentStatistics:
       reorderableList:
-        canAdd: 0
-        canRemove: 0
-        draggable: 0
-        expandable: 0
-        multipleSelection: 0
+        canAdd: 1
+        canRemove: 1
+        draggable: 1
+        expandable: 1
+        multipleSelection: 1
         isExpanded: 0
         label:
-          m_Text: 
+          m_Text: Keys
           m_Image: {fileID: 0}
           m_Tooltip: 
-        headerHeight: 0
-        footerHeight: 0
-        slideEasing: 0
-        verticalSpacing: 0
-        showDefaultBackground: 0
+        headerHeight: 18
+        footerHeight: 13
+        slideEasing: 0.15
+        verticalSpacing: 2
+        showDefaultBackground: 1
         elementDisplayType: 0
         elementNameProperty: 
         elementNameOverride: 
@@ -131,67 +131,7 @@ MonoBehaviour:
     CounterAttacks: 0
   IsAwayTeam: 0
   MatchData:
-    TeamAttributes:
-      Id: 
-      Name: 
-      Tag: 
-      PrimaryColor: {r: 1, g: 1, b: 1, a: 1}
-      SecondaryColor: {r: 1, g: 0, b: 0, a: 1}
-      Formation: 0
-      Strategy: 0
-      SquadIds: []
-      SubstitutesIds: []
-      LifeTimeStats:
-        Points: 0
-        Wins: 0
-        Losts: 0
-        Draws: 0
-        Goals: 0
-        GoalsAgainst: 0
-        GoalsByHeader: 0
-        Shots: 0
-        Headers: 0
-        Steals: 0
-        Passes: 0
-        Crosses: 0
-        LongPasses: 0
-        PassesMissed: 0
-        CrossesMissed: 0
-        ShotsMissed: 0
-        HeadersMissed: 0
-        BoxCrosses: 0
-        Faults: 0
-        Offsides: 0
-        CornerKicks: 0
-        CounterAttacks: 0
-      TournamentStatistics:
-        reorderableList:
-          canAdd: 0
-          canRemove: 0
-          draggable: 0
-          expandable: 0
-          multipleSelection: 0
-          isExpanded: 0
-          label:
-            m_Text: 
-            m_Image: {fileID: 0}
-            m_Tooltip: 
-          headerHeight: 0
-          footerHeight: 0
-          slideEasing: 0
-          verticalSpacing: 0
-          showDefaultBackground: 0
-          elementDisplayType: 0
-          elementNameProperty: 
-          elementNameOverride: 
-          elementIcon: {fileID: 0}
-        reqReferences: {fileID: 0}
-        isExpanded: 0
-        _keyValues: []
-        _keys: []
-        _values: []
-      IsUserControlled: 0
-      IsPlaceholder: 0
+    TeamId: 
     Statistics:
       Points: 0
       Wins: 0

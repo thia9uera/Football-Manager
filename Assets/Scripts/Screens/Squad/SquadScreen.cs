@@ -88,6 +88,7 @@ public class SquadScreen : BaseScreen
 			}
 		}
 		hasChanged = true;
+		formationDropdown.GetComponent<Animator>().SetTrigger("Normal");
 	}
 	
 	private void UpdateStrategyDropdown()
