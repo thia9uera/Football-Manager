@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TournamentCreationMatch : MonoBehaviour
 {
-    [SerializeField]
-    TournamentCreationMatchTeam homeTeam, awayTeam;
+	[SerializeField] TournamentCreationMatchTeam homeTeam = null;
+	[SerializeField] TournamentCreationMatchTeam awayTeam = null;
 
 	public void Populate(TeamData _home, TeamData _away)
     {

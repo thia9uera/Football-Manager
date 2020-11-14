@@ -34,7 +34,11 @@ namespace I2.Loc
             //--[ Localize Font Object ]----------
             Font newFont = cmp.GetSecondaryTranslatedObj<Font>(ref mainTranslation, ref secondaryTranslation);
             if (newFont != null && mTarget.font != newFont)
+            {
                 mTarget.font = newFont;
+                MeshRenderer rend = mTarget.GetComponentInChildren<MeshRenderer>();
+                rend.material = newFont.material;
+            }
 
             //--[ Localize Text ]----------
             if (mInitializeAlignment)

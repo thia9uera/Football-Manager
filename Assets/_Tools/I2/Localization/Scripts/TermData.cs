@@ -21,7 +21,8 @@ namespace I2.Loc
 		#if SVG
 			SVGAsset,
 		#endif
-		Object 
+		Object,
+		Video
 	}
 
 	public enum TranslationFlag : byte

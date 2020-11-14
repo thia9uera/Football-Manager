@@ -6,17 +6,10 @@ using TMPro;
 
 public class Debug_ZoneView : MonoBehaviour
 {
-    [SerializeField]
-    private Image image;
-
-    [SerializeField]
-    private TextMeshProUGUI text;
-
-    [SerializeField]
-    private Color[] colors;
-
-    [SerializeField]
-    private string[] labels;
+	[SerializeField] private Image image = null;
+	[SerializeField] private TMP_Text text = null;
+	[SerializeField] private Color[] colors = null;
+	[SerializeField] private string[] labels = null;
 
     public Zone Zone;
 

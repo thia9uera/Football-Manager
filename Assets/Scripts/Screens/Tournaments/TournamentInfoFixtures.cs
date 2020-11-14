@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class TournamentInfoFixtures : MonoBehaviour
 {
-	[SerializeField] private TournamentFixturesItem itemTemplate;
-	[SerializeField] private Transform content;
-	[SerializeField] private Button navButtonPrev;
-	[SerializeField] private Button navButtonNext;
-	[SerializeField] private TextMeshProUGUI roundLabel;
+	[SerializeField] private TournamentFixturesItem itemTemplate = null;
+	[SerializeField] private Transform content = null;
+	[SerializeField] private Button navButtonPrev = null;
+	[SerializeField] private Button navButtonNext = null;
+	[SerializeField] private TextMeshProUGUI roundLabel = null;
 
 	private List<GameObject> itemList;
 	private List<MatchData> matchList;

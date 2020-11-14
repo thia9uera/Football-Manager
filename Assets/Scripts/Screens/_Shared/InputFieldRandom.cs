@@ -5,7 +5,7 @@ using TMPro;
 
 public class InputFieldRandom : MonoBehaviour
 {
-	[SerializeField] private TMP_InputField inputField;
+	[SerializeField] private TMP_InputField inputField = null;
 	
 	public RandomNameType Type;
 	

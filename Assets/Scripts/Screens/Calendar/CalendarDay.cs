@@ -7,14 +7,14 @@ using System;
 
 public class CalendarDay : MonoBehaviour
 {
-	[SerializeField] private TMP_Text label;
-	[SerializeField] private TMP_Text dayLabel;
-	[SerializeField] private Image frameImage;
-	
+	[SerializeField] private TMP_Text label = null;
+	[SerializeField] private TMP_Text dayLabel = null;
+	[SerializeField] private Image frameImage = null;
+
 	public void Populate(MatchDay _data)
 	{
 		dayLabel.text = _data.Date.Day.ToString();
-		
+
 		TeamData adversaryTeam = null;
 		string userTeamId = MainController.Instance.UserTeam.Id;
 		string adversaryId;
@@ -31,14 +31,14 @@ public class CalendarDay : MonoBehaviour
 		{
 			label.text = "";
 		}
-		
+
 		DateTime currentDate = CalendarController.Instance.CurrentDate;
-		
+
 		if(_data.Date == currentDate) frameImage.color = GameData.Instance.Colors.PlayerColor;
 		else if(_data.Date > currentDate) frameImage.color = GameData.Instance.Colors.White;
 		else frameImage.color =  GameData.Instance.Colors.MediumGray;
 
 
-		
+
 	}
 }

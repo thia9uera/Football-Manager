@@ -7,34 +7,30 @@ using UnityEngine.UI;
 public class SquadEdit : BaseScreen
 {
     public SquadEditSubstitutes Subs;
-
     public FormationsData Formations;
-    private List<string> formationNameList;
-
-    [SerializeField]
-    private SquadEditField Field;
-
-    [SerializeField]
-    private TMP_Dropdown formationDropdown, strategyDropdown;
+    
+	[SerializeField] private SquadEditField Field = null;
+	[SerializeField] private TMP_Dropdown formationDropdown = null;
+	[SerializeField] private TMP_Dropdown strategyDropdown = null;
 
     public TeamData Team;
 
-    [SerializeField]
-    private Button btnConfirm;
-
-    private List<PlayerData> squadList;
-    private List<PlayerData> subsList;
+	[SerializeField] private Button btnConfirm = null;
 
     public SquadEditPlayer SelectedSquadPlayer;
     public SquadEditPlayer SelectedSubPlayer;
 
     public SquadEditPlayer HoveringPlayer;
     public SquadEditPlayer DragPlayer;
-    private bool isDragging;
-    private bool isHoveringSubs;
 
-    [SerializeField]
-    private GameObject hoveringSubsHit;
+	[SerializeField] private GameObject hoveringSubsHit = null;
+	
+	private List<PlayerData> squadList;
+	private List<PlayerData> subsList;
+	private List<string> formationNameList;
+	
+	private bool isDragging;
+	private bool isHoveringSubs;
 
     public override void Show()
     {

@@ -7,9 +7,9 @@ using DG.Tweening;
 
 public class LoadingScreen : BaseScreen
 {
-	[SerializeField] private TextMeshProUGUI label;
+	[SerializeField] private TextMeshProUGUI label = null;
 
-    List<GameObject> buttons;
+	private List<GameObject> buttons;
 	private UserData[] saves;
 
 	private float time;

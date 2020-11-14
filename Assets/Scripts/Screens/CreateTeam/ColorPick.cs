@@ -7,8 +7,8 @@ public class ColorPick : Button
 {
 	[HideInInspector] public int Id;
 	
-	[SerializeField] private GameObject selectedIndicator;
-	[SerializeField] private Image colorImg;
+	[SerializeField] private GameObject selectedIndicator = null;
+	[SerializeField] private Image colorImg = null;
 	
 	public void SetSelected(bool _value)
 	{

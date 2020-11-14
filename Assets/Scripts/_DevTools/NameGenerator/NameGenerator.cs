@@ -7,24 +7,17 @@ using UnityEngine;
 
 public class NameGenerator : MonoBehaviour
 {
-    List<PlayerData> fileList;
-
-    [SerializeField]
-    NameGeneratorItem itemTemplate;
-
-    [SerializeField]
-    Transform content;
-
-    List<GameObject> itemList;
-
-    public List<TeamData> ExcludeList;
-
-    List<PlayerData> playerList;
-
-    [SerializeField]
-	RandomNamesData namesData;
-    List<string> firstNames;
-    List<string> lastNames;
+	public List<TeamData> ExcludeList;
+	
+	[SerializeField] private NameGeneratorItem itemTemplate = null;
+	[SerializeField] private Transform content = null;
+	[SerializeField] private RandomNamesData namesData = null;
+	
+	private List<PlayerData> fileList = null;
+	private List<GameObject> itemList = null;
+	private List<PlayerData> playerList = null;
+	private List<string> firstNames = null;
+	private List<string> lastNames = null;
 
     private void Awake()
     {
@@ -59,7 +52,7 @@ public class NameGenerator : MonoBehaviour
             team.Attributes.PrimaryColor = team.PrimaryColor;
             team.Attributes.SecondaryColor = team.SecondaryColor;
             team.Attributes.Strategy = (TeamStrategy)team.Strategy;
-	        team.Attributes.Formation = team.Attributes.Formation;
+	        team.Attributes.Formation = (int) team.Formation.Type;
             team.Attributes.Tag = team.Tag;
             team.Attributes.Id = System.Guid.NewGuid().ToString();
             EditorUtility.SetDirty(team);

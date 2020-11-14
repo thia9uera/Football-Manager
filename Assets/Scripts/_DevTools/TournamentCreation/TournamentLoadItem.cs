@@ -7,7 +7,7 @@ public class TournamentLoadItem : MonoBehaviour
 {
 	[HideInInspector] public TournamentData Data;
 
-	[SerializeField] private TextMeshProUGUI label;
+	[SerializeField] private TMP_Text label = null;
 
     public void Populate(TournamentData _data)
     {

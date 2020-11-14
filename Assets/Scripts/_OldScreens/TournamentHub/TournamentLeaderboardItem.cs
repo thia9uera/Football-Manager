@@ -6,20 +6,11 @@ using UnityEngine.UI;
 
 public class TournamentLeaderboardItem : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI posLabel;
-
-    [SerializeField]
-    TextMeshProUGUI nameLabel;
-
-    [SerializeField]
-    TextMeshProUGUI ptsLabel;
-
-    [SerializeField]
-    Image frameImage;
-
-    [SerializeField]
-    Color colorGray;
+	[SerializeField] private TMP_Text posLabel = null;
+	[SerializeField] private TMP_Text nameLabel = null;
+	[SerializeField] private TextMeshProUGUI ptsLabel = null;
+	[SerializeField] private Image frameImage  = null;
+	[SerializeField] private Color colorGray;
 
     public void Populate(int _pos, string _name, string _points, bool _isUser)
     {

@@ -6,10 +6,9 @@ using TMPro;
 
 public class MatchStartButton : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI label;
+	[SerializeField] TextMeshProUGUI label= null;
 
-    bool isPause;
+	private bool isPause;
 
     void Start()
     {

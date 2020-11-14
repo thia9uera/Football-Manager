@@ -13,15 +13,15 @@ public class TournamentCreation : BaseScreen
 
     public ChampionshipCreation Championship;
 	public CupCreation Cup;
-	
-	[SerializeField] private Toggle homeAwayTeams;
-
-    [HideInInspector] public List<TeamData> AvailableTeams;
-    [HideInInspector] public List<TeamData> TeamList;
-
+    
     public GameObject Edit;
 	public GameObject Load;
+	
+	[HideInInspector] public List<TeamData> AvailableTeams;
+	[HideInInspector] public List<TeamData> TeamList;
     
+	[SerializeField] private Toggle homeAwayTeams = null;
+	
 	private InitialData initialData;
 	private TournamentData editingTournament;
 

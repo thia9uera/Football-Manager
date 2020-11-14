@@ -19,6 +19,10 @@ public class FormationSetup : MonoBehaviour
             return instance;
         }
     }
+    
+	[SerializeField] private PrimitiveCanvas lines = null;
+	[SerializeField] private TMP_InputField nameInput= null;
+	[SerializeField] private TMP_Dropdown dropdown= null;
 
     public FormationData Formation;
 
@@ -33,15 +37,6 @@ public class FormationSetup : MonoBehaviour
     private float fieldHeight;
 
     private StrokeStyle lineStyle;
-
-    [SerializeField]
-    private PrimitiveCanvas lines;
-
-    [SerializeField]
-    private TMP_InputField nameInput;
-
-    [SerializeField]
-    private TMP_Dropdown dropdown;
 
     List<string> formationNameList;
 

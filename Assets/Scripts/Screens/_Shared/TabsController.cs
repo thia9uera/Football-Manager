@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TabsController : MonoBehaviour
 {
-	[SerializeField] private DefaultTab[] tabList;
+	[SerializeField] private DefaultTab[] tabList = null;
 	
 	public TabScreen manager;
 	

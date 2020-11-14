@@ -11,20 +11,14 @@ public class LeaderboardView : BaseScreen
         Teams
     }
 
-    [SerializeField]
-    private Transform content;
+    [SerializeField] private Transform content = null;
+    [SerializeField] private LeaderboardPlayerView playerTeamplate = null;
+    [SerializeField] private LeaderboardTeamView teamTeamplate = null;
+    [SerializeField] private TMP_Dropdown playersDropdown = null;
+    [SerializeField] private TMP_Dropdown teamsDropdown = null;
 
-    [SerializeField]
-    private LeaderboardPlayerView playerTeamplate;
-
-    [SerializeField]
-    private LeaderboardTeamView teamTeamplate;
-
-    [SerializeField]
-    private TMP_Dropdown playersDropdown, teamsDropdown;
-
-    [SerializeField]
-    private List<string> playerStats, teamStats;
+    [SerializeField] private List<string> playerStats = null;
+    [SerializeField] private List<string> teamStats = null;
 
     private List<PlayerData> listPlayers;
     private List<TeamData> listTeams;
@@ -40,11 +34,8 @@ public class LeaderboardView : BaseScreen
     private string teamSorting = "Name";
     private string customSorting;
 
-    [SerializeField]
-    private ScrollRect scrollRect;
-
-    [SerializeField]
-    int maxRows = 25;
+    [SerializeField] private ScrollRect scrollRect = null;
+	[SerializeField] private int maxRows = 25;
 
     public override void Show()
     {
@@ -183,4 +174,10 @@ public class LeaderboardView : BaseScreen
         customSorting = playerStats[playersDropdown.value];
         SortBy(customSorting);
     }
+    
+	public void OnTeamsDropdownChange()
+	{
+		customSorting = teamStats[teamsDropdown.value];
+		SortBy(customSorting);
+	}
 }

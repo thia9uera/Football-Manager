@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class TournamentLeaderboard : MonoBehaviour
 {
-    [SerializeField]
-    TournamentLeaderboardItem itemTemplate;
-
-    [SerializeField]
-    Transform content;
+	[SerializeField] private TournamentLeaderboardItem itemTemplate = null;
+	[SerializeField] private Transform content = null;
 
     public void Populate(List<TeamData> _list, string _id)
     {

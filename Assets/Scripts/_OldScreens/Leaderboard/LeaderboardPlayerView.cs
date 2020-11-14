@@ -4,12 +4,23 @@ using UnityEngine.UI;
 
 public class LeaderboardPlayerView : MonoBehaviour
 {
-    [SerializeField] public TextMeshProUGUI posLabel, nameLabel, goalsLabel, assistsLabel, shotsLabel, shotsMissedLabel, headersLabel, headersMissedLabel, passesLabel, crossesLabel, faultsLabel, customLabel;
+	[SerializeField] private TMP_Text posLabel= null;
+	[SerializeField] private TMP_Text nameLabel = null;
+	[SerializeField] private TMP_Text goalsLabel = null;
+	[SerializeField] private TMP_Text assistsLabel = null;
+	[SerializeField] private TMP_Text shotsLabel = null;
+	[SerializeField] private TMP_Text shotsMissedLabel = null;
+	[SerializeField] private TMP_Text headersLabel = null;
+	[SerializeField] private TMP_Text headersMissedLabel = null;
+	[SerializeField] private TMP_Text passesLabel = null;
+	[SerializeField] private TMP_Text crossesLabel = null;
+	[SerializeField] private TMP_Text faultsLabel = null;
+	[SerializeField] private TMP_Text customLabel = null;
 
-    public PlayerData Player;
-
-    [SerializeField]
-    private Image frame; 
+    
+	[SerializeField] private Image frame = null; 
+    
+	public PlayerData Player;
 
 
     public void Populate(PlayerData _player, int _index, float _customStat)

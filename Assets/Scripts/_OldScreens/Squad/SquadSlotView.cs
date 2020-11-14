@@ -6,21 +6,14 @@ using UnityEngine.UI;
 
 public class SquadSlotView : MonoBehaviour
 {
-    public Zone Zone;
-
-    public PlayerData Player;
-
-    public SquadSelectionArrowsView Arrows;
-
-    [SerializeField]
-    private TextMeshProUGUI nameLabel;
-
-    [SerializeField]
-    private TextMeshProUGUI posLabel;
-
-    [SerializeField]
-    private Image fatigueBar;
-
+	public Zone Zone;
+	public PlayerData Player;
+	public SquadSelectionArrowsView Arrows;
+	
+	[SerializeField] private TextMeshProUGUI nameLabel = null;
+	[SerializeField] private TextMeshProUGUI posLabel = null;
+	[SerializeField] private Image fatigueBar = null;
+	
     private SquadSelectionView controller;
 
     void Start()

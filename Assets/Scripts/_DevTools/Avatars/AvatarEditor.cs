@@ -13,8 +13,6 @@ public class AvatarEditor : MonoBehaviour
 
     public TMP_InputField inputField;
 
-    public Camera camera;
-
     public void TakeScreenshot()
     {
         StartCoroutine("SaveScreenshot");

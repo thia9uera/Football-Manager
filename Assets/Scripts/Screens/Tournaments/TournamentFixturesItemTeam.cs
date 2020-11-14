@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class TournamentFixturesItemTeam : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI nameLabel;
-	[SerializeField] private TextMeshProUGUI scoreLabel;
+	[SerializeField] private TextMeshProUGUI nameLabel = null;
+	[SerializeField] private TextMeshProUGUI scoreLabel = null;
 
 	public void Populate(string _name, string _rating, string _score, Color _color, bool _isPlayed)
     {

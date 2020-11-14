@@ -546,7 +546,7 @@ PlayerSettings:
     1: TextMeshPro;RHSD
     4: TextMeshPro
     7: TextMeshPro
-    13: TextMeshPro;RHSD
+    13: TextMeshPro;RHSD;RH_SerializedDictionary
     14: TextMeshPro
     18: TextMeshPro
     19: TextMeshPro

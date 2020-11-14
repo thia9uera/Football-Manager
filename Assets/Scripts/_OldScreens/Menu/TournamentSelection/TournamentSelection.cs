@@ -5,14 +5,11 @@ using System.Linq;
 
 public class TournamentSelection : BaseScreen
 {
-    [SerializeField]
-    TournamentCard_Old cardTemplate;
+	[SerializeField] private TournamentCard_Old cardTemplate = null;
+	[SerializeField] private Transform content = null;
 
-    [SerializeField]
-    Transform content;
-
-    List<GameObject> itemList;
-    List<TournamentData> tournamentList;
+	private List<GameObject> itemList;
+	private List<TournamentData> tournamentList;
 
     public override void Show()
     {

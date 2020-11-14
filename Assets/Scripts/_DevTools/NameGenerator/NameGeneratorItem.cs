@@ -4,12 +4,10 @@ using TMPro;
 
 public class NameGeneratorItem : MonoBehaviour
 {
-    PlayerData data;
-
-    [SerializeField]
-    TextMeshProUGUI label;
-
-    NameGenerator controller;
+	[SerializeField] private TextMeshProUGUI label = null;
+	
+	private PlayerData data;
+	private NameGenerator controller;
 
     public void Populate(PlayerData _data, NameGenerator _controller)
     {

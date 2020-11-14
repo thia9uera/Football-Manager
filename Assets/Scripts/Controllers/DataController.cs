@@ -19,10 +19,6 @@ public class DataController : MonoBehaviour
     private int teamsLoaded;
     private int tournamentsLoaded;
 
-    private bool isLoadingGame;
-	private bool isLoadingPlayers;
-    private bool isLoadingTeams;
-    private bool isLoadingTournaments;
 	
 	private MainController mainController;
 	
@@ -153,7 +149,6 @@ public class DataController : MonoBehaviour
     #region LOAD
     public void LoadGame(string _user)
     {
-        isLoadingGame = true;
         userFolder = CombinePaths(saveFolder, _user);
 	    StartCoroutine("LoadFlow");
     }
@@ -178,7 +173,6 @@ public class DataController : MonoBehaviour
 	private IEnumerator LoadPlayers()
     {
         mainController.AllPlayers = new List<PlayerData>();
-        isLoadingPlayers = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Players"));
         totalPlayers = files.Length;
         foreach (string file in files)
@@ -196,7 +190,6 @@ public class DataController : MonoBehaviour
 	private IEnumerator LoadTeams()
     {
         mainController.AllTeams = new List<TeamData>();
-        isLoadingTeams = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Teams"));
         totalTeams = files.Length;
         foreach (string file in files)
@@ -217,7 +210,6 @@ public class DataController : MonoBehaviour
     {
 	    mainController.AllTournaments = new List<TournamentData>();
 	    mainController.ActiveTournaments.Clear();
-        isLoadingTournaments = true;
         string[] files = Directory.GetFiles(CombinePaths(userFolder, "Tournaments"));
 	    totalTournaments = files.Length;
 	    
@@ -380,7 +372,6 @@ public class DataController : MonoBehaviour
 
     void FinishLoadingGame()
     {
-        isLoadingGame = false;
 	    //ScreenController.Instance.ShowScreen(ScreenType.MainMenu);
     }
 

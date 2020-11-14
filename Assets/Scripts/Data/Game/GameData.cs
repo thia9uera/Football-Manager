@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-	[SerializeField] private Team_StrategyData teamStrategyData;
-	[SerializeField] private Player_StrategyData playerStrategyData;
-	[SerializeField] private Game_ModifierData gameModifierData;
-	[SerializeField] private TargetPassPerZoneData targetPassPerZoneData;
-	[SerializeField] private TargetCrossPerZoneData targetCrossPerZoneData;
-	[SerializeField] private ActionChancePerZoneData actionChancePerZoneData;
-	[SerializeField] private FormationsData formationsData;
+	[SerializeField] private Team_StrategyData teamStrategyData = null;
+	[SerializeField] private Player_StrategyData playerStrategyData = null;
+	[SerializeField] private Game_ModifierData gameModifierData = null;
+	[SerializeField] private TargetPassPerZoneData targetPassPerZoneData = null;
+	[SerializeField] private TargetCrossPerZoneData targetCrossPerZoneData = null;
+	[SerializeField] private ActionChancePerZoneData actionChancePerZoneData = null;
+	[SerializeField] private FormationsData formationsData = null;
 	public GameColors Colors;
 	
 	[Space(10)]
-	[SerializeField] private PosChanceData[] StrategyPosChanceData;
+	[SerializeField] private PosChanceData[] StrategyPosChanceData = null;
 	
 	public Game_Modifier GameModifiers { get { return gameModifierData.game_Modifiers[0]; }}
 	public List<Player_Strategy> PlayerStrategies { get { return playerStrategyData.player_Strategys; }}

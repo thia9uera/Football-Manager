@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class MainMenu : BaseScreen
 {
-    [SerializeField]
-    List<BaseScreen> SubmenuList;
+	[SerializeField] private List<BaseScreen> SubmenuList = null;
 
-    ScreenType prevScreen;
-    ScreenType currentScreen;
+	private ScreenType prevScreen;
+	private ScreenType currentScreen;
 
     public override void Show()
     {

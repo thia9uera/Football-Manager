@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TournamentsScreen : BaseScreen
 {
-	[SerializeField] private TournamentCard cardTemplate;
-	[SerializeField] private Transform scrollContent;
+	[SerializeField] private TournamentCard cardTemplate = null;
+	[SerializeField] private Transform scrollContent = null;
 	
 	private List<TournamentCard> cardList;
 	private List<TournamentData> activeTournaments;

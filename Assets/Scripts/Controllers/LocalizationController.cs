@@ -7,9 +7,7 @@ public class LocalizationController : MonoBehaviour
 {
 	public static LocalizationController Instance;
 	
-	[SerializeField] private LocalizationData data;
-	
-	[HideInInspector] public string PLAYER_1, PLAYER_2, TEAM_1, TEAM_2, ZONE, EXTRA_1;
+	[SerializeField] private LocalizationData data = null;
 	
 	public enum Language
 	{
@@ -20,15 +18,6 @@ public class LocalizationController : MonoBehaviour
 	private void Awake()
 	{
 		if (Instance == null) Instance = this;
-	}
-
-	public void SetGlobals(string _player1, string _player2, string _team1, string _team2, string _zone, string _extra="")
-	{
-		PLAYER_1 = _player1;
-		PLAYER_2 = _player2;
-		TEAM_1 = _team1;
-		TEAM_2 = _team2;
-		ZONE = _zone;
 	}
 
 	public string GetLanguageString(Language _language)

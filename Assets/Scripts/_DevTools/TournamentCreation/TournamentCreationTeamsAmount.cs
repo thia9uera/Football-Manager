@@ -12,7 +12,6 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
         set
         {
             teamsAmount = value;
-            //UpdateButtons();
         }
         get
         {
@@ -23,14 +22,9 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
     private int teamAmountIndex;
     private readonly int[] teamAmountList = {2, 4, 8, 16, 24, 32};
 
-    [SerializeField]
-    Button BtnPlus;
-
-    [SerializeField]
-    Button BtnMinus;
-
-    [SerializeField]
-    TextMeshProUGUI label;
+	[SerializeField] private Button btnPlus = null;
+	[SerializeField] private Button btnMinus = null;
+	[SerializeField] private TextMeshProUGUI label = null;
 
     private void Start()
     {
@@ -52,8 +46,8 @@ public class TournamentCreationTeamsAmount : MonoBehaviour
 
     void UpdateButtons()
     {
-        BtnPlus.interactable = !(teamAmountIndex >= teamAmountList.Length-1);
-        BtnMinus.interactable = !(teamAmountIndex <= 0);
+        btnPlus.interactable = !(teamAmountIndex >= teamAmountList.Length-1);
+        btnMinus.interactable = !(teamAmountIndex <= 0);
 
         TeamsAmount = teamAmountList[teamAmountIndex];
 

@@ -56,6 +56,7 @@ namespace I2.Loc
 
         public bool AddSpacesToJoinedLanguages; // Some languages (e.g. Chinese, Japanese and Thai) don't add spaces to their words (all characters are placed toguether), making this variable true, will add spaces to all characters to allow wrapping long texts into multiple lines.
         public bool AllowLocalizedParameters=true;
+        public bool AllowParameters=true;
 
         #endregion
 
@@ -187,7 +188,8 @@ namespace I2.Loc
 			{
 				LocalizeCallBack.Execute (this);  // This allows scripts to modify the translations :  e.g. "Player {0} wins"  ->  "Player Red wins"
                 LocalizeEvent.Invoke();
-                LocalizationManager.ApplyLocalizationParams (ref MainTranslation, gameObject, AllowLocalizedParameters);
+                if (AllowParameters)
+					LocalizationManager.ApplyLocalizationParams (ref MainTranslation, gameObject, AllowLocalizedParameters);
 			}
 
 			if (!FindTarget())

@@ -3,9 +3,10 @@ using UnityEngine.UI;
 
 public class TournamentFixturesItem : MonoBehaviour
 {
-	[SerializeField] private TournamentFixturesItemTeam home, away;
-	[SerializeField] private CanvasGroup group;
-	[SerializeField] private Image frameImage;
+	[SerializeField] private TournamentFixturesItemTeam home = null;
+	[SerializeField] private TournamentFixturesItemTeam away = null;
+	//[SerializeField] private CanvasGroup group = null;
+	[SerializeField] private Image frameImage  = null;
 
 	public void Populate(MatchData _data, uint _idx = 0)
     {

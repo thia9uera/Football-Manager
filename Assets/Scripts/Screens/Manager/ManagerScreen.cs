@@ -12,10 +12,10 @@ public class ManagerScreen : TabScreen
 	public CalendarScreen CalendarScreen;
 	
 	[Space(10)]
-	[SerializeField] private TMP_Text teamNameLabel;
+	[SerializeField] private TMP_Text teamNameLabel = null;
 	
 	[Space(10)]
-	[SerializeField] private MatchButton nextMatchButton;
+	[SerializeField] private MatchButton nextMatchButton = null;
 	
 	public override void Show()
 	{

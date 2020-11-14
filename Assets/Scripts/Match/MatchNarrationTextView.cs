@@ -7,10 +7,10 @@ using I2.Loc;
 
 public class MatchNarrationTextView : MonoBehaviour
 {
-	[SerializeField] private TMP_Text label;
-    [SerializeField] private Image frame;
-	[SerializeField] private Image homeColor;
-	[SerializeField] private Image awayColor;
+	[SerializeField] private TMP_Text label = null;
+    [SerializeField] private Image frame = null;
+	[SerializeField] private Image homeColor = null;
+	[SerializeField] private Image awayColor = null;
 
 	private PlayInfo playInfo;
 

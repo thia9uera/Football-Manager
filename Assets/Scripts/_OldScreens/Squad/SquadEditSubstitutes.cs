@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class SquadEditSubstitutes : MonoBehaviour
 {
-    [SerializeField]
-    private SquadEditPlayer playerTemplate;
-
-    [SerializeField]
-    private Transform scrollContent;
+    [SerializeField] private SquadEditPlayer playerTemplate = null;
+    [SerializeField] private Transform scrollContent = null;
 
 	private SquadScreen controller;
 

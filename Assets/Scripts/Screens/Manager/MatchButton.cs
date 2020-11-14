@@ -5,9 +5,9 @@ using TMPro;
 
 public class MatchButton : MonoBehaviour
 {
-	[SerializeField] private TMP_Text tournamentlabel;
-	[SerializeField] private TMP_Text homeTeamLabel;
-	[SerializeField] private TMP_Text awayTeamLabel;
+	[SerializeField] private TMP_Text tournamentlabel = null;
+	[SerializeField] private TMP_Text homeTeamLabel = null;
+	[SerializeField] private TMP_Text awayTeamLabel = null;
 	
 	public void Populate(MatchData _matchData)
 	{

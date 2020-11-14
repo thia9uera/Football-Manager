@@ -4,13 +4,10 @@ using UnityEngine.UI;
 
 public class TournamentCreationMatchTeam : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI nameLabel;
-
-    [SerializeField]
-	Image frameImage;
+    [SerializeField] private TextMeshProUGUI nameLabel = null;
+	[SerializeField] private Image frameImage = null;
     
-	TeamData data;
+	private TeamData data;
 
 	public void Populate(TeamData _data)
     {

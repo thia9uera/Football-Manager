@@ -12,7 +12,6 @@ public class FormationsData : ScriptableObject
 			if(_data == List[i]) 
 			{
 				return (int)_data.Type;
-				break;
 			}
 		}
 		return 0;
@@ -25,7 +24,6 @@ public class FormationsData : ScriptableObject
 			if(_type == List[i].Type) 
 			{
 				return List[i];
-				break;
 			}
 		}
 		return List[0];

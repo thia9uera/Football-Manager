@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class MatchPlayerView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI nameLabel;
-    [SerializeField] private TextMeshProUGUI posLabel;
-    [SerializeField] private TextMeshProUGUI ratingLabel;
-    [SerializeField] private Image fatigueBar;
+	[SerializeField] private TMP_Text nameLabel = null;
+	[SerializeField] private TMP_Text posLabel = null;
+	[SerializeField] private TMP_Text ratingLabel = null;
+	[SerializeField] private Image fatigueBar = null;
 
     public PlayerData Player;
 

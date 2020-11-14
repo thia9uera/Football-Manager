@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class TournamentLoad : MonoBehaviour
 {
-    [SerializeField]
-	private TournamentLoadItem fileTemplate;
+    [SerializeField] private TournamentLoadItem fileTemplate = null;
+	[SerializeField] private Transform content = null;
 
-    [SerializeField]
-    Transform content;
-
-    List<TournamentData> fileList;
-    List<GameObject> itemList;
+	private List<TournamentData> fileList;
+	private List<GameObject> itemList;
 
     public void LoadFiles()
     {

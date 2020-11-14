@@ -1,6 +1,6 @@
 ﻿----------------------------------------------
               I2 Localization
-                  2.8.13 f2
+                  2.8.14 f1
         http://www.inter-illusion.com
           inter.illusion@gmail.com
 ----------------------------------------------
@@ -66,6 +66,15 @@ AssetStore Deals   - A bot that constantly checks the Store to find you the late
 -----------------------
  Version History
 -----------------------
+2.8.14
+NEW: Added support for localizing Video Player
+NEW: Allow skipping Google Synchronization from script by creating a RegisterCallback_AllowSyncFromGoogle class 
+     (http://www.inter-illusion.com/forum/i2-localization/1679-turning-off-auto-update-via-script#4166)
+FIX: UI changes to remove dark colors in the background     
+FIX: Disabling Localized Parameters now work as expected (i.e. Parameters still work, but they are not localized even if a term is found with that value)
+FIX: Target TextMesh now correctly changes font and materials 
+     
+     
 2.8.13
 NEW: Added UpdateFrequency EveryOtherDay to allow checking the spreadsheet every 48h
 NEW: Added a function to retrieve an asset by using the term name (e.g. font, sprite) LocalizationManager.GetTranslatedObjectByTermName<t>(TermName)

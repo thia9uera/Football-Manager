@@ -5,14 +5,14 @@ using DG.Tweening;
 
 public class MatchScreen : BaseScreen
 {
-	[SerializeField] private GameObject main;
-	[SerializeField] private MatchController controller;
-	[SerializeField] private Button btnContinue;
-	[SerializeField] private Button btnManageTeam;
-	[SerializeField] private MatchSpeedSlider speedSlider;
+	[SerializeField] private GameObject main = null;
+	[SerializeField] private MatchController controller = null;
+	[SerializeField] private Button btnContinue = null;
+	[SerializeField] private Button btnManageTeam = null;
+	[SerializeField] private MatchSpeedSlider speedSlider = null;
 	
 	[Space(10)]
-    public MatchSimulationScreen Simulation;
+	public MatchSimulationScreen Simulation;
 
 	[Space(10)]
     public MatchScoreView Score;

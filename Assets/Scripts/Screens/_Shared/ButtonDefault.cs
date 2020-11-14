@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ButtonDefault : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI label;
-	[SerializeField] protected Button button;
+	[SerializeField] private TextMeshProUGUI label = null;
+	[SerializeField] protected Button button = null;
 
     public string Label
     {

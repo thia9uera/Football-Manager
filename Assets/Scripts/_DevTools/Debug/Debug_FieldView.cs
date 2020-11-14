@@ -17,11 +17,8 @@ public class Debug_FieldView : MonoBehaviour
 
     public Debug_Popup Popup;
 
-    [SerializeField]
-    private Text fatigueLabel;
-
-    [SerializeField]
-    private Slider slider;
+    [SerializeField] private Text fatigueLabel = null;
+    [SerializeField] private Slider slider = null;
 
     public TeamStrategy TeamStrategy;
 

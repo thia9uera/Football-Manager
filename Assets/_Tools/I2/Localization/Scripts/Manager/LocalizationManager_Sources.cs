@@ -62,7 +62,16 @@ namespace I2.Loc
                     AddSource(sourceAsset.mSource);
                 }
             }
-		}		
+		}
+
+		public static System.Func<LanguageSourceData, bool> Callback_AllowSyncFromGoogle = null;
+		static bool AllowSyncFromGoogle(LanguageSourceData Source)
+		{
+			if (Callback_AllowSyncFromGoogle == null)
+				return true;
+			else
+				return Callback_AllowSyncFromGoogle.Invoke(Source);
+		}
 
 		internal static void AddSource ( LanguageSourceData Source )
 		{
@@ -71,7 +80,7 @@ namespace I2.Loc
 
             Sources.Add( Source );
 
-			if (Source.HasGoogleSpreadsheet() && Source.GoogleUpdateFrequency != LanguageSourceData.eGoogleUpdateFrequency.Never)
+			if (Source.HasGoogleSpreadsheet() && Source.GoogleUpdateFrequency != LanguageSourceData.eGoogleUpdateFrequency.Never && LocalizationManager.AllowSyncFromGoogle(Source))
 			{
                 #if !UNITY_EDITOR
                     Source.Import_Google_FromCache();

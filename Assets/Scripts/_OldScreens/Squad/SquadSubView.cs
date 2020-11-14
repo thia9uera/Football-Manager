@@ -5,11 +5,8 @@ using TMPro;
 
 public class SquadSubView : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI posLabel;
-
-    [SerializeField]
-    private TextMeshProUGUI nameLabel;
+    [SerializeField] private TextMeshProUGUI posLabel = null;
+    [SerializeField] private TextMeshProUGUI nameLabel = null;
 
     public PlayerData Player;
 

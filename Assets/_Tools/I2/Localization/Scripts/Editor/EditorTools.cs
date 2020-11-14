@@ -60,8 +60,8 @@ namespace I2.Loc
 			EditorStyles.foldout.richText = true;
 			if (state)
 			{
-				GUI.backgroundColor=DarkGray;
-				GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height(1));
+				//GUI.backgroundColor=DarkGray;
+				GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea/*, GUILayout.Height(1)*/);
 				GUILayout.BeginHorizontal();
                 if (!string.IsNullOrEmpty(text))
                 {
@@ -86,7 +86,7 @@ namespace I2.Loc
 				GUILayout.EndHorizontal();
 				GUILayout.Space(2);
 				
-				GUI.backgroundColor = Color.white;
+				//GUI.backgroundColor = Color.white;
 			}
 			else
 			{

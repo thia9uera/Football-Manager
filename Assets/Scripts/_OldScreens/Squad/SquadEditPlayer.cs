@@ -7,21 +7,17 @@ public class SquadEditPlayer : MonoBehaviour
 {
     public PlayerData Player;
 
-    [SerializeField]
-    private TextMeshProUGUI nameLabel, overallLabel;
-
-    [SerializeField]
-    private Image portrait;
-
-    [SerializeField]
-    private CanvasGroup group;
-
+	[SerializeField] private TMP_Text nameLabel = null;
+    [SerializeField] private TMP_Text overallLabel = null;
+    [SerializeField] private Image portrait = null;
+    [SerializeField] private CanvasGroup group = null;
+    [SerializeField] private GameObject details = null;
+    [SerializeField] private GameObject icoSubs = null;
+	[SerializeField] private GameObject icoWarning = null;
+    
 	private SquadScreen controller;
 
-    [SerializeField]
-    private GameObject details, icoSubs, icoWarning;
-
-    public float tapSpeed = 0.25f;
+	private float tapSpeed = 0.25f;
     private float countdown = 0;
     private int taps = 0;
 

@@ -6,15 +6,14 @@ using TMPro;
 
 public class SquadScreen : BaseScreen
 {
-	[SerializeField] private SquadEditField field;	
-	[SerializeField] private Button btnConfirm;
-	[SerializeField] private SquadEditSubstitutes substitutes;
-	[SerializeField] private GameObject hoveringSubsHit;
-	[SerializeField] private SquadEditPlayer dragPlayer;
+	[SerializeField] private SquadEditField field = null;	
+	//[SerializeField] private Button btnConfirm = null;
+	[SerializeField] private SquadEditSubstitutes substitutes = null;
+	[SerializeField] private SquadEditPlayer dragPlayer = null;
 	
 	[Space(10)]
-	[SerializeField] private TMP_Dropdown formationDropdown;
-	[SerializeField] private TMP_Dropdown strategyDropdown;
+	[SerializeField] private TMP_Dropdown formationDropdown = null;
+	[SerializeField] private TMP_Dropdown strategyDropdown = null;
 	
 	
 	private TeamData teamData;
@@ -30,7 +29,6 @@ public class SquadScreen : BaseScreen
 	[HideInInspector] public SquadEditPlayer HoveringPlayer;
 
 	private bool isDragging;
-	private bool isHoveringSubs;
 	private bool hasChanged;
 	
 	override public void Show()
@@ -216,16 +214,6 @@ public class SquadScreen : BaseScreen
 		if(_playerOut.Player != null) RemovePlayer(_playerOut.Player, _playerOut.Index);
 		if(_playerIn.Player != null) AddPlayer(_playerIn.Player, _playerIn, _playerIn);
 	}
-
-	public void IsHoveringSubs()
-	{
-		isHoveringSubs = true;
-	}
-
-	public void NotHoveringSubs()
-	{
-		isHoveringSubs = false;
-	}
 	
 	public void StartDragPlayer()
 	{
@@ -245,7 +233,6 @@ public class SquadScreen : BaseScreen
 	{
 		Debug.Log("STOP DRAG PLAYER");
 		isDragging = false;
-		//hoveringSubsHit.SetActive(false);
 		if(selectedSquadPlayer) selectedSquadPlayer.SetOpacity(1);
 		if(selectedSubPlayer) selectedSubPlayer.SetOpacity(1);
 		

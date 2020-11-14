@@ -7,7 +7,7 @@ public class TournamentCard : MonoBehaviour
 {
 	[HideInInspector] public TournamentData Data;
 	
-	[SerializeField] private TextMeshProUGUI titleLabel;
+	[SerializeField] private TextMeshProUGUI titleLabel = null;
 	
 	public void Populate(TournamentData _data)
 	{

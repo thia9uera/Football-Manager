@@ -5,14 +5,10 @@ using UnityEngine.UI;
 
 public class MatchSpeedSlider : MonoBehaviour
 {
-    [SerializeField]
-    private MatchController controller;
+    [SerializeField] private MatchController controller = null;
+    [SerializeField] private Slider slider = null;
 
-    [SerializeField]
-    private Slider slider;
-
-    [SerializeField]
-    TMPro.TextMeshProUGUI label;
+	[SerializeField] private TMPro.TMP_Text label = null;
 
     public void OnSliderUpdate()
     {

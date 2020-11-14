@@ -3,15 +3,12 @@ using UnityEngine.UI;
 
 public class MatchFieldView : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] fieldAreas;
+	[SerializeField] private GameObject[] fieldAreas = null;
+	[SerializeField] private RectTransform ball = null;
 
-    [SerializeField]
-    RectTransform ball;
+	private Vector3 ballPosition;
 
-    Vector3 ballPosition;
-
-    void Start()
+	private void Start()
     {
         ballPosition = fieldAreas[15].transform.position;
     }

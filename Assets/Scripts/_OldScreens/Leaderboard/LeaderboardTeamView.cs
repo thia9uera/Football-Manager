@@ -6,16 +6,24 @@ using UnityEngine.UI;
 
 public class LeaderboardTeamView : MonoBehaviour
 {
+	[SerializeField] private TMP_Text nameLabel = null;
+	[SerializeField] private TMP_Text winsLabel = null;
+	[SerializeField] private TMP_Text lostsLabel = null;
+	[SerializeField] private TMP_Text drawsLabel = null;
+	[SerializeField] private TMP_Text goalslabel = null;
+	[SerializeField] private TMP_Text goalsAgainstLabel = null;
+	[SerializeField] private TMP_Text shotsLabel = null;
+	[SerializeField] private TMP_Text headersLabel = null;
+	[SerializeField] private TMP_Text stealsLabel = null;
+	[SerializeField] private TMP_Text passesLabel = null;
+	[SerializeField] private TMP_Text longPassesLabel = null;
+	[SerializeField] private TMP_Text passesMissedLabel = null;
+	[SerializeField] private TMP_Text boxCrossesLabel = null;
+	[SerializeField] private TMP_Text faultsLabel = null;
+	[SerializeField] private TMP_Text counterAttacksLabel = null;
+	[SerializeField] private Image frame = null;
 
-    [SerializeField]
-    public TextMeshProUGUI nameLabel, winsLabel, lostsLabel, drawsLabel, goalslabel, goalsAgainstLabel, shotsLabel, headersLabel,
-        stealsLabel, passesLabel, longPassesLabel, passesMissedLabel, boxCrossesLabel, faultsLabel, counterAttacksLabel;
-
-    public TeamData Team;
-
-    [SerializeField]
-    private Image frame;
-
+	[HideInInspector] public TeamData Team;
 
     public void Populate(TeamData _team, int _index)
     {

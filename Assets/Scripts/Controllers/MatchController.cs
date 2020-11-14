@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class MatchController : MonoBehaviour
 {
-	[SerializeField] private ActionChancePerZoneData actionChancePerZone = null;
 	[SerializeField] private MatchScreen screen = null;
 
     private List<PlayInfo> playList;
@@ -13,16 +12,12 @@ public class MatchController : MonoBehaviour
     private TeamData homeTeam;
     private TeamData awayTeam;
     
-    private bool keepAttacker;
-	private bool keepDefender;
 	private bool isGameOn;
 	private bool isSimulatingMatch;
 	private bool isSimulatingTournament;
-	private bool isSecondHalf = false;
 	private bool secondHalfStarted;
 	
 	private uint matchTime = 0;
-	private byte turn = 0; 
 
 	public uint MatchSpeed = 1;
 	
@@ -49,7 +44,7 @@ public class MatchController : MonoBehaviour
 
         screen.HomeTeamSquad.Populate(homeTeam, true);
         screen.AwayTeamSquad.Populate(awayTeam, true);
-	    screen.Score.UpdateTime(matchTime, 0);
+	    screen.Score.UpdateTime(matchTime);
         screen.Score.UpdateScore(0, 0);
 	    screen.Score.Populate(homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, TeamDisplayColor(awayTeam));
 	    
@@ -85,7 +80,7 @@ public class MatchController : MonoBehaviour
             screen.Narration.UpdateNarration(playersOut, TeamDisplayColor(UserTeam));
         }
 
-        if(turn > 0 && turn < 90) PauseGame(false);
+        PauseGame(false);
 
         screen.HomeTeamSquad.Populate(homeTeam);
         screen.AwayTeamSquad.Populate(awayTeam);
@@ -126,14 +121,12 @@ public class MatchController : MonoBehaviour
 	    isGameOn = true;
         if (!isSimulatingMatch)
         {
-            //UpdateNarration("nar_KickOff_");
-	        //StartCoroutine("GameLoop");
-	        StartCoroutine("PlayNextTurn");
+	        StartCoroutine("GameLoop");
             StartCoroutine("Chronometer");
         }
         else
         {
-            StartCoroutine("SimulateLoop");
+	        StartCoroutine("SimulateLoop");
         }
     }
 
@@ -141,71 +134,60 @@ public class MatchController : MonoBehaviour
     {
         while (isGameOn == true)
         {
-            StartTurn();
-            yield return new WaitForSeconds(1f / MatchSpeed);
+        	PlayTurn();
+	        yield return new WaitForSeconds(1f / MatchSpeed);      
         }
     }
     
-	private IEnumerator PlayNextTurn()
-	{
-		yield return new WaitForSeconds(1f / MatchSpeed);
-		yield return StartCoroutine("StartTurn");
-		yield return new WaitForEndOfFrame();
-		yield return StartCoroutine("FinishTurn");		
-	}
-
 	private IEnumerator SimulateLoop()
 	{
-		Debug.Log("SIMULATE LOOP");
-        while (isGameOn)
-        {
-	        yield return StartCoroutine("StartTurn");	        
-	        yield return StartCoroutine("FinishTurn");  
-	        yield return new WaitForEndOfFrame();
-        }
-    }
+		while(isGameOn)
+		{
+			yield return PlayTurn();
+			yield return new WaitForEndOfFrame();
+		}
+		
+	}
 
 	private IEnumerator Chronometer()
     {
         while (isGameOn)
         {
-            matchTime += MatchSpeed;
-	        screen.Score.UpdateTime(matchTime, turn);
+	        matchTime += MatchSpeed;
+	        screen.Score.UpdateTime(matchTime);
             yield return new WaitForSeconds((0.015f) / MatchSpeed);
         }
     }
 
-	private IEnumerator StartTurn()
+	private IEnumerator PlayTurn()
     {
 	    bool evt = false;
 	    PlayInfo currentPlay = new PlayInfo();
-	    currentPlay.Turn = turn;
-	    PlayInfo lastPlay = turn  > 0 ? playList[turn-1] : null;
+	    currentPlay.Turn = playList.Count;
+	    PlayInfo lastPlay = currentPlay.Turn  > 0 ? playList[currentPlay.Turn-1] : null;
 	    if(lastPlay != null) currentPlay = CheckPossesion(lastPlay, currentPlay);
-	    Debug.Log("START TURN " + turn);
+	    Debug.Log("START TURN " + currentPlay.Turn);
 	    //Kick off
-        if (turn == 0)
+        if (currentPlay.Turn == 0)
         {
-            evt = true;
-            
 	        currentPlay.Event = MatchEvent.KickOff;      
 	        currentPlay.AttackingTeam = homeTeam;
 	        currentPlay.DefendingTeam = awayTeam;
             
 	        currentPlay = ResolveKickOff(currentPlay);
 	        screen.Narration.UpdateNarration("nar_KickOff_", GameData.Instance.Colors.MediumGray);
-	        yield return currentPlay;
+	        evt = true;
         }
 	    //Half time
-        else if (!secondHalfStarted && turn >= 45 && lastPlay.Event == MatchEvent.None)
+        else if (!secondHalfStarted && currentPlay.Turn >= 45 && lastPlay.Event == MatchEvent.None)
         {
 	        lastPlay.Event = MatchEvent.HalfTime;
             secondHalfStarted = true;
 	        currentPlay = ResolveEvents(currentPlay, lastPlay);
-	        yield return currentPlay;
+	        evt = true;
         }
 	    //Time off
-        else if (turn >= 90 && lastPlay.Event == MatchEvent.None)
+        else if (currentPlay.Turn >= 90 && lastPlay.Event == MatchEvent.None)
         {
 	        lastPlay.Event = MatchEvent.FullTime;
 	        currentPlay = ResolveEvents(currentPlay, lastPlay);
@@ -215,38 +197,24 @@ public class MatchController : MonoBehaviour
         {     		        
 	        evt = lastPlay.Event != MatchEvent.None;
 	        currentPlay = ResolveEvents(currentPlay, lastPlay);
-	        yield return currentPlay;
         }	    
 
-	    if (!evt) 
-	    {
-	    	currentPlay = DefineActions(currentPlay, lastPlay);
-	    	yield return currentPlay;
-	    }
+	    if (!evt) currentPlay = DefineActions(currentPlay, lastPlay);
 	    
-	    playList.Insert(turn, currentPlay);	   
+	    playList.Insert(currentPlay.Turn, currentPlay);
 	    
-	    yield return null; 
-    }
-    
-	public IEnumerator FinishTurn()
-	{	    
-		PlayInfo currentPlay = playList[turn];
-		
+	    //END TURN
 	    #if (UNITY_EDITOR)
-		DebugTextFile.Instance.DebugPlayInfo(currentPlay, homeTeam, awayTeam);
+	    DebugTextFile.Instance.DebugPlayInfo(currentPlay, homeTeam, awayTeam);
     	#endif
     	
-		if(!isSimulatingMatch && isGameOn)
-		{
-			if(turn > 0)UpdateNarration(playList[turn-1]);
-			StartCoroutine("PlayNextTurn");
-		}
+	    if(!isSimulatingMatch)
+	    {
+		    if(currentPlay.Turn > 0) UpdateNarration(lastPlay);
+	    }
 	    
-		turn++;
-		
-		yield return null; 
-	}
+	    return null;
+    }
     
 	private PlayInfo ResolveEvents(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
@@ -280,7 +248,6 @@ public class MatchController : MonoBehaviour
 
 	private void ResolveFullTime()
 	{
-		screen.Narration.UpdateNarration("nar_TimeUp_", GameData.Instance.Colors.MediumGray);
 		isGameOn = false;
 		EndGame();		
 	}
@@ -290,8 +257,8 @@ public class MatchController : MonoBehaviour
 		screen.HomeTeamSquad.UpdateFatigue();
 		screen.AwayTeamSquad.UpdateFatigue();
 
-		keepAttacker = false;
-		keepDefender = false;
+		bool keepAttacker = false;
+		bool keepDefender = false;
 		PlayerData playerToExclude = null;
 		bool forcePlayer = false;
 		
@@ -339,7 +306,6 @@ public class MatchController : MonoBehaviour
 				_currentPlay = actionManager.ResolveAction(_currentPlay, _lastPlay);
 			}
 		}
-		
 		return _currentPlay;
 	}	
 
@@ -494,29 +460,6 @@ public class MatchController : MonoBehaviour
         screen.Field.UpdateFieldArea((int)_playInfo.Zone);       
     }
 
-	private void SetGlobalStrings(PlayInfo _play)
-    {
-        Zone attZone = _play.Zone;
-        string attacker = "";
-        string defender = "";
-        string attTeam = "";
-        string defTeam = "";
-        string zone = LocalizationController.Instance.GetZoneString(attZone);
-        if (_play.Attacker != null)
-        {
-	        attZone = Field.Instance.GetTeamZone(_play.Zone, _play.AttackingTeam == awayTeam);
-            zone = LocalizationController.Instance.GetZoneString(attZone);
-            attacker = _play.Attacker.FirstName;
-            attTeam = _play.Attacker.Team.Name;
-        }
-        if(_play.Defender != null)
-        {
-            defender = _play.Defender.FirstName;
-            defTeam = _play.Defender.Team.Name;
-        }
-        LocalizationController.Instance.SetGlobals(attacker, defender, attTeam, defTeam, zone);
-    }
-
 	private void UpdateRating(PlayInfo _playInfo)
     {
 	    PlayInfo currentPlay = _playInfo;
@@ -577,10 +520,7 @@ public class MatchController : MonoBehaviour
 
 	private void Reset()
 	{
-        turn = 0;
-        playList = new List<PlayInfo>();
-        keepAttacker = false;
-        keepDefender = false;
+		playList = new List<PlayInfo>();
         matchTime = 0;
         secondHalfStarted = false;
 

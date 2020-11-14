@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {	
-	[SerializeField] private ColorPick colorPickTemplate;
-	[SerializeField] private Transform colorPickContainer;
+	[SerializeField] private ColorPick colorPickTemplate = null;
+	[SerializeField] private Transform colorPickContainer = null;
 	
 	private List<Color> availableColors;
 	private List<ColorPick> colorPickList;

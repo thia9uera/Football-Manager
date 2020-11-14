@@ -4,8 +4,8 @@ using TMPro;
 
 public class LoadingFileButton : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI btnLabel;
-	[SerializeField] private TextMeshProUGUI timeStamp;
+	[SerializeField] private TextMeshProUGUI btnLabel = null;
+	[SerializeField] private TextMeshProUGUI timeStamp = null;
 	
 	public string UserId;
 

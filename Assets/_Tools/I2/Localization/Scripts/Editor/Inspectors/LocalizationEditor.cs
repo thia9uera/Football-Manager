@@ -159,31 +159,31 @@ namespace I2.Loc
 			if (mLanguageSource.mTerms.Count<1000)
 				Undo.RecordObject(target, "LanguageSource");
 
-			GUI.backgroundColor = Color.Lerp (Color.black, Color.gray, 1);
-			GUILayout.BeginVertical(LocalizeInspector.GUIStyle_Background);
-			GUI.backgroundColor = Color.white;
+			//GUI.backgroundColor = Color.Lerp (Color.black, Color.gray, 1);
+			//GUILayout.BeginVertical(LocalizeInspector.GUIStyle_Background);
+			//GUI.backgroundColor = Color.white;
 			
 			if (GUILayout.Button("Language Source", LocalizeInspector.GUIStyle_Header))
 			{
 				Application.OpenURL(LocalizeInspector.HelpURL_Documentation);
 			}
 
-				InitializeStyles();
+			InitializeStyles();
 
-				GUILayout.Space(10);
+			GUILayout.Space(10);
 
-                GUI.backgroundColor = Color.Lerp(GUITools.LightGray, Color.white, 0.5f);
-                GUILayout.BeginVertical(LocalizeInspector.GUIStyle_Background);
-                GUI.backgroundColor = Color.white;
-                OnGUI_Main();
-                GUILayout.EndVertical();
+            //GUI.backgroundColor = Color.Lerp(GUITools.LightGray, Color.white, 0.5f);
+            //GUILayout.BeginVertical(LocalizeInspector.GUIStyle_Background);
+            //GUI.backgroundColor = Color.white;
+            OnGUI_Main();
+            //GUILayout.EndVertical();
 
             GUILayout.Space (10);
 			GUILayout.FlexibleSpace();
 
             GUITools.OnGUI_Footer("I2 Localization", LocalizationManager.GetVersion(), LocalizeInspector.HelpURL_forum, LocalizeInspector.HelpURL_Documentation, LocalizeInspector.HelpURL_AssetStore);
 
-			GUILayout.EndVertical();
+			//GUILayout.EndVertical();
 
 			serializedObject.ApplyModifiedProperties();
             if (Event.current.type == EventType.Repaint)

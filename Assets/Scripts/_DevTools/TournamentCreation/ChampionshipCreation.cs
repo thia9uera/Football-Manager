@@ -9,11 +9,11 @@ public class ChampionshipCreation : MonoBehaviour
 	[HideInInspector] public string TournmanentName;
 	[HideInInspector] public string TournamentId;
 	
-	[SerializeField] private TMP_Text teamAmountLabel;
-	[SerializeField] private TournamentCreationMatch matchTemplate;
-    [SerializeField] private TMP_Text roundLabelTemplate;
-	[SerializeField] private Transform content;
-	[SerializeField] private Toggle homeAwayTeams;
+	[SerializeField] private TMP_Text teamAmountLabel = null;
+	[SerializeField] private TournamentCreationMatch matchTemplate = null;
+    [SerializeField] private TMP_Text roundLabelTemplate = null;
+	[SerializeField] private Transform content = null;
+	[SerializeField] private Toggle homeAwayTeams = null;
 
 	private List<GameObject> matchList;
     public List<MatchData> DataList;
@@ -163,7 +163,6 @@ public class ChampionshipCreation : MonoBehaviour
 		if(DataList.Count == 0) return;
 		if(matchList == null) matchList = new List<GameObject>();
         if(matchList.Count > 0) ClearMatchList();
-		int round = -1;
 		int day = DataList[0].Day;
 		TeamData home;
 		TeamData away;

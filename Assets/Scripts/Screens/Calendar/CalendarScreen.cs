@@ -7,11 +7,11 @@ using System;
 
 public class CalendarScreen : BaseScreen
 {
-	[SerializeField] private TMP_Text monthLabel; 
-	[SerializeField] private Button navNext; 
-	[SerializeField] private Button navPrev; 
-	[SerializeField] private Transform calendarDaysHolder; 
-	[SerializeField] private CalendarDay calendarDaysTemplate; 
+	[SerializeField] private TMP_Text monthLabel = null; 
+	[SerializeField] private Button navNext = null;
+	[SerializeField] private Button navPrev = null; 
+	[SerializeField] private Transform calendarDaysHolder = null; 
+	[SerializeField] private CalendarDay calendarDaysTemplate = null;
 	
 	private List<CalendarDay> calendarDayList;
 	private CalendarController calendarController;

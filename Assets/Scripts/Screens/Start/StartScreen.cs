@@ -15,25 +15,26 @@ public class StartScreen : BaseScreen
 	}
 	
 	[Space(10)]
-	[SerializeField] private TextMeshProUGUI gameVersionLabel;
+	[SerializeField] private TMP_Text gameVersionLabel = null;
 	
 	[Space(10)]
-	[SerializeField] private GameObject startMenu;
-	[SerializeField] private ButtonDefault btnNewGame;
-	[SerializeField] private ButtonDefault btnLoadGame;
+	[SerializeField] private GameObject startMenu = null;
+	[SerializeField] private ButtonDefault btnNewGame = null;
+	[SerializeField] private ButtonDefault btnLoadGame = null;
 	
 	[Space(10)]
-	[SerializeField] private GameObject loadMenu;
-	[SerializeField] private LoadingFileButton savedGameBtnTemplate;
-	[SerializeField] private Transform savedGameBtnContainer;
+	[SerializeField] private GameObject loadMenu = null;
+	[SerializeField] private LoadingFileButton savedGameBtnTemplate = null;
+	[SerializeField] private Transform savedGameBtnContainer = null;
 
 	private List<LoadingFileButton> savedGameBtnList;
 	
 	private UserData[] saves;
 	private Sequence sequence;
-	private float fadeInTime = 0.5f;
-	private float fadeOutTime = 0.3f;
 	private MenuType currentMenu = MenuType.Start;
+	
+	private const float FADE_IN_TIME = 0.5f;
+	private const float FADE_OUT_TIME = 0.3f;
 	
 	private void Reset()
 	{
@@ -73,10 +74,10 @@ public class StartScreen : BaseScreen
 	private void ShowStartMenu()
 	{
 		currentMenu = MenuType.Start;
-		btnNewGame.transform.DOMoveY(btnNewGame.transform.position.y - 40, fadeInTime).From();
-		btnNewGame.CanvasGroup.DOFade(1, fadeInTime);
-		btnLoadGame.transform.DOMoveY(btnNewGame.transform.position.y - 40, fadeInTime).From().SetDelay(0.1f);
-		btnLoadGame.CanvasGroup.DOFade(1, fadeInTime).SetDelay(0.1f);
+		btnNewGame.transform.DOMoveY(btnNewGame.transform.position.y - 40, FADE_IN_TIME).From();
+		btnNewGame.CanvasGroup.DOFade(1, FADE_IN_TIME);
+		btnLoadGame.transform.DOMoveY(btnNewGame.transform.position.y - 40, FADE_IN_TIME).From().SetDelay(0.1f);
+		btnLoadGame.CanvasGroup.DOFade(1, FADE_IN_TIME).SetDelay(0.1f);
 		
 		btnLoadGame.Enabled = saves.Length > 0;
 		
@@ -85,8 +86,8 @@ public class StartScreen : BaseScreen
 	
 	private void HideStartMenu()
 	{
-		btnNewGame.CanvasGroup.DOFade(0, fadeInTime);
-		btnLoadGame.CanvasGroup.DOFade(0, fadeInTime);
+		btnNewGame.CanvasGroup.DOFade(0, FADE_OUT_TIME);
+		btnLoadGame.CanvasGroup.DOFade(0, FADE_OUT_TIME);
 	}
 	
 	private void ShowLoadMenu()

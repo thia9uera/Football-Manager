@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2019_4_8;UNITY_2019_4;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TextMeshPro;RHSD;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2019_4_8;UNITY_2019_4;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_WEBGL;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TextMeshPro;RHSD;RH_SerializedDictionary;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -60,7 +60,6 @@
      <Compile Include="Assets\Scripts\Controllers\DataController.cs" />
      <Compile Include="Assets\Scripts\Controllers\DebugController.cs" />
      <Compile Include="Assets\Scripts\Controllers\Field.cs" />
-     <Compile Include="Assets\Scripts\Controllers\GlobalParameters.cs" />
      <Compile Include="Assets\Scripts\Controllers\LocalizationController.cs" />
      <Compile Include="Assets\Scripts\Controllers\MainController.cs" />
      <Compile Include="Assets\Scripts\Controllers\MatchController.cs" />
@@ -90,6 +89,7 @@
      <Compile Include="Assets\Scripts\Data\Tournaments\TournamentData.cs" />
      <Compile Include="Assets\Scripts\Data\User\UserData.cs" />
      <Compile Include="Assets\Scripts\Generic\Dice.cs" />
+     <Compile Include="Assets\Scripts\Match\DistanceModifiers.cs" />
      <Compile Include="Assets\Scripts\Match\MatchActionManager.cs" />
      <Compile Include="Assets\Scripts\Match\MatchEvents.cs" />
      <Compile Include="Assets\Scripts\Match\MatchFieldView.cs" />
@@ -256,6 +256,7 @@
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_Prefab.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_SpriteRenderer.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_TextMesh.cs" />
+     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityStandard_VideoPlayer.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_Image.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_RawImage.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Targets\LocalizeTarget_UnityUI_Text.cs" />
@@ -268,6 +269,7 @@
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\LocalizationParamsManager.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\LocalizedString.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\RTLFixer.cs" />
+     <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\RegisterCallback_AllowSyncFromGoogle.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\RegisterGlobalParameters.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\ResourceManager.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Scripts\Utils\SetLanguage.cs" />
@@ -278,13 +280,13 @@
      <Compile Include="Assets\_Tools\PrimitiveUI\Examples\Scripts\PUIExampleRPGStats.cs" />
      <Compile Include="Assets\_Tools\PrimitiveUI\Examples\Scripts\PUIExampleSineWaves.cs" />
      <Compile Include="Assets\_Tools\PrimitiveUI\PrimitiveCanvas.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\DrawKeyAsPropertyAttribute.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Example\DataBaseExample.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\Example\NestedDB.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\IDAttribute.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\References\RequiredReferences.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\ReorderableList\ReorderableList.cs" />
-     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionary\SerializableDictionaryBase.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\DrawKeyAsPropertyAttribute.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\Example\DataBaseExample.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\Example\NestedDB.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\IDAttribute.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\References\RequiredReferences.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\ReorderableList\ReorderableList.cs" />
+     <Compile Include="Assets\_Tools\Rotary Heart\SerializableDictionaryLite\SerializableDictionaryBase.cs" />
      <Compile Include="Assets\_Tools\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\_Tools\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\_Tools\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -349,6 +351,8 @@
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\_Tools\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <None Include="Assets\_Tools\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+     <None Include="Assets\_Tools\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\_Tools\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\_Tools\Demigiant\readme_DOTweenPro.txt" />
      <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect.cginc" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -359,6 +363,7 @@
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
      <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect.shader" />
+     <None Include="Assets\_Tools\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
@@ -372,7 +377,6 @@
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\_Tools\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
-     <None Include="Assets\_Tools\SAGoogleSpreadsheet\ReadMe - 1.1.txt" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\_Tools\UIEffect\Shaders\UI-Effect-HSV.shader" />
      <None Include="Assets\_Tools\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
@@ -553,9 +557,6 @@
  </Reference>
  <Reference Include="UnityEditor">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.8f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
- </Reference>
- <Reference Include="JsonFx.Json">
- <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Assets/_Tools/SAGoogleSpreadsheet/JsonFx/JsonFx.Json.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenPro">
  <HintPath>/Users/Shared/Projects/Auxterlibre/Football Manager/Football-Manager/Assets/_Tools/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
@@ -997,6 +998,10 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{8B94892B-78B8-16C8-1A29-BF29C94406F5}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="RotaryHeart.csproj">
+      <Project>{CEB7BCCA-13E1-EED2-B1A4-562A7BFE7B9D}</Project>
+      <Name>RotaryHeart</Name>
     </ProjectReference>
     <ProjectReference Include="ScriptInspector.csproj">
       <Project>{CF6755BA-86D4-A638-B7E2-BB23F3588D74}</Project>

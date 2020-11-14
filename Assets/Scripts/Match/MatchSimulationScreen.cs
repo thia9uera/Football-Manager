@@ -5,9 +5,9 @@ using TMPro;
 
 public class MatchSimulationScreen : MonoBehaviour
 {
-	[SerializeField] TextMeshProUGUI feedbackLabel;
-	[SerializeField] TournamentFixturesItem itemTemplate;
-	[SerializeField] Transform content;
+	[SerializeField] private TextMeshProUGUI feedbackLabel = null;
+	[SerializeField] private TournamentFixturesItem itemTemplate = null;
+	[SerializeField] private Transform content = null;
 	
 	List<GameObject> itemList;
 

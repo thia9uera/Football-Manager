@@ -10,23 +10,18 @@ public class SquadSelectionView : MonoBehaviour
     public SquadMainView MainSquad;
     public SquadSubsView Subs;
 
-    [SerializeField]
-    private SquadSubView draggingObject;
+	[SerializeField] private SquadSubView draggingObject = null;
+	[SerializeField] private TMP_Text overallLabel = null;
+	[SerializeField] private TMP_Dropdown dropdown = null;
 
     public bool IsDragging = false;
     public PlayerData selectedPlayer;
     public SquadSlotView selectedSlot;
 
-    [SerializeField]
-    private TextMeshProUGUI overallLabel;
-
     private List<PlayerData> playersIn;
     private List<PlayerData> playersOut;
 
     private List<PlayerData> oldSubs;
-
-    [SerializeField]
-    private TMP_Dropdown dropdown;
 
     private void Awake()
     {

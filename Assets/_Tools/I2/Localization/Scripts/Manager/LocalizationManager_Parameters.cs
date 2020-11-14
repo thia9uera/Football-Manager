@@ -82,17 +82,20 @@ namespace I2.Loc
                 var offset = translation[iParamStart + 2] == '#' ? 3 : 2;
                 var param = translation.Substring(iParamStart + offset, iParamEnd - iParamStart - offset);
                 var result = (string)getParam(param);
-                if (result != null && allowLocalizedParameters)
+                if (result != null)
                 {
-                    // check if Param is Localized
-                    LanguageSourceData source;
-                    var termData = LocalizationManager.GetTermData(result, out source);
-                    if (termData != null)
+                    if (allowLocalizedParameters)
                     {
-                        int idx = source.GetLanguageIndex(LocalizationManager.CurrentLanguage);
-                        if (idx >= 0)
+                        // check if Param is Localized
+                        LanguageSourceData source;
+                        var termData = LocalizationManager.GetTermData(result, out source);
+                        if (termData != null)
                         {
-                            result = termData.GetTranslation(idx);
+                            int idx = source.GetLanguageIndex(LocalizationManager.CurrentLanguage);
+                            if (idx >= 0)
+                            {
+                                result = termData.GetTranslation(idx);
+                            }
                         }
                     }
 

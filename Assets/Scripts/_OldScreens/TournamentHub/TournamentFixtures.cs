@@ -4,11 +4,11 @@ using TMPro;
 
 public class TournamentFixtures : MonoBehaviour
 {
-    [SerializeField] TournamentFixturesItem itemTemplate;
-    [SerializeField] TextMeshProUGUI roundLabelTemplate;
-    [SerializeField] Transform content;
+	[SerializeField] private TournamentFixturesItem itemTemplate = null;
+    [SerializeField] private TextMeshProUGUI roundLabelTemplate = null;
+    [SerializeField] private Transform content = null;
 
-    List<GameObject> itemList;
+	private List<GameObject> itemList;
 
     public void Populate(List<MatchData> _list, int _currentRound)
     {

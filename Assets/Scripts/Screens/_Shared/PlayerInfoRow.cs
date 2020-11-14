@@ -5,13 +5,12 @@ using TMPro;
 
 public class PlayerInfoRow : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI posLabel;
-	[SerializeField] private TextMeshProUGUI nameLabel;
-	[SerializeField] private TextMeshProUGUI attacklabel;
-	[SerializeField] private TextMeshProUGUI defenseLabel;
-	[SerializeField] private TextMeshProUGUI physicalLabel;
-	[SerializeField] private TextMeshProUGUI tacticalLabel;
-	[SerializeField] private TextMeshProUGUI mentalLabel;
+	[SerializeField] private TMP_Text posLabel = null;
+	[SerializeField] private TMP_Text nameLabel = null;
+	[SerializeField] private TMP_Text attacklabel = null;
+	[SerializeField] private TMP_Text defenseLabel = null;
+	[SerializeField] private TMP_Text physicalLabel = null;
+	[SerializeField] private TMP_Text tacticalLabel = null;
 	
 	public void Populate(PlayerData _data)
 	{

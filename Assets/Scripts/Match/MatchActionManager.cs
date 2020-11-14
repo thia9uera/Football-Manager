@@ -303,49 +303,9 @@ public class MatchActionManager
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
-		
-		float distanceModifier = 1f;
-		int bonusChance = 0;
-
 		Zone zone = attacker.Team.GetTeamZone(_currentPlay.Zone);
-
-		switch (zone)
-		{
-			default:
-			distanceModifier = 0.1f;
-			break;
-
-			case Zone.Box:
-			distanceModifier = 1f;
-			break;
-
-			case Zone.LAM:
-			case Zone.RAM:
-			distanceModifier = 0.5f;
-			break;
-
-			case Zone.LCAM:
-			case Zone.CAM:
-			case Zone.RCAM:
-			distanceModifier = 0.65f;
-			break;
-
-			case Zone.LF:
-			case Zone.RF:
-			distanceModifier = 0.75f;
-			break;
-
-			case Zone.ALF:
-			case Zone.ARF:
-			distanceModifier = 0.35f;
-			break;
-
-			case Zone.LCF:
-			case Zone.CF:
-			case Zone.RCF:
-			distanceModifier = 0.8f;
-			break;
-		}
+		float distanceModifier = DistanceModifiers.ShotModifier(zone);
+		int bonusChance = 0;
 
 		if (_currentPlay.OffensiveAction == PlayerAction.Shot)
 		{
@@ -576,7 +536,6 @@ public class MatchActionManager
 
 		if (_currentPlay.IsActionSuccessful) _currentPlay.Excitment = attackExcitment;
 		else _currentPlay.Excitment = defenseExcitement;
-
 		return _currentPlay;
 	}
 	
@@ -626,16 +585,16 @@ public class MatchActionManager
 
 			switch (currentPlay.OffensiveAction)
 			{
-			case PlayerAction.LongPass:
-			case PlayerAction.Pass:
-				currentPlay.Attacker.MatchStats.PassesMissed++;
-				currentPlay.Attacker.Team.MatchStats.PassesMissed++;
-				break;
-			case PlayerAction.Cross:
-				currentPlay.Attacker.MatchStats.CrossesMissed++;
-				currentPlay.Attacker.Team.MatchStats.CrossesMissed++;
-				break;
-			case PlayerAction.Dribble: currentPlay.Attacker.MatchStats.DribblesMissed++; break;
+				case PlayerAction.LongPass:
+				case PlayerAction.Pass:
+					currentPlay.Attacker.MatchStats.PassesMissed++;
+					currentPlay.Attacker.Team.MatchStats.PassesMissed++;
+					break;
+				case PlayerAction.Cross:
+					currentPlay.Attacker.MatchStats.CrossesMissed++;
+					currentPlay.Attacker.Team.MatchStats.CrossesMissed++;
+					break;
+				case PlayerAction.Dribble: currentPlay.Attacker.MatchStats.DribblesMissed++; break;
 			}
 
 			if (currentPlay.Event == MatchEvent.Fault)
@@ -648,7 +607,6 @@ public class MatchActionManager
 				if(currentPlay.Defender != null) currentPlay.CounterAttack = CheckCounterAttack(currentPlay.Defender.Team, currentPlay.DefendingTeam.GetTeamZone(currentPlay.Zone));
 			}
 		}
-		
 		return currentPlay;
 	}
 	
@@ -690,7 +648,6 @@ public class MatchActionManager
 		
 		//Apply attack bonus
 		_currentPlay.AttackerRoll *= _currentPlay.AttackingBonus;
-		_currentPlay.AttackingBonus = _currentPlay.AttackingBonus;
 		
 		return _currentPlay;
 	}

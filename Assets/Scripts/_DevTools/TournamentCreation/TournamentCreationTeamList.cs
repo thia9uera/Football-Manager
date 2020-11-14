@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TournamentCreationTeamList : MonoBehaviour
 {
-    [SerializeField]
-    TournamentCreationTeam teamTemplate;
+	[SerializeField] private  TournamentCreationTeam teamTemplate = null;
+	[SerializeField] private Transform content = null;
 
-    [SerializeField]
-    Transform content;
+	private List<GameObject> itemsList;
 
-    List<GameObject> itemsList;
-
-	void Awake ()
+	private void Awake ()
     {
         itemsList = new List<GameObject>();
 	}

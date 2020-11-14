@@ -25,9 +25,9 @@ public class MatchScoreView : MonoBehaviour
 
     }
 
-	public void UpdateTime(uint _time, byte _turn)
+	public void UpdateTime(uint _time)
     {
-	    float minutes = _turn;
+	    float minutes = _time / 60;
         float seconds = _time % 60;
 	    //timeLabel.text = minutes.ToString("00") +  ":" + seconds.ToString("00");
 	    timeLabel.text = minutes + "'";

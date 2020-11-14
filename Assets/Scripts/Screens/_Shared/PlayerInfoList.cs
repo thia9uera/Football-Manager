@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerInfoList : MonoBehaviour
 {
-	[SerializeField] private Transform content;
-	[SerializeField] private PlayerInfoRow rowTemplate;
+	[SerializeField] private Transform content = null;
+	[SerializeField] private PlayerInfoRow rowTemplate = null;
 	
 	private List<PlayerInfoRow> rowList;
 	

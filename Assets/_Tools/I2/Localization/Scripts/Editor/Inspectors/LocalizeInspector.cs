@@ -18,7 +18,7 @@ namespace I2.Loc
 
 		Localize mLocalize;
 		SerializedProperty 	mProp_mTerm, mProp_mTermSecondary,
-							mProp_TranslatedObjects, mProp_LocalizeOnAwake, mProp_AlwaysForceLocalize, mProp_AllowLocalizedParameters,
+							mProp_TranslatedObjects, mProp_LocalizeOnAwake, mProp_AlwaysForceLocalize, mProp_AllowLocalizedParameters, mProp_AllowParameters,
                             mProp_IgnoreRTL, mProp_MaxCharactersInRTL, mProp_CorrectAlignmentForRTL, mProp_IgnoreNumbersInRTL, mProp_TermSuffix, mProp_TermPrefix, mProp_SeparateWords,
                             mProp_CallbackEvent;
 
@@ -59,6 +59,7 @@ namespace I2.Loc
 			mProp_TermPrefix                = serializedObject.FindProperty("TermPrefix");
             mProp_CallbackEvent             = serializedObject.FindProperty("LocalizeEvent");
             mProp_AllowLocalizedParameters  = serializedObject.FindProperty("AllowLocalizedParameters");
+            mProp_AllowParameters           = serializedObject.FindProperty("AllowParameters");
 
 
             if (LocalizationManager.Sources.Count==0)
@@ -133,9 +134,9 @@ namespace I2.Loc
 		{
 			Undo.RecordObject(target, "Localize");
 
-			GUI.backgroundColor = Color.Lerp (Color.black, Color.gray, 1);
-			GUILayout.BeginVertical(GUIStyle_Background, GUILayout.Height(1));
-			GUI.backgroundColor = Color.white;
+			//GUI.backgroundColor = Color.Lerp (Color.black, Color.gray, 1);
+			//GUILayout.BeginVertical(GUIStyle_Background, GUILayout.Height(1));
+			//GUI.backgroundColor = Color.white;
 
 			if (GUILayout.Button("Localize", GUIStyle_Header))
 			{
@@ -184,7 +185,7 @@ namespace I2.Loc
 
 			GUITools.OnGUI_Footer("I2 Localization", LocalizationManager.GetVersion(), HelpURL_forum, HelpURL_Documentation, LocalizeInspector.HelpURL_AssetStore);
 
-			GUILayout.EndVertical();
+			//GUILayout.EndVertical();
 
 			serializedObject.ApplyModifiedProperties();
             if (Event.current.type == EventType.Repaint)
@@ -253,7 +254,7 @@ namespace I2.Loc
         int GUI_SelectedTerm = 0;
 		void OnGUI_Terms()
 		{
-			if (mLocalize.mGUI_ShowTems=GUITools.DrawHeader ("Terms", mLocalize.mGUI_ShowTems))
+			if ((mLocalize.mGUI_ShowTems=GUITools.DrawHeader ("Terms", mLocalize.mGUI_ShowTems))==true)
 			{
 				//--[ tabs: Main and Secondary Terms ]----------------
 				int oldTab = GUI_SelectedTerm;
@@ -343,7 +344,7 @@ namespace I2.Loc
 						}
 
 					GUILayout.EndVertical();
-					}
+				}
 				
 
 				////GUILayout.EndHorizontal();
@@ -355,14 +356,16 @@ namespace I2.Loc
             int mask = 0;
             if (mProp_LocalizeOnAwake.boolValue)          mask |= 1 << 0;
             if (mProp_AlwaysForceLocalize.boolValue)      mask |= 1 << 1;
-            if (mProp_AllowLocalizedParameters.boolValue) mask |= 1 << 2;
-            if (mProp_SeparateWords.boolValue)            mask |= 1 << 3;
-            if (mProp_IgnoreRTL.boolValue)                mask |= 1 << 4;
+            if (mProp_AllowParameters.boolValue)          mask |= 1 << 2;
+            if (mProp_AllowLocalizedParameters.boolValue) mask |= 1 << 3;
+            if (mProp_SeparateWords.boolValue)            mask |= 1 << 4;
+            if (mProp_IgnoreRTL.boolValue)                mask |= 1 << 5;
 
             EditorGUI.BeginChangeCheck();
             mask = EditorGUILayout.MaskField(new GUIContent("Options"), mask, new []{
                 "Localize On Awake",
                 "Force Localize",
+                "Allow Parameters",
                 "Allow Localized Parameters",
                 "Separate Words",
                 "Ignore RTL"
@@ -371,9 +374,10 @@ namespace I2.Loc
             {
                 mProp_LocalizeOnAwake.boolValue          = (mask & (1 << 0))> 0;
                 mProp_AlwaysForceLocalize.boolValue      = (mask & (1 << 1))> 0;
-                mProp_AllowLocalizedParameters.boolValue = (mask & (1 << 2))> 0;
-                mProp_SeparateWords.boolValue            = (mask & (1 << 3))> 0;
-                mProp_IgnoreRTL.boolValue                = (mask & (1 << 4))> 0;
+                mProp_AllowParameters.boolValue          = (mask & (1 << 2))> 0;
+                mProp_AllowLocalizedParameters.boolValue = (mask & (1 << 3))> 0;
+                mProp_SeparateWords.boolValue            = (mask & (1 << 4))> 0;
+                mProp_IgnoreRTL.boolValue                = (mask & (1 << 5))> 0;
             }
         }
 

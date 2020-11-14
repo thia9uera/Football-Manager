@@ -6,14 +6,14 @@ using TMPro;
 public class CreateTeamScreen : BaseScreen
 {
 	[Space(10)]
-	[SerializeField] private InputFieldRandom coachNameField;
-	[SerializeField] private InputFieldRandom teamNameField;
+	[SerializeField] private InputFieldRandom coachNameField = null;
+	[SerializeField] private InputFieldRandom teamNameField = null;
     	
 	[Space(10)]
-	[SerializeField] private ColorPicker primaryColorPicker;
-	[SerializeField] private ColorPicker secondaryColorPicker;
+	[SerializeField] private ColorPicker primaryColorPicker = null;
+	[SerializeField] private ColorPicker secondaryColorPicker = null;
 	
-	[SerializeField] private PlayerInfoList playersList;
+	[SerializeField] private PlayerInfoList playersList = null;
 	
 	private void Start()
 	{				

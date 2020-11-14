@@ -5,9 +5,9 @@ public class DefaultTab : MonoBehaviour
 {
 	public ScreenType Screen;
 	
-	[SerializeField] private Button button;
+	[SerializeField] private Button button = null;
 	
-	private TabsController controller;
+	private TabsController controller = null;
 	
 	public void Initialize()
 	{

@@ -5,14 +5,10 @@ using DG.Tweening;
 
 public class MatchPlayer : MonoBehaviour
 {
-    [SerializeField]
-    private Image bodyImg;
+	[SerializeField] private Image bodyImg = null;
+    [SerializeField] private TextMeshProUGUI numberLabel = null;
 
-    [SerializeField]
-    private TextMeshProUGUI numberLabel;
-
-    [HideInInspector]
-    public PlayerData Data;
+    [HideInInspector] public PlayerData Data;
 
 
     public void Populate(PlayerData p_data, string p_number)

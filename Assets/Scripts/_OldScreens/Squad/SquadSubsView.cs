@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SquadSubsView : MonoBehaviour
 {
-    [SerializeField]
-    private SquadSubView subTemplate;
+	[SerializeField] private SquadSubView subTemplate = null;
 
     private List<SquadSubView> list;
 

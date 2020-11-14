@@ -4,15 +4,15 @@ using TMPro;
 
 public class TournamentHubScreen : BaseScreen
 {
-	[SerializeField] private TextMeshProUGUI titleLabel;
-	[SerializeField] private GameObject resetButton;
-	[SerializeField] private TournamentLeaderboard leaderboard;
-	[SerializeField] private TournamentLeaderboard playersLeaderboard;
-	[SerializeField] private TournamentNextMatch nextMatch;
-	[SerializeField] private TournamentFixtures fixtures;
+	[SerializeField] private TMP_Text titleLabel = null;
+	[SerializeField] private GameObject resetButton = null;
+	[SerializeField] private TournamentLeaderboard leaderboard = null;
+	[SerializeField] private TournamentLeaderboard playersLeaderboard = null;
+	[SerializeField] private TournamentNextMatch nextMatch = null;
+	[SerializeField] private TournamentFixtures fixtures = null;
 
-	private MatchData nextMatchData;
-	private TournamentData currentTournament;
+	private MatchData nextMatchData = null;
+	private TournamentData currentTournament = null;
 
     public override void Show()
     {

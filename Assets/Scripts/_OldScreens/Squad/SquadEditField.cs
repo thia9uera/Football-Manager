@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 public class SquadEditField : MonoBehaviour
 {
-	[SerializeField] private PrimitiveCanvas lines;
+	[SerializeField] private PrimitiveCanvas lines = null;
 	
 	[Space(10)]
-    [SerializeField] private FieldZone[] zones;   
-	[SerializeField] private SquadEditPlayer[] players;
+    [SerializeField] private FieldZone[] zones = null;   
+	[SerializeField] private SquadEditPlayer[] players = null;
     
 	[Space(10)]
-	[SerializeField] private Color positiveColor;
-	[SerializeField] private Color negativeColor;
-	[SerializeField] private Color neutralColor;
+	[SerializeField] private Color positiveColor = Color.green;
+	[SerializeField] private Color negativeColor = Color.red;
+	[SerializeField] private Color neutralColor = Color.gray;
 
     private float fieldWidth;
     private float fieldHeight;

@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class MatchVisual : BaseScreen
 {
+	[SerializeField] private MatchPlayer playerTemplate = null;
+	[SerializeField] private Transform playersContainer = null;
+	
+	//[SerializeField] private MatchZonesContainer zones = null;
+	[SerializeField] private MatchZonesContainer leftZones = null;
+	[SerializeField] private MatchZonesContainer rightZones = null;
+
+	[SerializeField] private Transform kickOffPasser = null;
+	[SerializeField] private Transform kickOffReceiver = null;
+	
     private TeamData homeTeam;
     private TeamData awayTeam;
-
-    [SerializeField]
-    private MatchPlayer playerTemplate;
-
-    [SerializeField]
-    private Transform playersContainer;
+    
     private Vector2 homeTeamSpawn = new Vector2(-64f, 600f);
     private Vector2 awayTeamSpawn = new Vector2(64f, 600f);
-
-    [SerializeField]
-    private MatchZonesContainer zones, leftZones, rightZones;
-
-    [SerializeField]
-    private Transform kickOffPasser, kickOffReceiver;
        
     private List<MatchPlayer> homePlayers;
     private List<MatchPlayer> awayPlayers;

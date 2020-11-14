@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TournamentTableScreen : BaseScreen
 {
-	[SerializeField] private TournamentLeaderboard leaderboard;
-	[SerializeField] private TournamentInfoFixtures fixtures;
+	[SerializeField] private TournamentLeaderboard leaderboard = null;
+	[SerializeField] private TournamentInfoFixtures fixtures = null;
 	
 	[HideInInspector] public TournamentData Data;
 	
