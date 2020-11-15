@@ -88,15 +88,15 @@ public class LocalizationController : MonoBehaviour
 
 		if(zone > 22)
 		{
-			str = "zone_Attack";
+			str = Localize("zone_Attack");
 		}
 		else if(zone > 7)
 		{
-			str = "zone_Midfield";
+			str = Localize("zone_Midfield");
 		}
 		else
 		{
-			str = "zone_Defense";
+			str = Localize("zone_Defense");
 		}
 
 		return str;

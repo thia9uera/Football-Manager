@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\Data\Tournaments\TournamentData.cs" />
      <Compile Include="Assets\Scripts\Data\User\UserData.cs" />
      <Compile Include="Assets\Scripts\Generic\Dice.cs" />
+     <Compile Include="Assets\Scripts\Match\ActionRoll.cs" />
      <Compile Include="Assets\Scripts\Match\DistanceModifiers.cs" />
      <Compile Include="Assets\Scripts\Match\MatchActionManager.cs" />
      <Compile Include="Assets\Scripts\Match\MatchEvents.cs" />

@@ -390,7 +390,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} blocks the pass from {PLAYER_2}'
-      - '{PLAYER_2} bloqueia o passe de {PLAYER_1}'
+      - '{PLAYER_1} bloqueia o passe de {PLAYER_1}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestBlockPass_1
@@ -398,7 +398,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{PLAYER_2} antecipa o passe e rouba a bola!'
+      - '{PLAYER_1} antecipa o passe e rouba a bola!'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Cross_1
@@ -621,7 +621,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} shoots far for the goal'
+      - '{PLAYER_1} shoots far from the goal'
       - '{PLAYER_1} chuta pra fora!'
       Flags: 0000
       Languages_Touch: []
@@ -686,7 +686,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} commits a fault on {PLAYER_2}'
-      - '{PLAYER_2} faz falta em {PLAYER_1}'
+      - '{PLAYER_1} faz falta em {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_2
@@ -694,7 +694,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} commits a fault on {PLAYER_2}'
-      - '{PLAYER_2} chega forte em {PLAYER_1} e faz falta'
+      - '{PLAYER_1} chega forte em {PLAYER_2} e faz falta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_3
@@ -702,7 +702,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} tries the sliding tackle in {PLAYER_2} and it''s a foul'
-      - "{PLAYER_2} d\xE1 carrinho em {PLAYER_1} e faz falta"
+      - "{PLAYER_1} d\xE1 carrinho em {PLAYER_2} e faz falta"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_4
@@ -710,7 +710,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} commits a foul on {PLAYER_2}'
-      - '{PLAYER_2} puxa {PLAYER_1} pela camisa e faz falta'
+      - '{PLAYER_1} puxa {PLAYER_2} pela camisa e faz falta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Fault_5
@@ -718,7 +718,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} commits a foul on {PLAYER_2}'
-      - "{PLAYER_2} derruba {PLAYER_1} {[ZONE]}, \xE9 falta!"
+      - "{PLAYER_1} derruba {PLAYER_2} {ZONE}, \xE9 falta!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_FreekickTake_1
@@ -822,23 +822,23 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{PLAYER_2} rouba a bola de {PLAYER_1}'
+      - '{PLAYER_1} rouba a bola de {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_SaveShot_1
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_2} stops the shot from {PLAYER_1}'
-      - '{PLAYER_2} defende o chute de {PLAYER_1}'
+      - '{PLAYER_1} stops the shot from {PLAYER_2}'
+      - '{PLAYER_1} defende o chute de {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSaveShot_1
       TermType: 0
       Description: 
       Languages:
-      - 'What a save from {PLAYER_2}! '
-      - 'Que defesa de {PLAYER_2}! '
+      - 'What a save from {PLAYER_1}! '
+      - 'Que defesa de {PLAYER_1}! '
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSaveShot_1
@@ -846,15 +846,15 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{PLAYER_2} por sorte n\xE3o toma um frango"
+      - "{PLAYER_1} por sorte n\xE3o toma um frango"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_SaveHeader_1
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_2} stops the header from {PLAYER_1}'
-      - "{PLAYER_2} defende a cabe\xE7ada de {PLAYER_1}"
+      - '{PLAYER_1} stops the header from {PLAYER_2}'
+      - "{PLAYER_1} defende a cabe\xE7ada de {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSaveHeader_1
@@ -862,7 +862,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{PLAYER_2} se estica e defende a cabe\xE7ada de {PLAYER_1}"
+      - "{PLAYER_1} se estica e defende a cabe\xE7ada de {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSaveHeader_1
@@ -877,8 +877,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_2} stops the freekick from {PLAYER_1}'
-      - "{PLAYER_2} defende a cobran\xE7a de {PLAYER_1}"
+      - '{PLAYER_1} stops the freekick from {PLAYER_2}'
+      - "{PLAYER_1} defende a cobran\xE7a de {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSaveFreekick_1
@@ -886,7 +886,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{PLAYER_2} faz defesa impressionante!'
+      - '{PLAYER_1} faz defesa impressionante!'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSaveFreekick
@@ -894,15 +894,15 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{PLAYER_2} defende em dois tempos'
+      - '{PLAYER_1} defende em dois tempos'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_SavePenalty_1
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_2} stops the penalty from {PLAYER_1}'
-      - "{PLAYER_2} defende a cobran\xE7a de p\xEAnalti de {PLAYER_1}"
+      - '{PLAYER_1} stops the penalty from {PLAYER_2}'
+      - "{PLAYER_1} defende a cobran\xE7a de p\xEAnalti de {PLAYER_2}"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestSavePenalty_1
@@ -910,7 +910,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{PLAYER_2} pula no canto certo e defende o p\xEAnalti!"
+      - "{PLAYER_1} pula no canto certo e defende o p\xEAnalti!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WorstSavePenalty_1
@@ -918,7 +918,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - "{PLAYER_2} sai errado mas defende com o p\xE9!"
+      - "{PLAYER_1} sai errado mas defende com o p\xE9!"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Offside_1
@@ -1014,7 +1014,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{TEAM_1} troca passes {[ZONE]}'
+      - '{TEAM_1} troca passes {ZONE}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_FlowDribbles_1
@@ -1022,7 +1022,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 
-      - '{PLAYER_1} faz fila {[ZONE]}'
+      - '{PLAYER_1} faz fila {ZONE}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_CounterAttack_1
@@ -1432,7 +1432,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1604749223690
+    Google_LastUpdatedVersion: 1605451114292
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

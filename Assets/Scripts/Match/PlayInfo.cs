@@ -7,16 +7,16 @@
 	
 	public PlayerData Attacker;
 	public float AttackerRoll;
-	public float AttackingBonusChance;
-	public float AttackingBonus;
+	public int AttackingBonusChance;
+	public float AttackingBonus = 1;
 	public int AttackFatigueRate;
 	public PlayerAction OffensiveAction;
 	public bool IsActionSuccessful;
 
 	public PlayerData Defender;
 	public float DefenderRoll;
-	public float DefendingBonusChance;
-	public float DefendingBonus;
+	public int DefendingBonusChance;
+	public float DefendingBonus = 1;
 	public int DefenseFatigueRate;
 	public PlayerAction DefensiveAction;
 	public bool IsActionDefended;
@@ -24,7 +24,8 @@
 	public MarkingType Marking;
 	public MatchEvent Event;
 	public PlayerData Assister;
-	public int Excitment;
+	public int OffenseExcitment;
+	public int DefenseExcitment;
 	public Zone Zone;
 	public Zone TargetZone;
 
@@ -58,7 +59,8 @@
 		_play.Marking = _original.Marking;
 		_play.Event = _original.Event;
 		_play.Assister = _original.Assister;		
-		_play.Excitment = _original.Excitment;
+		_play.OffenseExcitment = _original.OffenseExcitment;
+		_play.DefenseExcitment = _original.DefenseExcitment;
 		_play.Zone = _original.Zone;
 		_play.TargetZone = _original.TargetZone;
 		

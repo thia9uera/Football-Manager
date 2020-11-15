@@ -251,7 +251,6 @@ public class TeamData : ScriptableObject
 
     public void Initialize(bool _fromSaveData = false)
 	{
-		if(IsUserControlled) Debug.Log("INITIALIZE");
         if(_fromSaveData)
         {
             SetSquad(Attributes.SquadIds);
@@ -308,9 +307,9 @@ public class TeamData : ScriptableObject
     }
     
     
-	public PlayerData GetAttackingPlayer(Zone _zone, PlayerData _excludePlayer = null, bool _forcePlayer = false, bool _isAwayTeam = false)
+	public PlayerData GetAttackingPlayer(Zone _zone, PlayerData _excludePlayer = null, bool _forcePlayer = false)
 	{
-		Zone zone = Field.Instance.GetTeamZone(_zone, _isAwayTeam);
+		Zone zone = Field.Instance.GetTeamZone(_zone, IsAwayTeam);
 
 		float chance = 0f;
 		bool forcePlayer = _forcePlayer;

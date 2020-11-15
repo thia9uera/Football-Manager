@@ -44,7 +44,8 @@ public class MatchNarrationTextView : MonoBehaviour
 		homeColor.gameObject.SetActive(false);
 		awayColor.gameObject.SetActive(false);
 	}
-
+	
+	#if (UNITY_EDITOR)
     public void OnClick()
     {
         if(playInfo == null)
@@ -84,9 +85,10 @@ public class MatchNarrationTextView : MonoBehaviour
         print("MARKING TYPE: " + playInfo.Marking.ToString());
         print("EVENT: " + playInfo.Event.ToString());
 	    if (playInfo.Assister != null) print("ASSISTER: " + playInfo.Assister.FullName);
-        print("EXCITMENT: " + playInfo.Excitment);
+	    print("EXCITMENT: " + playInfo.OffenseExcitment);
         print("ZONE (ABSOLUTE): " + playInfo.Zone.ToString());
         print("TARGET ZONE (ABSOLUTE): " + playInfo.TargetZone.ToString());
         print("COUNTER ATTACK: " + playInfo.CounterAttack);
     }
+    #endif
 }

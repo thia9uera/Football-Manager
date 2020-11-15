@@ -129,7 +129,7 @@ public class StartScreen : BaseScreen
 	{
 		ScreenController.Instance.ShowScreen(ScreenType.Loading);
 		DataController.Instance.LoadGame(_file);
-		Debug.Log("LOAD GAME - " + _file);
+		//Debug.Log("LOAD GAME - " + _file);
 	}
 	
 	public void DeleteSaveFile(LoadingFileButton _fileButton)

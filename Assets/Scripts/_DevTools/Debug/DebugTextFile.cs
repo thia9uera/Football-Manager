@@ -48,10 +48,11 @@ public class DebugTextFile : MonoBehaviour
 			str += "\nNO DEFENDER";
 		}
 		str += "\n";
-		if(_playInfo.Assister != null)str += "\nAssister: " + _playInfo.Assister.FullName;
+		if(_playInfo.Assister != null)str += "\nASSISTER: " + _playInfo.Assister.FullName;
 		str += "\nMARKING TYPE: " + _playInfo.Marking.ToString();
 		str += "\nEVENT: " + _playInfo.Event.ToString();
-		str += "\nEXCITMENT: " + _playInfo.Excitment;
+		str += "\nOFFENSE EXCITMENT: " + _playInfo.OffenseExcitment;
+		str += "\nDEFENSE EXCITMENT: " + _playInfo.DefenseExcitment;
 		str += "\nTARGET ZONE: " + _playInfo.TargetZone;
 		str += "\nCOUNTER ATTACK: " + _playInfo.CounterAttack;
 		str += "\n\n--------------------------------------------------------------------------\n\n";

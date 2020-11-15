@@ -9,7 +9,12 @@ public class MatchSpeedSlider : MonoBehaviour
     [SerializeField] private Slider slider = null;
 
 	[SerializeField] private TMPro.TMP_Text label = null;
-
+	
+	private void Awake()
+	{
+		//UpdateSlider();
+	}
+	
     public void OnSliderUpdate()
     {
         label.text = slider.value + "x";
@@ -20,6 +25,7 @@ public class MatchSpeedSlider : MonoBehaviour
 	public void UpdateSlider(uint _speed)
     {
         label.text = _speed + "x";
-        slider.value = _speed;
+	    slider.value = _speed;
+	    OnSliderUpdate();
     }
 }

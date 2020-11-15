@@ -91,6 +91,7 @@ public enum MatchEvent
 {
 	None,
 	KickOff,
+	SecondHalfKickOff,
 	Penalty,
 	Offside,
 	ThrowIn,

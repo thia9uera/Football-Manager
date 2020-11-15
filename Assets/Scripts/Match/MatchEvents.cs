@@ -13,26 +13,23 @@ public class MatchEvents
 	
 	public PlayInfo GetEventResults(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{		
-		PlayInfo result = _currentPlay;
-		
 		switch (_lastPlay.Event)
 		{
-			case MatchEvent.None : return result;
-			case MatchEvent.ShotOnGoal: result = ResolveShotOnGoal(_currentPlay, _lastPlay); break;
-			case MatchEvent.Goal: result = ResolveGoal(_currentPlay, _lastPlay); break;
-			case MatchEvent.GoalAnnounced: result = ResolveGoalAnnounced(_currentPlay, _lastPlay); break;
-			case MatchEvent.ScorerAnnounced: result = ResolveScorerAnnounced(_currentPlay, _lastPlay); break;
-			case MatchEvent.Offside:
-			case MatchEvent.Fault: result = ResolveFreekick(_currentPlay, _lastPlay); break;
-			case MatchEvent.Penalty: result = ResolvePenalty(_currentPlay, _lastPlay); break;
-			case MatchEvent.Goalkick: result = ResolveGoalkick(_currentPlay, _lastPlay); break;
-			case MatchEvent.ShotMissed: result = ResolveShotMissed(_currentPlay, _lastPlay); break;
-			case MatchEvent.PenaltySaved :
-			case MatchEvent.ShotSaved: result = ResolveShotSaved(_currentPlay, _lastPlay); break;
-			case MatchEvent.CornerKick: result = ResolveCornerKick(_currentPlay, _lastPlay); break;
+		default :
+		case MatchEvent.None : return _currentPlay;
+		case MatchEvent.ShotOnGoal: return ResolveShotOnGoal(_currentPlay, _lastPlay);
+		case MatchEvent.Goal: return ResolveGoal(_currentPlay, _lastPlay);
+		case MatchEvent.GoalAnnounced: return ResolveGoalAnnounced(_currentPlay, _lastPlay); 
+		case MatchEvent.ScorerAnnounced: return ResolveScorerAnnounced(_currentPlay, _lastPlay);
+		case MatchEvent.Offside:
+		case MatchEvent.Fault: return ResolveFreekick(_currentPlay, _lastPlay);
+		case MatchEvent.Penalty: return ResolvePenalty(_currentPlay, _lastPlay);
+		case MatchEvent.Goalkick: return ResolveGoalkick(_currentPlay, _lastPlay);
+		case MatchEvent.ShotMissed: return ResolveShotMissed(_currentPlay, _lastPlay);
+		case MatchEvent.PenaltySaved :
+		case MatchEvent.ShotSaved: return ResolveShotSaved(_currentPlay, _lastPlay);
+		case MatchEvent.CornerKick: return ResolveCornerKick(_currentPlay, _lastPlay);
 		}
-		
-		return result;
 	}
 
 	private PlayInfo ResolveShotOnGoal(PlayInfo currentPlay, PlayInfo lastPlay)
@@ -93,7 +90,9 @@ public class MatchEvents
 
 	private PlayInfo ResolveFreekick(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
-		currentPlay = PlayInfo.CopyPlay(lastPlay);
+		Debug.Log("RESOLVE FREEKICK -- EVT: " + lastPlay.Event.ToString());
+		if(lastPlay.Event != MatchEvent.Offside) currentPlay = PlayInfo.CopyPlay(lastPlay);
+		else currentPlay.Zone = lastPlay.Zone;
 		currentPlay.Attacker = currentPlay.AttackingTeam.GetBestPlayerInArea(currentPlay.Zone, AttributeType.Freekick);
 		currentPlay.Defender = null;
 		currentPlay.Marking = MarkingType.None;
@@ -155,6 +154,7 @@ public class MatchEvents
 		PlayerAction action = PlayerAction.Pass;
 		MarkingType marking = MarkingType.None;
 		Zone zone = _currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone);
+		Debug.Log("FREEKICK ACTION  - ZONE: " + zone + "  ATT TEAM: " + _currentPlay.AttackingTeam);
 		ActionChancePerZone zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
 
 		float pass = player.GetActionChance(PlayerAction.Pass, zoneChance, marking, zone);

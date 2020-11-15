@@ -54,7 +54,6 @@ public class MatchScreen : BaseScreen
 	{
 		controller.KickOff();
 		//controller.StartSimulation();
-		Debug.Log("START MATCH");
 	}
 
     public void EditSquad()

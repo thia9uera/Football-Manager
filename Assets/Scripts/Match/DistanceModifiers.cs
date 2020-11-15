@@ -11,7 +11,7 @@
 				break;
 	
 			case Zone.Box:
-				distanceModifier = 1f;
+				distanceModifier = 1.25f;
 				break;
 	
 			case Zone.LAM:
@@ -32,13 +32,13 @@
 	
 			case Zone.ALF:
 			case Zone.ARF:
-				distanceModifier = 0.35f;
+				distanceModifier = 1f;
 				break;
 	
 			case Zone.LCF:
 			case Zone.CF:
 			case Zone.RCF:
-				distanceModifier = 0.8f;
+				distanceModifier = 0.9f;
 				break;
 		}
 		

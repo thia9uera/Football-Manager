@@ -41,37 +41,37 @@ public class MatchActionManager
 		{
 			case PlayerAction.Pass:
 				_currentPlay.AttackFatigueRate = fatigueLow;
-				_currentPlay = GetPassResults(_currentPlay, _lastPlay);
+				_currentPlay = GetPassRolls(_currentPlay, _lastPlay);
 				break;
 		
 			case PlayerAction.LongPass:
 				_currentPlay.AttackFatigueRate = fatigueMedium;
-				_currentPlay = GetLongPassResults(_currentPlay);
+				_currentPlay = GetLongPassRolls(_currentPlay);
 				break;
 		
 			case PlayerAction.Dribble:
 				_currentPlay.AttackFatigueRate = fatigueHigh;
-				_currentPlay = GetDribbleResults(_currentPlay);
+				_currentPlay = GetDribbleRolls(_currentPlay);
 				break;
 		
 			case PlayerAction.Sprint:
 				_currentPlay.AttackFatigueRate = fatigueMedium;
-				_currentPlay = GetSprintResults(_currentPlay);
+				_currentPlay = GetSprintRolls(_currentPlay);
 				break;
 		
 			case PlayerAction.Cross:
 				_currentPlay.AttackFatigueRate = fatigueLow;
-				_currentPlay = GetCrossResults(_currentPlay);              
+				_currentPlay = GetCrossRolls(_currentPlay);              
 				break;
 		
 			case PlayerAction.Shot:
 				_currentPlay.AttackFatigueRate = fatigueLow;
-				_currentPlay = GetShotResults(_currentPlay);	            
+				_currentPlay = GetShotRolls(_currentPlay);	            
 				break;
 	
 			case PlayerAction.Header:
 				_currentPlay.AttackFatigueRate = fatigueMedium;
-				_currentPlay = GetHeaderResults(_currentPlay);
+				_currentPlay = GetHeaderRolls(_currentPlay);
 				break;
 		}
 		
@@ -156,27 +156,27 @@ public class MatchActionManager
 		return action;
 	}
 	
-	private PlayInfo GetPassResults(PlayInfo _currentPlay, PlayInfo _lastPlay)
+	private PlayInfo GetPassRolls(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
 		
 		if (_lastPlay != null &&_lastPlay.OffensiveAction == PlayerAction.Cross && _lastPlay.IsActionSuccessful)
 		{
-			_currentPlay.AttackerRoll = (float)(attacker.Passing + attacker.Agility + attacker.Vision + attacker.Teamwork + attacker.Heading) / 500;
+			_currentPlay.AttackerRoll = ActionRoll.HeaderPass(attacker);
 			if (defender != null)
 			{
 				_currentPlay.DefensiveAction = PlayerAction.Block;
-				_currentPlay.DefenderRoll = (float)(defender.Blocking + defender.Agility + defender.Vision + defender.Heading) / 400;
+				_currentPlay.DefenderRoll = ActionRoll.HeaderBlock(defender);
 			}
 		}
 		else
 		{
-			_currentPlay.AttackerRoll = (float)(attacker.Passing + attacker.Agility + attacker.Vision + attacker.Teamwork) / 400;
+			_currentPlay.AttackerRoll = ActionRoll.Pass(attacker);
 			if (defender != null)
 			{
 				_currentPlay.DefensiveAction = PlayerAction.Block;
-				_currentPlay.DefenderRoll = (float)(defender.Blocking + defender.Agility + defender.Vision) / 300;
+				_currentPlay.DefenderRoll = ActionRoll.Block(defender);
 			}
 		}
 
@@ -188,16 +188,16 @@ public class MatchActionManager
 		return ApplyBuffs(_currentPlay);
 	}
 	
-	private PlayInfo GetLongPassResults(PlayInfo _currentPlay)
+	private PlayInfo GetLongPassRolls(PlayInfo _currentPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
 		
-		_currentPlay.AttackerRoll = (float)(attacker.Passing + attacker.Agility + attacker.Vision + attacker.Teamwork + attacker.Strength) / 500;
+		_currentPlay.AttackerRoll = ActionRoll.LongPass(attacker);
 		if (defender != null)
 		{
 			_currentPlay.DefensiveAction = PlayerAction.Block;
-			_currentPlay.DefenderRoll = (float)(defender.Blocking + defender.Agility + defender.Vision) / 300;
+			_currentPlay.DefenderRoll = ActionRoll.Block(defender);
 		}
 
 		_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Passing);
@@ -208,40 +208,38 @@ public class MatchActionManager
 		return ApplyBuffs(_currentPlay);
 	}
 	
-	private PlayInfo GetDribbleResults(PlayInfo _currentPlay)
+	private PlayInfo GetDribbleRolls(PlayInfo _currentPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
+		
+		_currentPlay.AttackerRoll = ActionRoll.Dribble(attacker);
+		_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Tackling);
+		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.75f;
 		
 		if (defender != null)
 		{
 			_currentPlay.DefensiveAction = PlayerAction.Tackle;
-			_currentPlay.DefenderRoll = (float)(defender.Tackling + defender.Agility + defender.Speed) / 300;
+			_currentPlay.DefenderRoll = ActionRoll.Tackle(defender);
 			_currentPlay.DefendingBonusChance = GetPlayerAttributeBonus(defender.Tackling);
 		}
-
-		_currentPlay.AttackerRoll = (float)(attacker.Dribbling + attacker.Agility + attacker.Speed) / 300;
-		_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Tackling);
-
-
-		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.75f;
 		
 		return ApplyBuffs(_currentPlay);
 	}
 	
-	private PlayInfo GetSprintResults(PlayInfo _currentPlay)
+	private PlayInfo GetSprintRolls(PlayInfo _currentPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
 		
-		_currentPlay.AttackerRoll = (float)(attacker.Agility + attacker.Speed) / 200;
+		_currentPlay.AttackerRoll = ActionRoll.Sprint(attacker);
 		_currentPlay.AttackingBonusChance = 100;
 		_currentPlay.AttackerRoll *= 2f;
 		
 		return ApplyBuffs(_currentPlay);
 	}
 	
-	private PlayInfo GetCrossResults(PlayInfo _currentPlay)
+	private PlayInfo GetCrossRolls(PlayInfo _currentPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
@@ -249,18 +247,18 @@ public class MatchActionManager
 		if (defender != null)
 		{
 			_currentPlay.DefensiveAction = PlayerAction.Block;
-			_currentPlay.DefenderRoll = (float)(defender.Blocking + defender.Agility + defender.Vision) / 300;
+			_currentPlay.DefenderRoll = ActionRoll.Block(defender);
 			_currentPlay.DefendingBonusChance = GetPlayerAttributeBonus(defender.Blocking);
 		}
 
-		_currentPlay.AttackerRoll = (float)(attacker.Crossing + attacker.Agility + attacker.Vision + attacker.Teamwork) / 400;
+		_currentPlay.AttackerRoll = ActionRoll.Cross(attacker);
 		_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Crossing);
 		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.75f;
 		
 		return ApplyBuffs(_currentPlay);
 	}
 	
-	private PlayInfo GetShotResults(PlayInfo _currentPlay)
+	private PlayInfo GetShotRolls(PlayInfo _currentPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
@@ -268,18 +266,18 @@ public class MatchActionManager
 		if (defender != null)
 		{
 			_currentPlay.DefensiveAction = PlayerAction.Block;
-			_currentPlay.DefenderRoll = (float)(defender.Blocking + defender.Agility + defender.Vision + defender.Speed) / 400;
+			_currentPlay.DefenderRoll = ActionRoll.Block(defender);
 			_currentPlay.DefendingBonusChance = GetPlayerAttributeBonus(defender.Blocking);
 		}
 
-		_currentPlay.AttackerRoll = (float)(attacker.Shooting + attacker.Agility + attacker.Strength) / 300;
+		_currentPlay.AttackerRoll = ActionRoll.Shoot(attacker);
 		_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Shooting);
 		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.75f;
 		
 		return ApplyBuffs(_currentPlay);
 	}
 	
-	private PlayInfo GetHeaderResults(PlayInfo _currentPlay)
+	private PlayInfo GetHeaderRolls(PlayInfo _currentPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = _currentPlay.Defender;
@@ -287,11 +285,11 @@ public class MatchActionManager
 		if (defender != null)
 		{
 			_currentPlay.DefensiveAction = PlayerAction.Block;
-			_currentPlay.DefenderRoll = (float)(defender.Heading + defender.Blocking + defender.Agility + defender.Vision) / 400;
+			_currentPlay.DefenderRoll = ActionRoll.HeaderBlock(defender);
 			_currentPlay.DefendingBonusChance = GetPlayerAttributeBonus(defender.Blocking);
 		}
 
-		_currentPlay.AttackerRoll = (float)(attacker.Heading + attacker.Agility + attacker.Strength) / 300;
+		_currentPlay.AttackerRoll = ActionRoll.Header(attacker);
 		_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Heading);
                 
 		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.75f;
@@ -305,71 +303,48 @@ public class MatchActionManager
 		PlayerData defender = _currentPlay.Defender;
 		Zone zone = attacker.Team.GetTeamZone(_currentPlay.Zone);
 		float distanceModifier = DistanceModifiers.ShotModifier(zone);
-		int bonusChance = 0;
-
+		
 		if (_currentPlay.OffensiveAction == PlayerAction.Shot)
 		{
 			if (_lastPlay.Event == MatchEvent.Fault)
 			{
-				_currentPlay.AttackerRoll = (float)(attacker.Freekick + attacker.Strength) / 200;
-				bonusChance = GetPlayerAttributeBonus(attacker.Freekick);
+				_currentPlay.AttackerRoll = ActionRoll.Freekick(attacker);
+				_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Freekick);
 			}
 			else if (_lastPlay.Event == MatchEvent.Penalty)
 			{
-				_currentPlay.AttackerRoll = (float)(attacker.Penalty + attacker.Strength) / 200;
-				bonusChance = GetPlayerAttributeBonus(attacker.Penalty);
+				_currentPlay.AttackerRoll = ActionRoll.Penalty(attacker);
+				_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Penalty);
 			}
 			else
 			{
-				_currentPlay.AttackerRoll = (float)(attacker.Shooting + attacker.Strength) / 200;
-				bonusChance = GetPlayerAttributeBonus(attacker.Shooting);
+				_currentPlay.AttackerRoll = ActionRoll.Shoot(attacker);
+				_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Shooting);
 			}
 		}
 		else if (_currentPlay.OffensiveAction == PlayerAction.Header)
 		{
-			_currentPlay.AttackerRoll = (float)(attacker.Heading + attacker.Strength) / 200;
-			bonusChance = GetPlayerAttributeBonus(attacker.Heading);
+			_currentPlay.AttackerRoll = ActionRoll.Header(attacker);
+			_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Heading);
 		}
-
+		
 		_currentPlay.AttackerRoll *= attacker.FatigueModifier();
 		_currentPlay.AttackerRoll *= distanceModifier;
-
-		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.5f;
 		_currentPlay.AttackerRoll *= _currentPlay.AttackingBonus;
 
-		DiceRollResults attackRoll =  playDiceRolls.GetShooterRollResult(_currentPlay.AttackerRoll, bonusChance, _currentPlay);
-		_currentPlay.AttackerRoll = attackRoll.Value;
-		_currentPlay = attackRoll.CurrentPlay;
-
-		_currentPlay.DefenderRoll = ((float)defender.Goalkeeping + defender.Agility) / 200;
+		if (_currentPlay.Marking == MarkingType.Close) _currentPlay.AttackerRoll *= 0.5f;
+		
+		_currentPlay.DefenderRoll = ActionRoll.Keeper(defender);
 		_currentPlay.DefenderRoll *= defender.FatigueModifier();
-		float defenseRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(_currentPlay.DefenderRoll * 5), GetPlayerAttributeBonus(defender.Goalkeeping));
-
-		int defenseExcitement = 0;
-		if (defenseRoll >= 20)
-		{
-			_currentPlay.DefenderRoll *= 2f;
-			defenseExcitement = 1;
-		}
-		else if (defenseRoll >= 10)
-		{
-			_currentPlay.DefenderRoll *= 1 + (float)(defenseRoll - 9) / 100;
-			defenseExcitement = 0;
-		}
-		else if (defenseRoll <= 1)
-		{
-			_currentPlay.DefenderRoll *= 0.5f;
-			defenseExcitement = -1;
-		}
-
+		
+		//Roll dice for shooter and keeper
+		_currentPlay =  playDiceRolls.GetShotOnGoalResult(_currentPlay);
+		
 		//CHECK ATTACKING X DEFENDING
 		if (_currentPlay.AttackerRoll  <= _currentPlay.DefenderRoll)
 		{
-			_currentPlay.Excitment = defenseExcitement;
-
 			int roll = Dice.Roll(20);
-			if (defenseExcitement == -1) _currentPlay.Event = MatchEvent.CornerKick;
-			else if (defenseExcitement == 0 && roll < 5) _currentPlay.Event = MatchEvent.CornerKick;
+			if (_currentPlay.DefenseExcitment == 0 && roll < 5) _currentPlay.Event = MatchEvent.CornerKick;
 			else
 			{
 				_currentPlay.Event = _lastPlay.Event == MatchEvent.Penalty ? MatchEvent.PenaltySaved : MatchEvent.ShotSaved;
@@ -403,51 +378,37 @@ public class MatchActionManager
 	public PlayInfo GetActionSuccess(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
 		PlayerData attacker = _currentPlay.Attacker;
-		PlayerData defender = (_currentPlay.Defender != null) ? _currentPlay.Defender : null;
+		PlayerData defender = null;
 		
-		Zone zone =_currentPlay.TargetZone = _currentPlay.Zone;
+		TeamData attackingTeam = _currentPlay.Attacker.Team;
+		TeamData defendingTeam = null;
+		
+		if(_currentPlay.Defender != null)
+		{
+			defender = _currentPlay.Defender;
+			defendingTeam = _currentPlay.DefendingTeam;
+		}
+		
+		Zone zone =_currentPlay.Zone;		
 		PlayerAction lastAction = PlayerAction.None;
 		bool isLastActionSuccessful = false;
-		MarkingType marking = _currentPlay.Marking;
+		MarkingType marking = _currentPlay.Marking;		
+		bool isTackling = false;
+		float fault = faultChance;
+		float agilityBonus; 
+		
+		_currentPlay.AttackFatigueRate = fatigueLow;
+		_currentPlay.DefenseFatigueRate = fatigueLow;		
+		_currentPlay.AttackingBonus = 1;
+		_currentPlay.TargetZone = zone;
+		
 		if (_lastPlay != null)
 		{
 			lastAction = _lastPlay.OffensiveAction;
 			isLastActionSuccessful = _lastPlay.IsActionSuccessful;
+			_currentPlay.AttackingBonus = _lastPlay.AttackingBonus;
 		}
-        
-		bool isTackling = false;
-		float agilityBonus;        
-		int attackBonusChance = 0;
-		int defenseBonusChance = 0;     
-		_currentPlay.AttackFatigueRate = fatigueLow;
-		_currentPlay.DefenseFatigueRate = fatigueLow;
-		int attackExcitment = 0;
-		int defenseExcitement = 0;
-		float fault = faultChance;
-		_currentPlay.AttackingBonus = _lastPlay != null ? _lastPlay.AttackingBonus : 1;
-		
-		TeamData attackingTeam = _currentPlay.Attacker.Team;
-		TeamData defendingTeam = (_currentPlay.Defender != null) ? _currentPlay.Defender.Team : null;
-	    
-		//Check if offside
-		if ((int)attackingTeam.GetTeamZone(zone) > 14 && _currentPlay.Event == MatchEvent.None) //AFTER MIDFIELD
-		{
-			float offside = offsideChance;
-			if (defender != null)
-			{
-				offside *= defender.Prob_OffsideLine;
-				if (defender.Team.IsStrategyApplicable(defendingTeam.GetTeamZone(zone)))
-					offside *= GameData.Instance.TeamStrategies[(int)defender.Team.Strategy].OffsideTrickChance;
-			}
-            
-			if (offside >= Random.Range(0f, 1f))
-			{
-				_currentPlay.Event = MatchEvent.Offside;
-				_currentPlay.IsActionSuccessful = false;
-				return _currentPlay;
-			}
-		}
-        
+	          
 		//If attacker has no action = fail
 		if(_currentPlay.OffensiveAction == PlayerAction.None)
 		{
@@ -455,18 +416,10 @@ public class MatchActionManager
 			return _currentPlay;
 		}
 		else _currentPlay = GetOffensiveActionResults(_currentPlay, _lastPlay);
-        
-		//Rool dice to check if bonus is applied
-		DiceRollResults attackRoll = playDiceRolls.GetAttackRollResult(_currentPlay.AttackerRoll, attackBonusChance, defender != null);
-		if(!attackRoll.Success)
-		{
-			_currentPlay.IsActionSuccessful = false;
-			return _currentPlay;
-		}
 		
-		attackExcitment = attackRoll.Excitment;
-		_currentPlay.AttackerRoll = attackRoll.Value;
+		_currentPlay = playDiceRolls.GetAttackRollResult(_currentPlay);
 		_currentPlay.AttackerRoll *= attacker.FatigueModifier();
+		if(_currentPlay.AttackerRoll <= 0) return _currentPlay;
 		
 		//Check if tackling is really happening  
 		if (defender == null)
@@ -490,9 +443,7 @@ public class MatchActionManager
 		if (isTackling)
 		{
 			//Roll dice
-			DiceRollResults defenseRoll = playDiceRolls.GetDefenseRollResult(_currentPlay.DefenderRoll, defenseBonusChance);
-			_currentPlay.DefenderRoll = defenseRoll.Value;
-			defenseExcitement = defenseRoll.Excitment;
+			_currentPlay = playDiceRolls.GetDefenseRollResult(_currentPlay);
 
 			agilityBonus = (float)defender.GetAttributeBonus(defender.Agility) / 100;
 			agilityBonus *= defender.FatigueModifier();
@@ -534,9 +485,29 @@ public class MatchActionManager
 		if (defender == null) _currentPlay.DefensiveAction = PlayerAction.None;
 		else defender.Fatigue -= _currentPlay.DefenseFatigueRate * (25 / (float)defender.Stamina);
 
-		if (_currentPlay.IsActionSuccessful) _currentPlay.Excitment = attackExcitment;
-		else _currentPlay.Excitment = defenseExcitement;
 		return _currentPlay;
+	}
+	
+	private bool CheckOffside(PlayInfo _currentPlay, PlayInfo _lastPlay)
+	{
+		if (_lastPlay.OffensiveAction == PlayerAction.Pass || _lastPlay.OffensiveAction == PlayerAction.Cross || _lastPlay.OffensiveAction == PlayerAction.LongPass || _lastPlay.OffensiveAction == PlayerAction.ThroughPass)
+		{
+			if((int)_currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone) > 14 && _currentPlay.Event == MatchEvent.None) //AFTER MIDFIELD
+			{
+				float offside = offsideChance;
+				if (_currentPlay.Defender != null)
+				{
+					offside *= _currentPlay.Defender.Prob_OffsideLine;
+					if (_currentPlay.DefendingTeam.IsStrategyApplicable(_currentPlay.DefendingTeam.GetTeamZone(_currentPlay.Zone)))
+						offside *= GameData.Instance.TeamStrategies[(int)_currentPlay.DefendingTeam.Strategy].OffsideTrickChance;
+				}
+            
+				return (offside >= Random.Range(0f, 1f));
+			}
+			else return false;
+		}
+		else return false;
+		
 	}
 	
 	public PlayInfo ResolveAction(PlayInfo _currentPlay, PlayInfo _lastPlay)
@@ -546,24 +517,35 @@ public class MatchActionManager
         
 		MarkingType marking = currentPlay.Marking;
 		PlayerAction offensiveAction = currentPlay.OffensiveAction;
-		
+
+		if(_lastPlay != null && CheckOffside(_currentPlay, _lastPlay))
+		{
+			_currentPlay.Event = MatchEvent.Offside;
+			_currentPlay.IsActionSuccessful = false;
+			return _currentPlay;
+		}
+
 		currentPlay = GetActionSuccess(currentPlay, lastPlay);
 	    
 		if (currentPlay.IsActionSuccessful)
 		{
-			if (offensiveAction == PlayerAction.Shot || offensiveAction == PlayerAction.Header) currentPlay.Event = MatchEvent.ShotOnGoal;
+			if (offensiveAction == PlayerAction.Shot || offensiveAction == PlayerAction.Header)
+			{
+				currentPlay.Event = MatchEvent.ShotOnGoal;
+			}
 			else 
 			{
 				
 				if(currentPlay.Event == MatchEvent.KickOff) currentPlay.TargetZone = Zone.CM;
 				else currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay.Zone, currentPlay.Event, currentPlay.OffensiveAction, currentPlay.Attacker.Team.Strategy);
-				switch(currentPlay.OffensiveAction)
-				{
+				switch(currentPlay.OffensiveAction){
+					
 					case PlayerAction.LongPass:
 					case PlayerAction.Pass:
 						currentPlay.Attacker.MatchStats.Passes++;
 						currentPlay.Attacker.Team.MatchStats.Passes++;
 						break;
+						
 					case PlayerAction.Cross:
 						currentPlay.Attacker.MatchStats.Crosses++;
 						currentPlay.Attacker.Team.MatchStats.Crosses++;
@@ -573,28 +555,37 @@ public class MatchActionManager
 							currentPlay.Attacker.Team.MatchStats.BoxCrosses++;
 						}
 						break;
-					case PlayerAction.Dribble: currentPlay.Attacker.MatchStats.Dribbles++; break;
+						
+					case PlayerAction.Dribble: 
+						currentPlay.Attacker.MatchStats.Dribbles++; 
+						break;
 				}
 			}       
-
 		}
 		else
 		{
 			currentPlay.AttackingBonus = 1f;
-			if (offensiveAction == PlayerAction.Shot || offensiveAction == PlayerAction.Header) currentPlay.Event = MatchEvent.ShotMissed;
-
-			switch (currentPlay.OffensiveAction)
-			{
-				case PlayerAction.LongPass:
-				case PlayerAction.Pass:
-					currentPlay.Attacker.MatchStats.PassesMissed++;
-					currentPlay.Attacker.Team.MatchStats.PassesMissed++;
-					break;
-				case PlayerAction.Cross:
-					currentPlay.Attacker.MatchStats.CrossesMissed++;
-					currentPlay.Attacker.Team.MatchStats.CrossesMissed++;
-					break;
-				case PlayerAction.Dribble: currentPlay.Attacker.MatchStats.DribblesMissed++; break;
+			switch (currentPlay.OffensiveAction) {
+				
+			case PlayerAction.Shot:
+			case PlayerAction.Header:
+				currentPlay.Event = MatchEvent.ShotMissed;
+				break;
+				
+			case PlayerAction.LongPass:
+			case PlayerAction.Pass:
+				currentPlay.Attacker.MatchStats.PassesMissed++;
+				currentPlay.Attacker.Team.MatchStats.PassesMissed++;
+				break;
+				
+			case PlayerAction.Cross:
+				currentPlay.Attacker.MatchStats.CrossesMissed++;
+				currentPlay.Attacker.Team.MatchStats.CrossesMissed++;
+				break;
+				
+			case PlayerAction.Dribble:
+				currentPlay.Attacker.MatchStats.DribblesMissed++;
+				break;
 			}
 
 			if (currentPlay.Event == MatchEvent.Fault)
@@ -654,13 +645,7 @@ public class MatchActionManager
    
 	private int GetPlayerAttributeBonus(int _attribute)
 	{
-		int bonus = 0;
-		if (_attribute > 70)
-		{
-			bonus = _attribute - 70;
-		}
-
-		return bonus;
+		return PlayDiceRolls.GetPlayerAttributeBonus(_attribute);
 	}
 }
 

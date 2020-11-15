@@ -22,11 +22,12 @@ public class MatchNarration : MonoBehaviour
 	public class NarrationData
 	{
 		public string Text;
-		public int Variations;
-		public string Player1;
-		public string Player2;
-		public string Team1;
-		public string Team2;
+		public int Variations = 1;
+		public string Player1 = "MISSING PLAYER 1 NAME";
+		public string Player2 = "MISSING PLAYER 2 NAME";
+		public string Team1 = "MISSING TEAM 1 NAME";
+		public string Team2 = "MISSING TEAM 2 NAME";
+		public string Zone = "MISSING ZONE";
 		public PlayInfo PlayInfo;
 	}
 	
@@ -38,179 +39,194 @@ public class MatchNarration : MonoBehaviour
 		loc = LocalizationController.Instance;
 	}
 	
-	public void UpdateNarration(PlayInfo _playInfo)
+	public void UpdateNarration(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
 		NarrationData narData = new NarrationData(); 
-		narData.PlayInfo = _playInfo;
-		if(_playInfo.IsActionSuccessful)
+		narData.PlayInfo = _lastPlay;
+		narData.Zone = loc.GetZoneString(_lastPlay.Zone);
+
+		if(_lastPlay.IsActionSuccessful)
 		{
-			narData.Team1 = _playInfo.AttackingTeam.Name;
-			narData.Team2 = _playInfo.DefendingTeam.Name;
-			if(_playInfo.Attacker != null) narData.Player1 = _playInfo.Attacker.FullName;
-			if(_playInfo.Defender != null) narData.Player2 = _playInfo.Defender.FullName;
+			narData.Team1 = _lastPlay.AttackingTeam.Name;
+			narData.Team2 = _lastPlay.DefendingTeam.Name;
+			if(_lastPlay.Attacker != null) narData.Player1 = _lastPlay.Attacker.FullName;
+			if(_lastPlay.Defender != null) narData.Player2 = _lastPlay.Defender.FullName;
 		}
 		else
 		{
-			narData.Team2 = _playInfo.AttackingTeam.Name;
-			narData.Team1 = _playInfo.DefendingTeam.Name;
-			if(_playInfo.Attacker != null) narData.Player2= _playInfo.Attacker.FullName;
-			if(_playInfo.Defender != null) narData.Player1 = _playInfo.Defender.FullName;
+			narData.Team2 = _lastPlay.AttackingTeam.Name;
+			narData.Team1 = _lastPlay.DefendingTeam.Name;
+			if(_lastPlay.Attacker != null) narData.Player2= _lastPlay.Attacker.FullName;
+			if(_lastPlay.Defender != null) narData.Player1 = _lastPlay.Defender.FullName;
 		}
+
 			
 		string tag = "";
 		int variations = 1;
 		bool isNeutral = false;
 		
-		PlayInfo currentPlay = _playInfo;
-		switch(currentPlay.OffensiveAction)
+		if(_lastPlay.Event == MatchEvent.None)
 		{
-		case PlayerAction.Pass:
-			if (currentPlay.IsActionSuccessful)
-			{
-				flowPasses++;
-				if (flowPasses == 3) tag = "nar_FlowPasses_";
-				else tag = "nar_Pass_";
-				if (currentPlay.CounterAttack > 0) tag = "nar_CounterAttack_";
-			}
-			else
-			{
-				flowPasses = 0;
-	                
-				if(_playInfo.IsActionDefended) 
-				{
-					tag = "nar_BlockPass_";
-				}
-				else tag = "nar_WrongPass_";
-			}
-			break;
+			switch(_lastPlay.OffensiveAction) {
 
-		case PlayerAction.Dribble:
-			if (currentPlay.IsActionSuccessful)
-			{
-				flowDribbles++;
-				if (flowDribbles == 3) tag = "nar_FlowDribbles_";
-				else tag = "nar_Dribble_";
-			}
-			else
-			{
-				flowDribbles = 0;
-	                
-				if(_playInfo.IsActionDefended) 
+			case PlayerAction.Pass:
+			
+				if (_lastPlay.IsActionSuccessful)
 				{
-					tag = "nar_BlockDribble_";
-				}
-				else tag = "nar_WrongDribble_";
-			}
-			break;
+					flowPasses++;
+					if (flowPasses == 3) tag = "nar_FlowPasses_";
+					else tag = "nar_Pass_";
+					if (_lastPlay.CounterAttack > 0) tag = "nar_CounterAttack_";
 
-		case PlayerAction.Header:
-			if (currentPlay.IsActionSuccessful && currentPlay.Event == MatchEvent.ShotOnGoal)
-			{
-				tag = "nar_Header_";
-				variations = 1;
-			}
-			else
-			{
-				if (currentPlay.IsActionDefended)
-				{
-					tag = "nar_BlockHeader_";
+					narData.Player2 = _currentPlay.Attacker.FullName;
 				}
 				else
 				{
-					tag = "nar_WrongHeader_";
-				}                
+					flowPasses = 0;
+		                
+					if(_lastPlay.IsActionDefended) 
+					{
+						tag = "nar_BlockPass_";
+					}
+					else
+					{
+						tag = "nar_WrongPass_";
+					}
+				}
+				break;
+	
+			case PlayerAction.Dribble:
+				if (_lastPlay.IsActionSuccessful)
+				{
+					flowDribbles++;
+					if (flowDribbles == 3) tag = "nar_FlowDribbles_";
+					else tag = "nar_Dribble_";
+				}
+				else
+				{
+					flowDribbles = 0;
+		                
+					if(_lastPlay.IsActionDefended) 
+					{
+						tag = "nar_BlockDribble_";
+					}
+					else tag = "nar_WrongDribble_";
+				}
+				break;
+	
+			case PlayerAction.Header:
+				if (_lastPlay.IsActionSuccessful && _lastPlay.Event == MatchEvent.ShotOnGoal)
+				{
+					tag = "nar_Header_";
+					variations = 1;
+				}
+				else
+				{
+					if (_lastPlay.IsActionDefended)
+					{
+						tag = "nar_BlockHeader_";
+					}
+					else
+					{
+						tag = "nar_WrongHeader_";
+					}                
+				}
+				break;
 			}
-			break;
 		}
-
-		switch(currentPlay.Event)
-		{
-		case MatchEvent.KickOff:
-			tag = "nar_KickOff_";
-			variations = 1;
-			/*
-			if (isSecondHalf)
-			{
+		else
+		{			
+			switch(_lastPlay.Event) {
+				
+			case MatchEvent.KickOff:
+				tag = "nar_KickOff_";
+				variations = 1;
+				isNeutral = true;
+				break;
+				
+			case MatchEvent.SecondHalfKickOff:
 				tag = "nar_SecondHalfStart_";
-				isSecondHalf = false;
-			}
-			*/
-			isNeutral = true;
-			break;
-
-		case MatchEvent.HalfTime:
-			tag = "nar_FirstHalfEnd_";
-			variations = 1;
-			//isSecondHalf = true;
-			isNeutral = true;
-			break;
-
-		case MatchEvent.FullTime:
-			tag = "nar_TimeUp_";
-			variations = 1;
-			isNeutral = true;
-			break;
-
-		case MatchEvent.ShotOnGoal:
-			if(_playInfo.OffensiveAction == PlayerAction.Shot) tag = "nar_Shot_";
-			else if(_playInfo.OffensiveAction == PlayerAction.Header) tag = "nar_Header_";
-			variations = 1;
-			break;
-
-		case MatchEvent.Goal:
-			tag = "nar_GoalScream_";
-			variations = 1;
-			//screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
-			break;
-
-		case MatchEvent.GoalAnnounced:
-			tag = "nar_Goal_";
-			variations = 8;
-			if (currentPlay.Excitment == 1)
-			{
-				tag = "nar_BestGoal_";
+				variations = 1;
+				isNeutral = true;
+				break;
+	
+			case MatchEvent.HalfTime:
+				tag = "nar_FirstHalfEnd_";
+				variations = 1;
+				isNeutral = true;
+				break;
+	
+			case MatchEvent.FullTime:
+				tag = "nar_TimeUp_";
+				variations = 1;
+				isNeutral = true;
+				break;
+	
+			case MatchEvent.ShotOnGoal:
+				if(_lastPlay.OffensiveAction == PlayerAction.Shot) tag = "nar_Shot_";
+				else if(_lastPlay.OffensiveAction == PlayerAction.Header) tag = "nar_Header_";
+				variations = 1;
+				narData.Player1 = _lastPlay.Attacker.FullName;
+				break;
+	
+			case MatchEvent.Goal:
+				tag = "nar_GoalScream_";
+				variations = 1;
+				break;
+	
+			case MatchEvent.GoalAnnounced:
+				tag = "nar_Goal_";
+				variations = 8;
+				if (_lastPlay.OffenseExcitment == 1)
+				{
+					tag = "nar_BestGoal_";
+					variations = 5;
+				}
+				else if (_lastPlay.OffenseExcitment == -1)
+				{
+					tag = "nar_WorstGoal_";
+					variations = 5;
+				}
+				break;
+	
+			case MatchEvent.Fault:
+				tag = "nar_Fault_";
+				narData.Player1 = _lastPlay.Defender.FullName;
+				narData.Player2 = _lastPlay.Attacker.FullName;
 				variations = 5;
+				break;
+	
+			case MatchEvent.CornerKick:
+				tag = "nar_CornerKick_";
+				variations = 1;
+				break;
+	
+			case MatchEvent.Penalty:
+				tag = "nar_Penalty_";
+				variations = 1;
+				break;
+	
+			case MatchEvent.ShotSaved:
+				tag = "nar_SaveShot_";
+				narData.Player1 = _lastPlay.Defender.FullName;
+				narData.Player2 = _lastPlay.Attacker.FullName;
+				if (_lastPlay.DefenseExcitment == 1) tag = "nar_BestSaveShot_";
+				else if (_lastPlay.DefenseExcitment == -1) tag = "nar_WorstShot";
+				variations = 1;
+				break;
+	
+			case MatchEvent.ShotMissed:
+				tag = "nar_MissedShot_";
+				variations = 2;
+				narData.Player1 = _lastPlay.Attacker.FullName;
+				break;
+	
+			case MatchEvent.Offside:
+				tag = "nar_Offside_";
+				variations = 3;
+				narData.Player1 = _lastPlay.Attacker.FullName;
+				break;
 			}
-			else if (currentPlay.Excitment == -1)
-			{
-				tag = "nar_WorstGoal_";
-				variations = 5;
-			}
-			break;
-
-		case MatchEvent.Fault:
-			//tag = "nar_Fault_";
-			variations = 5;
-			break;
-
-		case MatchEvent.CornerKick:
-			tag = "nar_CornerKick_";
-			variations = 1;
-			break;
-
-		case MatchEvent.Penalty:
-			tag = "nar_Penalty_";
-			variations = 1;
-			break;
-
-		case MatchEvent.ShotSaved:
-			tag = "nar_SaveShot_";
-			//loc.PLAYER_1 = _playInfo.Defender.FullName;
-			//loc.PLAYER_2 = _playInfo.Attacker.FullName;
-			if (currentPlay.Excitment == 1) tag = "nar_BestSaveShot_";
-			else if (currentPlay.Excitment == -1) tag = "nar_WorstShot";
-			variations = 1;
-			break;
-
-		case MatchEvent.ShotMissed:
-			tag = "nar_MissedShot_";
-			variations = 2;
-			break;
-
-		case MatchEvent.Offside:
-			tag = "nar_Offside_";
-			variations = 3;
-			break;
 		}
 		
 		if (tag != "")
@@ -220,7 +236,7 @@ public class MatchNarration : MonoBehaviour
 			if (isNeutral) UpdateNarration(tag, GameData.Instance.Colors.MediumGray, variations);
 			else 
 			{
-				if(_playInfo.IsActionSuccessful || _playInfo.IsActionDefended) UpdateNarration(narData);
+				if(_lastPlay.IsActionSuccessful || _lastPlay.IsActionDefended) UpdateNarration(narData);
 				else UpdateNarration(tag, GameData.Instance.Colors.LightGray, 1, narData);
 			}
 		}
@@ -247,7 +263,8 @@ public class MatchNarration : MonoBehaviour
 		string txt = _text.Replace("{PLAYER_1}", _data.Player1)
 			.Replace("{PLAYER_2}", _data.Player2)
 			.Replace("{TEAM_1}", _data.Team1)
-			.Replace("{TEAM_2}", _data.Team2);
+			.Replace("{TEAM_2}", _data.Team2)
+			.Replace("{ZONE}", _data.Zone);
 			
 		return txt;
 	}
