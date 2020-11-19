@@ -22,7 +22,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - <color={0}>Goalkeeper</color>
-      - <color={0}>Goleiro<color>
+      - <color={0}>Goleiro</color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Goalkeeper
@@ -30,55 +30,55 @@ MonoBehaviour:
       Description: 
       Languages:
       - <color={0}>GK</color>
-      - <color={0}>GOL<color>
+      - <color={0}>GOL</color>
       Flags: 0000
       Languages_Touch: []
     - Term: pos_Defender
       TermType: 0
       Description: 
       Languages:
-      - <color={0}>Defender<color={0}>
-      - <color={0}>Zagueiro<color>
+      - <color={0}>Defender</color}>
+      - <color={0}>Zagueiro</color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Defender
       TermType: 0
       Description: 
       Languages:
-      - <color={0}>DEF<color={0}>
-      - <color={0}>ZAG<color>
+      - <color={0}>DEF</color>
+      - <color={0}>ZAG</color>
       Flags: 0000
       Languages_Touch: []
     - Term: pos_Midfielder
       TermType: 0
       Description: 
       Languages:
-      - <color={0}>Midifielder<color={0}>
-      - <color={0}>Meio-Campo<color>
+      - <color={0}>Midifielder</color>
+      - <color={0}>Meio-Campo</color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Midfielder
       TermType: 0
       Description: 
       Languages:
-      - <color={0}>MID<color={0}>
-      - <color={0}>MC<color>
+      - <color={0}>MID</color>
+      - <color={0}>MC</color>
       Flags: 0000
       Languages_Touch: []
     - Term: pos_Forward
       TermType: 0
       Description: 
       Languages:
-      - <color={0}>Forward<color={0}>
-      - <color={0}>Atacante<color>
+      - <color={0}>Forward</color>
+      - <color={0}>Atacante</color>
       Flags: 0000
       Languages_Touch: []
     - Term: posTag_Forward
       TermType: 0
       Description: 
       Languages:
-      - <color={0}>FW<color={0}>
-      - <color={0}>ATA<color>
+      - <color={0}>FW</color>
+      - <color={0}>ATA</color>
       Flags: 0000
       Languages_Touch: []
     - Term: stat_Position
@@ -321,6 +321,22 @@ MonoBehaviour:
       - '{PLAYER_1} passa para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
+    - Term: nar_Pass_2
+      TermType: 0
+      Description: 
+      Languages:
+      - '{PLAYER_2} receives the pass from  {PLAYER_1}'
+      - '{PLAYER_2} recebe o passe de {PLAYER_1}'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: nar_Pass_3
+      TermType: 0
+      Description: 
+      Languages:
+      - '{PLAYER_1} leaves the ball to {PLAYER_2}'
+      - '{PLAYER_1} deixa a bola com {PLAYER_2}'
+      Flags: 0000
+      Languages_Touch: []
     - Term: nar_BestPass_1
       TermType: 0
       Description: 
@@ -333,7 +349,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} passes to {PLAYER_2}'
+      - '{PLAYER_1} passes straight to {PLAYER_2}'
       - '{PLAYER_1} passa de letra para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
@@ -341,7 +357,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} pass to {PLAYER_2}es'
+      - Lovely pass from {PLAYER_1} to {PLAYER_2}
       - '{PLAYER_1} passa de calcanhar para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
@@ -350,6 +366,22 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} almost lost the pass to {PLAYER_2}'
+      - '{PLAYER_1} passa na fogueira para {PLAYER_2}'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: nar_WorstPass_2
+      TermType: 0
+      Description: 
+      Languages:
+      - Weird pass from {PLAYER_1} to {PLAYER_2}
+      - '{PLAYER_1} quase erra o passe para {PLAYER_2}'
+      Flags: 0000
+      Languages_Touch: []
+    - Term: nar_WorstPass_3
+      TermType: 0
+      Description: 
+      Languages:
+      - '{PLAYER_2} stretches to get the pass from {PLAYER_1}'
       - '{PLAYER_1} passa torto para {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
@@ -821,7 +853,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 
+      - '{PLAYER_1} steals the ball from {PLAYER_2}'
       - '{PLAYER_1} rouba a bola de {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
@@ -845,7 +877,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 
+      - '{PLAYER_1} saves with some difficulties'
       - "{PLAYER_1} por sorte n\xE3o toma um frango"
       Flags: 0000
       Languages_Touch: []
@@ -1071,6 +1103,14 @@ MonoBehaviour:
       Languages:
       - CONTINUE
       - CONTINUAR
+      Flags: 0000
+      Languages_Touch: []
+    - Term: title_Loading
+      TermType: 0
+      Description: 
+      Languages:
+      - LOADING
+      - CARREGANDO
       Flags: 0000
       Languages_Touch: []
     - Term: title_CreateTeam
@@ -1432,11 +1472,11 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1605451114292
+    Google_LastUpdatedVersion: 1605815691091
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2
-    GoogleUpdateSynchronization: 1
+    GoogleUpdateSynchronization: 0
     GoogleUpdateDelay: 5
     Assets: []
     Spreadsheet_LocalFileName: 

@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class MatchController : MonoBehaviour
 {
+	public static MatchController Instance;
+	
 	[SerializeField] private MatchScreen screen = null;
 
     private List<PlayInfo> playList;
@@ -14,7 +16,6 @@ public class MatchController : MonoBehaviour
     
 	private bool isGameOn;
 	private bool isSimulatingMatch;
-	private bool isSimulatingTournament;
 	private bool secondHalfStarted;
 	
 	private uint matchTime = 0;
@@ -26,8 +27,13 @@ public class MatchController : MonoBehaviour
 	private MatchEvents matchEvents;
 	private MatchData currentMatch;
 	private MatchData nextMatch;
+	
+	private void Awake()
+	{
+		if(!Instance) Instance = this;
+	}
 
-    public void Populate(MatchData _data, bool _simulateTournament = false)
+	public void Populate(MatchData _data, bool _isSimulating = false)
     {
 	    Reset();
         
@@ -50,8 +56,8 @@ public class MatchController : MonoBehaviour
 	    
 	    screen.Narration.Initialize(homeTeam.PrimaryColor, TeamDisplayColor(awayTeam), awayTeam);
 
-        isSimulatingTournament = _simulateTournament;
-	    if(_simulateTournament) StartSimulation();
+	    isSimulatingMatch = _isSimulating;
+	    if(_isSimulating) StartSimulation();
     }
 
     public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
@@ -75,7 +81,6 @@ public class MatchController : MonoBehaviour
 	            else playersOut += ", " + player.FullName;
             }
             
-
 	        screen.Narration.UpdateNarration(playersIn, TeamDisplayColor(UserTeam));
             screen.Narration.UpdateNarration(playersOut, TeamDisplayColor(UserTeam));
         }
@@ -108,16 +113,14 @@ public class MatchController : MonoBehaviour
         isSimulatingMatch = true;
 
         Reset();
-        KickOff();
+	    StartMatch();
 
         if (screen == null) screen = GetComponent<MatchScreen>();
-	    screen.ShowMain(false);
+	    screen.ShowSimulationScreen();
     }
 
-    public void KickOff()
+	public void StartMatch()
     {
-        screen.Field.UpdateFieldArea((int)Zone.CM);
-
 	    isGameOn = true;
         if (!isSimulatingMatch)
         {
@@ -134,7 +137,7 @@ public class MatchController : MonoBehaviour
     {
         while (isGameOn == true)
         {
-        	PlayTurn();
+        	yield return PlayTurn();
 	        yield return new WaitForSeconds(1f / MatchSpeed);      
         }
     }
@@ -145,8 +148,7 @@ public class MatchController : MonoBehaviour
 		{
 			yield return PlayTurn();
 			yield return new WaitForEndOfFrame();
-		}
-		
+		}		
 	}
 
 	private IEnumerator Chronometer()
@@ -166,7 +168,6 @@ public class MatchController : MonoBehaviour
 	    currentPlay.Turn = playList.Count;
 	    PlayInfo lastPlay = currentPlay.Turn  > 0 ? playList[currentPlay.Turn-1] : null;
 	    if(lastPlay != null) currentPlay = CheckPossesion(lastPlay, currentPlay);
-	    
 	    //Kick off
         if (currentPlay.Turn == 0)
         {
@@ -201,7 +202,7 @@ public class MatchController : MonoBehaviour
 
 	    if (!evt) currentPlay = DefineActions(currentPlay, lastPlay);
 	    
-	    playList.Insert(currentPlay.Turn, currentPlay);
+	    playList.Add(currentPlay);
 	    
 	    //END TURN
 	    #if (UNITY_EDITOR)
@@ -210,7 +211,7 @@ public class MatchController : MonoBehaviour
     	
 	    if(!isSimulatingMatch)
 	    {
-		    if(currentPlay.Turn > 0) UpdateNarration(currentPlay, lastPlay);
+		    if(currentPlay.Turn > 0) screen.Narration.UpdateNarration(currentPlay, lastPlay);
 	    }
 	    
 	    return null;
@@ -218,13 +219,14 @@ public class MatchController : MonoBehaviour
     
 	private PlayInfo ResolveEvents(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
-		if(_currentPlay.Event == MatchEvent.GoalAnnounced) screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
+		if(_lastPlay.Event == MatchEvent.GoalAnnounced) screen.Score.UpdateScore(homeTeam.MatchStats.Goals, awayTeam.MatchStats.Goals);
 		
 		switch (_lastPlay.Event)
 		{
 		default : return matchEvents.GetEventResults(_currentPlay, _lastPlay);
 		case MatchEvent.KickOff: return ResolveKickOff(_currentPlay);
 		case MatchEvent.HalfTime: return ResolveHalfTime(_currentPlay);
+		case MatchEvent.SecondHalfKickOff: return ResolveKickOff(_currentPlay);
 		case MatchEvent.FullTime: ResolveFullTime(); break;
 		}		
 		
@@ -238,7 +240,7 @@ public class MatchController : MonoBehaviour
 		_playInfo.Defender = null;
 		_playInfo.OffensiveAction = PlayerAction.Pass;
 		_playInfo.Event = MatchEvent.None;
-		_playInfo = actionManager.ResolveAction(_playInfo, null);
+		_playInfo = actionManager.ResolveAction(_playInfo, null);	
 		return _playInfo;
 	}
 
@@ -252,6 +254,7 @@ public class MatchController : MonoBehaviour
 
 	private void ResolveFullTime()
 	{
+		if(!isGameOn) return;
 		isGameOn = false;
 		EndGame();		
 	}
@@ -269,15 +272,16 @@ public class MatchController : MonoBehaviour
 		_currentPlay.Zone = _lastPlay.TargetZone;
 		_currentPlay.TargetZone = _lastPlay.TargetZone;
 
+		//If last action was an assistance, we exclude the assister in case of success and force a receiver
 		if (_lastPlay.OffensiveAction == PlayerAction.Pass || _lastPlay.OffensiveAction == PlayerAction.LongPass || _lastPlay.OffensiveAction == PlayerAction.Cross)
 		{
 			_currentPlay.Assister = playerToExclude = _lastPlay.Attacker;
 			if (_lastPlay.IsActionSuccessful) forcePlayer = true;
 		}
+		//If last action was a dribble or sprint we keep the attacker
 		else if (_lastPlay.OffensiveAction == PlayerAction.Dribble || _lastPlay.OffensiveAction == PlayerAction.Sprint) keepAttacker = true;
-
+		//If last actino was not successfull and a defender was present we keep the defender			
 		if (!_lastPlay.IsActionSuccessful && _lastPlay.Defender != null) keepDefender = true;
-
 
 		//Step 1: Get players involved in the dispute
 		if (keepDefender) _currentPlay.Attacker = _lastPlay.Defender;
@@ -306,7 +310,7 @@ public class MatchController : MonoBehaviour
 				//Step 3: Get type of offensive currentPlay
 				bool header = false;
 				if (_lastPlay.IsActionSuccessful && _lastPlay.OffensiveAction == PlayerAction.Cross && _currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone) == Zone.Box) header = true;
-				_currentPlay.OffensiveAction = actionManager.GetOffensiveAction(_currentPlay.Marking, _currentPlay.Attacker, _currentPlay.Zone, header, _currentPlay.CounterAttack);
+				_currentPlay.OffensiveAction = actionManager.GetOffensiveAction(_currentPlay, header);
 
 				//Step 4: Test action against defender (if there is one)
 				_currentPlay = actionManager.ResolveAction(_currentPlay, _lastPlay);
@@ -372,7 +376,8 @@ public class MatchController : MonoBehaviour
         	TeamStatistics homeTeamStats = homeTeam.GetTournamentStatistics(currentTournament.Id);
         	TeamStatistics awayTeamStats = awayTeam.GetTournamentStatistics(currentTournament.Id);
 	        
-	        nextMatch = currentTournament.GetNextMatch(isSimulatingTournament);
+	        /*
+	        nextMatch = currentTournament.GetNextMatchInCurrentRound();
 	        Sequence seq = DOTween.Sequence();
             if (nextMatch != null)
             {              
@@ -382,14 +387,21 @@ public class MatchController : MonoBehaviour
             else
             {	            
 	            seq.AppendInterval(1f).AppendCallback(ExitSimulation);  	            
-            }
+	        }*/
         }
+        
+	    Sequence seq = DOTween.Sequence();
+	    if(isSimulatingMatch) UpdateCalendar();
+	    else seq.AppendInterval(1f).AppendCallback(UpdateCalendar); 
     }
     
-	private void StartNextMatch()
+	private void UpdateCalendar()
 	{
-		Populate(nextMatch, isSimulatingTournament);
-		StartSimulation();
+		//Populate(nextMatch, isSimulatingMatch);
+		//StartSimulation();
+		Debug.LogFormat("MATCH ENDED - {0} x {1}", homeTeam.Name, awayTeam.Name);
+		screen.ShowSimulationScreen();
+		CalendarController.Instance.UpdateCalendar();
 	}
 
     private void ExitSimulation()
@@ -455,15 +467,10 @@ public class MatchController : MonoBehaviour
 	{
 		_currentPlay.AttackingTeam = _lastPlay.DefendingTeam;
 		_currentPlay.DefendingTeam = _lastPlay.AttackingTeam;
+		_currentPlay.CounterAttack = 0;
+		_currentPlay.AttackingBonus = 1;
 		
 		return _currentPlay;
-    }
-
-	private void UpdateNarration(PlayInfo _currentPlay, PlayInfo _lastPlay)
-	{
-		screen.Narration.UpdateNarration(_currentPlay, _lastPlay);		
-		
-        screen.Field.UpdateFieldArea((int)_lastPlay.Zone);       
     }
 
 	private void UpdateRating(PlayInfo _playInfo)
@@ -512,7 +519,7 @@ public class MatchController : MonoBehaviour
 
     public void StartButtonClickHandler()
     {
-        if (matchTime == 0) KickOff();
+	    if (matchTime == 0) StartMatch();
         else
         {
             isGameOn = !isGameOn;
@@ -526,9 +533,9 @@ public class MatchController : MonoBehaviour
 
 	private void Reset()
 	{
-		playList = new List<PlayInfo>();
+		playList = new List<PlayInfo>(150);
         matchTime = 0;
-        secondHalfStarted = false;
+		secondHalfStarted = false;
 
 		screen.Reset(MatchSpeed);
 

@@ -19,7 +19,8 @@ public class CalendarDay : MonoBehaviour
 		string userTeamId = MainController.Instance.UserTeam.Id;
 		string adversaryId;
 		string tournamentName;
-		if(_data.IsUserMatchDay(out adversaryId, out tournamentName))
+		MatchData matchData;
+		if(_data.IsUserMatchDay(out adversaryId, out tournamentName, out matchData))
 		{
 			adversaryTeam = MainController.Instance.GetTeamById(adversaryId);
 			string teamColor = ColorUtility.ToHtmlStringRGB(adversaryTeam.PrimaryColor);

@@ -6,7 +6,7 @@ public class CalendarController : MonoBehaviour
 {   
 	public static CalendarController Instance;
 	
-	public List<MatchDay> Days;
+	public List<MatchDay> MatchDays;
 
     public int CurrentDay;
 	public int CurrentYear;
@@ -33,7 +33,7 @@ public class CalendarController : MonoBehaviour
 	{
 	    CurrentDay = 0;
         CurrentYear = _year;
-	    Days = new List<MatchDay>();
+	    MatchDays = new List<MatchDay>();
 	    
 	    DateTime date;
 	    MatchDay matchDay;
@@ -45,7 +45,7 @@ public class CalendarController : MonoBehaviour
         {
 	        date = new DateTime(_year, month, day);
 	        matchDay = new MatchDay(date);
-            Days.Add(matchDay);
+            MatchDays.Add(matchDay);
             if(day == 28)
             {
                 day = 0;
@@ -59,12 +59,54 @@ public class CalendarController : MonoBehaviour
 			TournamentData tournament = MainController.Instance.GetTournamentById(tournamentId);
 			foreach(MatchData matchData in tournament.Matches)
 			{
-				Days[matchData.Day].MatchList.Add(matchData);
+				MatchDays[matchData.Day].MatchList.Add(matchData);
 			}
 		}
 	}
 	
-	public MatchData NextMatch
+	public void UpdateCalendar()
+	{
+		MatchDay matchDay = MatchDays[CurrentDay];
+		MatchData nextMatch = null;
+		
+		if(matchDay.HasUnplayedMatches(out nextMatch))
+		{
+			if(nextMatch.IsUserMatch) ScreenController.Instance.ShowScreen(ScreenType.Manager);
+			else MatchController.Instance.Populate(nextMatch, true);
+		}
+		else 
+		{
+			Debug.Log("NO MORE GAMES ON DAY " + CurrentDay);
+			GoToNextBusyDay();
+			//ScreenController.Instance.ShowScreen(ScreenType.Manager);
+		}
+	}
+	
+	private void GoToNextBusyDay()
+	{
+		bool finishYear = true;
+		MatchData nextMatch;
+		for(int i = CurrentDay; i < TOTAL_DAYS_PER_YEAR; i++)
+		{
+			if(MatchDays[i].HasUnplayedMatches(out nextMatch))
+			{
+				CurrentDay = i;		
+				finishYear = false;
+				break;
+			}
+		}
+		Debug.Log("NEXT BUSY DAY IS " + CurrentDay);
+		if(finishYear) FinishYear();
+		else UpdateCalendar();
+	}
+	
+	private void FinishYear()
+	{
+		//TODO Finish year
+		Debug.Log("END OF SEASON");
+	}
+	
+	public MatchData NextUserMatchData
 	{
 		get 
 		{
@@ -73,18 +115,10 @@ public class CalendarController : MonoBehaviour
 			string adversaryId, tournamentName;
 			for(int i = CurrentDay; i < TOTAL_DAYS_PER_YEAR; i++)
 			{
-				matchDay = Days[i];
-				if( matchDay.IsUserMatchDay(out adversaryId, out tournamentName))
+				matchDay = MatchDays[i];
+				if( matchDay.IsUserMatchDay(out adversaryId, out tournamentName, out nextMatch))
 				{
-					foreach(MatchData matchData in matchDay.MatchList)
-					{
-						if(matchData.HomeTeam.TeamId == MainController.Instance.UserTeam.Id || matchData.AwayTeam.TeamId == MainController.Instance.UserTeam.Id)
-						{
-							nextMatch = matchData;
-							break;
-						}
-					}
-					CurrentDay = i;
+					//CurrentDay = i;
 					break;
 				}
 			}
@@ -94,17 +128,17 @@ public class CalendarController : MonoBehaviour
     
 	public string GetDay(int _day)
 	{
-		return Days[_day].Date.ToString("dd MMM yyyy");
+		return MatchDays[_day].Date.ToString("dd MMM yyyy");
 	}
 
     public string GetCurrentDate(string _format)
     {
-	    return Days[CurrentDay].Date.ToString(_format);
+	    return MatchDays[CurrentDay].Date.ToString(_format);
     }
     
 	public DateTime CurrentDate
 	{
-		get {return Days[CurrentDay].Date;}
+		get {return MatchDays[CurrentDay].Date;}
 	}
 	
 	public string GetMonthString(int _value)
@@ -131,7 +165,7 @@ public class CalendarController : MonoBehaviour
 	
     public string GetCurrentMonth()
 	{
-	    int month =  Days[CurrentDay].Date.Month;
+	    int month =  MatchDays[CurrentDay].Date.Month;
 		return GetMonthString(month);	    	    
     }
     
@@ -142,7 +176,7 @@ public class CalendarController : MonoBehaviour
 
     public string GetCurrentDay()
     {
-	    return Days[CurrentYear].Date.ToString("dd");
+	    return MatchDays[CurrentYear].Date.ToString("dd");
     }
     
 	public string GetWeekDay(int _day)
@@ -171,31 +205,50 @@ public class MatchDay
 	public DateTime Date;
 	public List<MatchData> MatchList;
 	public string TournamentName;
-	public bool IsUserMatchDay(out string adversaryId, out string tournamentName)
+	public bool IsUserMatchDay(out string _adversaryId, out string _tournamentName, out MatchData _match)
 	{
 
 		bool value = false;
 		string userTeamId = MainController.Instance.UserTeam.Id;
-		adversaryId = "";
-		tournamentName = "";
+		_adversaryId = "";
+		_tournamentName = "";
+		_match = null;
 		foreach(MatchData match in MatchList)
 		{
-			TournamentName = tournamentName = match.TournamentName;
+			TournamentName = _tournamentName = match.TournamentName;
 			if(match.HomeTeam.TeamId == userTeamId)
 			{
-				adversaryId = match.AwayTeam.TeamId;				
+				_adversaryId = match.AwayTeam.TeamId;	
+				_match = match;
 				value = true;
 				break;
 			}
 			else if (match.AwayTeam.TeamId == userTeamId)
 			{
-				adversaryId = match.HomeTeam.TeamId;
+				_adversaryId = match.HomeTeam.TeamId;
+				_match = match;
 				value = true;
 				break;
 			}
 		}
 		return value;
 
+	}
+	public bool IsEmpty { get { return MatchList.Count == 0; }}
+	public bool HasUnplayedMatches(out MatchData _match)
+	{
+		_match = null;
+		if(IsEmpty) return false;
+		
+		foreach(MatchData match in MatchList)
+		{
+			if(!match.isPlayed) 
+			{
+				_match = match;
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public MatchDay(DateTime _date, MatchData _match = null, string _tournamentName = null)

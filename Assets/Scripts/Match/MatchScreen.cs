@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class MatchScreen : BaseScreen
 {
-	[SerializeField] private GameObject main = null;
+	[SerializeField] private GameObject matchScreen = null;
 	[SerializeField] private MatchController controller = null;
 	[SerializeField] private Button btnContinue = null;
 	[SerializeField] private Button btnManageTeam = null;
@@ -25,7 +25,7 @@ public class MatchScreen : BaseScreen
     public override void Show()
     {
         base.Show();
-	    ShowMain(true);
+	    ShowMatchScreen();
     }
     
 	public void Populate(MatchData _data, bool _isSimulating = false)
@@ -33,14 +33,20 @@ public class MatchScreen : BaseScreen
 		controller.Populate(_data, _isSimulating);
 	}
 
-    public void ShowMain(bool _show)
+	public void ShowMatchScreen()
     {
-        main.SetActive(_show);
-	    Simulation.gameObject.SetActive(!_show);   
+	    matchScreen.SetActive(true);
+	    Simulation.gameObject.SetActive(false);   
 	    btnContinue.gameObject.SetActive(false);
-	    if(_show) IntroAnim();
-	    else StartMatch();
+	    IntroAnim();
     }
+    
+	public void ShowSimulationScreen()
+	{
+		matchScreen.SetActive(false);
+		Simulation.gameObject.SetActive(true);   
+		btnContinue.gameObject.SetActive(false);
+	}
     
 	private void IntroAnim()
 	{
@@ -52,7 +58,7 @@ public class MatchScreen : BaseScreen
 	
 	private void StartMatch()
 	{
-		controller.KickOff();
+		controller.StartMatch();
 		//controller.StartSimulation();
 	}
 
@@ -75,6 +81,7 @@ public class MatchScreen : BaseScreen
 	
 	public void OnContinueButtonClicked()
 	{
+		CalendarController.Instance.UpdateCalendar();
 		ScreenController.Instance.ShowScreen(ScreenType.Manager);
 	}
 

@@ -26,7 +26,7 @@ public class GameData : MonoBehaviour
 	
 	public Zones GetPosChanceData(TeamStrategy _strategy, Zone _zone)
 	{
-		foreach(PosChanceData data in GameData.Instance.StrategyPosChanceData)
+		foreach(PosChanceData data in StrategyPosChanceData)
 		{
 			if (data.Strategy == _strategy) 
 			{

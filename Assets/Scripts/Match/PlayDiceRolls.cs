@@ -87,9 +87,7 @@ public class PlayDiceRolls
 		
 		//Rool dice to check if bonus is applied
 		int attackRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(_playInfo.AttackerRoll * 5), _playInfo.AttackingBonusChance);
-		Debug.Log("SHOOTER RESULTS");
-		
-		Debug.Log("Attack Dice Roll: " + attackRoll);
+
 		if (attackRoll >= 20)
 		{
 			_playInfo.AttackerRoll *= 1.5f;
@@ -106,15 +104,12 @@ public class PlayDiceRolls
 			_playInfo.AttackerRoll = 0;
 			_playInfo.OffenseExcitment = -1;
 		}
-		Debug.Log("Attack Value: " + _playInfo.AttackerRoll);
 		
 		//DEFENDER
 		
 		//Rool dice to check if bonus is applied
 		float defenseRoll = Dice.Roll(20, 1, (int)Dice.RollType.None, Mathf.FloorToInt(_playInfo.DefenderRoll * 5), GetPlayerAttributeBonus(_playInfo.Defender.Goalkeeping));
-		Debug.Log("DEFENDER RESULTS");
-		
-		Debug.Log("Defender Dice Roll: " + defenseRoll);
+
 		if (defenseRoll >= 20)
 		{
 			_playInfo.DefenderRoll *= 2f;
@@ -131,8 +126,6 @@ public class PlayDiceRolls
 			_playInfo.Event = MatchEvent.CornerKick;
 			_playInfo.DefenseExcitment = -1;
 		}
-		
-		Debug.Log("Defense Value: " + _playInfo.DefenderRoll);
 		
 		return _playInfo;
 	}

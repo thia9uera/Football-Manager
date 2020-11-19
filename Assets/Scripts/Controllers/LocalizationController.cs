@@ -35,7 +35,7 @@ public class LocalizationController : MonoBehaviour
 
 	public void Initialize()
 	{
-		CurrentLanguage = currentlanguage;
+		CurrentLanguage = Language.Portuguese;
 	}
 
 	[SerializeField]

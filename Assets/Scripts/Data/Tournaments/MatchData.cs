@@ -36,6 +36,15 @@ public class MatchData
 		TournamentName = _data.TournamentName;
 		TournamentId = _data.TournamentId;
 	}
+	
+	public bool IsUserMatch
+	{
+		get
+		{
+			if(HomeTeam.TeamData.IsUserControlled || AwayTeam.TeamData.IsUserControlled) return true;
+			else return false;
+		}
+	}
 
     public void Reset()
     {

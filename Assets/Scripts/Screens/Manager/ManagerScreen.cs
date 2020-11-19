@@ -24,7 +24,7 @@ public class ManagerScreen : TabScreen
 		InitializeList();
 		Tabs.SelectTab(ScreenType.Squad);
 		teamNameLabel.text = MainController.Instance.UserTeam.Name;
-		nextMatchButton.Populate(CalendarController.Instance.NextMatch);
+		nextMatchButton.Populate(CalendarController.Instance.NextUserMatchData);
 	}
 	
 	override protected void InitializeList()
@@ -40,7 +40,7 @@ public class ManagerScreen : TabScreen
 	
 	public void OnMatchButtonPressed()
 	{
-		ScreenController.Instance.Match.Populate(CalendarController.Instance.NextMatch);
+		ScreenController.Instance.Match.Populate(CalendarController.Instance.NextUserMatchData);
 		ScreenController.Instance.ShowScreen(ScreenType.Match);
 	}
 }

@@ -312,7 +312,6 @@ public class TeamData : ScriptableObject
 		Zone zone = Field.Instance.GetTeamZone(_zone, IsAwayTeam);
 
 		float chance = 0f;
-		bool forcePlayer = _forcePlayer;
 
 		List<PlayerData> players = new List<PlayerData>();
 
@@ -320,7 +319,7 @@ public class TeamData : ScriptableObject
 		{
 			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
 
-			if (forcePlayer)
+			if (_forcePlayer)
 			{
 				if (chance > 0f) players.Add(player);
 			}
@@ -341,7 +340,6 @@ public class TeamData : ScriptableObject
 		Zone zone = GetTeamZone(_zone);
 
 		float chance = 0f;
-
 
 		List<PlayerData> players = new List<PlayerData>();
 
@@ -431,10 +429,6 @@ public class TeamData : ScriptableObject
 	
 	public Zone GetTeamZone (Zone _zone)
 	{
-		if(!IsAwayTeam) return _zone;
-		else
-		{
-			return Field.Instance.GetTeamZone(_zone, IsAwayTeam);
-		}
+		return Field.Instance.GetTeamZone(_zone, IsAwayTeam);
 	}
 }

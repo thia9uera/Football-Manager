@@ -12,37 +12,37 @@ public class Field : MonoBehaviour
 	private float _BLD = 0;
 	private float _BRD = 0;
 
-	private float _LD = 0;
+	private float _LD = 0; //3
 	private float _LCD = 0;
 	private float _CD = 0;
 	private float _RCD = 0;
 	private float _RD = 0;
 
-	private float _LDM = 0;
+	private float _LDM = 0; //8
 	private float _LCDM = 0;
 	private float _CDM = 0;
 	private float _RCDM = 0;
 	private float _RDM = 0;
 
-	private float _LM = 0;
+	private float _LM = 0; //13
 	private float _LCM = 0;
 	private float _CM = 0;
 	private float _RCM = 0;
 	private float _RM = 0;
 
-	private float _LAM = 0;
+	private float _LAM = 0; //18
 	private float _LCAM = 0;
 	private float _CAM = 0;
 	private float _RCAM = 0;
 	private float _RAM = 0;
 
-	private float _LF = 0;
+	private float _LF = 0; //23
 	private float _LCF = 0;
 	private float _CF = 0;
 	private float _RCF = 0;
 	private float _RF = 0;
 
-	private float _ALF = 0;
+	private float _ALF = 0; //28
 	private float _ARF = 0;
 	private float _Box = 0;
     
@@ -80,9 +80,14 @@ public class Field : MonoBehaviour
         return chance;
     }
 
-    public Zone GetTargetZone(Zone _currentZone, MatchEvent _event, PlayerAction _action, TeamStrategy _teamStrategy)
-    {
-        Zone zone = _currentZone;
+	public Zone GetTargetZone(PlayInfo _playInfo)
+	{
+		Zone zone = _playInfo.AttackingTeam.GetTeamZone(_playInfo.Zone);
+		MatchEvent _event = _playInfo.Event;
+		PlayerAction _action = _playInfo.OffensiveAction;
+		TeamStrategy _teamStrategy = _playInfo.AttackingTeam.Strategy;
+		bool _isAwayTeam = _playInfo.AttackingTeam.IsAwayTeam;
+    	
         List<KeyValuePair<Zone, float>> list = new List<KeyValuePair<Zone, float>>();
 
         _OwnGoal = 0;
@@ -125,11 +130,11 @@ public class Field : MonoBehaviour
 
         if (_event == MatchEvent.Goalkick)
         {
-            _LDM = 0.75f;
-            _LCDM = 0.75f;
-            _CDM = 075f;
-            _RCDM = 0.75f;
-            _RDM = 0.75f;
+	        _LDM = 0.15f;
+	        _LCDM = 0.15f;
+	        _CDM = 015f;
+	        _RCDM = 0.15f;
+	        _RDM = 0.15f;
             _LM = 1f;
             _LCM = 1f;
             _CM = 1f;
@@ -228,46 +233,47 @@ public class Field : MonoBehaviour
             _Box = data.Box;
         }
 
-
-	    Team_Strategy strategy = GameData.Instance.TeamStrategies[(int)_teamStrategy];
-        _OwnGoal *= strategy.Target_OwnGoal;
-        _BLD *= strategy.Target_BLD;
-        _BRD *= strategy.Target_BRD;
-
-        _LD *= strategy.Target_LD;
-        _LCD *= strategy.Target_LCD;
-        _CD *= strategy.Target_CD;
-        _RCD *= strategy.Target_RCD;
-        _RD *= strategy.Target_RD;
-
-        _LDM *= strategy.Target_LDM;
-        _LCDM *= strategy.Target_LCDM;
-        _CDM *= strategy.Target_CDM;
-        _RCDM *= strategy.Target_RCDM;
-        _RDM *= strategy.Target_RDM;
-
-        _LM *= strategy.Target_LM;
-        _LCM *= strategy.Target_LCM;
-        _CM *= strategy.Target_CM;
-        _RCM *= strategy.Target_RCM;
-        _RM *= strategy.Target_RM;
-
-        _LAM *= strategy.Target_LAM;
-        _LCAM *= strategy.Target_LCAM;
-        _CAM *= strategy.Target_CAM;
-        _RCAM *= strategy.Target_RCAM;
-        _RAM *= strategy.Target_RAM;
-
-        _LF *= strategy.Target_LF;
-        _LCF *= strategy.Target_LCF;
-        _CF *= strategy.Target_CF;
-        _RCF *= strategy.Target_RCF;
-        _RF *= strategy.Target_RF;
-
-        _ALF *= strategy.Target_ALF;
-        _ARF *= strategy.Target_ARF;
-        _Box *= strategy.Target_Box;
-
+		if(_event != MatchEvent.Goalkick)
+		{
+		    Team_Strategy strategy = GameData.Instance.TeamStrategies[(int)_teamStrategy];
+	        _OwnGoal *= strategy.Target_OwnGoal;
+	        _BLD *= strategy.Target_BLD;
+	        _BRD *= strategy.Target_BRD;
+	
+	        _LD *= strategy.Target_LD;
+	        _LCD *= strategy.Target_LCD;
+	        _CD *= strategy.Target_CD;
+	        _RCD *= strategy.Target_RCD;
+	        _RD *= strategy.Target_RD;
+	
+	        _LDM *= strategy.Target_LDM;
+	        _LCDM *= strategy.Target_LCDM;
+	        _CDM *= strategy.Target_CDM;
+	        _RCDM *= strategy.Target_RCDM;
+	        _RDM *= strategy.Target_RDM;
+	
+	        _LM *= strategy.Target_LM;
+	        _LCM *= strategy.Target_LCM;
+	        _CM *= strategy.Target_CM;
+	        _RCM *= strategy.Target_RCM;
+	        _RM *= strategy.Target_RM;
+	
+	        _LAM *= strategy.Target_LAM;
+	        _LCAM *= strategy.Target_LCAM;
+	        _CAM *= strategy.Target_CAM;
+	        _RCAM *= strategy.Target_RCAM;
+	        _RAM *= strategy.Target_RAM;
+	
+	        _LF *= strategy.Target_LF;
+	        _LCF *= strategy.Target_LCF;
+	        _CF *= strategy.Target_CF;
+	        _RCF *= strategy.Target_RCF;
+	        _RF *= strategy.Target_RF;
+	
+	        _ALF *= strategy.Target_ALF;
+	        _ARF *= strategy.Target_ARF;
+	        _Box *= strategy.Target_Box;
+		}
 
 
         float total =
@@ -355,7 +361,7 @@ public class Field : MonoBehaviour
         list.Add(new KeyValuePair<Zone, float>(Zone.ARF, _ARF));
         list.Add(new KeyValuePair<Zone, float>(Zone.Box, _Box));
 
-	    Zone target = _currentZone;	    
+		Zone target = zone;	    
         float random = Random.Range(0.00001f, 1f);
 	    float cumulative = 0;
 	    
@@ -368,6 +374,7 @@ public class Field : MonoBehaviour
                 break;
             }
         }
-        return target;
+	    if (_isAwayTeam) return GetAwayTeamZone(target);
+	    else return target;
     }
 }

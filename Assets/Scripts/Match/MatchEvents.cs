@@ -50,7 +50,12 @@ public class MatchEvents
 		currentPlay.Attacker = currentPlay.AttackingTeam.Squad[0];
 		currentPlay.Attacker.MatchStats.Saves++;
 		currentPlay.Zone = currentPlay.AttackingTeam.GetTeamZone(Zone.OwnGoal);
-		currentPlay.OffensiveAction = actionManager.GetOffensiveAction(MarkingType.None, currentPlay.Attacker, currentPlay.Zone, false, currentPlay.CounterAttack);
+		currentPlay.Defender = null;
+		currentPlay.Marking = MarkingType.None;
+		currentPlay.OffensiveAction = actionManager.GetOffensiveAction(currentPlay, false);
+		currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay);
+		currentPlay.Event = MatchEvent.None;
+
 		return actionManager.GetActionSuccess(currentPlay, lastPlay);
 	}
 
@@ -76,21 +81,20 @@ public class MatchEvents
 
 	private PlayInfo ResolveGoalAnnounced(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
-		currentPlay = PlayInfo.CopyPlay(lastPlay);
+		//currentPlay = PlayInfo.CopyPlay(lastPlay);
 		currentPlay.Event = MatchEvent.ScorerAnnounced;
 		return currentPlay;
 	}
 
 	private PlayInfo ResolveScorerAnnounced(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
-		currentPlay = PlayInfo.CopyPlay(lastPlay);
+		//currentPlay = PlayInfo.CopyPlay(lastPlay);
 		currentPlay.Event = MatchEvent.KickOff;
 		return currentPlay;
 	}
 
 	private PlayInfo ResolveFreekick(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
-		Debug.Log("RESOLVE FREEKICK -- EVT: " + lastPlay.Event.ToString());
 		if(lastPlay.Event != MatchEvent.Offside) currentPlay = PlayInfo.CopyPlay(lastPlay);
 		else currentPlay.Zone = lastPlay.Zone;
 		currentPlay.Attacker = currentPlay.AttackingTeam.GetBestPlayerInArea(currentPlay.Zone, AttributeType.Freekick);
@@ -154,7 +158,6 @@ public class MatchEvents
 		PlayerAction action = PlayerAction.Pass;
 		MarkingType marking = MarkingType.None;
 		Zone zone = _currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone);
-		Debug.Log("FREEKICK ACTION  - ZONE: " + zone + "  ATT TEAM: " + _currentPlay.AttackingTeam);
 		ActionChancePerZone zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
 
 		float pass = player.GetActionChance(PlayerAction.Pass, zoneChance, marking, zone);

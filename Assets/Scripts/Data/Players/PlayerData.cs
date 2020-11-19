@@ -215,7 +215,7 @@ public class PlayerData : ScriptableObject
 		Zones _chancePerZone = GameData.Instance.GetPosChanceData(Team.Strategy, _zone);
         float pct = 0f;
 
-        switch(_zone)
+		switch(Zone)
         {
             case Zone.OwnGoal: pct = _chancePerZone.OwnGoal; break;
             case Zone.BLD: pct = _chancePerZone.BLD; break;

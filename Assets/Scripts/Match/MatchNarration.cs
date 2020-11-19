@@ -21,7 +21,7 @@ public class MatchNarration : MonoBehaviour
 	
 	public class NarrationData
 	{
-		public string Text;
+		public string Text = "NARRATION MISSING";
 		public int Variations = 1;
 		public string Player1 = "MISSING PLAYER 1 NAME";
 		public string Player2 = "MISSING PLAYER 2 NAME";
@@ -43,30 +43,31 @@ public class MatchNarration : MonoBehaviour
 	{
 		NarrationData narData = new NarrationData(); 
 		narData.PlayInfo = _lastPlay;
-		narData.Zone = loc.GetZoneString(_lastPlay.Zone);
-
-		if(_lastPlay.IsActionSuccessful)
-		{
-			narData.Team1 = _lastPlay.AttackingTeam.Name;
-			narData.Team2 = _lastPlay.DefendingTeam.Name;
-			if(_lastPlay.Attacker != null) narData.Player1 = _lastPlay.Attacker.FullName;
-			if(_lastPlay.Defender != null) narData.Player2 = _lastPlay.Defender.FullName;
-		}
-		else
-		{
-			narData.Team2 = _lastPlay.AttackingTeam.Name;
-			narData.Team1 = _lastPlay.DefendingTeam.Name;
-			if(_lastPlay.Attacker != null) narData.Player2= _lastPlay.Attacker.FullName;
-			if(_lastPlay.Defender != null) narData.Player1 = _lastPlay.Defender.FullName;
-		}
+		narData.Zone = loc.GetZoneString(_lastPlay.AttackingTeam.GetTeamZone(_lastPlay.Zone));
+		
+		narData.Team1 = _lastPlay.AttackingTeam.Name;
+		narData.Team2 = _lastPlay.DefendingTeam.Name;
+		if(_lastPlay.Attacker != null) narData.Player1 = _lastPlay.Attacker.FullName;
+		if(_lastPlay.Defender != null) narData.Player2 = _lastPlay.Defender.FullName;
 
 			
 		string tag = "";
 		int variations = 1;
 		bool isNeutral = false;
 		
+		// NO EVENTS
 		if(_lastPlay.Event == MatchEvent.None)
 		{
+			if(!_lastPlay.IsActionSuccessful)
+			{
+				narData.Team2 = _lastPlay.AttackingTeam.Name;
+				narData.Team1 = _lastPlay.DefendingTeam.Name;
+				if(_lastPlay.Attacker != null) narData.Player2= _lastPlay.Attacker.FullName;
+				if(_lastPlay.Defender != null) narData.Player1 = _lastPlay.Defender.FullName;
+				flowDribbles = 0;
+				flowPasses = 0;
+			}
+
 			switch(_lastPlay.OffensiveAction) {
 
 			case PlayerAction.Pass:
@@ -75,23 +76,38 @@ public class MatchNarration : MonoBehaviour
 				{
 					flowPasses++;
 					if (flowPasses == 3) tag = "nar_FlowPasses_";
-					else tag = "nar_Pass_";
-					if (_lastPlay.CounterAttack > 0) tag = "nar_CounterAttack_";
+					else 
+					{
+						switch(_lastPlay.OffenseExcitment) {
+						case -1 : tag = "nar_WorstPass_"; break;
+						case 0 : tag = "nar_Pass_"; break;
+						case 1 : tag = "nar_BestPass_"; break;
+						}
+					}
+					narData.Variations = 3;
+
+					if(_currentPlay.Attacker != null) narData.Player2 = _currentPlay.Attacker.FullName;
+				}
+				else
+				{
+					if(_lastPlay.IsActionDefended) tag = "nar_BlockPass_";
+					else tag = "nar_WrongPass_";
+				}
+				break;
+				
+			case PlayerAction.Cross:
+			
+				if (_lastPlay.IsActionSuccessful)
+				{
+					flowPasses++;
+					tag = "nar_Cross_";
 
 					narData.Player2 = _currentPlay.Attacker.FullName;
 				}
 				else
 				{
-					flowPasses = 0;
-		                
-					if(_lastPlay.IsActionDefended) 
-					{
-						tag = "nar_BlockPass_";
-					}
-					else
-					{
-						tag = "nar_WrongPass_";
-					}
+					if(_lastPlay.IsActionDefended) tag = "nar_BlockPass_";
+					else tag = "nar_WrongCross_";
 				}
 				break;
 	
@@ -104,12 +120,7 @@ public class MatchNarration : MonoBehaviour
 				}
 				else
 				{
-					flowDribbles = 0;
-		                
-					if(_lastPlay.IsActionDefended) 
-					{
-						tag = "nar_BlockDribble_";
-					}
+					if(_lastPlay.IsActionDefended) tag = "nar_BlockDribble_";
 					else tag = "nar_WrongDribble_";
 				}
 				break;
@@ -133,7 +144,16 @@ public class MatchNarration : MonoBehaviour
 				}
 				break;
 			}
+			
+			if(_lastPlay.Marking == MarkingType.Steal) 
+			{
+				narData.Player1 = _lastPlay.Defender.FullName;
+				narData.Player2 = _lastPlay.Attacker.FullName;
+				tag = "nar_Steal_";
+			}
+			if (_lastPlay.CounterAttack == 4) tag = "nar_CounterAttack_";
 		}
+		//EVENTS
 		else
 		{			
 			switch(_lastPlay.Event) {
@@ -211,7 +231,7 @@ public class MatchNarration : MonoBehaviour
 				narData.Player1 = _lastPlay.Defender.FullName;
 				narData.Player2 = _lastPlay.Attacker.FullName;
 				if (_lastPlay.DefenseExcitment == 1) tag = "nar_BestSaveShot_";
-				else if (_lastPlay.DefenseExcitment == -1) tag = "nar_WorstShot";
+				else if (_lastPlay.DefenseExcitment == -1) tag = "nar_WorstSaveShot_";
 				variations = 1;
 				break;
 	

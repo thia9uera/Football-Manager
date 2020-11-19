@@ -43,7 +43,7 @@ public class CalendarScreen : BaseScreen
 		
 		for(int i = startDay; i < endDay; i ++)
 		{
-			matchDay = calendarController.Days[i];
+			matchDay = calendarController.MatchDays[i];
 			calendarDayList[monthDay].Populate(matchDay);
 			monthDay++;
 		}

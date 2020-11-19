@@ -48,31 +48,20 @@ public class TournamentData : ScriptableObject
         return list;
     }
 
-    public MatchData GetNextMatch(bool _isSimulating)
+	public MatchData GetNextMatchInCurrentRound()
     {
         MatchData data = null;
         foreach (MatchData match in Matches)
         {
-            if (_isSimulating)
+            if (match.Round == CurrentRound && !match.isPlayed)
             {
-                if (!match.isPlayed)
-                {
-                    data = match;
-                }
-            }
-            else
-            {
-                if (match.Round == CurrentRound && !match.isPlayed)
-                {
-                    data = match;
-                }
+                data = match;
             }
         }
 
         if (data == null)
         {
-            if (!_isSimulating) CurrentRound++;
-            else CurrentRound = TotalRounds;
+            CurrentRound++;
         }
 
         return data;

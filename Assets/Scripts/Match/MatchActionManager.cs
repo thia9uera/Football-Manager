@@ -35,7 +35,7 @@ public class MatchActionManager
 		playDiceRolls = new PlayDiceRolls();
 	}
 	
-	public PlayInfo GetOffensiveActionResults(PlayInfo _currentPlay, PlayInfo _lastPlay)
+	public PlayInfo GetOffensiveActionRolls(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{		
 		switch (_currentPlay.OffensiveAction)
 		{
@@ -78,9 +78,12 @@ public class MatchActionManager
 		return _currentPlay;
 	}
 	
-	public PlayerAction GetOffensiveAction(MarkingType _marking, PlayerData _player, Zone _zone, bool _headerAvailable, float _counterAttack)
+	public PlayerAction GetOffensiveAction(PlayInfo _playInfo, bool _headerAvailable)
 	{
-		Zone zone = _player.Team.GetTeamZone(_zone);
+		Zone zone = _playInfo.AttackingTeam.GetTeamZone(_playInfo.Zone);
+		MarkingType _marking = _playInfo.Marking;
+		PlayerData _player = _playInfo.Attacker;
+		float _counterAttack = _playInfo.CounterAttack;
 		float bonus = 0;
 
 		ActionChancePerZone zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
@@ -377,17 +380,15 @@ public class MatchActionManager
 	
 	public PlayInfo GetActionSuccess(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
+		MatchEvent lastEvent = _lastPlay != null ? _lastPlay.Event : MatchEvent.None;
+
 		PlayerData attacker = _currentPlay.Attacker;
 		PlayerData defender = null;
 		
 		TeamData attackingTeam = _currentPlay.Attacker.Team;
 		TeamData defendingTeam = null;
 		
-		if(_currentPlay.Defender != null)
-		{
-			defender = _currentPlay.Defender;
-			defendingTeam = _currentPlay.DefendingTeam;
-		}
+		Zone defendingZone = Zone.CM;
 		
 		Zone zone =_currentPlay.Zone;		
 		PlayerAction lastAction = PlayerAction.None;
@@ -397,16 +398,23 @@ public class MatchActionManager
 		float fault = faultChance;
 		float agilityBonus; 
 		
+		if(_currentPlay.Defender != null)
+		{
+			defender = _currentPlay.Defender;
+			defendingTeam = _currentPlay.DefendingTeam;
+			defendingZone = defendingTeam.GetTeamZone(zone);
+		}
+		
 		_currentPlay.AttackFatigueRate = fatigueLow;
 		_currentPlay.DefenseFatigueRate = fatigueLow;		
 		_currentPlay.AttackingBonus = 1;
-		_currentPlay.TargetZone = zone;
+		//_currentPlay.TargetZone = zone;
 		
 		if (_lastPlay != null)
 		{
 			lastAction = _lastPlay.OffensiveAction;
 			isLastActionSuccessful = _lastPlay.IsActionSuccessful;
-			_currentPlay.AttackingBonus = _lastPlay.AttackingBonus;
+			if(isLastActionSuccessful)_currentPlay.AttackingBonus = _lastPlay.AttackingBonus;
 		}
 	          
 		//If attacker has no action = fail
@@ -415,12 +423,12 @@ public class MatchActionManager
 			_currentPlay.IsActionSuccessful = false;
 			return _currentPlay;
 		}
-		else _currentPlay = GetOffensiveActionResults(_currentPlay, _lastPlay);
+		else _currentPlay = GetOffensiveActionRolls(_currentPlay, _lastPlay);
 		
 		_currentPlay = playDiceRolls.GetAttackRollResult(_currentPlay);
 		_currentPlay.AttackerRoll *= attacker.FatigueModifier();
 		if(_currentPlay.AttackerRoll <= 0) return _currentPlay;
-		
+
 		//Check if tackling is really happening  
 		if (defender == null)
 		{
@@ -429,10 +437,10 @@ public class MatchActionManager
 		}
 		else
 		{
-			float tackleChance = 0.75f * GameData.Instance.ActionChancePerZone[(int)zone].Tackle * defender.Prob_Tackling;
+			float tackleChance = 0.75f * GameData.Instance.ActionChancePerZone[(int)defendingZone].Tackle * defender.Prob_Tackling;
 			if (marking == MarkingType.Close) tackleChance *= 1.25f;
 
-			if (defender.Team.IsStrategyApplicable(defendingTeam.GetTeamZone(zone)))
+			if (defender.Team.IsStrategyApplicable(defendingZone))
 			{
 				tackleChance *= GameData.Instance.TeamStrategies[(int)defender.Team.Strategy].TacklingChance;
 			}
@@ -464,11 +472,11 @@ public class MatchActionManager
 
 			else
 			{
-				_currentPlay.IsActionSuccessful |= _currentPlay.AttackerRoll > _currentPlay.DefenderRoll;
+				_currentPlay.IsActionSuccessful = _currentPlay.AttackerRoll > _currentPlay.DefenderRoll;
 				_currentPlay.IsActionDefended = !_currentPlay.IsActionSuccessful;
 			}
 
-			defender.MatchStats.Tackles++;
+			defender.MatchStats.Tackles++;		
 		}
 
 		else
@@ -477,37 +485,11 @@ public class MatchActionManager
 			float bonus = (float)attacker.GetOverall() / 100;
 			if (bonus > 0) difficulty -= bonus;
 
-			_currentPlay.IsActionSuccessful |= _currentPlay.AttackerRoll > difficulty;
+			_currentPlay.IsActionSuccessful = _currentPlay.AttackerRoll > difficulty;
 		}
 
-		attacker.Fatigue -= _currentPlay.AttackFatigueRate * (25 / (float)attacker.Stamina);
-
-		if (defender == null) _currentPlay.DefensiveAction = PlayerAction.None;
-		else defender.Fatigue -= _currentPlay.DefenseFatigueRate * (25 / (float)defender.Stamina);
-
+		if(defender != null) defender.Fatigue -= _currentPlay.DefenseFatigueRate * (25 / (float)defender.Stamina); 
 		return _currentPlay;
-	}
-	
-	private bool CheckOffside(PlayInfo _currentPlay, PlayInfo _lastPlay)
-	{
-		if (_lastPlay.OffensiveAction == PlayerAction.Pass || _lastPlay.OffensiveAction == PlayerAction.Cross || _lastPlay.OffensiveAction == PlayerAction.LongPass || _lastPlay.OffensiveAction == PlayerAction.ThroughPass)
-		{
-			if((int)_currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone) > 14 && _currentPlay.Event == MatchEvent.None) //AFTER MIDFIELD
-			{
-				float offside = offsideChance;
-				if (_currentPlay.Defender != null)
-				{
-					offside *= _currentPlay.Defender.Prob_OffsideLine;
-					if (_currentPlay.DefendingTeam.IsStrategyApplicable(_currentPlay.DefendingTeam.GetTeamZone(_currentPlay.Zone)))
-						offside *= GameData.Instance.TeamStrategies[(int)_currentPlay.DefendingTeam.Strategy].OffsideTrickChance;
-				}
-            
-				return (offside >= Random.Range(0f, 1f));
-			}
-			else return false;
-		}
-		else return false;
-		
 	}
 	
 	public PlayInfo ResolveAction(PlayInfo _currentPlay, PlayInfo _lastPlay)
@@ -534,12 +516,11 @@ public class MatchActionManager
 				currentPlay.Event = MatchEvent.ShotOnGoal;
 			}
 			else 
-			{
-				
+			{				
 				if(currentPlay.Event == MatchEvent.KickOff) currentPlay.TargetZone = Zone.CM;
-				else currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay.Zone, currentPlay.Event, currentPlay.OffensiveAction, currentPlay.Attacker.Team.Strategy);
-				switch(currentPlay.OffensiveAction){
-					
+				else currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay);
+				switch(currentPlay.OffensiveAction)
+				{					
 					case PlayerAction.LongPass:
 					case PlayerAction.Pass:
 						currentPlay.Attacker.MatchStats.Passes++;
@@ -601,13 +582,35 @@ public class MatchActionManager
 		return currentPlay;
 	}
 	
+	private bool CheckOffside(PlayInfo _currentPlay, PlayInfo _lastPlay)
+	{
+		if (_lastPlay.OffensiveAction == PlayerAction.Pass || _lastPlay.OffensiveAction == PlayerAction.Cross || _lastPlay.OffensiveAction == PlayerAction.LongPass || _lastPlay.OffensiveAction == PlayerAction.ThroughPass)
+		{
+			if((int)_currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone) > 22 && _currentPlay.Event == MatchEvent.None) //AFTER MIDFIELD
+			{
+				float offside = offsideChance;
+				if (_currentPlay.Defender != null)
+				{
+					offside *= _currentPlay.Defender.Prob_OffsideLine;
+					if (_currentPlay.DefendingTeam.IsStrategyApplicable(_currentPlay.DefendingTeam.GetTeamZone(_currentPlay.Zone)))
+						offside *= GameData.Instance.TeamStrategies[(int)_currentPlay.DefendingTeam.Strategy].OffsideTrickChance;
+				}
+            
+				return (offside >= Random.Range(0f, 1f));
+			}
+			else return false;
+		}
+		else return false;
+		
+	}
+	
 	public float CheckCounterAttack(TeamData _defendingTeam, Zone _zone)
 	{
 		float counterAttack = counterAttackChance;
 		counterAttack *= GameData.Instance.TeamStrategies[(int)_defendingTeam.Strategy].CounterAttackChance;
 		float counterRoll = Random.Range(0, 1f);
 
-		if ((int)_defendingTeam.GetTeamZone(_zone) < 17 && counterAttack > counterRoll)
+		if ((int)_zone < 17 && counterAttack > counterRoll)
 		{
 			counterAttack = 4;
 			_defendingTeam.MatchStats.CounterAttacks++;
