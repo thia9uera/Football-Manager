@@ -399,7 +399,6 @@ public class MatchController : MonoBehaviour
 	{
 		//Populate(nextMatch, isSimulatingMatch);
 		//StartSimulation();
-		Debug.LogFormat("MATCH ENDED - {0} x {1}", homeTeam.Name, awayTeam.Name);
 		screen.ShowSimulationScreen();
 		CalendarController.Instance.UpdateCalendar();
 	}

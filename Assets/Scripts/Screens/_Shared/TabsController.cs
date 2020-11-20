@@ -9,12 +9,12 @@ public class TabsController : MonoBehaviour
 	
 	public TabScreen manager;
 	
-	private ScreenType selectedTabType;
+	public ScreenType SelectedTabType = ScreenType.Squad;
 	
 	public void OnTabSelected(ScreenType _screen)
 	{
 		manager.ShowScreen(_screen);
-		selectedTabType = _screen;
+		SelectedTabType = _screen;
 		UpdateTabs();
 	}
 	
@@ -22,7 +22,7 @@ public class TabsController : MonoBehaviour
 	{
 		foreach(DefaultTab tab in tabList)
 		{
-			if(tab.Screen == _screen) tab.OnValueChanged();
+			if(tab.Screen == _screen) tab.OnClickManger();
 		}
 	}
 	
@@ -30,7 +30,7 @@ public class TabsController : MonoBehaviour
 	{
 		foreach(DefaultTab tab in tabList)
 		{
-			tab.Enable(tab.Screen != selectedTabType);
+			tab.Enable(tab.Screen != SelectedTabType);
 		}
 	}
 	

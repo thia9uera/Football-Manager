@@ -1474,9 +1474,9 @@ MonoBehaviour:
     Google_SpreadsheetName: I2Loc Football Manager Localization
     Google_LastUpdatedVersion: 1605815691091
     Google_Password: f00tbalzin
-    GoogleUpdateFrequency: 3
-    GoogleInEditorCheckFrequency: 2
-    GoogleUpdateSynchronization: 0
+    GoogleUpdateFrequency: 1
+    GoogleInEditorCheckFrequency: 1
+    GoogleUpdateSynchronization: 1
     GoogleUpdateDelay: 5
     Assets: []
     Spreadsheet_LocalFileName: 

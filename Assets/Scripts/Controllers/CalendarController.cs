@@ -76,9 +76,7 @@ public class CalendarController : MonoBehaviour
 		}
 		else 
 		{
-			Debug.Log("NO MORE GAMES ON DAY " + CurrentDay);
 			GoToNextBusyDay();
-			//ScreenController.Instance.ShowScreen(ScreenType.Manager);
 		}
 	}
 	
@@ -95,7 +93,7 @@ public class CalendarController : MonoBehaviour
 				break;
 			}
 		}
-		Debug.Log("NEXT BUSY DAY IS " + CurrentDay);
+
 		if(finishYear) FinishYear();
 		else UpdateCalendar();
 	}

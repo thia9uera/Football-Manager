@@ -13,16 +13,23 @@ public class ManagerScreen : TabScreen
 	
 	[Space(10)]
 	[SerializeField] private TMP_Text teamNameLabel = null;
+	[SerializeField] private TabsController tabs = null;
 	
 	[Space(10)]
 	[SerializeField] private MatchButton nextMatchButton = null;
+	
+	private void Awake()
+	{
+		InitializeList();
+	}
 	
 	public override void Show()
 	{
 		base.Show();
 		
-		InitializeList();
-		Tabs.SelectTab(ScreenType.Squad);
+		if(tabs.SelectedTabType == ScreenType.None) Tabs.SelectTab(ScreenType.Squad);
+		else Tabs.SelectTab(tabs.SelectedTabType);
+
 		teamNameLabel.text = MainController.Instance.UserTeam.Name;
 		nextMatchButton.Populate(CalendarController.Instance.NextUserMatchData);
 	}

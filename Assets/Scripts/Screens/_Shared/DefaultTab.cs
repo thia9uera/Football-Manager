@@ -14,7 +14,7 @@ public class DefaultTab : MonoBehaviour
 		controller = GetComponentInParent<TabsController>();
 	}
 	
-	public void OnValueChanged()
+	public void OnClickManger()
 	{
 		controller.OnTabSelected(Screen);
 	}
