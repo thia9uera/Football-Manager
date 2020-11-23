@@ -163,14 +163,16 @@ public class MatchController : MonoBehaviour
 	        currentPlay.AttackingTeam = homeTeam;
 	        currentPlay.DefendingTeam = awayTeam;
             
-	        currentPlay = ResolveKickOff(currentPlay);
-	        screen.Narration.SetNarrationText("nar_KickOff_1");
+	        //currentPlay = matchEvents.GetEventResults(currentPlay, null);
+	        screen.Narration.SetNarrationText("nar_PreMatch_1");
 	        evt = true;
         }
 	    //Half time
         else if (!secondHalfStarted && currentPlay.Turn >= 45 && lastPlay.Event == MatchEvent.None)
         {
-	        currentPlay.Event = MatchEvent.HalfTime;
+	        lastPlay.Event = MatchEvent.HalfTime;
+	        currentPlay.Zone = Zone.CM;
+	        currentPlay.OffensiveAction = PlayerAction.None;
             secondHalfStarted = true;
 	        currentPlay = ResolveEvents(currentPlay, lastPlay);
 	        evt = true;
@@ -178,7 +180,8 @@ public class MatchController : MonoBehaviour
 	    //Time off
         else if (currentPlay.Turn >= 90 && lastPlay.Event == MatchEvent.None)
         {
-	        currentPlay.Event = MatchEvent.FullTime;
+	        lastPlay.Event = MatchEvent.FullTime;
+	        currentPlay.Zone = Zone.CM;
 	        currentPlay = ResolveEvents(currentPlay, lastPlay);
 	        evt = true;
         }						
@@ -214,24 +217,11 @@ public class MatchController : MonoBehaviour
 		switch (_lastPlay.Event)
 		{
 			default : return matchEvents.GetEventResults(_currentPlay, _lastPlay);
-			case MatchEvent.KickOff: return ResolveKickOff(_currentPlay);
 			case MatchEvent.HalfTime: return ResolveHalfTime(_currentPlay);
-			case MatchEvent.SecondHalfKickOff: return ResolveKickOff(_currentPlay);
 			case MatchEvent.FullTime: ResolveFullTime(_currentPlay); break;
 		}		
 		
 		return _currentPlay;
-	}
-	
-	private PlayInfo ResolveKickOff(PlayInfo _playInfo)
-	{
-		_playInfo.Zone = Zone.CM;
-		_playInfo.Attacker = _playInfo.AttackingTeam.GetAttackingPlayer(_playInfo.Zone, null, true);
-		_playInfo.Defender = null;
-		_playInfo.OffensiveAction = PlayerAction.Pass;
-		_playInfo.Event = MatchEvent.None;
-		_playInfo = actionManager.ResolveAction(_playInfo, null);	
-		return _playInfo;
 	}
 
 	private PlayInfo ResolveHalfTime(PlayInfo _playInfo)

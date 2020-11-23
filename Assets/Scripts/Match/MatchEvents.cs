@@ -30,7 +30,32 @@ public class MatchEvents
 			case MatchEvent.PenaltySaved :
 			case MatchEvent.ShotSaved: return ResolveShotSaved(_currentPlay, _lastPlay);
 			case MatchEvent.CornerKick: return ResolveCornerKick(_currentPlay, _lastPlay);
+			case MatchEvent.SecondHalfKickOff: return ResolveSecondHalfKickOff(_currentPlay, _lastPlay);
+			case MatchEvent.KickOff: return ResolveKickOff(_currentPlay, _lastPlay);
 		}
+	}
+	
+	private PlayInfo ResolveKickOff(PlayInfo _playInfo, PlayInfo _lastPlay)
+	{
+		if(_lastPlay != null) _playInfo = PlayInfo.CopyPlay(_lastPlay);
+		_playInfo.Zone = Zone.CM;
+		_playInfo.Attacker = _playInfo.AttackingTeam.GetAttackingPlayer(_playInfo.Zone, null, true);
+		_playInfo.Defender = null;
+		_playInfo.OffensiveAction = PlayerAction.Pass;
+		_playInfo.Event = MatchEvent.None;
+		_playInfo = actionManager.ResolveAction(_playInfo, null);	
+		return _playInfo;
+	}
+
+	private PlayInfo ResolveSecondHalfKickOff(PlayInfo _currentPlay, PlayInfo _lastPlay)
+	{
+		_currentPlay = PlayInfo.CopyPlay(_lastPlay);
+		_currentPlay.Attacker = _currentPlay.AttackingTeam.GetAttackingPlayer(_currentPlay.Zone, null, true);
+		_currentPlay.Defender = null;
+		_currentPlay.OffensiveAction = PlayerAction.Pass;
+		_currentPlay.Event = MatchEvent.None;
+		_currentPlay = actionManager.ResolveAction(_currentPlay, null);	
+		return _currentPlay;
 	}
 
 	private PlayInfo ResolveShotOnGoal(PlayInfo currentPlay, PlayInfo lastPlay)
@@ -145,9 +170,12 @@ public class MatchEvents
 		currentPlay.Zone = currentPlay.DefendingTeam.GetTeamZone(Zone.OwnGoal);
 		currentPlay.Defender = null;
 		currentPlay.Marking = MarkingType.None;
+		currentPlay.DefensiveAction = PlayerAction.None;
 		currentPlay.OffensiveAction = PlayerAction.Cross;
 		currentPlay.Event = MatchEvent.None;
-		return actionManager.ResolveAction(currentPlay, lastPlay);
+		currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay);
+		currentPlay.IsActionSuccessful = true;
+		return currentPlay;
 	}
 
 	private PlayInfo ResolveShotMissed(PlayInfo currentPlay, PlayInfo lastPlay)

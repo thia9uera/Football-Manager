@@ -67,7 +67,11 @@ public class CalendarController : MonoBehaviour
 		
 		if(matchDay.HasUnplayedMatches(out nextMatch))
 		{
-			if(nextMatch.IsUserMatch) ScreenController.Instance.ShowScreen(ScreenType.Manager);
+			if(nextMatch.IsUserMatch) 
+			{
+				DataController.Instance.SaveGame();
+				ScreenController.Instance.ShowScreen(ScreenType.Manager);
+			}
 			else MatchController.Instance.Populate(nextMatch, true);
 		}
 		else 

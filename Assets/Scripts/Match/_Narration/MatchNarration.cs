@@ -280,7 +280,6 @@ public class MatchNarration : MonoBehaviour
 			if(_lastPlay.IsActionDefended) 
 			{
 				SetNarrationPlayers(narData, _lastPlay.Defender, _lastPlay.Attacker);
-				Debug.LogFormat("{0} stopped the dribble from {1}  - TURN {2}", _lastPlay.Defender.FullName, _lastPlay.Attacker.FullName, _lastPlay.Turn);
 				narData.Text = "nar_BlockDribble_";			
 			}
 			else 
@@ -495,9 +494,9 @@ public class MatchNarration : MonoBehaviour
 	private NarrationData GetShotMissedNarration(PlayInfo _lastPlay)
 	{
 		NarrationData narData = new NarrationData();
-		narData.Text = "nar_Fault_";
-		narData.Variations = 5;
-		SetNarrationPlayers(narData, _lastPlay.Defender, _lastPlay.Attacker);
+		narData.Text = "nar_ShotMissed_";
+		narData.Variations = 2;
+		SetNarrationPlayers(narData, _lastPlay.Attacker, _lastPlay.Defender);
 		return narData;
 	}
 	

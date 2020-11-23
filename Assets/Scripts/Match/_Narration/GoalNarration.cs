@@ -7,7 +7,7 @@ public class GoalNarration : MonoBehaviour
 	
 	public void Show(string _narrationText)
 	{
-		narrationLabel.text = _narrationText;
+		if(_narrationText != "") narrationLabel.text = _narrationText;
 		gameObject.SetActive(true);
 	}
 	
