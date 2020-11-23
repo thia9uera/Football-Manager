@@ -14,7 +14,7 @@ public class GameData : MonoBehaviour
 	public GameColors Colors;
 	
 	[Space(10)]
-	[SerializeField] private PosChanceData[] StrategyPosChanceData = null;
+	[SerializeField] public PosChanceData[] StrategyPosChanceData = null;
 	
 	public Game_Modifier GameModifiers { get { return gameModifierData.game_Modifiers[0]; }}
 	public List<Player_Strategy> PlayerStrategies { get { return playerStrategyData.player_Strategys; }}

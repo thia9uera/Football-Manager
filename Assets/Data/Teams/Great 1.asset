@@ -83,12 +83,9 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 0
       _keyValues:
-      - 
-      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
-      - 
-      - 639ae764-c08c-4c66-a800-3e4b92b433eb
+      - 33d0642a-ee9e-451f-bdb5-cf5f23c26cc1
       _keys:
-      - 
+      - 33d0642a-ee9e-451f-bdb5-cf5f23c26cc1
       _values:
       - Points: 0
         Wins: 0

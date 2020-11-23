@@ -232,6 +232,7 @@ PlayerSettings:
   metalEditorSupport: 1
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
+  iosCopyPluginsCodeInsteadOfSymlink: 0
   appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
@@ -557,6 +558,7 @@ PlayerSettings:
     27: TextMeshPro
     28: TextMeshPro
     29: TextMeshPro
+    30: TextMeshPro
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

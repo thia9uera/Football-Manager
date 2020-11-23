@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if (UNITY_EDITOR)
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -23,3 +24,4 @@ public class TournamentCreationMatchTeam : MonoBehaviour
         TournamentCreation.Instance.RemoveTeam(data.Id);
     }
 }
+#endif

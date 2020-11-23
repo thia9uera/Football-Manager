@@ -165,8 +165,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - <size=40>GOOOOAAAAAL!!!
-      - <size=40>GOOOOOOOOOOOOOOL!!!
+      - <size=100>GOOOAAAL!!!
+      - <size=100>GOOOOOL!!!
       Flags: 0000
       Languages_Touch: []
     - Term: nar_Goal_1
@@ -422,7 +422,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} blocks the pass from {PLAYER_2}'
-      - '{PLAYER_1} bloqueia o passe de {PLAYER_1}'
+      - '{PLAYER_1} bloqueia o passe de {PLAYER_2}'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_BestBlockPass_1
@@ -566,7 +566,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - '{PLAYER_1} runs alone'
-      - "{PLAYER_1} avan\xE7a sozinho"
+      - "{PLAYER_1} avan\xE7a livre"
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongSprint_1
@@ -589,7 +589,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} tries the shot...'
+      - '{PLAYER_1} prepares the shot...'
       - '{PLAYER_1} ajeita pra chutar...'
       Flags: 0000
       Languages_Touch: []
@@ -597,7 +597,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} tries the shot...'
+      - '{PLAYER_1} goes for the shot...'
       - '{PLAYER_1} prepara o chute...'
       Flags: 0000
       Languages_Touch: []
@@ -709,7 +709,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} gives away teh goal kick'
+      - '{PLAYER_1} gives away the goal kick'
       - '{PLAYER_1} cobra mal o tiro de meta'
       Flags: 0000
       Languages_Touch: []
@@ -1472,7 +1472,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1605815691091
+    Google_LastUpdatedVersion: 1606074380316
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1

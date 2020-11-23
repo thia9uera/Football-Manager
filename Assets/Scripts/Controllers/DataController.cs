@@ -50,9 +50,7 @@ public class DataController : MonoBehaviour
         if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
         if (Directory.Exists(userFolder))
         {
-            EditorUtility.DisplayDialog("File name already exists",
-                                        "Please choose a different name for you save file.",
-                                        "OK");
+	        Debug.LogError("File name " + userFolder + " already exists.");
         }
         else
         {
@@ -78,9 +76,7 @@ public class DataController : MonoBehaviour
 		
 		       
 		if(_loadAfter) LoadGame(mainController.User.Id);
-		else print("GAME SAVED");
-
-		print(saveFolder);
+		else Debug.Log("GAME SAVED");
 	}
 	
 	public void QuickSave()
@@ -93,7 +89,7 @@ public class DataController : MonoBehaviour
 		yield return StartCoroutine("SaveTeamPlayer", mainController.UserTeam.AllPlayers);
 		yield return StartCoroutine("SaveTeam", mainController.UserTeam);
 		
-		print("GAME SAVED");
+		Debug.Log("GAME SAVED");
 	}
 
 	private IEnumerator SaveUser()
@@ -160,7 +156,7 @@ public class DataController : MonoBehaviour
 		yield return StartCoroutine("LoadTeams");
 		yield return StartCoroutine("LoadTournaments");
 		
-		CalendarController.Instance.InitializeCalendar();
+		CalendarController.Instance.InitializeCalendar(MainController.Instance.User.CurrentYear);
 		ScreenController.Instance.ShowScreen(ScreenType.Manager);
 	}
 

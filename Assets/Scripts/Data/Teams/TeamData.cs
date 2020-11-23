@@ -317,7 +317,7 @@ public class TeamData : ScriptableObject
 
 		foreach (PlayerData player in Squad)
 		{
-			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
+			chance = Field.Instance.CalculatePresence(player, zone);
 
 			if (_forcePlayer)
 			{
@@ -345,7 +345,7 @@ public class TeamData : ScriptableObject
 
 		foreach (PlayerData player in Squad)
 		{
-			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
+			chance = Field.Instance.CalculatePresence(player, zone);
 			if (chance > 0f) players.Add(player);
               
 		}
@@ -362,11 +362,12 @@ public class TeamData : ScriptableObject
 		List<PlayerData> players = new List<PlayerData>();
 		foreach (PlayerData player in Squad)
 		{
-			chance = Field.Instance.CalculatePresence(player, zone, Strategy);
+			chance = Field.Instance.CalculatePresence(player, zone);
 			if (_counterAttack > 0)
 			{
 				chance *= 0.5f;
 			}
+			
 			if (chance >= 1f)
 			{
 				players.Add(player);

@@ -2,10 +2,10 @@
 {
 	public int Turn;
 	
-	public TeamData AttackingTeam;
-	public TeamData DefendingTeam;
+	public TeamData AttackingTeam = null;
+	public TeamData DefendingTeam = null;
 	
-	public PlayerData Attacker;
+	public PlayerData Attacker = null;
 	public float AttackerRoll;
 	public int AttackingBonusChance;
 	public float AttackingBonus = 1;
@@ -13,7 +13,7 @@
 	public PlayerAction OffensiveAction;
 	public bool IsActionSuccessful;
 
-	public PlayerData Defender;
+	public PlayerData Defender = null;
 	public float DefenderRoll;
 	public int DefendingBonusChance;
 	public float DefendingBonus = 1;
@@ -23,7 +23,7 @@
 
 	public MarkingType Marking;
 	public MatchEvent Event;
-	public PlayerData Assister;
+	public PlayerData Assister = null;
 	public int OffenseExcitment;
 	public int DefenseExcitment;
 	public Zone Zone;

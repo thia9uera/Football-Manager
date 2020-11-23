@@ -108,6 +108,7 @@ public enum MatchEvent
 	HalfTime,
 	FullTime,
 	Fault,
+	PenaltyShot,
 }
 
 public enum MarkingType
@@ -146,4 +147,10 @@ public enum SynergyGroup
     Evil,
     NeutralGood,
     NeutralEvil
+}
+
+public enum NarrationType
+{
+	Default,
+	GoalCelebration
 }

@@ -15,20 +15,21 @@ public class MatchEvents
 	{		
 		switch (_lastPlay.Event)
 		{
-		default :
-		case MatchEvent.None : return _currentPlay;
-		case MatchEvent.ShotOnGoal: return ResolveShotOnGoal(_currentPlay, _lastPlay);
-		case MatchEvent.Goal: return ResolveGoal(_currentPlay, _lastPlay);
-		case MatchEvent.GoalAnnounced: return ResolveGoalAnnounced(_currentPlay, _lastPlay); 
-		case MatchEvent.ScorerAnnounced: return ResolveScorerAnnounced(_currentPlay, _lastPlay);
-		case MatchEvent.Offside:
-		case MatchEvent.Fault: return ResolveFreekick(_currentPlay, _lastPlay);
-		case MatchEvent.Penalty: return ResolvePenalty(_currentPlay, _lastPlay);
-		case MatchEvent.Goalkick: return ResolveGoalkick(_currentPlay, _lastPlay);
-		case MatchEvent.ShotMissed: return ResolveShotMissed(_currentPlay, _lastPlay);
-		case MatchEvent.PenaltySaved :
-		case MatchEvent.ShotSaved: return ResolveShotSaved(_currentPlay, _lastPlay);
-		case MatchEvent.CornerKick: return ResolveCornerKick(_currentPlay, _lastPlay);
+			default :
+			case MatchEvent.None : return _currentPlay;
+			case MatchEvent.ShotOnGoal: return ResolveShotOnGoal(_currentPlay, _lastPlay);
+			case MatchEvent.Goal: return ResolveGoal(_currentPlay, _lastPlay);
+			case MatchEvent.GoalAnnounced: return ResolveGoalAnnounced(_currentPlay, _lastPlay); 
+			case MatchEvent.ScorerAnnounced: return ResolveScorerAnnounced(_currentPlay, _lastPlay);
+			case MatchEvent.Offside:
+			case MatchEvent.Fault: return ResolveFreekick(_currentPlay, _lastPlay);
+			case MatchEvent.Penalty: return ResolvePenalty(_currentPlay, _lastPlay);
+			case MatchEvent.PenaltyShot: return ResolvePenaltyShot(_currentPlay, _lastPlay);
+			case MatchEvent.Goalkick: return ResolveGoalkick(_currentPlay, _lastPlay);
+			case MatchEvent.ShotMissed: return ResolveShotMissed(_currentPlay, _lastPlay);
+			case MatchEvent.PenaltySaved :
+			case MatchEvent.ShotSaved: return ResolveShotSaved(_currentPlay, _lastPlay);
+			case MatchEvent.CornerKick: return ResolveCornerKick(_currentPlay, _lastPlay);
 		}
 	}
 
@@ -81,7 +82,8 @@ public class MatchEvents
 
 	private PlayInfo ResolveGoalAnnounced(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
-		//currentPlay = PlayInfo.CopyPlay(lastPlay);
+		currentPlay = PlayInfo.CopyPlay(lastPlay);
+		currentPlay.Zone = Zone.CM;
 		currentPlay.Event = MatchEvent.ScorerAnnounced;
 		return currentPlay;
 	}
@@ -89,6 +91,7 @@ public class MatchEvents
 	private PlayInfo ResolveScorerAnnounced(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
 		//currentPlay = PlayInfo.CopyPlay(lastPlay);
+		currentPlay.Zone = Zone.CM;
 		currentPlay.Event = MatchEvent.KickOff;
 		return currentPlay;
 	}
@@ -121,24 +124,36 @@ public class MatchEvents
 		currentPlay.Attacker = currentPlay.AttackingTeam.GetTopPlayerByAttribute(AttributeType.Penalty, currentPlay.AttackingTeam.Squad);
 		currentPlay.Defender = currentPlay.DefendingTeam.Squad[0];
 		currentPlay.OffensiveAction = PlayerAction.Shot;
+		currentPlay.DefensiveAction = PlayerAction.Save;
 		currentPlay.Marking = MarkingType.None;
-		currentPlay.Event = MatchEvent.ShotOnGoal;
+		currentPlay.Event = MatchEvent.PenaltyShot;
+		currentPlay.Zone = currentPlay.AttackingTeam.GetTeamZone(Zone.Box);
 		return currentPlay;
+	}
+	
+	private PlayInfo ResolvePenaltyShot(PlayInfo currentPlay, PlayInfo lastPlay)
+	{
+		currentPlay = PlayInfo.CopyPlay(lastPlay);
+		currentPlay.Event = MatchEvent.None;
+		
+		return actionManager.GetShotResults(currentPlay, lastPlay);
 	}
 
 	private PlayInfo ResolveGoalkick(PlayInfo currentPlay, PlayInfo lastPlay)
-	{
+	{		
 		currentPlay.Attacker = currentPlay.AttackingTeam.Squad[0];
+		currentPlay.Zone = currentPlay.DefendingTeam.GetTeamZone(Zone.OwnGoal);
 		currentPlay.Defender = null;
-		currentPlay.Zone = currentPlay.AttackingTeam.GetTeamZone(Zone.OwnGoal);
 		currentPlay.Marking = MarkingType.None;
 		currentPlay.OffensiveAction = PlayerAction.Cross;
+		currentPlay.Event = MatchEvent.None;
 		return actionManager.ResolveAction(currentPlay, lastPlay);
 	}
 
 	private PlayInfo ResolveShotMissed(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
 		currentPlay = PlayInfo.CopyPlay(lastPlay);
+		currentPlay.Zone = lastPlay.DefendingTeam.GetTeamZone(Zone.OwnGoal);
 		currentPlay.Event = MatchEvent.Goalkick;
 		return currentPlay;
 	}

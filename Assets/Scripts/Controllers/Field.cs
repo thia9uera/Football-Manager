@@ -68,15 +68,14 @@ public class Field : MonoBehaviour
         return (Zone)zone;
     }
 
-    public float CalculatePresence(PlayerData _player, Zone _zone, TeamStrategy _teamStrategy)
+    public float CalculatePresence(PlayerData _player, Zone _zone)
     {
         float chance = _player.GetChancePerZone(_zone);
-
         if (chance < 1f && chance > 0f)
         {
             chance *= (float)(_player.Speed + _player.Vision) / 200;
             chance *= _player.FatigueModifier();
-        }
+        }	    
         return chance;
     }
 

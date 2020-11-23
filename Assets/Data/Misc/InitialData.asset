@@ -530,6 +530,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 222e082c4b3fc074897eba2d3e2390d7, type: 2}
   - {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}
   AllTournaments:
-  - {fileID: 11400000, guid: 79b4dbc212d974631a60474adcfb6f26, type: 2}
+  - {fileID: 11400000, guid: f7b229787ce6c4d799a6ffd1c5fed9b3, type: 2}
   InitialTournaments:
-  - {fileID: 11400000, guid: 79b4dbc212d974631a60474adcfb6f26, type: 2}
+  - {fileID: 11400000, guid: f7b229787ce6c4d799a6ffd1c5fed9b3, type: 2}

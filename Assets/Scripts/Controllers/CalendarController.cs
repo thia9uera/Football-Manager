@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class CalendarController : MonoBehaviour
@@ -23,12 +24,7 @@ public class CalendarController : MonoBehaviour
 	    //int y = int.Parse(DateTime.Now.ToString("yy"));
 	    //InitializeCalendar(y);
     }
-
-	public void InitializeCalendar()
-	{
-		InitializeCalendar(MainController.Instance.User.CurrentYear);
-	}
-
+	
 	public void InitializeCalendar(int _year)
 	{
 	    CurrentDay = 0;
@@ -43,7 +39,7 @@ public class CalendarController : MonoBehaviour
 	    
         for (int i = 0; i < TOTAL_DAYS_PER_YEAR; ++i)
         {
-	        date = new DateTime(_year, month, day);
+	        date = new DateTime(CurrentYear, month, day);
 	        matchDay = new MatchDay(date);
             MatchDays.Add(matchDay);
             if(day == 28)
@@ -61,7 +57,7 @@ public class CalendarController : MonoBehaviour
 			{
 				MatchDays[matchData.Day].MatchList.Add(matchData);
 			}
-		}
+		}		
 	}
 	
 	public void UpdateCalendar()

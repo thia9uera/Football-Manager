@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
-    Name: Brothers Fist
+    Name: Carniceiros do Diabo
     Tag: CAR
     PrimaryColor: {r: 0.78431374, g: 0.5568628, b: 0.20392157, a: 1}
     SecondaryColor: {r: 0.7019608, g: 0.1764706, b: 0.1764706, a: 1}
@@ -85,22 +85,9 @@ MonoBehaviour:
       reqReferences: {fileID: 0}
       isExpanded: 1
       _keyValues:
-      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
-      - d1e8671b-47f8-4c5b-90b6-f480b2156652
-      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
-      - d1e8671b-47f8-4c5b-90b6-f480b2156652
-      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
-      - d1e8671b-47f8-4c5b-90b6-f480b2156652
-      - 11cdfd71-c7b7-4b19-b773-55efe9ceb20c
-      - d1e8671b-47f8-4c5b-90b6-f480b2156652
-      - 
-      - 
-      - d1e8671b-47f8-4c5b-90b6-f480b2156652
-      - 639ae764-c08c-4c66-a800-3e4b92b433eb
-      - d1e8671b-47f8-4c5b-90b6-f480b2156652
-      - 
+      - 33d0642a-ee9e-451f-bdb5-cf5f23c26cc1
       _keys:
-      - 
+      - 33d0642a-ee9e-451f-bdb5-cf5f23c26cc1
       _values:
       - Points: 0
         Wins: 0

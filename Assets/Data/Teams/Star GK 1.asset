@@ -82,9 +82,7 @@ MonoBehaviour:
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
       isExpanded: 0
-      _keyValues:
-      - 893164c7-7c13-4fab-8b1c-304a4d3755ef
-      - ba96112c-79e7-4b39-8de1-e296964f2cae
+      _keyValues: []
       _keys: []
       _values: []
     IsUserControlled: 0

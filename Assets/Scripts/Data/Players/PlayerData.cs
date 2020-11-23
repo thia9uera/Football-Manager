@@ -213,8 +213,8 @@ public class PlayerData : ScriptableObject
     public float GetChancePerZone(Zone _zone)
 	{
 		Zones _chancePerZone = GameData.Instance.GetPosChanceData(Team.Strategy, _zone);
-        float pct = 0f;
-
+		float pct = 0f;
+        
 		switch(Zone)
         {
             case Zone.OwnGoal: pct = _chancePerZone.OwnGoal; break;
@@ -249,6 +249,12 @@ public class PlayerData : ScriptableObject
             case Zone.ARF: pct = _chancePerZone.ARF; break;
             case Zone.Box: pct = _chancePerZone.Box; break;
         }
+        
+		if(Zone == Zone.OwnGoal && _zone != Zone.OwnGoal && pct > 0)
+		{
+			Debug.LogFormat("{0}   CHANCE: {1}     TEAM STRATEGY: {2}   ZONE: {3}", FullName, pct, Team.Strategy.ToString(), _zone.ToString());
+		}
+        
         return pct;
     }
 
@@ -491,10 +497,16 @@ public class PlayerData : ScriptableObject
             Attributes.TournamentStatistics.Add(new PlayerStatistics(_id));
         }
     }
+    
     public string FullName
     {
 	    get { return FirstName + " " + LastName; } 
     }
+    
+	public string ShortName
+	{
+		get { return FirstName[0] + ". " + LastName; } 
+	}
 
     public bool IsWronglyAssigned()
     {

@@ -13,13 +13,75 @@ MonoBehaviour:
   m_Name: TournamentTemplate
   m_EditorClassIdentifier: 
   Attributes:
-    Id: 
-    Name: Tournament Name
+    Id: Template
+    Name: Torneio Bagual
     Type: 0
-    StarsRequired: 0
-    TeamIds: []
-    Matches: []
-    TotalRounds: 0
+    TeamIds:
+    - 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+    - b847b2bf-48d1-4f19-8951-9f3bba73a393
+    Matches:
+    - HomeTeam:
+        TeamId: 442a93f5-cb75-4bbe-b1ab-57093c7ae49f
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      AwayTeam:
+        TeamId: b847b2bf-48d1-4f19-8951-9f3bba73a393
+        Statistics:
+          Points: 0
+          Wins: 0
+          Losts: 0
+          Draws: 0
+          Goals: 0
+          GoalsAgainst: 0
+          GoalsByHeader: 0
+          Shots: 0
+          Headers: 0
+          Steals: 0
+          Passes: 0
+          Crosses: 0
+          LongPasses: 0
+          PassesMissed: 0
+          CrossesMissed: 0
+          ShotsMissed: 0
+          HeadersMissed: 0
+          BoxCrosses: 0
+          Faults: 0
+          Offsides: 0
+          CornerKicks: 0
+          CounterAttacks: 0
+        Scorers: []
+        YellowCards: []
+        RedCards: []
+      isPlayed: 0
+      Round: 0
+      Day: 9
+      TournamentName: Torneio Bagual
+      TournamentId: 
+    TotalRounds: 1
     CurrentRound: 0
   Teams:
   - {fileID: 11400000, guid: 0523f43fe29815e4ab2a5fd2b6c15610, type: 2}

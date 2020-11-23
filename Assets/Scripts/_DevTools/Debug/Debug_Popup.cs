@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿ #if (UNITY_EDITOR)
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -86,9 +87,11 @@ public class Debug_Popup : MonoBehaviour
         }
 
         gameObject.SetActive(false);
-        Debug_FieldView.Instance.Test();
+	    Debug_FieldView.Instance.Test();
+        #if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(posChandeDatas[(int)Debug_FieldView.Instance.TeamStrategy]);
-        UnityEditor.AssetDatabase.SaveAssets();
+	    UnityEditor.AssetDatabase.SaveAssets();
+        #endif
     }
 
     void Update()
@@ -99,4 +102,5 @@ public class Debug_Popup : MonoBehaviour
         }
     }
 }
+ #endif
 

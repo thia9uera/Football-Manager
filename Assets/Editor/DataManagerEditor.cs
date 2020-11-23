@@ -50,6 +50,16 @@ public class DataManagerEditor
 		TeamData[] teams = Tools.GetAtFolder<TeamData>("Data/Teams");
 		TournamentData[] tournaments = Tools.GetAtFolder<TournamentData>("Data/Tournaments");
 		
+		PosChanceData[] posChanceDataList = Tools.GetAtFolder<PosChanceData>("Data/PosChance");
+		foreach(PosChanceData chanceData in posChanceDataList)
+		{
+			for(int i = 0; i < chanceData.posChancePerZones.Count; i++)
+			{
+				Zones zones = chanceData.posChancePerZones[i];
+				zones.Position = ((Zone)i).ToString();
+			}
+		}
+		
 		initialData.UserTeam = userTeam;
 		initialData.AllPlayers = players.ToList();
 		initialData.AllTeams = teams.ToList();

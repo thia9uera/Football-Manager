@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if (UNITY_EDITOR)
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,7 +69,7 @@ public class Debug_FieldView : MonoBehaviour
         {
             zone = t.GetComponent<Debug_ZoneView>();
 
-	        float chance = Field.Instance.CalculatePresence(TestPlayer, zone.Zone, TeamStrategy);
+	        float chance = Field.Instance.CalculatePresence(TestPlayer, zone.Zone);
 
             if (chance >= 1f)
             {
@@ -102,3 +103,4 @@ public class Debug_FieldView : MonoBehaviour
         Test();
     }
 }
+#endif

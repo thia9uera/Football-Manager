@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if (UNITY_EDITOR)
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -24,6 +25,7 @@ public class TournamentCreation : BaseScreen
 	
 	private InitialData initialData;
 	private TournamentData editingTournament;
+	private bool isNewTournament;
 
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class TournamentCreation : BaseScreen
     
 	private void Start()
 	{
-		CalendarController.Instance.InitializeCalendar(2020);
+		//CalendarController.Instance.InitializeCalendar(2020);
 		initialData = (InitialData) Tools.GetFile<InitialData>("Data/Misc/InitialData.asset");
 		editingTournament = null;
 		Show();
@@ -42,7 +44,6 @@ public class TournamentCreation : BaseScreen
     {
         base.Show();
 	    LoadTournaments();
-	    Debug.Log("INITIAL DATA: " + initialData);
 	    //ChangeType(TournamentType.Championship);
     }
 
@@ -85,13 +86,11 @@ public class TournamentCreation : BaseScreen
     public void CreateTournament()
 	{
 		TournamentData tournament;
-		bool isNew = false;
-		if(editingTournament != null) tournament = editingTournament;
+		if(!isNewTournament) tournament = editingTournament;
 		else 
 		{
 			tournament = ScriptableObject.CreateInstance<TournamentData>();
 			//tournament.Id = Guid.NewGuid().ToString();
-			isNew = true;
 		}
         List<TeamData> teams = new List<TeamData>(TeamList);
         List<MatchData> matches = new List<MatchData>(Championship.DataList);
@@ -115,8 +114,9 @@ public class TournamentCreation : BaseScreen
                 tournament.Attributes.TeamIds = teamIds;
                 break;
         }
-
-		if(isNew) AssetDatabase.CreateAsset(tournament, "Assets/Data/Tournaments/" + tournament.Name + ".asset");
+		
+		if(isNewTournament) AssetDatabase.CreateAsset(tournament, "Assets/Data/Tournaments/" + tournament.Name + ".asset");
+		EditorUtility.SetDirty(tournament);
 	    AssetDatabase.SaveAssets();
 		
         LoadTournaments();
@@ -144,8 +144,17 @@ public class TournamentCreation : BaseScreen
         Options.InputName.text = _data.Name;
 		Options.TypeDropDown.value = (int)_data.Type;
 		Championship.TournmanentName = Options.InputName.text;
-		if(editingTournament.Id == null) Championship.TournamentId = Guid.NewGuid().ToString();
-		else Championship.TournamentId = editingTournament.Id;
+		
+		isNewTournament = editingTournament.Id == "Template";
+		
+		if(isNewTournament) 
+		{
+			Championship.TournamentId = Guid.NewGuid().ToString();		
+		}
+		else
+		{
+			Championship.TournamentId = editingTournament.Id;
+		}
 
         TeamList = new List<TeamData>();
         TeamList = new List<TeamData>(_data.Teams);
@@ -174,3 +183,4 @@ public class TournamentCreation : BaseScreen
 		Championship.TournmanentName = Options.InputName.text;
 	}
 }
+#endif

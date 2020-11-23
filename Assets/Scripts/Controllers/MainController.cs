@@ -40,7 +40,8 @@ public class MainController : MonoBehaviour
     }
 
     public void Start()
-    {
+	{
+		CalendarController.Instance.InitializeCalendar(2020);
 	    if(LocalizationController.Instance != null) LocalizationController.Instance.Initialize();
 	    if(ScreenController.Instance != null) 
 	    {

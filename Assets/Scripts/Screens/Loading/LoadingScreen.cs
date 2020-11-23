@@ -13,8 +13,6 @@ public class LoadingScreen : BaseScreen
 	private UserData[] saves;
 
 	private float time;
-	private int loaded;
-	private int total;
 	private bool isLoaded;
 	
 	private ScreenType screenToShowAfterLoad;
@@ -47,41 +45,9 @@ public class LoadingScreen : BaseScreen
 		ScreenController.Instance.ShowScreen(screenToShowAfterLoad);
 	}
 
-	public void LoadBundles()
-    {
-	    ResetVariables();
-	    screenToShowAfterLoad = ScreenType.Start;
-
-        AssetBundle bundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "data_bundle"));
-        if (bundle == null)
-        {
-            label.text = "Failed to load AssetBundle =[";
-            return;
-        }
-
-        Object[] list = bundle.LoadAllAssets();
-        total = list.Length;
-        foreach(Object obj in list)
-        {
-	        loaded++;
-            if (obj is PlayerData) MainController.Instance.AllPlayers.Add((PlayerData)obj);
-            else if (obj is TeamData) 
-            {
-            	TeamData teamData = (TeamData)obj;
-            	MainController.Instance.AllTeams.Add(teamData);
-            	if(teamData.IsUserControlled) MainController.Instance.UserTeam = teamData;
-            }
-            else if (obj is TournamentData) MainController.Instance.AllTournaments.Add((TournamentData)obj);
-        }
-
-        if (loaded == total) isLoaded = true;
-    }
-
 	private void ResetVariables()
 	{
 		time = Time.time;
-		loaded = 0;
-		total = 0;
 		isLoaded = false;
 	}
 

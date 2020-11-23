@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if (UNITY_EDITOR)
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,3 +45,4 @@ public class Debug_ZoneView : MonoBehaviour
         Debug_FieldView.Instance.Popup.ShowPopup(chance, Zone);
     }
 }
+#endif

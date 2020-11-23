@@ -1,4 +1,5 @@
-﻿using PrimitiveUI;
+﻿#if (UNITY_EDITOR)
+using PrimitiveUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -222,10 +223,11 @@ public class FormationSetup : MonoBehaviour
     }
 
     public void SaveChanges()
-    {
+	{
         if (formationZones.Count < 11)
         {
-            EditorUtility.DisplayDialog("NOT ENOUGH ZONES", "This formation has less than 11 zones", "OK");
+        	
+	        EditorUtility.DisplayDialog("NOT ENOUGH ZONES", "This formation has less than 11 zones", "OK");
             return;
         }
 
@@ -244,7 +246,7 @@ public class FormationSetup : MonoBehaviour
         EditorUtility.SetDirty(Formation);
         AssetDatabase.SaveAssets();
 
-        UpdateConnections();
+		UpdateConnections();
     }
 
     public void CreateNew()
@@ -252,10 +254,13 @@ public class FormationSetup : MonoBehaviour
         FormationData data = ScriptableObject.CreateInstance<FormationData>();
         data.Name = "0-0-0";
         data.Zones = new Zone[] { Zone.OwnGoal };
-        data.Connections = new List<FormationData.Connection>();
+	    data.Connections = new List<FormationData.Connection>();
+        #if UNITY_EDITOR
         AssetDatabase.CreateAsset(data, folder + data.Name + ".asset");
-        AssetDatabase.SaveAssets();
+	    AssetDatabase.SaveAssets();
+        #endif
         Formation = data;
         Populate();
     }
 }
+#endif

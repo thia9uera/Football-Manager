@@ -314,7 +314,7 @@ public class MatchActionManager
 				_currentPlay.AttackerRoll = ActionRoll.Freekick(attacker);
 				_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Freekick);
 			}
-			else if (_lastPlay.Event == MatchEvent.Penalty)
+			else if (_lastPlay.Event == MatchEvent.PenaltyShot)
 			{
 				_currentPlay.AttackerRoll = ActionRoll.Penalty(attacker);
 				_currentPlay.AttackingBonusChance = GetPlayerAttributeBonus(attacker.Penalty);
@@ -350,7 +350,7 @@ public class MatchActionManager
 			if (_currentPlay.DefenseExcitment == 0 && roll < 5) _currentPlay.Event = MatchEvent.CornerKick;
 			else
 			{
-				_currentPlay.Event = _lastPlay.Event == MatchEvent.Penalty ? MatchEvent.PenaltySaved : MatchEvent.ShotSaved;
+				_currentPlay.Event = _lastPlay.Event == MatchEvent.PenaltyShot ? MatchEvent.PenaltySaved : MatchEvent.ShotSaved;
 				if (_currentPlay.OffensiveAction == PlayerAction.Shot) _currentPlay.Attacker.MatchStats.ShotsOnGoal++;
 				else if (_currentPlay.OffensiveAction == PlayerAction.Header) _currentPlay.Attacker.MatchStats.HeadersOnGoal++;
 			}
@@ -500,11 +500,17 @@ public class MatchActionManager
 		MarkingType marking = currentPlay.Marking;
 		PlayerAction offensiveAction = currentPlay.OffensiveAction;
 
-		if(_lastPlay != null && CheckOffside(_currentPlay, _lastPlay))
+		if(_lastPlay != null)
 		{
-			_currentPlay.Event = MatchEvent.Offside;
-			_currentPlay.IsActionSuccessful = false;
-			return _currentPlay;
+			if (_lastPlay.OffensiveAction == PlayerAction.Pass || _lastPlay.OffensiveAction == PlayerAction.LongPass || _lastPlay.OffensiveAction == PlayerAction.Cross)
+			{
+				if(CheckOffside(_currentPlay, _lastPlay))
+				{
+					_currentPlay.Event = MatchEvent.Offside;
+					_currentPlay.IsActionSuccessful = false;
+					return _currentPlay;
+				}
+			}
 		}
 
 		currentPlay = GetActionSuccess(currentPlay, lastPlay);
