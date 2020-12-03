@@ -30,7 +30,7 @@ public class ManagerScreen : TabScreen
 		if(tabs.SelectedTabType == ScreenType.None) Tabs.SelectTab(ScreenType.Squad);
 		else Tabs.SelectTab(tabs.SelectedTabType);
 
-		teamNameLabel.text = MainController.Instance.UserTeam.Name;
+		teamNameLabel.text = MainController.Instance.UserTeam.Name + " (" + MainController.Instance.UserTeam.OveralRating + ")";
 		nextMatchButton.Populate(CalendarController.Instance.NextUserMatchData);
 	}
 	
@@ -47,7 +47,8 @@ public class ManagerScreen : TabScreen
 	
 	public void OnMatchButtonPressed()
 	{
-		ScreenController.Instance.Match.Populate(CalendarController.Instance.NextUserMatchData);
+		ScreenController.Instance.Manager.SquadScreen.Hide();
 		ScreenController.Instance.ShowScreen(ScreenType.Match);
+		ScreenController.Instance.Match.Populate(CalendarController.Instance.NextUserMatchData);
 	}
 }

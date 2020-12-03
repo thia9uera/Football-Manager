@@ -30,7 +30,6 @@ public class StartScreen : BaseScreen
 	private List<LoadingFileButton> savedGameBtnList;
 	
 	private UserData[] saves;
-	private Sequence sequence;
 	private MenuType currentMenu = MenuType.Start;
 	
 	private const float FADE_IN_TIME = 0.5f;

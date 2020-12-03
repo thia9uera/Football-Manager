@@ -58,7 +58,7 @@ public class MatchController : MonoBehaviour
 	    if(_isSimulating) StartSimulation();
     }
 
-    public void UpdateTeams(List<PlayerData> _in, List<PlayerData> _out)
+	public void UpdateHomeTeam(TeamData _teamData, List<PlayerData> _in, List<PlayerData> _out)
     {
         if (_in.Count > 0)
         {
@@ -78,15 +78,17 @@ public class MatchController : MonoBehaviour
 	            if (i == 0) playersOut += player.FullName;
 	            else playersOut += ", " + player.FullName;
             }
-            
-	        //screen.Narration.UpdateNarration(playersIn, TeamDisplayColor(UserTeam));
-	        //screen.Narration.UpdateNarration(playersOut, TeamDisplayColor(UserTeam));
         }
-
-        PauseGame(false);
-
-        screen.HomeTeamSquad.Populate(homeTeam);
-        screen.AwayTeamSquad.Populate(awayTeam);
+		
+	    homeTeam = _teamData;
+	    screen.HomeTeamSquad.UpdatePlayers(_teamData);
+	    screen.ShowMatchScreen(false);  
+	    screen.ShowButtons(false);
+	    
+	    float delay = _in.Count > 0 ? 2.5f : 0.5f;
+	    Sequence seq = DOTween.Sequence();
+	    seq.AppendInterval(delay);
+	    seq.AppendCallback(UnpauseGame);	    
     }
 
 	private TeamData UserTeam
@@ -302,7 +304,14 @@ public class MatchController : MonoBehaviour
 
 		return _currentPlay;
 	}	
-
+	
+	public void UnpauseGame()
+	{
+		PauseGame(false);
+		screen.ShowMatchScreen(false);  
+		screen.ShowButtons(true);
+	}
+	
     public void PauseGame(bool _isPaused)
     {
         isGameOn = !_isPaused;
@@ -310,7 +319,10 @@ public class MatchController : MonoBehaviour
         if(isGameOn)
         {
             StartCoroutine("GameLoop");
-            StartCoroutine("Chronometer");
+        }
+        else 
+        {
+        	StopCoroutine("GameLoop");
         }
     }
 
@@ -351,7 +363,7 @@ public class MatchController : MonoBehaviour
 	    homeTeam.UpdateLifeTimeStats(currentMatch.TournamentId);
 	    awayTeam.UpdateLifeTimeStats(currentMatch.TournamentId);
 
-	    screen.Simulation.AddMatch(currentMatch);
+	    screen.AddSimulatedMatch(currentMatch);
 
 	    //Save tournament match data
 	    TournamentData currentTournament = MainController.Instance.GetTournamentById(currentMatch.TournamentId);
@@ -432,7 +444,7 @@ public class MatchController : MonoBehaviour
 
 	private PlayInfo CheckPossesion(PlayInfo _lastPlay, PlayInfo _currentPlay)
 	{
-		if (_lastPlay.Event == MatchEvent.Goalkick) return SwitchPossesion(_lastPlay,_currentPlay);
+		if (_lastPlay.Event == MatchEvent.ShotMissed) return SwitchPossesion(_lastPlay,_currentPlay);
         else if (_lastPlay.Event == MatchEvent.ScorerAnnounced) return SwitchPossesion(_lastPlay,_currentPlay);
 		else if (_lastPlay.Event == MatchEvent.Offside) return SwitchPossesion(_lastPlay,_currentPlay);
         else if (_lastPlay.Event == MatchEvent.ShotSaved) return SwitchPossesion(_lastPlay,_currentPlay);

@@ -72,6 +72,8 @@
      <Compile Include="Assets\Scripts\Data\Game\PosChanceData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\StrategyData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\ActionChancePerZoneData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\ActionChancePerZoneTable.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\GameModifiersData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\Game_ModifierData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\Player_StrategyData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\TargetCrossPerZoneData.cs" />
@@ -100,6 +102,7 @@
      <Compile Include="Assets\Scripts\Match\MatchScreen.cs" />
      <Compile Include="Assets\Scripts\Match\MatchSimulationScreen.cs" />
      <Compile Include="Assets\Scripts\Match\MatchSpeedSlider.cs" />
+     <Compile Include="Assets\Scripts\Match\MatchSquadScreen.cs" />
      <Compile Include="Assets\Scripts\Match\MatchStartButton.cs" />
      <Compile Include="Assets\Scripts\Match\MatchTeamView.cs" />
      <Compile Include="Assets\Scripts\Match\MatchVisual.cs" />
@@ -198,6 +201,14 @@
      <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
      <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
      <Compile Include="Assets\_Tools\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Code\Attributes\ReorderableTableAttribute.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Code\Attributes\TableAttribute.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Examples\Scripts\ActionExample.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Examples\Scripts\AdvancedExample.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Examples\Scripts\Enemy.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Examples\Scripts\LogoTable.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Examples\Scripts\PropertyAttributeExample.cs" />
+     <Compile Include="Assets\_Tools\GUITable\Examples\Scripts\SimpleExample.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\CallbackNotification.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\Example_ChangeLanguage.cs" />
      <Compile Include="Assets\_Tools\I2\Localization\Examples\Common\Scripts\Example_LocalizedString.cs" />

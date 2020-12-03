@@ -30,21 +30,22 @@ public class MatchEvents
 			case MatchEvent.PenaltySaved :
 			case MatchEvent.ShotSaved: return ResolveShotSaved(_currentPlay, _lastPlay);
 			case MatchEvent.CornerKick: return ResolveCornerKick(_currentPlay, _lastPlay);
-			case MatchEvent.SecondHalfKickOff: return ResolveSecondHalfKickOff(_currentPlay, _lastPlay);
+			case MatchEvent.SecondHalfKickOff: //return ResolveSecondHalfKickOff(_currentPlay, _lastPlay);
 			case MatchEvent.KickOff: return ResolveKickOff(_currentPlay, _lastPlay);
 		}
 	}
 	
-	private PlayInfo ResolveKickOff(PlayInfo _playInfo, PlayInfo _lastPlay)
+	private PlayInfo ResolveKickOff(PlayInfo _currentPlay, PlayInfo _lastPlay)
 	{
-		if(_lastPlay != null) _playInfo = PlayInfo.CopyPlay(_lastPlay);
-		_playInfo.Zone = Zone.CM;
-		_playInfo.Attacker = _playInfo.AttackingTeam.GetAttackingPlayer(_playInfo.Zone, null, true);
-		_playInfo.Defender = null;
-		_playInfo.OffensiveAction = PlayerAction.Pass;
-		_playInfo.Event = MatchEvent.None;
-		_playInfo = actionManager.ResolveAction(_playInfo, null);	
-		return _playInfo;
+		if(_lastPlay != null) _currentPlay = PlayInfo.CopyPlay(_lastPlay);
+		_currentPlay.Zone = Zone.CM;
+		_currentPlay.Attacker = _currentPlay.AttackingTeam.GetAttackingPlayer(_currentPlay.Zone, null, true);
+		_currentPlay.Defender = null;
+		_currentPlay.OffensiveAction = PlayerAction.Pass;
+		_currentPlay.Event = MatchEvent.None;
+		_currentPlay.IsActionSuccessful = true;
+		_currentPlay.TargetZone = Zone.LCM;
+		return _currentPlay;
 	}
 
 	private PlayInfo ResolveSecondHalfKickOff(PlayInfo _currentPlay, PlayInfo _lastPlay)
@@ -166,22 +167,21 @@ public class MatchEvents
 
 	private PlayInfo ResolveGoalkick(PlayInfo currentPlay, PlayInfo lastPlay)
 	{		
-		currentPlay.Attacker = currentPlay.AttackingTeam.Squad[0];
-		currentPlay.Zone = currentPlay.DefendingTeam.GetTeamZone(Zone.OwnGoal);
-		currentPlay.Defender = null;
-		currentPlay.Marking = MarkingType.None;
-		currentPlay.DefensiveAction = PlayerAction.None;
-		currentPlay.OffensiveAction = PlayerAction.Cross;
+		currentPlay = PlayInfo.CopyPlay(lastPlay);
 		currentPlay.Event = MatchEvent.None;
-		currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay);
-		currentPlay.IsActionSuccessful = true;
 		return currentPlay;
 	}
 
 	private PlayInfo ResolveShotMissed(PlayInfo currentPlay, PlayInfo lastPlay)
 	{
-		currentPlay = PlayInfo.CopyPlay(lastPlay);
-		currentPlay.Zone = lastPlay.DefendingTeam.GetTeamZone(Zone.OwnGoal);
+		currentPlay.Attacker = currentPlay.AttackingTeam.Squad[0];
+		currentPlay.Zone = currentPlay.AttackingTeam.GetTeamZone(Zone.OwnGoal);
+		currentPlay.Defender = null;
+		currentPlay.Marking = MarkingType.None;
+		currentPlay.DefensiveAction = PlayerAction.None;
+		currentPlay.OffensiveAction = PlayerAction.Cross;
+		currentPlay.TargetZone = Field.Instance.GetTargetZone(currentPlay);
+		currentPlay.IsActionSuccessful = true;
 		currentPlay.Event = MatchEvent.Goalkick;
 		return currentPlay;
 	}
@@ -201,7 +201,7 @@ public class MatchEvents
 		PlayerAction action = PlayerAction.Pass;
 		MarkingType marking = MarkingType.None;
 		Zone zone = _currentPlay.AttackingTeam.GetTeamZone(_currentPlay.Zone);
-		ActionChancePerZone zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
+		ActionChancePerZoneTable.Actions zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
 
 		float pass = player.GetActionChance(PlayerAction.Pass, zoneChance, marking, zone);
 		float longPass = player.GetActionChance(PlayerAction.LongPass, zoneChance, marking, zone);

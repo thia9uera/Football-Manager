@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 413578c7-e1d0-4528-a4c6-50d14cb6fdd5
-    Portrait: 
+    Portrait: MC_0
     FirstName: Thiago
     LastName: Rocha
     Zone: 20

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class MatchActionManager
 {       
 	//Modifiers
-	private Game_Modifier modifiers;
+	private GameModifiersData modifiers;
 	private float positionDebuff;
 	private float attackingBonusLow;
 	private float attackingBonusMedium;
@@ -86,7 +86,7 @@ public class MatchActionManager
 		float _counterAttack = _playInfo.CounterAttack;
 		float bonus = 0;
 
-		ActionChancePerZone zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
+		ActionChancePerZoneTable.Actions zoneChance = GameData.Instance.ActionChancePerZone[(int)zone];
 
 		float pass = _player.GetActionChance(PlayerAction.Pass, zoneChance, _marking, zone);
 		float longPass = _player.GetActionChance(PlayerAction.LongPass, zoneChance, _marking, zone);
@@ -551,6 +551,7 @@ public class MatchActionManager
 		}
 		else
 		{
+			currentPlay.TargetZone = currentPlay.Zone;
 			currentPlay.AttackingBonus = 1f;
 			switch (currentPlay.OffensiveAction) {
 				

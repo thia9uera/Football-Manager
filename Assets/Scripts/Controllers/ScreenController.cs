@@ -52,7 +52,7 @@ public class ScreenController : MonoBehaviour
             }
             else screen.Hide();
         }
-        if (PrevScreen == ScreenType.None) PrevScreen = CurrentScreen;
+	    if (PrevScreen == ScreenType.None) PrevScreen = CurrentScreen;
     }
 
     public void ShowPreviousScreen()

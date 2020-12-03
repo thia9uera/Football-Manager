@@ -258,7 +258,7 @@ public class PlayerData : ScriptableObject
         return pct;
     }
 
-	public float GetActionChance(PlayerAction _action, ActionChancePerZone _zoneChance, MarkingType _marking, Zone _zone)
+	public float GetActionChance(PlayerAction _action, ActionChancePerZoneTable.Actions _zoneChance, MarkingType _marking, Zone _zone)
     {
         float chance = 0f;
         float bonus = 0f;
@@ -520,17 +520,17 @@ public class PlayerData : ScriptableObject
                 break;
 
             case PlayerPosition.Defender:
-                if (zone < 1 || zone > 7) value = true;
+	            if (zone < 3 || zone > 7) value = true;
                 break;
 
             case PlayerPosition.Midfielder:
-                if (zone < 8 || zone > 22) value = true;
+	            if (zone < 8 || zone > 22) value = true;
                 break;
 
             case PlayerPosition.Forward:
-                if (zone < 23) value = true;
+	            if (zone < 23) value = true;
                 break;
-        }
+        }      
         return value;
     }
 

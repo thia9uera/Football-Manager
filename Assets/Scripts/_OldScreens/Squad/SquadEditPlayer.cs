@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class SquadEditPlayer : MonoBehaviour
 {
-    public PlayerData Player;
+	public PlayerData Player;
+    
+	[HideInInspector] public bool IsSub;
+	[HideInInspector] public int Index;
+	[HideInInspector] public bool isNewPlayer { set { isNewPlayerMark.SetActive(value);}}
 
 	[SerializeField] private TMP_Text nameLabel = null;
     [SerializeField] private TMP_Text overallLabel = null;
@@ -14,6 +18,7 @@ public class SquadEditPlayer : MonoBehaviour
     [SerializeField] private GameObject details = null;
     [SerializeField] private GameObject icoSubs = null;
 	[SerializeField] private GameObject icoWarning = null;
+	[SerializeField] private GameObject isNewPlayerMark = null;
     
 	private SquadScreen controller;
 
@@ -22,11 +27,7 @@ public class SquadEditPlayer : MonoBehaviour
     private int taps = 0;
 
     private Zone zone;
-
-    public bool IsSub;
-    public int Index;
-
-    private bool isSelected;
+	private bool isSelected;	
 
     public void MoveTo(Vector3 _pos, Zone _zone)
     {
@@ -38,7 +39,7 @@ public class SquadEditPlayer : MonoBehaviour
     }
 
     private void UpdateZone()
-    {
+	{
         Player.Zone = Player.Team.Formation.Zones[Index];
         icoWarning.SetActive(Player.IsWronglyAssigned());
     }
@@ -82,7 +83,7 @@ public class SquadEditPlayer : MonoBehaviour
             overallLabel.text = Player.GetOverall().ToString();
             portrait.sprite = Player.Portrait;
             details.SetActive(true);
-            UpdateZone();
+	        UpdateZone();
         }
         else
         {
@@ -119,7 +120,9 @@ public class SquadEditPlayer : MonoBehaviour
     }
 
 	public void Destroy()
-    {
+	{
+		transform.DOKill();
+		group.DOKill();
         Destroy(gameObject);
     }
 
@@ -182,13 +185,11 @@ public class SquadEditPlayer : MonoBehaviour
     
 	public void OnBeginDrag()
 	{
-		Debug.Log("BEGIN DRAG");
 		controller.StartDragPlayer();
 	}
 	
 	public void OnEndDrag()
 	{
-		Debug.Log("END DRAG");
 		controller.StopDragPlayer();
 	}
 

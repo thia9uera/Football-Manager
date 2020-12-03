@@ -87,7 +87,7 @@ public class SquadEditField : MonoBehaviour
 	        if (synergy == 1) color = positiveColor;
 	        else if (synergy == -1) color = negativeColor;
 
-            DrawLine(GetZoneRect(connection.ZoneA), GetZoneRect(connection.ZoneB), color);
+	        //DrawLine(GetZoneRect(connection.ZoneA), GetZoneRect(connection.ZoneB), color);
         }
 
         group.DOFade(1f, 1f).SetDelay(0.5f);
@@ -127,6 +127,14 @@ public class SquadEditField : MonoBehaviour
 
         lines.DrawLine(new Vector2(startX, startY), new Vector2(endX, endY), lineStyle);
     }
+    
+	public void MarkPlayersAsNew(List<PlayerData>_players)
+	{
+		foreach (SquadEditPlayer player in players)
+		{
+			player.isNewPlayer = (_players.Contains(player.Player));
+		}
+	}
     
 	public void Reset()
 	{

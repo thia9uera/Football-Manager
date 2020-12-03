@@ -701,8 +701,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '{PLAYER_1} takes the goal kick'
-      - '{PLAYER_1} cobra o tiro de meta'
+      - '{PLAYER_1} prepares for the goal kick'
+      - '{PLAYER_1} vai para o tiro de meta'
       Flags: 0000
       Languages_Touch: []
     - Term: nar_WrongGoalkick_1
@@ -977,6 +977,14 @@ MonoBehaviour:
       - "{PLAYER_1} est\xE1 impedido"
       Flags: 0000
       Languages_Touch: []
+    - Term: nar_PreMatch_1
+      TermType: 0
+      Description: 
+      Languages:
+      - Welcome to today's match!
+      - Bem amigos da Rede Globo!
+      Flags: 0000
+      Languages_Touch: []
     - Term: nar_KickOff_1
       TermType: 0
       Description: 
@@ -1105,6 +1113,30 @@ MonoBehaviour:
       - CONTINUAR
       Flags: 0000
       Languages_Touch: []
+    - Term: btn_Confirm
+      TermType: 0
+      Description: 
+      Languages:
+      - CONFIRM
+      - CONFIRMAR
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_Cancel
+      TermType: 0
+      Description: 
+      Languages:
+      - CANCEL
+      - CANCELAR
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_NextMatch
+      TermType: 0
+      Description: 
+      Languages:
+      - NEXT MATCH
+      - "PR\xD3XIMA PARTIDA"
+      Flags: 0000
+      Languages_Touch: []
     - Term: title_Loading
       TermType: 0
       Description: 
@@ -1199,6 +1231,14 @@ MonoBehaviour:
       Languages:
       - SPEED
       - VELOCIDADE
+      Flags: 0000
+      Languages_Touch: []
+    - Term: msg_SubsLimit
+      TermType: 0
+      Description: 
+      Languages:
+      - You can only change {0} players during a match
+      - "Voc\xEA pode substituir apenas {0} jogadores durante uma partida"
       Flags: 0000
       Languages_Touch: []
     - Term: strategy_Neutral
@@ -1472,7 +1512,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1606074380316
+    Google_LastUpdatedVersion: 1606854922564
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1

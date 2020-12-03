@@ -80,11 +80,12 @@ public class MatchNarration : MonoBehaviour
 			else if (_lastPlay.CounterAttack == 4) 
 				narData = GetCounterAttackNarration(_lastPlay);
 			else if (_lastPlay.Attacker == null)
-				narData = GetLostBallNarration(_lastPlay);
+				narData = GetEmptyPlayNarration(_lastPlay);
 			else
 			{
 				switch(_lastPlay.OffensiveAction)
 				{
+					case PlayerAction.None: narData = GetLostBallNarration(_lastPlay); break;
 					case PlayerAction.Pass: narData = GetPassNarration(_lastPlay, _currentPlay); break;	
 					case PlayerAction.LongPass: narData = GetLongPassNarration(_lastPlay, _currentPlay) ; break;
 					case PlayerAction.Cross: narData = GetCrossNarration(_lastPlay, _currentPlay); break;
@@ -135,7 +136,7 @@ public class MatchNarration : MonoBehaviour
 				string narText = loc.Localize(_data.Text + r);
 				if(narText == null)
 				{
-					Debug.LogFormat("MISSING LOC NARRATION!  ORIGINAL STRING: {0}", _data.Text);
+					Debug.LogFormat("MISSING LOC NARRATION!  ORIGINAL STRING: {0}   TURN: {1}", _data.Text, _data.PlayInfo.Turn);
 				}
 				narText = ReplaceNames(narText, _data);
 				_data.Text = narText;
@@ -388,11 +389,20 @@ public class MatchNarration : MonoBehaviour
 		return narData;
 	}
 	
-	private NarrationData GetLostBallNarration(PlayInfo _lastPlay)
+	private NarrationData GetEmptyPlayNarration(PlayInfo _lastPlay)
 	{
 		NarrationData narData = new NarrationData();
 		narData.Text = "nar_SwitchPossession_";
 		narData.Variations = 1;
+		SetNarrationPlayers(narData, _lastPlay.Attacker, _lastPlay.Defender);
+		return narData;
+	}
+	
+	private NarrationData GetLostBallNarration(PlayInfo _lastPlay)
+	{
+		NarrationData narData = new NarrationData();
+		narData.Text = "nar_LostPossession_";
+		narData.Variations = 4;
 		SetNarrationPlayers(narData, _lastPlay.Attacker, _lastPlay.Defender);
 		return narData;
 	}
@@ -494,7 +504,7 @@ public class MatchNarration : MonoBehaviour
 	private NarrationData GetShotMissedNarration(PlayInfo _lastPlay)
 	{
 		NarrationData narData = new NarrationData();
-		narData.Text = "nar_ShotMissed_";
+		narData.Text = "nar_MissedShot_";
 		narData.Variations = 2;
 		SetNarrationPlayers(narData, _lastPlay.Attacker, _lastPlay.Defender);
 		return narData;

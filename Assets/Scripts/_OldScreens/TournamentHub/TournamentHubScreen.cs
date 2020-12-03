@@ -64,14 +64,6 @@ public class TournamentHubScreen : BaseScreen
         Show();
     }
 
-    public void SimulateTournament()
-    {
-        ScreenController.Instance.ShowScreen(ScreenType.Match);
-	    //MainController.Instance.CurrentMatch = nextMatchData;
-	    ScreenController.Instance.Match.Simulation.Clear();
-	    //MainController.Instance.Match.Populate(nextMatchData, true);
-    }
-
     public void BackToMenu()
     {
 	    //ScreenController.Instance.ShowScreen(ScreenType.MainMenu);

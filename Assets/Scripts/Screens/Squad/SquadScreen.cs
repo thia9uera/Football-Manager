@@ -6,7 +6,7 @@ using TMPro;
 
 public class SquadScreen : BaseScreen
 {
-	[SerializeField] private SquadEditField field = null;	
+	[SerializeField] protected SquadEditField field = null;	
 	//[SerializeField] private Button btnConfirm = null;
 	[SerializeField] private SquadEditSubstitutes substitutes = null;
 	[SerializeField] private SquadEditPlayer dragPlayer = null;
@@ -16,12 +16,9 @@ public class SquadScreen : BaseScreen
 	[SerializeField] private TMP_Dropdown strategyDropdown = null;
 	
 	
-	private TeamData teamData;
+	protected TeamData teamData;
 	private FormationsData formationData;
 	private List<string> formationNameList;
-
-	private List<PlayerData> squadList;
-	private List<PlayerData> subsList;
 
 	private SquadEditPlayer selectedSquadPlayer;
 	private SquadEditPlayer selectedSubPlayer;
@@ -30,16 +27,18 @@ public class SquadScreen : BaseScreen
 
 	private bool isDragging;
 	private bool hasChanged;
+	protected bool saveOnHide = true;
+	protected bool updateRealTime = true;
 	
 	override public void Show()
 	{
 		base.Show();		
 		
-		teamData = MainController.Instance.UserTeam;
+		teamData = MainController.Instance.UserTeam.CopyTeam();
 		formationData = GameData.Instance.Formations;
 		
-		squadList = new List<PlayerData>(teamData.Squad);
-		subsList = new List<PlayerData>(teamData.Substitutes);
+		List<PlayerData> squadList = new List<PlayerData>(teamData.Squad);
+		List<PlayerData> subsList = new List<PlayerData>(teamData.Substitutes);
 		
 		field.Reset();
 		field.PopulatePlayers(squadList, teamData.Formation, this);
@@ -55,7 +54,21 @@ public class SquadScreen : BaseScreen
 	override public void Hide()
 	{
 		base.Hide();
-		if(hasChanged) DataController.Instance.QuickSave();
+		if(saveOnHide && hasChanged)
+		{
+			//MainController.Instance.UserTeam = teamData;
+			SaveChanges();
+			DataController.Instance.QuickSave();
+		}
+	}
+	
+	protected void SaveChanges()
+	{
+		var team = MainController.Instance.UserTeam;
+		team.Squad = teamData.Squad;
+		team.Substitutes = teamData.Substitutes;
+		team.Formation = teamData.Formation;
+		team.Strategy = teamData.Strategy;		
 	}
 	
 	private void UpdateFormationDropdown()
@@ -111,8 +124,11 @@ public class SquadScreen : BaseScreen
 		hasChanged = true;
 	}
 	
-	public void AddPlayer(PlayerData _player, SquadEditPlayer _obj, SquadEditPlayer _squadSlot=null)
+	public virtual void AddPlayer(PlayerData _player, SquadEditPlayer _obj, SquadEditPlayer _squadSlot=null)
 	{
+		List<PlayerData> squadList = new List<PlayerData>(teamData.Squad);
+		List<PlayerData> subsList = new List<PlayerData>(teamData.Substitutes);
+		
 		if (!squadList.Contains(null)) return;
 		for (int i = 0; i < squadList.Count; i++)
 		{
@@ -125,15 +141,22 @@ public class SquadScreen : BaseScreen
 		subsList.Remove(_player);
 		_obj.Destroy();
 		//UpdateConfirmButton();
+		teamData.Squad = squadList.ToArray();
+		teamData.Substitutes = subsList.ToArray();
 		hasChanged = true;
 	}
 
 	public void RemovePlayer(PlayerData _player, int _index)
 	{
+		List<PlayerData> squadList = new List<PlayerData>(teamData.Squad);
+		List<PlayerData> subsList = new List<PlayerData>(teamData.Substitutes);
+		
 		squadList[_index] = null;
 		subsList.Add(_player);
 		substitutes.AddPlayer(_player);
 		//UpdateConfirmButton();
+		teamData.Squad = squadList.ToArray();
+		teamData.Substitutes = subsList.ToArray();
 	}
 	
 	public void SelectSquadPlayer(SquadEditPlayer _playerSlot)
@@ -217,9 +240,8 @@ public class SquadScreen : BaseScreen
 	
 	public void StartDragPlayer()
 	{
-		Debug.Log("START DRAG PLAYER");
 		isDragging = true;
-		
+		if(HoveringPlayer == null) return;
 		if (!HoveringPlayer.IsSub) selectedSquadPlayer = HoveringPlayer;
 		else selectedSubPlayer = HoveringPlayer;
 		
@@ -231,20 +253,19 @@ public class SquadScreen : BaseScreen
 	
 	public void StopDragPlayer()
 	{
-		Debug.Log("STOP DRAG PLAYER");
 		isDragging = false;
 		if(selectedSquadPlayer) selectedSquadPlayer.SetOpacity(1);
 		if(selectedSubPlayer) selectedSubPlayer.SetOpacity(1);
 		
 		if(HoveringPlayer != null)
 		{
-			if(dragPlayer.IsSub != HoveringPlayer.IsSub)
+			if(dragPlayer.IsSub && !HoveringPlayer.IsSub)
 			{
 				SwapPlayer(selectedSubPlayer, HoveringPlayer);
 			}
-			else
+			else if(!dragPlayer.IsSub && HoveringPlayer.IsSub)
 			{
-				
+				SwapPlayer(HoveringPlayer, selectedSquadPlayer);
 			}
 		}
 

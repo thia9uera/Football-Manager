@@ -6,7 +6,6 @@ using TMPro;
 public class MatchButton : MonoBehaviour
 {
 	[SerializeField] private TMP_Text tournamentlabel = null;
-	[SerializeField] private TMP_Text homeTeamLabel = null;
 	[SerializeField] private TMP_Text awayTeamLabel = null;
 	
 	public void Populate(MatchData _matchData)
@@ -14,8 +13,9 @@ public class MatchButton : MonoBehaviour
 		TeamData homeTeam = _matchData.HomeTeam.TeamData;
 		TeamData awayTeam = _matchData.AwayTeam.TeamData;
 		
+		TeamData adversary = homeTeam.IsUserControlled ? awayTeam : homeTeam;
+		
 		tournamentlabel.text = _matchData.TournamentName;
-		homeTeamLabel.text = homeTeam.Name + " (" + homeTeam.OveralRating + ")";
-		awayTeamLabel.text = awayTeam.Name + " (" + awayTeam.OveralRating + ")";
+		awayTeamLabel.text = adversary.Name + " (" + adversary.OveralRating + ")";
 	}
 }

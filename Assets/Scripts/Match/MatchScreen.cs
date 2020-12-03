@@ -10,17 +10,15 @@ public class MatchScreen : BaseScreen
 	[SerializeField] private Button btnContinue = null;
 	[SerializeField] private Button btnManageTeam = null;
 	[SerializeField] private MatchSpeedSlider speedSlider = null;
-	
-	[Space(10)]
-	public MatchSimulationScreen Simulation;
+	[SerializeField] private MatchSquadScreen squadScreen = null;
+	[SerializeField] private MatchSimulationScreen simulationScreen = null;
 
 	[Space(10)]
     public MatchScoreView Score;
     public MatchFieldView Field;
     public MatchTeamView HomeTeamSquad;
     public MatchTeamView AwayTeamSquad;
-    public MatchNarration Narration;
-    
+	public MatchNarration Narration;    
 
     public override void Show()
     {
@@ -28,23 +26,37 @@ public class MatchScreen : BaseScreen
 	    ShowMatchScreen();
     }
     
-	public void Populate(MatchData _data, bool _isSimulating = false)
+	public void Populate(MatchData _matchData, bool _isSimulating = false)
 	{
-		controller.Populate(_data, _isSimulating);
+		controller.Populate(_matchData, _isSimulating);
+		squadScreen.Initialize();
+	}
+	
+	public void AddSimulatedMatch(MatchData _matchData)
+	{
+		simulationScreen.AddMatch(_matchData);
 	}
 
-	public void ShowMatchScreen()
+	public void ShowMatchScreen(bool _animate = true)
     {
 	    matchScreen.SetActive(true);
-	    Simulation.gameObject.SetActive(false);   
+	    squadScreen.Hide();
+	    simulationScreen.gameObject.SetActive(false);   
 	    btnContinue.gameObject.SetActive(false);
-	    IntroAnim();
+	    if(_animate) IntroAnim();
     }
     
 	public void ShowSimulationScreen()
 	{
 		matchScreen.SetActive(false);
-		Simulation.gameObject.SetActive(true);   
+		simulationScreen.gameObject.SetActive(true);   
+		btnContinue.gameObject.SetActive(false);
+	}
+	
+	public void ShowSquadScreen()
+	{
+		matchScreen.SetActive(false);
+		squadScreen.Show(); 
 		btnContinue.gameObject.SetActive(false);
 	}
     
@@ -73,6 +85,12 @@ public class MatchScreen : BaseScreen
 		btnManageTeam.gameObject.SetActive(_value);
 		speedSlider.gameObject.SetActive(_value);
 	}
+	
+	public void OnManageTeamButtonClick()
+	{
+		MatchController.Instance.PauseGame(true);
+		ShowSquadScreen();
+	}
     
 	public void ShowContinueButton()
 	{
@@ -82,7 +100,7 @@ public class MatchScreen : BaseScreen
 	public void OnContinueButtonClicked()
 	{
 		CalendarController.Instance.UpdateCalendar();
-		ScreenController.Instance.ShowScreen(ScreenType.Manager);
+		ScreenController.Instance.ShowScreen(ScreenType.Manager);		
 	}
 
 	public void Reset(uint _matchSpeed)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 86b26191-3901-4d08-8be1-846a9dd77b41
-    Portrait: 
+    Portrait: DF_0
     FirstName: Samuca
     LastName: Punk
     Zone: 7

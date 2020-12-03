@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attributes:
     Id: 4c57c1a6-f14e-41b0-9842-2502667eeab4
-    Portrait: 
+    Portrait: FW_1
     FirstName: Tiru
     LastName: Lips
     Zone: 23

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MatchTeamView : MonoBehaviour
 {
-    public List<MatchPlayerView> ItemList;
+	[SerializeField] private MatchPlayerView[] itemList = null;
 
     public void Populate(TeamData _team, bool _resetFatigue = false)
     {
@@ -14,7 +14,7 @@ public class MatchTeamView : MonoBehaviour
             PlayerData player = squad[i];
             player.ApplyBonus();
 
-            MatchPlayerView item = ItemList[i];
+            MatchPlayerView item = itemList[i];
             if (_resetFatigue) player.Fatigue = 100;
             item.Populate(player);
         }
@@ -24,10 +24,23 @@ public class MatchTeamView : MonoBehaviour
             foreach (PlayerData p in _team.Substitutes) p.Fatigue = 100;
         }
     }
+    
+	public void UpdatePlayers(TeamData _team)
+	{
+		MatchPlayerView playerView;
+		for(int i = 0; i < itemList.Length; i++)
+		{
+			if(itemList[i].Player != _team.Squad[i])
+			{
+				playerView = itemList[i];
+				playerView.SwitchPlayer(_team.Squad[i]);
+			}
+		}
+	}
 
     public void UpdateFatigue()
     {
-        foreach (MatchPlayerView player in ItemList)
+        foreach (MatchPlayerView player in itemList)
         {
             player.Player.Fatigue -= 0.05f * (100 / (float)player.Player.Stamina);
             player.UpdateFatigue();
@@ -36,7 +49,7 @@ public class MatchTeamView : MonoBehaviour
 
     public void ResetFatigue()
     {
-        foreach (MatchPlayerView player in ItemList)
+        foreach (MatchPlayerView player in itemList)
         {
             player.Player.Fatigue = 100;
             player.UpdateFatigue();
@@ -45,7 +58,7 @@ public class MatchTeamView : MonoBehaviour
     }
     public void ModifyFatigue(float _modifier)
     {
-        foreach (MatchPlayerView player in ItemList)
+        foreach (MatchPlayerView player in itemList)
         {
             float newFatigue = player.Player.Fatigue * _modifier;
             if (newFatigue > 100f) newFatigue = 100f;

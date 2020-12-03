@@ -432,4 +432,14 @@ public class TeamData : ScriptableObject
 	{
 		return Field.Instance.GetTeamZone(_zone, IsAwayTeam);
 	}
+	
+	public TeamData CopyTeam()
+	{
+		TeamData copy = ScriptableObject.CreateInstance<TeamData>();
+		copy.Attributes = Attributes;
+		copy.Squad = Squad;
+		copy.Substitutes = Substitutes;
+		copy.FormationSet = FormationSet;
+		return copy;
+	}
 }
