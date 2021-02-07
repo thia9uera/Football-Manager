@@ -1497,6 +1497,78 @@ MonoBehaviour:
       - Dezembro
       Flags: 0000
       Languages_Touch: []
+    - Term: setting_Header_General
+      TermType: 0
+      Description: 
+      Languages:
+      - General
+      - Geral
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_Language_Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Language
+      - Idioma
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_Language_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - English
+      - "Portugu\xEAs (BR)"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_PlayerNameFormat_Title
+      TermType: 0
+      Description: 
+      Languages:
+      - Name Format
+      - "Formata\xE7\xE3o do Nomes"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_Header_Narration
+      TermType: 0
+      Description: 
+      Languages:
+      - Narration
+      - "Narra\xE7\xE3o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_PlayerNameFormat_Option1
+      TermType: 0
+      Description: 
+      Languages:
+      - John Doe
+      - "Jo\xE3o Silva"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_PlayerNameFormat_Option2
+      TermType: 0
+      Description: 
+      Languages:
+      - J. Doe
+      - J.Silva
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_PlayerNameFormat_Option3
+      TermType: 0
+      Description: 
+      Languages:
+      - John
+      - "Jo\xE3o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: setting_PlayerNameFormat_Option4
+      TermType: 0
+      Description: 
+      Languages:
+      - Doe
+      - Silva
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -1512,7 +1584,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwj-3GblHUvn3w63BQkRGaDuK_AlC_P-4m77_2HDg/exec
     Google_SpreadsheetKey: 10g99WoleJySghOSa_Bfo7y0YvpVGGjHSNUn9YdL9_fY
     Google_SpreadsheetName: I2Loc Football Manager Localization
-    Google_LastUpdatedVersion: 1606854922564
+    Google_LastUpdatedVersion: 1612696902725
     Google_Password: f00tbalzin
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1

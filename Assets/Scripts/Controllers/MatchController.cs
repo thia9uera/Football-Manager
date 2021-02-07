@@ -50,7 +50,7 @@ public class MatchController : MonoBehaviour
         screen.AwayTeamSquad.Populate(awayTeam, true);
 	    screen.Score.UpdateTime(0);
         screen.Score.UpdateScore(0, 0);
-	    screen.Score.Populate(homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, TeamDisplayColor(awayTeam));
+	    screen.Score.Populate(currentMatch.TournamentName, homeTeam.Name, 0, homeTeam.PrimaryColor, awayTeam.Name, 0, TeamDisplayColor(awayTeam));
 	    
 	    screen.Narration.Initialize(homeTeam.PrimaryColor, TeamDisplayColor(awayTeam), awayTeam);
 

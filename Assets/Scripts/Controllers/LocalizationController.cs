@@ -26,8 +26,8 @@ public class LocalizationController : MonoBehaviour
 
 		switch (_language)
 		{
-		case Language.English: language = "English"; break;
-		case Language.Portuguese: language = "Portuguese"; break;
+			case Language.English: language = "English"; break;
+			case Language.Portuguese: language = "Portuguese"; break;
 		}
 
 		return language;
@@ -35,7 +35,7 @@ public class LocalizationController : MonoBehaviour
 
 	public void Initialize()
 	{
-		CurrentLanguage = Language.Portuguese;
+		CurrentLanguage = Language.English;
 	}
 
 	[SerializeField]

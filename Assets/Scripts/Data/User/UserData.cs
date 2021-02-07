@@ -7,4 +7,8 @@ public struct UserData
 	public string LastTimeSaved;
 	public int CurrentYear;
 	public int CurrentDay;
+	
+	//Settings
+	public int Language;
+	public int PlayerNameFormat;
 }

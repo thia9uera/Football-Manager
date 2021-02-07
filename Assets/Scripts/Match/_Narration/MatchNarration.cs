@@ -50,16 +50,26 @@ public class MatchNarration : MonoBehaviour
 		
 		if(_index == PLAYER_1)
 		{
-			_data.Player1 = _player.ShortName;
+			_data.Player1 = GetFormatedName(_player);
 			_data.Team1 = _player.Team.Name;
 			_data.Color1 = "#" + ColorUtility.ToHtmlStringRGB(teamColor);
 		}
 		else
 		{
-			_data.Player2 = _player.ShortName;
+			_data.Player2 = GetFormatedName(_player);
 			_data.Team2 = _player.Team.Name;
 			_data.Color2 = "#" + ColorUtility.ToHtmlStringRGB(teamColor);
 		}
+	}
+	
+	private string GetFormatedName(PlayerData _player)
+	{
+		int format = MainController.Instance.User.PlayerNameFormat;
+		if(format == 0) return _player.FullName;
+		else if(format == 1) return _player.ShortName;
+		else if(format == 2) return _player.FirstName;
+		else if(format == 3) return _player.LastName;
+		return "BAD NAME";
 	}
 	
 	public void UpdateNarration(PlayInfo _currentPlay, PlayInfo _lastPlay)

@@ -31,7 +31,6 @@ public class CalendarController : MonoBehaviour
 		
 		CurrentDay = userData.CurrentDay;
 		CurrentYear = userData.CurrentYear;
-		Debug.Log("Current Year: " + CurrentYear);
 	    MatchDays = new List<MatchDay>();
 	    
 	    DateTime date;

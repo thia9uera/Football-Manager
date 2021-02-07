@@ -135,6 +135,7 @@
      <Compile Include="Assets\Scripts\Screens\Tournaments\TournamentTableScreen.cs" />
      <Compile Include="Assets\Scripts\Screens\Tournaments\TournamentsScreen.cs" />
      <Compile Include="Assets\Scripts\Screens\_Shared\BaseScreen.cs" />
+     <Compile Include="Assets\Scripts\Screens\_Shared\BaseStepper.cs" />
      <Compile Include="Assets\Scripts\Screens\_Shared\ButtonDefault.cs" />
      <Compile Include="Assets\Scripts\Screens\_Shared\DefaultTab.cs" />
      <Compile Include="Assets\Scripts\Screens\_Shared\InputFieldRandom.cs" />

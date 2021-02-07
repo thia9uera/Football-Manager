@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MatchScoreView : MonoBehaviour
 {
+	[SerializeField] private TMP_Text tournamentNameLabel = null;
 	[SerializeField] private TMP_Text timeLabel = null;
 	[SerializeField] private TMP_Text homeScoreLabel = null;
 	[SerializeField] private TMP_Text awayScoreLabel = null;
@@ -14,8 +15,9 @@ public class MatchScoreView : MonoBehaviour
 	[SerializeField] private Image homeFrame = null;
 	[SerializeField] private Image awayFrame = null;
 
-    public void Populate (string _homeTeamName, int _homeTeamScore, Color _homeTeamColor, string _awayTeamName, int _awayTeamScore, Color _awayTeamColor)
-    {
+	public void Populate (string _tournamentName, string _homeTeamName, int _homeTeamScore, Color _homeTeamColor, string _awayTeamName, int _awayTeamScore, Color _awayTeamColor)
+	{
+		tournamentNameLabel.text = _tournamentName;
         homeNameLabel.text = _homeTeamName.ToUpper();
         awayNameLabel.text = _awayTeamName.ToUpper();
         homeFrame.color = _homeTeamColor;

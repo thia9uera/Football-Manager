@@ -84,6 +84,12 @@ public class DataController : MonoBehaviour
 		StartCoroutine("QuickSaveFlow");
 	}
 	
+	public void SaveUserOnly()
+	{
+		UserData user = mainController.User;
+		SaveData(user, "UserData");
+	}
+	
 	private IEnumerator QuickSaveFlow()
 	{
 		yield return StartCoroutine("SaveTeamPlayer", mainController.UserTeam.AllPlayers);
