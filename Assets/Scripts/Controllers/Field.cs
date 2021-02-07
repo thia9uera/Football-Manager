@@ -191,7 +191,7 @@ public class Field : MonoBehaviour
 
         else if (_action == PlayerAction.Cross || _action == PlayerAction.LongPass)
         {
-	        TargetCrossPerZone data = GameData.Instance.TargetCrossPerZone[(int)zone];
+	        CrossTargetPerZoneData.TargetCrossPerZone data = GameData.Instance.TargetCrossPerZone[(int)zone];
 
             _OwnGoal = data.OwnGoal;
             _BLD = data.BLD;

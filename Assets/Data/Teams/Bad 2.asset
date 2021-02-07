@@ -66,7 +66,7 @@ MonoBehaviour:
         draggable: 1
         expandable: 1
         multipleSelection: 1
-        isExpanded: 0
+        isExpanded: 1
         label:
           m_Text: Keys
           m_Image: {fileID: 0}
@@ -81,34 +81,10 @@ MonoBehaviour:
         elementNameOverride: 
         elementIcon: {fileID: 0}
       reqReferences: {fileID: 0}
-      isExpanded: 0
-      _keyValues:
-      - 33d0642a-ee9e-451f-bdb5-cf5f23c26cc1
-      _keys:
-      - 33d0642a-ee9e-451f-bdb5-cf5f23c26cc1
-      _values:
-      - Points: 0
-        Wins: 0
-        Losts: 0
-        Draws: 0
-        Goals: 0
-        GoalsAgainst: 0
-        GoalsByHeader: 0
-        Shots: 0
-        Headers: 0
-        Steals: 0
-        Passes: 0
-        Crosses: 0
-        LongPasses: 0
-        PassesMissed: 0
-        CrossesMissed: 0
-        ShotsMissed: 0
-        HeadersMissed: 0
-        BoxCrosses: 0
-        Faults: 0
-        Offsides: 0
-        CornerKicks: 0
-        CounterAttacks: 0
+      isExpanded: 1
+      _keyValues: []
+      _keys: []
+      _values: []
     IsUserControlled: 0
     IsPlaceholder: 0
   Squad:

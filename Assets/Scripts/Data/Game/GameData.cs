@@ -8,10 +8,10 @@ public class GameData : MonoBehaviour
 {
 	public GameModifiersData GameModifiers;
 	[SerializeField] private ActionChancePerZoneTable actionChancePerZone = null;
-	[SerializeField] private Team_StrategyData teamStrategyData = null;
-	[SerializeField] private Player_StrategyData playerStrategyData = null;
+	[SerializeField] private TeamStrategyData teamStrategyData = null;
+	[SerializeField] private PlayerStrategyData playerStrategyData = null;
 	[SerializeField] private TargetPassPerZoneData targetPassPerZoneData = null;
-	[SerializeField] private TargetCrossPerZoneData targetCrossPerZoneData = null;
+	[SerializeField] private CrossTargetPerZoneData targetCrossPerZoneData = null;
 	[SerializeField] private FormationsData formationsData = null;
 	public GameColors Colors;
 	
@@ -19,10 +19,10 @@ public class GameData : MonoBehaviour
 	[SerializeField] public PosChanceData[] StrategyPosChanceData = null;
 	
 	
-	public List<Player_Strategy> PlayerStrategies { get { return playerStrategyData.player_Strategys; }}
+	public List<PlayerStrategyData.PlayerStrategyChances> PlayerStrategies { get { return playerStrategyData.StrategyChances; }}
 	public List<Team_Strategy> TeamStrategies { get { return teamStrategyData.team_Strategys; }}
 	public List<TargetPassPerZone> TargetPassPerZone { get { return targetPassPerZoneData.targetPassPerZones;}}
-	public List<TargetCrossPerZone> TargetCrossPerZone { get { return targetCrossPerZoneData.targetCrossPerZones;}}
+	public List<CrossTargetPerZoneData.TargetCrossPerZone> TargetCrossPerZone { get { return targetCrossPerZoneData.CrossTargetChances;}}
 	public List<ActionChancePerZoneTable.Actions> ActionChancePerZone { get { return actionChancePerZone.ActionsPerZone;}}
 	public FormationsData Formations { get { return formationsData; }}
 	

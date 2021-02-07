@@ -28,6 +28,7 @@ public class MainController : MonoBehaviour
         Application.targetFrameRate = 60;
 	    QualitySettings.vSyncCount = 0;
 	    
+	    User.CurrentYear = 2021;
 	    UserTeam = initialData.UserTeam;
 	    AllPlayers = initialData.AllPlayers;
 	    AllTeams = initialData.AllTeams;
@@ -41,7 +42,7 @@ public class MainController : MonoBehaviour
 
     public void Start()
 	{
-		CalendarController.Instance.InitializeCalendar(2020);
+		CalendarController.Instance.InitializeCalendar();
 	    if(LocalizationController.Instance != null) LocalizationController.Instance.Initialize();
 	    if(ScreenController.Instance != null) 
 	    {

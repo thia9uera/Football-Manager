@@ -25,10 +25,13 @@ public class CalendarController : MonoBehaviour
 	    //InitializeCalendar(y);
     }
 	
-	public void InitializeCalendar(int _year)
+	public void InitializeCalendar()
 	{
-	    CurrentDay = 0;
-        CurrentYear = _year;
+		UserData userData = MainController.Instance.User;
+		
+		CurrentDay = userData.CurrentDay;
+		CurrentYear = userData.CurrentYear;
+		Debug.Log("Current Year: " + CurrentYear);
 	    MatchDays = new List<MatchDay>();
 	    
 	    DateTime date;
@@ -64,6 +67,8 @@ public class CalendarController : MonoBehaviour
 	{
 		MatchDay matchDay = MatchDays[CurrentDay];
 		MatchData nextMatch = null;
+		
+		MainController.Instance.User.CurrentDay = CurrentDay;
 		
 		if(matchDay.HasUnplayedMatches(out nextMatch))
 		{

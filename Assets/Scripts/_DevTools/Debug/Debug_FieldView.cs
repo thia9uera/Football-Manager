@@ -33,9 +33,9 @@ public class Debug_FieldView : MonoBehaviour
         DropDownPlayerPosition.value = (int)TestPlayer.Attributes.Zone;
 
         List<string> list = new List<string>();
-	    foreach (Player_Strategy strategy in GameData.Instance.PlayerStrategies)
+	    foreach (PlayerStrategyData.PlayerStrategyChances strategy in GameData.Instance.PlayerStrategies)
         {
-            list.Add(strategy.Name);
+		    list.Add(strategy.Strategy.ToString());
         }
         DropDownPlayerStrategy.AddOptions(list);
         DropDownPlayerStrategy.value = (int)TestPlayer.Attributes.Strategy;

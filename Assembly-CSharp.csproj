@@ -71,14 +71,13 @@
      <Compile Include="Assets\Scripts\Data\Game\InitialData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\PosChanceData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\StrategyData.cs" />
-     <Compile Include="Assets\Scripts\Data\Game\Tables\ActionChancePerZoneData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\ActionChancePerZoneTable.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\CrossTargetPerZoneData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\GameModifiersData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\Game_ModifierData.cs" />
-     <Compile Include="Assets\Scripts\Data\Game\Tables\Player_StrategyData.cs" />
-     <Compile Include="Assets\Scripts\Data\Game\Tables\TargetCrossPerZoneData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\PlayerStrategyData.cs" />
      <Compile Include="Assets\Scripts\Data\Game\Tables\TargetPassPerZoneData.cs" />
-     <Compile Include="Assets\Scripts\Data\Game\Tables\Team_StrategyData.cs" />
+     <Compile Include="Assets\Scripts\Data\Game\Tables\TeamStrategyData.cs" />
      <Compile Include="Assets\Scripts\Data\Localization\LocalizationData.cs" />
      <Compile Include="Assets\Scripts\Data\Players\PlayerAttributes.cs" />
      <Compile Include="Assets\Scripts\Data\Players\PlayerData.cs" />

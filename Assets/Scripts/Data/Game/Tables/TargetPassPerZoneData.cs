@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using EditorGUITable;
 
 [System.Serializable]
 public class TargetPassPerZone {
@@ -38,6 +39,7 @@ public class TargetPassPerZone {
 }
 
 public class TargetPassPerZoneData : ScriptableObject {
+	[Table]
 	public List<TargetPassPerZone> targetPassPerZones = new List<TargetPassPerZone>();
 }
 

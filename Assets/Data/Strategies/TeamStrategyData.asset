@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3f8c4656b7c27b498c832b0e8c0701a, type: 3}
-  m_Name: Team_StrategyData
+  m_Name: TeamStrategyData
   m_EditorClassIdentifier: 
   team_Strategys:
   - Name: strategy_Neutral

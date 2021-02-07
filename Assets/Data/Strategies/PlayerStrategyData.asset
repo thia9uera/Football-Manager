@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d384f9de32237754f83b7df51ad0b135, type: 3}
-  m_Name: Player_StrategyData
+  m_Script: {fileID: 11500000, guid: a64924d6639cd4103b2e00ed0044a20e, type: 3}
+  m_Name: PlayerStrategyData
   m_EditorClassIdentifier: 
-  player_Strategys:
-  - Name: Neutral
-    Description: No changes
+  StrategyChances:
+  - Strategy: 0
     DefPosChance: 1
     OffPosChance: 1
     LeftPosChance: 1
@@ -27,8 +26,7 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: Defensive
-    Description: Increase defensive positioning
+  - Strategy: 1
     DefPosChance: 4
     OffPosChance: 0.25
     LeftPosChance: 1
@@ -39,11 +37,10 @@ MonoBehaviour:
     CrossingChance: 1
     DribblingChance: 1
     OffsideTrickChance: 1.2
-    MarkingChance: 2
+    MarkingChance: 1
     TacklingChance: 1.3
-  - Name: Ofensive
-    Description: Increase offensive crossing
-    DefPosChance: 0.25
+  - Strategy: 2
+    DefPosChance: 0.5
     OffPosChance: 4
     LeftPosChance: 1
     RightPosChance: 1
@@ -55,8 +52,7 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: Left
-    Description: Increase left positioning
+  - Strategy: 3
     DefPosChance: 1
     OffPosChance: 1
     LeftPosChance: 4
@@ -69,8 +65,7 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: Right
-    Description: Increase right positioning
+  - Strategy: 4
     DefPosChance: 1
     OffPosChance: 1
     LeftPosChance: 0.25
@@ -79,12 +74,11 @@ MonoBehaviour:
     LongPassChance: 1
     ShootingChance: 1
     CrossingChance: 1
-    DribblingChance: 1.5
+    DribblingChance: 1
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: LeftDefensive
-    Description: Increase left defensive positioning
+  - Strategy: 5
     DefPosChance: 4
     OffPosChance: 0.25
     LeftPosChance: 4
@@ -96,9 +90,8 @@ MonoBehaviour:
     DribblingChance: 1
     OffsideTrickChance: 1.2
     MarkingChance: 2
-    TacklingChance: 1.3
-  - Name: RightDefensive
-    Description: Increase right defensive positioning
+    TacklingChance: 1.2
+  - Strategy: 6
     DefPosChance: 4
     OffPosChance: 0.25
     LeftPosChance: 0.25
@@ -111,8 +104,7 @@ MonoBehaviour:
     OffsideTrickChance: 1.2
     MarkingChance: 2
     TacklingChance: 1.3
-  - Name: LeftOffensive
-    Description: Increase left offensive positioning
+  - Strategy: 7
     DefPosChance: 0.25
     OffPosChance: 4
     LeftPosChance: 4
@@ -125,8 +117,7 @@ MonoBehaviour:
     OffsideTrickChance: 1
     MarkingChance: 1
     TacklingChance: 1
-  - Name: RightOffensive
-    Description: Increase right offensive positioning
+  - Strategy: 8
     DefPosChance: 0.25
     OffPosChance: 4
     LeftPosChance: 0.25

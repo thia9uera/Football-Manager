@@ -5767,11 +5767,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialData: {fileID: 11400000, guid: df8c3105f666b46c7ad402ec98019584, type: 2}
   User:
-    Id: 
-    Name: 
-    TeamName: 
+    Id: 0
+    Name: Aima
+    TeamName: Error
     LastTimeSaved: 
-    CurrentYear: 0
+    CurrentYear: 2021
     CurrentDay: 0
   AllPlayers: []
   AllTeams: []
@@ -5851,10 +5851,10 @@ MonoBehaviour:
   actionChancePerZone: {fileID: 11400000, guid: 03f464816c52843a8a237958e6272957,
     type: 2}
   teamStrategyData: {fileID: 11400000, guid: afeecf16ee077054bb509e20a984e865, type: 2}
-  playerStrategyData: {fileID: 11400000, guid: 6675e309830b76d4a8bc9b33c2dc2559, type: 2}
+  playerStrategyData: {fileID: 11400000, guid: 822fadad7ce6d4ee08d56413286debc7, type: 2}
   targetPassPerZoneData: {fileID: 11400000, guid: 7129ea8bb68ed204dbbbec75b173e33b,
     type: 2}
-  targetCrossPerZoneData: {fileID: 11400000, guid: fe8beb07320468946b2a0c0351747474,
+  targetCrossPerZoneData: {fileID: 11400000, guid: 43e3b96bede2946689c1cc5f95844148,
     type: 2}
   formationsData: {fileID: 11400000, guid: 4e2ed30e36c7b62418b4a5979720e8ea, type: 2}
   Colors: {fileID: 11400000, guid: 8060bc018672c46efa56ccded7264897, type: 2}

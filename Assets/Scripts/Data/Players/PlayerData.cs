@@ -87,7 +87,7 @@ public class PlayerData : ScriptableObject
 
     public void ApplyBonus()
     {
-	    Player_Strategy _playerStrategy = GameData.Instance.PlayerStrategies[(int)Strategy];
+	    PlayerStrategyData.PlayerStrategyChances _playerStrategy = GameData.Instance.PlayerStrategies[(int)Strategy];
 
         Prob_DefPosition = _playerStrategy.DefPosChance;
         Prob_OffPosition = _playerStrategy.OffPosChance;

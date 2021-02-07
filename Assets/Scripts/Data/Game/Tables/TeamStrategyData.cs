@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using EditorGUITable;
 
 [System.Serializable]
 public class Team_Strategy {
@@ -82,7 +83,8 @@ public class Team_Strategy {
 	public bool Box;
 }
 
-public class Team_StrategyData : ScriptableObject {
+public class TeamStrategyData : ScriptableObject {
+	[Table]
 	public List<Team_Strategy> team_Strategys = new List<Team_Strategy>();
 }
 

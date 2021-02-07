@@ -134,13 +134,10 @@ public class TeamData : ScriptableObject
 
     public void InitializeTournamentData(string _id)
     {
-	    if (TournamentStatistics.ContainsKey(_id))
+	    if (!TournamentStatistics.ContainsKey(_id))
 	    {
-	    	ResetStatistics("Tournament", _id);	
-	    	return;
-	    }
-	    
-        TournamentStatistics.Add(_id, new TeamStatistics());
+	    	TournamentStatistics.Add(_id, new TeamStatistics());
+	    } 
     }
 
 	void UpdateTournamentStatistics(TeamStatistics _stats, string _tournamentId)

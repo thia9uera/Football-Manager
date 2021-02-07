@@ -42,7 +42,7 @@ public class DataController : MonoBehaviour
 	        Name = _coachName,
 	        TeamName = _teamName,
 	        Id = System.Guid.NewGuid().ToString(),
-	        CurrentYear = 2020,
+	        CurrentYear = 2021,
 	    	CurrentDay = 0	        
         };
         mainController.User = userData;
@@ -156,7 +156,7 @@ public class DataController : MonoBehaviour
 		yield return StartCoroutine("LoadTeams");
 		yield return StartCoroutine("LoadTournaments");
 		
-		CalendarController.Instance.InitializeCalendar(MainController.Instance.User.CurrentYear);
+		CalendarController.Instance.InitializeCalendar();
 		ScreenController.Instance.ShowScreen(ScreenType.Manager);
 	}
 
