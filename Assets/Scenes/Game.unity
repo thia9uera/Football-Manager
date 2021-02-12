@@ -999,7 +999,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -15717,7 +15717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PR\xD3XIMA PARTIDA"
+  m_text: NEXT MATCH
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e67447b488e0e4c3099291a8a2263e5d, type: 2}
   m_sharedMaterial: {fileID: 5127995560092580657, guid: e67447b488e0e4c3099291a8a2263e5d,
@@ -21126,7 +21126,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 100, y: -154}
-  m_SizeDelta: {x: 1260, y: 762}
+  m_SizeDelta: {x: 1250, y: 762}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1881187917
 MonoBehaviour:
@@ -21602,7 +21602,7 @@ PrefabInstance:
     - target: {fileID: 5684722048599120900, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -39.999023
+      value: -39.998962
       objectReference: {fileID: 0}
     - target: {fileID: 5684722048747561742, guid: fb83008ea8e0d43f5a44c6f0ce850829,
         type: 3}
@@ -24112,12 +24112,12 @@ PrefabInstance:
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 630
+      value: 620
       objectReference: {fileID: 0}
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}
@@ -24137,7 +24137,7 @@ PrefabInstance:
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}
@@ -24147,7 +24147,7 @@ PrefabInstance:
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1038780919147691197, guid: 3979735ecdfb1478190e7db2edb544d6,
         type: 3}

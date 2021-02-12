@@ -16,12 +16,12 @@ public class ChampionshipCreation : MonoBehaviour
 	[SerializeField] private Transform content = null;
 	[SerializeField] private Toggle homeAwayTeams = null;
 
-	private List<GameObject> matchList;
+	protected List<GameObject> matchList;
     public List<MatchData> DataList;
 
-	private List<TeamData> placeholderList;
-	private TeamData placeholderTeam;
-    private int totalTeams;
+	protected List<TeamData> placeholderList;
+	protected TeamData placeholderTeam;
+    protected int totalTeams;
 
     void Awake()
     {
@@ -47,7 +47,7 @@ public class ChampionshipCreation : MonoBehaviour
         CreateRounds();
     }
 
-    public void CreateRounds()
+	public virtual void CreateRounds()
 	{
         //Get teams that were added
         DataList.Clear();
